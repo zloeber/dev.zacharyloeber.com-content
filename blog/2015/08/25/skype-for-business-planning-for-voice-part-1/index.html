@@ -1,0 +1,389 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Skype For Business: Planning for Voice – Part 1 | Zachary Loeber</title>
+        <meta name="description" content="Skype For Business: Planning for Voice – Part 1 - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Skype For Business: Planning for Voice – Part 1">
+        <meta itemprop="description" content="Skype For Business: Planning for Voice – Part 1 - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Skype For Business: Planning for Voice – Part 1">
+        <meta property="og:description" content="Skype For Business: Planning for Voice – Part 1 - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://localhost/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://localhost/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://localhost/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://localhost/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://localhost/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://localhost/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://localhost/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/">Skype For Business: Planning for Voice – Part 1</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2015-08-25</span>
+            
+        
+
+        
+            <span class="readingTime">8 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/exchange-2013">Exchange 2013</a>
+                
+                    <a href="/categories/lync">Lync</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/skype-for-business">Skype For Business</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>When planning for a full Skype for Business voice deployment there are a number of elements which should be aligned and setup properly for a smooth transition. This is an introduction article for a series where I’ll provide some insight on what info you need to collect and understand for a successful PBX replacement within your organization.</p>
+
+<p>Deploying any PBX replacement can be a daunting task and Skype for Business is no exception. There are the many moving parts to consider in your plans. This includes (but is not limited to) the Skype for Business and Exchange server architecture and deployment, current WAN and PSTN site local infrastructure readiness, and devices to select and deploy for the end users. There are many guides out there for deploying and designing your servers and even on selecting your devices but one aspect of a deployment that I don’t see covered quite well enough is the actual PBX assessment and replacement on a per site basis. I’m hoping fill this gap a bit with some tools, checklists, and tips that I’ve put together.</p>
+
+<p>I&#8217;ll be upfront and state I believe much of this information is PBX agnostic and can be applicable for <em><strong>any</strong></em> phone system upgrade. But I do target Skype for Business though so you may want to bone up on your nomenclature. Instead of reinventing the wheel I&#8217;ll point you out to another <a href="http://blog.ucomsgeek.com/2014/02/pbx-replacement-series-pbx-network.html">excellent set of articles</a> by Jonathan McKinney that I consider not so hidden gems of knowledge that everyone should have when deploying Lync/Skype for Business as a PBX.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>If you have made it this far then great! That means you have more than just a passing interest in taking the next steps of what can be a difficult but rewarding process for your organization. These rewards go beyond simply removing an old (and often failing) PBX gone from your life as well. There are real and tangible cost savings to be had in undergoing this process, sometimes in areas which may surprise you. Simply going through the discovery process may bring to light expensive PSTN lines which are not in use, nonsensical dial plans, or ridiculous processes people undertake (like faxing between offices).</p>
+
+<p><a href="wp-content/uploads/2015/07/PSTNProvider_Tax.jpg"><img class="aligncenter size-medium wp-image-1497" src="/wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=300%2C300" alt="PSTNProvider_Tax" width="300" height="300" srcset="/wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=300%2C300 300w, wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=150%2C150 150w, wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?w=400 400w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+
+<p>Unsurprisingly, there are multiple phases to a Skype for Business and Exchange based unified messaging deployment before you ever get to the point of deploying enterprise voice though. Lets go the overarching deployment phases for the entire organization in this first article. This is primarily focused around on premise deployments but generally holds true for Office 365 hybrid as well (where Phase 1 and 2 are kind of merged).</p>
+
+<h2 id="phase-1-internal-im-and-presence">Phase 1 – Internal IM and Presence</h2>
+
+<p>This phase includes deploying the Skype for Business client to end user workstations and devices for internal or VPN connected end users. In phase 1 the active directory environment is prepped and internal Skype for Business front end pools are created. SIP domains are determined and then used used to create a basic Skype for Business topology. At the end of this phase most enterprise users should be able to use their Skype for Business enabled devices and workstations to communicate and collaborate internally with direct Skype for Business to Skype for Business communications. This internal collaboration capability includes voice, video, and application sharing. On premise deployments might include the <a href="https://technet.microsoft.com/en-us/library/jj219458.aspx">office web application services</a> as part of this phase as well (if they are not already in the environment for Sharepoint or other reasons).</p>
+
+<p><a href="wp-content/uploads/2015/07/Phase-11.jpg"><img class="size-medium wp-image-1481 aligncenter" src="/wp-content/uploads/2015/07/Phase-11.jpg?resize=300%2C298" alt="Phase-1" width="300" height="298" srcset="/wp-content/uploads/2015/07/Phase-11.jpg?resize=300%2C298 300w, wp-content/uploads/2015/07/Phase-11.jpg?resize=150%2C150 150w, wp-content/uploads/2015/07/Phase-11.jpg?w=655 655w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+
+<h2 id="phase-2-edge-access-mobility-and-federation">Phase 2 – Edge Access, Mobility, and Federation</h2>
+
+<p>This phase consists of configuring Skype for Business servers at the edge of the network and includes setup of one or more Skype for Business edge access servers, external IP addresses, and DNS addresses. The edge services allow for non-VPN connected enterprise workstations to still use the Skype for Business client securely from the outside network. The edge services also allow for direct Skype for Business communication with other federated services (such as Skype and XMPP based IM services). Optionally, you can also configure selective or open federation at this time for cross organization Skype for Business communication with your business partners.</p>
+
+<p style="text-align: left;">
+  <a href="/wp-content/uploads/2015/07/Phase-21.jpg"><img class="size-medium wp-image-1482 aligncenter" src="/wp-content/uploads/2015/07/Phase-21.jpg?resize=205%2C300" alt="Phase-2" width="205" height="300" srcset="/wp-content/uploads/2015/07/Phase-21.jpg?resize=205%2C300 205w, wp-content/uploads/2015/07/Phase-21.jpg?resize=701%2C1024 701w, wp-content/uploads/2015/07/Phase-21.jpg?w=707 707w" sizes="(max-width: 205px) 100vw, 205px" data-recalc-dims="1" /></a>
+</p>
+
+<p>By the end of this phase your users will be able to utilize the Skype for Business client across many devices both on and off your network. This is also an ideal phase to discuss and re-architect the edge of your network (if required) to accommodate one or, ideally, two DMZ&#8217;s for increased security.</p>
+
+<blockquote>
+<p><strong>Note:</strong> This phase usually includes setup and configuration of reverse proxy services directly from the external network to your internal Skype for Business pool. The reverse proxy services are used for Skype for Business access from mobile devices and the Skype for Business web client among other things.</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h2 id="phase-3-pbx-integration">Phase 3 – PBX Integration</h2>
+
+<p>Up through phases 1 and 2 Skype for Business is capable of being used between Skype for Business capable devices within and outside of the organization. You can also host Skype for Business meetings that can be joined over the web. What you cannot do is dial a number from your phone to call a Skype for Business user or meeting. Phase 3 extends the Skype for Business infrastructure out to the public phone network by integrating with the current PBX to enable PSTN usage and overcome this limitation.</p>
+
+<p>Skype for Business can be deployed to entirely replace the existing PBX infrastructure or, in many cases, be integrated in with a SIP capable phone system. In this phase we focus on PBX integration instead of replacement. This integration is typically limited a small handful of users or conference number as a proof of concept for the business. Some organizations stay at this integration level and go the route of setting up something called &#8216;remote call control&#8217; enabled users (which is mutually exclusive from enterprise voice enabled users). This might be done if there is a significant investment in the current PBX and phones that are connected to it. This requires vendor specific client plugins and can be quirky to setup and maintain and is not an encouraged route to take from Microsoft&#8217;s perspective.</p>
+
+<p>With PBX integration it is common to replace existing third party conferencing solutions (i.e. WebEx) at your central office. You can also realize your current phone infrastructure investments longer with some extra work and configuration. This entire phase is reliant upon a supported IP based PBX and may not be possible in every environment. In these cases an organization might go directly to Phase 4.</p>
+
+<p>I like to split this phase out into two possible scenarios. In one scenario we are looking a coexistence using a VoIP gateway. This essentially puts a new device between the existing PBX and your PSTN provider and splits out call flow depending on factors like AD attributes for users. This is not an option for environments which do not have a SIP capable PBX.</p>
+
+<p><a href="/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg"><img class="size-medium wp-image-1483 aligncenter" src="/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?resize=300%2C294" alt="Phase-3-Coexistence" width="300" height="294" srcset="/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?resize=300%2C294 300w, /wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?w=712 712w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+
+<p>Otherwise you can simply integrate Skype for Business with your existing PBX. You will see this being done for most VoIP capable PBXes. This leaves the onus to the PBX to route inbound calls to Lync intelligently. What you need to be aware of in this situation is that eventually you will need to move in and outbound call flow to another gateway device (coexistence) if you are to remove the old PBX anyway. Integration can be a nice temporary solution for testing out Skype for Business PSTN capabilities though.</p>
+
+<p><a href="/wp-content/uploads/2015/07/Phase-3-Integration.jpg"><img class="size-medium wp-image-1484 aligncenter" src="/wp-content/uploads/2015/07/Phase-3-Integration.jpg?resize=300%2C284" alt="Phase-3-Integration" width="300" height="284" srcset="/wp-content/uploads/2015/07/Phase-3-Integration.jpg?resize=300%2C284 300w, /wp-content/uploads/2015/07/Phase-3-Integration.jpg?w=710 710w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+
+<p>&nbsp;</p>
+
+<h2 id="phase-4-pbx-replacement">Phase 4 – PBX Replacement</h2>
+
+<p>When Skype for Business is integrated with your PBX you are left with two infrastructures to maintain and support. Number assignments become more complex as knowledge of two systems becomes necessary. Your dial plans and routes also tend to be more complicated and error prone. But with the correct hardware purchases an organization might opt to entirely replace their existing PBX with Skype for Business. A full Skype for Business voice solution opens a wide range of possibilities for your end users and can reduce costs over time. When you fully replace your existing PBX you can physically replace phones with Skype for Business compliant devices, and you can have phone numbers which follow employees everywhere from their cell phone, to their iPad, to their physical phones.</p>
+
+<p><a href="wp-content/uploads/2015/07/Phase-41.jpg"><img class="size-medium wp-image-1487 aligncenter" src="/wp-content/uploads/2015/07/Phase-41.jpg?resize=300%2C258" alt="Phase-4" width="300" height="258" srcset="/wp-content/uploads/2015/07/Phase-41.jpg?resize=300%2C258 300w, wp-content/uploads/2015/07/Phase-41.jpg?w=721 721w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+
+<h2 id="up-next">Up Next</h2>
+
+<p>Now that we are all on the same page we can start to look at better preparing yourself for Phases 3 and 4 of your migration. To do this we will need to better understand your current phone system and provider configuration.  If you had enough foresight to plan for enterprise voice instead of it organically happening in your environment then it should be noted that you can begin much of the information gathering for the final phases of the deployment while you are implementing the first phases.</p>
+
+<p>If you like the diagrams in this article I&#8217;ve <a href="https://github.com/zloeber/Unified-Communications">uploaded them into Github</a> for your convenience and reuse. Stay tuned for part 2 of this series where we will talk about the importance of being nice to people so we can get the information we need to help make your voice deployments easier.</p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/enterprise-voice">Enterprise Voice</a>
+                
+                    <a href="/tags/exchange-2013">Exchange 2013</a>
+                
+                    <a href="/tags/lync-2013">Lync 2013</a>
+                
+                    <a href="/tags/lync-server-2013">Lync Server 2013</a>
+                
+                    <a href="/tags/lync-voice">Lync Voice</a>
+                
+                    <a href="/tags/pbx">PBX</a>
+                
+                    <a href="/tags/psc">PSC</a>
+                
+                    <a href="/tags/skype-for-business">Skype For Business</a>
+                
+                    <a href="/tags/voip">VoIP</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

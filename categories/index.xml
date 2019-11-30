@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Zachary Loeber</title>
+    <link>http://localhost/categories/</link>
+    <description>Recent content in Categories on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 10 Dec 2018 22:51:46 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DevOps</title>
+      <link>http://localhost/categories/devops/</link>
+      <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>http://localhost/categories/linux/</link>
+      <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>System Administration</title>
+      <link>http://localhost/categories/system-administration/</link>
+      <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/system-administration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CICD</title>
+      <link>http://localhost/categories/cicd/</link>
+      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/cicd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://localhost/categories/docker/</link>
+      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>http://localhost/categories/kubernetes/</link>
+      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Microservices</title>
+      <link>http://localhost/categories/microservices/</link>
+      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/microservices/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Powershell</title>
+      <link>http://localhost/categories/powershell/</link>
+      <pubDate>Thu, 03 May 2018 02:29:53 +0000</pubDate>
+      
+      <guid>http://localhost/categories/powershell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://localhost/categories/python/</link>
+      <pubDate>Thu, 03 May 2018 02:29:53 +0000</pubDate>
+      
+      <guid>http://localhost/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>http://localhost/categories/azure/</link>
+      <pubDate>Sat, 24 Feb 2018 15:59:26 +0000</pubDate>
+      
+      <guid>http://localhost/categories/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Microsoft</title>
+      <link>http://localhost/categories/microsoft/</link>
+      <pubDate>Sat, 24 Feb 2018 15:59:26 +0000</pubDate>
+      
+      <guid>http://localhost/categories/microsoft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Office 365</title>
+      <link>http://localhost/categories/office-365/</link>
+      <pubDate>Sat, 24 Feb 2018 15:59:26 +0000</pubDate>
+      
+      <guid>http://localhost/categories/office-365/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>http://localhost/categories/security/</link>
+      <pubDate>Sat, 24 Feb 2018 15:59:26 +0000</pubDate>
+      
+      <guid>http://localhost/categories/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Active Directory</title>
+      <link>http://localhost/categories/active-directory/</link>
+      <pubDate>Sun, 04 Feb 2018 17:36:57 +0000</pubDate>
+      
+      <guid>http://localhost/categories/active-directory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud PBX</title>
+      <link>http://localhost/categories/cloud-pbx/</link>
+      <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
+      
+      <guid>http://localhost/categories/cloud-pbx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Skype For Business</title>
+      <link>http://localhost/categories/skype-for-business/</link>
+      <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
+      
+      <guid>http://localhost/categories/skype-for-business/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Uncategorized</title>
+      <link>http://localhost/categories/uncategorized/</link>
+      <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
+      
+      <guid>http://localhost/categories/uncategorized/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Networking</title>
+      <link>http://localhost/categories/networking/</link>
+      <pubDate>Tue, 31 Jan 2017 03:23:32 +0000</pubDate>
+      
+      <guid>http://localhost/categories/networking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OSSPosh</title>
+      <link>http://localhost/categories/ossposh/</link>
+      <pubDate>Sun, 21 Aug 2016 03:41:03 +0000</pubDate>
+      
+      <guid>http://localhost/categories/ossposh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exchange 2013</title>
+      <link>http://localhost/categories/exchange-2013/</link>
+      <pubDate>Tue, 19 Apr 2016 21:25:58 +0000</pubDate>
+      
+      <guid>http://localhost/categories/exchange-2013/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exchange</title>
+      <link>http://localhost/categories/exchange/</link>
+      <pubDate>Fri, 25 Sep 2015 01:41:25 +0000</pubDate>
+      
+      <guid>http://localhost/categories/exchange/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010</title>
+      <link>http://localhost/categories/exchange-2010/</link>
+      <pubDate>Fri, 25 Sep 2015 01:41:25 +0000</pubDate>
+      
+      <guid>http://localhost/categories/exchange-2010/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lync</title>
+      <link>http://localhost/categories/lync/</link>
+      <pubDate>Sat, 12 Sep 2015 20:05:26 +0000</pubDate>
+      
+      <guid>http://localhost/categories/lync/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Book Review</title>
+      <link>http://localhost/categories/book-review/</link>
+      <pubDate>Sun, 15 Mar 2015 01:51:53 +0000</pubDate>
+      
+      <guid>http://localhost/categories/book-review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IIS</title>
+      <link>http://localhost/categories/iis/</link>
+      <pubDate>Fri, 26 Sep 2014 19:41:59 +0000</pubDate>
+      
+      <guid>http://localhost/categories/iis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MSCS</title>
+      <link>http://localhost/categories/mscs/</link>
+      <pubDate>Sat, 11 Jan 2014 04:16:29 +0000</pubDate>
+      
+      <guid>http://localhost/categories/mscs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Office Communicator Server</title>
+      <link>http://localhost/categories/office-communicator-server/</link>
+      <pubDate>Sat, 11 Jan 2014 04:16:29 +0000</pubDate>
+      
+      <guid>http://localhost/categories/office-communicator-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BIG-IP</title>
+      <link>http://localhost/categories/big-ip/</link>
+      <pubDate>Fri, 03 Jan 2014 18:11:18 +0000</pubDate>
+      
+      <guid>http://localhost/categories/big-ip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Storage</title>
+      <link>http://localhost/categories/storage/</link>
+      <pubDate>Sun, 15 Sep 2013 02:57:55 +0000</pubDate>
+      
+      <guid>http://localhost/categories/storage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtualization</title>
+      <link>http://localhost/categories/virtualization/</link>
+      <pubDate>Fri, 26 Jul 2013 18:22:43 +0000</pubDate>
+      
+      <guid>http://localhost/categories/virtualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VMware</title>
+      <link>http://localhost/categories/vmware/</link>
+      <pubDate>Fri, 26 Jul 2013 18:22:43 +0000</pubDate>
+      
+      <guid>http://localhost/categories/vmware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Other</title>
+      <link>http://localhost/categories/other/</link>
+      <pubDate>Wed, 19 Jun 2013 01:44:40 +0000</pubDate>
+      
+      <guid>http://localhost/categories/other/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cisco</title>
+      <link>http://localhost/categories/cisco/</link>
+      <pubDate>Thu, 29 Nov 2012 02:24:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/cisco/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>http://localhost/categories/ubuntu/</link>
+      <pubDate>Thu, 29 Nov 2012 02:24:46 +0000</pubDate>
+      
+      <guid>http://localhost/categories/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unified Access Gateway</title>
+      <link>http://localhost/categories/unified-access-gateway/</link>
+      <pubDate>Thu, 22 Nov 2012 19:58:04 +0000</pubDate>
+      
+      <guid>http://localhost/categories/unified-access-gateway/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chicago Commuting</title>
+      <link>http://localhost/categories/chicago-commuting/</link>
+      <pubDate>Sat, 19 Nov 2011 03:37:38 +0000</pubDate>
+      
+      <guid>http://localhost/categories/chicago-commuting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Publishing</title>
+      <link>http://localhost/categories/web-publishing/</link>
+      <pubDate>Fri, 05 Aug 2011 12:58:12 +0000</pubDate>
+      
+      <guid>http://localhost/categories/web-publishing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fiber</title>
+      <link>http://localhost/categories/fiber/</link>
+      <pubDate>Fri, 04 Feb 2011 01:14:02 +0000</pubDate>
+      
+      <guid>http://localhost/categories/fiber/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtual Connect</title>
+      <link>http://localhost/categories/virtual-connect/</link>
+      <pubDate>Fri, 04 Feb 2011 01:14:02 +0000</pubDate>
+      
+      <guid>http://localhost/categories/virtual-connect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vbscript/hta</title>
+      <link>http://localhost/categories/vbscript/hta/</link>
+      <pubDate>Sat, 22 Jan 2011 17:51:51 +0000</pubDate>
+      
+      <guid>http://localhost/categories/vbscript/hta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sharepoint</title>
+      <link>http://localhost/categories/sharepoint/</link>
+      <pubDate>Fri, 21 Jan 2011 15:08:24 +0000</pubDate>
+      
+      <guid>http://localhost/categories/sharepoint/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RedHat/CentOS</title>
+      <link>http://localhost/categories/redhat/centos/</link>
+      <pubDate>Fri, 18 Jun 2010 16:17:39 +0000</pubDate>
+      
+      <guid>http://localhost/categories/redhat/centos/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

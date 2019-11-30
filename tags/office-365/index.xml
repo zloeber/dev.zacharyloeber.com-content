@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Office 365 on Zachary Loeber</title>
+    <link>http://localhost/tags/office-365/</link>
+    <description>Recent content in Office 365 on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 04 Feb 2018 17:36:57 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost/tags/office-365/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PowerShell: AzureAD Dynamic Groups</title>
+      <link>http://localhost/blog/2018/02/04/powershell-azuread-dynamic-groups/</link>
+      <pubDate>Sun, 04 Feb 2018 17:36:57 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2018/02/04/powershell-azuread-dynamic-groups/</guid>
+      <description>&lt;p&gt;A few code snippets for Azure AD dynamic groups. One for creating standard groups for your environment. Another for finding duplicates.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PowerShell: Office 365 Group Based Licencing Cleanup</title>
+      <link>http://localhost/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</link>
+      <pubDate>Thu, 11 Jan 2018 03:35:52 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</guid>
+      <description>&lt;p&gt;A script to remove directly assigned licenses from user accounts if they overlap with group assigned licenses in Office 365.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cloud PBX: Polycom VVX Master Directory</title>
+      <link>http://localhost/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</link>
+      <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</guid>
+      <description>&lt;p&gt;Reverse number lookup in Skype for Business online (cloud PBX) doesn&amp;#8217;t give you much control. If you are deploying Polycom VVX phones you can get around this with a directory file.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Office 365: Some Scripts</title>
+      <link>http://localhost/blog/2016/04/19/office-365-some-scripts/</link>
+      <pubDate>Tue, 19 Apr 2016 21:25:58 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2016/04/19/office-365-some-scripts/</guid>
+      <description>&lt;p&gt;Hello again world, it sure has been a while since I’ve last written to nameless masses. I’ve got some new scripts to share for those who are interested.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Stop Email Exfiltration</title>
+      <link>http://localhost/blog/2015/09/24/excxhange-stop-email-exfiltration/</link>
+      <pubDate>Fri, 25 Sep 2015 01:41:25 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2015/09/24/excxhange-stop-email-exfiltration/</guid>
+      <description>&lt;p&gt;When your users leave or get removed from the organization they may still be getting company confidential information. Here is how you can find out and stop this from happening.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

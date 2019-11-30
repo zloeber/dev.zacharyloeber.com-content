@@ -1,0 +1,73 @@
+# Kickstart config file cobbled together from numerous examples
+install
+text
+
+# comment the url and uncomment the cdrom to switch to a local cd
+#  based install
+url --url http://<server ip>/cdrom/
+#cdrom
+
+lang en_US.UTF-8
+keyboard us
+network --device eth0 --bootproto dhcp --hostname kshost
+
+#To create your encrypted root passsword for this file use the perl below
+# replace 'password' with the word you want to encrypt, and 'salt' with a
+# random salt string.
+# perl -e 'print crypt("password","salt")."\n";'
+rootpw --iscrypted <your crypted password>
+
+# **************
+firewall --enabled --port=22:tcp
+authconfig --enableshadow --enablemd5
+selinux --enforcing
+timezone --utc America/Chicago
+bootloader --location=mbr --driveorder=sda
+
+# usually this is fine for newer machines but 
+#  you may have to change this to suit your environment
+
+clearpart --linux --drives=sda
+
+part /boot --fstype ext3 --size=100 --ondisk=sda
+part pv.2 --size=0 --grow --ondisk=sda
+volgroup VolGroup00 --pesize=32768 pv.2
+logvol / --fstype ext3 --name=LogVol00 --vgname=VolGroup00 --size=1024 --grow
+logvol swap --fstype swap --name=LogVol01 --vgname=VolGroup00 --size=1024
+reboot
+skipx
+
+%packages
+-@ GNOME Desktop Environment
+-@ Graphical Internet
+-@ Sound and Video
+-bluez-bluefw
+-bluez-hcidump
+-bluez-libs
+-bluez-utils
+-cups
+-cups-libs
+
+# uncomment this for multipath support for your hba
+#device-mapper-multipath
+coreutils
+yum
+rpm
+e2fsprogs
+lvm2
+grub
+sysstat
+ntp
+openssh-server
+openssh-clients
+
+%post
+/usr/bin/yum -y update >> /root/post_install.log 2>&1
+/sbin/chkconfig --del bluetooth
+/sbin/chkconfig --del cups
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+
+# setup NTP
+mv /etc/ntp.conf /etc/ntp.conf.old
+echo -e 'server pool.ntp.org' >> /etc/ntp.conf
+chkconfig ntpd on

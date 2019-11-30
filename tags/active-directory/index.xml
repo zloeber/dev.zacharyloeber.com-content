@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Active Directory on Zachary Loeber</title>
+    <link>http://localhost/tags/active-directory/</link>
+    <description>Recent content in Active Directory on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 13 Oct 2016 19:03:55 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost/tags/active-directory/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Powershell: New-ADPasswordReminder</title>
+      <link>http://localhost/blog/2016/10/13/powershell-new-adpasswordreminder/</link>
+      <pubDate>Thu, 13 Oct 2016 19:03:55 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2016/10/13/powershell-new-adpasswordreminder/</guid>
+      <description>&lt;p&gt;A single, self-extracting, self-scheduling, AD password change notice PowerShell script.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: WPF/Treeview OU Selection Dialog</title>
+      <link>http://localhost/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</link>
+      <pubDate>Sun, 22 Mar 2015 16:13:54 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</guid>
+      <description>&lt;p class=&#34;projectSummary&#34;&gt;
+  This is a self-contained organizational unit selection dialog box using powershell, xaml, wpf, and ADSI. Should be useful in any number of one off Powershell projects I imagine.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell Tip – Connecting With ADSI to Another Forest</title>
+      <link>http://localhost/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/</link>
+      <pubDate>Fri, 11 Apr 2014 21:17:43 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/</guid>
+      <description>&lt;p&gt;Using a bit of Powershell and ADSI it is pretty easy to connect to another forest. Finding out how to do so is not very clear though. Here is what I came up with to accomplish this task.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AD Audit Report with Powershell: Part 3</title>
+      <link>http://localhost/blog/2014/01/10/ad-audit-report-with-powershell-part-3/</link>
+      <pubDate>Sat, 11 Jan 2014 04:16:29 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2014/01/10/ad-audit-report-with-powershell-part-3/</guid>
+      <description>&lt;p&gt;This is my third and final major update to my AD auditing script. This includes a handful of new useful sections such as domain published printers, NPS servers, DHCP servers, as well as SCCM sites and DPs. Other improvements include easier to use script parameters and bug fixes.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Visualize Active Directory Site Connections</title>
+      <link>http://localhost/blog/2013/10/06/visualize-active-directory-site-connections/</link>
+      <pubDate>Sun, 06 Oct 2013 22:50:35 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/10/06/visualize-active-directory-site-connections/</guid>
+      <description>&lt;h4 id=&#34;span-style-color-bbbbbb-font-size-12px-font-weight-normal-line-height-1-6-in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-i-ve-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagram-span&#34;&gt;&lt;span style=&#34;color: #bbbbbb; font-size: 12px; font-weight: normal; line-height: 1.6;&#34;&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;/span&gt;&lt;/h4&gt;</description>
+    </item>
+    
+    <item>
+      <title>Find Disabled Users With Lync Enabled Without Lync Cmdlts</title>
+      <link>http://localhost/blog/2013/09/30/find-disabled-users-with-lync-enabled-without-lync-cmdlts/</link>
+      <pubDate>Mon, 30 Sep 2013 21:19:15 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/09/30/find-disabled-users-with-lync-enabled-without-lync-cmdlts/</guid>
+      <description>&lt;p&gt;Here is a quick tip which applies to more than just Lync. I use powershell with .NET ADSI to gather a list of all users which are disabled but still have Lync sip addresses assigned. There are numerous reasons to disable lync on such accounts. One reason would be to make certain that users whom are no longer with the organization get removed from the Lync address list. Another is so these same users can no longer access Lync! (Yes, a disabled AD account may still be authorized to access Lync).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Excel and HTML Asset Reports With Powershell</title>
+      <link>http://localhost/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/</link>
+      <pubDate>Sun, 08 Sep 2013 05:07:29 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/</guid>
+      <description>&lt;p&gt;This set of powershell functions collates and generates reports upon system information it gathers. Information gathered includes hardware health, system information, networking information and much much more. Multiple types of html reports can be generated and all data can be exported directly to an excel workbook, saved as individual reports, and emailed.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 Mailbox Audit Report GUI</title>
+      <link>http://localhost/blog/2013/06/28/exchange-2010-mailbox-audit-report-gui/</link>
+      <pubDate>Fri, 28 Jun 2013 20:17:29 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/28/exchange-2010-mailbox-audit-report-gui/</guid>
+      <description>&lt;p&gt;I’ve updated the original &lt;a href=&#34;http://localhost/2013/05/09/exchange-2010-mailbox-audit-report-script/&#34;&gt;Exchange Mailbox Audit Report Script&lt;/a&gt; with some new features and bug fixes. These updates have also set the stage for the entire script to be wrapped with a GUI! Here is the initial release of the Mailbox Audit Report GUI for your auditing needs.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Audit User Profile Folders With Powershell</title>
+      <link>http://localhost/blog/2013/06/21/audit-user-profile-folders-with-powershell/</link>
+      <pubDate>Fri, 21 Jun 2013 18:46:09 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/21/audit-user-profile-folders-with-powershell/</guid>
+      <description>&lt;p&gt;This function will aggregate sub-folders within a folder on a server and attempt to associate them with user IDs within a domain and provide additional information. This script can also be used to move folders for disabled or non-existent accounts.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 Mailbox Audit Report Script</title>
+      <link>http://localhost/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</link>
+      <pubDate>Fri, 10 May 2013 02:33:54 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
+      <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
+
+&lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Even More Migration Tips</title>
+      <link>http://localhost/blog/2012/07/10/exchange-2010-even-more-migration-tips/</link>
+      <pubDate>Wed, 11 Jul 2012 00:34:32 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/07/10/exchange-2010-even-more-migration-tips/</guid>
+      <description>&lt;p&gt;It has been a while since I passed on some personal experiences when performing Exchange 2010 migrations. I thought it was about time to update my list to include some more of the lesser known aspects of an Exchange 2010 migration.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Active Directory: Best Practices Workbook</title>
+      <link>http://localhost/blog/2012/05/28/active-directory-best-practices-workbook/</link>
+      <pubDate>Mon, 28 May 2012 21:57:58 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/05/28/active-directory-best-practices-workbook/</guid>
+      <description>&lt;p&gt;This is a checklist for technicians performing Active Directory assessments. It is broken down by category and best practice. Some items listed are not really a best practice, but rather something which you may find in an environment which should be rectified (as part of an audit perhaps).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Create Your Own Network Assessment Appliance</title>
+      <link>http://localhost/blog/2012/04/08/create-your-own-network-assessment-appliance/</link>
+      <pubDate>Mon, 09 Apr 2012 00:49:19 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/04/08/create-your-own-network-assessment-appliance/</guid>
+      <description>In this write-up I setup several network assessment tools which can be used in the discovery process of a new environment. This can be useful for a newly hired sysadmin or a consultant in rapidly gathering information to assess the health and/or state of a network.
+Introduction I often find myself assessing a foreign network infrastructure for performance or other issues. Depending on the size of the environment, digesting everything can be daunting without the help of some third party tools.</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Changing an invalid DNS suffixed server</title>
+      <link>http://localhost/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</link>
+      <pubDate>Thu, 01 Mar 2012 05:30:13 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</guid>
+      <description>&lt;p&gt;I ran into an interesting Exchange &lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be&lt;/p&gt;
+
+&lt;pre&gt;“Initial error: 451 4.4.0 dns query failed. The error was: SMTPsend.dns.nonexistentdomain; nonexistent”&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Active Directory: Essential Tools</title>
+      <link>http://localhost/blog/2011/08/11/active-directory-essential-tools/</link>
+      <pubDate>Thu, 11 Aug 2011 18:35:00 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/08/11/active-directory-essential-tools/</guid>
+      <description>&lt;p&gt;During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes</title>
+      <link>http://localhost/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</link>
+      <pubDate>Wed, 04 May 2011 21:26:37 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</guid>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;Prior to starting my new job I wanted to ensure that my previous employer was able to protect VIP mailboxes in their Exchange 2010 SP1 organization. I had to do this with exclusive scopes and these are the steps I had to follow. A general knowledge of role based security is assumed in this post.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Windows: 2003 to 2008 R2 RADIUS Migration</title>
+      <link>http://localhost/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</link>
+      <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</guid>
+      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I&amp;#8217;m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Active Directory: Role Based Access Modeling</title>
+      <link>http://localhost/blog/2011/02/21/active-directory-role-based-access-modeling/</link>
+      <pubDate>Tue, 22 Feb 2011 04:22:28 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/02/21/active-directory-role-based-access-modeling/</guid>
+      <description>&lt;p&gt;Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of &lt;a href=&#34;http://en.wikipedia.org/wiki/AGDLP&#34;&gt;AGDLP (an abbreviation of &amp;#8220;account, global, domain local, permission&amp;#8221;)&lt;/a&gt; to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Outlook 2010: Photo Sizing Tool</title>
+      <link>http://localhost/blog/2011/02/01/outlook-2010-photo-sizing-tool/</link>
+      <pubDate>Tue, 01 Feb 2011 15:35:24 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/02/01/outlook-2010-photo-sizing-tool/</guid>
+      <description>&lt;p&gt;We are about to get into full swing with our Exchange 2010 mailbox migrations and, soon afterwards, Office 2007 to 2010 upgrades as well. Unfortunately, we don&amp;#8217;t have our Sharepoint farm upgraded to 2010 yet so there will be no automatic syncing of user photos into the GAL for those nice vanity pics which you can view in Outlook 2010. I know people like to be seen so I found a nice &lt;a title=&#34;This little hack rocks!&#34; href=&#34;http://www.mikepfeiffer.net/2010/05/manage-exchange-2010-thumbnail-photos-with-a-powershell-based-gui/&#34; target=&#34;_blank&#34;&gt;powershell based GUI &lt;/a&gt;for our (awesome) service desk team to use to upload these photos for users as requested. But you still have to get these photos thumbnailed to approximately 96&amp;#215;96 before uploading. Repeated manual labor is the anathema of any self respecting sysadmin who knows how to hack other people&amp;#8217;s code to suit their needs. So I whipped up a very dirty (as in, &amp;#8220;wow, get the bar of soap&amp;#8221; dirty) hack which combines &lt;a title=&#34;How to batch optimize your Exchange GAL Photos before importing to Active Directory&#34; href=&#34;http://www.stevieg.org/2011/01/batch-optimize-exchange-gal-photos-importing-active-directory/comment-page-1/#comment-1085&#34; target=&#34;_blank&#34;&gt;this person&amp;#8217;s clever photo-sizing hack&lt;/a&gt; with the prior mentioned gui.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange – Notify Forwarded Accounts Script</title>
+      <link>http://localhost/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</link>
+      <pubDate>Mon, 10 Jan 2011 20:00:19 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</guid>
+      <description>In cleaning up a large number of disabled user accounts in AD I wanted a way to notify a large number of users specifically that they were being forwarded e-mail from another account. This was part of an effort to clean up AD a bit before moving everyone over to Exchange 2010 but it can be used independently of any one project as part of a general AD maintenance plan.</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 (SP1): Pre-Deployment Tips</title>
+      <link>http://localhost/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</link>
+      <pubDate>Fri, 17 Dec 2010 18:55:00 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</guid>
+      <description>&lt;p&gt;I recently had the opportunity to experience all of the blood, sweat, and tears of migrating a minimally maintained Exchange 2003 infrastructure to Exchange 2010 (and mid-way through, an upgrade to 2010 SP1). All of the docs out on the web for migrations make it seem soooo easy. But if you are going to do anything other than a single server install and are doing things like, oh say; hardware load balancing, Exchange 2003 co-existence, or working in an old multi-domain forest then you are in for some punishment. I think I ran into every possible issue that you can have with an Exchange 2010 migration. One guide that helped me in this endeavor was the &lt;a title=&#34;Rapid Exchange 2003 to 2010 Transition Guide&#34; href=&#34;http://msexchangegeek.com/2010/01/30/rapid-transition-guide-from-exchange-2003-to-exchange-2010/&#34; target=&#34;_blank&#34;&gt;rapid transition guide from Exchange 2003 to Exchange 2010&lt;/a&gt;. This guide didn&amp;#8217;t cover every aspect for me though, here are a few things that may save you a little bit of hassle. I&amp;#8217;ve been meaning to publish this for a while and I have a whole lot more notes from this experience but this is a start.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

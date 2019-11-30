@@ -1,0 +1,836 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Exchange: Receive Connector Tango! – Part 2 | Zachary Loeber</title>
+        <meta name="description" content="Exchange: Receive Connector Tango! – Part 2 - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Exchange: Receive Connector Tango! – Part 2">
+        <meta itemprop="description" content="Exchange: Receive Connector Tango! – Part 2 - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Exchange: Receive Connector Tango! – Part 2">
+        <meta property="og:description" content="Exchange: Receive Connector Tango! – Part 2 - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://localhost/blog/2014/08/23/exchange-receive-connector-tango-part-2/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://localhost/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://localhost/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2014/08/23/exchange-receive-connector-tango-part-2/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2014/08/23/exchange-receive-connector-tango-part-2/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://localhost/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://localhost/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://localhost/blog/2014/08/23/exchange-receive-connector-tango-part-2/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://localhost/blog/2014/08/23/exchange-receive-connector-tango-part-2/">Exchange: Receive Connector Tango! – Part 2</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2014-08-23</span>
+            
+        
+
+        
+            <span class="readingTime">16 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/exchange-2013">Exchange 2013</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/security">Security</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p><a href="/2014/07/06/exchange-receive-connector-tango-part-1/">In part 1 of this series</a> I discussed some basic knowledge requirements to get a better grip on receive connectors in Exchange. I continue that conversation with some examples of improperly configured connectors and the issues they may cause. I finish up the discussion with a script you can use to scan your environment for such configurations.</p>
+
+<h2 id="receive-connectors-and-remoteipranges">Receive Connectors and RemoteIPRanges</h2>
+
+<p>When you have multiple receive connectors it can seem confusing understanding which one is chosen for a particular inbound email. The general rule of thumb is that the most specific match for a remote IP address is used to select the receive connector that should be used for an inbound email. From my experience this is the least understood aspect about receive connectors. This is also part of why overly generous RemoteIPRanges assignments can cause headaches or unexpected transport behavior. Where I&#8217;ve specifically seen problems are in three areas;</p>
+
+<ol>
+<li>Exchange coexistence</li>
+<li>Inbound spam filtering</li>
+<li>Hardware load balancing</li>
+</ol>
+
+<p>In all cases, the issue was improperly configured receive connectors setup for internal relay purposes. Actually, let me rephrase that as the configuration wasn&#8217;t wrong, it was just not well thought out and caused unintended consequences. Here is a rather awful exchange architecture which probably doesn&#8217;t reflect any real production infrastructure. But this design diagram illustrates some of the issues I&#8217;m about to cover. In the illustration one server is hosting antispam services, all servers are hosting all exchange roles, and two of the servers are also being load balanced for SMTP. Again, no real design would look like this (obviously) but the illustration serves its purposes for this discussion.</p>
+
+<div id="attachment_1239" style="width: 310px" class="wp-caption aligncenter">
+  <a href="/wp-content/uploads/2014/08/ReceiveConnectorDelivery.jpg"><img class="size-medium wp-image-1239" src="/wp-content/uploads/2014/08/ReceiveConnectorDelivery.jpg?resize=300%2C232" alt="Receive Connector Issues Illustration" width="300" height="232" srcset="/wp-content/uploads/2014/08/ReceiveConnectorDelivery.jpg?resize=300%2C232 300w, wp-content/uploads/2014/08/ReceiveConnectorDelivery.jpg?resize=1024%2C792 1024w, wp-content/uploads/2014/08/ReceiveConnectorDelivery.jpg?w=1296 1296w, wp-content/uploads/2014/08/ReceiveConnectorDelivery.jpg?w=1172 1172w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    Receive Connector Issues Illustration
+  </p>
+</div>
+
+<h3 id="issue-1-exchange-coexistence">Issue 1: Exchange Coexistence</h3>
+
+<p>Imagine that you have created a new Exchange server and have gotten as far as to already migrate over client access to it from your old server. Everything works well but the moment you migrate over a mailbox to the new server you find that email starts backing up from that user to users on the old server. Email just refuses to deliver and keep backing up and retrying in the queue on the 2013 server. If you look at the queues you may see the last delivery attempts complaining about authentication:</p>
+
+<blockquote>
+<p>&#8220;451 5.7.3 Cannot achieve &#8220;Exchange Server authentication&#8221;.&#8221;Attempted failover to alternate host, but that did not succeed. Either there are no alternate hosts, or delivery failed to all alternate hosts&#8221;</p>
+</blockquote>
+
+<p>Couple this with a send connector which is still using the old server for outbound email and you also have outbound email delivery failure for the migrated mailbox. There may be many causes to this issue but one of the first areas I look at when exchange servers are unable to deliver email to one another (besides obvious issues like disk space and Exchange services) are the receive connectors&#8217; defined RemoteIPRanges. Most SMTP traffic between Exchange servers runs on port 25 via some form of authentication. The default receive connectors have the appropriate authentication set and are configured to listen for all IP addresses, the broadest range of addresses you can define. So by default any exchange server is setup to appropriately forward smtp traffic to every other server. But if another range of addresses (ie. 192.168.1.0/24) that happens to include other exchange servers are configured as allowed remote IP ranges on a connector then that receive connector will be preferred over the default receive connectors. If this is setup on a relay connector that does not have all the authentication bits required to work properly you will start experiencing intra-server SMTP flow issues. The issues you experience may not even prevent mail delivery if you have multiple transport servers in the organization. Exchange transport services are pretty resilient and may even reroute traffic through other servers without you even realizing there may be underlying concerns to address.</p>
+
+<blockquote>
+<p><strong>Note:</strong> Interestingly enough, it is perfectly valid to have a relay receive connector setup with RemoteIPRanges that encompass it’s own address and not impact email transport. The moment you migrate those ranges to another server (say if you are migrating relay receive connectors from an old 2010 server to a new 2013 server) you may find that mailboxes on the old server cannot send mail to those hosted on the new server.</p>
+</blockquote>
+
+<p>The take away from this is that less is more. It may be tempting to put entire ranges of IP addresses in your relay receive connector but <strong>do not do this</strong>. Also, if tasked with migrating to new exchange servers you should validate that all these RemoteIPRanges do not accidentally contain IP addresses from existing or new exchange servers.</p>
+
+<h3 id="issue-2-inbound-spam-filtering">Issue 2: Inbound Spam Filtering</h3>
+
+<p>Similar to the prior issue you can have unexpected consequences when you define the allowed IP addresses to include the default gateway. This is especially true on smaller deployments where the default gateway also happens to be the firewall and you have antispam software running directly on the exchange server. This is is because in bound traffic from the internet will likely be NATing from your firewall and so all SMTP traffic seems to be coming from it. You may experience mixed results when configured this way as the antispam software may still seem to function as it should. But while it may work for blocking spam, it may also be allowing anonymous relay to the outside world as well! This one is especially sneaky as you may not even realize it is happening.</p>
+
+<blockquote>
+<p><strong>Note:</strong> Incidentally, this is also one of the reasons why I recommend a cloud based antispam service as your first line of defense. Besides the queuing of email that they can provide when your servers are down, they are also typically the only external IPs which are setup in the firewall for inbound SMTP delivery to your server.</p>
+</blockquote>
+
+<h3 id="issue-3-hardware-load-balancing">Issue 3: Hardware Load Balancing</h3>
+
+<p>I&#8217;ve only run across this once but it is worthy mentioning as it is one of those configurations which has multiple components that all work together to unintentionally reduce security overall. When introducing internal load balancers on your network it is pretty common to configure them in a single arm configuration where all interfaces and IP addresses reside on the same network as the devices which are to be load balanced. When deployed in this manner the load balancers essentially source NAT the traffic so that it appears to be coming from the individual load balancer IP address instead of the original source IP. While this works it can obfuscate the source IP address on the servers which are being load balanced. With client access based on HTTP protocols this can be worked around by injecting X-Referrer fields at the load balancer and configuring the IIS services to log the field. SMTP doesn&#8217;t have this luxury. Even if it did, the receive connectors wouldn&#8217;t know or care about that data as they only see the source IP address that initiates the connection. How this affects security is easy, if you load balance SMTP traffic to Exchange in this manner and expect to restrict relay IP addresses by using the RemoteIPRanges it simply will not work. What may happen then is that someone will configure the IPs of the load balancers on the receive connectors instead. What then ends up being configured is a wide open relay on your internal network for all traffic bound to the load balancer VIP address. Depending on the relay receive connector rights configured on the connectors (mentioned in part 1 of this article) it may also enable anyone to spoof anyone else in the organization.</p>
+
+<h3 id="checking-for-these-issues">Checking for these Issues</h3>
+
+<p>All of these configuration concerns are similar enough to be in the same discussion but different enough so that there is no one easy test to run for checking if they are in your environment.</p>
+
+<h4 id="issues-1-2-exchange-coex-and-spam-filtering">Issues 1 &amp; 2: Exchange Coex and Spam Filtering</h4>
+
+<p>In smaller environments simply going in and looking at the RemoteIPRanges which are setup on the receive connectors manually should be an easy enough task to accomplish. In larger environments it can be a bit more difficult to detect which servers have incorrectly configured relay receive connectors. As is my style, I&#8217;ve hacked together some powershell to help us automate the process of detecting possible relay receive connectors and which ones may have improperly configured RemoteIPRanges. This script is broken down into several functions. A few of the helper functions are IP address validations which may be generally useful to have in your library. The others are far more specialized for Exchange. I actually don&#8217;t even validate Exchange plugins are installed as it is assumed that these will be run directly in an exchange management console. Anyway, here are the helper functions.</p>
+
+<pre class="lang:powershell decode:true">function IsIpAddressInRange
+{
+ param(
+ [string] $ipAddress,
+ [string] $fromAddress,
+ [string] $toAddress
+ )
+
+ $ip = [system.net.ipaddress]::Parse($ipAddress).GetAddressBytes()
+
+ $ip = [system.BitConverter]::ToUInt32($ip, 0)
+
+ $from = [system.net.ipaddress]::Parse($fromAddress).GetAddressBytes()
+
+ $from = [system.BitConverter]::ToUInt32($from, 0)
+
+ $to = [system.net.ipaddress]::Parse($toAddress).GetAddressBytes()
+
+ $to = [system.BitConverter]::ToUInt32($to, 0)
+
+ $from -le $ip -and $ip -le $to
+}
+
+function IsIpv6
+{
+# Crazy regex courtesy of http://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
+ param(
+ [string] $ipAddress
+ )
+ $regex = '(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))'
+ if ($ipAddress -match $regex)
+ {
+ $true
+ }
+ else
+ {
+ $false
+ }
+}
+
+function IsIpv4
+{
+# Crazy regex courtesy of http://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
+ param(
+ [string] $ipAddress
+ )
+ $regex = '((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])'
+ if ($ipAddress -match $regex)
+ {
+ $true
+ }
+ else
+ {
+ $false
+ }
+}</pre>
+
+<p>The most important function in the script is the one for attempting to intelligently guess the relay receive connectors in the environment. What makes this task a bit difficult is that there are default receive connectors that have anonymous permissions similar to what a relay connector might have. To help eliminate these from further calculations down the line I validate if a receive connector is &#8216;Wide Open&#8217;, that is if it listens indiscriminately for any IP address. So in this script a relay receive connector is determined to be a candidate by the following rules;</p>
+
+<ol>
+<li>Are there anonymous permissions configured on the connector?</li>
+<li>Are there specific remote IP ranges which are setup in the RemoteIPRanges property (not just all IP addresses)?</li>
+<li>Is the connector listening on port 25?</li>
+</ol>
+
+<pre class="lang:powershell decode:true">Function Get-AnonymousReceiveConnectors
+{
+    $Results = @()
+    $AnonUserPerms = @('Ms-Exch-SMTP-Accept-Any-Recipient','Ms-Exch-SMTP-Accept-Any-Sender','Ms-Exch-Bypass-Anti-Spam')
+    
+    # If we cannot get the receive connectors then there is nothing to do
+    try {
+        $RecConnectors = Get-ReceiveConnector
+    }
+    catch {
+        throw "Unable to gather receive connector information. This function must be run within an exchange management shell."
+    }
+    
+    ForEach ($RecConn in $RecConnectors) 
+    {
+        $AnonPerms = @(Get-ADPermission $RecConn.Identity | 
+                            Where {($AnonUserPerms -contains $_.extendedrights) -and 
+                                   ($_.User -like "*ANONYMOUS LOGON")})
+        # We only care about connectors with perms assigned to anonymous logon
+        if ($AnonPerms.Count -gt 0)
+        {
+            # We only care about connectors listening on port 25
+            if ((@($RecConn.Bindings | Where {$_.Port -eq '25'})).count -gt 0)
+            {
+                $IsWideOpen = $true
+                $RecConn.RemoteIPRanges | ForEach {
+                    # ::1:0:0 = all ipv4 addresses
+                    # ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff = all ipv6 addresses
+                    # if, in all the ranges defined, there are any which are not one of the above sizes then the
+                    # entire connector will be considered NOT wide open (and thus open for possible later inspection)
+                    if (@('::1:0:0','ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff') -notcontains $_.Size)
+                    {
+                        $IsWideOpen = $false
+                    }
+                }
+                $Results += New-Object psobject -Property @{
+                    'Server' = [string]($RecConn.Server | Select Name).Name
+                    'Identity' = $RecConn.Identity
+                    'Name' = $RecConn.Name
+                    'RemoteIPRanges' = $RecConn.RemoteIPRanges
+                    'IsWideOpen' = $IsWideOpen
+                    'AnonymousPerms' = @(($AnonPerms | select -ExpandProperty ExtendedRights).RawIdentity)
+                }
+            }
+        }
+    }
+    return $Results
+}</pre>
+
+<p>We then get a list of unique transport servers in the environment and remotely query them for IP address information. Using all of this info we can then start validating if Exchange server IPs are present in the ranges defined in your anonymous relay connectors. While we are at it we can use some of the same logic to see if local gateways are in the relay connectors accepted range definitions as well.</p>
+
+<pre class="lang:powershell decode:true">function Get-ServersInReceiveConnectorRemoteIPRanges
+{
+ [cmdletbinding()]
+ param (
+ [Parameter(Position=0, HelpMessage='Do not test possible default connectors.')]
+ [switch]
+ $SkipDefaultConnectors,
+ [Parameter(Position=1, HelpMessage='Include IPv6 results.')]
+ [switch]
+ $IncludeIPv6
+ )
+
+ $RecConnectors = @()
+ $ServerIPHash = @{} # Will hold a servername to array of IP addresses hash
+ $Results = @()
+ 
+ # If we cannot get the receive connectors then there is nothing to do
+ try {
+ $RecConnectors = @(Get-AnonymousReceiveConnectors)
+ }
+ catch {
+ throw "Unable to gather receive connector information. This functionmust be run within an exchange management shell."
+ }
+ 
+ # As there are possibly many connectors per server lets trim it down to just unique server names
+ $Servers = @((Get-TransportServer -WarningAction silentlycontinue).Name)
+
+ # Lets get the IP and gateway info for each server, As we are using WMI this part assumes connectivity to the
+ # server. This has the side effect of eliminating results for ghost servers not in the environment.
+ foreach ($Server in $Servers)
+ {
+ try {
+ $ServerIPInfo = @(Get-WmiObject -ComputerName $Server Win32_NetworkAdapterConfiguration -ErrorAction Continue | 
+ Where-Object { $_.IPAddress -ne $null })
+ }
+ catch {
+ Write-Warning "Unable to enumerate IP information for $Server, please validate wmi connectivity."
+ }
+ 
+ if ($ServerIPInfo.Count -gt 0)
+ {
+ $tmpServerIPs = @($ServerIPInfo | Select -ExpandProperty IPAddress)
+ if (-not $IncludeIPv6)
+ {
+ $tmpServerIPs = $tmpServerIPs | Where {IsIPv4 $_}
+ }
+ $ServerIPHash[$Server] = @($tmpServerIPs)
+ }
+ }
+
+ # We guess that default connectors are listening for all remoteIPRanges only
+ if ($SkipDefaultConnectors)
+ {
+ $TestConnectors = @($RecConnectors | Where {-not $_.IsWideOpen})
+ }
+ else
+ {
+ $TestConnectors = $RecConnectors
+ }
+ # Loop through each connector
+ foreach ($Conn in $TestConnectors) 
+ {
+ for ($index = 0; $index -lt $Servers.Count; $index++)
+ {
+ # Process each remote server (to the connector at least) 
+ if ($Servers[$index] -ne $Conn.Server)
+ {
+ foreach ($SourceServerIP in $ServerIPHash[$Servers[$index]])
+ {
+ $RemoteServerFoundInRemoteIPRanges = $false
+ $RemoteIPRangesDetected = @()
+ foreach ($RemoteIPRange in @($Conn.RemoteIPRanges))
+ {
+ # Only compare and return results of the same IP stack...
+ if (((IsIPv6 $RemoteIPRange.LowerBound.ToString()) -and (IsIPv6 $SourceServerIP.toString())) -or 
+ ((IsIPv4 $RemoteIPRange.LowerBound.ToString()) -and (IsIPv4 $SourceServerIP.toString())))
+ {
+ if (IsIpAddressInRange $SourceServerIP.toString() $RemoteIPRange.LowerBound.ToString() $RemoteIPRange.UpperBound.ToString())
+ {
+ $RemoteServerFoundInRemoteIPRanges = $true
+ $RemoteIPRangesDetected += [string]("$($RemoteIPRange.LowerBound.ToString()) - $($RemoteIPRange.UpperBound.ToString())")
+ }
+ }
+ }
+ $ResultHash = @{
+ 'SourceServer' = $Servers[$index]
+ 'SourceServerIP' = $SourceServerIP.toString()
+ 'DestinationServer' = $Conn.Server
+ 'Connector' = $Conn.Identity
+ 'ConnectorRemoteIPRange' = $RemoteIPRangesDetected
+ 'ServerIPInRemoteIPRange' = $RemoteServerFoundInRemoteIPRanges
+ }
+ $Results += New-Object psobject -Property $ResultHash
+ } 
+ }
+ }
+ }
+ Return $Results
+}
+
+function Get-ServerGatewaysInReceiveConnectorRemoteIPRanges
+{
+ [cmdletbinding()]
+ param (
+ [Parameter(Position=0, HelpMessage='Do not test possible default connectors.')]
+ [switch]
+ $SkipDefaultConnectors,
+ [Parameter(Position=1, HelpMessage='Include IPv6 results.')]
+ [switch]
+ $IncludeIPv6
+ )
+
+ $RecConnectors = @()
+ $ServerGatewayHash = @{} # Will hold a servername to gateway hash
+ $Results = @()
+ 
+ # If we cannot get the receive connectors then there is nothing to do
+ try {
+ $RecConnectors = @(Get-AnonymousReceiveConnectors)
+ }
+ catch {
+ throw "Unable to gather receive connector information. This functionmust be run within an exchange management shell."
+ }
+ 
+ # We guess that default connectors are listening for all remoteIPRanges only
+ if ($SkipDefaultConnectors)
+ {
+ $RecConnectors = @($RecConnectors | Where {-not $_.IsWideOpen})
+ }
+
+ foreach ($Connector in $RecConnectors)
+ {
+ $ConnectorRemoteIPRange = @()
+ try {
+ $ServerIPInfo = @(Get-WmiObject -ComputerName $($Connector.Server) Win32_NetworkAdapterConfiguration -ErrorAction Continue)
+ }
+ catch {
+ Write-Warning "Unable to enumerate IP information for $Server, please validate wmi connectivity."
+ }
+ 
+ if ($ServerIPInfo.Count -gt 0)
+ {
+ $ServerGateways = @($ServerIPInfo | 
+ Where {$_.DefaultIPGateway -ne $null} | 
+ Select -ExpandProperty DefaultIPGateway)
+ if (-not $IncludeIPv6)
+ {
+ $ServerGateways = $ServerGateways | Where {IsIPv4 $_}
+ }
+ if ($ServerGateways.Count -gt 1)
+ {
+ Write-Warning "$Server has multiple default gateways! You should check this out and fix this before trusting the results of this script!"
+ }
+ 
+ $ServerGateway = $ServerGateways | Select -First 1
+
+ $ServerGatewayIPInRemoteIPRange = $false
+ # Go through each remote ip range and check if the server gateway exists within it.
+ foreach ($RemoteIPRange in @($Connector.RemoteIPRanges))
+ {
+ # Only compare and return results of the same IP stack...
+ Write-Verbose "$($RemoteIPRange.LowerBound.ToString()) - $ServerGateway"
+ if (((IsIPv6 $RemoteIPRange.LowerBound.ToString()) -and (IsIPv6 $ServerGateway)) -or 
+ ((IsIPv4 $RemoteIPRange.LowerBound.ToString()) -and (IsIPv4 $ServerGateway)))
+ {
+ if (IsIpAddressInRange $ServerGateway $RemoteIPRange.LowerBound.ToString() $RemoteIPRange.UpperBound.ToString())
+ {
+ $ServerGatewayIPInRemoteIPRange = $true
+ $ConnectorRemoteIPRange += [string]"$($RemoteIPRange.LowerBound.ToString()) - $($RemoteIPRange.UpperBound.ToString())"
+ }
+ else
+ {
+ $ServerGatewayIPInRemoteIPRange = $false
+ }
+ }
+ }
+ $ResultHash = @{
+ 'Server' = $Connector.Server
+ 'ServerGateway' = $ServerGateway
+ 'Connector' = $Connector.Identity
+ 'ConnectorRemoteIPRange' = $ConnectorRemoteIPRange
+ 'ServerGatewayIPInRemoteIPRange' = $ServerGatewayIPInRemoteIPRange
+ }
+ $Results += New-Object psobject -Property $ResultHash
+ }
+ }
+ Return $Results
+}</pre>
+
+<p>With the functions that have been created we can then go ahead and start creating a quick console reports to see if some of the remote exchange server IPs or their own default gateway IP addresses are able to be found in the RemoteIPRanges of any of the (possible) anonymous relay internal receive connectors.</p>
+
+<pre class="lang:powershell decode:true">function Show-ReceiveConnectorGatewayReport 
+{
+    [cmdletbinding()]
+    param (
+        [Parameter(Position=0, HelpMessage='Do not test possible default connectors.')]
+        [switch]
+        $SkipDefaultConnectors,
+        [Parameter(Position=1, HelpMessage='Include IPv6 results.')]
+        [switch]
+        $IncludeIPv6
+    )
+    $Connectors = @((Get-ServerGatewaysInReceiveConnectorRemoteIPRanges $SkipDefaultConnectors $IncludeIPv6) | Sort-Object Server)
+    $Server = ''
+    if ($Connectors.Count -gt 0)
+    {
+        Write-Host -ForegroundColor Gray "*********************************************************************"
+        Write-Host -ForegroundColor Gray "Receive connectors in environment which appear to be anonymous relays"
+        Write-Host -ForegroundColor Gray "along with if they do or do not have their own default gateway"
+        Write-Host -ForegroundColor Gray "in the range of the connector's own defined allowed remote IP ranges"
+        Write-Host -ForegroundColor Gray "*********************************************************************"
+    }
+    else
+    {
+        Write-Host -ForegroundColor Gray "*********************************************************************"
+        Write-Host -ForegroundColor Gray "No receive connectors found!"
+        Write-Host -ForegroundColor Gray "*********************************************************************"
+    }
+    foreach ($Conn in $Connectors) 
+    {
+        if ($Conn.Server -ne $Server)
+        {
+            $Server = $Conn.Server
+            Write-Host
+            Write-Host -ForegroundColor Gray "** Receive connectors for " -NoNewline
+            Write-Host -ForegroundColor Yellow "$($Server)" -NoNewline
+            Write-Host -ForegroundColor Gray " - which has a default gateway of " -NoNewline
+            Write-Host -ForegroundColor Yellow "$($Conn.ServerGateway)" -NoNewline
+            Write-Host -ForegroundColor Gray " **"
+            Write-Host
+            Write-Host -ForegroundColor Gray "Connector --------&gt; Gateway found in RemoteIPRanges?"
+            Write-Host -ForegroundColor Gray "-----------------------------------------------------------------------------"
+        }
+        Write-Host -ForegroundColor Gray "$($Conn.Connector) --------&gt; " -NoNewline
+        if ($Conn.ServerGatewayIPInRemoteIPRange)
+        {
+            Write-Host -ForegroundColor Red "TRUE"
+            Write-Host -ForegroundColor Gray "       ..........gateway found within $($Conn.ConnectorRemoteIPRange)"
+            Write-Host
+        }
+        else 
+        {
+            Write-Host -ForegroundColor Green "FALSE"
+        }
+    }
+}
+
+function Show-ReceiveConnectorRemoteServerReport 
+{
+    [cmdletbinding()]
+    param (
+        [Parameter(Position=0, HelpMessage='Do not test possible default connectors.')]
+        [switch]
+        $SkipDefaultConnectors,
+        [Parameter(Position=1, HelpMessage='Include IPv6 results.')]
+        [switch]
+        $IncludeIPv6
+    )
+    $Connectors = @((Get-ServersInReceiveConnectorRemoteIPRanges $SkipDefaultConnectors $IncludeIPv6) | Sort-Object DestinationServer)
+    $DestServer = ''
+    if ($Connectors.Count -gt 0)
+    {
+        Write-Host -ForegroundColor Gray "*********************************************************************"
+        Write-Host -ForegroundColor Gray "Receive connectors in environment which appear to be anonymous relays"
+        Write-Host -ForegroundColor Gray "along with if they do or do not have other Exchange servers that fall"
+        Write-Host -ForegroundColor Gray "in the range of the connector's defined allowed remote IP ranges"
+        Write-Host -ForegroundColor Gray "*********************************************************************"
+    }
+    else
+    {
+        Write-Host -ForegroundColor Gray "*********************************************************************"
+        Write-Host -ForegroundColor Gray "No receive connectors found!"
+        Write-Host -ForegroundColor Gray "*********************************************************************"
+    }
+    foreach ($Conn in $Connectors)
+    {
+        if ($Conn.DestinationServer -ne $DestServer)
+        {
+            $DestServer = $Conn.DestinationServer
+            Write-Host
+            Write-Host -ForegroundColor Gray "** Receive Connectors On $($DestServer) **"
+            Write-Host
+            Write-Host -ForegroundColor Gray "Source Server (IP) ---&gt; Destination Connector ---&gt; Is Found In RemoteIPRanges"
+            Write-Host -ForegroundColor Gray "-----------------------------------------------------------------------------"
+            
+        }
+        Write-Host -ForegroundColor Gray "$($Conn.SourceServer)($($Conn.SourceServerIP)) ---&gt; $($Conn.Connector) ---&gt; " -NoNewline
+        if ($Conn.ServerIPInRemoteIPRange)
+        {
+            Write-Host -ForegroundColor Red "TRUE"
+            Write-Host -ForegroundColor Gray "$($Conn.SourceServerIP) was found within $($Conn.ConnectorRemoteIPRange)"
+        }
+        else
+        {
+            Write-Host -ForegroundColor Green "FALSE"
+        }
+    }
+}
+
+Show-ReceiveConnectorGatewayReport -SkipDefaultConnectors
+Write-Host
+Show-ReceiveConnectorRemoteServerReport -SkipDefaultConnectors
+
+# To test if this actually works uncomment the following to include possible default connectors in the reports
+#Show-ReceiveConnectorGatewayReport 
+#Write-Host
+#Show-ReceiveConnectorRemoteServerReport
+
+# To also include IPv6 results in the report use the following instead
+#Show-ReceiveConnectorGatewayReport -SkipDefaultConnectors -IncludeIPv6
+#Write-Host
+#Show-ReceiveConnectorRemoteServerReport -SkipDefaultConnectors -IncludeIPv6</pre>
+
+<h4 id="issue-3-hardware-load-balancing-1">Issue 3: Hardware Load Balancing</h4>
+
+<p>Ideally you will already know if you are load balancing exchange servers behind an HLB and can access the load balancers to validate if SMTP is being load balanced. This is because there is no easy way to automatically detect for this scenario with a script. You can manually test for it with good ol&#8217; telnet though. I probably should find a powershell way to do this but it is so simple to do via telnet that I&#8217;ve not been able to justify spending the time on it. Here is an example of testing a server for email relay. Just swap out the recipient to test for relay (or swap out the from address to test for spoofing).</p>
+
+<pre class="lang:batch decode:true">telnet &lt;servername&gt; 25
+hello mail.yahoo.com
+mail from: testuser@yahoo.com
+rcpt to: zach.loeber@&lt;serverdomain.com&gt;
+DATA
+SUBJECT: Test Relay
+Hi Zach,
+Just testing.
+
+&lt;enter&gt;
+&lt;enter&gt;</pre>
+
+<blockquote>
+<p><strong>Note:</strong> Another possibility for testing a server to see if it is improperly being load balanced would be to use something like log parser against the smtp connection logs. You can try to guess if smtp is being load balanced behind a VIP by looking for many connections from the same IP addresses on the same subnet as the server.</p>
+</blockquote>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This discussion has gone much longer than I originally anticipated. I hope people get some value from this. I always welcome comments, corrections, and script ideas. As usual, I&#8217;ve uploaded the script for this article to <a href="http://gallery.technet.microsoft.com/Exchange-Receive-Connector-41d79197">the technet gallery</a> for your convenience.</p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/exchange">Exchange</a>
+                
+                    <a href="/tags/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/tags/exchange-2013">Exchange 2013</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/psc">PSC</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

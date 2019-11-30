@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Export-CliXML on Zachary Loeber</title>
+    <link>http://localhost/tags/export-clixml/</link>
+    <description>Recent content in Export-CliXML on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 10 Feb 2014 04:34:49 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost/tags/export-clixml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Powershell Tip: Save and Load Calculated Property Definitions</title>
+      <link>http://localhost/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/</link>
+      <pubDate>Mon, 10 Feb 2014 04:34:49 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/</guid>
+      <description>&lt;p&gt;Using Export-CliXML and Import-CliXML (as well as some custom code) you can save calculated properties in a file for later use. Although the need for something like this is rather infrequent the exercise can better familiarize you with multiple Powershell techniques and concepts.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

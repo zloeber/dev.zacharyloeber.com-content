@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other on Zachary Loeber</title>
+    <link>http://localhost/categories/other/</link>
+    <description>Recent content in Other on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 19 Jun 2013 01:44:40 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost/categories/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Book Review: PowerShell 3.0 Advanced Administration Handbook</title>
+      <link>http://localhost/blog/2013/06/18/book-review-powershell-3-0-advanced-administration-handbook/</link>
+      <pubDate>Wed, 19 Jun 2013 01:44:40 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/18/book-review-powershell-3-0-advanced-administration-handbook/</guid>
+      <description>&lt;p&gt;A fast-paced PowerShell guide with real-world scenarios and detailed solutions&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Defining Best of Breed in IT</title>
+      <link>http://localhost/blog/2012/12/11/defining-best-of-breed-in-it/</link>
+      <pubDate>Tue, 11 Dec 2012 06:00:42 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/12/11/defining-best-of-breed-in-it/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Soon I’ll be starting a new position with a company which produces some of the highest quality products in their industry. The company’s products are of such high quality that they typically set the bar in their industry. This made me think of what a truly comprises an excellent solution within the Information Technology.  This article is a non-technical personal view of what defines the “Best of breed” technical solutions.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux: Headless Ubuntu Torrent Home Server</title>
+      <link>http://localhost/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/</link>
+      <pubDate>Sun, 11 Sep 2011 21:45:15 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/</guid>
+      <description>&lt;p&gt;So it got to that time of the year where I feel the itch to upgrade my aging home server. I assessed the situation and realized that, for what it does, my current server does not need any kind of hardware upgrade. So I just decided to rebuild it with Ubuntu 11.04 64 bit and change up the server software a bit to be more accessible to my wife as well as to be a bit more modern (torrentflux and derivatives have been dead for a while now).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CSS: Pretty Code Snippet Formatting</title>
+      <link>http://localhost/blog/2011/08/05/css-pretty-formatting/</link>
+      <pubDate>Fri, 05 Aug 2011 12:58:12 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/08/05/css-pretty-formatting/</guid>
+      <description>I forgot where I dredged this up from but here is how I do my code/script posts. I modified the default theme css and add the following for pre-formatted text:
+pre { white-space: pre-wrap; /* css-3 */ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ word-wrap: break-word; /* Internet Explorer 5.5+ */ background: #000000; color: #21FF2C; } </description>
+    </item>
+    
+    <item>
+      <title>Funny: Microsoft Goes Chick-Flick</title>
+      <link>http://localhost/blog/2011/02/21/funny-microsoft-goes-chick-flick/</link>
+      <pubDate>Tue, 22 Feb 2011 04:02:28 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2011/02/21/funny-microsoft-goes-chick-flick/</guid>
+      <description>My wife saw this on my laptop screen while we were on a plane trip. She pointed to it, and said “Awwwww!!” as if I were reading a book on relationships rather than a technical pdf going over general SCOM 2007 concepts.
+ Microsoft gets a bit soft...  </description>
+    </item>
+    
+    <item>
+      <title>Chicago Commuting Dictionary: The Pretty Train</title>
+      <link>http://localhost/blog/2010/11/07/chicago-commuting-dictionary-the-pretty-train/</link>
+      <pubDate>Mon, 08 Nov 2010 00:32:20 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2010/11/07/chicago-commuting-dictionary-the-pretty-train/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;The Pretty Train&lt;/strong&gt; – In my previous definition I described the extremely early, zombie-warrior-commuter filled  &lt;a title=&#34;Ugly Train&#34; href=&#34;http://localhost/?p=146&#34; target=&#34;_self&#34;&gt;Ugly Train&lt;/a&gt;. You will be surprised to find out that not even two hours after the ugly train takes its passengers towards their daily penance of work and suffering, a diatonic opposite happy transport on rails totes its gleeful passengers to and from the exact same locations. This, my friends, is the pretty train!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Chicago Commuting Dictionary: The Ugly Train</title>
+      <link>http://localhost/blog/2010/07/23/chicago-commuting-dictionary-the-ugly-train/</link>
+      <pubDate>Fri, 23 Jul 2010 14:09:16 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2010/07/23/chicago-commuting-dictionary-the-ugly-train/</guid>
+      <description>&lt;p&gt;I think that commuting is starting to drive me a bit crazy. I&amp;#8217;m going to vent a bit in the form of a dictionary of what I&amp;#8217;ve noticed in the last 2 years working in the city. I&amp;#8217;ll start with train types. There are a few kinds of trains that a Chicago commuter can take and I have a name for all of them. Today we are going to talk about the appropriately named &amp;#8220;Ugly Train&amp;#8221;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

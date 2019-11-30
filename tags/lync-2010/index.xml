@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lync 2010 on Zachary Loeber</title>
+    <link>http://localhost/tags/lync-2010/</link>
+    <description>Recent content in Lync 2010 on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 13 Jan 2015 02:37:46 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost/tags/lync-2010/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lync: Local and Site-to-Site Dial Plan GUI Script</title>
+      <link>http://localhost/blog/2015/01/12/lync-local-and-site-to-site-dial-plan-gui-script/</link>
+      <pubDate>Tue, 13 Jan 2015 02:37:46 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2015/01/12/lync-local-and-site-to-site-dial-plan-gui-script/</guid>
+      <description>&lt;p&gt;In a multiple, or even single, site VOIP deployment there are some  steps you can take to make life a whole lot easier on your end users. One of of the common features implemented across phone deployments (VoIP or otherwise) is site local and site-to-site dialing shortcuts. These shortcuts generally reduce the number of digits users have to dial to reach one another. In this post I&amp;#8217;ll go over how you might setup such a dial plan in Lync. First I&amp;#8217;ll go over how you might setup such a plan manually then I&amp;#8217;ll provide a GUI tool to do the same thing.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync: Voice Route Diagram Creation Script</title>
+      <link>http://localhost/blog/2014/12/02/lync-voice-route-diagram-creation-script/</link>
+      <pubDate>Tue, 02 Dec 2014 18:11:31 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2014/12/02/lync-voice-route-diagram-creation-script/</guid>
+      <description>&lt;p&gt;Lync voice routing boils down to three basic components working in concert to decide call flow. It seems quite simple on paper, you assign voice policies which determine call routes based on PSTN usages (often called the &amp;#8216;glue&amp;#8217;). After looking at Lync voice routing way too many times I finally caved into producing a script to create diagrams of the things over the Thanksgiving holiday weekend.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync and UM Correlation with Powershell</title>
+      <link>http://localhost/blog/2014/11/13/lync-and-um-correlation-with-powershell/</link>
+      <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
+      <description>I&amp;#8217;ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
+There are a few necessary results to gather where I believe it can be easy to &amp;#8216;miss&amp;#8217; configuration steps when turning up or disabling users:</description>
+    </item>
+    
+    <item>
+      <title>PS Quickie: New-PIN</title>
+      <link>http://localhost/blog/2014/10/09/ps-quickie-new-pin/</link>
+      <pubDate>Fri, 10 Oct 2014 01:09:09 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2014/10/09/ps-quickie-new-pin/</guid>
+      <description>Setting a bunch of PINs for Lync devices is not difficult at all. Here is a script to pre-generate them should you find the need to do so. The function simply generates random digits between 0 and 9 and convert to a string. An exception is made for the first digit (as zeros are often not displayed in csv files when opened in excel) and only digits 1-9 are used.</description>
+    </item>
+    
+    <item>
+      <title>Exchange – The State Of External Client Access</title>
+      <link>http://localhost/blog/2012/11/22/exchange-the-state-of-external-client-access/</link>
+      <pubDate>Thu, 22 Nov 2012 19:58:04 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Most within the messaging and collaboration industry are hyped up about the next wave of Microsoft collaboration and messaging products which are soon to be released. Among these products is Exchange 2013 RTM. This type of release typically precedes yet another wave of architecture upgrades across the corporate landscape. Some of these (beta testers) will be will undoubtedly upgrade to Exchange 2013.&lt;/p&gt;
+
+&lt;p&gt;Other corporations will start to feel the burn to upgrade as well. These will be organizations which realize that their Exchange &lt;sup&gt;2003&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; infrastructure is nearing a decade old existence and cannot meet the demands of their ever growing mobile workforce. Realizing they are behind the curve, they may feel hastened to upgrade as well, possibly just to Exchange 2010. Regardless the reason in choosing to upgrade their messaging infrastructure, there are critical design decisions which need to be made in how clients access this infrastructure both internally and externally. This article focuses solely on the external access aspect of the infrastructure.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync 2010: IP/DNS Workbook</title>
+      <link>http://localhost/blog/2012/06/23/lync-2010-ipdns-workbook/</link>
+      <pubDate>Sat, 23 Jun 2012 20:24:40 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/06/23/lync-2010-ipdns-workbook/</guid>
+      <description>&lt;p&gt;I just ran across &lt;a href=&#34;http://blogs.technet.com/b/nexthop/archive/2011/12/07/useful-tips-for-testing-your-lync-edge-server.aspx&#34; title=&#34;Useful Tips For Testing Your Lync Edge Server&#34;&gt;a Lync article&lt;/a&gt; with all kinds of nice tables which distilled the myriad of DNS/IP addresses in a Lync deployment down to an easy to read format. I happen to have created one of these tables myself for a Lync deployment which included a standard Lync pool, XMPP gateway, Lync Mobility, and a single edge server. I figured others may find some use from it as it auto-populates the dns entries and what they are supposed to point to based on what you fill out for the highlighted cells. Sure you get some of this in the Lync Server 2010 Planning Tool but this offers a slightly different view of the environment as well as a nice one page overview.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

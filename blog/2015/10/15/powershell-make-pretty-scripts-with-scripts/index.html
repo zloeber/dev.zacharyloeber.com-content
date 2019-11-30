@@ -1,0 +1,533 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Powershell: Make Pretty Scripts..With Scripts | Zachary Loeber</title>
+        <meta name="description" content="Powershell: Make Pretty Scripts..With Scripts - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Powershell: Make Pretty Scripts..With Scripts">
+        <meta itemprop="description" content="Powershell: Make Pretty Scripts..With Scripts - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Powershell: Make Pretty Scripts..With Scripts">
+        <meta property="og:description" content="Powershell: Make Pretty Scripts..With Scripts - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://localhost/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://localhost/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://localhost/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://localhost/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://localhost/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://localhost/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://localhost/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/">Powershell: Make Pretty Scripts..With Scripts</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2015-10-15</span>
+            
+        
+
+        
+            <span class="readingTime">9 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>I released a new module for standardizing and beautifying your PowerShell code. Aside from code indentation it also can reduce line length, replace here-strings, and a whole lot more.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Some people sit down after a long day&#8217;s work, turn on the TV, and proceed to do suduku or crossword puzzles to wind down. I sit down and marathon watch old star trek series with the wife and hack through coding algorithms or puzzles that I cannot get out of my head. This module is the result of &#8216;just one more&#8217; puzzle after another on the quest to automatically reformat some of my old PowerShell projects in an automated manner. I&#8217;ve taken it far enough along that I think it may be worth publicizing a little bit to see if I&#8217;m on the right path or if I need to simply stop obsessing over AST, tokens, and code formatting functions.</p>
+
+<p>So what I&#8217;ve done is create a PowerShell module and it is creatively called&#8230;.</p>
+
+<h1 id="format-powershell-code-module">Format PowerShell Code Module</h1>
+
+<p>This is a set of functions to re-factor your script code in different ways with the aim of beautifying and standardizing your code.</p>
+
+<ol>
+<li>This module has multiple goals. Here are a few things one might use it for:</li>
+<li>Cleanse and format code copied from the web (fix characters)</li>
+<li>Refactor your old code to adhere to best practices in line length, alias usage, type definition usage, indentation and so on.</li>
+<li>Use as a pre-build tool to maintain consistency across your code base.</li>
+<li>Turn someone else&#8217;s insane semi-colon riddled one liner into a script that doesn&#8217;t hurt your eyes quite as much.</li>
+</ol>
+
+<p>My selfish reasons for this project were primarily to fix up my old code though. I&#8217;ve got tens of thousands of lines of code I want to add features too and improve upon but everytime I open it up one of these old scripts I find myself tediously editing the code for style and other waste of time changes which should be automatic.</p>
+
+<h2 id="limitations">Limitations</h2>
+
+<p>What this module is not going to do is fix broken PowerShell! Much of exported cmdlets use AST which can only parse functioning code (with some interesting exceptions).</p>
+
+<h2 id="stupid-cmdlet-names">Stupid Cmdlet Names</h2>
+
+<p>Well I think they are kind of silly at least. To keep the cmdlets in this code distinct I&#8217;ve gone with the following rather non-standard naming standard:</p>
+
+<p>Format-Script<em><strong>WhatTheFormattingDoes</strong></em></p>
+
+<p>It feels a bit wonky but we can always change it later I suppose&#8230;.</p>
+
+<h2 id="warnings">Warnings</h2>
+
+<p>I really don&#8217;t think this should need to be stated but here it is anyway&#8230;</p>
+
+<p>Do <strong>NOT</strong> just read in your source code and blindly pipe it to the cmdlets included in this module and then write the results out to the same file! I&#8217;ve tried to account for a large number of caveats and scenarios but I&#8217;m positive I&#8217;ve not thought of them all. Additionally I&#8217;ve written this code primarily for myself (hey, we are all selfish creatures). What seems to work fine for me may not work at all for your code.</p>
+
+<p>Even though every function defaults to validating the script text after processing I&#8217;d go as far as to say you should unit test your code before and after any reformatting done by this module to ensure you get consistent results.</p>
+
+<p>Consider yourself warned.</p>
+
+<h2 id="logic">Logic</h2>
+
+<p>Each formatting function has its own special logic. Generally though we tend to perform the actual string manipulations (script formatting) working from the bottom up. Working in reverse lets us not have to refactor token/string locations after every change made. This is especially true of token driven updates like tabifying your script with Format-ScriptFormatCodeIndentation.</p>
+
+<p>There are many interesting exceptions I&#8217;ve run into which required some elegant and not so elegant methods to work around. In these cases I try to note in comments where I think more elegant code or algorithms could have been used (which I simply was unable to figure out). A good example is NamedBlockAST or StatementBlockAST code expansion. As there can be embedded blocks beneath each block you find you cannot simply make a change without all the extent start and end locations for every AST element below it changing. So I recreate the AST search results on every iteration for every change made. It feels&#8230; awkward but I&#8217;ve no better solution yet.</p>
+
+<blockquote>
+<p><strong>NOTE:</strong> None of the functions in this module touch comments! I&#8217;ve no way to tell what you are intending with your comments so we do our very best to simply leave them alone. This doesn&#8217;t mean that I&#8217;ve tested every variant of comments existing in oddball places in your code so I&#8217;ll repeat that you should proceed with caution!</p>
+</blockquote>
+
+<h2 id="usage">Usage</h2>
+
+<p>Each function included with this module can be used individually but many of these functions were built around one another for specific purposes. Simply piping all your code through all the cmdlets exported in this module is likely to make your code even more grotesque looking than it was beforehand. Here are a few example usages which you may find handy.</p>
+
+<blockquote>
+<p><strong>NOTE:</strong> Most functions which affect newlines in any manner (expanding code blocks, removing semicolons, et cetera) do nothing for your indentation. This was done on purpose to keep each function as basic as possible. This means you will almost always run your code through Format-ScriptFormatCodeIndentation at the very end of any transformations you are performing!</p>
+</blockquote>
+
+<h3 id="example-1-8211-condense-and-remove-8216-here-strings-8217">Example 1 &#8211; Condense and Remove &#8216;Here Strings&#8217;</h3>
+
+<p><a href="https://technet.microsoft.com/en-us/library/ee692792.aspx">Here-strings</a> are pretty useful variable assignments which are essentially multi-lined strings. I&#8217;ve used them for embedding quick templates into my code among other things. They are also totally unwieldy when it comes to making your code look nice. This is because they have strict requirements as to where the terminating here string characters must be (the start of the next line in column 0). Here is an example function with a here string assignment embedded within:</p>
+
+<pre class="lang:powershell decode:true ">function New-CPUReport ($Title,$Data) {
+    $Report = @"
+
+-----------------------------------------------------
+- $($Title)
+-----------------------------------------------------
+Process ID      Process Name        CPU Usage
+
+"@
+
+$ReportDataTemplate = @'
+&lt;&gt;            &lt;&gt;            &lt;&gt;
+
+'@
+    $Data | Foreach {
+        $Report += $ReportDataTemplate -replace '&lt;&gt;',$_.ID -replace '&lt;&gt;',$_.Name -replace '&lt;&gt;',$_.CPU
+    }
+    
+    return $Report
+}
+
+$Data = Get-Process | Sort-Object -Property CPU -Descending | select -First 5
+New-CPUReport 'My Rocking Report!' $Data</pre>
+
+<p>The here-strings are embedded in a function and are thusly unable to be indented without breaking the script entirely. Here is what we would like to happen to fix this:</p>
+
+<ol>
+<li>Convert here strings into simple multiple part string assignments</li>
+<li>As these string assignments will likely be very long we would also like to automatically reduce the line length of the script by automatically inserting line breaks in appropriate positions.</li>
+<li>Automatically indent the resulting code.</li>
+</ol>
+
+<p>To achieve these tasks with this module you would simply do the following:</p>
+
+<pre class="lang:powershell decode:true ">import-module .\FormatPowershellCode.psm1
+Get-Content .\tests\testcase-strings.ps1 -raw | 
+    Format-ScriptReplaceHereStrings |
+    Format-ScriptReduceLineLength |
+    Format-ScriptFormatCodeIndentation | 
+    clip</pre>
+
+<p>The resulting code would look a bit less unsightly (though not by much as it was a fast and dumb example to begin with):</p>
+
+<pre class="lang:powershell decode:true ">function New-CPUReport ($Title,$Data) {
+    $Report = "-----------------------------------------------------" +
+    "`r`n" + "- $($Title)" + "`r`n" +
+    "-----------------------------------------------------" + "`r`n" +
+    "Process ID     Process Name        CPU Usage" + "`r`n"
+    
+    $ReportDataTemplate = '&lt;&gt;         &lt;&gt;            &lt;&gt;' + "`r`n"
+    $ReportFooter = '-----------------------------------------------------' + "`r`n"
+    $Data | Foreach {
+        $Report += $ReportDataTemplate -replace '&lt;&gt;',$_.ID -replace '&lt;&gt;',$_.Name -replace '&lt;&gt;',$_.CPU
+    }
+    
+    
+    $Report += $ReportFooter                
+    
+    return $Report      
+}
+
+$Data = Get-Process | Sort-Object -Property CPU -Descending | select -First 5
+New-CPUReport 'My Rocking Report!' $Data</pre>
+
+<h3 id="example-2-8211-de-obfuscation">Example 2 &#8211; De-obfuscation</h3>
+
+<p>A truly obfuscated bit of PowerShell code will require more than this module to de-obfuscate but this module may help a little bit in making it more readable. You may &#8216;de-obfuscate&#8217; a crazy looking one-liner you came up with to just get a job done in the heat of the moment. Here is a one-liner I purposefully made look like crap. It is a function that gets the lines of a script that token kinds are found between:</p>
+
+<pre class="lang:powershell decode:true ">function Format-ScriptGetKindLines {[CmdletBinding()]param([parameter(Position=0, ValueFromPipeline=$true, HelpMessage='Lines of code to process.')][string[]]$Code,[parameter(Position=1, HelpMessage='Type of AST kind to retrieve.')][string]$Kind = "*"); begin {$Codeblock = @();$ParseError = $null; $Tokens = $null; $FunctionName = $MyInvocation.MyCommand.Name; Write-Verbose "$($FunctionName): Begin."}; process{$Codeblock += $Code }; end { $ScriptText = $Codeblock | Out-String;  Write-Verbose "$($FunctionName): Attempting to parse AST."; $AST = [System.Management.Automation.Language.Parser]::ParseInput($ScriptText, [ref]$Tokens, [ref]$ParseError);  if($ParseError) { $ParseError | Write-Error; throw "$($FunctionName): Will not work properly with errors in the script, please modify based on the above errors and retry." }; $TokenKinds = @($Tokens | Where {$_.Kind -like $Kind}); Foreach ($Token in $TokenKinds) { New-Object psobject -Property @{ 'Start' = $Token.Extent.StartLineNumber; 'End' = $Token.Extent.EndLineNumber;}}; Write-Verbose "$($FunctionName): End." }}</pre>
+
+<p>In order to make this look more like a version which doesn&#8217;t instantly give you a migraine you&#8217;d need to perform several transformations. Here is the general logic of what we will do:</p>
+
+<ol>
+<li>Turn statement separators (semicolons) into newlines</li>
+<li>Expand function blocks (function{})</li>
+<li>Expand named blocks (begin/process/end)</li>
+<li>Expand parameter blocks (param())</li>
+<li>Expand statement blocks (if/then/else)</li>
+<li>Move starting curly braces to the end of the prior line (a personal preference)</li>
+<li>Auto-indent all blocks with 4 spaces</li>
+</ol>
+
+<p>With this module you would accomplish this with the following:</p>
+
+<pre class="lang:powershell decode:true">import-module .\FormatPowershellCode.psm1
+get-content .\tests\testcase-codeblockexpansion.ps1 -raw |
+    Format-ScriptRemoveStatementSeparators |
+    Format-ScriptExpandFunctionBlocks |
+    Format-ScriptExpandNamedBlocks |
+    Format-ScriptExpandParameterBlocks |
+    Format-ScriptExpandStatementBlocks |
+    Format-ScriptFormatCodeIndentation |
+    Format-ScriptCondenseEnclosures |
+    clip</pre>
+
+<p>Then you can go ahead and paste the output into your favorite editor to get something more palatable:</p>
+
+<pre class="lang:powershell decode:true">Format-ScriptGetKindLines {
+    [CmdletBinding()]
+    param (
+    [parameter(Position=0, ValueFromPipeline=$true, HelpMessage='Lines of code to process.')]
+    [String[]]$Code,
+    [parameter(Position=1, HelpMessage='Type of AST kind to retrieve.')]
+    [String]$Kind
+    )
+    
+    Begin {
+        $Codeblock = @()
+        $ParseError = $null
+        $Tokens = $null
+        $FunctionName = $MyInvocation.MyCommand.Name
+        Write-Verbose "$($FunctionName): Begin."
+    }
+    Process {
+        $Codeblock += $Code
+    }
+    End {
+        $ScriptText = $Codeblock | Out-String
+        Write-Verbose "$($FunctionName): Attempting to parse AST."
+        $AST = [System.Management.Automation.Language.Parser]::ParseInput($ScriptText, [ref]$Tokens, [ref]$ParseError)
+        if($ParseError)  {
+            $ParseError | Write-Error
+            throw "$($FunctionName): Will not work properly with errors in the script, please modify based on the above errors and retry."
+        }
+        $TokenKinds = @($Tokens | Where {$_.Kind -like $Kind})
+        Foreach ($Token in $TokenKinds)  {
+            New-Object psobject -Property @{ 'Start' = $Token.Extent.StartLineNumber
+                'End' = $Token.Extent.EndLineNumber
+            }
+        }
+        Write-Verbose "$($FunctionName): End."
+    }
+}</pre>
+
+<blockquote>
+<p><strong>NOTE</strong>: I&#8217;ve included a vanity function you can tack on the end of any transform to move the beginning curly brace to the end of the prior line called  Format-ScriptCondenseEnclosures. I prefer my code with less wasted lines but its just a personal preference so the default for all expansion transforms is to place the start of blocks ({) on their own line.</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h1 id="included-functions">Included Functions</h1>
+
+<p>Thus far I&#8217;ve completed and done testing with the following exported module members:</p>
+
+<p>[table id=1 /]</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Well this was a long post but I&#8217;m releasing a fairly large module to to community so it was probably warranted. If you find some time to take this module and kick its tires I&#8217;d love input and community involvement. You can install the module like so:</p>
+
+<pre class="lang:powershell decode:true ">iex (New-Object Net.WebClient).DownloadString("https://github.com/zloeber/FormatPowershellCode/raw/master/Install.ps1")</pre>
+
+<p>Otherwise with PowerShell 5 you can simply install from the gallery with the following:</p>
+
+<pre class="lang:powershell decode:true">Install-Module FormatPowershellCode</pre>
+
+<p>Or manually download/clone/fork the project at Github: <a href="https://github.com/zloeber/FormatPowershellCode">https://github.com/zloeber/FormatPowershellCode</a></p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/powershell-script">Powershell Script</a>
+                
+                    <a href="/tags/scripting">Scripting</a>
+                
+                    <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

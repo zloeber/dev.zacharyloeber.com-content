@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>network administration on Zachary Loeber</title>
+    <link>http://localhost/tags/network-administration/</link>
+    <description>Recent content in network administration on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 31 Jan 2017 03:23:32 +0000</lastBuildDate>
+    
+	<atom:link href="http://localhost/tags/network-administration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PowerShell: Azure ARM Site Overview</title>
+      <link>http://localhost/blog/2017/01/30/powershell-azure-arm-site-overview/</link>
+      <pubDate>Tue, 31 Jan 2017 03:23:32 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2017/01/30/powershell-azure-arm-site-overview/</guid>
+      <description>&lt;p&gt;Visualizing an Azure deployment can be a bit tricky. This short Azure summary script is a good way to start though.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: PSCloudflare Module</title>
+      <link>http://localhost/blog/2016/12/03/powershell-pscloudflare-module/</link>
+      <pubDate>Sat, 03 Dec 2016 16:27:51 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2016/12/03/powershell-pscloudflare-module/</guid>
+      <description>&lt;p&gt;A well documented API without a PowerShell Module is like an itch begging to be scratched.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: New-ADPasswordReminder</title>
+      <link>http://localhost/blog/2016/10/13/powershell-new-adpasswordreminder/</link>
+      <pubDate>Thu, 13 Oct 2016 19:03:55 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2016/10/13/powershell-new-adpasswordreminder/</guid>
+      <description>&lt;p&gt;A single, self-extracting, self-scheduling, AD password change notice PowerShell script.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Stop Email Exfiltration</title>
+      <link>http://localhost/blog/2015/09/24/excxhange-stop-email-exfiltration/</link>
+      <pubDate>Fri, 25 Sep 2015 01:41:25 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2015/09/24/excxhange-stop-email-exfiltration/</guid>
+      <description>&lt;p&gt;When your users leave or get removed from the organization they may still be getting company confidential information. Here is how you can find out and stop this from happening.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Skype For Business: Planning for Voice – Part 2</title>
+      <link>http://localhost/blog/2015/09/03/skype-for-business-planning-for-voice-part-2/</link>
+      <pubDate>Fri, 04 Sep 2015 03:18:40 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2015/09/03/skype-for-business-planning-for-voice-part-2/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve already gone over the basic phases of a Skype for Business enterprise voice deployment &lt;a href=&#34;http://localhost/2015/08/25/skype-for-business-planning-for-voice-part-1/&#34;&gt;in my prior article&lt;/a&gt;. Now it is time to skip right over the first two of those phases and start preparing to replace your existing PBXs. To prepare you need to know what you are going to be replacing. In this article we will be focusing on beginning the information gathering process.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: Login As Batch Job Security Rights</title>
+      <link>http://localhost/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</link>
+      <pubDate>Sat, 18 Jul 2015 04:09:12 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</guid>
+      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the &amp;#8216;login as batch job&amp;#8217; local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I&amp;#8217;ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
+    </item>
+    
+    <item>
+      <title>Powershell: WPF/Treeview OU Selection Dialog</title>
+      <link>http://localhost/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</link>
+      <pubDate>Sun, 22 Mar 2015 16:13:54 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</guid>
+      <description>&lt;p class=&#34;projectSummary&#34;&gt;
+  This is a self-contained organizational unit selection dialog box using powershell, xaml, wpf, and ADSI. Should be useful in any number of one off Powershell projects I imagine.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync UCS Contacts Reporting with Powershell</title>
+      <link>http://localhost/blog/2014/11/21/lync-ucs-contacts-reporting-with-powershell/</link>
+      <pubDate>Fri, 21 Nov 2014 17:37:30 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2014/11/21/lync-ucs-contacts-reporting-with-powershell/</guid>
+      <description>By default a Lync enabled account within a Lync/Exchange 2013 environment will be enabled for UCS (Unified Contact Store). This means that the Lync contacts get saved in the Lync user&amp;#8217;s mailbox and not the Lync database. In order to get a list of the contacts associated with these accounts you have to export data to a zip file with some debug Lync commands and, even then, the information is buried in a hard to interpret XML file.</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010/2013: Database Leveling Script</title>
+      <link>http://localhost/blog/2014/01/07/exchange-20102013-database-leveling-script/</link>
+      <pubDate>Tue, 07 Jan 2014 22:08:16 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2014/01/07/exchange-20102013-database-leveling-script/</guid>
+      <description>&lt;p&gt;It is common to randomly choose mailbox databases when creating or migrating user mailboxes in Exchange. I actually recommend this practice unless you are setting up a tiered user/storage environment. Unfortunately this may result in an unequal distribution of data which, in turn, can result in an environment where mailbox databases are wildly different in size. In this post I will discuss an approach to leveling the databases so they are equal in size by moving mailboxes between them.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather (and Diagram) Installed Roles and Features With Powershell</title>
+      <link>http://localhost/blog/2013/12/18/gather-and-diagram-installed-roles-and-features-with-powershell/</link>
+      <pubDate>Wed, 18 Dec 2013 18:53:18 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/12/18/gather-and-diagram-installed-roles-and-features-with-powershell/</guid>
+      <description>&lt;p&gt;Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I&amp;#8217;ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather Remote Event Logs With Powershell</title>
+      <link>http://localhost/blog/2013/10/16/gather-remote-event-logs-with-powershell/</link>
+      <pubDate>Wed, 16 Oct 2013 17:01:13 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/10/16/gather-remote-event-logs-with-powershell/</guid>
+      <description>About Gather the remote event log information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns Event Log information for the specified number of past hours. You can view verbose information on each runspace thread in realtime with the -Verbose option.
+Version History 1.0.0 &amp;#8211; 10/16/2013
+ Initial release  Notes By default 24 hours is what we filter against for the results.</description>
+    </item>
+    
+    <item>
+      <title>Visualize Active Directory Site Connections</title>
+      <link>http://localhost/blog/2013/10/06/visualize-active-directory-site-connections/</link>
+      <pubDate>Sun, 06 Oct 2013 22:50:35 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/10/06/visualize-active-directory-site-connections/</guid>
+      <description>&lt;h4 id=&#34;span-style-color-bbbbbb-font-size-12px-font-weight-normal-line-height-1-6-in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-i-ve-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagram-span&#34;&gt;&lt;span style=&#34;color: #bbbbbb; font-size: 12px; font-weight: normal; line-height: 1.6;&#34;&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;/span&gt;&lt;/h4&gt;</description>
+    </item>
+    
+    <item>
+      <title>Find Disabled Users With Lync Enabled Without Lync Cmdlts</title>
+      <link>http://localhost/blog/2013/09/30/find-disabled-users-with-lync-enabled-without-lync-cmdlts/</link>
+      <pubDate>Mon, 30 Sep 2013 21:19:15 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/09/30/find-disabled-users-with-lync-enabled-without-lync-cmdlts/</guid>
+      <description>&lt;p&gt;Here is a quick tip which applies to more than just Lync. I use powershell with .NET ADSI to gather a list of all users which are disabled but still have Lync sip addresses assigned. There are numerous reasons to disable lync on such accounts. One reason would be to make certain that users whom are no longer with the organization get removed from the Lync address list. Another is so these same users can no longer access Lync! (Yes, a disabled AD account may still be authorized to access Lync).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather Remote Command Results With Powershell</title>
+      <link>http://localhost/blog/2013/09/19/gather-remote-command-results-with-powershell/</link>
+      <pubDate>Thu, 19 Sep 2013 16:22:41 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/09/19/gather-remote-command-results-with-powershell/</guid>
+      <description>&lt;p&gt;Send a remote command using wmi, alternate credentials, and multiple runspaces then retrieve the results serially using mapped secure channels to the remote host. The remote command execution function supports custom timeout parameters in case of wmi problems and returns the remote tmp file information containing the command results. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Get Remote Shadow Volume Information With Powershell</title>
+      <link>http://localhost/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/</link>
+      <pubDate>Sun, 15 Sep 2013 02:57:55 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/</guid>
+      <description>&lt;p&gt;Gather the remote shadow volume information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns shadow volume information, shadow copies, their providers, and settings. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather Local Group Membership With Powershell</title>
+      <link>http://localhost/blog/2013/09/11/gather-local-group-membership-with-powershell/</link>
+      <pubDate>Wed, 11 Sep 2013 14:11:52 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/09/11/gather-local-group-membership-with-powershell/</guid>
+      <description>Gather system local groups and their members for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems, a switch for inclusion of empty groups in the results, and returns group names with their members. You can view verbose information on each runspace thread in realtime with the -Verbose option.
+Version History 1.0.0 &amp;#8211; 09/11/2013
+ Initial release  Notes None, this is an independent release of a function I’ve recently included in a larger project.</description>
+    </item>
+    
+    <item>
+      <title>Excel and HTML Asset Reports With Powershell</title>
+      <link>http://localhost/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/</link>
+      <pubDate>Sun, 08 Sep 2013 05:07:29 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/</guid>
+      <description>&lt;p&gt;This set of powershell functions collates and generates reports upon system information it gathers. Information gathered includes hardware health, system information, networking information and much much more. Multiple types of html reports can be generated and all data can be exported directly to an excel workbook, saved as individual reports, and emailed.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather Remote Installed Programs With Powershell</title>
+      <link>http://localhost/blog/2013/08/28/gather-remote-installed-programs-with-powershell/</link>
+      <pubDate>Wed, 28 Aug 2013 13:25:22 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/08/28/gather-remote-installed-programs-with-powershell/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;line-height: 1.6;&#34;&gt;Gather program install information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns from the registry program name, manufacturer, and uninstall information. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Multithreaded Remote Registry Gathering with Powershell</title>
+      <link>http://localhost/blog/2013/08/06/multithreaded-remote-registry-gathering-with-powershell/</link>
+      <pubDate>Wed, 07 Aug 2013 03:11:49 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/08/06/multithreaded-remote-registry-gathering-with-powershell/</guid>
+      <description>&lt;p&gt;Gather specific subkey values or an entire registry key’s subkey values with powershell and multithreading.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Multithreaded System Asset Gathering with Powershell</title>
+      <link>http://localhost/blog/2013/08/05/multithreaded-system-asset-gathering-with-powershell/</link>
+      <pubDate>Mon, 05 Aug 2013 17:35:31 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/08/05/multithreaded-system-asset-gathering-with-powershell/</guid>
+      <description>&lt;p&gt;This function gathers a plethora of useful system information via WMI and multithreading with powershell.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Determine if a computer is virtual with powershell</title>
+      <link>http://localhost/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</link>
+      <pubDate>Fri, 26 Jul 2013 18:22:43 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</guid>
+      <description>&lt;p&gt;This function attempts to connect to a computer and find out if it is virtual or not using WMI. If it is virtual, a best guess at the type of virtual platform it is running upon is returned as well.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 Mailbox Audit Report GUI</title>
+      <link>http://localhost/blog/2013/06/28/exchange-2010-mailbox-audit-report-gui/</link>
+      <pubDate>Fri, 28 Jun 2013 20:17:29 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/28/exchange-2010-mailbox-audit-report-gui/</guid>
+      <description>&lt;p&gt;I’ve updated the original &lt;a href=&#34;http://localhost/2013/05/09/exchange-2010-mailbox-audit-report-script/&#34;&gt;Exchange Mailbox Audit Report Script&lt;/a&gt; with some new features and bug fixes. These updates have also set the stage for the entire script to be wrapped with a GUI! Here is the initial release of the Mailbox Audit Report GUI for your auditing needs.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Enhanced Remote Server Connectivity Testing With Powershell</title>
+      <link>http://localhost/blog/2013/06/25/enhanced-remote-server-connectivity-testing-with-powershell/</link>
+      <pubDate>Tue, 25 Jun 2013 14:22:18 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/25/enhanced-remote-server-connectivity-testing-with-powershell/</guid>
+      <description>&lt;p&gt;Test the following connectivity methods to a server: RDP, ping, rpc, wsman, sccm agent, scom agent, and remote registry. Optionally an alternate credential can be used. Versatility is added with options to return only true/false when singular tests are performed.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Use Powershell to Gather Disk/Partition/Mount Point Information</title>
+      <link>http://localhost/blog/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/</link>
+      <pubDate>Mon, 24 Jun 2013 04:41:01 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/</guid>
+      <description>&lt;p&gt;I put together a function for remotely gathering Windows disk information. This was specifically written to accommodate alternate credentials. This script also accounts for the glaring disconnect between win32_Volume and win32_DiskDrive within WMI.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Audit User Profile Folders With Powershell</title>
+      <link>http://localhost/blog/2013/06/21/audit-user-profile-folders-with-powershell/</link>
+      <pubDate>Fri, 21 Jun 2013 18:46:09 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/21/audit-user-profile-folders-with-powershell/</guid>
+      <description>&lt;p&gt;This function will aggregate sub-folders within a folder on a server and attempt to associate them with user IDs within a domain and provide additional information. This script can also be used to move folders for disabled or non-existent accounts.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Book Review: PowerShell 3.0 Advanced Administration Handbook</title>
+      <link>http://localhost/blog/2013/06/18/book-review-powershell-3-0-advanced-administration-handbook/</link>
+      <pubDate>Wed, 19 Jun 2013 01:44:40 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/18/book-review-powershell-3-0-advanced-administration-handbook/</guid>
+      <description>&lt;p&gt;A fast-paced PowerShell guide with real-world scenarios and detailed solutions&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Use Powershell to Create a Windows Service Dependency Diagrams</title>
+      <link>http://localhost/blog/2013/06/17/use-powershell-to-create-a-windows-service-dependency-diagrams/</link>
+      <pubDate>Mon, 17 Jun 2013 15:32:42 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/06/17/use-powershell-to-create-a-windows-service-dependency-diagrams/</guid>
+      <description>&lt;p&gt;I use powershell with graphviz to generate color coded service dependency diagrams for windows services. Besides creating useful and beautiful diagrams for your environment, this will also provide some interesting functions for gathering remote service information with alternate credentials.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 Mailbox Audit Report Script</title>
+      <link>http://localhost/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</link>
+      <pubDate>Fri, 10 May 2013 02:33:54 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
+      <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
+
+&lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: Colorize-Table.ps1 Updated</title>
+      <link>http://localhost/blog/2013/04/28/powershell-colorize-table-ps1-updated/</link>
+      <pubDate>Sun, 28 Apr 2013 18:00:43 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/04/28/powershell-colorize-table-ps1-updated/</guid>
+      <description>&lt;p&gt;A little while ago I released a script which uses custom linq assemblies to quickly modify an html table based on column header and an arbitrary scriptblock to test the values within that entire column (by default it is a simple -eq comparison). If the scriptblock evaluates to be true then you can either change just the cell style or the entire row style.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: Colorize-Table Function</title>
+      <link>http://localhost/blog/2013/04/17/powershell-colorize-table-function/</link>
+      <pubDate>Thu, 18 Apr 2013 03:03:36 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/04/17/powershell-colorize-table-function/</guid>
+      <description>&lt;p&gt;Here is a function I modified for quickly modifying the attributes of a table&amp;#8217;s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn&amp;#8217;t hurt either.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VMware: VMware Report Generation GUI</title>
+      <link>http://localhost/blog/2013/02/17/vmware-vmware-report-generation-gui/</link>
+      <pubDate>Sun, 17 Feb 2013 17:11:52 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/02/17/vmware-vmware-report-generation-gui/</guid>
+      <description>&lt;p&gt;Its been a while since I posted something new. This GUI is meant to configure regular vmware report generation. You are able to select reporting scoped to the whole farm down to individual hosts. Reports can be emailed or saved and be generated based on custom thresholds.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Co-existence Client Access Preparation Report</title>
+      <link>http://localhost/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/</link>
+      <pubDate>Wed, 16 Jan 2013 03:36:50 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/</guid>
+      <description>&lt;p&gt;If you upgrade Exchange in a co-existence scenario (you want to keep the same client access namespace) there is one crucial moment of truth which must be overcome. This is the phase of the migration I&amp;#8217;ve come to call the &amp;#8220;dns flip-over&amp;#8221; or the &amp;#8220;client access part&amp;#8221;. Without preparation this part of the migration can be a real headache as issues are directly experienced by your end users.  This is a simple report card you can use to prepare you for this moment.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Defining Best of Breed in IT</title>
+      <link>http://localhost/blog/2012/12/11/defining-best-of-breed-in-it/</link>
+      <pubDate>Tue, 11 Dec 2012 06:00:42 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/12/11/defining-best-of-breed-in-it/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Soon I’ll be starting a new position with a company which produces some of the highest quality products in their industry. The company’s products are of such high quality that they typically set the bar in their industry. This made me think of what a truly comprises an excellent solution within the Information Technology.  This article is a non-technical personal view of what defines the “Best of breed” technical solutions.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Create Your Own Network Assessment Appliance: Additional Tools</title>
+      <link>http://localhost/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</link>
+      <pubDate>Thu, 29 Nov 2012 02:24:46 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;I &lt;a href=&#34;http://localhost/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I&amp;#8217;ve since added a few tools to the VM and documented how they were installed so I figured I&amp;#8217;d share on how it was done. Even if you don&amp;#8217;t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I&amp;#8217;ll start with a tool anyone worth their salt has heard of though, Cacti&amp;#8230;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Create Your Own Network Assessment Appliance</title>
+      <link>http://localhost/blog/2012/04/08/create-your-own-network-assessment-appliance/</link>
+      <pubDate>Mon, 09 Apr 2012 00:49:19 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/04/08/create-your-own-network-assessment-appliance/</guid>
+      <description>In this write-up I setup several network assessment tools which can be used in the discovery process of a new environment. This can be useful for a newly hired sysadmin or a consultant in rapidly gathering information to assess the health and/or state of a network.
+Introduction I often find myself assessing a foreign network infrastructure for performance or other issues. Depending on the size of the environment, digesting everything can be daunting without the help of some third party tools.</description>
+    </item>
+    
+    <item>
+      <title>Virtualization: vCPU Provisioning Best Practices</title>
+      <link>http://localhost/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</link>
+      <pubDate>Fri, 23 Mar 2012 01:31:47 +0000</pubDate>
+      
+      <guid>http://localhost/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</guid>
+      <description>&lt;p&gt;I had always been of the mindset that when provisioning new VMs it is best to start out with less vCPUs and add more as they are required (unless you specifically know that you will be using and needing more for such things as sql server or exchange). I had even recently felt some vindication of this provisioning best practice in reading a book recently (&lt;a href=&#34;http://www.amazon.com/Critical-VMware-Mistakes-Should-Avoid/dp/1937061981&#34; title=&#34;Critical VMware Mistakes You Should Avoid&#34;&gt;Critical VMware Mistakes You Should Avoid&lt;/a&gt;)&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

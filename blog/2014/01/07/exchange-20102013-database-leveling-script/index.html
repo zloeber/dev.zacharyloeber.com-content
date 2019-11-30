@@ -1,0 +1,469 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Exchange 2010/2013: Database Leveling Script | Zachary Loeber</title>
+        <meta name="description" content="Exchange 2010/2013: Database Leveling Script - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Exchange 2010/2013: Database Leveling Script">
+        <meta itemprop="description" content="Exchange 2010/2013: Database Leveling Script - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Exchange 2010/2013: Database Leveling Script">
+        <meta property="og:description" content="Exchange 2010/2013: Database Leveling Script - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://localhost/blog/2014/01/07/exchange-20102013-database-leveling-script/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://localhost/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://localhost/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2014/01/07/exchange-20102013-database-leveling-script/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2014/01/07/exchange-20102013-database-leveling-script/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://localhost/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://localhost/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://localhost/blog/2014/01/07/exchange-20102013-database-leveling-script/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://localhost/blog/2014/01/07/exchange-20102013-database-leveling-script/">Exchange 2010/2013: Database Leveling Script</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2014-01-07</span>
+            
+        
+
+        
+            <span class="readingTime">9 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>It is common to randomly choose mailbox databases when creating or migrating user mailboxes in Exchange. I actually recommend this practice unless you are setting up a tiered user/storage environment. Unfortunately this may result in an unequal distribution of data which, in turn, can result in an environment where mailbox databases are wildly different in size. In this post I will discuss an approach to leveling the databases so they are equal in size by moving mailboxes between them.</p>
+
+<p>Imagine if you will, a scenario where you are given several buckets of indefinite depth filled with random objects of varying weight. How do you go about making each bucket as close to one another in weight by moving the least amount of objects from one bucket to another? This sounds like something directly out of a computer logic 101 course or possibly even a bad interview question but it is actually has some real world value. One of the practical applications of this would be leveling out an Exchange DAG or set of databases so that they are equal in size (perhaps after adding a new database).</p>
+
+<p>I’ve tucked this question away mentally for a few years now with the intention of eventually searching online for the algorithm which must already exist for this scenario. This chilly holiday season, while the children and wife slept soundly with dreams of Christmas treats, I stayed awake and finally started looking for some algorithmic solution to this issue. I dusted off my math neurons and started white boarding out what needs to be done. To my surprise the solution was more complicated than I initially imagined.</p>
+
+<blockquote>
+<p><strong>Note:</strong> If you don’t care at all about how this works then you can blissfully ignore everything below. Here is a <a href="http://gallery.technet.microsoft.com/Leveling-Exchange-Database-3e9cdbc9">shortcut to the code</a> instead.</p>
+</blockquote>
+
+<h2 id="leveling-two-bins">Leveling Two Bins</h2>
+
+<p>To start, it is good to know the basic steps you might follow to automatically redistribute objects with the fewest moves possible between two bins with the end goal of making the bin overall sizes equal. This will allow us to come up with some general rules and, in the process, add some more requirements we didn’t realize we had.</p>
+
+<p>For each of these examples I’ve included the total, average, and the absolute difference of the bins at each move.</p>
+
+<h3 id="example-1">Example 1</h3>
+
+<p>Here is an easy example where the bins are filled unequally and which do not redistribute evenly.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb.png?resize=244%2C164" width="244" height="164" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>For the first move we postulate our first rule. Move the largest object possible from the larger bin to the smaller bin. So the first move is logical, move the object weighing 5 from bin 2 to bin 1.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image1.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb1.png?resize=244%2C162" width="244" height="162" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>This reduces the difference between the bins down from 12 to 2 so it is a great start. Following our prior logic, let’s go ahead and move another object from Bin 2 to Bin 1:</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image2.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb2.png?resize=244%2C162" width="244" height="162" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>Uh oh, after this the difference between the two bins has actually gone up so we have gone too far. The second rule becomes obvious; <em>move the largest object from the larger bin to the smaller bin as long as it does not result in the bin size difference increasing</em>. In this case the only object we could move was 5, which is greater than the difference between the two bins so we wouldn’t even try to move it.</p>
+
+<p>So in this example we stop at move 1 as we can no longer move any more elements from the larger bin to the smaller bin without increasing the difference between the two bins.</p>
+
+<h3 id="example-2">Example 2</h3>
+
+<p>Here we have a few more objects per bin. The first steps we’ve already seen in example 1.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image3.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb3.png?resize=244%2C76" width="244" height="76" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>At the third move, were we to follow our prior rule, we would end up in an endless loop as we would be moving the same element back to bin 2 that we moved to bin 1 in the prior steps. So, instead, we move over the next element from bin 1 to 2 which has <strong>not</strong> been previously moved. This adds another rule; <em>once an object has been moved between bins it is invalidated for future moves</em>.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image4.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb4.png?resize=244%2C75" width="244" height="75" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>If we follow this through to the end the bins come out even. Here is one more rule which probably doesn’t need to be stated but…. <em>If the difference between two bins becomes zero or there are no valid items which can be moved between bins we are done processing.</em></p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image5.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb5.png?resize=244%2C160" width="244" height="160" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<h3 id="example-3">Example 3</h3>
+
+<p>Here is a simplified version of example 3. Following our previous rules the very first move leaves us in a position where there is no change in the absolute difference between bins.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image6.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb6.png?resize=244%2C62" width="244" height="62" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>If you look at the bin totals after the move has been performed in Step 1 you will see that Bin 1 becomes larger than Bin 2. In these cases wouldn’t it make sense to attempt to swap an element (if it exists) from Bin 1 which is less than this future difference created by Step 1? Well it is actually very important we do so in these scenarios. This is largely for when we apply this algorithm to more than two bins.</p>
+
+<p>This gives us another rule which sounds more complex than it actually is: <em>When moving an object from one bin to another causes the smaller bin to become greater than the larger bin then attempt to swap back another object which is less than or equal to the future difference between the bins.</em></p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image7.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb7.png?resize=190%2C126" width="190" height="126" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>If you have been reading up to this point and following along you can go back to example 2 and reprocess with our additional rules to come up with the same results in a few less cycles (but same number of object moves).</p>
+
+<h3 id="example-4">Example 4</h3>
+
+<p>In this example let’s start out with wildly unbalanced bins and perform the first move.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image8.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb8.png?resize=244%2C75" width="244" height="75" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>After the first move we have followed all of the rules, are done processing, and have the fewest number of moves possible to get the bins as equal as we possibly can get them to be. But in order to get things equal we had to move one object which is 25 times larger than all the other objects combined.</p>
+
+<p>Logically it makes sense to move the one largest object as it gets the results we are looking to achieve. But realistically I’d rather expend less effort moving more small items between the two bins than worry so much about moving the fewest number of elements overall. As long as the results are the same in the end.</p>
+
+<p>This gives us one more objective we weren’t originally looking for when we started. Our updated objective is to <em>move as few objects as possible between the bins without surpassing a predefined percentage of total bin effort threshold</em>.</p>
+
+<p>So in our prior example, if the predefined effort threshold is the average bin size (where any object in any bin is ignored if it is larger than or equal to the average bin size), then only the two smaller items get moved. This leaves the larger item in bin 2 but causes one more move to occur, which we are fine with.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image9.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb9.png?resize=244%2C161" width="244" height="161" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<h2 id="flowchart-leveling-2-bins">Flowchart – Leveling 2 Bins</h2>
+
+<p>If we use the logic we have deduced to this point for leveling two bins we end up with a fairly simple flow chart. It is worth adding that the choice to not move any object which is equal to or greater than the average bin size is variable. Playing around with this number may be required to get the best results.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image10.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb10.png?resize=184%2C244" width="184" height="244" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>For the most part this will allow us to balance out any set of bins with the same results in a predictable manner. Unfortunately, adding in more bins complicates the entire process so we are not done yet.</p>
+
+<h2 id="leveling-more-than-two-bins">Leveling More Than Two Bins</h2>
+
+<p>If you start adding more and more bins you still need some of the same bits of information to make decisions from when determining which objects you will need to move. The most important information will be the size differences between them. You would think that this would create very large tables of differences as you get more and more bins. But actually the table size is relatively small. You only need unique differences between each pair of bins. For those who like their combinational algebra the equation for the number of elements in our table goes something like this:</p>
+
+<p>n = Number of bins</p>
+
+<p>r = Number of bins to find unique combinations between (in our case 2)</p>
+
+<p style="text-align: center;">
+  <img src="//s0.wp.com/latex.php?latex=%5Cbinom%7Bn%7D%7Br%7D+%3D+%5Cfrac%7Bn%21%7D%7Br%21%28n-r%29%21%7D&#038;bg=ffffff&#038;fg=000&#038;s=0" alt="&#92;binom{n}{r} = &#92;frac{n!}{r!(n-r)!}" title="&#92;binom{n}{r} = &#92;frac{n!}{r!(n-r)!}" class="latex" />
+</p>
+
+<p>So for three bins we end up with a table of differences totaling a whopping three elements. If you were to go up to 5 bins, that increases to 10. If you had 10 bins then it only increases to 45 differences. Anyway, you get the picture. If we were attempting to level thousands of bins then it would be beneficial to look into breaking down the bins into reasonable subsets based on their average size (differentiating between bins which are below and above average and possibly combining them in subsets together based on your need). Then using multithreaded code to do the processing.</p>
+
+<p>In my case I’m only looking to get a reasonable approximation of the best way to level no more than several bins so I’m not going to overcomplicate the solution. As it is easy to manually deduce the best way to level 3 bins that is what I’ll be using for my examples.</p>
+
+<h3 id="example-1-1">Example 1</h3>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image11.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb11.png?resize=244%2C77" width="244" height="77" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>I’ve included the absolute difference in size between each unique set of bins. The very first conundrum we run into is which set of bins to process first as there are two sets which have the same absolute difference. The answer is that it doesn’t matter at all so I simply start with bins 1 and 2.</p>
+
+<p>If I follow our prior flowchart then we will move the 4 object from bin 2 to bin 1 first. This will cause bin 1 to become greater than bin 2 so we evoke our swap rule. The swap takes place between the bins as there is an object in bin 1 which is less than the future difference between the bins after the initial move from bin 2.</p>
+
+<p align="center">
+  <a href="/wp-content/uploads/2014/01/image12.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" alt="image" src="/wp-content/uploads/2014/01/image_thumb12.png?resize=244%2C184" width="244" height="184" border="0" data-recalc-dims="1" /></a>
+</p>
+
+<p>After the first step has been performed we recalculate all the differences where there are bins which were involved in step 1. In an example of three bins all combinations of bins will be affected by any single object swap (It is important to note that this may not always be the case, as you add more bins there are more combinations which are not affected by a single move between bins).</p>
+
+<p>The very next step occurs between bin 3 and 1 as it has the largest difference of the three combinations. We do the same thing we did in step one where we move an object from bin 3 to bin 1, evoke our swap rule due to bin 1 becoming larger than bin 3, and swap back an object. When we are done with step 2 we have fully leveled our bins in only 4 total object moves.</p>
+
+<h2 id="script">Script</h2>
+
+<p>Using these examples and some powershell trickery I&#8217;ve come up with a method of leveling databases in exchange by moving mailboxes between them. There are some interesting techniques employed which may benefit a curious crowd which are not Exchange administrators as well. You can download the most recent version of this script from the <a href="http://gallery.technet.microsoft.com/Leveling-Exchange-Database-3e9cdbc9">Microsoft technet gallery</a>. As always I welcome feedback.</p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/tags/exchange-2013">Exchange 2013</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/network-administration">network administration</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/psc">PSC</a>
+                
+                    <a href="/tags/sysadmin">Sysadmin</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://localhost/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>
