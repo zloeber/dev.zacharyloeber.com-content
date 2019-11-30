@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Uncategorized on Zachary Loeber</title>
-    <link>https://dev.zacharyloeber.com/categories/uncategorized/</link>
+    <link>http://dev.zacharyloeber.com/categories/uncategorized/</link>
     <description>Recent content in Uncategorized on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 10 Sep 2017 20:38:59 +0000</lastBuildDate>
     
-	<atom:link href="https://dev.zacharyloeber.com/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dev.zacharyloeber.com/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cloud PBX: Polycom VVX Master Directory</title>
-      <link>https://dev.zacharyloeber.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</link>
+      <link>http://dev.zacharyloeber.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</link>
       <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</guid>
       <description>&lt;p&gt;Reverse number lookup in Skype for Business online (cloud PBX) doesn&amp;#8217;t give you much control. If you are deploying Polycom VVX phones you can get around this with a directory file.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010: Automated Firewall Rule Generation 1.2</title>
-      <link>https://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</link>
+      <link>http://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</link>
       <pubDate>Wed, 20 Jul 2011 16:35:08 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</guid>
       <description>I made a few changes to this script to make it more modular and to allow for more exceptions in regards to DAGs and sites. Enjoy!
 Exchange 2010 Firewall Rule Generation Script</description>
     </item>
     
     <item>
       <title>Exchange – Notify Forwarded Accounts Script</title>
-      <link>https://dev.zacharyloeber.com/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</link>
+      <link>http://dev.zacharyloeber.com/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</link>
       <pubDate>Mon, 10 Jan 2011 20:00:19 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</guid>
       <description>In cleaning up a large number of disabled user accounts in AD I wanted a way to notify a large number of users specifically that they were being forwarded e-mail from another account. This was part of an effort to clean up AD a bit before moving everyone over to Exchange 2010 but it can be used independently of any one project as part of a general AD maintenance plan.</description>
     </item>
     
     <item>
       <title>New Project: bridgetun.sh</title>
-      <link>https://dev.zacharyloeber.com/blog/2008/08/06/new-project-bridgetunsh/</link>
+      <link>http://dev.zacharyloeber.com/blog/2008/08/06/new-project-bridgetunsh/</link>
       <pubDate>Wed, 06 Aug 2008 16:04:41 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2008/08/06/new-project-bridgetunsh/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2008/08/06/new-project-bridgetunsh/</guid>
       <description>I&amp;#8217;ve been trying to get this one out for weeks but have not had a whole lot of time to do so. I&amp;#8217;ve decided to drop what I have completed out there for those who may be interested. Simply put bridgetun is a convenient way to create tun interfaces and to bridge them (and other interfaces) together. I&amp;#8217;d give it a once over and see if it helps with any of your dynamips labs.</description>
     </item>
     
     <item>
       <title>GNS3 on Ubuntu 8.04 – Pemu Guide</title>
-      <link>https://dev.zacharyloeber.com/blog/2008/07/07/gns3-with-pemu-on-ubuntu/</link>
+      <link>http://dev.zacharyloeber.com/blog/2008/07/07/gns3-with-pemu-on-ubuntu/</link>
       <pubDate>Mon, 07 Jul 2008 14:41:08 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2008/07/07/gns3-with-pemu-on-ubuntu/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2008/07/07/gns3-with-pemu-on-ubuntu/</guid>
       <description>&lt;p&gt;Ok, so far we have gone through the hoops to get GNS3 with dynamips/dynagen working nicely in an (almost) fully contained directory in /opt. We then went through choosing an IOS image that is right for you, if you actually have multiple legal images to choose from of course. Now lets setup a pix firewall. The PIX is out of life as far as Cisco is concerned and had been superseded by the ASA line of security devices. But, there are still a lot of the PIX around and the concepts haven&amp;#8217;t changed too much between them. So let us go through the motions already!&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Ubuntu Server 8.04 Post Install Tip #2: Shell Goodies</title>
-      <link>https://dev.zacharyloeber.com/blog/2008/07/03/ubuntu-server-804-post-install-tip-2-shell-goodies/</link>
+      <link>http://dev.zacharyloeber.com/blog/2008/07/03/ubuntu-server-804-post-install-tip-2-shell-goodies/</link>
       <pubDate>Thu, 03 Jul 2008 17:17:38 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2008/07/03/ubuntu-server-804-post-install-tip-2-shell-goodies/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2008/07/03/ubuntu-server-804-post-install-tip-2-shell-goodies/</guid>
       <description>&lt;p&gt;OK, I promised a friend some time ago that I&amp;#8217;d post all of my post-install procedures and I&amp;#8217;ve not quite followed through with that so I&amp;#8217;m doing a few before finishing up my three part post on the &amp;#8220;Home Hacker&amp;#8217;s Network&amp;#8221;. These are all just little hacks I&amp;#8217;ve come across and modified to suit my needs. I like this one a bunch as it gives me a nice shell prompt when I login as well as when I use screen (although the gnu screen configuration part is mutually exclusive to the shell modification part).&lt;/p&gt;
 
 &lt;p&gt;So lets get started&amp;#8230;&lt;/p&gt;</description>
@@ -69,10 +69,10 @@ Exchange 2010 Firewall Rule Generation Script</description>
     
     <item>
       <title>GNS3 on Ubuntu 8.04 – Install Guide</title>
-      <link>https://dev.zacharyloeber.com/blog/2008/06/12/gns3-on-ubuntu-804/</link>
+      <link>http://dev.zacharyloeber.com/blog/2008/06/12/gns3-on-ubuntu-804/</link>
       <pubDate>Thu, 12 Jun 2008 13:53:54 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2008/06/12/gns3-on-ubuntu-804/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2008/06/12/gns3-on-ubuntu-804/</guid>
       <description>&lt;p&gt;GNS3 is a frontend for dynagen (which is a scripting language for dynamips). Getting it to work nicely in Ubuntu was a bit of a pain in the arse but I was able to get it to work in a manner I&amp;#8217;m happy with. This setup will essentially encapsulate a large portion of the install to one directory in /opt. Some libraries and executables will be installed through apt though, but not many. I previously wrote part of a writeup for this on Ubuntu 7.10, I&amp;#8217;d ignore that in favor of this one which is much more up to date and polished.&lt;/p&gt;</description>
     </item>
     

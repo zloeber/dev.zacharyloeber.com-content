@@ -2,56 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Storage on Zachary Loeber</title>
-    <link>https://dev.zacharyloeber.com/categories/storage/</link>
+    <link>http://dev.zacharyloeber.com/categories/storage/</link>
     <description>Recent content in Storage on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 15 Sep 2013 02:57:55 +0000</lastBuildDate>
     
-	<atom:link href="https://dev.zacharyloeber.com/categories/storage/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dev.zacharyloeber.com/categories/storage/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Get Remote Shadow Volume Information With Powershell</title>
-      <link>https://dev.zacharyloeber.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/</link>
+      <link>http://dev.zacharyloeber.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/</link>
       <pubDate>Sun, 15 Sep 2013 02:57:55 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/</guid>
       <description>&lt;p&gt;Gather the remote shadow volume information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns shadow volume information, shadow copies, their providers, and settings. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Use Powershell to Gather Disk/Partition/Mount Point Information</title>
-      <link>https://dev.zacharyloeber.com/blog/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/</link>
+      <link>http://dev.zacharyloeber.com/blog/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/</link>
       <pubDate>Mon, 24 Jun 2013 04:41:01 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/</guid>
       <description>&lt;p&gt;I put together a function for remotely gathering Windows disk information. This was specifically written to accommodate alternate credentials. This script also accounts for the glaring disconnect between win32_Volume and win32_DiskDrive within WMI.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>VMware: Migrating a vCenter virtual appliance to a vCenter Windows server</title>
-      <link>https://dev.zacharyloeber.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</link>
+      <link>http://dev.zacharyloeber.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</link>
       <pubDate>Mon, 17 Dec 2012 04:30:52 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</guid>
       <description>&lt;p&gt;I finally bit the bullet and migrated my lab from a vCenter virtual appliance to a vCenter Windows server. This is what I did to maintain all my settings and not disrupt any currently running VMs.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010: Poor Man’s Monitoring</title>
-      <link>https://dev.zacharyloeber.com/blog/2012/07/22/exchange-2010-poor-mans-monitoring/</link>
+      <link>http://dev.zacharyloeber.com/blog/2012/07/22/exchange-2010-poor-mans-monitoring/</link>
       <pubDate>Sun, 22 Jul 2012 20:11:16 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2012/07/22/exchange-2010-poor-mans-monitoring/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2012/07/22/exchange-2010-poor-mans-monitoring/</guid>
       <description>&lt;p&gt;I quietly released a new script into the wild the other day, Troubleshoot-MailboxServer.ps1. This script is meant for monitoring, fixing, and reporting on Exchange 2010 database servers. It pretty much just wraps around and reports on troubleshooting scripts found in %ExchangeInstallPath%Scripts. I also set it so you can have an email sent including warning/error color coded report upon completion.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Virtual Connect: Cisco MDS 9500 Fiber Connectivity</title>
-      <link>https://dev.zacharyloeber.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/</link>
+      <link>http://dev.zacharyloeber.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/</link>
       <pubDate>Fri, 04 Feb 2011 01:14:02 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/</guid>
       <description>&lt;p&gt;I’ve done quite a bit of work with HP’s Virtual Connect  and C7000 blade enclosures in a contained (almost pure HP) environment. Today I ran into an issue which flummoxed both myself and an on-site engineer while attempting to connect the VC 8gb interconnect bays to the Cisco MDS fiber module for an upcoming (and exciting!) VMAX implementation.&lt;/p&gt;</description>
     </item>
     
