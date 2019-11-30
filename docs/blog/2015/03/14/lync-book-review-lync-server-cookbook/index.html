@@ -1,0 +1,361 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Lync Book Review: Lync Server Cookbook | Zachary Loeber</title>
+        <meta name="description" content="Lync Book Review: Lync Server Cookbook - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Lync Book Review: Lync Server Cookbook">
+        <meta itemprop="description" content="Lync Book Review: Lync Server Cookbook - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Lync Book Review: Lync Server Cookbook">
+        <meta property="og:description" content="Lync Book Review: Lync Server Cookbook - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://dev.zacharyloeber.com/blog/2015/03/14/lync-book-review-lync-server-cookbook/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2015/03/14/lync-book-review-lync-server-cookbook/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2015/03/14/lync-book-review-lync-server-cookbook/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://dev.zacharyloeber.com/blog/2015/03/14/lync-book-review-lync-server-cookbook/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://dev.zacharyloeber.com/blog/2015/03/14/lync-book-review-lync-server-cookbook/">Lync Book Review: Lync Server Cookbook</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2015-03-15</span>
+            
+        
+
+        
+            <span class="readingTime">6 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/book-review">Book Review</a>
+                
+                    <a href="/categories/lync">Lync</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>I had planned to purchase this book at some point but instead was pleasantly surprised by an offer from one of the authors to provide an objective review of &#8216;<a href="http://www.amazon.com/Lync-Server-Cookbook-Fabrizio-Volpe-ebook/dp/B00SVBFBQS/ref=dp_kinw_strp_1">Lync Server Cookbook</a>&#8216;! As I have worked with the product in some form since LCS/OCS days I believe I can speak with some authority on subject matter and readily agreed. With that being said, lets start with the book&#8217;s overarching scope and structure.</p>
+
+<h2 id="general-book-structure">General Book Structure</h2>
+
+<p>As with most &#8216;cookbook&#8217; type technical writings this book has several generalized topic areas with a subset of &#8216;recipes&#8217; to solve or configure situations you might encounter. From my experience the breadth of knowledge covered in books of this format can vary widely. But in general you should expect that these cookbooks are not all inclusive compendiums and are targeting readers with prior knowledge and experience in the presented subject matter. Lync Server Cookbook follows this formula pretty well in that some prior Lync knowledge certainly wouldn&#8217;t hurt before picking up this book. But I do not think you need much know how of the product to gain benefit from its contents. If you have done a basic deployment or are just becoming familiar with Lync then having a book of recipes chock full of extra notes and tips from industry professionals may be exactly what you need to take your skills to the next level.</p>
+
+<p>If you are like me and have done several full Lync deployments but might have a less rounded out knowledge of some of the more nuanced technical aspects of the product then it is very likely you will get great value from this cookbook. Some items covered include but are certainly not limited to;</p>
+
+<ul>
+<li>Office 365 Integration</li>
+<li>Authentication Mechanisms (including the newly supported passive authentication!)</li>
+<li>Enterprise voice DID management tools and tips</li>
+<li>Federation Ethical Walls</li>
+<li>Virtualization Sizing</li>
+<li>Qos/QoE configuration and planning</li>
+<li>Snooper/Wireshark troubleshooting</li>
+</ul>
+
+<p>These are just a few areas that are covered. I found new or interesting information in all sections of the Lync Server Cookbook.</p>
+
+<h2 id="the-good">The Good</h2>
+
+<p>This book was written by multiple authors, all of which are accomplished with the Lync product line. This broad experience base is extremely important with Lync 2013 as I believe it is rare to find any one Lync professional with real experience in all aspects of the Lync product. And you can tell the authors truly collaborated with one another and paid close attention to what they were assembling for this cookbook as well. Many of the recipes go into great detail which, from experience, I know comes from actual working knowledge of the product, not just hearsay.</p>
+
+<p>There are copious side notes and references throughout the book. This is part of what makes a cookbook fun enough to want to read through even the recipes you may not think you need. Because if you read through the side notes you will find tools and techniques you may not have heard of or used otherwise. As many of the best Lync tools are community contributions or scripts you might be really missing out if you were to stick with strict adherence to using only the tools the product has to offer. The authors do not shy away from pointing out several tools that I have used in the past that feel like insider secrets.</p>
+
+<h2 id="the-bad">The Bad</h2>
+
+<p>It would be disingenuous of me to say that this book has zero issues. I would have like to have seen a more abundant and smaller sized selection of recipes for starters. I can think of several right off the top of my head that would have been perfect additions to this cookbook. Not all recipes need to be fully realized in their content or cleverness to be useful. Some smaller recipes that I&#8217;ve had to repeatedly share with those less experienced in Lync (or infrastructure in general) include the best way to setup local routes on edge servers (via netsh), when to avoid media bypass (typically over wireless), and designing multiple site DID dial plans. These would have been welcome additions to this tome.</p>
+
+<p>Another area which threw me for a loop was the book&#8217;s section ordering. Although The Lync Cookbook is not to be an end all of product knowledge (as I previously discussed) it still felt a bit random. The book immediately starts with security topics like federation ethical walls policies and then goes all over the board from there. A more coherent structure around the different Lync modalities would have been welcome.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Before I summarize my thoughts on this book I want to challenge you to find all the Lync 2013 Server books you can. Go ahead and do the Amazon search in another tab right now, I&#8217;ll wait&#8230;&#8230; Ok, so did you get maybe a single page of results back? There really are not that many books out there and I&#8217;ve read or own almost all of them. I believe that I can definitively pronounce that good Lync 2013 Server books are genuinely rather rare. Part of this might be due to how rapidly the technology is changing. Heck, there are new &#8216;features&#8217; being released in cumulative updates of the product! Another reason is that the Lync 2013 Server product has middle child syndrome. It is not too uncommon for businesses to skip an entire product release in their upgrade cycle (no matter how painful that may be). And many businesses upgraded to Exchange 2010 and got Lync 2010 thrown in with that upgrade. The excitement for the 2013 product line may have been a bit tepid because of this. In either case, the Lync Server 2013 deployment engineer or sysadmin seems like an under-served market.</p>
+
+<p>Perhaps it is because of these reasons that I believe the cookbook format is exceptionally suited for Lync 2013 Server. When I was asked to review this book I was really concerned that I might be going through a cookbook of filler material (ie. how do I request a certificate, or how do I change a lync users policy, et cetera). This is primarily because honestly it would be easy to pad out a book like this with boring crap. But I can sincerely say that this book surpassed my expectations with truly informative subject matter containing interesting and useful recipes. This includes many non-technical recipes on top of the abundant technical material found within. For instance Chapter 6 is titled &#8216;Designing a Lync Solution &#8211; The Overlooked Aspects&#8217; and covers all kinds of goodies towards this end.</p>
+
+<p>In the end I readily recommend adding the <a href="http://www.amazon.com/Lync-Server-Cookbook-Fabrizio-Volpe-ebook/dp/B00SVBFBQS/ref=dp_kinw_strp_1">Lync 2013 Cookbook</a> to your digital reader or bookshelf. Those with less experience on the Lync platform will be able to get valuable insider tips and tricks. And experienced Lync engineers and administrators will enjoy the broad experience base of several Lync experts&#8217; knowledge covering some of the more esoteric aspects of Lync Server. So there is something for everyone here.</p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/book-review">Book Review</a>
+                
+                    <a href="/tags/lync">Lync</a>
+                
+                    <a href="/tags/lync-2013">Lync 2013</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/sysadmin">Sysadmin</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+                    <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

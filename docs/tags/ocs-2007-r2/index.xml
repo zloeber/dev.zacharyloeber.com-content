@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OCS 2007 R2 on Zachary Loeber</title>
+    <link>https://dev.zacharyloeber.com/tags/ocs-2007-r2/</link>
+    <description>Recent content in OCS 2007 R2 on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 31 Mar 2011 15:21:09 +0000</lastBuildDate>
+    
+	<atom:link href="https://dev.zacharyloeber.com/tags/ocs-2007-r2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCS 2007 R2: CRL Issue Causing Address Book Download Error</title>
+      <link>https://dev.zacharyloeber.com/blog/2011/03/31/ocs-2007-r2-crl-issue-causing-address-book-download-error/</link>
+      <pubDate>Thu, 31 Mar 2011 15:21:09 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/blog/2011/03/31/ocs-2007-r2-crl-issue-causing-address-book-download-error/</guid>
+      <description>&lt;p&gt;I ran into this issue recently. End users experienced a red splat in communicator exhibiting that there was an issue syncing the corporate address book. I found &lt;a title=&#34;OCS 2007 R2 CRL Issue&#34; href=&#34;http://blog.danovich.com.au/2009/11/04/office-communicator-error-cannot-synchronize-address-book/&#34; target=&#34;_blank&#34;&gt;this excellent article&lt;/a&gt; explaining how an invalid Certificate Revocation List error may be causing this issue. My issue was slightly similar in nature but with some caveats.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

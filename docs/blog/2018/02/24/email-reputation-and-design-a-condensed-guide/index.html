@@ -1,0 +1,421 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Email Reputation and Design: A Condensed Guide | Zachary Loeber</title>
+        <meta name="description" content="Email Reputation and Design: A Condensed Guide - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Email Reputation and Design: A Condensed Guide">
+        <meta itemprop="description" content="Email Reputation and Design: A Condensed Guide - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Email Reputation and Design: A Condensed Guide">
+        <meta property="og:description" content="Email Reputation and Design: A Condensed Guide - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/">Email Reputation and Design: A Condensed Guide</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2018-02-24</span>
+            
+        
+
+        
+            <span class="readingTime">10 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/azure">Azure</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/office-365">Office 365</a>
+                
+                    <a href="/categories/security">Security</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Very few domains implement the holy grail of email identity reputation frameworks, <a href="https://dmarc.org/">DMARC</a>. This guide will cover all the steps required to get it implemented for your domain along with some best practices for overall email reputation design.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Email domain reputation is a complex topic but for the sake of this article assume that it means that recipients of email from your domain know that it is legitimate. There are multiple technologies and techniques one can implement to improve their email domain reputation and they all generally lead towards DMARC.</p>
+
+<p>DMARC is the first and only widely deployed technology that can make the &#8220;header from&#8221; address (what users see in their email clients) trustworthy. Once implemented, email recipients are far less likely to get email spoofs from your domain. This can help protect your brand and greatly reduce the likelihood of your business&#8217;s email going to a recipient&#8217;s spam folder.</p>
+
+<p>A large portion of email security is focused on the inbound aspect of delivery. So it can be a little bewildering when one is tasked to architect domain reputation for outbound email traffic. This becomes even more complicated for larger organizations with several flows of SMTP traffic for several line of business applications, marketing efforts, and more.</p>
+
+<p>In this article I’m going to cover different email reputation techniques and technologies at rapid speed. I’ll cover just enough to get the core knowledge down so that by the end of this article a busy infrastructure architect or manager can begin to formulate a strategy towards implementing DMARC for their own organization.</p>
+
+<h1 id="required-knowledge">Required Knowledge</h1>
+
+<p>I’ll assume that the reader is familiar with DNS and SMTP. Generally, if you have ever done troubleshooting on an email delivery issue by analyzing the headers of an email then you are sufficiently technical enough for this article. The truth of things is that DNS is the foundation of any of the email reputation and validation technologies. Most of the &#8216;basics&#8217; we will talk about are based firmly in sensible logic and DNS.</p>
+
+<h1 id="designing-email-domains">Designing Email Domains</h1>
+
+<p>I’ve seen such a large variance in email domain design over the years that I know for certain the infrastructure you are managing on the inside is a unique snowflake. But no matter how special your email architecture is on the inside of your network, email leaving it still needs to look reputable to outside recipients. Otherwise email from your organization will be unceremoniously dumped in spam folders or even dropped entirely by receiving MTAs (Mail Transport Agents).</p>
+
+<p>This is why it is vital to understand our first design axiom:</p>
+
+<h2 id="email-reputation-axiom-1-8211-every-email-domain-has-its-own-reputation">Email Reputation Axiom 1 &#8211; Every email domain has its own reputation.</h2>
+
+<p>This includes sub-domains as well. So email from  <a href="mailto:support@contoso.com">support@contoso.com</a> has a reputation that is completely different than <a href="mailto:support@subsite.contoso.com">support@subsite.contoso.com</a></p>
+
+<p>Knowing this, you can begin to design your email infrastructure so that it naturally becomes more reputable simply by having different email types use different domains. Easy right? I personally have four broad categories of email that warrant their own sub-domains:</p>
+
+<ol>
+<li><strong>Corporate</strong> – Email from your user’s mailboxes come from this domain.</li>
+<li><strong>Transaction Based</strong> – Password reset confirmations, payment reminders, or other critical on-demand (result of some transaction occurring) email. _There should be no marketing material that would warrant anyone to want to &#8216;unsubscribe&#8217; from this type of email_<em><strong>!</strong></em></li>
+<li><strong>Marketing</strong> – Self explanatory. It should be noted that this may be called ‘SPAM’ by some but if you are doing things by the books you will be putting legitimate unsubscribe links in your marketing email and keeping up with all legal requirements. This way email from this domain actually ends up being labeled as ‘BULK’ instead of SPAM.</li>
+<li><strong>Application Specific</strong> – If you have some newly developed web application that needs to sent out email then it would be wise to dedicate an email domain specific to the application.</li>
+</ol>
+
+<p>If you got this far and you only have email being sent from a single domain (your corporate domain) then now is the time to start creating some subdomains. I prefer the following personally:</p>
+
+<ul>
+<li>contoso.com – Corporate domain</li>
+<li>t.contoso.com – Transactional domain</li>
+<li>e.contoso.com – Marketing domain</li>
+<li><app>.contoso.com – Application domain (this, in turn, can have its own transaction and marketing domains OR you can have it use your existing transaction and marketing domains if able to do so).</li>
+</ul>
+
+<blockquote>
+<p><strong>NOTE:</strong> I purposefully don’t use ‘m.contoso.com’ as that can sometimes be the mobile version of a company&#8217;s external website and it is wise to keep these different sub-domains isolated for just email if possible. I also like to keep it down to single characters so the email doesn&#8217;t appear too far off from your actual corporate domain name. These sub-domains can be whatever you like though.</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h2 id="email-reputation-axiom-2-reputation-is-based-on-sender-ip">Email Reputation Axiom 2 – Reputation is Based on Sender IP</h2>
+
+<p>This is a basic level article so this statement does not do all of email domain reputation determination justice. But if you know anything know that the sending IP is of vital importance when determining the reputation of an email sender. Implementing SPF, DKIM, and DMARC don&#8217;t mean anything if your sending IP is on a bunch of blacklists.</p>
+
+<p>This means your reputation starts with the sending IP (or IPs). Here are a few tasks to ensure your sending IPs are not causing issues.</p>
+
+<p><strong>Task 1</strong> – Validate that your sending IP for each domain is able to reverse lookup to the domain’s MX record.</p>
+
+<p>This is less important to validate but still has a place in your email validation checklist. Some older MTAs will drop or mark as spam email from IPs that don’t reverse lookup to the MX record being published externally for the domain. To be comprehensive I have to include this task.</p>
+
+<p><strong>Task 2</strong> – Validate your sending IP is not on any blacklists.</p>
+
+<p>This may seem like a simple task but it can easily be overlooked when you are in an active deployment state. Example, say you are developing a web app in the cloud and are sending email notifications from the system for password reminders. To get this going quickly the developer decided to use sendgrid and API level programming. But they decided to use the free sendgrid offering. This would almost certainly mean the sending IPs are on several blacklists and will cause delivery issues.</p>
+
+<p><strong>Task 3</strong> &#8211; Monitor that your sending IP does end up on any blacklists moving forward.</p>
+
+<p>If your IPs get on several blacklists your life can suddenly become way more difficult. I’m a huge fan of mxtoolbox.com for this particular task. They have lots of extra tools and features beyond blacklist monitoring as well (and the price is right).</p>
+
+<p><strong>Task 4</strong> – Block outbound port 25 at your perimeter firewall.</p>
+
+<p>It&#8217;s amazing how many times I see this overlooked. Blocking port 25 outbound for all devices except your mail servers is just best practice (more like sysadmin 101). Simply put, you don’t want a single infected end user workstation on your network to mar your reputation by blasting the internet with spam. You may have to monitor outbound connections to this port on your firewall to get all systems that are sending email from within your network to plan things out accordingly.</p>
+
+<h1 id="path-to-dmarc">Path to DMARC</h1>
+
+<p>Once you have the basics covered you can proceed to implement SPF, DKIM, and finally DMARC. Generally implementation of these technologies will occur in that order. Towards the end of this article I&#8217;ll cover a scenario where you may want to actually start with DMARC first though.</p>
+
+<h2 id="spf">SPF</h2>
+
+<p>Sender Policy Framework is just a fancy term for a TXT DNS record that lists out what IPs are allowed to send email as your domain. This is considered the bare minimum for any organization to look even remotely legitimate. There are tons of online tools to help you create and test these records. If you don&#8217;t have this record created properly nothing else really matters.</p>
+
+<p>It should be noted that whenever someone references an &#8216;SPF Record&#8217; that they really mean a TXT record with special formatting that makes it an SPF record. There ARE some old SPF DNS record types that have long since been depreciated and shouldn&#8217;t be setup or used (even if you have that option with your DNS provider).</p>
+
+<blockquote>
+<p><strong>Be Nice:</strong> If you have a vendor you work with that you respect and their emails are always going to your spam folder why don&#8217;t you quickly look at the headers, find the origin IP, and see if it is in their published SPF record? If it isn&#8217;t, then shoot them a friendly email note on the matter to help out. The time to do this is nominal at best and if it does fix email delivery issues for that vendor they will love you forever.</p>
+</blockquote>
+
+<h2 id="dkim">DKIM</h2>
+
+<p>DomainKeys Identified Mail is a bit more complex to implement but is an absolute requirement for DMARC. This is where things get a bit harder as  you will need to set up DKIM selector records individually for each service that sends email as the domain. That sending service needs to be part of the DKIM setup process as well as they will need the keys, the records they are published to, and will need to enable the service on their outbound email services for your domain email.</p>
+
+<p>If you want to implement DMARC then you need to have DKIM configured for <strong>ALL</strong> services sending as your domain. This is another reason why the actual design of your email domain reputation is so important. The more services you have that send as your domain the more difficult is becomes to configure DKIM. In fact, many major services don&#8217;t support DKIM configuration at all (I&#8217;m looking at you ADP). If you use one of these services and MUST be able to send email as your domain from it then you simply cannot implement DMARC.</p>
+
+<blockquote>
+<p><strong>DKIM Technical Note:</strong> You can have any number of DKIM selector records with any names you like. The sending email service simply needs to know what these names are as they get injected into the email headers for lookup. Knowing this makes configuration of this technology much simpler as it can be done one vendor at a time. You shouldn&#8217;t share the DKIM crypto keys between different vendors. They should all have their own selector records and crypto keys.</p>
+</blockquote>
+
+<p>Do not forget that your on premise email servers need to be setup for DKIM as well! If you us o365 in a hybrid mode but still send email from an on premise relay, that will need to be setup for DKIM the same as any vendor. A free solution that works well enough for Exchange is <a href="https://github.com/Pro/dkim-exchange">DKIM Signer</a> but there are paid solutions as well if you need more support.</p>
+
+<h2 id="dmarc">DMARC</h2>
+
+<p>If you have made it this far and have properly implemented everything else (SPF and DKIM) for your email domain then you would be foolish not to implement DMARC. This is because it is a simple DNS record. That is why this is the smallest section of the article.</p>
+
+<p>Domain-based Messaging, Authentication, Reporting and Conformance (DMARC) allows you to set policies around SPF and DKIM telling receiving mail transport agents what to do with mail from your domain that isn&#8217;t DKIM signed or that fails your SPF record checks. It is widely adopted but not widely deployed. It also has two parts, the policy part that increases the reputability of your email and the reporting part that allows you to understand more what is going on with email sent on behalf of your domain.</p>
+
+<p>You can use this to your advantage. Theoretically you could start your journey by setting up DMARC records in a reporting mode first. Depending on how you set this up (and how many domains receive email from your organization) this can generate a ton of information about vendors and systems sending on your organization&#8217;s behalf. This can then be used to more intelligently target where your SPF record is lacking and what vendors you will need to work with to implement DKIM. Be careful though, over the course of a month I managed to acquire over 8 thousand DMARC report emails. To parse this deluge of data there are some <a href="https://gallery.technet.microsoft.com/scriptcenter/Harvest-DMARC-items-for-9c0d911a">scripts</a> and <a href="https://dmarcian.com/dmarc-xml/">online tools</a> at your disposal.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>I&#8217;ve not provided any scripts or personally created tools to go with this article. I&#8217;ve also not been highly technical. But what I have been is concise and hopefully helpful to a broad range of technical architects and engineers that deal with email reputation management and design. This may also be valuable to IT managers looking to get the general battle plan for a path to DMARC implementation for their own domains.</p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/security">Security</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

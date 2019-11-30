@@ -1,0 +1,510 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Active Directory: Essential Tools | Zachary Loeber</title>
+        <meta name="description" content="Active Directory: Essential Tools - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Active Directory: Essential Tools">
+        <meta itemprop="description" content="Active Directory: Essential Tools - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Active Directory: Essential Tools">
+        <meta property="og:description" content="Active Directory: Essential Tools - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://dev.zacharyloeber.com/blog/2011/08/11/active-directory-essential-tools/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2011/08/11/active-directory-essential-tools/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2011/08/11/active-directory-essential-tools/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://dev.zacharyloeber.com/blog/2011/08/11/active-directory-essential-tools/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://dev.zacharyloeber.com/blog/2011/08/11/active-directory-essential-tools/">Active Directory: Essential Tools</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2011-08-11</span>
+            
+        
+
+        
+            <span class="readingTime">6 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/security">Security</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.</p>
+
+<p>AD Info/AD Tidy</p>
+
+<p>&nbsp;</p>
+
+<h3 id="ad-info">AD Info</h3>
+
+<p>This is a top notch information gathering tool that provides exportable reports for all kinds of AD related information. It actually checks every domain controller in your domain to ensure accuracy as well. This tool can provide an enormous amount of information about your forest which you  might have to script out otherwise.</p>
+
+<p>&nbsp;</p>
+
+<p><a href="http://www.cjwdev.co.uk/Software/ADReportingTool/Index.html">Get AD Info here.</a></p>
+
+<h3 id="ad-tidy">AD Tidy</h3>
+
+<p>From the same author as AD Info comes AD Tidy. Rather than re-hash the capabilities of this handy tool here is a list of features directly from the author’s site.</p>
+
+<p>Features</p>
+
+<ul>
+<li>Search for user or computer accounts</li>
+<li>Search entire domain or select a specific OU</li>
+<li>Specify alternate credentials to connect to domain with</li>
+<li>Get account last logon information from all DCs or select specific DCs</li>
+<li>Optionally only find accounts that have not logged on for a specified number of days</li>
+<li>Can ping any computer accounts found, to help confirm if they are still active</li>
+<li>Exclude or include disabled accounts, or only find disabled accounts</li>
+<li>Exclude specific account names from the search results</li>
+<li>Save search settings to file so that you can reload them whenever you want</li>
+<li>Works with domains that you are not a member of (assuming you provide valid credentials)</li>
+<li>Help buttons within the application explain what each setting is for</li>
+</ul>
+
+<p>For any accounts that are found in the search, you can perform one of the following actions:</p>
+
+<ul>
+<li>Disable</li>
+<li>Enable</li>
+<li>Delete</li>
+<li>Move To Another OU</li>
+<li>Set Description</li>
+<li>Set Expiration Date</li>
+<li>Add To Group</li>
+<li>Remove From Group</li>
+<li>Remove From All Groups</li>
+<li>Hide From Exchange Address Lists (not tested with Exchange 2010 yet)</li>
+<li>Delete home drive</li>
+<li>Export Details To CSV</li>
+</ul>
+
+<p><a href="http://www.cjwdev.co.uk/Software/ADTidy/Info.html">Get AD Tidy here.</a></p>
+
+<p>&nbsp;</p>
+
+<p>This author has a few other handy tools you may want to check out as well (<a href="http://www.cjwdev.co.uk/Software/ADPhotoEdit/Info.html">AD Photo Edit</a>, <a href="http://www.cjwdev.co.uk/Software/GroupMan/Info.html">Group Manager</a>, <a href="http://www.cjwdev.co.uk/Software/GetGroupMembership/Info.html">Get Group Membership</a>)</p>
+
+<p>&nbsp;</p>
+
+<h2 id="ad-explorer">AD Explorer</h2>
+
+<p>Sysinternals made this little gem of a free utility. It is basically active directory users and computers on steroids. You can use AD explorer to save favorite locations, take snapshots, and dig into the innards of AD in a way that is similar to adsiedit. The snapshots can be compared and browsed offline.</p>
+
+<p><a href="http://technet.microsoft.com/en-us/sysinternals/bb963907">Get AD Explorer here.</a></p>
+
+<h2 id="oldcmp-exe">Oldcmp.exe</h2>
+
+<p><a href="http://www.joeware.net/freetools/index.htm">Joeware</a> makes a bunch of really nice free command-line driven tools for AD but oldcmp.exe is one of my favorites. You use oldcmp.exe to generate, and optionally take actions against, old computers and users.</p>
+
+<p>Here is a good sample script you can use and modify to suit your needs. It assumes that you are generating reports in a “Reports” directory residing with the oldcmp.exe executable. Pay special attention to the fact that we are excluding cluster names from the results (-excldn cluster01;cluster02). Cluster names are virtual and don’t ever really get logged on to. You will also have to change the ldap paths to match your organizational needs.</p>
+
+<pre>REM --- This script can report and move old Servers within AD</pre>
+
+<pre>REM --- MOVE OLD Servers (Password older than 90 days) ---</pre>
+
+<pre>REM - Find computer accounts with passwords older than 90 days</pre>
+
+<pre>REM - If you just want a report of old workstations run this</pre>
+
+<pre>oldcmp -report -nohtmlheader -file ".\Reports\old_servers.html" -llts -sort lltsAge -b "ou=Servers,ou=Computers,ou=North America,dc=corp,dc=contoso,dc=local"</pre>
+
+<pre>REM – Remove REM on next line to MOVE old servers to another OU and generate a report</pre>
+
+<pre>REM oldcmp -nohtmlheader -file ".\Reports\old_servers.html" -rsort LLTS -b "ou=Servers,ou=Computers,ou=North America,dc=corp,dc=contoso,dc=local" -move -newparent "ou=Computers,ou=Inactive Accounts,ou=North America,dc=corp,dc=contoso,dc=local" -nodc -norefer –unsafe –forreal</pre>
+
+<p>If you wanted to email the reports to some versioned email enabled sharepoint document libarary you <a href="http://www.blat.net/">can use blat.exe</a> in a batch file that looks like this:</p>
+
+<pre>@echo off</pre>
+
+<pre>blat - -body " " -to "ADmaintenance@sharepoint.internal" -f "adreport@na.corp.contoso" -s "Old Servers" -serverexchangeserver.na.corp.contoso -log blat.log -timestamp -attacht .\Reports\old_servers.html</pre>
+
+<p>&nbsp;</p>
+
+<p><a href="http://www.joeware.net/freetools/tools/oldcmp/index.htm">Get oldcmp.exe here.</a></p>
+
+<p>&nbsp;</p>
+
+<h2 id="microsoft-active-directory-topology-diagrammer">Microsoft Active Directory Topology Diagrammer</h2>
+
+<p>This is a handy tool to have if you are becoming familiar with a new forest. It will connect with a global catalog server or domain controller and collect information about the forest and visually map it out in a visio diagram. The diagrams are often a total mess initially but nothing that a bit of manual tweaking cannot resolve. As an added bonus it can also do some exchange mapping if you like (not really valid in Exchange 2010 though).</p>
+
+<p><a href="http://www.microsoft.com/download/en/details.aspx?id=13380">Get ADTD here.</a></p>
+
+<h2 id="quest-ad-pki-powershell-cmdlts">Quest AD-PKI Powershell Cmdlts</h2>
+
+<p>Although the included Microsoft AD cmdlts are fairly decent they never quite got to the level of usefulness as the Quest AD powershell cmdlts. If you have ever had to do mass updates or data retrieval from AD you know that the baked in command line programs Microsoft provides are available; ldifde.exe or csvde.exe. But these require the use of ldap filters to get any filtered information. Besides the fact that ldap filters are going the path of the do-do bird (well maybe not but it sure feels that way with exchange 2010 moving to opath filters) I find them to be needlessly complex. That and I’ve become quite enamored with powershell from using it so much for Exchange 2010 related tasks.</p>
+
+<p>Here is a list of powershell (both quest and non-quest specific) and command line snippets which you might find handy to have:</p>
+
+<p><strong><em>Get a list of all users and list their permission inheritance setting</em></strong></p>
+
+<pre>Get-QADUser -SizeLimit 0 | Select-Object Name,@{n='IncludeInheritablePermissions';e={!$_.DirectoryEntry.PSBase.ObjectSecurity.AreAccessRulesProtected}}</pre>
+
+<p><strong><em>Get a list of all users and list those without permission inheritance setting set</em></strong></p>
+
+<pre>Get-QADUser -SizeLimit 0 | Select-Object Name,@{n='IncludeInheritablePermissions';e={!$_.DirectoryEntry.PSBase.ObjectSecurity.AreAccessRulesProtected}} | Where {!$_.IncludeInheritablePermissions}</pre>
+
+<p><strong><em>Set Permission Inheritence on all Users</em></strong></p>
+
+<pre>Get-QADUser -SizeLimit 0 | Set-QADObjectSecurity -LockInheritance</pre>
+
+<p><strong><em>Get Computers in OU with Descriptions (use –Service to reference specific forests)</em></strong></p>
+
+<pre>Get-QADComputer -Service corp.contoso.local -SearchRoot "Ou=SomeOtherOU,OU=SomeOU,DC=corp,DC=contoso,DC=local" -Description "*" | Select-Object Name, Description | Export-Csv -NoTypeInformation C:\Temp\emea5_systems.csv</pre>
+
+<p><strong><em>Get Computers in OU, Parse Descriptions for User Names, and Try to Enumerate Logon ids.</em></strong></p>
+
+<p><strong><em>(Note: the -Service is used to get past a limitation of the qwest AD powershell commandlets. This is also rather slow)</em></strong></p>
+
+<pre>Get-QADComputer -Service corp.contoso.local -SearchRoot "Ou=SomeOtherOU,OU=SomeOU,DC=corp,DC=contoso,DC=local"  | Where {$_.Description} | Select-Object Name,Description,@{name="SAMname";expression={(get-qaduser -Service  corp.contoso.local -Name $_.Description).SAMAccountName}},@{name="NewName";expression={(get-qaduser -Service  corp.contoso.local -Name $_.Description).PrimarySMTPAddressPrefix}} | Export-Csv "c:\Temp\computer-logons.csv" -NoTypeInformation</pre>
+
+<p><strong><em>Set 2008 R2 AD forest mode</em></strong></p>
+
+<pre>Import-Module Active Directory</pre>
+
+<pre>Set-ADForestMode domain.tld  Windows2008R2Forest</pre>
+
+<p>&nbsp;</p>
+
+<p><strong><em>Enable Recycle Bin in 2008 R2</em></strong></p>
+
+<pre>Enable-ADOptionalFeature –Identity 'CN=Recycle Bin Feature,CN=Optional Features,CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration, DC=corp,DC=contoso, DC=local' -Scope ForestOrConfigurationSet -Target 'corp.contoso.local'</pre>
+
+<p>&nbsp;</p>
+
+<p><strong><em>Restore Deleted AD Object</em></strong></p>
+
+<pre>Get-ADObject -Filter {displayName -eq "Some user"} -IncludeDeletedObjects | Restore-ADObject</pre>
+
+<p>&nbsp;</p>
+
+<p><strong><em>Get All Group Memberships For A User</em></strong></p>
+
+<pre>$sUser= Get-QADUser -Service "corp.contoso.local" test.user; foreach ($grp in $sUser.memberof) {Get-QADGroup $grp | select GroupName,Domain,GroupScope,GroupType};</pre>
+
+<p><strong><em>Assign a CSV of User Properties to Users Skipping Empty Fields</em></strong></p>
+
+<pre>foreach ( $record in (Import-Csv c:\update.csv)) {</pre>
+
+<pre>  $command = "Set-QADUser $($record.samAccountName)"</pre>
+
+<pre>  foreach ( $attr in</pre>
+
+<pre>   (Get-Member -InputObject $record -MemberType NoteProperty) ) {</pre>
+
+<pre>     $value = $record.($attr.Name)</pre>
+
+<pre>     if ( $value -and ( $attr.Name -ne 'samAccountName' ) ) {</pre>
+
+<pre>      $command += " -$($attr.Name) $value"</pre>
+
+<pre>     }</pre>
+
+<pre>  }</pre>
+
+<pre>  Invoke-Expression $command</pre>
+
+<pre>}</pre>
+
+<p>&nbsp;</p>
+
+<p><a href="http://www.quest.com/powershell/activeroles-server.aspx">Get Quest AD-PKI Cmdlets here.</a></p>
+
+<p>&nbsp;</p>
+
+<h2 id="powergui">PowerGui</h2>
+
+<p>If you have already installed the Quest AD-PKI Cmdlets then you may as well install PowerGui as well as it can use them for pulling up all kinds of info in your environment and automatically generate scripts for you as well! Just make sure to select the AD powerpack option when installing PowerGUI.</p>
+
+<p><a href="http://powergui.org/index.jspa">Download PowerGUI here.</a></p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/2008-r2">2008 R2</a>
+                
+                    <a href="/tags/active-directory">Active Directory</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+                    <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

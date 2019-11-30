@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AST on Zachary Loeber</title>
+    <link>https://dev.zacharyloeber.com/tags/ast/</link>
+    <description>Recent content in AST on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 27 Jul 2015 16:27:55 +0000</lastBuildDate>
+    
+	<atom:link href="https://dev.zacharyloeber.com/tags/ast/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PowerShell: ASTExplorer</title>
+      <link>https://dev.zacharyloeber.com/blog/2015/07/27/powershell-astexplorer/</link>
+      <pubDate>Mon, 27 Jul 2015 16:27:55 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/blog/2015/07/27/powershell-astexplorer/</guid>
+      <description>&lt;p&gt;So I&amp;#8217;ve been working with PowerShell and abstract syntax trees as of late. Here is a tool I wish I had at my disposal when i started with all this. It takes your script, loads all the AST elements into a treeview, lists properties as each AST element is selected in the treeview, and highlights the portion of the script the element represents.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

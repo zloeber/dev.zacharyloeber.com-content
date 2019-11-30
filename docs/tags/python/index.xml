@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Zachary Loeber</title>
+    <link>https://dev.zacharyloeber.com/tags/python/</link>
+    <description>Recent content in Python on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 03 May 2018 02:29:53 +0000</lastBuildDate>
+    
+	<atom:link href="https://dev.zacharyloeber.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Powershell To Python Notes From The Field</title>
+      <link>https://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/</link>
+      <pubDate>Thu, 03 May 2018 02:29:53 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/</guid>
+      <description>Have a PowerShell background and want to learn Python? Here is a good kickstart article to point you in the right direction.</description>
+    </item>
+    
+  </channel>
+</rss>

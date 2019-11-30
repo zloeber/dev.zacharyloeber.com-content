@@ -1,0 +1,341 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Microsoft Unified Access Gateway 2010 Notes | Zachary Loeber</title>
+        <meta name="description" content="Microsoft Unified Access Gateway 2010 Notes - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Microsoft Unified Access Gateway 2010 Notes">
+        <meta itemprop="description" content="Microsoft Unified Access Gateway 2010 Notes - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Microsoft Unified Access Gateway 2010 Notes">
+        <meta property="og:description" content="Microsoft Unified Access Gateway 2010 Notes - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://dev.zacharyloeber.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://dev.zacharyloeber.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://dev.zacharyloeber.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/">Microsoft Unified Access Gateway 2010 Notes</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2010-08-02</span>
+            
+        
+
+        
+            <span class="readingTime">6 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+                    <a href="/categories/unified-access-gateway">Unified Access Gateway</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>If you are new to the Microsoft Unified Access Gateway then you really should know some of these things I ran into while trying to get my array setup and running smoothly. Sure, to find my single post among the masses is probably not going to happen, but if you do find it before you start your endeavor then I promise you will be saved time and frustration. The first major frustration, the installation&#8230;.</p>
+
+<h3 id="1-install-uag-2010-from-rdp">1.) Install UAG 2010 from RDP:</h3>
+
+<p>Yup, you read that right, just do it and you will save yourself some frustration right form the start. If you install from a console (in my case a slow vmware consol) then some of the automatic rules which might help you out never get put in place and you have to do them manually. The remote desktop is an admins window to their responsibilities. If you install UAG 2010 from it, the rules that allow you to access your new reverse proxy are created automatically. Otherwise you have to manually add the rules inside of the Threat Management Gateway console before you can have your remote bliss.</p>
+
+<h3 id="2-get-all-servers-to-the-same-update-level-then-create-your-array">2.) Get all servers to the same update level..then create your array:</h3>
+
+<p>This seems logical enough but I thought that the Unified Access Gateway, a pinnacle of technology from Microsoft, would be able to handle (and possibly even sync updates) between members of the same array. WRONG! That does not happen. Get them all to update 1 (at the time of this writing) then get to building your array.</p>
+
+<h3 id="3-speaking-of-updates-8230-msp-files-need-to-run-as-admin">3.) Speaking of updates&#8230;.msp files need to run as admin:</h3>
+
+<p>This is more of a general windows 2008 tip. Yeah, so a MSP file literally stands for an &#8220;MSI Patch&#8221; which is written long hand as &#8220;MicroSoft Installer Patch&#8221;.. or something like that. So you would think that in 2008 (R2) you could right click and run as an administrator to install Update 1 for UAG. Nope. To install this (and other install files that are giving you problems for that matter), right click on cmd.exe in your start menu and choose to &#8220;Run as Administrator&#8221;. Then CD to the place where the MSP is located and run from there. I&#8217;ve had to tell this to countless of my coworkers less versed in Microsoft&#8217;s strange logic and it has amazed them all. I know that there are registry entries to accomplish this same goal, in fact I have such a reg hack for HTA files somewhere in my collection that I&#8217;ll have to dig up and post some time.</p>
+
+<h3 id="3-know-your-routes-know-your-ip-8217-s">3.) Know your routes, know your IP&#8217;s:</h3>
+
+<p>This seems logical as well. But if you don&#8217;t think you can get the courage up to just put it all in a document for the next poor soul who has to administer the damn thing then please at least use this <a href="/wp-content/uploads/2010/08/UAG_Workbook_Blank1.xlsx">UAG_Workbook</a> (for a two server array, copy and paste worthy to any number of nodes of course).</p>
+
+<h3 id="4-requesting-internal-certificates-for-testing-some-major-caveats">4.) Requesting internal certificates for testing? Some major caveats:</h3>
+
+<p>&#8211; Your certificate private keys will need to be requested as exportable if they are part of an array. If it does not have that little key in the upper left corner of it&#8217;s icon in the local machine certificate store within the mmc console you did something wrong.</p>
+
+<p>&#8211; Although the certificates should sync automatically in an array, it never hurts to double check if it was actually done or not. I found UAG refused to sync a cert a few times. I am not certain if it was me or UAG but after a manual export of the cert <strong>(with the private key!)</strong> from one server and import into another things started working as they should.</p>
+
+<p>&#8211; If you want to test serving internal certificates through your external UAG interfaces you will need to hack the registry to make it happen. Copy and paste the following into a .reg file to work this magic. Apply to each server and reboot.</p>
+
+<p><code>Windows Registry Editor Version 5.00&lt;br /&gt; [HKEY_LOCAL_MACHINE\SOFTWARE\WhaleCom\e-Gap\von\UrlFilter\Comm\SSL]&lt;br /&gt; &quot;ValidateRwsCert&quot;=dword:00000000&lt;br /&gt; &quot;ValidateRwsCertCRL&quot;=dword:00000000&lt;br /&gt;</code></p>
+
+<p>&#8211; If you want to request a certificate from the UAG server to an internal PKI you will want to do so from the command line and with the certreq -submit -rpc command (basically request without using rpc as TMG has some filters and such in place locally that will prevent it from working.</p>
+
+<p>First create a file like the following and save as ssl.inf<br />
+<code>[Version]&lt;br /&gt; Signature=&quot;$Windows NT$&quot;&lt;br /&gt; [NewRequest]&lt;br /&gt; Subject = &quot;CN=ext.contsoso.com&quot;   ; For a wildcard use &quot;CN=*.CONTOSO.COM&quot; for example&lt;br /&gt; ; For an empty subject use the following line instead&lt;br /&gt; ; Subject =&lt;br /&gt; Exportable = TRUE          ; Private key is not exportable&lt;br /&gt; KeyLength = 2048                    ; Common key sizes: 512, 1024, 2048, 4096, 8192, 16384&lt;br /&gt; KeySpec = 1                           ; AT_KEYEXCHANGE&lt;br /&gt; KeyUsage = 0xA0                     ; Digital Signature, Key Encipherment&lt;br /&gt; MachineKeySet = True              ; The key belongs to the local computer account&lt;br /&gt; ProviderName = &quot;Microsoft RSA SChannel Cryptographic Provider&quot;&lt;br /&gt; ProviderType = 12&lt;br /&gt; SMIME = FALSE&lt;br /&gt; RequestType = CMC&lt;br /&gt; ; At least certreq.exe shipping with Windows Vista/Server 2008 is required to interpret the [Strings] and [Extensions] sections below&lt;br /&gt; [Strings]&lt;br /&gt; szOID_SUBJECT_ALT_NAME2 = &quot;2.5.29.17&quot;&lt;br /&gt; szOID_ENHANCED_KEY_USAGE = &quot;2.5.29.37&quot;&lt;br /&gt; szOID_PKIX_KP_SERVER_AUTH = &quot;1.3.6.1.5.5.7.3.1&quot;&lt;br /&gt; szOID_PKIX_KP_CLIENT_AUTH = &quot;1.3.6.1.5.5.7.3.2&quot;&lt;br /&gt; ; These will be your Subject alternative names&lt;br /&gt; %szOID_SUBJECT_ALT_NAME2% = &quot;{text}dns=ext.contsoso.com&amp;dns=san1.ext.contsoso.com&amp;dns=san2.ext.contsoso.com&quot;&lt;br /&gt; %szOID_ENHANCED_KEY_USAGE% = &quot;{text}%szOID_PKIX_KP_SERVER_AUTH%,%szOID_PKIX_KP_CLIENT_AUTH%&quot;&lt;br /&gt; [RequestAttributes]&lt;br /&gt; CertificateTemplate = CertificateWebTemplateWithoutSpaces ;&quot;Certificate Web Template Without Spaces&quot;</code><br />
+For the above file run the following commands to get and import your certificate:<br />
+<code>certreq -new ssl.inf ssl.req&lt;br /&gt; certreq -submit -rpc ssl.req ssl.cer&lt;br /&gt; certreq -accept -machine ssl.cer</code></p>
+
+<h3 id="5-if-you-have-a-custom-ou-structure-for-ad-you-will-have-to-customize-your-base-search-root">5.) If you have a custom OU structure for AD you will have to customize your base search root:</h3>
+
+<p>UAG will try to be intelligent and select a base DN that makes sense to it. But if you don&#8217;t create all your users in the Users OU that doesn&#8217;t help much. So change your base DN (search root) on a new authentication server being configured to the correct location where you will be authenticating users from.</p>
+
+<h3 id="6-you-may-have-to-restart-iis-after-activation">6.) You may have to restart IIS after activation:</h3>
+
+<p>At least I had to do so. It would even show in the web monitor that the nodes in my array were synced and all ready to start serving up the goodness. But I&#8217;d find that one or even both of the load balanced nodes would not reflect the changes I had made until IIS was restarted. Weird.</p>
+    
+</div>
+
+    
+<div class="footer no-tags">
+
+
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

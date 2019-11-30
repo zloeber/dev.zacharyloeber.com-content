@@ -1,0 +1,377 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Assessing Like A Microsoft Technician | Zachary Loeber</title>
+        <meta name="description" content="Assessing Like A Microsoft Technician - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Assessing Like A Microsoft Technician">
+        <meta itemprop="description" content="Assessing Like A Microsoft Technician - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Assessing Like A Microsoft Technician">
+        <meta property="og:description" content="Assessing Like A Microsoft Technician - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://dev.zacharyloeber.com/blog/2012/03/09/assessing-like-a-microsoft-technician/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2012/03/09/assessing-like-a-microsoft-technician/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2012/03/09/assessing-like-a-microsoft-technician/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://dev.zacharyloeber.com/blog/2012/03/09/assessing-like-a-microsoft-technician/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://dev.zacharyloeber.com/blog/2012/03/09/assessing-like-a-microsoft-technician/">Assessing Like A Microsoft Technician</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2012-03-10</span>
+            
+        
+
+        
+            <span class="readingTime">5 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <h1 id="troubleshooting-like-a-microsoft-technician">Troubleshooting Like A Microsoft Technician</h1>
+
+<p>I have been doing more and more site assessments for Active Directory, Exchange, Lync, and VMware. As such, I’ve been slowly refining the toolset that I use to gather data and troubleshoot existing environment issues. Here is a list of site assessment tools I’m finding that I regularly return to for rapid analysis or information gathering at a site. All of these tools are free.</p>
+
+<p>I should probably state that if you don’t know the concepts and best practices around a technology then any tool used on it loses much of its purpose. After all, a hammer in the hands of a skilled carpenter may be used to build a house whereas that same hammer in the hands of a baboon may be used bust open a skull.</p>
+
+<h2 id="windows-environment-utilities">Windows Environment Utilities</h2>
+
+<h3 id="active-directory-risk-and-health-assessment-adrap-scoping-tool">Active Directory Risk And Health Assessment (ADRAP) – Scoping Tool</h3>
+
+<p>This scoping tool is used by Microsoft engineers prior to having a live engineer assess an environment. Any errors which crop up could help forewarn of future issues you may have during your assessment. It also produces a nice HTML formatted table of all DCs in a particular forest (with GC status and FSMO roles) for your deliverable report.</p>
+
+<p><a href="http://www.microsoft.com/download/en/details.aspx?id=19464">Download ADRAP – Scoping Tool Here</a></p>
+
+<h3 id="ms-product-support-reports-mps">MS Product Support Reports (MPS)</h3>
+
+<p>This is what a Microsoft technician may have you run to collect comprehensive information about your environment if you were to call their support hotline. The MPS tool is actually a large list of customized VBScript, powershell, and utility binaries which you can use for yourself if you know where to find them. Basically start the program up then look for its temporary file location <a href="http://www.verboon.info/index.php/2011/07/get-the-latest-version-of-the-gpotool-exe/">as described here</a>. Then copy it elsewhere to keep for yourself! I keep a copy of both the 32 and 64 bit toolkit with me.</p>
+
+<p>One of the tools in this kit I use regularly is the Exchdump.exe binary. Using this with the /ALL switch will generate a pretty lengthily report of many aspects of an exchange <sup>2003</sup>&frasl;<sub>2007</sub> environment with notes of possible issues.  (Also, ExchInfo.vbs can be used for just Exchange <sup>2000</sup>&frasl;<sub>2003</sub> environments).</p>
+
+<p>If you are feeling frisky and want to hack at some powershell aspects of MPS explore the numerous weirdly named folders under  tools/packages (ie. C:\temp\mpsreports\tools\packages\A5ECA148-20AD-4ed5-AF77-9AAA72350884)</p>
+
+<p>Some of interest to you might be:</p>
+
+<p>A5ECA148-20AD-4ed5-AF77-9AAA72350884 – GetDirectoryServiceInfo.ps1</p>
+
+<p>18A69DCA-3560-42bd-908C-5EC9C9D87209 – GetExchangeInfo.ps1</p>
+
+<p><a href="http://www.microsoft.com/download/en/details.aspx?id=24745">Download MPS Reports Here</a></p>
+
+<h3 id="ms-product-support-reports-viewer">MS Product Support Reports Viewer</h3>
+
+<p>This is what a Microsoft technician may use to analyze the results of the previously run MPS utility. I’ve not had 100% success rate utilizing them both together, but when they do work together the results are pretty nice. You get color coded logs of several of the information gathering scripts included in MPS.  If I have limited access to an environment or am working on a workstation related issue I may have someone run the MPS utility and upload the resulting CAB file to me. I’ve also gotten into the habit of simply running the MPS utility and saving the resulting CAB for any other assessment I do (in case it is able to quickly find some issue that I was unable to locate)</p>
+
+<p><a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18325">Download MPS Reports Viewer Here</a></p>
+
+<h3 id="microsoft-assessment-and-planning-map-toolkit">Microsoft Assessment And Planning (MAP) Toolkit</h3>
+
+<p>The MAP Toolkit can do many things. Here is the description as stated on the MAP Toolkit homepage:</p>
+
+<p>“The Microsoft Assessment and Planning (MAP) Toolkit is an agentless inventory, assessment, and reporting tool that can securely assess IT environments for various platform migrations—including Windows 7, Office 2010 and 365, Windows Server 2008 R2, Hyper-V, Windows Azure, and Microsoft Private Cloud Fast Track”</p>
+
+<p>What that doesn’t state is that MAP can collect AD and Exchange information and generate nice excel output with connected devices. The MAP Toolkit is the Microsoft version of the VMware Capacity Analyzer tool but for more than just planning out virtualization road maps.</p>
+
+<p><a href="http://technet.microsoft.com/en-us/solutionaccelerators/dd537566">Download MAP Toolkit here</a></p>
+
+<h3 id="fixit-center-pro-beta">Fixit Center Pro (Beta)</h3>
+
+<p>Looks like this has been discontinued..</p>
+
+<p><del>Microsoft provides a beta service for collecting data about an environment and can automatically analyze and offer resolution recommendations on several key product offerings. This free service is called Fixit Center Pro (beta) and can be accessed with your Live ID <a href="https://wc.ficp.support.microsoft.com/Dashboards/Main/SelfHelpCase/Create?showReturn=True">at this website.</a></del></p>
+
+<p><del>Some of the Analysis packages you can run in Fixit Center Pro include:</del></p>
+
+<ul>
+<li><del>Directory Services – Windows 7 and Server 2008 R2</del></li>
+<li><del>Hyper-V – Windows Server 2008 R2</del></li>
+<li><del>Exchange Server 2007 SP3 and Exchange Server 2010 Troubleshooter for Windows 2008 R2</del></li>
+<li><del>Lync Server 2010 Diagnostics Package for Windows 2008 R2</del></li>
+<li><del>Lync 2010 and Microsoft Office Communicator 2007 R2 Basic Diagnostics Package</del></li>
+<li><del>Performance &#8211; Windows 7 and Server 2008 R2</del></li>
+</ul>
+
+<p><del>There are also some basic issue-tracking features in the “Work Items” area that you can store notes and links that pertain to current issues you might be researching. If you are not organizing your notes in one of the several great options at your disposal (I’m kind of a OneNote/Tomboy fan myself) then you can use this to give you a quick and easy scratchpad area to track some of those nagging issues you may end up researching.</del></p>
+
+<p><del>This site is a bit new to me so I don’t have as much information on its effectiveness as I’d like. The first site I had it analyze I also knew to be “clean” and it did say as much.</del></p>
+
+<p><del><a href="https://wc.ficp.support.microsoft.com/Dashboards/Main/SelfHelpCase/Create?showReturn=True">Access Fixit Center Pro (Beta) Here</a></del></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This is far from being the end-all of my list of tools I utilize on a regular basis. I’ve not even mentioned any of the custom (or public) scripts I’ve come to rely upon. Nor have I discussed what common issues to look for in Exchange/AD.  Coming soon will be my list of tools utilized for VMWare assessments.</p>
+    
+</div>
+
+    
+<div class="footer no-tags">
+
+
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (52)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

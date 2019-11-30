@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Containers on Zachary Loeber</title>
+    <link>https://dev.zacharyloeber.com/tags/containers/</link>
+    <description>Recent content in Containers on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 28 Sep 2018 16:49:46 +0000</lastBuildDate>
+    
+	<atom:link href="https://dev.zacharyloeber.com/tags/containers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DevOps – Automating Kubernetes Deployments</title>
+      <link>https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</link>
+      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</guid>
+      <description>If you are deploying your own Kubernetes clusters you already know that:
+ Kubernetes is hard  But there is hope!
+There are a few great projects to keep an eye on in this space. I&amp;#8217;ve covered some of them in an article you can read on the Lumen.
+Cheers!</description>
+    </item>
+    
+  </channel>
+</rss>
