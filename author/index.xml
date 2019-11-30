@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Author on Zachary Loeber</title>
-    <link>http://localhost/author/</link>
+    <link>https://dev.zacharyloeber.com/author/</link>
     <description>Recent content in Author on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 10 Dec 2018 22:51:46 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost/author/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/author/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Zachary Loeber</title>
-      <link>http://localhost/author/zachary-loeber/</link>
+      <link>https://dev.zacharyloeber.com/author/zachary-loeber/</link>
       <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
       
-      <guid>http://localhost/author/zachary-loeber/</guid>
+      <guid>https://dev.zacharyloeber.com/author/zachary-loeber/</guid>
       <description></description>
     </item>
     

@@ -1,20 +1,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zachary Loeber</title>
-    <link>http://localhost/</link>
+    <link>https://dev.zacharyloeber.com/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 10 Dec 2018 22:51:46 +0000</lastBuildDate>
     
-        <atom:link href="http://localhost/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dev.zacharyloeber.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Old-articles</title>
-      <link>http://localhost/old-articles/</link>
+      <link>https://dev.zacharyloeber.com/old-articles/</link>
       <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
       
-      <guid>http://localhost/old-articles/</guid>
+      <guid>https://dev.zacharyloeber.com/old-articles/</guid>
       <description></description>
     </item>
     
@@ -29,10 +29,10 @@
     
     <item>
       <title>Posts</title>
-      <link>http://localhost/posts/</link>
+      <link>https://dev.zacharyloeber.com/posts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost/posts/</guid>
+      <guid>https://dev.zacharyloeber.com/posts/</guid>
       <description></description>
     </item>
     

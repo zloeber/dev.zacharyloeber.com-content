@@ -2,740 +2,740 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Zachary Loeber</title>
-    <link>http://localhost/tags/</link>
+    <link>https://dev.zacharyloeber.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 10 Dec 2018 22:51:46 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>DevOps</title>
-      <link>http://localhost/tags/devops/</link>
+      <link>https://dev.zacharyloeber.com/tags/devops/</link>
       <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/devops/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>http://localhost/tags/linux/</link>
+      <link>https://dev.zacharyloeber.com/tags/linux/</link>
       <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/linux/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>AWS</title>
-      <link>http://localhost/tags/aws/</link>
+      <link>https://dev.zacharyloeber.com/tags/aws/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/aws/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Azure</title>
-      <link>http://localhost/tags/azure/</link>
+      <link>https://dev.zacharyloeber.com/tags/azure/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/azure/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/azure/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Containers</title>
-      <link>http://localhost/tags/containers/</link>
+      <link>https://dev.zacharyloeber.com/tags/containers/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/containers/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/containers/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>http://localhost/tags/docker/</link>
+      <link>https://dev.zacharyloeber.com/tags/docker/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/docker/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kubernetes</title>
-      <link>http://localhost/tags/kubernetes/</link>
+      <link>https://dev.zacharyloeber.com/tags/kubernetes/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/kubernetes/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Microservices</title>
-      <link>http://localhost/tags/microservices/</link>
+      <link>https://dev.zacharyloeber.com/tags/microservices/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/microservices/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/microservices/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Scripting</title>
-      <link>http://localhost/tags/scripting/</link>
+      <link>https://dev.zacharyloeber.com/tags/scripting/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/scripting/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/scripting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Security</title>
-      <link>http://localhost/tags/security/</link>
+      <link>https://dev.zacharyloeber.com/tags/security/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/security/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sysadmin</title>
-      <link>http://localhost/tags/sysadmin/</link>
+      <link>https://dev.zacharyloeber.com/tags/sysadmin/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/sysadmin/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/sysadmin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>System Administration</title>
-      <link>http://localhost/tags/system-administration/</link>
+      <link>https://dev.zacharyloeber.com/tags/system-administration/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/system-administration/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/system-administration/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Powershell</title>
-      <link>http://localhost/tags/powershell/</link>
+      <link>https://dev.zacharyloeber.com/tags/powershell/</link>
       <pubDate>Thu, 03 May 2018 02:29:53 +0000</pubDate>
       
-      <guid>http://localhost/tags/powershell/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/powershell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>http://localhost/tags/python/</link>
+      <link>https://dev.zacharyloeber.com/tags/python/</link>
       <pubDate>Thu, 03 May 2018 02:29:53 +0000</pubDate>
       
-      <guid>http://localhost/tags/python/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SPR</title>
-      <link>http://localhost/tags/spr/</link>
+      <link>https://dev.zacharyloeber.com/tags/spr/</link>
       <pubDate>Mon, 26 Mar 2018 13:49:26 +0000</pubDate>
       
-      <guid>http://localhost/tags/spr/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/spr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>WSL</title>
-      <link>http://localhost/tags/wsl/</link>
+      <link>https://dev.zacharyloeber.com/tags/wsl/</link>
       <pubDate>Mon, 26 Mar 2018 13:49:26 +0000</pubDate>
       
-      <guid>http://localhost/tags/wsl/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/wsl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Office 365</title>
-      <link>http://localhost/tags/office-365/</link>
+      <link>https://dev.zacharyloeber.com/tags/office-365/</link>
       <pubDate>Sun, 04 Feb 2018 17:36:57 +0000</pubDate>
       
-      <guid>http://localhost/tags/office-365/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/office-365/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Powershell Script</title>
-      <link>http://localhost/tags/powershell-script/</link>
+      <link>https://dev.zacharyloeber.com/tags/powershell-script/</link>
       <pubDate>Sun, 04 Feb 2018 17:36:57 +0000</pubDate>
       
-      <guid>http://localhost/tags/powershell-script/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/powershell-script/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cloud PBX</title>
-      <link>http://localhost/tags/cloud-pbx/</link>
+      <link>https://dev.zacharyloeber.com/tags/cloud-pbx/</link>
       <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
       
-      <guid>http://localhost/tags/cloud-pbx/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/cloud-pbx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Polycom</title>
-      <link>http://localhost/tags/polycom/</link>
+      <link>https://dev.zacharyloeber.com/tags/polycom/</link>
       <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
       
-      <guid>http://localhost/tags/polycom/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/polycom/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SIP</title>
-      <link>http://localhost/tags/sip/</link>
+      <link>https://dev.zacharyloeber.com/tags/sip/</link>
       <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
       
-      <guid>http://localhost/tags/sip/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/sip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Skype For Business</title>
-      <link>http://localhost/tags/skype-for-business/</link>
+      <link>https://dev.zacharyloeber.com/tags/skype-for-business/</link>
       <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
       
-      <guid>http://localhost/tags/skype-for-business/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/skype-for-business/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VVX</title>
-      <link>http://localhost/tags/vvx/</link>
+      <link>https://dev.zacharyloeber.com/tags/vvx/</link>
       <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
       
-      <guid>http://localhost/tags/vvx/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/vvx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Microsoft</title>
-      <link>http://localhost/tags/microsoft/</link>
+      <link>https://dev.zacharyloeber.com/tags/microsoft/</link>
       <pubDate>Wed, 05 Jul 2017 01:29:53 +0000</pubDate>
       
-      <guid>http://localhost/tags/microsoft/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/microsoft/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Windows</title>
-      <link>http://localhost/tags/windows/</link>
+      <link>https://dev.zacharyloeber.com/tags/windows/</link>
       <pubDate>Mon, 15 May 2017 17:49:48 +0000</pubDate>
       
-      <guid>http://localhost/tags/windows/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Azure ARM</title>
-      <link>http://localhost/tags/azure-arm/</link>
+      <link>https://dev.zacharyloeber.com/tags/azure-arm/</link>
       <pubDate>Tue, 31 Jan 2017 03:23:32 +0000</pubDate>
       
-      <guid>http://localhost/tags/azure-arm/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/azure-arm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>network administration</title>
-      <link>http://localhost/tags/network-administration/</link>
+      <link>https://dev.zacharyloeber.com/tags/network-administration/</link>
       <pubDate>Tue, 31 Jan 2017 03:23:32 +0000</pubDate>
       
-      <guid>http://localhost/tags/network-administration/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/network-administration/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Networking</title>
-      <link>http://localhost/tags/networking/</link>
+      <link>https://dev.zacharyloeber.com/tags/networking/</link>
       <pubDate>Tue, 31 Jan 2017 03:23:32 +0000</pubDate>
       
-      <guid>http://localhost/tags/networking/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/networking/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Active Directory</title>
-      <link>http://localhost/tags/active-directory/</link>
+      <link>https://dev.zacharyloeber.com/tags/active-directory/</link>
       <pubDate>Thu, 13 Oct 2016 19:03:55 +0000</pubDate>
       
-      <guid>http://localhost/tags/active-directory/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/active-directory/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OSS</title>
-      <link>http://localhost/tags/oss/</link>
+      <link>https://dev.zacharyloeber.com/tags/oss/</link>
       <pubDate>Sun, 21 Aug 2016 03:41:03 +0000</pubDate>
       
-      <guid>http://localhost/tags/oss/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/oss/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OSSPosh</title>
-      <link>http://localhost/tags/ossposh/</link>
+      <link>https://dev.zacharyloeber.com/tags/ossposh/</link>
       <pubDate>Sun, 21 Aug 2016 03:41:03 +0000</pubDate>
       
-      <guid>http://localhost/tags/ossposh/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/ossposh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Exchange 2013</title>
-      <link>http://localhost/tags/exchange-2013/</link>
+      <link>https://dev.zacharyloeber.com/tags/exchange-2013/</link>
       <pubDate>Tue, 19 Apr 2016 21:25:58 +0000</pubDate>
       
-      <guid>http://localhost/tags/exchange-2013/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/exchange-2013/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Exchange Online</title>
-      <link>http://localhost/tags/exchange-online/</link>
+      <link>https://dev.zacharyloeber.com/tags/exchange-online/</link>
       <pubDate>Tue, 19 Apr 2016 21:25:58 +0000</pubDate>
       
-      <guid>http://localhost/tags/exchange-online/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/exchange-online/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hybrid</title>
-      <link>http://localhost/tags/hybrid/</link>
+      <link>https://dev.zacharyloeber.com/tags/hybrid/</link>
       <pubDate>Tue, 19 Apr 2016 21:25:58 +0000</pubDate>
       
-      <guid>http://localhost/tags/hybrid/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/hybrid/</guid>
       <description></description>
     </item>
     
     <item>
       <title>o365</title>
-      <link>http://localhost/tags/o365/</link>
+      <link>https://dev.zacharyloeber.com/tags/o365/</link>
       <pubDate>Tue, 19 Apr 2016 21:25:58 +0000</pubDate>
       
-      <guid>http://localhost/tags/o365/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/o365/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Exchange 2010</title>
-      <link>http://localhost/tags/exchange-2010/</link>
+      <link>https://dev.zacharyloeber.com/tags/exchange-2010/</link>
       <pubDate>Fri, 25 Sep 2015 01:41:25 +0000</pubDate>
       
-      <guid>http://localhost/tags/exchange-2010/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/exchange-2010/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lync 2013</title>
-      <link>http://localhost/tags/lync-2013/</link>
+      <link>https://dev.zacharyloeber.com/tags/lync-2013/</link>
       <pubDate>Sat, 12 Sep 2015 20:05:26 +0000</pubDate>
       
-      <guid>http://localhost/tags/lync-2013/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/lync-2013/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lync Server 2013</title>
-      <link>http://localhost/tags/lync-server-2013/</link>
+      <link>https://dev.zacharyloeber.com/tags/lync-server-2013/</link>
       <pubDate>Sat, 12 Sep 2015 20:05:26 +0000</pubDate>
       
-      <guid>http://localhost/tags/lync-server-2013/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/lync-server-2013/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lync Voice</title>
-      <link>http://localhost/tags/lync-voice/</link>
+      <link>https://dev.zacharyloeber.com/tags/lync-voice/</link>
       <pubDate>Sat, 12 Sep 2015 20:05:26 +0000</pubDate>
       
-      <guid>http://localhost/tags/lync-voice/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/lync-voice/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PSC</title>
-      <link>http://localhost/tags/psc/</link>
+      <link>https://dev.zacharyloeber.com/tags/psc/</link>
       <pubDate>Sat, 12 Sep 2015 20:05:26 +0000</pubDate>
       
-      <guid>http://localhost/tags/psc/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/psc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Enterprise Voice</title>
-      <link>http://localhost/tags/enterprise-voice/</link>
+      <link>https://dev.zacharyloeber.com/tags/enterprise-voice/</link>
       <pubDate>Tue, 25 Aug 2015 07:47:39 +0000</pubDate>
       
-      <guid>http://localhost/tags/enterprise-voice/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/enterprise-voice/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PBX</title>
-      <link>http://localhost/tags/pbx/</link>
+      <link>https://dev.zacharyloeber.com/tags/pbx/</link>
       <pubDate>Tue, 25 Aug 2015 07:47:39 +0000</pubDate>
       
-      <guid>http://localhost/tags/pbx/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/pbx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VoIP</title>
-      <link>http://localhost/tags/voip/</link>
+      <link>https://dev.zacharyloeber.com/tags/voip/</link>
       <pubDate>Tue, 25 Aug 2015 07:47:39 +0000</pubDate>
       
-      <guid>http://localhost/tags/voip/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/voip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>AST</title>
-      <link>http://localhost/tags/ast/</link>
+      <link>https://dev.zacharyloeber.com/tags/ast/</link>
       <pubDate>Mon, 27 Jul 2015 16:27:55 +0000</pubDate>
       
-      <guid>http://localhost/tags/ast/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/ast/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lync</title>
-      <link>http://localhost/tags/lync/</link>
+      <link>https://dev.zacharyloeber.com/tags/lync/</link>
       <pubDate>Fri, 01 May 2015 19:00:48 +0000</pubDate>
       
-      <guid>http://localhost/tags/lync/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/lync/</guid>
       <description></description>
     </item>
     
     <item>
       <title>S4B</title>
-      <link>http://localhost/tags/s4b/</link>
+      <link>https://dev.zacharyloeber.com/tags/s4b/</link>
       <pubDate>Fri, 01 May 2015 19:00:48 +0000</pubDate>
       
-      <guid>http://localhost/tags/s4b/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/s4b/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Book Review</title>
-      <link>http://localhost/tags/book-review/</link>
+      <link>https://dev.zacharyloeber.com/tags/book-review/</link>
       <pubDate>Sun, 15 Mar 2015 01:51:53 +0000</pubDate>
       
-      <guid>http://localhost/tags/book-review/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/book-review/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lync 2010</title>
-      <link>http://localhost/tags/lync-2010/</link>
+      <link>https://dev.zacharyloeber.com/tags/lync-2010/</link>
       <pubDate>Tue, 13 Jan 2015 02:37:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/lync-2010/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/lync-2010/</guid>
       <description></description>
     </item>
     
     <item>
       <title>diagram</title>
-      <link>http://localhost/tags/diagram/</link>
+      <link>https://dev.zacharyloeber.com/tags/diagram/</link>
       <pubDate>Tue, 02 Dec 2014 18:11:31 +0000</pubDate>
       
-      <guid>http://localhost/tags/diagram/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/diagram/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Microsoft Lync Server 2013</title>
-      <link>http://localhost/tags/microsoft-lync-server-2013/</link>
+      <link>https://dev.zacharyloeber.com/tags/microsoft-lync-server-2013/</link>
       <pubDate>Tue, 02 Dec 2014 18:11:31 +0000</pubDate>
       
-      <guid>http://localhost/tags/microsoft-lync-server-2013/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/microsoft-lync-server-2013/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Exchange</title>
-      <link>http://localhost/tags/exchange/</link>
+      <link>https://dev.zacharyloeber.com/tags/exchange/</link>
       <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
       
-      <guid>http://localhost/tags/exchange/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/exchange/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Receive Connector</title>
-      <link>http://localhost/tags/receive-connector/</link>
+      <link>https://dev.zacharyloeber.com/tags/receive-connector/</link>
       <pubDate>Mon, 07 Jul 2014 03:25:13 +0000</pubDate>
       
-      <guid>http://localhost/tags/receive-connector/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/receive-connector/</guid>
       <description></description>
     </item>
     
     <item>
       <title>QoS</title>
-      <link>http://localhost/tags/qos/</link>
+      <link>https://dev.zacharyloeber.com/tags/qos/</link>
       <pubDate>Sun, 01 Jun 2014 15:13:00 +0000</pubDate>
       
-      <guid>http://localhost/tags/qos/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/qos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ADSI</title>
-      <link>http://localhost/tags/adsi/</link>
+      <link>https://dev.zacharyloeber.com/tags/adsi/</link>
       <pubDate>Fri, 11 Apr 2014 21:17:43 +0000</pubDate>
       
-      <guid>http://localhost/tags/adsi/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/adsi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reporting</title>
-      <link>http://localhost/tags/reporting/</link>
+      <link>https://dev.zacharyloeber.com/tags/reporting/</link>
       <pubDate>Mon, 17 Mar 2014 03:19:39 +0000</pubDate>
       
-      <guid>http://localhost/tags/reporting/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/reporting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Calculated Properties</title>
-      <link>http://localhost/tags/calculated-properties/</link>
+      <link>https://dev.zacharyloeber.com/tags/calculated-properties/</link>
       <pubDate>Mon, 10 Feb 2014 04:34:49 +0000</pubDate>
       
-      <guid>http://localhost/tags/calculated-properties/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/calculated-properties/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Export-CliXML</title>
-      <link>http://localhost/tags/export-clixml/</link>
+      <link>https://dev.zacharyloeber.com/tags/export-clixml/</link>
       <pubDate>Mon, 10 Feb 2014 04:34:49 +0000</pubDate>
       
-      <guid>http://localhost/tags/export-clixml/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/export-clixml/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Import-CliXML</title>
-      <link>http://localhost/tags/import-clixml/</link>
+      <link>https://dev.zacharyloeber.com/tags/import-clixml/</link>
       <pubDate>Mon, 10 Feb 2014 04:34:49 +0000</pubDate>
       
-      <guid>http://localhost/tags/import-clixml/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/import-clixml/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Big-IP</title>
-      <link>http://localhost/tags/big-ip/</link>
+      <link>https://dev.zacharyloeber.com/tags/big-ip/</link>
       <pubDate>Fri, 03 Jan 2014 18:11:18 +0000</pubDate>
       
-      <guid>http://localhost/tags/big-ip/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/big-ip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>F5</title>
-      <link>http://localhost/tags/f5/</link>
+      <link>https://dev.zacharyloeber.com/tags/f5/</link>
       <pubDate>Fri, 03 Jan 2014 18:11:18 +0000</pubDate>
       
-      <guid>http://localhost/tags/f5/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/f5/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Load balancing</title>
-      <link>http://localhost/tags/load-balancing/</link>
+      <link>https://dev.zacharyloeber.com/tags/load-balancing/</link>
       <pubDate>Fri, 03 Jan 2014 18:11:18 +0000</pubDate>
       
-      <guid>http://localhost/tags/load-balancing/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/load-balancing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LTM</title>
-      <link>http://localhost/tags/ltm/</link>
+      <link>https://dev.zacharyloeber.com/tags/ltm/</link>
       <pubDate>Fri, 03 Jan 2014 18:11:18 +0000</pubDate>
       
-      <guid>http://localhost/tags/ltm/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/ltm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Drive Space</title>
-      <link>http://localhost/tags/drive-space/</link>
+      <link>https://dev.zacharyloeber.com/tags/drive-space/</link>
       <pubDate>Tue, 17 Dec 2013 02:11:52 +0000</pubDate>
       
-      <guid>http://localhost/tags/drive-space/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/drive-space/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Google Charts</title>
-      <link>http://localhost/tags/google-charts/</link>
+      <link>https://dev.zacharyloeber.com/tags/google-charts/</link>
       <pubDate>Tue, 17 Dec 2013 02:11:52 +0000</pubDate>
       
-      <guid>http://localhost/tags/google-charts/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/google-charts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HTML Report</title>
-      <link>http://localhost/tags/html-report/</link>
+      <link>https://dev.zacharyloeber.com/tags/html-report/</link>
       <pubDate>Tue, 17 Dec 2013 02:11:52 +0000</pubDate>
       
-      <guid>http://localhost/tags/html-report/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/html-report/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>http://localhost/tags/javascript/</link>
+      <link>https://dev.zacharyloeber.com/tags/javascript/</link>
       <pubDate>Tue, 17 Dec 2013 02:11:52 +0000</pubDate>
       
-      <guid>http://localhost/tags/javascript/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Monitoring</title>
-      <link>http://localhost/tags/monitoring/</link>
+      <link>https://dev.zacharyloeber.com/tags/monitoring/</link>
       <pubDate>Mon, 25 Nov 2013 18:16:24 +0000</pubDate>
       
-      <guid>http://localhost/tags/monitoring/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/monitoring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>2008 R2</title>
-      <link>http://localhost/tags/2008-r2/</link>
+      <link>https://dev.zacharyloeber.com/tags/2008-r2/</link>
       <pubDate>Sun, 06 Oct 2013 23:32:48 +0000</pubDate>
       
-      <guid>http://localhost/tags/2008-r2/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/2008-r2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>virtualization</title>
-      <link>http://localhost/tags/virtualization/</link>
+      <link>https://dev.zacharyloeber.com/tags/virtualization/</link>
       <pubDate>Fri, 26 Jul 2013 18:22:43 +0000</pubDate>
       
-      <guid>http://localhost/tags/virtualization/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/virtualization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vmware</title>
-      <link>http://localhost/tags/vmware/</link>
+      <link>https://dev.zacharyloeber.com/tags/vmware/</link>
       <pubDate>Fri, 26 Jul 2013 18:22:43 +0000</pubDate>
       
-      <guid>http://localhost/tags/vmware/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/vmware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Other</title>
-      <link>http://localhost/tags/other/</link>
+      <link>https://dev.zacharyloeber.com/tags/other/</link>
       <pubDate>Tue, 11 Dec 2012 06:00:42 +0000</pubDate>
       
-      <guid>http://localhost/tags/other/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/other/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ubuntu</title>
-      <link>http://localhost/tags/ubuntu/</link>
+      <link>https://dev.zacharyloeber.com/tags/ubuntu/</link>
       <pubDate>Thu, 29 Nov 2012 02:24:46 +0000</pubDate>
       
-      <guid>http://localhost/tags/ubuntu/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/ubuntu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hyper-v</title>
-      <link>http://localhost/tags/hyper-v/</link>
+      <link>https://dev.zacharyloeber.com/tags/hyper-v/</link>
       <pubDate>Fri, 23 Mar 2012 01:31:47 +0000</pubDate>
       
-      <guid>http://localhost/tags/hyper-v/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/hyper-v/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web Publishing</title>
-      <link>http://localhost/tags/web-publishing/</link>
+      <link>https://dev.zacharyloeber.com/tags/web-publishing/</link>
       <pubDate>Fri, 05 Aug 2011 12:58:12 +0000</pubDate>
       
-      <guid>http://localhost/tags/web-publishing/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/web-publishing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OCS 2007 R2</title>
-      <link>http://localhost/tags/ocs-2007-r2/</link>
+      <link>https://dev.zacharyloeber.com/tags/ocs-2007-r2/</link>
       <pubDate>Thu, 31 Mar 2011 15:21:09 +0000</pubDate>
       
-      <guid>http://localhost/tags/ocs-2007-r2/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/ocs-2007-r2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>NPS</title>
-      <link>http://localhost/tags/nps/</link>
+      <link>https://dev.zacharyloeber.com/tags/nps/</link>
       <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
       
-      <guid>http://localhost/tags/nps/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/nps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Radius</title>
-      <link>http://localhost/tags/radius/</link>
+      <link>https://dev.zacharyloeber.com/tags/radius/</link>
       <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
       
-      <guid>http://localhost/tags/radius/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/radius/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Funny</title>
-      <link>http://localhost/tags/funny/</link>
+      <link>https://dev.zacharyloeber.com/tags/funny/</link>
       <pubDate>Tue, 22 Feb 2011 04:02:28 +0000</pubDate>
       
-      <guid>http://localhost/tags/funny/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/funny/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fiber</title>
-      <link>http://localhost/tags/fiber/</link>
+      <link>https://dev.zacharyloeber.com/tags/fiber/</link>
       <pubDate>Fri, 04 Feb 2011 01:14:02 +0000</pubDate>
       
-      <guid>http://localhost/tags/fiber/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/fiber/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SAN</title>
-      <link>http://localhost/tags/san/</link>
+      <link>https://dev.zacharyloeber.com/tags/san/</link>
       <pubDate>Fri, 04 Feb 2011 01:14:02 +0000</pubDate>
       
-      <guid>http://localhost/tags/san/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/san/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Virtual Connect</title>
-      <link>http://localhost/tags/virtual-connect/</link>
+      <link>https://dev.zacharyloeber.com/tags/virtual-connect/</link>
       <pubDate>Fri, 04 Feb 2011 01:14:02 +0000</pubDate>
       
-      <guid>http://localhost/tags/virtual-connect/</guid>
+      <guid>https://dev.zacharyloeber.com/tags/virtual-connect/</guid>
       <description></description>
     </item>
     

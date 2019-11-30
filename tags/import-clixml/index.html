@@ -14,10 +14,10 @@
         <meta property="og:title" content="Import-CliXML">
         <meta property="og:description" content="Import-CliXML - Zachary Loeber&#39;s Personal Site">
         <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
-        <meta property="og:url" content="http://localhost/tags/import-clixml/">
+        <meta property="og:url" content="https://dev.zacharyloeber.com/tags/import-clixml/">
         <meta property="og:site_name" content="Zachary Loeber"><meta property="og:type" content="website">
-        <link rel="icon" type="image/png" href="http://localhost/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="http://localhost/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
 
 	
 	  <link href="/tags/import-clixml/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
@@ -48,11 +48,11 @@
                 
             
                 
-                    <li><a href="http://localhost/page/about/">About</a></li>
+                    <li><a href="https://dev.zacharyloeber.com/page/about/">About</a></li>
                 
             
                 
-                    <li><a href="http://localhost/page/about-me/">About Me</a></li>
+                    <li><a href="https://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
                 
             
         </ul>
@@ -97,7 +97,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="http://localhost/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/">
+                <a class="bubble" href="https://dev.zacharyloeber.com/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -105,7 +105,7 @@
     
 
     <div class="content">
-    <h3><a href="http://localhost/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/">Powershell Tip: Save and Load Calculated Property Definitions</a></h3>
+    <h3><a href="https://dev.zacharyloeber.com/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/">Powershell Tip: Save and Load Calculated Property Definitions</a></h3>
     <div class="meta">
         
             
@@ -137,9 +137,76 @@
     
         <p>Using Export-CliXML and Import-CliXML (as well as some custom code) you can save calculated properties in a file for later use. Although the need for something like this is rather infrequent the exercise can better familiarize you with multiple Powershell techniques and concepts.</p>
 
-        
-            <a href="http://localhost/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/" class="more">Continue reading</a>
-        
+<h3 id="intro">Intro</h3>
+
+<p>I’ve picked up quite a bit of PowerShell know how over the course of the last few years. I’m going to try and round back to some of the more interesting tricks I’ve picked up and share them in a series of quick tip articles.&nbsp; This first one I recently discovered as a method to store, then later load, <a href="http://technet.microsoft.com/en-us/library/ff730948.aspx">calculated property</a> definitions.</p>
+
+<p>Why would I want to do this? Well a few of my recent projects have involved gathering a large amount of data from either computers or AD and then regurgitating the data into one of several reports. So the same data element may be split by a carriage return for an excel report or a <br /> for an html report (as a small example). In order to accommodate this functionality I chose to bundle in all the report element output in one big hash which also includes the report section data and several other bits of logic.</p>
+
+<p>Here is an example of one report section where the same data is used for two different types of reports.</p>
+
+<pre>$Report = @{
+  'ReportTypes' = @{
+       'ExcelExport' = @{ 
+         'ContainerType' = 'Full' 
+         'SectionOverride' = $false 
+         'TableType' = 'Horizontal' 
+         'Properties' = 
+              @{n='Name';e={$_.virtualserver}}, 
+              @{n='Address';e={$_.address}}, 
+              @{n='Port';e={$_.port}}, 
+              @{n='Pool';e={$_.pool}}, 
+              @{n='Enabled';e={$_.enabled}}, 
+              @{n='Availability';e={$_.availability}}, 
+              @{n='Persistence Profile';e={[string]$_.persistenceprofile -replace ' ', "`n`r"}}, 
+              @{n='Rules';e={[string]$_.rules -replace ' ', "`n`r"}} 
+       } 
+       'FullDocumentation' = @{ 
+          'ContainerType' = 'Full' 
+          'SectionOverride' = $false 
+          'TableType' = 'Horizontal' 
+          'Properties' = 
+              @{n='Name';e={'&lt;a id="{0}"&gt;{0}&lt;/a&gt;' -f $_.virtualserver}}, 
+              @{n='Persistence Profile';e={[string]$_.persistenceprofile -replace ' ', "&lt;br /&gt;`n`r"}}, 
+              @{n='Rules';e={[string]$_.rules -replace ' ', "&lt;br /&gt;`n`r"}} 
+        } 
+   }
+}</pre>
+
+<p>Later on I select the report section data using the calculated properties for the report I want to create like this:</p>
+
+<pre>$SectionData = $ReportData | Select $Report[‘ReportType’][‘FullDocumentation’][‘Properties’]</pre>
+
+<h3 id="calculated-properties">Calculated Properties</h3>
+
+<p>Calculated properties are simply two element hashes with a label and an expression (technically you only need the expression but that expression becomes the element label and that’s ugly). The label key can be &#8220;Name&#8221;,&#8221;Label&#8221;,&#8221;n&#8221;, or &#8220;l&#8221; and the value is a string. The expression key can be &#8220;Expression&#8221; or just &#8220;e&#8221; and its value is a scriptblock (so it must be surrounded by curly braces).</p>
+
+<p>It should be noted that there is nothing special about calculated properties when you define them in separate variables. You are simply defining an array of hashes. In the example code above I could have also written the calculated properties like this:</p>
+
+<pre>'Properties' = @(@{n='Name';e={'&lt;a id="{0}"&gt;{0}&lt;/a&gt;' -f $_.virtualserver}},
+@{n='Persistence Profile';e={[string]$_.persistenceprofile -replace ' ', "&lt;br /&gt;`n`r"}},
+@{n='Rules';e={[string]$_.rules -replace ' ', "&lt;br /&gt;`n`r"}})</pre>
+
+<h3 id="getting-to-the-point">Getting To The Point</h3>
+
+<p>Ok, so how do we save calculated property definitions into an external file? With most data exports that involve basic arrays or psobjects I’d use Export-CSV&nbsp; Whenever you are looking to save hash data into files your go to command will be Export-CliXML. Export-CliXML will export hash information into an XML format which represents the hash for an almost perfect re-import with Import-CliXML.</p>
+
+<p>Notice I said, “almost perfect”. Export-CliXML is not going to recognize the expression as the scriptblock it is meant to be. Instead it will save it as a plain string. When you re-import the calculated properties you need to convert all the expressions back to a scriptblock otherwise when you use them you will simply get empty results. Here is the example code I put together which shows the top 5 memory consuming processes and the percentage they are utilizing. I create a separate variable which holds the calculated properties, export it to a save file, then import the file into a different variable, update each expression in the resulting array of hashes to be scriptblocks, and then finish by using the resulting variable.</p>
+
+<pre>$SaveFile = 'C:\Temp\saveprops.xml' 
+$TotalMem = (Get-WMIObject -class 'Win32_ComputerSystem').TotalPhysicalMemory 
+$MemUsageProp = @{n='Name';e={$_.ProcessName}}, 
+@{n='MemoryUsage';e={[math]::Round((($_.WS/$TotalMem)*100),2)}}
+Export-Clixml -InputObject $MemUsageProp -Path $SaveFile
+$MemUsageProp2 = Import-Clixml -Path $SaveFile
+$MemUsageProp2 | ForEach { 
+   $_['e'] = [Scriptblock]::Create($_['e']) 
+}
+Get-Process | 
+  Sort-Object -Property WS -Descending&nbsp;| 
+  Select-Object $MemUsageProp2 -First 5</pre>
+
+<p>This is a pretty simple example but if we were embedding the calculated properties with several other elements you would have to customize this to fit your needs. Also notice that I only target the &#8216;e&#8217; element for converting into a scriptblock. It should be a nominal effort to update this to include the &#8216;expression&#8217; element as well.</p>
     
 </div>
 
@@ -196,15 +263,15 @@
                 <ul>
                 
                     <li>
-                        <a href="http://localhost/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
                     </li>
                 
                     <li>
-                        <a href="http://localhost/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
                     </li>
                 
                     <li>
-                        <a href="http://localhost/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
                     </li>
                 
                 </ul>
@@ -280,7 +347,7 @@
                 by Zachary Loeber
             </a>
 	    -
-		<a href="http://localhost/tags/import-clixml/index.xml">RSS</a>
+		<a href="https://dev.zacharyloeber.com/tags/import-clixml/index.xml">RSS</a>
         </div>
         <div class="author">
             <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>

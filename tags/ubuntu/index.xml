@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Zachary Loeber</title>
-    <link>http://localhost/tags/ubuntu/</link>
+    <link>https://dev.zacharyloeber.com/tags/ubuntu/</link>
     <description>Recent content in Ubuntu on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 29 Nov 2012 02:24:46 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Create Your Own Network Assessment Appliance: Additional Tools</title>
-      <link>http://localhost/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</link>
       <pubDate>Thu, 29 Nov 2012 02:24:46 +0000</pubDate>
       
-      <guid>http://localhost/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 
-&lt;p&gt;I &lt;a href=&#34;http://localhost/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I&amp;#8217;ve since added a few tools to the VM and documented how they were installed so I figured I&amp;#8217;d share on how it was done. Even if you don&amp;#8217;t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I&amp;#8217;ll start with a tool anyone worth their salt has heard of though, Cacti&amp;#8230;&lt;/p&gt;</description>
+&lt;p&gt;I &lt;a href=&#34;https://dev.zacharyloeber.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I&amp;#8217;ve since added a few tools to the VM and documented how they were installed so I figured I&amp;#8217;d share on how it was done. Even if you don&amp;#8217;t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I&amp;#8217;ll start with a tool anyone worth their salt has heard of though, Cacti&amp;#8230;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Linux: Headless Ubuntu Torrent Home Server</title>
-      <link>http://localhost/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/</link>
       <pubDate>Sun, 11 Sep 2011 21:45:15 +0000</pubDate>
       
-      <guid>http://localhost/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/</guid>
       <description>&lt;p&gt;So it got to that time of the year where I feel the itch to upgrade my aging home server. I assessed the situation and realized that, for what it does, my current server does not need any kind of hardware upgrade. So I just decided to rebuild it with Ubuntu 11.04 64 bit and change up the server software a bit to be more accessible to my wife as well as to be a bit more modern (torrentflux and derivatives have been dead for a while now).&lt;/p&gt;</description>
     </item>
     

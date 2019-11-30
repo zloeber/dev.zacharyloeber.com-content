@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RedHat/CentOS on Zachary Loeber</title>
-    <link>http://localhost/categories/redhat/centos/</link>
+    <link>https://dev.zacharyloeber.com/categories/redhat/centos/</link>
     <description>Recent content in RedHat/CentOS on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 18 Jun 2010 16:17:39 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost/categories/redhat/centos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/categories/redhat/centos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Yum – List Only Security Updates</title>
-      <link>http://localhost/blog/2010/06/18/yum-list-only-security-updates/</link>
+      <link>https://dev.zacharyloeber.com/blog/2010/06/18/yum-list-only-security-updates/</link>
       <pubDate>Fri, 18 Jun 2010 16:17:39 +0000</pubDate>
       
-      <guid>http://localhost/blog/2010/06/18/yum-list-only-security-updates/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2010/06/18/yum-list-only-security-updates/</guid>
       <description>I&amp;#8217;ve been really MS inundated at work lately with exchange 2010, UAG 2010, and Communicator deployments/migrations. So to balance my life a bit I better do a quick post of a linux hack 🙂 Here is a quick one I tacked together about 6 months ago. This will generate a detailed report of all the security updates you are missing with a description of what the update will fix. You will need the yum-security package installed for this to work.</description>
     </item>
     
     <item>
       <title>CentOS/Redhat 5.x Post-Install Script</title>
-      <link>http://localhost/blog/2009/11/21/centosredhat-5-x-post-install-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2009/11/21/centosredhat-5-x-post-install-script/</link>
       <pubDate>Sat, 21 Nov 2009 18:51:06 +0000</pubDate>
       
-      <guid>http://localhost/blog/2009/11/21/centosredhat-5-x-post-install-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2009/11/21/centosredhat-5-x-post-install-script/</guid>
       <description>I whipped up a post install script to run on our new linux servers that drastically reduced the amount of manual effort involved with post-deployment configuration. I&amp;#8217;m sure this could some how be integrated into the kick deployment. In any case, this script helps setup your sudo users, snmp services, and some other basic things. Modify to your environment and run directly after deployment on your headless linux servers. Save the script and change to .</description>
     </item>
     

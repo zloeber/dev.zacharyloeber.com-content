@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VMware on Zachary Loeber</title>
-    <link>http://localhost/categories/vmware/</link>
+    <link>https://dev.zacharyloeber.com/categories/vmware/</link>
     <description>Recent content in VMware on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 26 Jul 2013 18:22:43 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost/categories/vmware/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/categories/vmware/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Determine if a computer is virtual with powershell</title>
-      <link>http://localhost/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</link>
+      <link>https://dev.zacharyloeber.com/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</link>
       <pubDate>Fri, 26 Jul 2013 18:22:43 +0000</pubDate>
       
-      <guid>http://localhost/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</guid>
       <description>&lt;p&gt;This function attempts to connect to a computer and find out if it is virtual or not using WMI. If it is virtual, a best guess at the type of virtual platform it is running upon is returned as well.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>VMware: VMware Report Generation GUI</title>
-      <link>http://localhost/blog/2013/02/17/vmware-vmware-report-generation-gui/</link>
+      <link>https://dev.zacharyloeber.com/blog/2013/02/17/vmware-vmware-report-generation-gui/</link>
       <pubDate>Sun, 17 Feb 2013 17:11:52 +0000</pubDate>
       
-      <guid>http://localhost/blog/2013/02/17/vmware-vmware-report-generation-gui/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2013/02/17/vmware-vmware-report-generation-gui/</guid>
       <description>&lt;p&gt;Its been a while since I posted something new. This GUI is meant to configure regular vmware report generation. You are able to select reporting scoped to the whole farm down to individual hosts. Reports can be emailed or saved and be generated based on custom thresholds.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>VMware: Migrating a vCenter virtual appliance to a vCenter Windows server</title>
-      <link>http://localhost/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</link>
       <pubDate>Mon, 17 Dec 2012 04:30:52 +0000</pubDate>
       
-      <guid>http://localhost/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</guid>
       <description>&lt;p&gt;I finally bit the bullet and migrated my lab from a vCenter virtual appliance to a vCenter Windows server. This is what I did to maintain all my settings and not disrupt any currently running VMs.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Create Your Own Network Assessment Appliance</title>
-      <link>http://localhost/blog/2012/04/08/create-your-own-network-assessment-appliance/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/04/08/create-your-own-network-assessment-appliance/</link>
       <pubDate>Mon, 09 Apr 2012 00:49:19 +0000</pubDate>
       
-      <guid>http://localhost/blog/2012/04/08/create-your-own-network-assessment-appliance/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/04/08/create-your-own-network-assessment-appliance/</guid>
       <description>In this write-up I setup several network assessment tools which can be used in the discovery process of a new environment. This can be useful for a newly hired sysadmin or a consultant in rapidly gathering information to assess the health and/or state of a network.
 Introduction I often find myself assessing a foreign network infrastructure for performance or other issues. Depending on the size of the environment, digesting everything can be daunting without the help of some third party tools.</description>
     </item>
     
     <item>
       <title>Virtualization: vCPU Provisioning Best Practices</title>
-      <link>http://localhost/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</link>
       <pubDate>Fri, 23 Mar 2012 01:31:47 +0000</pubDate>
       
-      <guid>http://localhost/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</guid>
       <description>&lt;p&gt;I had always been of the mindset that when provisioning new VMs it is best to start out with less vCPUs and add more as they are required (unless you specifically know that you will be using and needing more for such things as sql server or exchange). I had even recently felt some vindication of this provisioning best practice in reading a book recently (&lt;a href=&#34;http://www.amazon.com/Critical-VMware-Mistakes-Should-Avoid/dp/1937061981&#34; title=&#34;Critical VMware Mistakes You Should Avoid&#34;&gt;Critical VMware Mistakes You Should Avoid&lt;/a&gt;)&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ESX &#43; MSCS 2008 R2 &#43; SQL Server 2008</title>
-      <link>http://localhost/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/</link>
       <pubDate>Wed, 26 Jan 2011 00:41:21 +0000</pubDate>
       
-      <guid>http://localhost/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/</guid>
       <description>Just a quick note on this little combo. Should you be looking to setup a windows 2008 R2 cluster in a virtual environment (details on specific vmware configuration left to the reader) here are some quick notes that I have on some caveats.
 1.) Either keep vmware tools un-uninstalled or make certain not to install the Shared Folder component of vmware tools.
 2.) Don’t clone the second node from the first using vmware.</description>
@@ -69,19 +69,19 @@ Introduction I often find myself assessing a foreign network infrastructure for 
     
     <item>
       <title>ESX 4.0: Post-Install Script</title>
-      <link>http://localhost/blog/2009/12/22/esx-4-0-post-install-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2009/12/22/esx-4-0-post-install-script/</link>
       <pubDate>Wed, 23 Dec 2009 04:08:02 +0000</pubDate>
       
-      <guid>http://localhost/blog/2009/12/22/esx-4-0-post-install-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2009/12/22/esx-4-0-post-install-script/</guid>
       <description>Sure there are better ways to mass deploy ESX servers, but this way will save the one off farm deployment person some time 🙂 I took liberties in assuming you would be able to fill in the blanks for variables so  or _VARIABLE_ will need to be replaced ad-lib style. Just for you my friend, served up proper on a hyper-link plate&amp;#8230;.. esx4_postinstall</description>
     </item>
     
     <item>
       <title>Vmware: RVTools</title>
-      <link>http://localhost/blog/2009/11/24/vmware-rvtools/</link>
+      <link>https://dev.zacharyloeber.com/blog/2009/11/24/vmware-rvtools/</link>
       <pubDate>Tue, 24 Nov 2009 16:38:34 +0000</pubDate>
       
-      <guid>http://localhost/blog/2009/11/24/vmware-rvtools/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2009/11/24/vmware-rvtools/</guid>
       <description>This sly bastard wrote an excellent little .NET app for enumerating esx farm information. Any sysadmins working with VMware should definitely check this out. I really like the vHealth tab which will show possible zombie vmdks. Add the ability to export to csv and you have a nice tool for on the fly farm enumeration for the boss.
 Go get RVTools now!</description>
     </item>
