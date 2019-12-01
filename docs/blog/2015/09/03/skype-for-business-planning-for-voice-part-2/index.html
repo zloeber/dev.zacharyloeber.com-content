@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
-        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
         <meta name="generator" content="Hugo 0.59.1" />
         <title> Skype For Business: Planning for Voice – Part 2 | Zachary Loeber</title>
         <meta name="description" content="Skype For Business: Planning for Voice – Part 2 - Zachary Loeber&#39;s Personal Site">
@@ -21,15 +21,15 @@
         <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="/blog/2015/09/03/skype-for-business-planning-for-voice-part-2/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="/blog/2015/09/03/skype-for-business-planning-for-voice-part-2/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/blog/2015/09/03/skype-for-business-planning-for-voice-part-2/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/blog/2015/09/03/skype-for-business-planning-for-voice-part-2/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="http://dev.zacharyloeber.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -45,7 +45,7 @@
         <ul class="topnav">
             
                 
-                    <li><a href="/" target="">Home</a></li>
+                    <li><a href="http://dev.zacharyloeber.com/" target="">Home</a></li>
                 
             
                 
@@ -66,7 +66,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="/" class="logo">
+            <a href="http://dev.zacharyloeber.com/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -75,7 +75,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="http://dev.zacharyloeber.com/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -120,22 +120,22 @@
         
             <span class="categories">
                 
-                    <a href="/categories/lync">Lync</a>
+                    <a href="http://dev.zacharyloeber.com/categories/lync">Lync</a>
                 
-                    <a href="/categories/skype-for-business">Skype For Business</a>
+                    <a href="http://dev.zacharyloeber.com/categories/skype-for-business">Skype For Business</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
     
-        <p>I&#8217;ve already gone over the basic phases of a Skype for Business enterprise voice deployment <a href="/2015/08/25/skype-for-business-planning-for-voice-part-1/">in my prior article</a>. Now it is time to skip right over the first two of those phases and start preparing to replace your existing PBXs. To prepare you need to know what you are going to be replacing. In this article we will be focusing on beginning the information gathering process.</p>
+        <p>I&#8217;ve already gone over the basic phases of a Skype for Business enterprise voice deployment <a href="http://dev.zacharyloeber.com/2015/08/25/skype-for-business-planning-for-voice-part-1/">in my prior article</a>. Now it is time to skip right over the first two of those phases and start preparing to replace your existing PBXs. To prepare you need to know what you are going to be replacing. In this article we will be focusing on beginning the information gathering process.</p>
 
 <p>The goal at this point is two-fold, First we need to understand how the current telephony provider is connecting to the office. Are there 3x T1 lines, 2x ISDN lines, and 4x pots lines all going to an Adtran device where things are muxed together before going to some ancient PBX without any IP capabilities? Or is there a SIP trunk connecting from an ITSP to an existing SBC (Lucky you if so!). Next we need to get a grip on what equipment is in use, how many phones you have, and other site specific information. Once we have the lay of the land we can then start to intelligently plan out the site migration strategy. The best place to start this discovery is looking at what you are paying for.</p>
 
@@ -163,7 +163,7 @@
 
 <p>It will be in your best interest to physically visit any site where you are looking to replace a PBX. This will help you correlate what is on the bill versus what is actually being used. This is particularly important for sites where the PBX has no IP accessible administrative interface. Aside from the bill correlation there are a number of other items to validate while you are there. Here is a list to get you started:</p>
 
-<h2 id="img-class-aligncenter-size-medium-wp-image-1507-src-wp-content-uploads-2015-09-site-walkthrough-checklist-jpg-resize-246-2c300-alt-site-walkthrough-checklist-width-246-height-300-srcset-wp-content-uploads-2015-09-site-walkthrough-checklist-jpg-resize-246-2c300-246w-wp-content-uploads-2015-09-site-walkthrough-checklist-jpg-w-576-576w-sizes-max-width-246px-100vw-246px-data-recalc-dims-1-2"><a href="wp-content/uploads/2015/09/Site-Walkthrough-Checklist.jpg"><img class="aligncenter size-medium wp-image-1507" src="/wp-content/uploads/2015/09/Site-Walkthrough-Checklist.jpg?resize=246%2C300" alt="Site-Walkthrough-Checklist" width="246" height="300" srcset="/wp-content/uploads/2015/09/Site-Walkthrough-Checklist.jpg?resize=246%2C300 246w, wp-content/uploads/2015/09/Site-Walkthrough-Checklist.jpg?w=576 576w" sizes="(max-width: 246px) 100vw, 246px" data-recalc-dims="1" /></a></h2>
+<h2 id="img-class-aligncenter-size-medium-wp-image-1507-src-wp-content-uploads-2015-09-site-walkthrough-checklist-jpg-resize-246-2c300-alt-site-walkthrough-checklist-width-246-height-300-srcset-wp-content-uploads-2015-09-site-walkthrough-checklist-jpg-resize-246-2c300-246w-wp-content-uploads-2015-09-site-walkthrough-checklist-jpg-w-576-576w-sizes-max-width-246px-100vw-246px-data-recalc-dims-1-2"><a href="wp-content/uploads/2015/09/Site-Walkthrough-Checklist.jpg"><img class="aligncenter size-medium wp-image-1507" src="http://dev.zacharyloeber.com/wp-content/uploads/2015/09/Site-Walkthrough-Checklist.jpg?resize=246%2C300" alt="Site-Walkthrough-Checklist" width="246" height="300" srcset="http://dev.zacharyloeber.com/wp-content/uploads/2015/09/Site-Walkthrough-Checklist.jpg?resize=246%2C300 246w, wp-content/uploads/2015/09/Site-Walkthrough-Checklist.jpg?w=576 576w" sizes="(max-width: 246px) 100vw, 246px" data-recalc-dims="1" /></a></h2>
 
 <p>I&#8217;ve included this list in <a href="https://github.com/zloeber/Unified-Communications/blob/master/Site-Walkthrough-Checklist.xlsx?raw=true">the github repo I&#8217;ve started for this series</a> of articles for your convenience. I think I&#8217;ll end this article here as the next section is quite a bit larger. Next up we will start go talk about more detailed PSTN configuration and telephony inventory checklists I&#8217;ve prepared.</p>
     
@@ -178,21 +178,21 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="/tags/lync-server-2013">Lync Server 2013</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-server-2013">Lync Server 2013</a>
                 
-                    <a href="/tags/lync-voice">Lync Voice</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-voice">Lync Voice</a>
                 
-                    <a href="/tags/microsoft">Microsoft</a>
+                    <a href="http://dev.zacharyloeber.com/tags/microsoft">Microsoft</a>
                 
-                    <a href="/tags/network-administration">network administration</a>
+                    <a href="http://dev.zacharyloeber.com/tags/network-administration">network administration</a>
                 
-                    <a href="/tags/psc">PSC</a>
+                    <a href="http://dev.zacharyloeber.com/tags/psc">PSC</a>
                 
-                    <a href="/tags/skype-for-business">Skype For Business</a>
+                    <a href="http://dev.zacharyloeber.com/tags/skype-for-business">Skype For Business</a>
                 
-                    <a href="/tags/sysadmin">Sysadmin</a>
+                    <a href="http://dev.zacharyloeber.com/tags/sysadmin">Sysadmin</a>
                 
-                    <a href="/tags/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/tags/system-administration">System Administration</a>
                 
             </div>
         </div>
@@ -224,15 +224,15 @@
                 <ul>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                        <a href="http://dev.zacharyloeber.com/content/posts/site-move/">Site Move</a>
                     </li>
                 
                 </ul>
@@ -241,27 +241,27 @@
 
         
         <div class="categories">
-            <a href="/categories/"><strong>Categories</strong></a>
+            <a href="http://dev.zacharyloeber.com/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="/categories/system-administration">System administration (130)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/microsoft">Microsoft (120)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/powershell">Powershell (106)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/networking">Networking (52)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -322,11 +322,11 @@
 
         
         
-        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {

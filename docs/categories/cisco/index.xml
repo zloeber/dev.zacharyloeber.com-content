@@ -40,6 +40,15 @@
     </item>
     
     <item>
+      <title>A Hacker’s Home Network Part 2/3</title>
+      <link>http://dev.zacharyloeber.com/blog/2008/07/01/a-hackers-home-network-part-2/</link>
+      <pubDate>Tue, 01 Jul 2008 16:22:13 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2008/07/01/a-hackers-home-network-part-2/</guid>
+      <description>&lt;p&gt;In my last post I discussed pros and cons of setting up a managed switch between your firewall and the Internet. Here I will finish the rest of the switch configuration.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>GNS3 on Ubuntu 8.04 – Choosing and Using your IOS</title>
       <link>http://dev.zacharyloeber.com/blog/2008/06/12/gns3-on-ubuntu-804-choosing-and-using-your-ios/</link>
       <pubDate>Thu, 12 Jun 2008 15:53:53 +0000</pubDate>

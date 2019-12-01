@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
-        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
         <meta name="generator" content="Hugo 0.59.1" />
         <title> Lync: Voice Route Diagram Creation Script | Zachary Loeber</title>
         <meta name="description" content="Lync: Voice Route Diagram Creation Script - Zachary Loeber&#39;s Personal Site">
@@ -21,15 +21,15 @@
         <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="/blog/2014/12/02/lync-voice-route-diagram-creation-script/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="/blog/2014/12/02/lync-voice-route-diagram-creation-script/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="http://dev.zacharyloeber.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -45,7 +45,7 @@
         <ul class="topnav">
             
                 
-                    <li><a href="/" target="">Home</a></li>
+                    <li><a href="http://dev.zacharyloeber.com/" target="">Home</a></li>
                 
             
                 
@@ -66,7 +66,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="/" class="logo">
+            <a href="http://dev.zacharyloeber.com/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -75,7 +75,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="http://dev.zacharyloeber.com/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -120,19 +120,19 @@
         
             <span class="categories">
                 
-                    <a href="/categories/lync">Lync</a>
+                    <a href="http://dev.zacharyloeber.com/categories/lync">Lync</a>
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -145,13 +145,13 @@
 
 <p>Here is sample output for a centralized SIP trunk based greenfield deployment with a primary and a DR PSTN SIP gateway. I&#8217;m only showing the policy to route diagram portion as the trunks are included in order in the route table. There are parts which can probably be touched up a little but this is a rather clean implementation of Lync voice.</p>
 
-<p><a href="wp-content/uploads/2014/12/image.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" src="/wp-content/uploads/2014/12/image_thumb.png?resize=244%2C142" alt="image" width="244" height="142" border="0" data-recalc-dims="1" /></a></p>
+<p><a href="wp-content/uploads/2014/12/image.png"><img style="margin: 0px; display: inline; background-image: none;" title="image" src="http://dev.zacharyloeber.com/wp-content/uploads/2014/12/image_thumb.png?resize=244%2C142" alt="image" width="244" height="142" border="0" data-recalc-dims="1" /></a></p>
 
 <p>This output is actually quite elegant insomuch that almost every PSTN usage has an associated route. There is almost a one to one relationship between the PSTN Usage and the route. This is on purpose to better control call flow paths. I’d go as far as to say that most deployments of this kind should look similar if planned out and designed correctly.</p>
 
 <p>Here is another example of a partial voice deployment with multiple PBX integrations and least cost routing.</p>
 
-<p><a href="wp-content/uploads/2014/12/image1.png"><img style="display: inline; background-image: none;" title="image" src="/wp-content/uploads/2014/12/image_thumb1.png?resize=244%2C99" alt="image" width="244" height="99" border="0" data-recalc-dims="1" /></a></p>
+<p><a href="wp-content/uploads/2014/12/image1.png"><img style="display: inline; background-image: none;" title="image" src="http://dev.zacharyloeber.com/wp-content/uploads/2014/12/image_thumb1.png?resize=244%2C99" alt="image" width="244" height="99" border="0" data-recalc-dims="1" /></a></p>
 
 <p>The graphs start to look pretty wild when you start performing least cost routing and other fun stuff that are the trademark of decentralized voice routing. I highly recommend filtering by voice policy in these cases to better see specific call flows. I&#8217;ve also used a third party function I found to split the route regex pattern down to 20 character lines in the table. This can be modified to suit your needs of course.</p>
 
@@ -174,23 +174,23 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="/tags/diagram">diagram</a>
+                    <a href="http://dev.zacharyloeber.com/tags/diagram">diagram</a>
                 
-                    <a href="/tags/lync">Lync</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync">Lync</a>
                 
-                    <a href="/tags/lync-2010">Lync 2010</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-2010">Lync 2010</a>
                 
-                    <a href="/tags/lync-2013">Lync 2013</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-2013">Lync 2013</a>
                 
-                    <a href="/tags/lync-server-2013">Lync Server 2013</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-server-2013">Lync Server 2013</a>
                 
-                    <a href="/tags/lync-voice">Lync Voice</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-voice">Lync Voice</a>
                 
-                    <a href="/tags/microsoft-lync-server-2013">Microsoft Lync Server 2013</a>
+                    <a href="http://dev.zacharyloeber.com/tags/microsoft-lync-server-2013">Microsoft Lync Server 2013</a>
                 
-                    <a href="/tags/powershell">Powershell</a>
+                    <a href="http://dev.zacharyloeber.com/tags/powershell">Powershell</a>
                 
-                    <a href="/tags/powershell-script">Powershell Script</a>
+                    <a href="http://dev.zacharyloeber.com/tags/powershell-script">Powershell Script</a>
                 
             </div>
         </div>
@@ -222,15 +222,15 @@
                 <ul>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                        <a href="http://dev.zacharyloeber.com/content/posts/site-move/">Site Move</a>
                     </li>
                 
                 </ul>
@@ -239,27 +239,27 @@
 
         
         <div class="categories">
-            <a href="/categories/"><strong>Categories</strong></a>
+            <a href="http://dev.zacharyloeber.com/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="/categories/system-administration">System administration (130)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/microsoft">Microsoft (120)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/powershell">Powershell (106)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/networking">Networking (52)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -320,11 +320,11 @@
 
         
         
-        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {

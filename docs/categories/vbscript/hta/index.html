@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
-        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
         <meta name="generator" content="Hugo 0.59.1" />
         <title> vbscript/hta | Zachary Loeber</title>
         <meta name="description" content="vbscript/hta - Zachary Loeber&#39;s Personal Site">
@@ -20,15 +20,15 @@
         <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="/categories/vbscript/hta/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="/categories/vbscript/hta/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/categories/vbscript/hta/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/categories/vbscript/hta/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="http://dev.zacharyloeber.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -44,7 +44,7 @@
         <ul class="topnav">
             
                 
-                    <li><a href="/" target="">Home</a></li>
+                    <li><a href="http://dev.zacharyloeber.com/" target="">Home</a></li>
                 
             
                 
@@ -65,7 +65,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="/" class="logo">
+            <a href="http://dev.zacharyloeber.com/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -74,7 +74,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="http://dev.zacharyloeber.com/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -120,68 +120,30 @@
         
             <span class="categories">
                 
-                    <a href="/categories/active-directory">Active Directory</a>
+                    <a href="http://dev.zacharyloeber.com/categories/active-directory">Active Directory</a>
                 
-                    <a href="/categories/exchange">Exchange</a>
+                    <a href="http://dev.zacharyloeber.com/categories/exchange">Exchange</a>
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
                 
-                    <a href="/categories/vbscript/hta">vbscript/hta</a>
+                    <a href="http://dev.zacharyloeber.com/categories/vbscript/hta">vbscript/hta</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
     
         <p>Here is another script that I hacked together in part of an AD/Exchange cleanup task to remove disabled users from the address book. This script, more specifically, removes an entire OU of users from the address book, so make sure that all the users are disabled in the OU you will be running this against! 🙂</p>
 
-<p>Save as a VBS file and run from your exchange server:</p>
-
-<pre>On Error Resume Next
-Const ADS_SCOPE_SUBTREE = 2
-Set objConnection = CreateObject("ADODB.Connection")</pre>
-
-<pre>Set objCommand =   CreateObject("ADODB.Command")</pre>
-
-<pre>objConnection.Provider = "ADsDSOObject"</pre>
-
-<pre>objConnection.Open "Active Directory Provider"</pre>
-
-<pre>Set objCommand.ActiveConnection = objConnection</pre>
-
-<pre>objCommand.Properties("Page Size") = 1000</pre>
-
-<pre>objCommand.Properties("Searchscope") = ADS_SCOPE_SUBTREE</pre>
-
-<pre>objCommand.CommandText = _</pre>
-
-<pre>"SELECT ADsPath FROM 'LDAP://OU=Some 2nd level OU,OU=Some Top level OU,dc=corp,dc=contoso,dc=com' WHERE objectClass='User'"</pre>
-
-<pre>Set objRecordSet = objCommand.Execute</pre>
-
-<pre>objRecordSet.MoveFirst</pre>
-
-<pre>Do Until objRecordSet.EOF</pre>
-
-<pre>strContactPath = objRecordSet.Fields("ADsPath").Value</pre>
-
-<pre>MsgBox (strContactPath)</pre>
-
-<pre>Set objContact = GetObject(strContactPath)</pre>
-
-<pre>objContact.MSExchHideFromAddressLists = TRUE</pre>
-
-<pre>objContact.SetInfo</pre>
-
-<pre>objRecordSet.MoveNext</pre>
-
-<pre>Loop</pre>
+        
+            <a href="http://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/" class="more">Continue reading</a>
+        
     
 </div>
 
@@ -224,28 +186,28 @@ Set objConnection = CreateObject("ADODB.Connection")</pre>
         
             <span class="categories">
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/networking">Networking</a>
+                    <a href="http://dev.zacharyloeber.com/categories/networking">Networking</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
                 
-                    <a href="/categories/vbscript/hta">vbscript/hta</a>
+                    <a href="http://dev.zacharyloeber.com/categories/vbscript/hta">vbscript/hta</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
     
         <p>Here are a few scripts that I have cobbled together over the last few years. They are small and useful but nothing earth-shattering. One gets information about a remote system and who is logged in. The other can remotely reset the administrator password. Both obviously require  you have the permissions to do so on the remote machines. Both accept multiple computer names divided by a semi-colon.  Save and change the extension from .txt to .hta</p>
 
-<p><a rel="attachment wp-att-92" href="/?attachment_id=92"></a><a rel="attachment wp-att-97" href="/?attachment_id=97">GetAsset</a></p>
+<p><a rel="attachment wp-att-92" href="http://dev.zacharyloeber.com/?attachment_id=92"></a><a rel="attachment wp-att-97" href="http://dev.zacharyloeber.com/?attachment_id=97">GetAsset</a></p>
 
-<p><a rel="attachment wp-att-94" href="/?attachment_id=94">ResetAdminPass</a></p>
+<p><a rel="attachment wp-att-94" href="http://dev.zacharyloeber.com/?attachment_id=94">ResetAdminPass</a></p>
 
         
     
@@ -287,15 +249,15 @@ Set objConnection = CreateObject("ADODB.Connection")</pre>
                 <ul>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                        <a href="http://dev.zacharyloeber.com/content/posts/site-move/">Site Move</a>
                     </li>
                 
                 </ul>
@@ -304,27 +266,27 @@ Set objConnection = CreateObject("ADODB.Connection")</pre>
 
         
         <div class="categories">
-            <a href="/categories/"><strong>Categories</strong></a>
+            <a href="http://dev.zacharyloeber.com/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="/categories/system-administration">System administration (130)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/microsoft">Microsoft (120)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/powershell">Powershell (106)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/networking">Networking (52)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -386,11 +348,11 @@ Set objConnection = CreateObject("ADODB.Connection")</pre>
 
         
         
-        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {

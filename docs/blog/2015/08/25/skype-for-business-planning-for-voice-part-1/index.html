@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
-        <meta name="keywords" content="blog,personal,devops,infrastructure,code">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
         <meta name="generator" content="Hugo 0.59.1" />
         <title> Skype For Business: Planning for Voice – Part 1 | Zachary Loeber</title>
         <meta name="description" content="Skype For Business: Planning for Voice – Part 1 - Zachary Loeber&#39;s Personal Site">
@@ -21,15 +21,15 @@
         <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="http://dev.zacharyloeber.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -45,7 +45,7 @@
         <ul class="topnav">
             
                 
-                    <li><a href="/" target="">Home</a></li>
+                    <li><a href="http://dev.zacharyloeber.com/" target="">Home</a></li>
                 
             
                 
@@ -66,7 +66,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="/" class="logo">
+            <a href="http://dev.zacharyloeber.com/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -75,7 +75,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="http://dev.zacharyloeber.com/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -120,19 +120,19 @@
         
             <span class="categories">
                 
-                    <a href="/categories/exchange-2013">Exchange 2013</a>
+                    <a href="http://dev.zacharyloeber.com/categories/exchange-2013">Exchange 2013</a>
                 
-                    <a href="/categories/lync">Lync</a>
+                    <a href="http://dev.zacharyloeber.com/categories/lync">Lync</a>
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/skype-for-business">Skype For Business</a>
+                    <a href="http://dev.zacharyloeber.com/categories/skype-for-business">Skype For Business</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -147,7 +147,7 @@
 
 <p>If you have made it this far then great! That means you have more than just a passing interest in taking the next steps of what can be a difficult but rewarding process for your organization. These rewards go beyond simply removing an old (and often failing) PBX gone from your life as well. There are real and tangible cost savings to be had in undergoing this process, sometimes in areas which may surprise you. Simply going through the discovery process may bring to light expensive PSTN lines which are not in use, nonsensical dial plans, or ridiculous processes people undertake (like faxing between offices).</p>
 
-<p><a href="wp-content/uploads/2015/07/PSTNProvider_Tax.jpg"><img class="aligncenter size-medium wp-image-1497" src="/wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=300%2C300" alt="PSTNProvider_Tax" width="300" height="300" srcset="/wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=300%2C300 300w, wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=150%2C150 150w, wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?w=400 400w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+<p><a href="wp-content/uploads/2015/07/PSTNProvider_Tax.jpg"><img class="aligncenter size-medium wp-image-1497" src="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=300%2C300" alt="PSTNProvider_Tax" width="300" height="300" srcset="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=300%2C300 300w, wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?resize=150%2C150 150w, wp-content/uploads/2015/07/PSTNProvider_Tax.jpg?w=400 400w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
 
 <p>Unsurprisingly, there are multiple phases to a Skype for Business and Exchange based unified messaging deployment before you ever get to the point of deploying enterprise voice though. Lets go the overarching deployment phases for the entire organization in this first article. This is primarily focused around on premise deployments but generally holds true for Office 365 hybrid as well (where Phase 1 and 2 are kind of merged).</p>
 
@@ -155,14 +155,14 @@
 
 <p>This phase includes deploying the Skype for Business client to end user workstations and devices for internal or VPN connected end users. In phase 1 the active directory environment is prepped and internal Skype for Business front end pools are created. SIP domains are determined and then used used to create a basic Skype for Business topology. At the end of this phase most enterprise users should be able to use their Skype for Business enabled devices and workstations to communicate and collaborate internally with direct Skype for Business to Skype for Business communications. This internal collaboration capability includes voice, video, and application sharing. On premise deployments might include the <a href="https://technet.microsoft.com/en-us/library/jj219458.aspx">office web application services</a> as part of this phase as well (if they are not already in the environment for Sharepoint or other reasons).</p>
 
-<p><a href="wp-content/uploads/2015/07/Phase-11.jpg"><img class="size-medium wp-image-1481 aligncenter" src="/wp-content/uploads/2015/07/Phase-11.jpg?resize=300%2C298" alt="Phase-1" width="300" height="298" srcset="/wp-content/uploads/2015/07/Phase-11.jpg?resize=300%2C298 300w, wp-content/uploads/2015/07/Phase-11.jpg?resize=150%2C150 150w, wp-content/uploads/2015/07/Phase-11.jpg?w=655 655w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+<p><a href="wp-content/uploads/2015/07/Phase-11.jpg"><img class="size-medium wp-image-1481 aligncenter" src="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-11.jpg?resize=300%2C298" alt="Phase-1" width="300" height="298" srcset="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-11.jpg?resize=300%2C298 300w, wp-content/uploads/2015/07/Phase-11.jpg?resize=150%2C150 150w, wp-content/uploads/2015/07/Phase-11.jpg?w=655 655w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
 
 <h2 id="phase-2-edge-access-mobility-and-federation">Phase 2 – Edge Access, Mobility, and Federation</h2>
 
 <p>This phase consists of configuring Skype for Business servers at the edge of the network and includes setup of one or more Skype for Business edge access servers, external IP addresses, and DNS addresses. The edge services allow for non-VPN connected enterprise workstations to still use the Skype for Business client securely from the outside network. The edge services also allow for direct Skype for Business communication with other federated services (such as Skype and XMPP based IM services). Optionally, you can also configure selective or open federation at this time for cross organization Skype for Business communication with your business partners.</p>
 
 <p style="text-align: left;">
-  <a href="/wp-content/uploads/2015/07/Phase-21.jpg"><img class="size-medium wp-image-1482 aligncenter" src="/wp-content/uploads/2015/07/Phase-21.jpg?resize=205%2C300" alt="Phase-2" width="205" height="300" srcset="/wp-content/uploads/2015/07/Phase-21.jpg?resize=205%2C300 205w, wp-content/uploads/2015/07/Phase-21.jpg?resize=701%2C1024 701w, wp-content/uploads/2015/07/Phase-21.jpg?w=707 707w" sizes="(max-width: 205px) 100vw, 205px" data-recalc-dims="1" /></a>
+  <a href="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-21.jpg"><img class="size-medium wp-image-1482 aligncenter" src="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-21.jpg?resize=205%2C300" alt="Phase-2" width="205" height="300" srcset="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-21.jpg?resize=205%2C300 205w, wp-content/uploads/2015/07/Phase-21.jpg?resize=701%2C1024 701w, wp-content/uploads/2015/07/Phase-21.jpg?w=707 707w" sizes="(max-width: 205px) 100vw, 205px" data-recalc-dims="1" /></a>
 </p>
 
 <p>By the end of this phase your users will be able to utilize the Skype for Business client across many devices both on and off your network. This is also an ideal phase to discuss and re-architect the edge of your network (if required) to accommodate one or, ideally, two DMZ&#8217;s for increased security.</p>
@@ -183,11 +183,11 @@
 
 <p>I like to split this phase out into two possible scenarios. In one scenario we are looking a coexistence using a VoIP gateway. This essentially puts a new device between the existing PBX and your PSTN provider and splits out call flow depending on factors like AD attributes for users. This is not an option for environments which do not have a SIP capable PBX.</p>
 
-<p><a href="/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg"><img class="size-medium wp-image-1483 aligncenter" src="/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?resize=300%2C294" alt="Phase-3-Coexistence" width="300" height="294" srcset="/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?resize=300%2C294 300w, /wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?w=712 712w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+<p><a href="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg"><img class="size-medium wp-image-1483 aligncenter" src="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?resize=300%2C294" alt="Phase-3-Coexistence" width="300" height="294" srcset="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?resize=300%2C294 300w, http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-3-Coexistence.jpg?w=712 712w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
 
 <p>Otherwise you can simply integrate Skype for Business with your existing PBX. You will see this being done for most VoIP capable PBXes. This leaves the onus to the PBX to route inbound calls to Lync intelligently. What you need to be aware of in this situation is that eventually you will need to move in and outbound call flow to another gateway device (coexistence) if you are to remove the old PBX anyway. Integration can be a nice temporary solution for testing out Skype for Business PSTN capabilities though.</p>
 
-<p><a href="/wp-content/uploads/2015/07/Phase-3-Integration.jpg"><img class="size-medium wp-image-1484 aligncenter" src="/wp-content/uploads/2015/07/Phase-3-Integration.jpg?resize=300%2C284" alt="Phase-3-Integration" width="300" height="284" srcset="/wp-content/uploads/2015/07/Phase-3-Integration.jpg?resize=300%2C284 300w, /wp-content/uploads/2015/07/Phase-3-Integration.jpg?w=710 710w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+<p><a href="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-3-Integration.jpg"><img class="size-medium wp-image-1484 aligncenter" src="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-3-Integration.jpg?resize=300%2C284" alt="Phase-3-Integration" width="300" height="284" srcset="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-3-Integration.jpg?resize=300%2C284 300w, http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-3-Integration.jpg?w=710 710w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
 
 <p>&nbsp;</p>
 
@@ -195,7 +195,7 @@
 
 <p>When Skype for Business is integrated with your PBX you are left with two infrastructures to maintain and support. Number assignments become more complex as knowledge of two systems becomes necessary. Your dial plans and routes also tend to be more complicated and error prone. But with the correct hardware purchases an organization might opt to entirely replace their existing PBX with Skype for Business. A full Skype for Business voice solution opens a wide range of possibilities for your end users and can reduce costs over time. When you fully replace your existing PBX you can physically replace phones with Skype for Business compliant devices, and you can have phone numbers which follow employees everywhere from their cell phone, to their iPad, to their physical phones.</p>
 
-<p><a href="wp-content/uploads/2015/07/Phase-41.jpg"><img class="size-medium wp-image-1487 aligncenter" src="/wp-content/uploads/2015/07/Phase-41.jpg?resize=300%2C258" alt="Phase-4" width="300" height="258" srcset="/wp-content/uploads/2015/07/Phase-41.jpg?resize=300%2C258 300w, wp-content/uploads/2015/07/Phase-41.jpg?w=721 721w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
+<p><a href="wp-content/uploads/2015/07/Phase-41.jpg"><img class="size-medium wp-image-1487 aligncenter" src="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-41.jpg?resize=300%2C258" alt="Phase-4" width="300" height="258" srcset="http://dev.zacharyloeber.com/wp-content/uploads/2015/07/Phase-41.jpg?resize=300%2C258 300w, wp-content/uploads/2015/07/Phase-41.jpg?w=721 721w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
 
 <h2 id="up-next">Up Next</h2>
 
@@ -214,23 +214,23 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="/tags/enterprise-voice">Enterprise Voice</a>
+                    <a href="http://dev.zacharyloeber.com/tags/enterprise-voice">Enterprise Voice</a>
                 
-                    <a href="/tags/exchange-2013">Exchange 2013</a>
+                    <a href="http://dev.zacharyloeber.com/tags/exchange-2013">Exchange 2013</a>
                 
-                    <a href="/tags/lync-2013">Lync 2013</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-2013">Lync 2013</a>
                 
-                    <a href="/tags/lync-server-2013">Lync Server 2013</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-server-2013">Lync Server 2013</a>
                 
-                    <a href="/tags/lync-voice">Lync Voice</a>
+                    <a href="http://dev.zacharyloeber.com/tags/lync-voice">Lync Voice</a>
                 
-                    <a href="/tags/pbx">PBX</a>
+                    <a href="http://dev.zacharyloeber.com/tags/pbx">PBX</a>
                 
-                    <a href="/tags/psc">PSC</a>
+                    <a href="http://dev.zacharyloeber.com/tags/psc">PSC</a>
                 
-                    <a href="/tags/skype-for-business">Skype For Business</a>
+                    <a href="http://dev.zacharyloeber.com/tags/skype-for-business">Skype For Business</a>
                 
-                    <a href="/tags/voip">VoIP</a>
+                    <a href="http://dev.zacharyloeber.com/tags/voip">VoIP</a>
                 
             </div>
         </div>
@@ -262,15 +262,15 @@
                 <ul>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a>
+                        <a href="http://dev.zacharyloeber.com/content/posts/site-move/">Site Move</a>
                     </li>
                 
                 </ul>
@@ -279,27 +279,27 @@
 
         
         <div class="categories">
-            <a href="/categories/"><strong>Categories</strong></a>
+            <a href="http://dev.zacharyloeber.com/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="/categories/system-administration">System administration (130)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/microsoft">Microsoft (120)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/powershell">Powershell (106)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/networking">Networking (52)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -360,11 +360,11 @@
 
         
         
-        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {
