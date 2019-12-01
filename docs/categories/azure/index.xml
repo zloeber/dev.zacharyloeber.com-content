@@ -16,7 +16,7 @@
       <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
       
       <guid>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</guid>
-      <description></description>
+      <description>&lt;p&gt;I&amp;rsquo;ve updated my site to use hugo some time ago but recently added an Azure DevOps pipeline for deploying the thing. This short article will cover how the pipeline code works and dive into multi-stage pipelines.&lt;/p&gt;</description>
     </item>
     
     <item>
