@@ -5,7 +5,7 @@
     <link>https://dev.zacharyloeber.com/author/zachary-loeber/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 10 Dec 2018 22:51:46 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 05:09:51 +0000</lastBuildDate>
     
 	<atom:link href="https://dev.zacharyloeber.com/author/zachary-loeber/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,15 @@
       <description>Zachary Loeber is an IT enthusiast with over a decade of experience in the field. Zach cut his teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
 When it comes to technology Zach’s primary interests are:
  Security Networking System Administration Linux Windows VMware Exchange 2010 Powershell Automation  Some of Zach&amp;#8217;s other interests include lifting weights, camping, running, self-improvement, and being a good husband.</description>
+    </item>
+    
+    <item>
+      <title>Devops Blog Migration to Hugo</title>
+      <link>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</guid>
+      <description></description>
     </item>
     
     <item>

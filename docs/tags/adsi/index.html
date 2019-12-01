@@ -139,9 +139,38 @@
     
         <p>Using a bit of Powershell and ADSI it is pretty easy to connect to another forest. Finding out how to do so is not very clear though. Here is what I came up with to accomplish this task.</p>
 
-        
-            <a href="https://dev.zacharyloeber.com/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/" class="more">Continue reading</a>
-        
+<h3 id="introduction">Introduction</h3>
+
+<p>A fellow scripter, MVP, and Powershell hero, Francois-Xavier posted <a href="http://www.lazywinadmin.com/2013/10/powershell-using-adsi-with-alternate.html">on his blog an article</a> on utilizing alternate credentials against AD. In this scenario he is connecting to AD from a computer which is joined to the same domain/forest he is attempting to use the alternate credential against. This is an ideal example for situations where you need to manage your domain with a separate administrative account than your daily use account (this is best practice actuallly). Since the machine is already joined to the domain, getting the starting bits of information you need to further connect with alternate credentials is fairly trivial. Francois-Xavier gave the following example:</p>
+
+<pre class="lang:powershell decode:true"># Get the current domain
+$DomainDN = $(([adsisearcher]"").Searchroot.path)</pre>
+
+<p>This does not work for connecting to a remote forest though. If you want to connect to a remote forest you have to add some additional components beyond the alternate credentials. Firstly, you will need to connect to a domain controller in order to extrapolate the rest of the connection information. To do this you can supply the IP address or name of a domain controller in the forest you which to connect to along with your remote forest credentials. Here is one way this might be done.</p>
+
+<pre class="lang:powershell decode:true">$ServerName = ''
+$UserName = 'domain\user'
+$Credential = Get-Credential -Credential $UserName
+
+$DomainEntry = New-Object -TypeName System.DirectoryServices.DirectoryEntry "LDAP://$ServerName" ,$($Credential.UserName),$($Credential.GetNetworkCredential().password)
+$DomainName = $DomainEntry.name
+
+# Example search against remote domain (finding all group objects)
+$Searcher = New-Object -TypeName System.DirectoryServices.DirectorySearcher
+$Searcher.Filter = "(objectCategory=Group)"
+$Searcher.SizeLimit = '1000'
+$Searcher.SearchRoot = $DomainEntry
+$Searcher.FindAll()
+
+# Create domain level connection
+$DomainContext = New-Object System.DirectoryServices.ActiveDirectory.DirectoryContext("Domain", $DomainName)
+$domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetDomain($DomainContext)
+
+# Create forest level connection
+$ForestContext = New-Object System.DirectoryServices.ActiveDirectory.DirectoryContext("Forest", $domain.forest)
+$forest = [System.DirectoryServices.ActiveDirectory.Forest]::GetForest($ForestContext)</pre>
+
+<p>There is not much to the code really. I suppose the password extraction from the credential object is nifty but the rest is just standard powershell.</p>
     
 </div>
 
@@ -200,11 +229,11 @@
                     </li>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
                     </li>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/content/posts/site-move/">Site Move</a>
+                        <a href="https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
                     </li>
                 
                 </ul>

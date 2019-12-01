@@ -4,7 +4,7 @@
     <link>https://dev.zacharyloeber.com/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 09 Jan 2019 05:37:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 05:09:51 +0000</lastBuildDate>
     
         <atom:link href="https://dev.zacharyloeber.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -12,18 +12,9 @@
     <item>
       <title>Posts</title>
       <link>https://dev.zacharyloeber.com/posts/</link>
-      <pubDate>Wed, 09 Jan 2019 05:37:00 +0000</pubDate>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
       
       <guid>https://dev.zacharyloeber.com/posts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Contents</title>
-      <link>https://dev.zacharyloeber.com/content/</link>
-      <pubDate>Wed, 09 Jan 2019 00:48:48 +0000</pubDate>
-      
-      <guid>https://dev.zacharyloeber.com/content/</guid>
       <description></description>
     </item>
     

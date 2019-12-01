@@ -5,17 +5,44 @@
     <link>https://dev.zacharyloeber.com/categories/</link>
     <description>Recent content in Categories on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 10 Dec 2018 22:51:46 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 05:09:51 +0000</lastBuildDate>
     
 	<atom:link href="https://dev.zacharyloeber.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Azure</title>
+      <link>https://dev.zacharyloeber.com/categories/azure/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/categories/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://dev.zacharyloeber.com/categories/blog/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>DevOps</title>
       <link>https://dev.zacharyloeber.com/categories/devops/</link>
-      <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
       
       <guid>https://dev.zacharyloeber.com/categories/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipeline</title>
+      <link>https://dev.zacharyloeber.com/categories/pipeline/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/categories/pipeline/</guid>
       <description></description>
     </item>
     
@@ -88,15 +115,6 @@
       <pubDate>Thu, 03 May 2018 02:29:53 +0000</pubDate>
       
       <guid>https://dev.zacharyloeber.com/categories/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Azure</title>
-      <link>https://dev.zacharyloeber.com/categories/azure/</link>
-      <pubDate>Sat, 24 Feb 2018 15:59:26 +0000</pubDate>
-      
-      <guid>https://dev.zacharyloeber.com/categories/azure/</guid>
       <description></description>
     </item>
     

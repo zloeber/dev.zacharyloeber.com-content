@@ -5,19 +5,10 @@
     <link>https://dev.zacharyloeber.com/posts/</link>
     <description>Recent content in Posts on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 09 Jan 2019 05:37:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 05:09:51 +0000</lastBuildDate>
     
 	<atom:link href="https://dev.zacharyloeber.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Devops Blog Migration to Hugo</title>
-      <link>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</link>
-      <pubDate>Wed, 09 Jan 2019 05:37:00 +0000</pubDate>
-      
-      <guid>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Devops Blog Migration to Hugo</title>

@@ -5,17 +5,80 @@
     <link>https://dev.zacharyloeber.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 10 Dec 2018 22:51:46 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jan 2019 05:09:51 +0000</lastBuildDate>
     
 	<atom:link href="https://dev.zacharyloeber.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>automation</title>
+      <link>https://dev.zacharyloeber.com/tags/automation/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/tags/automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>https://dev.zacharyloeber.com/tags/azure/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/tags/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>azure-pipelines.yml</title>
+      <link>https://dev.zacharyloeber.com/tags/azure-pipelines.yml/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/tags/azure-pipelines.yml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://dev.zacharyloeber.com/tags/blog/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>DevOps</title>
       <link>https://dev.zacharyloeber.com/tags/devops/</link>
-      <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
       
       <guid>https://dev.zacharyloeber.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://dev.zacharyloeber.com/tags/hugo/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipeline</title>
+      <link>https://dev.zacharyloeber.com/tags/pipeline/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/tags/pipeline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>static site generator</title>
+      <link>https://dev.zacharyloeber.com/tags/static-site-generator/</link>
+      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://dev.zacharyloeber.com/tags/static-site-generator/</guid>
       <description></description>
     </item>
     
@@ -34,15 +97,6 @@
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
       <guid>https://dev.zacharyloeber.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Azure</title>
-      <link>https://dev.zacharyloeber.com/tags/azure/</link>
-      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
-      
-      <guid>https://dev.zacharyloeber.com/tags/azure/</guid>
       <description></description>
     </item>
     
