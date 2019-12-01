@@ -135,10 +135,11 @@
     </div>
 
     
-        <p>I&#8217;ve been really MS inundated at work lately with exchange 2010, UAG 2010, and Communicator deployments/migrations. So to balance my life a bit I better do a quick post of a linux hack 🙂 Here is a quick one I tacked together about 6 months ago. This will generate a detailed report of all the security updates you are missing with a description of what the update will fix. You will need the yum-security package installed for this to work.</p>
+        I&#8217;ve been really MS inundated at work lately with exchange 2010, UAG 2010, and Communicator deployments/migrations. So to balance my life a bit I better do a quick post of a linux hack 🙂 Here is a quick one I tacked together about 6 months ago. This will generate a detailed report of all the security updates you are missing with a description of what the update will fix. You will need the yum-security package installed for this to work.
 
-<p><code>yum list-security | awk 'NR!=1 {print $1}' | sed '/list-security/d' | xargs yum info-security &gt; security_report.txt</code></p>
-
+        
+            <a href="http://dev.zacharyloeber.com/blog/2010/06/18/yum-list-only-security-updates/" class="more">Continue reading</a>
+        
     
 </div>
 
