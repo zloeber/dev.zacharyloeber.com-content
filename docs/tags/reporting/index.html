@@ -14,21 +14,21 @@
         <meta property="og:title" content="Reporting">
         <meta property="og:description" content="Reporting - Zachary Loeber&#39;s Personal Site">
         <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
-        <meta property="og:url" content="https://dev.zacharyloeber.com/tags/reporting/">
+        <meta property="og:url" content="http://dev.zacharyloeber.com/tags/reporting/">
         <meta property="og:site_name" content="Zachary Loeber"><meta property="og:type" content="website">
-        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="https://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="https://dev.zacharyloeber.com/tags/reporting/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="https://dev.zacharyloeber.com/tags/reporting/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/tags/reporting/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="http://dev.zacharyloeber.com/tags/reporting/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="https://dev.zacharyloeber.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="http://dev.zacharyloeber.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -44,15 +44,15 @@
         <ul class="topnav">
             
                 
-                    <li><a href="https://dev.zacharyloeber.com/" target="">Home</a></li>
+                    <li><a href="http://dev.zacharyloeber.com/" target="">Home</a></li>
                 
             
                 
-                    <li><a href="https://dev.zacharyloeber.com/page/about/">About</a></li>
+                    <li><a href="http://dev.zacharyloeber.com/page/about/">About</a></li>
                 
             
                 
-                    <li><a href="https://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                    <li><a href="http://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
                 
             
         </ul>
@@ -65,7 +65,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="https://dev.zacharyloeber.com/" class="logo">
+            <a href="http://dev.zacharyloeber.com/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -74,7 +74,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="https://dev.zacharyloeber.com/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="http://dev.zacharyloeber.com/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -97,7 +97,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://dev.zacharyloeber.com/blog/2014/03/16/powershell-wordexcel-helper-functions/">
+                <a class="bubble" href="http://dev.zacharyloeber.com/blog/2014/03/16/powershell-wordexcel-helper-functions/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -105,7 +105,7 @@
     
 
     <div class="content">
-    <h3><a href="https://dev.zacharyloeber.com/blog/2014/03/16/powershell-wordexcel-helper-functions/">Powershell: Word/Excel Helper Functions</a></h3>
+    <h3><a href="http://dev.zacharyloeber.com/blog/2014/03/16/powershell-wordexcel-helper-functions/">Powershell: Word/Excel Helper Functions</a></h3>
     <div class="meta">
         
             
@@ -120,26 +120,83 @@
         
             <span class="categories">
                 
-                    <a href="https://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
+                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="https://dev.zacharyloeber.com/categories/powershell">Powershell</a>
+                    <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell</a>
                 
-                    <a href="https://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="https://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
     
         <p>Using powershell I wrap up MS Word and Excel COM objects within a custom psobject. This object contains a handful of methods for making docx and xslx creation and manipulation easier.</p>
 
-        
-            <a href="https://dev.zacharyloeber.com/blog/2014/03/16/powershell-wordexcel-helper-functions/" class="more">Continue reading</a>
-        
+<h4 id="introduction">Introduction</h4>
+
+<p>I typically don’t generate many Excel or Word documents programmatically. I find the process involved to be cumbersome due to the many nuances and intricacies of the COM objects which make up the API to the Office products. I also prefer html as it is a bit more universal, can easily be saved to an IIS directory for custom portals, and can be <a href="http://dev.zacharyloeber.com/2014/03/07/posh-tip-convert-html-to-pdf/">converted to PDF easily enough</a>. But everyone likes Word/Excel so much that I finally bit the bullet and looked into what it would take to deal with generating reports for these apps on my terms.</p>
+
+<h4 id="details">Details</h4>
+
+<p>Most of the examples I came across for Word (or Excel) document generation used $global: or $script: scoping to modify the documents in custom functions. This made the functions very script dependent and hard to reuse. To get around this limitation I encapsulate several essential functions as script methods on a custom object which represents the document you are generating.</p>
+
+<p>Using script methods as properties on a psobject in order to to make a self-contained uber-object is not always the right way to go. In fact, I don’t know that this technique should ever be used in powershell as it starts to blend into the world of OOP programming (my roots from oh so long ago…) and is not very self documenting. But, right or wrong, it works for me so it may work for you as well.</p>
+
+<p>A caveat to doing it this way is that you need to call the script methods in a non-standard manner (at least for powershell). Here is an example of some of the resulting code. Note how functions are called as if you are calling COM methods. This is a bit apropos as all we are doing is wrapping some code around COM object instances.</p>
+
+<pre class="lang:powershell decode:true" title="Word Example">##### Example Code #####
+$testdata = Get-Process | 
+             Select-Object Handle,ID,Name,@{'n'='TrueProperty';e={$true}},@{'n'='FalseProperty';e={$false}} | 
+             Select-Object -first 20
+try
+{
+    # Word test. Create and then save and close a new document with a few tables, a table of contents, and 
+    #  cover page.
+    $word = New-WordDocument -Visible $false
+    $word.NewCoverPage()
+    $word.NewBlankPage(1)
+    $word.MoveToEnd()
+    $word.NewPageBreak()
+    $word.NewHeading('Section 1')
+    $word.NewText('Just testing out if this works...')
+    $word.NewTable(4,10) | Out-Null
+    $word.MoveToEnd()
+    $word.NewPageBreak()
+    $word.NewHeading('Section 2')
+    $testtable = $word.NewTableFromArray($testdata) # | Out-Null
+    $word.NewTOC()
+    $word.SaveAs('c:\Temp\testdoc.docx')
+    $word.CloseDocument()
+    Remove-Variable word
+}
+catch
+{
+    Write-Error "Issue creating word document"
+}</pre>
+
+<p>Here is another example using the same data from the prior example to create a multiple worksheet excel workbook.</p>
+
+<pre class="lang:powershell decode:true">try
+{
+    # Excel test. Create and then save and close a new workbook.
+    $excel = New-ExcelWorkbook -Visible $false
+    $excel.NewWorksheetFromArray($testdata,'Processes')
+    $excel.NewWorksheetFromArray($testdata,'Duplicate of Processes')
+    $excel.SaveAs('c:\temp\testexcel.xlsx')
+    $excel.CloseWorkbook()
+    Remove-Variable excel
+}
+catch
+{
+    Write-Error "Issue creating excel document"
+}</pre>
+
+<p>I&#8217;ve setup the actual wrapper functions with a handful of the most important methods to suit my needs. Mostly they are just for inserting tables, moving around the document, and some other general tasks. I didn&#8217;t go overboard as really most of the features you would need to use can be called directly from the underlying objects. Anyway, <a href="http://gallery.technet.microsoft.com/Powershell-WordExcel-d0791ece">the wrapper functions are off at the Technet Script Gallery as usual</a>. There is plenty of room for improvement but maybe you will get some use from it in your projects in its current form.</p>
     
 </div>
 
@@ -152,13 +209,13 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="https://dev.zacharyloeber.com/tags/powershell">Powershell</a>
+                    <a href="http://dev.zacharyloeber.com/tags/powershell">Powershell</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/psc">PSC</a>
+                    <a href="http://dev.zacharyloeber.com/tags/psc">PSC</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/reporting">Reporting</a>
+                    <a href="http://dev.zacharyloeber.com/tags/reporting">Reporting</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/scripting">Scripting</a>
+                    <a href="http://dev.zacharyloeber.com/tags/scripting">Scripting</a>
                 
             </div>
         </div>
@@ -174,7 +231,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://dev.zacharyloeber.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/">
+                <a class="bubble" href="http://dev.zacharyloeber.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -182,7 +239,7 @@
     
 
     <div class="content">
-    <h3><a href="https://dev.zacharyloeber.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/">Multithreaded HP Server Health Check with Powershell</a></h3>
+    <h3><a href="http://dev.zacharyloeber.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/">Multithreaded HP Server Health Check with Powershell</a></h3>
     <div class="meta">
         
             
@@ -197,17 +254,17 @@
         
             <span class="categories">
                 
-                    <a href="https://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
+                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="https://dev.zacharyloeber.com/categories/powershell">Powershell</a>
+                    <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell</a>
                 
-                    <a href="https://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="https://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -217,7 +274,7 @@
 <p>This function attempts to query the HP WBEM WMI provider information to ascertain the general health of a physical server. By default just the general health status is returned. Optionally you can include the following components in the results: ethernet teams, array controllers , ethernet adapters, fans, HBAs, power supplies, and temperature sensors.</p>
 
         
-            <a href="https://dev.zacharyloeber.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/" class="more">Continue reading</a>
+            <a href="http://dev.zacharyloeber.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/" class="more">Continue reading</a>
         
     
 </div>
@@ -231,17 +288,17 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="https://dev.zacharyloeber.com/tags/powershell">Powershell</a>
+                    <a href="http://dev.zacharyloeber.com/tags/powershell">Powershell</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/reporting">Reporting</a>
+                    <a href="http://dev.zacharyloeber.com/tags/reporting">Reporting</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/scripting">Scripting</a>
+                    <a href="http://dev.zacharyloeber.com/tags/scripting">Scripting</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/sysadmin">Sysadmin</a>
+                    <a href="http://dev.zacharyloeber.com/tags/sysadmin">Sysadmin</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/tags/system-administration">System Administration</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/windows">Windows</a>
+                    <a href="http://dev.zacharyloeber.com/tags/windows">Windows</a>
                 
             </div>
         </div>
@@ -257,7 +314,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://dev.zacharyloeber.com/blog/2013/04/17/powershell-colorize-table-function/">
+                <a class="bubble" href="http://dev.zacharyloeber.com/blog/2013/04/17/powershell-colorize-table-function/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -265,7 +322,7 @@
     
 
     <div class="content">
-    <h3><a href="https://dev.zacharyloeber.com/blog/2013/04/17/powershell-colorize-table-function/">Powershell: Colorize-Table Function</a></h3>
+    <h3><a href="http://dev.zacharyloeber.com/blog/2013/04/17/powershell-colorize-table-function/">Powershell: Colorize-Table Function</a></h3>
     <div class="meta">
         
             
@@ -280,17 +337,17 @@
         
             <span class="categories">
                 
-                    <a href="https://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
+                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="https://dev.zacharyloeber.com/categories/powershell">Powershell</a>
+                    <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell</a>
                 
-                    <a href="https://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="https://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -298,7 +355,7 @@
         <p>Here is a function I modified for quickly modifying the attributes of a table&#8217;s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn&#8217;t hurt either.</p>
 
         
-            <a href="https://dev.zacharyloeber.com/blog/2013/04/17/powershell-colorize-table-function/" class="more">Continue reading</a>
+            <a href="http://dev.zacharyloeber.com/blog/2013/04/17/powershell-colorize-table-function/" class="more">Continue reading</a>
         
     
 </div>
@@ -312,15 +369,15 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="https://dev.zacharyloeber.com/tags/network-administration">network administration</a>
+                    <a href="http://dev.zacharyloeber.com/tags/network-administration">network administration</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/powershell">Powershell</a>
+                    <a href="http://dev.zacharyloeber.com/tags/powershell">Powershell</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/reporting">Reporting</a>
+                    <a href="http://dev.zacharyloeber.com/tags/reporting">Reporting</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/scripting">Scripting</a>
+                    <a href="http://dev.zacharyloeber.com/tags/scripting">Scripting</a>
                 
-                    <a href="https://dev.zacharyloeber.com/tags/system-administration">System Administration</a>
+                    <a href="http://dev.zacharyloeber.com/tags/system-administration">System Administration</a>
                 
             </div>
         </div>
@@ -356,15 +413,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
                     </li>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
                     </li>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
                     </li>
                 
                 </ul>
@@ -373,27 +430,27 @@
 
         
         <div class="categories">
-            <a href="https://dev.zacharyloeber.com/categories/"><strong>Categories</strong></a>
+            <a href="http://dev.zacharyloeber.com/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/categories/system-administration">System administration (130)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/categories/microsoft">Microsoft (120)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/categories/powershell">Powershell (106)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/categories/networking">Networking (53)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="https://dev.zacharyloeber.com/categories/active-directory">Active directory (44)</a>
+                        <a href="http://dev.zacharyloeber.com/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -440,7 +497,7 @@
                 by Zachary Loeber
             </a>
 	    -
-		<a href="https://dev.zacharyloeber.com/tags/reporting/index.xml">RSS</a>
+		<a href="http://dev.zacharyloeber.com/tags/reporting/index.xml">RSS</a>
         </div>
         <div class="author">
             <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
@@ -455,11 +512,11 @@
 
         
         
-        <script type="text/javascript" src="https://dev.zacharyloeber.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="https://dev.zacharyloeber.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {

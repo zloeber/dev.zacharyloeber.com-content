@@ -2,34 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vbscript/hta on Zachary Loeber</title>
-    <link>https://dev.zacharyloeber.com/categories/vbscript/hta/</link>
+    <link>http://dev.zacharyloeber.com/categories/vbscript/hta/</link>
     <description>Recent content in vbscript/hta on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 22 Jan 2011 17:51:51 +0000</lastBuildDate>
     
-	<atom:link href="https://dev.zacharyloeber.com/categories/vbscript/hta/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dev.zacharyloeber.com/categories/vbscript/hta/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Exchange: Remove entire OU from address book</title>
-      <link>https://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</link>
+      <link>http://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</link>
       <pubDate>Sat, 22 Jan 2011 17:51:51 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</guid>
       <description>&lt;p&gt;Here is another script that I hacked together in part of an AD/Exchange cleanup task to remove disabled users from the address book. This script, more specifically, removes an entire OU of users from the address book, so make sure that all the users are disabled in the OU you will be running this against! 🙂&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Windows: Some Small System Administration Scripts</title>
-      <link>https://dev.zacharyloeber.com/blog/2009/10/30/windows-some-small-system-administration-scripts/</link>
+      <link>http://dev.zacharyloeber.com/blog/2009/10/30/windows-some-small-system-administration-scripts/</link>
       <pubDate>Fri, 30 Oct 2009 18:03:27 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2009/10/30/windows-some-small-system-administration-scripts/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2009/10/30/windows-some-small-system-administration-scripts/</guid>
       <description>&lt;p&gt;Here are a few scripts that I have cobbled together over the last few years. They are small and useful but nothing earth-shattering. One gets information about a remote system and who is logged in. The other can remotely reset the administrator password. Both obviously require  you have the permissions to do so on the remote machines. Both accept multiple computer names divided by a semi-colon.  Save and change the extension from .txt to .hta&lt;/p&gt;
 
-&lt;p&gt;&lt;a rel=&#34;attachment wp-att-92&#34; href=&#34;https://dev.zacharyloeber.com/?attachment_id=92&#34;&gt;&lt;/a&gt;&lt;a rel=&#34;attachment wp-att-97&#34; href=&#34;https://dev.zacharyloeber.com/?attachment_id=97&#34;&gt;GetAsset&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&#34;attachment wp-att-92&#34; href=&#34;http://dev.zacharyloeber.com/?attachment_id=92&#34;&gt;&lt;/a&gt;&lt;a rel=&#34;attachment wp-att-97&#34; href=&#34;http://dev.zacharyloeber.com/?attachment_id=97&#34;&gt;GetAsset&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a rel=&#34;attachment wp-att-94&#34; href=&#34;https://dev.zacharyloeber.com/?attachment_id=94&#34;&gt;ResetAdminPass&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a rel=&#34;attachment wp-att-94&#34; href=&#34;http://dev.zacharyloeber.com/?attachment_id=94&#34;&gt;ResetAdminPass&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

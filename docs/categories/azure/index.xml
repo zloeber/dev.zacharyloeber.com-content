@@ -2,56 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Azure on Zachary Loeber</title>
-    <link>https://dev.zacharyloeber.com/categories/azure/</link>
+    <link>http://dev.zacharyloeber.com/categories/azure/</link>
     <description>Recent content in Azure on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 09 Jan 2019 05:09:51 +0000</lastBuildDate>
     
-	<atom:link href="https://dev.zacharyloeber.com/categories/azure/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dev.zacharyloeber.com/categories/azure/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Devops Blog Migration to Hugo</title>
-      <link>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</link>
+      <link>http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</link>
       <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</guid>
+      <guid>http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve updated my site to use hugo some time ago but recently added an Azure DevOps pipeline for deploying the thing. This short article will cover how the pipeline code works and dive into multi-stage pipelines.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Email Reputation and Design: A Condensed Guide</title>
-      <link>https://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/</link>
+      <link>http://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/</link>
       <pubDate>Sat, 24 Feb 2018 15:59:26 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/</guid>
       <description>&lt;p&gt;Very few domains implement the holy grail of email identity reputation frameworks, &lt;a href=&#34;https://dmarc.org/&#34;&gt;DMARC&lt;/a&gt;. This guide will cover all the steps required to get it implemented for your domain along with some best practices for overall email reputation design.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: AzureAD Dynamic Groups</title>
-      <link>https://dev.zacharyloeber.com/blog/2018/02/04/powershell-azuread-dynamic-groups/</link>
+      <link>http://dev.zacharyloeber.com/blog/2018/02/04/powershell-azuread-dynamic-groups/</link>
       <pubDate>Sun, 04 Feb 2018 17:36:57 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2018/02/04/powershell-azuread-dynamic-groups/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2018/02/04/powershell-azuread-dynamic-groups/</guid>
       <description>&lt;p&gt;A few code snippets for Azure AD dynamic groups. One for creating standard groups for your environment. Another for finding duplicates.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: Office 365 Group Based Licencing Cleanup</title>
-      <link>https://dev.zacharyloeber.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</link>
+      <link>http://dev.zacharyloeber.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</link>
       <pubDate>Thu, 11 Jan 2018 03:35:52 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</guid>
       <description>&lt;p&gt;A script to remove directly assigned licenses from user accounts if they overlap with group assigned licenses in Office 365.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: Azure ARM Site Overview</title>
-      <link>https://dev.zacharyloeber.com/blog/2017/01/30/powershell-azure-arm-site-overview/</link>
+      <link>http://dev.zacharyloeber.com/blog/2017/01/30/powershell-azure-arm-site-overview/</link>
       <pubDate>Tue, 31 Jan 2017 03:23:32 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2017/01/30/powershell-azure-arm-site-overview/</guid>
+      <guid>http://dev.zacharyloeber.com/blog/2017/01/30/powershell-azure-arm-site-overview/</guid>
       <description>&lt;p&gt;Visualizing an Azure deployment can be a bit tricky. This short Azure summary script is a good way to start though.&lt;/p&gt;</description>
     </item>
     
