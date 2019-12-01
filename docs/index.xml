@@ -1,38 +1,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zachary Loeber</title>
-    <link>http://dev.zacharyloeber.com/</link>
+    <link>https://dev.zacharyloeber.com/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 09 Jan 2019 05:37:00 +0000</lastBuildDate>
     
-        <atom:link href="http://dev.zacharyloeber.com/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dev.zacharyloeber.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Posts</title>
-      <link>http://dev.zacharyloeber.com/posts/</link>
+      <link>https://dev.zacharyloeber.com/posts/</link>
       <pubDate>Wed, 09 Jan 2019 05:37:00 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/posts/</guid>
+      <guid>https://dev.zacharyloeber.com/posts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Contents</title>
-      <link>http://dev.zacharyloeber.com/content/</link>
+      <link>https://dev.zacharyloeber.com/content/</link>
       <pubDate>Wed, 09 Jan 2019 00:48:48 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/content/</guid>
+      <guid>https://dev.zacharyloeber.com/content/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Old-articles</title>
-      <link>http://dev.zacharyloeber.com/old-articles/</link>
+      <link>https://dev.zacharyloeber.com/old-articles/</link>
       <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/old-articles/</guid>
+      <guid>https://dev.zacharyloeber.com/old-articles/</guid>
       <description></description>
     </item>
     

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>QoS on Zachary Loeber</title>
-    <link>http://dev.zacharyloeber.com/tags/qos/</link>
+    <link>https://dev.zacharyloeber.com/tags/qos/</link>
     <description>Recent content in QoS on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 01 Jun 2014 15:13:00 +0000</lastBuildDate>
     
-	<atom:link href="http://dev.zacharyloeber.com/tags/qos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/tags/qos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Lync 2013: The Many QoS Settings</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/06/01/lync-2013-the-many-qos-settings/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/06/01/lync-2013-the-many-qos-settings/</link>
       <pubDate>Sun, 01 Jun 2014 15:13:00 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/06/01/lync-2013-the-many-qos-settings/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/06/01/lync-2013-the-many-qos-settings/</guid>
       <description>&lt;p&gt;There are more than a few QoS settings in Lync 2013. Here is a script which should gather most of them in a human readable format for your convenience.&lt;/p&gt;</description>
     </item>
     

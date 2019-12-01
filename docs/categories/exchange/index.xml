@@ -2,148 +2,148 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Exchange on Zachary Loeber</title>
-    <link>http://dev.zacharyloeber.com/categories/exchange/</link>
+    <link>https://dev.zacharyloeber.com/categories/exchange/</link>
     <description>Recent content in Exchange on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 25 Sep 2015 01:41:25 +0000</lastBuildDate>
     
-	<atom:link href="http://dev.zacharyloeber.com/categories/exchange/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/categories/exchange/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Exchange: Stop Email Exfiltration</title>
-      <link>http://dev.zacharyloeber.com/blog/2015/09/24/excxhange-stop-email-exfiltration/</link>
+      <link>https://dev.zacharyloeber.com/blog/2015/09/24/excxhange-stop-email-exfiltration/</link>
       <pubDate>Fri, 25 Sep 2015 01:41:25 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2015/09/24/excxhange-stop-email-exfiltration/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2015/09/24/excxhange-stop-email-exfiltration/</guid>
       <description>&lt;p&gt;When your users leave or get removed from the organization they may still be getting company confidential information. Here is how you can find out and stop this from happening.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange: Database Leveling Redux</title>
-      <link>http://dev.zacharyloeber.com/blog/2015/04/06/exchange-database-leveling-redux/</link>
+      <link>https://dev.zacharyloeber.com/blog/2015/04/06/exchange-database-leveling-redux/</link>
       <pubDate>Tue, 07 Apr 2015 00:12:33 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2015/04/06/exchange-database-leveling-redux/</guid>
-      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;http://dev.zacharyloeber.com/2014/01/07/exchange-20102013-database-leveling-script/&#34;&gt;tackled the challenge&lt;/a&gt; of constructing a variant of the bin packing algorithm for leveling out Exchange databases&amp;#8217; size with the least amount of mailbox migrations necessary. Since then, I&amp;#8217;ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I&amp;#8217;ve finally rounded back to this script to do it some justice.&lt;/p&gt;</description>
+      <guid>https://dev.zacharyloeber.com/blog/2015/04/06/exchange-database-leveling-redux/</guid>
+      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;https://dev.zacharyloeber.com/2014/01/07/exchange-20102013-database-leveling-script/&#34;&gt;tackled the challenge&lt;/a&gt; of constructing a variant of the bin packing algorithm for leveling out Exchange databases&amp;#8217; size with the least amount of mailbox migrations necessary. Since then, I&amp;#8217;ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I&amp;#8217;ve finally rounded back to this script to do it some justice.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange Mailbox Auditing with Powershell</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/11/24/exchange-mailbox-auditing-with-powershell/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/11/24/exchange-mailbox-auditing-with-powershell/</link>
       <pubDate>Tue, 25 Nov 2014 05:55:01 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/11/24/exchange-mailbox-auditing-with-powershell/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/11/24/exchange-mailbox-auditing-with-powershell/</guid>
       <description>&lt;p&gt;Some time ago I wrote a script and GUI for performing security audits of Exchange mailbox and calendar rights in an environment. This script was far more popular than I anticipated and, I’m ashamed to say, was rather poorly written by my current Powershell standards. There is an obvious need to simplify the extraction of mailbox permissions or my old script would not still be so popular. So I’ve started to revisit my old code for this project in hopes of remaking it with my PowerShell reporting engine. The first step in this process is to pull out the several bits of code that do the actual rights/permissions extraction. I think I’ve finally got this part done and see no reason not to release this mini-library of functions first.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Lync and UM Correlation with Powershell</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</link>
       <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
       <description>I&amp;#8217;ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
 There are a few necessary results to gather where I believe it can be easy to &amp;#8216;miss&amp;#8217; configuration steps when turning up or disabling users:</description>
     </item>
     
     <item>
       <title>Exchange: Handling Old Log and Other Files</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/</link>
       <pubDate>Fri, 26 Sep 2014 19:41:59 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/</guid>
       <description>In Exchange old logs can really build up fast. Not database transaction logs but rather temporary transport, client access, IIS, and other debug related crap that typically default to locations either on your system drive or Exchange install path. Of course, Powershell scripting can provide a decent solution for this problem.
 Introduction More than any other version, Exchange 2013 seems to like logging information to disk. By default, much of what gets logged will not auto-rotate (or if it does, it happens infrequently) either so you end up with this slow ticking time-bomb in your environment.</description>
     </item>
     
     <item>
       <title>Update: Get-CalendarPermission</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/09/24/update-get-calendarpermission/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/09/24/update-get-calendarpermission/</link>
       <pubDate>Wed, 24 Sep 2014 17:43:07 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/09/24/update-get-calendarpermission/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/09/24/update-get-calendarpermission/</guid>
       <description>&lt;p&gt;Going through older code is a bit like looking through an old yearbook or photo album. If the pictures within are old enough you usually end up laughing at how little you recognize yourself and maybe even marvel a bit at how far you have come. This old function I wrote isn’t the worst of my code but I was still able to update it for measurable improvements.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange: Receive Connector Tango! – Part 2</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/</link>
       <pubDate>Sat, 23 Aug 2014 21:20:31 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://dev.zacharyloeber.com/2014/07/06/exchange-receive-connector-tango-part-1/&#34;&gt;In part 1 of this series&lt;/a&gt; I discussed some basic knowledge requirements to get a better grip on receive connectors in Exchange. I continue that conversation with some examples of improperly configured connectors and the issues they may cause. I finish up the discussion with a script you can use to scan your environment for such configurations.&lt;/p&gt;</description>
+      <guid>https://dev.zacharyloeber.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://dev.zacharyloeber.com/2014/07/06/exchange-receive-connector-tango-part-1/&#34;&gt;In part 1 of this series&lt;/a&gt; I discussed some basic knowledge requirements to get a better grip on receive connectors in Exchange. I continue that conversation with some examples of improperly configured connectors and the issues they may cause. I finish up the discussion with a script you can use to scan your environment for such configurations.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange Log Level GUI Script</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-log-level-gui-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/07/06/exchange-log-level-gui-script/</link>
       <pubDate>Mon, 07 Jul 2014 03:30:20 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-log-level-gui-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/07/06/exchange-log-level-gui-script/</guid>
       <description>&lt;p&gt;I ran into a situation recently where I was forced to amp up the Exchange logging levels to further troubleshoot an issue with some pretty specific Exchange components. I found myself wanting a quick GUI to view and set the levels but found none. So I used this as an opportunity to learn a bit about xaml based GUIs and powershell. The result is this simple, but useful, Exchange log level GUI script which was written for Exchange 2013 but should also run on 2010.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange: Receive Connector Tango! – Part 1</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</link>
       <pubDate>Mon, 07 Jul 2014 03:25:13 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</guid>
       <description>&lt;p&gt;Exchange receive connectors are often configured incorrectly or worse, insecurely. This is the first of a two part series about Exchange receive connectors and what to look out for when setting them up.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange: Update Distribution Group Managers Script</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/04/23/exchange-update-distribution-group-managers-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/04/23/exchange-update-distribution-group-managers-script/</link>
       <pubDate>Thu, 24 Apr 2014 00:26:37 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/04/23/exchange-update-distribution-group-managers-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/04/23/exchange-update-distribution-group-managers-script/</guid>
       <description>&lt;p&gt;A small script to automatically update distribution group owners based on an AD security group.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>AD Audit Report with Powershell: Part 3</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/</link>
       <pubDate>Sat, 11 Jan 2014 04:16:29 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/</guid>
       <description>&lt;p&gt;This is my third and final major update to my AD auditing script. This includes a handful of new useful sections such as domain published printers, NPS servers, DHCP servers, as well as SCCM sites and DPs. Other improvements include easier to use script parameters and bug fixes.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010/2013: Database Leveling Script</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/01/07/exchange-20102013-database-leveling-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/01/07/exchange-20102013-database-leveling-script/</link>
       <pubDate>Tue, 07 Jan 2014 22:08:16 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/01/07/exchange-20102013-database-leveling-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/01/07/exchange-20102013-database-leveling-script/</guid>
       <description>&lt;p&gt;It is common to randomly choose mailbox databases when creating or migrating user mailboxes in Exchange. I actually recommend this practice unless you are setting up a tiered user/storage environment. Unfortunately this may result in an unequal distribution of data which, in turn, can result in an environment where mailbox databases are wildly different in size. In this post I will discuss an approach to leveling the databases so they are equal in size by moving mailboxes between them.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>AD Audit Report With Powershell: Part 2</title>
-      <link>http://dev.zacharyloeber.com/blog/2013/11/02/ad-audit-report-with-powershell-part-2/</link>
+      <link>https://dev.zacharyloeber.com/blog/2013/11/02/ad-audit-report-with-powershell-part-2/</link>
       <pubDate>Sat, 02 Nov 2013 17:41:25 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2013/11/02/ad-audit-report-with-powershell-part-2/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2013/11/02/ad-audit-report-with-powershell-part-2/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve updated my AD auditing report. The forest level report now includes AD integrated zones, GPOs, and fixed code to conform to strict v2 Powershell. I&amp;#8217;ve also included a new domain level report! This report provides some user/group stats, all privileged group membership, and more.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Active Directory Audit Report With Powershell</title>
-      <link>http://dev.zacharyloeber.com/blog/2013/10/18/active-directory-audit-report-with-powershell/</link>
+      <link>https://dev.zacharyloeber.com/blog/2013/10/18/active-directory-audit-report-with-powershell/</link>
       <pubDate>Fri, 18 Oct 2013 15:13:11 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2013/10/18/active-directory-audit-report-with-powershell/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2013/10/18/active-directory-audit-report-with-powershell/</guid>
       <description>&lt;p&gt;Not too long ago I wrote a quick post on how easy it is to gather information from AD. As a case in point example I provided a script to gather all the disabled user accounts which are still assigned Lync IDs. In this script I take it one step further and provide a full blown Active Directory reporting script which can be produced with any non-privileged domain user account.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010 Mailbox Audit Report Script</title>
-      <link>http://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</link>
       <pubDate>Fri, 10 May 2013 02:33:54 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
       <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
 
 &lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
@@ -151,19 +151,19 @@ Introduction More than any other version, Exchange 2013 seems to like logging in
     
     <item>
       <title>Exchange: Get Calendar Permissions (multilingual edition)</title>
-      <link>http://dev.zacharyloeber.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</link>
+      <link>https://dev.zacharyloeber.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</link>
       <pubDate>Sun, 28 Apr 2013 17:35:54 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</guid>
       <description>&lt;p&gt;Some time ago I released &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-2010-Calendar-21695fde&#34; title=&#34;Exchange 2010 Calendar Permission GUI&#34;&gt;a rather simplistic GUI for viewing Exchange 2010 mailbox calendar permissions&lt;/a&gt;. Because of a semi-related script I&amp;#8217;m working on currently I rounded back and recreated that GUI script to be a powershell function instead. This is the result.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange: Mailbox GUI</title>
-      <link>http://dev.zacharyloeber.com/blog/2013/04/07/exchange-mailbox-gui/</link>
+      <link>https://dev.zacharyloeber.com/blog/2013/04/07/exchange-mailbox-gui/</link>
       <pubDate>Mon, 08 Apr 2013 01:10:21 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2013/04/07/exchange-mailbox-gui/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2013/04/07/exchange-mailbox-gui/</guid>
       <description>&lt;h1 id=&#34;exchange-2010-mailbox-gui&#34;&gt;Exchange 2010 Mailbox GUI&lt;/h1&gt;
 
 &lt;p&gt;A powershell GUI for selecting and performing actions against multiple Exchange mailboxes.&lt;/p&gt;</description>
@@ -171,19 +171,19 @@ Introduction More than any other version, Exchange 2013 seems to like logging in
     
     <item>
       <title>Exchange: Co-existence Client Access Preparation Report</title>
-      <link>http://dev.zacharyloeber.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/</link>
+      <link>https://dev.zacharyloeber.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/</link>
       <pubDate>Wed, 16 Jan 2013 03:36:50 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/</guid>
       <description>&lt;p&gt;If you upgrade Exchange in a co-existence scenario (you want to keep the same client access namespace) there is one crucial moment of truth which must be overcome. This is the phase of the migration I&amp;#8217;ve come to call the &amp;#8220;dns flip-over&amp;#8221; or the &amp;#8220;client access part&amp;#8221;. Without preparation this part of the migration can be a real headache as issues are directly experienced by your end users.  This is a simple report card you can use to prepare you for this moment.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange – The State Of External Client Access</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</link>
       <pubDate>Thu, 22 Nov 2012 19:58:04 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;Most within the messaging and collaboration industry are hyped up about the next wave of Microsoft collaboration and messaging products which are soon to be released. Among these products is Exchange 2013 RTM. This type of release typically precedes yet another wave of architecture upgrades across the corporate landscape. Some of these (beta testers) will be will undoubtedly upgrade to Exchange 2013.&lt;/p&gt;
@@ -193,46 +193,46 @@ Introduction More than any other version, Exchange 2013 seems to like logging in
     
     <item>
       <title>Exchange: Automatically Generating Configuration Scripts</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/09/29/exchange-automatically-generating-configuration-scripts/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/09/29/exchange-automatically-generating-configuration-scripts/</link>
       <pubDate>Sat, 29 Sep 2012 17:33:20 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/09/29/exchange-automatically-generating-configuration-scripts/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/09/29/exchange-automatically-generating-configuration-scripts/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve started a side project which is born from personally having to redo many aspects of an Exchange migration over and over again. Most of this, I believe, can be automated. Some aspects of this process include exchange server role prerequisite procedures, co-existence configuration, DAG/CAS configuration, and other general reminders and processes.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010: Poor Man’s Monitoring</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/07/22/exchange-2010-poor-mans-monitoring/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/07/22/exchange-2010-poor-mans-monitoring/</link>
       <pubDate>Sun, 22 Jul 2012 20:11:16 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/07/22/exchange-2010-poor-mans-monitoring/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/07/22/exchange-2010-poor-mans-monitoring/</guid>
       <description>&lt;p&gt;I quietly released a new script into the wild the other day, Troubleshoot-MailboxServer.ps1. This script is meant for monitoring, fixing, and reporting on Exchange 2010 database servers. It pretty much just wraps around and reports on troubleshooting scripts found in %ExchangeInstallPath%Scripts. I also set it so you can have an email sent including warning/error color coded report upon completion.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010: Even More Migration Tips</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/</link>
       <pubDate>Wed, 11 Jul 2012 00:34:32 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/</guid>
       <description>&lt;p&gt;It has been a while since I passed on some personal experiences when performing Exchange 2010 migrations. I thought it was about time to update my list to include some more of the lesser known aspects of an Exchange 2010 migration.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Active Directory: Best Practices Workbook</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/05/28/active-directory-best-practices-workbook/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/05/28/active-directory-best-practices-workbook/</link>
       <pubDate>Mon, 28 May 2012 21:57:58 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/05/28/active-directory-best-practices-workbook/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/05/28/active-directory-best-practices-workbook/</guid>
       <description>&lt;p&gt;This is a checklist for technicians performing Active Directory assessments. It is broken down by category and best practice. Some items listed are not really a best practice, but rather something which you may find in an environment which should be rectified (as part of an audit perhaps).&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Assessing Like A Microsoft Technician</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/03/09/assessing-like-a-microsoft-technician/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/03/09/assessing-like-a-microsoft-technician/</link>
       <pubDate>Sat, 10 Mar 2012 03:08:26 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/03/09/assessing-like-a-microsoft-technician/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/03/09/assessing-like-a-microsoft-technician/</guid>
       <description>&lt;h1 id=&#34;troubleshooting-like-a-microsoft-technician&#34;&gt;Troubleshooting Like A Microsoft Technician&lt;/h1&gt;
 
 &lt;p&gt;I have been doing more and more site assessments for Active Directory, Exchange, Lync, and VMware. As such, I’ve been slowly refining the toolset that I use to gather data and troubleshoot existing environment issues. Here is a list of site assessment tools I’m finding that I regularly return to for rapid analysis or information gathering at a site. All of these tools are free.&lt;/p&gt;</description>
@@ -240,10 +240,10 @@ Introduction More than any other version, Exchange 2013 seems to like logging in
     
     <item>
       <title>Exchange 2010: Changing an invalid DNS suffixed server</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</link>
       <pubDate>Thu, 01 Mar 2012 05:30:13 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</guid>
       <description>&lt;p&gt;I ran into an interesting Exchange &lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be&lt;/p&gt;
 
 &lt;pre&gt;“Initial error: 451 4.4.0 dns query failed. The error was: SMTPsend.dns.nonexistentdomain; nonexistent”&lt;/pre&gt;</description>
@@ -251,19 +251,19 @@ Introduction More than any other version, Exchange 2013 seems to like logging in
     
     <item>
       <title>Exchange 2010: Client Access Role Configuration Report</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/</link>
       <pubDate>Sat, 04 Feb 2012 14:03:29 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/</guid>
       <description>Ok, so I woke up and was wide awake at 4am this morning. I took it as a sign to lose my mind for a while and get to hacking another script. The result is a client access setting report script which includes all internal and external paths along with their authentication settings. It needs some prettying up and a bit of love but it does exactly what I&amp;#8217;ve wanted in Exchange 2010, gives me an overall view of all client access settings (specifically related to IIS).</description>
     </item>
     
     <item>
       <title>Exchange 2010 One-liner: Get All Network Interface Information</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/</link>
       <pubDate>Fri, 19 Aug 2011 16:57:15 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/</guid>
       <description>Here are a few quick powershell one-liners to get all the network interface information in your exchange environment:
 $ExchServers=(Get-ExchangeServer); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.Name | select @{Name=&#34;Server&#34;;Expression={$Srv.Name}},@{Name=&#34;DNS Host Name&#34;;Expression={$_.DNSHostName}},@{Name=&#34;Server Role&#34;;Expression={$Srv.ServerRole}},Description,@{Name=&#34;IP Address&#34;;Expression={$_.IPAddress}},@{Name=&#34;IP Subnet&#34;;Expression={$_.IPSubnet}},@{Name=&#34;Default Gateway&#34;;Expression={$_.DefaultIPGateway}},@{Name=&#34;Mac Address&#34;;Expression={$_.MacAddress}},@{Name=&#34;DNS Suffix Search Order&#34;;Expression={$_.DNSDomainSuffixSearchOrder}},@{Name=&#34;DNS Server Search Order&#34;;Expression={$_.DNSServerSearchOrder}},FullDNSRegistrationEnabled}) |Export-Csv -NoTypeInformation &#34;C:\Temp\Exchange-network.csv&#34; If you just want interface information for Exchange 2010 servers:
 $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.</description>
@@ -271,48 +271,48 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(
     
     <item>
       <title>Exchange 2010: Network Communication Table</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/07/30/exchange-2010-network-communication-table/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/07/30/exchange-2010-network-communication-table/</link>
       <pubDate>Sat, 30 Jul 2011 17:06:36 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/07/30/exchange-2010-network-communication-table/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/07/30/exchange-2010-network-communication-table/</guid>
       <description>I figured I&amp;#8217;d post the massive table of firewall rules I compiled for my Exchange 2010 firewall generation script. It has both the source and destination roles for many aspects of an Exchange environment. Where there are ???&amp;#8217;s is where I&amp;#8217;m simply not certain (mainly around encryption between certain roles). If anyone spots any mistakes or omissions please let me know and I&amp;#8217;ll update the accordingly.
 Exchange 2010 Network Communication Table By Role</description>
     </item>
     
     <item>
       <title>Exchange 2010: Automated Firewall Rule Generation 1.2</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</link>
       <pubDate>Wed, 20 Jul 2011 16:35:08 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</guid>
       <description>I made a few changes to this script to make it more modular and to allow for more exceptions in regards to DAGs and sites. Enjoy!
 Exchange 2010 Firewall Rule Generation Script</description>
     </item>
     
     <item>
       <title>Exchange 2010: Certificate Install Script</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/06/30/exchange-2010-certificate-install-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/06/30/exchange-2010-certificate-install-script/</link>
       <pubDate>Thu, 30 Jun 2011 15:39:27 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/06/30/exchange-2010-certificate-install-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/06/30/exchange-2010-certificate-install-script/</guid>
       <description>&lt;p&gt;Many of the cert providers require that you install both an intermediary and a root trusted cert on the servers which you are configuring your newly requested Unified Communications certificate on. If you are doing an Exchange migration including several ISA/TMG/Exchange (2003 and 2010) servers this can be a tedious process. Here is the quick way to install all three certificates once they are on the server&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010: Automated Firewall Rule Generation</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/06/24/exchange-2010-automated-firewall-rule-generation/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/06/24/exchange-2010-automated-firewall-rule-generation/</link>
       <pubDate>Fri, 24 Jun 2011 16:40:50 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/06/24/exchange-2010-automated-firewall-rule-generation/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/06/24/exchange-2010-automated-firewall-rule-generation/</guid>
       <description>&lt;p&gt;A single, or even a dual site Exchange 2010 deployment does not usually require too much internal firewall manipulation. But if you have to setup a Exchange 2010 environment where there are many global sites or a heavily segmented network, the number of firewall requests required to get a fully functioning configuration working can be daunting. Wouldn&amp;#8217;t it be nice to have some of those firewall rules automatically generated for you?&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</link>
       <pubDate>Wed, 04 May 2011 21:26:37 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</guid>
       <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;
 
 &lt;p&gt;Prior to starting my new job I wanted to ensure that my previous employer was able to protect VIP mailboxes in their Exchange 2010 SP1 organization. I had to do this with exclusive scopes and these are the steps I had to follow. A general knowledge of role based security is assumed in this post.&lt;/p&gt;</description>
@@ -320,46 +320,46 @@ Exchange 2010 Firewall Rule Generation Script</description>
     
     <item>
       <title>Outlook 2010: Photo Sizing Tool</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/</link>
       <pubDate>Tue, 01 Feb 2011 15:35:24 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/</guid>
       <description>&lt;p&gt;We are about to get into full swing with our Exchange 2010 mailbox migrations and, soon afterwards, Office 2007 to 2010 upgrades as well. Unfortunately, we don&amp;#8217;t have our Sharepoint farm upgraded to 2010 yet so there will be no automatic syncing of user photos into the GAL for those nice vanity pics which you can view in Outlook 2010. I know people like to be seen so I found a nice &lt;a title=&#34;This little hack rocks!&#34; href=&#34;http://www.mikepfeiffer.net/2010/05/manage-exchange-2010-thumbnail-photos-with-a-powershell-based-gui/&#34; target=&#34;_blank&#34;&gt;powershell based GUI &lt;/a&gt;for our (awesome) service desk team to use to upload these photos for users as requested. But you still have to get these photos thumbnailed to approximately 96&amp;#215;96 before uploading. Repeated manual labor is the anathema of any self respecting sysadmin who knows how to hack other people&amp;#8217;s code to suit their needs. So I whipped up a very dirty (as in, &amp;#8220;wow, get the bar of soap&amp;#8221; dirty) hack which combines &lt;a title=&#34;How to batch optimize your Exchange GAL Photos before importing to Active Directory&#34; href=&#34;http://www.stevieg.org/2011/01/batch-optimize-exchange-gal-photos-importing-active-directory/comment-page-1/#comment-1085&#34; target=&#34;_blank&#34;&gt;this person&amp;#8217;s clever photo-sizing hack&lt;/a&gt; with the prior mentioned gui.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange: Remove entire OU from address book</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</link>
       <pubDate>Sat, 22 Jan 2011 17:51:51 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</guid>
       <description>&lt;p&gt;Here is another script that I hacked together in part of an AD/Exchange cleanup task to remove disabled users from the address book. This script, more specifically, removes an entire OU of users from the address book, so make sure that all the users are disabled in the OU you will be running this against! 🙂&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange – Notify Forwarded Accounts Script</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</link>
       <pubDate>Mon, 10 Jan 2011 20:00:19 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/01/10/exchange-notify-forwarded-accounts-script/</guid>
       <description>In cleaning up a large number of disabled user accounts in AD I wanted a way to notify a large number of users specifically that they were being forwarded e-mail from another account. This was part of an effort to clean up AD a bit before moving everyone over to Exchange 2010 but it can be used independently of any one project as part of a general AD maintenance plan.</description>
     </item>
     
     <item>
       <title>Exchange 2010 (SP1): Pre-Deployment Tips</title>
-      <link>http://dev.zacharyloeber.com/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</link>
+      <link>https://dev.zacharyloeber.com/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</link>
       <pubDate>Fri, 17 Dec 2010 18:55:00 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</guid>
       <description>&lt;p&gt;I recently had the opportunity to experience all of the blood, sweat, and tears of migrating a minimally maintained Exchange 2003 infrastructure to Exchange 2010 (and mid-way through, an upgrade to 2010 SP1). All of the docs out on the web for migrations make it seem soooo easy. But if you are going to do anything other than a single server install and are doing things like, oh say; hardware load balancing, Exchange 2003 co-existence, or working in an old multi-domain forest then you are in for some punishment. I think I ran into every possible issue that you can have with an Exchange 2010 migration. One guide that helped me in this endeavor was the &lt;a title=&#34;Rapid Exchange 2003 to 2010 Transition Guide&#34; href=&#34;http://msexchangegeek.com/2010/01/30/rapid-transition-guide-from-exchange-2003-to-exchange-2010/&#34; target=&#34;_blank&#34;&gt;rapid transition guide from Exchange 2003 to Exchange 2010&lt;/a&gt;. This guide didn&amp;#8217;t cover every aspect for me though, here are a few things that may save you a little bit of hassle. I&amp;#8217;ve been meaning to publish this for a while and I have a whole lot more notes from this experience but this is a start.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exchange 2010 SP1: DAG Node Maintenance</title>
-      <link>http://dev.zacharyloeber.com/blog/2010/11/04/exchange-2010-sp1-dag-node-maintenance/</link>
+      <link>https://dev.zacharyloeber.com/blog/2010/11/04/exchange-2010-sp1-dag-node-maintenance/</link>
       <pubDate>Thu, 04 Nov 2010 20:22:18 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2010/11/04/exchange-2010-sp1-dag-node-maintenance/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2010/11/04/exchange-2010-sp1-dag-node-maintenance/</guid>
       <description>&lt;p&gt;If you are performing maintenance on DAG nodes here is the process you want to go through (along with a slight caveat to fix a possible active copy move issue you may run into). In my environment I have three nodes in a cross-site dag.&lt;/p&gt;
 
 &lt;p&gt;All the commands below are run in an administrative exchange powershell prompt.&lt;/p&gt;</description>
@@ -367,10 +367,10 @@ Exchange 2010 Firewall Rule Generation Script</description>
     
     <item>
       <title>Exchange 2010 SP1: Web Services Fix</title>
-      <link>http://dev.zacharyloeber.com/blog/2010/10/12/exchange-2010-sp1-web-services-fix/</link>
+      <link>https://dev.zacharyloeber.com/blog/2010/10/12/exchange-2010-sp1-web-services-fix/</link>
       <pubDate>Tue, 12 Oct 2010 20:22:25 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2010/10/12/exchange-2010-sp1-web-services-fix/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2010/10/12/exchange-2010-sp1-web-services-fix/</guid>
       <description>&lt;p&gt;I&amp;#8217;m utilizing 2 CAS servers behind an F5 load balancer and was finding that a migrated user to my new CAS array would get a red spat in communicator and get authorization prompts for the autodiscover url. I fixed it, finally, just today.&lt;/p&gt;</description>
     </item>
     

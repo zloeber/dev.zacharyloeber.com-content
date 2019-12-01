@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unified Access Gateway on Zachary Loeber</title>
-    <link>http://dev.zacharyloeber.com/categories/unified-access-gateway/</link>
+    <link>https://dev.zacharyloeber.com/categories/unified-access-gateway/</link>
     <description>Recent content in Unified Access Gateway on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 22 Nov 2012 19:58:04 +0000</lastBuildDate>
     
-	<atom:link href="http://dev.zacharyloeber.com/categories/unified-access-gateway/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/categories/unified-access-gateway/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Exchange – The State Of External Client Access</title>
-      <link>http://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</link>
+      <link>https://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</link>
       <pubDate>Thu, 22 Nov 2012 19:58:04 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 
 &lt;p&gt;Most within the messaging and collaboration industry are hyped up about the next wave of Microsoft collaboration and messaging products which are soon to be released. Among these products is Exchange 2013 RTM. This type of release typically precedes yet another wave of architecture upgrades across the corporate landscape. Some of these (beta testers) will be will undoubtedly upgrade to Exchange 2013.&lt;/p&gt;
@@ -25,10 +25,10 @@
     
     <item>
       <title>Microsoft Unified Access Gateway 2010 Notes</title>
-      <link>http://dev.zacharyloeber.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/</link>
+      <link>https://dev.zacharyloeber.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/</link>
       <pubDate>Mon, 02 Aug 2010 19:11:42 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/</guid>
       <description>&lt;p&gt;If you are new to the Microsoft Unified Access Gateway then you really should know some of these things I ran into while trying to get my array setup and running smoothly. Sure, to find my single post among the masses is probably not going to happen, but if you do find it before you start your endeavor then I promise you will be saved time and frustration. The first major frustration, the installation&amp;#8230;.&lt;/p&gt;</description>
     </item>
     

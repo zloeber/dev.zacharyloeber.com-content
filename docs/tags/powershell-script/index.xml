@@ -2,155 +2,155 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Powershell Script on Zachary Loeber</title>
-    <link>http://dev.zacharyloeber.com/tags/powershell-script/</link>
+    <link>https://dev.zacharyloeber.com/tags/powershell-script/</link>
     <description>Recent content in Powershell Script on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 04 Feb 2018 17:36:57 +0000</lastBuildDate>
     
-	<atom:link href="http://dev.zacharyloeber.com/tags/powershell-script/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/tags/powershell-script/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>PowerShell: AzureAD Dynamic Groups</title>
-      <link>http://dev.zacharyloeber.com/blog/2018/02/04/powershell-azuread-dynamic-groups/</link>
+      <link>https://dev.zacharyloeber.com/blog/2018/02/04/powershell-azuread-dynamic-groups/</link>
       <pubDate>Sun, 04 Feb 2018 17:36:57 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2018/02/04/powershell-azuread-dynamic-groups/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2018/02/04/powershell-azuread-dynamic-groups/</guid>
       <description>&lt;p&gt;A few code snippets for Azure AD dynamic groups. One for creating standard groups for your environment. Another for finding duplicates.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Cloud PBX: Polycom VVX Master Directory</title>
-      <link>http://dev.zacharyloeber.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</link>
+      <link>https://dev.zacharyloeber.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</link>
       <pubDate>Sun, 10 Sep 2017 20:38:59 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/</guid>
       <description>&lt;p&gt;Reverse number lookup in Skype for Business online (cloud PBX) doesn&amp;#8217;t give you much control. If you are deploying Polycom VVX phones you can get around this with a directory file.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: Inheriting Parameters (Proxy Functions)</title>
-      <link>http://dev.zacharyloeber.com/blog/2017/07/30/powershell-inheriting-parameters-proxy-functions/</link>
+      <link>https://dev.zacharyloeber.com/blog/2017/07/30/powershell-inheriting-parameters-proxy-functions/</link>
       <pubDate>Sun, 30 Jul 2017 14:23:36 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2017/07/30/powershell-inheriting-parameters-proxy-functions/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2017/07/30/powershell-inheriting-parameters-proxy-functions/</guid>
       <description>&lt;p&gt;If you want one function to have all the parameters of another function here is one method you could use.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: Easy Module Authoring with ModuleBuild</title>
-      <link>http://dev.zacharyloeber.com/blog/2017/07/04/powershell-easy-module-authoring-with-modulebuild/</link>
+      <link>https://dev.zacharyloeber.com/blog/2017/07/04/powershell-easy-module-authoring-with-modulebuild/</link>
       <pubDate>Wed, 05 Jul 2017 01:29:53 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2017/07/04/powershell-easy-module-authoring-with-modulebuild/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2017/07/04/powershell-easy-module-authoring-with-modulebuild/</guid>
       <description>&lt;p&gt;I’ve previously discussed using the excellent plaster module for creating new modules among other things. Now I’ve integrated plaster into my PSModuleBuild project, turned the whole thing into a module, and changed the name to just ‘ModuleBuild’&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Powershell: Creating Plaster Manifest Files</title>
-      <link>http://dev.zacharyloeber.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/</link>
+      <link>https://dev.zacharyloeber.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/</link>
       <pubDate>Mon, 15 May 2017 17:49:48 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve kicked the tires on a great PowerShell code scaffolding tool called &amp;#8216;Plaster&amp;#8217;. Here is my take on this nifty module.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: PowerShellGet Helper Functions</title>
-      <link>http://dev.zacharyloeber.com/blog/2016/12/21/powershell-powershellget-helper-functions/</link>
+      <link>https://dev.zacharyloeber.com/blog/2016/12/21/powershell-powershellget-helper-functions/</link>
       <pubDate>Wed, 21 Dec 2016 21:21:12 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2016/12/21/powershell-powershellget-helper-functions/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2016/12/21/powershell-powershellget-helper-functions/</guid>
       <description>&lt;p&gt;With the PowerShell Gallery at your fingertips in PowerShell v5 you are able to find and install modules and scripts quickly. Here are a few helper functions you may want to add to your profile to help automate some of these tasks.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Powershell: PSCloudflare Module</title>
-      <link>http://dev.zacharyloeber.com/blog/2016/12/03/powershell-pscloudflare-module/</link>
+      <link>https://dev.zacharyloeber.com/blog/2016/12/03/powershell-pscloudflare-module/</link>
       <pubDate>Sat, 03 Dec 2016 16:27:51 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2016/12/03/powershell-pscloudflare-module/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2016/12/03/powershell-pscloudflare-module/</guid>
       <description>&lt;p&gt;A well documented API without a PowerShell Module is like an itch begging to be scratched.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Powershell: New-ADPasswordReminder</title>
-      <link>http://dev.zacharyloeber.com/blog/2016/10/13/powershell-new-adpasswordreminder/</link>
+      <link>https://dev.zacharyloeber.com/blog/2016/10/13/powershell-new-adpasswordreminder/</link>
       <pubDate>Thu, 13 Oct 2016 19:03:55 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2016/10/13/powershell-new-adpasswordreminder/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2016/10/13/powershell-new-adpasswordreminder/</guid>
       <description>&lt;p&gt;A single, self-extracting, self-scheduling, AD password change notice PowerShell script.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>OSS PowerShell: Platform Independent Functions</title>
-      <link>http://dev.zacharyloeber.com/blog/2016/08/20/oss-powershell-platform-independent-functions/</link>
+      <link>https://dev.zacharyloeber.com/blog/2016/08/20/oss-powershell-platform-independent-functions/</link>
       <pubDate>Sun, 21 Aug 2016 03:41:03 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2016/08/20/oss-powershell-platform-independent-functions/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2016/08/20/oss-powershell-platform-independent-functions/</guid>
       <description>&lt;p&gt;Just the other day Microsoft released PowerShell as open source with builds available for Windows, Mac OSX, and a few flavors of Linux. I’m pretty certain the entire community is super hyped at the news. I know I am!&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: New Project – PSModuleBuild</title>
-      <link>http://dev.zacharyloeber.com/blog/2016/07/31/powershell-new-project-psmodulebuild/</link>
+      <link>https://dev.zacharyloeber.com/blog/2016/07/31/powershell-new-project-psmodulebuild/</link>
       <pubDate>Mon, 01 Aug 2016 02:34:55 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2016/07/31/powershell-new-project-psmodulebuild/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2016/07/31/powershell-new-project-psmodulebuild/</guid>
       <description>&lt;p&gt;I’ve spent a little bit of time thinking about and putting together a proper build script for one of my projects. This post covers the decisions I made and technologies I used to get this set this up.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Powershell: Make Pretty Scripts..With Scripts</title>
-      <link>http://dev.zacharyloeber.com/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/</link>
+      <link>https://dev.zacharyloeber.com/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/</link>
       <pubDate>Thu, 15 Oct 2015 17:58:07 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/</guid>
       <description>&lt;p&gt;I released a new module for standardizing and beautifying your PowerShell code. Aside from code indentation it also can reduce line length, replace here-strings, and a whole lot more.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: Comment Based Help Generation</title>
-      <link>http://dev.zacharyloeber.com/blog/2015/10/02/powershell-comment-based-help-generation/</link>
+      <link>https://dev.zacharyloeber.com/blog/2015/10/02/powershell-comment-based-help-generation/</link>
       <pubDate>Sat, 03 Oct 2015 02:30:06 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2015/10/02/powershell-comment-based-help-generation/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2015/10/02/powershell-comment-based-help-generation/</guid>
       <description>&lt;p&gt;Here is a quick couple of functions I put together which will use AST to pull all the functions, their parameters, and associated parameter attributes and create a template comment based help from the results.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: ASTExplorer</title>
-      <link>http://dev.zacharyloeber.com/blog/2015/07/27/powershell-astexplorer/</link>
+      <link>https://dev.zacharyloeber.com/blog/2015/07/27/powershell-astexplorer/</link>
       <pubDate>Mon, 27 Jul 2015 16:27:55 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2015/07/27/powershell-astexplorer/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2015/07/27/powershell-astexplorer/</guid>
       <description>&lt;p&gt;So I&amp;#8217;ve been working with PowerShell and abstract syntax trees as of late. Here is a tool I wish I had at my disposal when i started with all this. It takes your script, loads all the AST elements into a treeview, lists properties as each AST element is selected in the treeview, and highlights the portion of the script the element represents.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Lync Client: Automatic Fortune Cookie Utility</title>
-      <link>http://dev.zacharyloeber.com/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/</link>
+      <link>https://dev.zacharyloeber.com/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/</link>
       <pubDate>Sun, 08 Feb 2015 23:30:30 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/</guid>
       <description>&lt;p&gt;Here&amp;#8217;s a just for fun powershell script for the Lync user. In the not so old days of Unix administration it was not too uncommon to have a &amp;#8216;&lt;a href=&#34;http://en.wikipedia.org/wiki/Fortune_%28Unix%29&#34;&gt;fortune cookie&amp;#8217; display when logging into a system&lt;/a&gt;. I’ve always thought that it would be neat to have something similar in the Lync client that would allow for an easy rotation of your personal note field. Little did I realize how easy it would be to add such functionality myself with some powershell and the Lync SDK!&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Powershell: Get-iQuote</title>
-      <link>http://dev.zacharyloeber.com/blog/2015/02/08/powershell-get-iquote/</link>
+      <link>https://dev.zacharyloeber.com/blog/2015/02/08/powershell-get-iquote/</link>
       <pubDate>Sun, 08 Feb 2015 15:46:49 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2015/02/08/powershell-get-iquote/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2015/02/08/powershell-get-iquote/</guid>
       <description>&lt;p&gt;While scratching an itch I found a cool little site that has a simple to use REST api for returning random quotes from multiple categories. Here is a small function which utilizes this online source to pull quotes from the web!&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Lync: Voice Route Diagram Creation Script</title>
-      <link>http://dev.zacharyloeber.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/</link>
+      <link>https://dev.zacharyloeber.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/</link>
       <pubDate>Tue, 02 Dec 2014 18:11:31 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/</guid>
       <description>&lt;p&gt;Lync voice routing boils down to three basic components working in concert to decide call flow. It seems quite simple on paper, you assign voice policies which determine call routes based on PSTN usages (often called the &amp;#8216;glue&amp;#8217;). After looking at Lync voice routing way too many times I finally caved into producing a script to create diagrams of the things over the Thanksgiving holiday weekend.&lt;/p&gt;</description>
     </item>
     

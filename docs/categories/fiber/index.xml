@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fiber on Zachary Loeber</title>
-    <link>http://dev.zacharyloeber.com/categories/fiber/</link>
+    <link>https://dev.zacharyloeber.com/categories/fiber/</link>
     <description>Recent content in Fiber on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 04 Feb 2011 01:14:02 +0000</lastBuildDate>
     
-	<atom:link href="http://dev.zacharyloeber.com/categories/fiber/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dev.zacharyloeber.com/categories/fiber/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Virtual Connect: Cisco MDS 9500 Fiber Connectivity</title>
-      <link>http://dev.zacharyloeber.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/</link>
+      <link>https://dev.zacharyloeber.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/</link>
       <pubDate>Fri, 04 Feb 2011 01:14:02 +0000</pubDate>
       
-      <guid>http://dev.zacharyloeber.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/</guid>
+      <guid>https://dev.zacharyloeber.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/</guid>
       <description>&lt;p&gt;I’ve done quite a bit of work with HP’s Virtual Connect  and C7000 blade enclosures in a contained (almost pure HP) environment. Today I ran into an issue which flummoxed both myself and an on-site engineer while attempting to connect the VC 8gb interconnect bays to the Cisco MDS fiber module for an upcoming (and exciting!) VMAX implementation.&lt;/p&gt;</description>
     </item>
     
