@@ -43,12 +43,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/blog/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/blog/</loc>
     <lastmod>2019-01-09T05:09:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/blog/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/blog/</loc>
     <lastmod>2019-01-09T05:09:51+00:00</lastmod>
   </url>
   
@@ -58,12 +58,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/devops/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/devops/</loc>
     <lastmod>2019-01-09T05:09:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/devops/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/devops/</loc>
     <lastmod>2019-01-09T05:09:51+00:00</lastmod>
   </url>
   
@@ -78,12 +78,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/pipeline/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/pipeline/</loc>
     <lastmod>2019-01-09T05:09:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/pipeline/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/pipeline/</loc>
     <lastmod>2019-01-09T05:09:51+00:00</lastmod>
   </url>
   
@@ -158,12 +158,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/docker/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/docker/</loc>
     <lastmod>2018-09-28T16:49:46+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/docker/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/docker/</loc>
     <lastmod>2018-09-28T16:49:46+00:00</lastmod>
   </url>
   
@@ -178,12 +178,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/microservices/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/microservices/</loc>
     <lastmod>2018-09-28T16:49:46+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/microservices/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/microservices/</loc>
     <lastmod>2018-09-28T16:49:46+00:00</lastmod>
   </url>
   
@@ -208,12 +208,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/powershell/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/powershell/</loc>
     <lastmod>2018-05-03T02:29:53+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/powershell/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/powershell/</loc>
     <lastmod>2018-05-03T02:29:53+00:00</lastmod>
   </url>
   
@@ -298,12 +298,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/cloud-pbx/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/cloud-pbx/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/cloud-pbx/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/cloud-pbx/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
@@ -323,12 +323,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/skype-for-business/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/skype-for-business/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/skype-for-business/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/skype-for-business/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
@@ -383,12 +383,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/networking/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/networking/</loc>
     <lastmod>2017-01-31T03:23:32+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/networking/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/networking/</loc>
     <lastmod>2017-01-31T03:23:32+00:00</lastmod>
   </url>
   
@@ -498,12 +498,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/exchange-2010/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/exchange-2010/</loc>
     <lastmod>2015-09-25T01:41:25+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/exchange-2010/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/exchange-2010/</loc>
     <lastmod>2015-09-25T01:41:25+00:00</lastmod>
   </url>
   
@@ -1108,12 +1108,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/ubuntu/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/ubuntu/</loc>
     <lastmod>2012-11-29T02:24:46+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/ubuntu/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/ubuntu/</loc>
     <lastmod>2012-11-29T02:24:46+00:00</lastmod>
   </url>
   
@@ -1233,12 +1233,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/web-publishing/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/web-publishing/</loc>
     <lastmod>2011-08-05T12:58:12+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/web-publishing/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/web-publishing/</loc>
     <lastmod>2011-08-05T12:58:12+00:00</lastmod>
   </url>
   
@@ -1318,12 +1318,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/fiber/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/fiber/</loc>
     <lastmod>2011-02-04T01:14:02+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/fiber/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/fiber/</loc>
     <lastmod>2011-02-04T01:14:02+00:00</lastmod>
   </url>
   
@@ -1333,12 +1333,12 @@
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/categories/virtual-connect/</loc>
+    <loc>http://dev.zacharyloeber.com/tags/virtual-connect/</loc>
     <lastmod>2011-02-04T01:14:02+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://dev.zacharyloeber.com/tags/virtual-connect/</loc>
+    <loc>http://dev.zacharyloeber.com/categories/virtual-connect/</loc>
     <lastmod>2011-02-04T01:14:02+00:00</lastmod>
   </url>
   

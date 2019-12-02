@@ -21,15 +21,15 @@
         <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="http://dev.zacharyloeber.com/blog/2014/10/09/powershell-system-report-script-design/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="http://dev.zacharyloeber.com/blog/2014/10/09/powershell-system-report-script-design/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2014/10/09/powershell-system-report-script-design/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2014/10/09/powershell-system-report-script-design/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="http://dev.zacharyloeber.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -45,7 +45,7 @@
         <ul class="topnav">
             
                 
-                    <li><a href="http://dev.zacharyloeber.com/" target="">Home</a></li>
+                    <li><a href="/" target="">Home</a></li>
                 
             
                 
@@ -66,7 +66,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="http://dev.zacharyloeber.com/" class="logo">
+            <a href="/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -75,7 +75,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="http://dev.zacharyloeber.com/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -120,21 +120,21 @@
         
             <span class="categories">
                 
-                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
+                    <a href="/categories/microsoft">Microsoft</a>
                 
-                    <a href="http://dev.zacharyloeber.com/categories/networking">Networking</a>
+                    <a href="/categories/networking">Networking</a>
                 
-                    <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell</a>
+                    <a href="/categories/powershell">Powershell</a>
                 
-                    <a href="http://dev.zacharyloeber.com/categories/security">Security</a>
+                    <a href="/categories/security">Security</a>
                 
-                    <a href="http://dev.zacharyloeber.com/categories/system-administration">System Administration</a>
+                    <a href="/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -149,7 +149,7 @@
 
 <h2 id="design-decisions">Design Decisions</h2>
 
-<p>I initially looked at the report output from my original script (which was just a re-hacked up report of another author) and was going to re-use a good part of the CSS and code as a baseline to start this new script. But I eventually scrapped just about everything and started rewriting essential portions one at a time. I created a <a href="http://dev.zacharyloeber.com/2013/08/05/multithreaded-system-asset-gathering-with-powershell/">multi-threaded system asset gathering</a> function to pull only the essential WMI information from a remote system. I then did the same for a <a href="http://dev.zacharyloeber.com/2013/08/06/multithreaded-remote-registry-gathering-with-powershell/">remote registry gathering function</a>. I took the html driven bar graph portion of the prior code, cleaned it up, made it highly portable, and <a href="http://gallery.technet.microsoft.com/Create-HTML-Bar-Graph-63cff29d">released it</a> as well.</p>
+<p>I initially looked at the report output from my original script (which was just a re-hacked up report of another author) and was going to re-use a good part of the CSS and code as a baseline to start this new script. But I eventually scrapped just about everything and started rewriting essential portions one at a time. I created a <a href="/2013/08/05/multithreaded-system-asset-gathering-with-powershell/">multi-threaded system asset gathering</a> function to pull only the essential WMI information from a remote system. I then did the same for a <a href="/2013/08/06/multithreaded-remote-registry-gathering-with-powershell/">remote registry gathering function</a>. I took the html driven bar graph portion of the prior code, cleaned it up, made it highly portable, and <a href="http://gallery.technet.microsoft.com/Create-HTML-Bar-Graph-63cff29d">released it</a> as well.</p>
 
 <p>I then started looking into how I wanted the report to look when completed. I really like this new responsive design fad that is going on (trying to design one web site which dynamically adapts to many devices and screen sizes). And I really think grids are slick. So I found a <a href="http://www.responsivegridsystem.com/">really good responsive design based grid template</a> with as little reliance on javascript as possible and based the initial report output upon its CSS magic.</p>
 
@@ -263,11 +263,11 @@ Foreach ($TableElement in $ReportElementSource)
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="http://dev.zacharyloeber.com/tags/powershell">Powershell</a>
+                    <a href="/tags/powershell">Powershell</a>
                 
-                    <a href="http://dev.zacharyloeber.com/tags/psc">PSC</a>
+                    <a href="/tags/psc">PSC</a>
                 
-                    <a href="http://dev.zacharyloeber.com/tags/system-administration">System Administration</a>
+                    <a href="/tags/system-administration">System Administration</a>
                 
             </div>
         </div>
@@ -316,27 +316,27 @@ Foreach ($TableElement in $ReportElementSource)
 
         
         <div class="categories">
-            <a href="http://dev.zacharyloeber.com/categories/"><strong>Categories</strong></a>
+            <a href="/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/system-administration">System administration (130)</a>
+                        <a href="/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft (120)</a>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell (106)</a>
+                        <a href="/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/networking">Networking (53)</a>
+                        <a href="/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -397,11 +397,11 @@ Foreach ($TableElement in $ReportElementSource)
 
         
         
-        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {

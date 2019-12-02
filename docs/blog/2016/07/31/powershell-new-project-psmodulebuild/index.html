@@ -21,15 +21,15 @@
         <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="http://dev.zacharyloeber.com/blog/2016/07/31/powershell-new-project-psmodulebuild/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="http://dev.zacharyloeber.com/blog/2016/07/31/powershell-new-project-psmodulebuild/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2016/07/31/powershell-new-project-psmodulebuild/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2016/07/31/powershell-new-project-psmodulebuild/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="http://dev.zacharyloeber.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -45,7 +45,7 @@
         <ul class="topnav">
             
                 
-                    <li><a href="http://dev.zacharyloeber.com/" target="">Home</a></li>
+                    <li><a href="/" target="">Home</a></li>
                 
             
                 
@@ -66,7 +66,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="http://dev.zacharyloeber.com/" class="logo">
+            <a href="/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -75,7 +75,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="http://dev.zacharyloeber.com/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -120,15 +120,15 @@
         
             <span class="categories">
                 
-                    <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft</a>
+                    <a href="/categories/microsoft">Microsoft</a>
                 
-                    <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell</a>
+                    <a href="/categories/powershell">Powershell</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="http://dev.zacharyloeber.com/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -233,7 +233,7 @@ task . {
 
 <p>The output is kind of how we would expect it to look:</p>
 
-<p><a href="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/clip_image001.png"><img style="margin: 0px; display: inline; background-image: none;" title="clip_image001" src="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/clip_image001_thumb.png?resize=244%2C52" alt="clip_image001" width="244" height="52" border="0" data-recalc-dims="1" /></a></p>
+<p><a href="/wp-content/uploads/2016/07/clip_image001.png"><img style="margin: 0px; display: inline; background-image: none;" title="clip_image001" src="/wp-content/uploads/2016/07/clip_image001_thumb.png?resize=244%2C52" alt="clip_image001" width="244" height="52" border="0" data-recalc-dims="1" /></a></p>
 
 <h3 id="each-task-runs-only-once">Each Task Runs Only Once</h3>
 
@@ -263,7 +263,7 @@ task . {
 
 <p>The result of this build:</p>
 
-<p><a href="wp-content/uploads/2016/07/clip_image002.png"><img style="margin: 0px; display: inline; background-image: none;" title="clip_image002" src="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/clip_image002_thumb.png?resize=244%2C53" alt="clip_image002" width="244" height="53" border="0" data-recalc-dims="1" /></a></p>
+<p><a href="wp-content/uploads/2016/07/clip_image002.png"><img style="margin: 0px; display: inline; background-image: none;" title="clip_image002" src="/wp-content/uploads/2016/07/clip_image002_thumb.png?resize=244%2C53" alt="clip_image002" width="244" height="53" border="0" data-recalc-dims="1" /></a></p>
 
 <p>Now if we create the variable at the script level and run this same code:</p>
 
@@ -290,7 +290,7 @@ task . {
 
 <p>We get the same result!</p>
 
-<p><strong><a href="wp-content/uploads/2016/07/clip_image003.png"><img style="margin: 0px; display: inline; background-image: none;" title="clip_image003" src="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/clip_image003_thumb.png?resize=244%2C52" alt="clip_image003" width="244" height="52" border="0" data-recalc-dims="1" /></a></strong></p>
+<p><strong><a href="wp-content/uploads/2016/07/clip_image003.png"><img style="margin: 0px; display: inline; background-image: none;" title="clip_image003" src="/wp-content/uploads/2016/07/clip_image003_thumb.png?resize=244%2C52" alt="clip_image003" width="244" height="52" border="0" data-recalc-dims="1" /></a></strong></p>
 
 <p>If you want to update the $IsConfigured variable within a task you need to reference it at the script scope level when updating it otherwise you will not get the results you were expecting.</p>
 
@@ -317,7 +317,7 @@ task . {
 
 <p>The results:</p>
 
-<p><a href="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/clip_image004.png"><img style="margin: 5px; display: inline; background-image: none;" title="clip_image004" src="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/clip_image004_thumb.png?resize=244%2C52" alt="clip_image004" width="244" height="52" border="0" data-recalc-dims="1" /></a></p>
+<p><a href="/wp-content/uploads/2016/07/clip_image004.png"><img style="margin: 5px; display: inline; background-image: none;" title="clip_image004" src="/wp-content/uploads/2016/07/clip_image004_thumb.png?resize=244%2C52" alt="clip_image004" width="244" height="52" border="0" data-recalc-dims="1" /></a></p>
 
 <blockquote>
 <p><strong>Note:</strong> If you are paying attention you will see that in one code block I update the $IsConfigured variable at the script scope level ($Script:IsConfigured) and then in the next code block I call the AreWeConfgured function with the $IsConfigured as the parameter and it still appears to reference the script scoped variable! I don’t know why this is, maybe it is a bug but to be 100% safe I recommend manually defining your variables that cross task boundaries at the top of your build script and then explicitly referencing them at the script scope level.</p>
@@ -364,7 +364,7 @@ task SomeTask -If ($SomeCondition) {...}</pre>
 <p>I&#8217;ve basically reduced my manual steps for releasing a module down to a handful of commands. It looks a bit wonky but here is a dependency graph of the current build file as it pertains to one of my modules to help visualize some of these tasks.</p>
 
 <div id="attachment_1633" style="width: 160px" class="wp-caption aligncenter">
-  <a href="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/buildgraph.gif"><img class="size-thumbnail wp-image-1633" src="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/buildgraph.gif?resize=150%2C150" alt="Build task diagram" width="150" height="150" srcset="http://dev.zacharyloeber.com/wp-content/uploads/2016/07/buildgraph.gif?resize=150%2C150 150w, wp-content/uploads/2016/07/buildgraph.gif?zoom=2&resize=150%2C150 300w, wp-content/uploads/2016/07/buildgraph.gif?zoom=3&resize=150%2C150 450w" sizes="(max-width: 150px) 100vw, 150px" data-recalc-dims="1" /></a>
+  <a href="/wp-content/uploads/2016/07/buildgraph.gif"><img class="size-thumbnail wp-image-1633" src="/wp-content/uploads/2016/07/buildgraph.gif?resize=150%2C150" alt="Build task diagram" width="150" height="150" srcset="/wp-content/uploads/2016/07/buildgraph.gif?resize=150%2C150 150w, wp-content/uploads/2016/07/buildgraph.gif?zoom=2&resize=150%2C150 300w, wp-content/uploads/2016/07/buildgraph.gif?zoom=3&resize=150%2C150 450w" sizes="(max-width: 150px) 100vw, 150px" data-recalc-dims="1" /></a>
   
   <p class="wp-caption-text">
     Build task diagram
@@ -435,13 +435,13 @@ task SomeTask -If ($SomeCondition) {...}</pre>
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="http://dev.zacharyloeber.com/tags/microsoft">Microsoft</a>
+                    <a href="/tags/microsoft">Microsoft</a>
                 
-                    <a href="http://dev.zacharyloeber.com/tags/powershell">Powershell</a>
+                    <a href="/tags/powershell">Powershell</a>
                 
-                    <a href="http://dev.zacharyloeber.com/tags/powershell-script">Powershell Script</a>
+                    <a href="/tags/powershell-script">Powershell Script</a>
                 
-                    <a href="http://dev.zacharyloeber.com/tags/scripting">Scripting</a>
+                    <a href="/tags/scripting">Scripting</a>
                 
             </div>
         </div>
@@ -490,27 +490,27 @@ task SomeTask -If ($SomeCondition) {...}</pre>
 
         
         <div class="categories">
-            <a href="http://dev.zacharyloeber.com/categories/"><strong>Categories</strong></a>
+            <a href="/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/system-administration">System administration (130)</a>
+                        <a href="/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/microsoft">Microsoft (120)</a>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/powershell">Powershell (106)</a>
+                        <a href="/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/networking">Networking (53)</a>
+                        <a href="/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="http://dev.zacharyloeber.com/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -571,11 +571,11 @@ task SomeTask -If ($SomeCondition) {...}</pre>
 
         
         
-        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="http://dev.zacharyloeber.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {
