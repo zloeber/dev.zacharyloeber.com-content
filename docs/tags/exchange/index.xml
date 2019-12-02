@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Exchange on Zachary Loeber</title>
+    <link>http://dev.zacharyloeber.com/tags/exchange/</link>
+    <description>Recent content in Exchange on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 14 Nov 2014 03:31:13 +0000</lastBuildDate>
+    
+	<atom:link href="http://dev.zacharyloeber.com/tags/exchange/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lync and UM Correlation with Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</link>
+      <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
+      <description>I&amp;#8217;ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
+There are a few necessary results to gather where I believe it can be easy to &amp;#8216;miss&amp;#8217; configuration steps when turning up or disabling users:</description>
+    </item>
+    
+    <item>
+      <title>Update: Get-CalendarPermission</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/09/24/update-get-calendarpermission/</link>
+      <pubDate>Wed, 24 Sep 2014 17:43:07 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/09/24/update-get-calendarpermission/</guid>
+      <description>&lt;p&gt;Going through older code is a bit like looking through an old yearbook or photo album. If the pictures within are old enough you usually end up laughing at how little you recognize yourself and maybe even marvel a bit at how far you have come. This old function I wrote isn’t the worst of my code but I was still able to update it for measurable improvements.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Receive Connector Tango! – Part 2</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/</link>
+      <pubDate>Sat, 23 Aug 2014 21:20:31 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://dev.zacharyloeber.com/2014/07/06/exchange-receive-connector-tango-part-1/&#34;&gt;In part 1 of this series&lt;/a&gt; I discussed some basic knowledge requirements to get a better grip on receive connectors in Exchange. I continue that conversation with some examples of improperly configured connectors and the issues they may cause. I finish up the discussion with a script you can use to scan your environment for such configurations.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Auto Batching 2013 Migrations</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/07/28/exchange-auto-batching-2013-migrations/</link>
+      <pubDate>Mon, 28 Jul 2014 16:48:24 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/07/28/exchange-auto-batching-2013-migrations/</guid>
+      <description>&lt;p&gt;Here is a quick script I put together for automatically creating Exchange 2013 mailbox migration batches. This is useful for the final stages of an Exchange 2013 upgrade among other things.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange Log Level GUI Script</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-log-level-gui-script/</link>
+      <pubDate>Mon, 07 Jul 2014 03:30:20 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-log-level-gui-script/</guid>
+      <description>&lt;p&gt;I ran into a situation recently where I was forced to amp up the Exchange logging levels to further troubleshoot an issue with some pretty specific Exchange components. I found myself wanting a quick GUI to view and set the levels but found none. So I used this as an opportunity to learn a bit about xaml based GUIs and powershell. The result is this simple, but useful, Exchange log level GUI script which was written for Exchange 2013 but should also run on 2010.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Receive Connector Tango! – Part 1</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</link>
+      <pubDate>Mon, 07 Jul 2014 03:25:13 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</guid>
+      <description>&lt;p&gt;Exchange receive connectors are often configured incorrectly or worse, insecurely. This is the first of a two part series about Exchange receive connectors and what to look out for when setting them up.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AD Audit Report with Powershell: Part 3</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/</link>
+      <pubDate>Sat, 11 Jan 2014 04:16:29 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/</guid>
+      <description>&lt;p&gt;This is my third and final major update to my AD auditing script. This includes a handful of new useful sections such as domain published printers, NPS servers, DHCP servers, as well as SCCM sites and DPs. Other improvements include easier to use script parameters and bug fixes.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 Mailbox Audit Report Script</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</link>
+      <pubDate>Fri, 10 May 2013 02:33:54 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
+      <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
+
+&lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Get Calendar Permissions (multilingual edition)</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</link>
+      <pubDate>Sun, 28 Apr 2013 17:35:54 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</guid>
+      <description>&lt;p&gt;Some time ago I released &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-2010-Calendar-21695fde&#34; title=&#34;Exchange 2010 Calendar Permission GUI&#34;&gt;a rather simplistic GUI for viewing Exchange 2010 mailbox calendar permissions&lt;/a&gt;. Because of a semi-related script I&amp;#8217;m working on currently I rounded back and recreated that GUI script to be a powershell function instead. This is the result.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

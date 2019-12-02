@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on Zachary Loeber</title>
+    <link>http://dev.zacharyloeber.com/tags/windows/</link>
+    <description>Recent content in Windows on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 15 May 2017 17:49:48 +0000</lastBuildDate>
+    
+	<atom:link href="http://dev.zacharyloeber.com/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Powershell: Creating Plaster Manifest Files</title>
+      <link>http://dev.zacharyloeber.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/</link>
+      <pubDate>Mon, 15 May 2017 17:49:48 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve kicked the tires on a great PowerShell code scaffolding tool called &amp;#8216;Plaster&amp;#8217;. Here is my take on this nifty module.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PowerShell: New Project – OhMyPsh</title>
+      <link>http://dev.zacharyloeber.com/blog/2017/03/06/powershell-new-project-ohmypsh/</link>
+      <pubDate>Tue, 07 Mar 2017 03:05:19 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2017/03/06/powershell-new-project-ohmypsh/</guid>
+      <description>&lt;p&gt;A PowerShell 5.0 terminal experience with lots of smart features that make you look cool at the command line.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PowerShell: PowerShellGet Helper Functions</title>
+      <link>http://dev.zacharyloeber.com/blog/2016/12/21/powershell-powershellget-helper-functions/</link>
+      <pubDate>Wed, 21 Dec 2016 21:21:12 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2016/12/21/powershell-powershellget-helper-functions/</guid>
+      <description>&lt;p&gt;With the PowerShell Gallery at your fingertips in PowerShell v5 you are able to find and install modules and scripts quickly. Here are a few helper functions you may want to add to your profile to help automate some of these tasks.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OSS PowerShell: Platform Independent Functions</title>
+      <link>http://dev.zacharyloeber.com/blog/2016/08/20/oss-powershell-platform-independent-functions/</link>
+      <pubDate>Sun, 21 Aug 2016 03:41:03 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2016/08/20/oss-powershell-platform-independent-functions/</guid>
+      <description>&lt;p&gt;Just the other day Microsoft released PowerShell as open source with builds available for Windows, Mac OSX, and a few flavors of Linux. I’m pretty certain the entire community is super hyped at the news. I know I am!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PowerShell: My Profile</title>
+      <link>http://dev.zacharyloeber.com/blog/2016/05/04/powershell-my-profile/</link>
+      <pubDate>Thu, 05 May 2016 02:31:54 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2016/05/04/powershell-my-profile/</guid>
+      <description>&lt;p&gt;I&amp;#8217;m always interested to see how other people setup their working environment or get things done. But rarely do I share my own environment. Since I&amp;#8217;m putting the effort into pushing my scripting environment publicly to github I may as well explain a bit more about some of what I&amp;#8217;ve setup.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: Make Pretty Scripts..With Scripts</title>
+      <link>http://dev.zacharyloeber.com/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/</link>
+      <pubDate>Thu, 15 Oct 2015 17:58:07 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2015/10/15/powershell-make-pretty-scripts-with-scripts/</guid>
+      <description>&lt;p&gt;I released a new module for standardizing and beautifying your PowerShell code. Aside from code indentation it also can reduce line length, replace here-strings, and a whole lot more.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PowerShell: Thoughts on Module Design</title>
+      <link>http://dev.zacharyloeber.com/blog/2015/10/03/powershell-thoughts-on-module-design/</link>
+      <pubDate>Sat, 03 Oct 2015 18:57:04 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2015/10/03/powershell-thoughts-on-module-design/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve finally decided to grow up and start making modules out of my rather large PowerShell code base. Here are a few things I&amp;#8217;ve learned.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: Login As Batch Job Security Rights</title>
+      <link>http://dev.zacharyloeber.com/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</link>
+      <pubDate>Sat, 18 Jul 2015 04:09:12 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</guid>
+      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the &amp;#8216;login as batch job&amp;#8217; local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I&amp;#8217;ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Database Leveling Redux</title>
+      <link>http://dev.zacharyloeber.com/blog/2015/04/06/exchange-database-leveling-redux/</link>
+      <pubDate>Tue, 07 Apr 2015 00:12:33 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2015/04/06/exchange-database-leveling-redux/</guid>
+      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;http://dev.zacharyloeber.com/2014/01/07/exchange-20102013-database-leveling-script/&#34;&gt;tackled the challenge&lt;/a&gt; of constructing a variant of the bin packing algorithm for leveling out Exchange databases&amp;#8217; size with the least amount of mailbox migrations necessary. Since then, I&amp;#8217;ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I&amp;#8217;ve finally rounded back to this script to do it some justice.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync 2013: Scripting QoS Config on Edge Servers</title>
+      <link>http://dev.zacharyloeber.com/blog/2015/04/04/lync-2013-scripting-qos-config-on-edge-servers/</link>
+      <pubDate>Sat, 04 Apr 2015 21:41:51 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2015/04/04/lync-2013-scripting-qos-config-on-edge-servers/</guid>
+      <description>&lt;p&gt;In many environments the Lync 2013 edge servers are configured in a standalone workgroup without any easy method for setting standard policies (such as GPOs). To make QoS configuration a bit less manual and error prone I&amp;#8217;ve put together this script which can be run in an administrative powershell prompt. It will update the NLA setting (or create it if it doesn&amp;#8217;t already exist), backup and prompt for removal any existing Qos settings, then import the registry settings for Audio, Video, and App QoS settings as defined in the script parameters.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: WPF/Treeview OU Selection Dialog</title>
+      <link>http://dev.zacharyloeber.com/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</link>
+      <pubDate>Sun, 22 Mar 2015 16:13:54 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</guid>
+      <description>&lt;p class=&#34;projectSummary&#34;&gt;
+  This is a self-contained organizational unit selection dialog box using powershell, xaml, wpf, and ADSI. Should be useful in any number of one off Powershell projects I imagine.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync Book Review: Lync Server Cookbook</title>
+      <link>http://dev.zacharyloeber.com/blog/2015/03/14/lync-book-review-lync-server-cookbook/</link>
+      <pubDate>Sun, 15 Mar 2015 01:51:53 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2015/03/14/lync-book-review-lync-server-cookbook/</guid>
+      <description>&lt;p&gt;I had planned to purchase this book at some point but instead was pleasantly surprised by an offer from one of the authors to provide an objective review of &amp;#8216;&lt;a href=&#34;http://www.amazon.com/Lync-Server-Cookbook-Fabrizio-Volpe-ebook/dp/B00SVBFBQS/ref=dp_kinw_strp_1&#34;&gt;Lync Server Cookbook&lt;/a&gt;&amp;#8216;! As I have worked with the product in some form since LCS/OCS days I believe I can speak with some authority on subject matter and readily agreed. With that being said, lets start with the book&amp;#8217;s overarching scope and structure.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange Mailbox Auditing with Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/11/24/exchange-mailbox-auditing-with-powershell/</link>
+      <pubDate>Tue, 25 Nov 2014 05:55:01 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/11/24/exchange-mailbox-auditing-with-powershell/</guid>
+      <description>&lt;p&gt;Some time ago I wrote a script and GUI for performing security audits of Exchange mailbox and calendar rights in an environment. This script was far more popular than I anticipated and, I’m ashamed to say, was rather poorly written by my current Powershell standards. There is an obvious need to simplify the extraction of mailbox permissions or my old script would not still be so popular. So I’ve started to revisit my old code for this project in hopes of remaking it with my PowerShell reporting engine. The first step in this process is to pull out the several bits of code that do the actual rights/permissions extraction. I think I’ve finally got this part done and see no reason not to release this mini-library of functions first.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync and UM Correlation with Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</link>
+      <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
+      <description>I&amp;#8217;ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
+There are a few necessary results to gather where I believe it can be easy to &amp;#8216;miss&amp;#8217; configuration steps when turning up or disabling users:</description>
+    </item>
+    
+    <item>
+      <title>Gather (and Diagram) Installed Roles and Features With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/12/18/gather-and-diagram-installed-roles-and-features-with-powershell/</link>
+      <pubDate>Wed, 18 Dec 2013 18:53:18 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/12/18/gather-and-diagram-installed-roles-and-features-with-powershell/</guid>
+      <description>&lt;p&gt;Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I&amp;#8217;ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync 2013: Monitoring Mirrored SQL Databases With PowerShell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/11/25/lync-2013-monitoring-mirrored-sql-databases-with-powershell/</link>
+      <pubDate>Mon, 25 Nov 2013 18:16:24 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/11/25/lync-2013-monitoring-mirrored-sql-databases-with-powershell/</guid>
+      <description>&lt;p&gt;In Lync 2013 you are given a powerful new backend redundancy option for your important databases in the form of SQL mirroring. In this article I’ll discuss which services are able to be mirrored, the databases they encompass, and provide a PowerShell script to generate a report on the database mirror status. I also threw in Lync CMS replication and service status sections because it is the civil thing to do&amp;#8230;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather Remote Event Logs With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/10/16/gather-remote-event-logs-with-powershell/</link>
+      <pubDate>Wed, 16 Oct 2013 17:01:13 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/10/16/gather-remote-event-logs-with-powershell/</guid>
+      <description>About Gather the remote event log information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns Event Log information for the specified number of past hours. You can view verbose information on each runspace thread in realtime with the -Verbose option.
+Version History 1.0.0 &amp;#8211; 10/16/2013
+ Initial release  Notes By default 24 hours is what we filter against for the results.</description>
+    </item>
+    
+    <item>
+      <title>Retrieve Remote Scheduled Task Information With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/10/06/retrieve-remote-scheduled-task-information-with-powershell/</link>
+      <pubDate>Sun, 06 Oct 2013 23:32:48 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/10/06/retrieve-remote-scheduled-task-information-with-powershell/</guid>
+      <description>&lt;p&gt;This function uses multiple runspaces with along with COM objects to gather information about the scheduled tasks of remote systems. Getting this to work with alternate credentials may be possible but I wasn’t able to discern a usable method to make it happen so I resorted to PSremoting. What this means is that this script will work against multiple remote systems which do not have psremoting enabled as long as you are running the script with an account that has administrative rights to them. If you do pass a credential to the function then psremoting will be used instead. You can also force psremoting to be used if you are using that across the board in your environment.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Visualize Active Directory Site Connections</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/10/06/visualize-active-directory-site-connections/</link>
+      <pubDate>Sun, 06 Oct 2013 22:50:35 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/10/06/visualize-active-directory-site-connections/</guid>
+      <description>&lt;h4 id=&#34;span-style-color-bbbbbb-font-size-12px-font-weight-normal-line-height-1-6-in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-i-ve-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagram-span&#34;&gt;&lt;span style=&#34;color: #bbbbbb; font-size: 12px; font-weight: normal; line-height: 1.6;&#34;&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;/span&gt;&lt;/h4&gt;</description>
+    </item>
+    
+    <item>
+      <title>Find Disabled Users With Lync Enabled Without Lync Cmdlts</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/09/30/find-disabled-users-with-lync-enabled-without-lync-cmdlts/</link>
+      <pubDate>Mon, 30 Sep 2013 21:19:15 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/09/30/find-disabled-users-with-lync-enabled-without-lync-cmdlts/</guid>
+      <description>&lt;p&gt;Here is a quick tip which applies to more than just Lync. I use powershell with .NET ADSI to gather a list of all users which are disabled but still have Lync sip addresses assigned. There are numerous reasons to disable lync on such accounts. One reason would be to make certain that users whom are no longer with the organization get removed from the Lync address list. Another is so these same users can no longer access Lync! (Yes, a disabled AD account may still be authorized to access Lync).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather Remote Command Results With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/09/19/gather-remote-command-results-with-powershell/</link>
+      <pubDate>Thu, 19 Sep 2013 16:22:41 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/09/19/gather-remote-command-results-with-powershell/</guid>
+      <description>&lt;p&gt;Send a remote command using wmi, alternate credentials, and multiple runspaces then retrieve the results serially using mapped secure channels to the remote host. The remote command execution function supports custom timeout parameters in case of wmi problems and returns the remote tmp file information containing the command results. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Get Remote Shadow Volume Information With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/</link>
+      <pubDate>Sun, 15 Sep 2013 02:57:55 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/</guid>
+      <description>&lt;p&gt;Gather the remote shadow volume information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns shadow volume information, shadow copies, their providers, and settings. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather Local Group Membership With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</link>
+      <pubDate>Wed, 11 Sep 2013 14:11:52 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</guid>
+      <description>Gather system local groups and their members for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems, a switch for inclusion of empty groups in the results, and returns group names with their members. You can view verbose information on each runspace thread in realtime with the -Verbose option.
+Version History 1.0.0 &amp;#8211; 09/11/2013
+ Initial release  Notes None, this is an independent release of a function I’ve recently included in a larger project.</description>
+    </item>
+    
+    <item>
+      <title>Excel and HTML Asset Reports With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/</link>
+      <pubDate>Sun, 08 Sep 2013 05:07:29 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/</guid>
+      <description>&lt;p&gt;This set of powershell functions collates and generates reports upon system information it gathers. Information gathered includes hardware health, system information, networking information and much much more. Multiple types of html reports can be generated and all data can be exported directly to an excel workbook, saved as individual reports, and emailed.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Multithreaded HP Server Health Check with Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/</link>
+      <pubDate>Thu, 22 Aug 2013 17:32:45 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/</guid>
+      <description>&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
+
+&lt;p&gt;This function attempts to query the HP WBEM WMI provider information to ascertain the general health of a physical server. By default just the general health status is returned. Optionally you can include the following components in the results: ethernet teams, array controllers , ethernet adapters, fans, HBAs, power supplies, and temperature sensors.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Multithreaded Remote Registry Gathering with Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/08/06/multithreaded-remote-registry-gathering-with-powershell/</link>
+      <pubDate>Wed, 07 Aug 2013 03:11:49 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/08/06/multithreaded-remote-registry-gathering-with-powershell/</guid>
+      <description>&lt;p&gt;Gather specific subkey values or an entire registry key’s subkey values with powershell and multithreading.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Multithreaded System Asset Gathering with Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/08/05/multithreaded-system-asset-gathering-with-powershell/</link>
+      <pubDate>Mon, 05 Aug 2013 17:35:31 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/08/05/multithreaded-system-asset-gathering-with-powershell/</guid>
+      <description>&lt;p&gt;This function gathers a plethora of useful system information via WMI and multithreading with powershell.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Determine if a computer is virtual with powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</link>
+      <pubDate>Fri, 26 Jul 2013 18:22:43 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</guid>
+      <description>&lt;p&gt;This function attempts to connect to a computer and find out if it is virtual or not using WMI. If it is virtual, a best guess at the type of virtual platform it is running upon is returned as well.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 Mailbox Audit Report GUI</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/06/28/exchange-2010-mailbox-audit-report-gui/</link>
+      <pubDate>Fri, 28 Jun 2013 20:17:29 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/06/28/exchange-2010-mailbox-audit-report-gui/</guid>
+      <description>&lt;p&gt;I’ve updated the original &lt;a href=&#34;http://dev.zacharyloeber.com/2013/05/09/exchange-2010-mailbox-audit-report-script/&#34;&gt;Exchange Mailbox Audit Report Script&lt;/a&gt; with some new features and bug fixes. These updates have also set the stage for the entire script to be wrapped with a GUI! Here is the initial release of the Mailbox Audit Report GUI for your auditing needs.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Enhanced Remote Server Connectivity Testing With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/06/25/enhanced-remote-server-connectivity-testing-with-powershell/</link>
+      <pubDate>Tue, 25 Jun 2013 14:22:18 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/06/25/enhanced-remote-server-connectivity-testing-with-powershell/</guid>
+      <description>&lt;p&gt;Test the following connectivity methods to a server: RDP, ping, rpc, wsman, sccm agent, scom agent, and remote registry. Optionally an alternate credential can be used. Versatility is added with options to return only true/false when singular tests are performed.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Use Powershell to Gather Disk/Partition/Mount Point Information</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/</link>
+      <pubDate>Mon, 24 Jun 2013 04:41:01 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/</guid>
+      <description>&lt;p&gt;I put together a function for remotely gathering Windows disk information. This was specifically written to accommodate alternate credentials. This script also accounts for the glaring disconnect between win32_Volume and win32_DiskDrive within WMI.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Audit User Profile Folders With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/06/21/audit-user-profile-folders-with-powershell/</link>
+      <pubDate>Fri, 21 Jun 2013 18:46:09 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/06/21/audit-user-profile-folders-with-powershell/</guid>
+      <description>&lt;p&gt;This function will aggregate sub-folders within a folder on a server and attempt to associate them with user IDs within a domain and provide additional information. This script can also be used to move folders for disabled or non-existent accounts.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Book Review: PowerShell 3.0 Advanced Administration Handbook</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/06/18/book-review-powershell-3-0-advanced-administration-handbook/</link>
+      <pubDate>Wed, 19 Jun 2013 01:44:40 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/06/18/book-review-powershell-3-0-advanced-administration-handbook/</guid>
+      <description>&lt;p&gt;A fast-paced PowerShell guide with real-world scenarios and detailed solutions&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 Mailbox Audit Report Script</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</link>
+      <pubDate>Fri, 10 May 2013 02:33:54 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
+      <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
+
+&lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange – The State Of External Client Access</title>
+      <link>http://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</link>
+      <pubDate>Thu, 22 Nov 2012 19:58:04 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Most within the messaging and collaboration industry are hyped up about the next wave of Microsoft collaboration and messaging products which are soon to be released. Among these products is Exchange 2013 RTM. This type of release typically precedes yet another wave of architecture upgrades across the corporate landscape. Some of these (beta testers) will be will undoubtedly upgrade to Exchange 2013.&lt;/p&gt;
+
+&lt;p&gt;Other corporations will start to feel the burn to upgrade as well. These will be organizations which realize that their Exchange &lt;sup&gt;2003&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; infrastructure is nearing a decade old existence and cannot meet the demands of their ever growing mobile workforce. Realizing they are behind the curve, they may feel hastened to upgrade as well, possibly just to Exchange 2010. Regardless the reason in choosing to upgrade their messaging infrastructure, there are critical design decisions which need to be made in how clients access this infrastructure both internally and externally. This article focuses solely on the external access aspect of the infrastructure.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Even More Migration Tips</title>
+      <link>http://dev.zacharyloeber.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/</link>
+      <pubDate>Wed, 11 Jul 2012 00:34:32 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/</guid>
+      <description>&lt;p&gt;It has been a while since I passed on some personal experiences when performing Exchange 2010 migrations. I thought it was about time to update my list to include some more of the lesser known aspects of an Exchange 2010 migration.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Active Directory: Best Practices Workbook</title>
+      <link>http://dev.zacharyloeber.com/blog/2012/05/28/active-directory-best-practices-workbook/</link>
+      <pubDate>Mon, 28 May 2012 21:57:58 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2012/05/28/active-directory-best-practices-workbook/</guid>
+      <description>&lt;p&gt;This is a checklist for technicians performing Active Directory assessments. It is broken down by category and best practice. Some items listed are not really a best practice, but rather something which you may find in an environment which should be rectified (as part of an audit perhaps).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Changing an invalid DNS suffixed server</title>
+      <link>http://dev.zacharyloeber.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</link>
+      <pubDate>Thu, 01 Mar 2012 05:30:13 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</guid>
+      <description>&lt;p&gt;I ran into an interesting Exchange &lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be&lt;/p&gt;
+
+&lt;pre&gt;“Initial error: 451 4.4.0 dns query failed. The error was: SMTPsend.dns.nonexistentdomain; nonexistent”&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 One-liner: Get All Network Interface Information</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/</link>
+      <pubDate>Fri, 19 Aug 2011 16:57:15 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/</guid>
+      <description>Here are a few quick powershell one-liners to get all the network interface information in your exchange environment:
+$ExchServers=(Get-ExchangeServer); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.Name | select @{Name=&#34;Server&#34;;Expression={$Srv.Name}},@{Name=&#34;DNS Host Name&#34;;Expression={$_.DNSHostName}},@{Name=&#34;Server Role&#34;;Expression={$Srv.ServerRole}},Description,@{Name=&#34;IP Address&#34;;Expression={$_.IPAddress}},@{Name=&#34;IP Subnet&#34;;Expression={$_.IPSubnet}},@{Name=&#34;Default Gateway&#34;;Expression={$_.DefaultIPGateway}},@{Name=&#34;Mac Address&#34;;Expression={$_.MacAddress}},@{Name=&#34;DNS Suffix Search Order&#34;;Expression={$_.DNSDomainSuffixSearchOrder}},@{Name=&#34;DNS Server Search Order&#34;;Expression={$_.DNSServerSearchOrder}},FullDNSRegistrationEnabled}) |Export-Csv -NoTypeInformation &#34;C:\Temp\Exchange-network.csv&#34; If you just want interface information for Exchange 2010 servers:
+$ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: A Few More Migration Tips</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/</link>
+      <pubDate>Sat, 13 Aug 2011 23:43:04 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/</guid>
+      <description>&lt;p&gt;Here are a few more notes from the field to consider when you are planning your Exchange 2010 deployment and migration. Some of these items are good to know even after you have completed your migration and may help with overall system stability.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Active Directory: Essential Tools</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/08/11/active-directory-essential-tools/</link>
+      <pubDate>Thu, 11 Aug 2011 18:35:00 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/08/11/active-directory-essential-tools/</guid>
+      <description>&lt;p&gt;During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OCS 2007 R2: CRL Issue Causing Address Book Download Error</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/03/31/ocs-2007-r2-crl-issue-causing-address-book-download-error/</link>
+      <pubDate>Thu, 31 Mar 2011 15:21:09 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/03/31/ocs-2007-r2-crl-issue-causing-address-book-download-error/</guid>
+      <description>&lt;p&gt;I ran into this issue recently. End users experienced a red splat in communicator exhibiting that there was an issue syncing the corporate address book. I found &lt;a title=&#34;OCS 2007 R2 CRL Issue&#34; href=&#34;http://blog.danovich.com.au/2009/11/04/office-communicator-error-cannot-synchronize-address-book/&#34; target=&#34;_blank&#34;&gt;this excellent article&lt;/a&gt; explaining how an invalid Certificate Revocation List error may be causing this issue. My issue was slightly similar in nature but with some caveats.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Windows: 2003 to 2008 R2 RADIUS Migration</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</link>
+      <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</guid>
+      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I&amp;#8217;m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 (SP1): Pre-Deployment Tips</title>
+      <link>http://dev.zacharyloeber.com/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</link>
+      <pubDate>Fri, 17 Dec 2010 18:55:00 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</guid>
+      <description>&lt;p&gt;I recently had the opportunity to experience all of the blood, sweat, and tears of migrating a minimally maintained Exchange 2003 infrastructure to Exchange 2010 (and mid-way through, an upgrade to 2010 SP1). All of the docs out on the web for migrations make it seem soooo easy. But if you are going to do anything other than a single server install and are doing things like, oh say; hardware load balancing, Exchange 2003 co-existence, or working in an old multi-domain forest then you are in for some punishment. I think I ran into every possible issue that you can have with an Exchange 2010 migration. One guide that helped me in this endeavor was the &lt;a title=&#34;Rapid Exchange 2003 to 2010 Transition Guide&#34; href=&#34;http://msexchangegeek.com/2010/01/30/rapid-transition-guide-from-exchange-2003-to-exchange-2010/&#34; target=&#34;_blank&#34;&gt;rapid transition guide from Exchange 2003 to Exchange 2010&lt;/a&gt;. This guide didn&amp;#8217;t cover every aspect for me though, here are a few things that may save you a little bit of hassle. I&amp;#8217;ve been meaning to publish this for a while and I have a whole lot more notes from this experience but this is a start.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

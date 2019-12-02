@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hyper-v on Zachary Loeber</title>
+    <link>http://dev.zacharyloeber.com/tags/hyper-v/</link>
+    <description>Recent content in hyper-v on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 23 Mar 2012 01:31:47 +0000</lastBuildDate>
+    
+	<atom:link href="http://dev.zacharyloeber.com/tags/hyper-v/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Virtualization: vCPU Provisioning Best Practices</title>
+      <link>http://dev.zacharyloeber.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</link>
+      <pubDate>Fri, 23 Mar 2012 01:31:47 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</guid>
+      <description>&lt;p&gt;I had always been of the mindset that when provisioning new VMs it is best to start out with less vCPUs and add more as they are required (unless you specifically know that you will be using and needing more for such things as sql server or exchange). I had even recently felt some vindication of this provisioning best practice in reading a book recently (&lt;a href=&#34;http://www.amazon.com/Critical-VMware-Mistakes-Should-Avoid/dp/1937061981&#34; title=&#34;Critical VMware Mistakes You Should Avoid&#34;&gt;Critical VMware Mistakes You Should Avoid&lt;/a&gt;)&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

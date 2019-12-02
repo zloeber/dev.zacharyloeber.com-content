@@ -1,0 +1,426 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Powershell: System Report Script Design | Zachary Loeber</title>
+        <meta name="description" content="Powershell: System Report Script Design - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Powershell: System Report Script Design">
+        <meta itemprop="description" content="Powershell: System Report Script Design - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Powershell: System Report Script Design">
+        <meta property="og:description" content="Powershell: System Report Script Design - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://dev.zacharyloeber.com/blog/2014/10/09/powershell-system-report-script-design/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2014/10/09/powershell-system-report-script-design/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2014/10/09/powershell-system-report-script-design/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://dev.zacharyloeber.com/blog/2014/10/09/powershell-system-report-script-design/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://dev.zacharyloeber.com/blog/2014/10/09/powershell-system-report-script-design/">Powershell: System Report Script Design</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2014-10-09</span>
+            
+        
+
+        
+            <span class="readingTime">7 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/security">Security</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>In this post I go back and explain some of my reasoning behind decisions I made in the design of an already released script, <a href="https://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569">Get-AssetReport</a>. This was written over a year ago and forgotten about as one of the many unpublished drafts on my blog. The code behind the script I discuss has been upgraded and used in several of my more popular scripts (<a href="https://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877">AD Asset Report</a>, <a href="https://gallery.technet.microsoft.com/Big-IP-F5-LTM-Load-3fc9a2af">F5 LTM Report</a>, and <a href="https://gallery.technet.microsoft.com/Lync-2013-Mirrored-SQL-132c2f06">Lync 2013 Status Report</a>). Some of this content is slightly dated as I&#8217;ve since changed some of the coding but the core concepts are the same. Those digging through my crazy work or learning powershell may get some value from this content so I tidied it up a bit and here it is. Cheers!</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>I finally updated one of my <a href="http://gallery.technet.microsoft.com/Get-GeneralSystemReportps1-4d9b5817">first powershell script releases</a>, the venerable html system report. My updated version is a total rewrite of the first script with several additional benefits such as; multi-runspace asset gathering capabilities, a more modular and extendable design, and new output formatting options (including a responsive design grid layout and export to excel). If I were to summarize this script I&#8217;d term it as; &#8220;A powershell driven, mostly multi-threaded, system report gathering and rendering script with a high level of customization and beautiful output.&#8221;</p>
+
+<p><span style="line-height: 1.6;">This set of scripts and functions are still not perfect, but I have at least tried to set the stage for further expansion and development. In fact, this initial release is considered alpha because it is the raw format I tend to start with in my scripts before adding more refined features and better variable handling. The final steps (if I get that far) are to overlay everything with a GUI and I’m very far from that stage of this personal project. But the results have turned out so well thus far that I have decided to release what has already been done up to this point. That is why this is &#8220;Part 1&#8221;, I intend for this to be just the start of a well rounded systems reporting script to meet several needs.</span></p>
+
+<h2 id="design-decisions">Design Decisions</h2>
+
+<p>I initially looked at the report output from my original script (which was just a re-hacked up report of another author) and was going to re-use a good part of the CSS and code as a baseline to start this new script. But I eventually scrapped just about everything and started rewriting essential portions one at a time. I created a <a href="/2013/08/05/multithreaded-system-asset-gathering-with-powershell/">multi-threaded system asset gathering</a> function to pull only the essential WMI information from a remote system. I then did the same for a <a href="/2013/08/06/multithreaded-remote-registry-gathering-with-powershell/">remote registry gathering function</a>. I took the html driven bar graph portion of the prior code, cleaned it up, made it highly portable, and <a href="http://gallery.technet.microsoft.com/Create-HTML-Bar-Graph-63cff29d">released it</a> as well.</p>
+
+<p>I then started looking into how I wanted the report to look when completed. I really like this new responsive design fad that is going on (trying to design one web site which dynamically adapts to many devices and screen sizes). And I really think grids are slick. So I found a <a href="http://www.responsivegridsystem.com/">really good responsive design based grid template</a> with as little reliance on javascript as possible and based the initial report output upon its CSS magic.</p>
+
+<p>Part of the reason I used this particular author&#8217;s template is the extremely intuitive manner which he uses DIVs to layout the pages. Essentially you have a container with any number of elements within it to make up the columns. These columns are aptly given class names such as 2_of_3 or 1_of_2 (two thirds of the screen used and 1 half of the screen used respectively). This makes parsing the sections fairly easy so I can dynamically create new containers on the fly. What I do is create a hash with the type of divs which may be used in the report. (I&#8217;ve pruned out just the CSS elements for providing 1, 2, and 3 column output even though the template supports many more).</p>
+
+<pre class="lang:powershell decode:true  ">$SectionContainers = @{
+ 'Half' = ''
+ 'Full' = ''
+ 'Third' = ''
+ 'TwoThirds' = ''
+ 'Tail' = ''
+}</pre>
+
+<p><span style="line-height: 1.6;">Ok, so now that I know which css template I&#8217;m going to use, what other report output formatting might I desire to see? While the fancy responsive design template I&#8217;ll be using looks great in a web browser it tends to look sparse and visually unappealing in an outlook email. This is largely because Outlook will render html the same way that Word does, like crap. I mean, it only understands very basic CSS at best. So for every HTML section I&#8217;d like to be able to define multiple definitions based on how I decide to render the report output. I again lean on hash tables to make this easier to reference in the code later on:</span></p>
+
+<pre>$HTMLRendering = @{
+    'Header' = @{
+        'DynamicGrid' = ''
+        'EmailFriendly' = ''
+    }
+    'Footer' = @{
+        'DynamicGrid' = ''
+        'EmailFriendly' = ''
+    }
+}</pre>
+
+<p>If I&#8217;m rendering the header I would then simply use a single global variable to change how the entire report gets rendered like so:</p>
+
+<pre>$HTMLRendering['Header'][$RenderMode]</pre>
+
+<p><span style="line-height: 1.6;">What else might I like to see in an all purpose html system report generation tool? As I was thinking about this I realized that there are very valid times when you want a report element to either be vertical or horizontal. For instance, a detailed system report might contain 20 properties in the summary which you don&#8217;t want spanning across the screen. In these cases I&#8217;d like the output to be in a horizontal table. I also may just want a threshold of properties to be reached before the report element automatically converts to a vertical format. So I accounted for the following three states.</span></p>
+
+<ul>
+<li><strong>horizontal</strong> = Labels are in the first row</li>
+<li><strong>vertical</strong> = Labels are in the first column</li>
+<li><strong>dynamic</strong> = Report will be horizontal until it reaches a predefined threshold of properties, at which point it will transform and become vertical.</li>
+</ul>
+
+<p>I also may create vastly different reports based on the same data. An example would be a daily troubleshooting report which contains a subset of system information you may want to have in a portal (or sent to your inbox) for daily examination. But I still want to easily create a full documentation report on a whim with the same information in a less filtered state. In order to accomplish this flexibility I accounted for different report types and properties. The resulting hash table looks a bit like this example for the summary portion of a report:</p>
+
+<pre>$ReportOptions =
+@{
+    'Summary' = @{
+       'Enabled' = $true
+       'AllowEmptyReport' = $true
+       'Order' = 1
+       'AllData' = @{}
+       'Title' = "System Summary"
+       'ContainerType' = 'Half'
+       'TableType' = 'Vertical'
+       'ReportProperties' = @{
+          'Troubleshooting' = 
+             @{n='Uptime';e={$_.Uptime}},
+             @{n='OS';e={$_.OperatingSystem}},
+             @{n='Virtual';e={$_.IsVirtual}},
+             @{n='Total Physical RAM';e={$_.PhysicalMemoryTotal}},
+             @{n='Free Physical RAM';e={$_.PhysicalMemoryFree}},
+             @{n='Total Virtual RAM';e={$_.VirtualMemoryTotal}},
+             @{n='Free Virtual RAM';e={$_.VirtualMemoryFree}}
+          'FullDocumentation' = 
+             @{n='OS';e={$_.OperatingSystem}},
+             @{n='OS Architecture';e={$_.OSArchitecture}},
+             @{n='OS Service Pack';e={$_.OSServicePack}},
+             @{n='OS SKU';e={$_.OSSKU}},
+             @{n='OS Version';e={$_.OSVersion}},
+             @{n='Server Chassis Type';e={$_.ChassisModel}},
+             @{n='Server Model';e={$_.Model}},
+             @{n='CPU Architecture';e={$_.SystemArchitecture}},
+             @{n='CPU Sockets';e={$_.CPUSockets}},
+             @{n='Total CPU Cores';e={$_.CPUCores}},
+             @{n='Virtual';e={$_.IsVirtual}},
+             @{n='Virtual Type';e={$_.VirtualType}},
+             @{n='Total Physical RAM';e={$_.PhysicalMemoryTotal}},
+             @{n='Free Physical RAM';e={$_.PhysicalMemoryFree}},
+             @{n='Total Virtual RAM';e={$_.VirtualMemoryTotal}},
+             @{n='Free Virtual RAM';e={$_.VirtualMemoryFree}},
+             @{n='Total Memory Slots';e={$_.MemorySlotsTotal}},
+             @{n='Memory Slots Utilized';e={$_.MemorySlotsUsed}},
+             @{n='Uptime';e={$_.Uptime}},
+             @{n='Install Date';e={$_.InstallDate}},
+             @{n='Last Boot';e={$_.LastBootTime}},
+             @{n='System Time';e={$_.SystemTime}}
+        }
+    }
+    'Disk' = @{
+       'Enabled' = $true
+       'AllowEmptyReport' = $true
+       ....</pre>
+
+<p>With a structure like this I then can take the same section and re-purpose the data to suit several different reports pretty easily. This also provides a very fast way to change a property name in the report output, add a property to any report, or remove them as well. You simply need a section name to reference as well as your report type.</p>
+
+<p>As long as I load the data to a holding area first I can easily process each property of the data on the fly with this structure like so (note that $AvailableReports is my &#8220;holding area&#8221;, it contains yet another hash called &#8216;AllData&#8217; where all the asset data is referenced by asset names as the hash key)</p>
+
+<pre class="lang:powershell decode:true ">$ReportElementSource = $AvailableReports[$Section]['AllData'][$Asset]
+$SourceProperties = $ReportOptions[$Section]['ReportProperties'][$ReportType]
+Foreach ($TableElement in $ReportElementSource)
+{
+    $AllTableElements += $TableElement | Select $SourceProperties
+}</pre>
+
+<p><a href="https://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569">The whole script</a> in all its horrible glory can be found in one huge ps1 file at the technet gallery. While there is still a ways to go towards getting this to a state I&#8217;m happy with I&#8217;d say it is a good start.</p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/psc">PSC</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

@@ -1,0 +1,457 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> GNS3 on Ubuntu 8.04 – Install Guide | Zachary Loeber</title>
+        <meta name="description" content="GNS3 on Ubuntu 8.04 – Install Guide - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="GNS3 on Ubuntu 8.04 – Install Guide">
+        <meta itemprop="description" content="GNS3 on Ubuntu 8.04 – Install Guide - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="GNS3 on Ubuntu 8.04 – Install Guide">
+        <meta property="og:description" content="GNS3 on Ubuntu 8.04 – Install Guide - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://dev.zacharyloeber.com/blog/2008/06/12/gns3-on-ubuntu-804/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2008/06/12/gns3-on-ubuntu-804/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2008/06/12/gns3-on-ubuntu-804/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://dev.zacharyloeber.com/blog/2008/06/12/gns3-on-ubuntu-804/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://dev.zacharyloeber.com/blog/2008/06/12/gns3-on-ubuntu-804/">GNS3 on Ubuntu 8.04 – Install Guide</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2008-06-12</span>
+            
+        
+
+        
+            <span class="readingTime">4 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/cisco">Cisco</a>
+                
+                    <a href="/categories/linux">Linux</a>
+                
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/ubuntu">Ubuntu</a>
+                
+                    <a href="/categories/uncategorized">Uncategorized</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>GNS3 is a frontend for dynagen (which is a scripting language for dynamips). Getting it to work nicely in Ubuntu was a bit of a pain in the arse but I was able to get it to work in a manner I&#8217;m happy with. This setup will essentially encapsulate a large portion of the install to one directory in /opt. Some libraries and executables will be installed through apt though, but not many. I previously wrote part of a writeup for this on Ubuntu 7.10, I&#8217;d ignore that in favor of this one which is much more up to date and polished.</p>
+
+<p>Start by getting the right packages for it to work correctly:</p>
+
+<p><code>sudo apt-get install dynagen python-qt4</code></p>
+
+<p>Now get GNS3 and extract it to /opt<code>&lt;br /&gt;
+cd ~&lt;br /&gt;
+http://pfe.epitech.net/frs/download.php/818/GNS3-0.5-src.tar.bz2&lt;br /&gt;
+tar xjvf GNS3-0.5-src.tar.bz2 &amp;&amp; rm GNS3-0.5-src.tar.bz2&lt;br /&gt;
+sudo mv GNS3-0.5-src /opt/GNS3</code></p>
+
+<p>Next we will create some directories. Dynamips will hold our executable dynamips. IOS for our Cisco images, Project for our projects, and Cache and tmp for extraneous files that clutter things up. We need to be able to write to Cache and tmp so we make those directories writable by the &#8220;other&#8221; group for simplicity sake.</p>
+
+<p><code>&lt;br /&gt;
+cd /opt/GNS3&lt;br /&gt;
+sudo mkdir Dynamips&lt;br /&gt;
+sudo mkdir IOS&lt;br /&gt;
+sudo mkdir Project&lt;br /&gt;
+sudo mkdir Cache&lt;br /&gt;
+sudo mkdir tmp&lt;br /&gt;
+sudo chmod o+rw -R ./Project&lt;br /&gt;
+sudo chmod o+rw -R ./tmp&lt;br /&gt;
+</code></p>
+
+<p>Now get a binary of dynamips and make it executable</p>
+
+<p><code>&lt;br /&gt;
+#Get the dynamips binary and make it executable:&lt;br /&gt;
+cd Dynamips&lt;br /&gt;
+sudo wget http://www.ipflow.utc.fr/dynamips/dynamips-0.2.8-RC2-x86.bin&lt;br /&gt;
+sudo chmod +x ./dynamips-0.2.8-RC2-x86.bin&lt;br /&gt;
+</code></p>
+
+<p>Now create a desktop shortcut to GNS3. Right-click on your desktop and select &#8220;Create Launcher&#8230;&#8221; and for the command put in</p>
+
+<p><code>python &quot;/opt/GNS3/gns3&quot;</code></p>
+
+<p>Start GNS3 with this new shortcut. Now we should start messing around with our settings.</p>
+
+<p>If it is your first time launching it you have the option to changes settings right away. Go ahead and do this.</p>
+
+<p>Here is the terminal command you will want to use for gnome, there are other terminal examples in the documentation, but this one worked the best for Ubuntu it seemed.</p>
+
+<p><code>gnome-terminal -t %d -e 'telnet %h %p' &gt; /dev/null 2&gt;&amp;1 &amp;</code></p>
+
+<p>When you are done with the general settings it should look something like this:</p>
+
+<p><a href="/wp-content/uploads/2008/06/preferences-general.png"><img class="alignnone size-thumbnail wp-image-17" title="gns3-preferences-general" src="/wp-content/uploads/2008/06/preferences-general.png?resize=150%2C102" alt="gns3 general preferences" width="150" height="102" data-recalc-dims="1" /></a></p>
+
+<p>Here is the dynamips preferences tab:</p>
+
+<p><a href="/wp-content/uploads/2008/06/preferences-dynamips.png"><img class="alignnone size-thumbnail wp-image-18" title="gns3-preferences-dynamips" src="/wp-content/uploads/2008/06/preferences-dynamips.png?resize=150%2C103" alt="GNS3 Dynamips Preferences" width="150" height="103" data-recalc-dims="1" /></a></p>
+
+<p>And finally the capture preferences tab:</p>
+
+<p><a href="/wp-content/uploads/2008/06/preferences-capture.png"><img class="alignnone size-thumbnail wp-image-19" title="gns3-preferences-capture" src="/wp-content/uploads/2008/06/preferences-capture.png?resize=150%2C55" alt="GNS3 Capture Preferences" width="150" height="55" data-recalc-dims="1" /></a></p>
+
+<p>I will get back to doing Pemu in a different post 🙂</p>
+
+<p>In the next post I will cover how to choose and setup your IOS image. I think that actually choosing an image can be more difficult than setting it up so stay tuned as I document a typical example for you.</p>
+
+<p><strong>**Update**</strong></p>
+
+<p>Ubuntu_Boy gives us the scoop on doing this for 64 bit Ubuntu architecture! The only note I&#8217;ll add is that you do not need to setup a root password to use &#8220;su -&#8220;, you can just use &#8220;sudo su -&#8221; and enter your password if you don&#8217;t want to use sudo all of the time. Also, you can follow the path convention used earlier to make your install more portable. I&#8217;ve not followed these directions yet but will test them out on my next 64 bit install.</p>
+
+<blockquote>
+<p>Want to run GNS3 on 64 bit Ubuntu because of memory limitation,follow the instruction above except</p>
+
+<p>sudo apt-get install dynagen python-qt4</p>
+
+<p>this one won’t work in 64 bit …</p>
+
+<p>instead follow this:</p>
+
+<p>First you have to select system’s update sources:</p>
+
+<p>Go to system &gt; Administration &gt; Software sources</p>
+
+<p>[Type password in the pop up box]</p>
+
+<p>Then,</p>
+
+<p>Under “Ubuntu software” select 1 &#038; 2</p>
+
+<p>Under “Updates” select 1 &#038; 2</p>
+
+<p>Then click close and reload</p>
+
+<p>Next you have to check if python v2.5 installed:</p>
+
+<ol>
+<li><p>Open Terminal windows</p></li>
+
+<li><p>type python</p></li>
+
+<li><p>you will get something like this:</p></li>
+</ol>
+
+<p>“Python 2.5.1 (r251:54863, Oct 5 2007, 13:50:07)</p>
+
+<p>[GCC 4.1.3 20070929 (prerelease) (Ubuntu 4.1.2-16ubuntu2)] on linux2</p>
+
+<p>Type “help”, “copyright”, “credits” or “license” for more information.</p>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>”</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+<ol>
+<li>Close is by pressing Ctrl+d [Skip 5 and 6 if you get the above message and go to 7]
+<br /></li>
+</ol>
+
+<p>[if you do not get the above message, python is not installed on your system]</p>
+
+<ol>
+<li><p>type “su -” [Without quotes ofcourse] [then type password]</p></li>
+
+<li><p>atp-get insall python [type y] [Skip 7 &#038; 8 and go to 9]</p></li>
+
+<li><p>type “su -” [Without quotes ofcourse] [then type password]</p></li>
+
+<li><p>“apt-get update”</p></li>
+
+<li><p>“apt-get install qt4-dev-tools” [type y]</p></li>
+
+<li><p>“apt-get install pyqt4-dev-tools” [type y]</p></li>
+
+<li><p>“exit”</p></li>
+
+<li><p>“mkdir ~/Desktop/GNS3″ [A folder named GNS3 is created in the Desktop]</p></li>
+
+<li><p>“cd ~/Desktop/GNS3″</p></li>
+
+<li><p>“wget hthttp://pfe.epitech.net/frs/download.php/598/GNS3-0.3.2-src.tar.bz2″</p></li>
+
+<li><p>“tar -xf GNS3-0.3.2-src.tar.bz2″ [Extracts the Archive]</p></li>
+
+<li><p>“cd GNS3-0.3.2″</p></li>
+</ol>
+
+<p>and here comes the interesting part</p>
+
+<ol>
+<li>“./gns3″</li>
+</ol>
+</blockquote>
+
+<p>**</p>
+
+<p>** End of Update ****</p>
+    
+</div>
+
+    
+<div class="footer no-tags">
+
+
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

@@ -1,0 +1,496 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Excel and HTML Asset Reports With Powershell | Zachary Loeber</title>
+        <meta name="description" content="Excel and HTML Asset Reports With Powershell - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Excel and HTML Asset Reports With Powershell">
+        <meta itemprop="description" content="Excel and HTML Asset Reports With Powershell - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Excel and HTML Asset Reports With Powershell">
+        <meta property="og:description" content="Excel and HTML Asset Reports With Powershell - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://dev.zacharyloeber.com/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://dev.zacharyloeber.com/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://dev.zacharyloeber.com/blog/2013/09/08/excel-and-html-asset-reports-with-powershell/">Excel and HTML Asset Reports With Powershell</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2013-09-08</span>
+            
+        
+
+        
+            <span class="readingTime">4 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/security">Security</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>This set of powershell functions collates and generates reports upon system information it gathers. Information gathered includes hardware health, system information, networking information and much much more. Multiple types of html reports can be generated and all data can be exported directly to an excel workbook, saved as individual reports, and emailed.</p>
+
+<p>The reports offer a high level of data customization and currently come with two example data sets. One for daily system reports which contains less overall information. And another, far more inclusive, system documentation report. The html output can be highly customized as well. Currently there is a dynamic grid html report based on responsive design templates as well as a less glitzy email capable html format. The report data can also be returned directly to an excel workbook where several sheets will automatically populate and be formatted for easier reading and further manipulating.</p>
+
+<h3 id="features">Features</h3>
+
+<p>Generate system asset reports in multiple formats including:</p>
+
+<ul>
+<li>Report Containers/Types
+
+<ul>
+<li>Troubleshooting &#8211; A small subset of system information meant for daily reports</li>
+<li>Documentation &#8211; A large amount of system information meant for environment analysis and documentation</li>
+</ul></li>
+<li>HTML Templates
+
+<ul>
+<li>DynamicGrid &#8211; A heavily modified CSS layout</li>
+<li>EmailFriendly &#8211; A basic layout</li>
+</ul></li>
+<li>Saved Report Layout
+
+<ul>
+<li>Individual &#8211; Each asset saves as its own file</li>
+<li>One big report &#8211; All assets are included in one big report</li>
+</ul></li>
+<li>Saved Report File Format
+
+<ul>
+<li>HTML</li>
+<li>PDF <strong>*New*</strong></li>
+</ul></li>
+<li>Email Reports (HTML only)</li>
+</ul>
+
+<h3 id="report-data">Report Data</h3>
+
+<p>Sections included in the system asset report include:</p>
+
+<ul>
+<li>System Information
+
+<ul>
+<li>Summary
+
+<ul>
+<li>OS</li>
+<li>CPUs</li>
+<li>Memory Usage</li>
+<li>Server Models</li>
+<li>Virtualization detection</li>
+</ul></li>
+<li>Extended Summary
+
+<ul>
+<li>NTP information</li>
+<li>Product key</li>
+<li>Registration Info</li>
+</ul></li>
+<li>Dell Warranty Information</li>
+<li>Disk Report</li>
+<li>Environmental Variables <strong>*New*</strong></li>
+<li>Memory Banks</li>
+<li>Top processes by memory utilization</li>
+<li>Startup Commands <strong>*New*</strong></li>
+<li>Stopped services (which are set to start automatically)</li>
+<li>Services starting with non-standard credentials</li>
+</ul></li>
+<li>Event Log Information
+
+<ul>
+<li>Event Log Settings</li>
+<li>Event log errors/warnings/security failures for past number of hours</li>
+</ul></li>
+<li>Networking Information
+
+<ul>
+<li>Network Adapters</li>
+<li>Local Hosts File Contents <strong>*New*</strong></li>
+<li>Local DNS Cache <strong>*New*</strong></li>
+<li>Route Table</li>
+</ul></li>
+<li>Software Audit
+
+<ul>
+<li>Installed Hotfixes</li>
+<li>Installed Applications</li>
+</ul></li>
+<li>File/Print
+
+<ul>
+<li>Shares</li>
+<li>Share session information</li>
+<li>Printers</li>
+<li>VSS Volume Usage <strong>*New*</strong></li>
+<li>VSS Writers <strong>*New*</strong></li>
+<li>WSUS settings</li>
+<li>Installed printers</li>
+</ul></li>
+<li>Local Security
+
+<ul>
+<li>Local Group Membership</li>
+<li>Applied GPOs</li>
+</ul></li>
+<li>HP hardware health
+
+<ul>
+<li>HP general hardware health</li>
+<li>HP ethernet team health</li>
+<li>HP ethernet health</li>
+<li>HP fan health</li>
+<li>HP HBA health</li>
+<li>HP power supply health</li>
+<li>HP temperature sensor readings</li>
+</ul></li>
+</ul>
+
+<h3 id="version-info">Version Info</h3>
+
+<p><strong>1.1.0 &#8211; 09/22/2013</strong></p>
+
+<ul>
+<li>Added option to save results to PDF with the help of a nifty library from <a href="https://pdfgenerator.codeplex.com/">https://pdfgenerator.codeplex.com/</a></li>
+<li>Added a few more resport sections for the system report:
+
+<ul>
+<li>Startup programs</li>
+<li>Local host file entries</li>
+<li>Cached DNS entries (and type)</li>
+<li>Shadow volumes</li>
+<li>VSS Writer status</li>
+</ul></li>
+<li>Added the ability to add different section types, specifically section headers</li>
+<li>Added ability to completely skip over previously mentioned section headers&#8230;</li>
+<li>Added ability to add section comments which show up directly below the section table titles and just above the section table data</li>
+<li>Added ability to save reports as PDF files</li>
+<li>Modified grid html layout to be slightly more condensed.</li>
+<li>Added ThrottleLimit and Timeout to main function (applied only to multi-runspace called functions)</li>
+<li></li>
+</ul>
+
+<h3 id="notes">Notes</h3>
+
+<p>I suppose I&#8217;ll upgrade this from beta status to non-beta, or whatever comes next. I&#8217;m mostly happy with the report layout and formatting for the DynamicGrid template. I&#8217;ve also breached new ground with a whole new set of data results for inclusion in the asset reports (with a recently released set of functions for returning the results of a remotely run command via alternate credentials). The EmailFriendly format still needs some attention but should serve its purpose.</p>
+
+<p>While the reports are pretty, I think that the real value to professionals is in the excel export this script can automatically generate. You can determine a whole lot from the information this script gathers. You can quickly isolate nic cards in promiscuous mode, find servers using strange license keys, and more.</p>
+
+<h3 id="screenshots">Screenshots</h3>
+
+<p>One of the excel sheets</p>
+
+<p><img alt="" src="http:///gallery.technet.microsoft.com/site/view/file/95459/1/excel-1.jpg?resize=586%2C197" width="586" height="197" data-recalc-dims="1" /></p>
+
+<p>The HP hardware health section of an html report:</p>
+
+<p><img alt="" src="http:///gallery.technet.microsoft.com/site/view/file/95460/1/HP_Health.jpg?resize=586%2C240" width="586" height="240" data-recalc-dims="1" /></p>
+
+<p>A summary section of an html report:</p>
+
+<p><img alt="" src="http://gallery.technet.microsoft.com/site/view/file/95461/1/Summary_Section.jpg?resize=586%2C400" width="586" height="400" data-recalc-dims="1" /></p>
+
+<p>A disk usage html report section:</p>
+
+<p><img alt="" src="http:///gallery.technet.microsoft.com/site/view/file/95463/1/Disk-Usage.jpg?resize=586%2C109" width="586" height="109" data-recalc-dims="1" /></p>
+
+<h3 id="downloads">Downloads</h3>
+
+<p><a href="http://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569">Download the script from the technet gallery (more frequently updated)</a></p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/2008-r2">2008 R2</a>
+                
+                    <a href="/tags/active-directory">Active Directory</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/monitoring">Monitoring</a>
+                
+                    <a href="/tags/network-administration">network administration</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/sysadmin">Sysadmin</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+                    <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

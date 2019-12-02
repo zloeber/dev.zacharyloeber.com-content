@@ -1,0 +1,453 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Sysadmin Task: Migrate DNS | Zachary Loeber</title>
+        <meta name="description" content="Sysadmin Task: Migrate DNS - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Sysadmin Task: Migrate DNS">
+        <meta itemprop="description" content="Sysadmin Task: Migrate DNS - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Sysadmin Task: Migrate DNS">
+        <meta property="og:description" content="Sysadmin Task: Migrate DNS - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://dev.zacharyloeber.com/blog/2012/03/24/sysadmin-task-migrate-dns/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2012/03/24/sysadmin-task-migrate-dns/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2012/03/24/sysadmin-task-migrate-dns/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://dev.zacharyloeber.com/blog/2012/03/24/sysadmin-task-migrate-dns/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://dev.zacharyloeber.com/blog/2012/03/24/sysadmin-task-migrate-dns/">Sysadmin Task: Migrate DNS</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2012-03-24</span>
+            
+        
+
+        
+            <span class="readingTime">8 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/linux">Linux</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>I&#8217;ve migrated DNS servers more than a few times and find that I&#8217;m doing the same tasks or using the same custom scripts over and over again. Here is my quick and dirty task list with some powershell scripts you too might find of use. As there are a hundred ways to skin this cat I don&#8217;t claim my methods to be the best but they sure are fast and far easier than manually changing a dns address on hundreds of servers, workstations, and network devices.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Why would you need to change your Domain&#8217;s DNS servers? Well if you are upgrading from an old 2003 (or older!) Domain Controller it may just be easier for you to erect a new DC and then slowly phase out the older DC. Or maybe you have no choice and your DC dies and you need to quickly get people access to the Internet to update their precious Facebook profile. Regardless of the reasoning, I abjectly refuse to manually change a bunch of network card DNS server search lists, and so should you. With a bit of powershell and some basic copy/paste batching you can very quickly change (or god forbid, standardize) the DNS servers being used in a homogeneous environment. In a heterogeneous environment the same concepts still apply, just the methodology of updating the DNS servers differ (I&#8217;ll cover that towards the end). This is written towards a Microsoft technology slant but I have done BIND server replacements and upgrades as well, just not as often as I have done DC upgrades and migrations 🙂</p>
+
+<h2 id="checklist">Checklist</h2>
+
+<h3 id="windows-servers-workstations">Windows Servers/Workstations</h3>
+
+<p>Ideally you are adding a new DNS server (or DC) and then decomissioning the old server. If not then at least make certain that your primary DNS server is listed first for all of your clients. In a larger Windows environment this can be a pain in the rear. I used to use vbscript but have since &#8220;evolved&#8221; to powershell for this task. You may think you know every computer in your environment but who knows which workstations and servers have had incorrect or old DNS servers statically set in their configuration. To find out first you need to know what systems are in your environment. I could have written some scripts to pull out all the computers in an AD forest but what I do with that list is a bit manual anyways so instead I use one of the great tools I <a title="Active Directory Essential Tools" href="/2011/08/11/active-directory-essential-tools/" target="_blank">previously mentioned</a>, <a title="AD Info" href="http://www.cjwdev.co.uk/Software/ADReportingTool/Info.html" target="_blank">AD Info</a>. I pull a report of all computers in the environment with the OS, Last Password Changed, if they are disabled, and obviously the name.</p>
+
+<p>Once I&#8217;ve exported the CSV I go through is in excel and delete any computers with a password last changed over 90 days or which are disabled as they have bigger issues than their preferred DNS servers if they are still actually running. I then determine the scope of my goal. If the environment is large and there is worry that some workstations may have manual settings in place I pretty much am done filtering my list and then copy out all of the server names into a TXT file for my next steps. Otherwise I may split out workstations and servers and simply focus on the server OSes. That is a judgement call you will have to make.</p>
+
+<blockquote>
+<p>Note: In a heterogeneous environment with multiple domains or even workgroups you will have to do this process for each group of disparate servers.</p>
+</blockquote>
+
+<p>Now that we have a TXT file with your domain joined compuers lets find out just how messed up they are in their DNS search order configuration. As we are going through this effort we may as well grab if they are DHCP clients as well as gather some other interesting info. Here is the powershell script I feed my server/workstation list into to get all the interface information. Notice it will grab all interfaces which are live as well as skip over those devices which cannot be connected to via WMI. What that means is any one-off system with issues (ie. too restrictive of a firewall or it is flat out offline or outside of the network) or that you cannot authenticate to for which ever reason still will need some manual configuration love later on down the line. As I&#8217;m often on a client network with my company laptop I also prompt for domain credentials.</p>
+
+<pre>$credential = Get-Credential
+
+Get-Content .\computers.txt | `
+ForEach-Object {
+    # First test if we can connect to the server
+    if(Test-Connection -ComputerName $_ -Count 1 -ea 0) {
+        # Using WMI connect to the computer and gather nic info for
+        Get-WMIObject Win32_NetworkAdapterConfiguration -ErrorAction SilentlyContinue `
+        -Credential $credential -Computername $_ | `
+        Where-Object {$_.IPEnabled -match "True"} | `
+        Select-Object -property DNSHostName,
+                            @{N='DNS Suffix Search Order';E={$_.DNSDomainSuffixSearchOrder}},
+                            Index,
+                            Description,
+                            @{N='IP Address';E={$_.IPAddress}},
+                            @{N='Subnet';E={$_.IPSubnet}},
+                            @{N='Default Gateway';E={$_.DefaultIPGateway}},
+                            @{N='DHCP Enabled';
+                              E={$_.DHCPEnabled}},
+                            @{N="DNSServerSearchOrder";
+                              E={$_.DNSServerSearchOrder}},
+                            @{N="Mac Address";E={$_.MACAddress}}
+    }
+} | Export-CSV -NoTypeInformation Computer-IPs.csv</pre>
+
+<p>Once we have Computer-IPs.csv I then go through it with excel and remove any items which came up with no DNS information (such as a multi-homed servers and such) or which are workstations that get their DNS info from DHCP. We can also remove any rows with correct DNS information already set and update those which are not set correctly (obviously adding in our new DNS server).</p>
+
+<blockquote>
+<p>This is a good time to check if you have any servers pulling from DHCP or any workstations with static assignments. This is one of the reasons I&#8217;ll typically run this process against servers and workstations separately.</p>
+
+<p>Also, be cognizant of your domain controllers. There are a few different beliefs on optimal DNS search order configuration on DCs. I&#8217;ve found that the 2008 R2 presets on a new DC to work just fine. So the DNSServerSearchOrder for a DC will typically first point to its own IP first, then to a secondary DC, and finally have a tertiary set to 127.0.0.1.</p>
+</blockquote>
+
+<p>Once you have updated the DNSServerSearchOrder in the csv file for all devices to look how you like then use the same file to update the servers with powershell. I forgot where I got the original code from. If the author finds this and wants to raise their hand for credit I&#8217;ll happily give it (there is not much code here anyway).</p>
+
+<pre>$credential = Get-Credential
+foreach ( $server in (Import-Csv "Computer-IPs.csv")) {
+    $nic = Get-WmiObject -Credential $credential Win32_NetworkAdapterConfiguration `
+    -ComputerName $Server.DNSHostName -ErrorAction Inquire | `
+    Where{($_.IPEnabled -eq "TRUE") -and ($_.Index -eq $Server.Index)}
+    Write-Host "`tExisting DNS Servers " $nic.DNSServerSearchOrder
+
+    $NewDNSSearchOrder = $Server.DNSServerSearchOrder.Split(" ")
+
+    $UpdateOutput = $nic.SetDNSServerSearchOrder($NewDNSSearchOrder)
+    if($UpdateOutput.ReturnValue -eq 0)
+    {
+        Write-Host "`tSuccessfully Changed DNS Servers on " $Server.DNSHostName
+    }
+    else
+    {
+        Write-Host "`tFailed to Change DNS Servers on " $Server.DNSHostName
+    }
+}</pre>
+
+<p>There, most windows devices have been transparently updated. Now lets go over a few other items to be conscious of before you get the decommission itch in your pants.</p>
+
+<h3 id="check-your-non-windows-clients">Check Your Non-Windows Clients</h3>
+
+<p>By Non-Windows I mean your infrastructure devices and possibly even your Linux devices. Here is a generic list to go through. I don&#8217;t have a script for every possible device out there so you are on your own for a good portion of these.</p>
+
+<h4 id="linux-servers">Linux Servers</h4>
+
+<p>If you have Linux in your environment usually you know exactly which servers run it. You also probably have a smattering of different distributions and versions running. The good thing is that name resolution is pretty much handled the same across the board. You simply need to edit /etc/resolv.conf and restart networking. I&#8217;d play it safe though and just reboot the entire server as some java based services will pre-cache the resolution servers and not update when you update the resolv.conf file. Besides, have to reboot them sometimes. Hell, run some updates while you are at it why don&#8217;t ya? If you are updating a whole bunch of servers <a title="Multi-Tabbed Putty" href="http://linuxpoison.blogspot.com/2011/08/multi-tabbed-putty-mtputty.html" target="_blank">you can use something like MTPutty</a> to make things a bit less tedious.</p>
+
+<h4 id="firewalls">Firewalls</h4>
+
+<p>If you are passing through DNS on your VPN you may all of a sudden have a bunch of remote users not able to access their file shares and such. So check not only the general DNS settings of the device but the VPN settings as well.</p>
+
+<h4 id="bsd">BSD</h4>
+
+<p>(aka. Your marketing department&#8217;s Macs)</p>
+
+<h4 id="routers-switches">Routers/Switches</h4>
+
+<p>If you are also migrating a DHCP server then you will want to verify that all of your VLAN helper addresses are set correctly as well. If you have a ton of them then you may just want to put together some poor man&#8217;s hack. First go to each device and copy out the vlan configurations which you will be updating then put together a text file that looks something like this for each one:</p>
+
+<pre>telnet 10.10.10.10</pre>
+
+<pre>&lt;telnet pass&gt;</pre>
+
+<pre>en</pre>
+
+<pre>&lt;enable pass&gt;</pre>
+
+<pre>conf t</pre>
+
+<pre>int vlan90</pre>
+
+<pre>ip helper-address 10.20.20.20</pre>
+
+<pre>no ip helper-address 172.16.0.40</pre>
+
+<pre>int vlan100</pre>
+
+<pre>ip helper-address 10.20.20.20</pre>
+
+<pre>no ip helper-address 172.16.0.40</pre>
+
+<pre>int vlan101</pre>
+
+<pre>ip helper-address 10.20.20.20</pre>
+
+<pre>no ip helper-address 172.16.0.40</pre>
+
+<pre>exit</pre>
+
+<pre>exit</pre>
+
+<pre>write</pre>
+
+<pre>exit</pre>
+
+<p>Then just past the text file into a cmd.exe prompt.</p>
+
+<h4 id="everything-else">Everything Else</h4>
+
+<p>Don&#8217;t forget these devices</p>
+
+<ol>
+<li>ESX Hosts</li>
+<li>NAS Devices</li>
+<li>SAN Devices</li>
+<li>Printers</li>
+<li>Wireless Access Points</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>That should get your network almost 99% of the way towards a successful DNS server migration. Even if you are not migrating DNS servers I&#8217;d recommend taking stock of how things are resolving in your environment to ensure they are as uniform as possible. Uniformity leads to predictability and I like a predictable network, I bet you do as well 🙂</p>
+    
+</div>
+
+    
+<div class="footer no-tags">
+
+
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

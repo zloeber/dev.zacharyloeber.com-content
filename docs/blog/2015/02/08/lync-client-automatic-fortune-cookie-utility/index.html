@@ -1,0 +1,503 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Lync Client: Automatic Fortune Cookie Utility | Zachary Loeber</title>
+        <meta name="description" content="Lync Client: Automatic Fortune Cookie Utility - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Lync Client: Automatic Fortune Cookie Utility">
+        <meta itemprop="description" content="Lync Client: Automatic Fortune Cookie Utility - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Lync Client: Automatic Fortune Cookie Utility">
+        <meta property="og:description" content="Lync Client: Automatic Fortune Cookie Utility - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://dev.zacharyloeber.com/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://dev.zacharyloeber.com/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://dev.zacharyloeber.com/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/">Lync Client: Automatic Fortune Cookie Utility</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2015-02-08</span>
+            
+        
+
+        
+            <span class="readingTime">6 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/lync">Lync</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Here&#8217;s a just for fun powershell script for the Lync user. In the not so old days of Unix administration it was not too uncommon to have a &#8216;<a href="http://en.wikipedia.org/wiki/Fortune_%28Unix%29">fortune cookie&#8217; display when logging into a system</a>. I’ve always thought that it would be neat to have something similar in the Lync client that would allow for an easy rotation of your personal note field. Little did I realize how easy it would be to add such functionality myself with some powershell and the Lync SDK!</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>I’ll preface this write up by letting the world in on a dirty little secret of mine. I’m really not the best end user. I rarely use the Lync client to the levels many power users do on a daily basis. I can setup or fix entire infrastructures but the actual Lync client itself I use for 3-4 tasks regularly and that is about it. So unsurprisingly I rarely update my &#8216;personal note&#8217; with clever and cool quotes and sayings like all my coworkers tend to do.</p>
+
+<div style="width: 254px" class="wp-caption aligncenter">
+  <a href="/wp-content/uploads/2015/02/image.png"><img style="display: inline; background-image: none;" title="image" src="/wp-content/uploads/2015/02/image_thumb.png?resize=244%2C134" alt="image" width="244" height="134" border="0" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    Totally boring default Lync personal note.
+  </p>
+</div>
+
+<p>This will not be the case moving forward though because all that time saved not coming up with witty Lync personal notes I recently spent on automating the task instead.</p>
+
+<div id="attachment_1385" style="width: 310px" class="wp-caption aligncenter">
+  <a href="/wp-content/uploads/2015/02/Updated-Lync-Status.jpg"><img class="size-medium wp-image-1385" src="/wp-content/uploads/2015/02/Updated-Lync-Status.jpg?resize=300%2C78" alt="Updated personal note with far more personality!" width="300" height="78" srcset="/wp-content/uploads/2015/02/Updated-Lync-Status.jpg?resize=300%2C78 300w, wp-content/uploads/2015/02/Updated-Lync-Status.jpg?w=625 625w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    This semi-random quote came from the heart.
+  </p>
+</div>
+
+<p>So the task at hand is:</p>
+
+<ol>
+<li>Get random clever quotes and sayings from somewhere.</li>
+<li>Update the personal note in the Lync client after a user has logged into their workstation and started Lync.</li>
+<li>Schedule steps 1 and 2 to occur on a semi-regular basis.</li>
+</ol>
+
+<p>This ended up being only slightly more involved than I initially imagined. With the <a href="http://www.microsoft.com/en-us/download/details.aspx?id=36824">Lync SDK installed</a> you can grab running instances of the client, check the login status, update personal contact information, and a slew of other tasks much in the same way you can instantiate instances of Outlook or Word. Here is a function I put together which grabs any number of your personal contact information properties using the SDK and a little bit of clever enumeration.</p>
+
+<pre class="lang:powershell decode:true">function Get-LyncPersonalContactInfo {
+    &lt;#
+    .EXAMPLE
+    Get-LyncPersonalContactInfo 'PersonalNote'
+    .EXAMPLE
+    Get-LyncPersonalContactInfo
+    #&gt;
+    param(
+        [string[]]$TypeNames
+    )
+
+    if (-not (Get-Module -Name Microsoft.Lync.Model)) {
+        $LyncSDKLoaded = $false
+        try { # Try loading the 32 bit version first
+            Import-Module -Name (Join-Path -Path ${env:ProgramFiles(x86)} -ChildPath "Microsoft Office\Office15\LyncSDK\Assemblies\Desktop\Microsoft.Lync.Model.dll") -ErrorAction Stop
+        }
+        catch {}
+        try { # Otherwise try the 64 bit version
+            Import-Module -Name (Join-Path -Path ${env:ProgramFiles} -ChildPath "Microsoft Office\Office15\LyncSDK\Assemblies\Desktop\Microsoft.Lync.Model.dll") -ErrorAction Stop
+        }
+        catch {
+            #New-Popup -Buttons 'OK' -Message 'Lync 2013 SDK unavailable. Please download and install from http://www.microsoft.com/en-us/download/details.aspx?id=36824' -Title 'Whoops!'
+            Write-Warning "Microsoft.Lync.Model not available, download and install the Lync 2013 SDK http://www.microsoft.com/en-us/download/details.aspx?id=36824"
+            throw
+        }
+    }
+    $validtypes = @()
+    [System.Enum]::GetNames('Microsoft.Lync.Model.ContactInformationType') | Foreach {$validtypes += $_}
+    if ($TypeNames.Count -eq 0) {$TypeNames += $validtypes}
+    if ((Compare-Object -ReferenceObject $validtypes -DifferenceObject $TypeNames).SideIndicator -contains '=&gt;') {
+        Write-Error 'Invalid contact information type requested!'
+        throw
+    }
+    else {
+        $client = [Microsoft.Lync.Model.LyncClient]::GetClient()
+        if ($client.State -eq "SignedIn") {
+            $contact = $client.Self.Contact
+            $retvals = @{}
+            foreach ($typename in $TypeNames) {
+                try {
+                    $contact.GetContactInformation([Microsoft.Lync.Model.ContactInformationType]::$typename) | Out-Null
+                    if ($TypeNames.Count -gt 1) {
+                        $retvals.$typename = $contact.GetContactInformation([Microsoft.Lync.Model.ContactInformationType]::$typename)
+                    }
+                    else {
+                        return $contact.GetContactInformation([Microsoft.Lync.Model.ContactInformationType]::$typename)
+                    }
+                }
+                catch {}
+            }
+            New-Object psobject -Property $retvals
+        }
+        else {
+            Write-Warning "Lync is not running or signed in, no action was performed"
+        }
+    }
+}</pre>
+
+<p>Assuming that your SDK files are in default locations you can get the current personal note you can use the above function like so:</p>
+
+<pre class="lang:powershell decode:true">Get-LyncPersonalContactInfo 'PersonalNote'</pre>
+
+<p>I&#8217;ve also used a <a href="http://blog.powershell.no/2013/08/08/automating-microsoft-lync-using-windows-powershell/">customized version of the reverse function found here</a> for publishing the lync contact information. I then wrapped everything up with a few functions I created; <a href="https://github.com/zloeber/Powershell/blob/master/Supplemental/Get-iQuote.ps1">get-iQuote</a>, <a href="https://github.com/zloeber/Powershell/blob/master/Lync/SDK/Load-LyncSDK.ps1">Load-LyncSDK</a>, <a href="https://github.com/zloeber/Powershell/blob/master/Supplemental/New-ScheduledPowershellTask.ps1">New-ScheduledPowershellTask</a>. I also included a small sampling of <a href="https://github.com/zloeber/Powershell/blob/master/Lync/LyncFortuneCookie/example-quotes.txt">example quotes</a> to use if you wanted to not use iQuote for the quote source.</p>
+
+<h2 id="requirements-notes">Requirements/Notes</h2>
+
+<ul>
+<li>The Lync SDK is an obvious requirement. You can save yourself the hassle of installing all the visual studio bits (which forces you to install the silverlight SDK as well) of the SDK by following the <a href="http://msunified.net/2013/11/14/control-your-lync-presence-during-a-pomodoro-sprint-using-powershell/">directions found here</a>. Here are the relevant notes on how that is done:</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>Download the <a href="http://www.microsoft.com/en-us/download/details.aspx?id=36824" target="_blank">Lync SDK</a></li>
+<li>In order to avoid having to install visual studio, extract the lyncsdk86.msi from thesdkexe file usingwinrar or other software
+
+<ul>
+<li>The SDK need to <strong>match the bitness of your Lync client</strong></li>
+</ul></li>
+</ul>
+</blockquote>
+
+<ul>
+<li>The script will check both for 32 and 64 bit versions of the sdk in the relevant default locations. I&#8217;ve not set any parameter to pass a different location but I did pull out the loading and checking of the dll for the sdk into the Load-SDK function. If you make some modifications around every call of that function you can change the location on your own.</li>
+<li>You will also need to be logged into the Lync client when the script is run. I set some default values for retry and delay of validating the process is running and the user is logged in.</li>
+<li>You can run the script stand alone but you may as well just be copying and pasting random quotes into Lync. The best use of this script is if you automate it to run on a semi-regular basis. The default scheduled time is once a week at 9am if you run with the &#8216;CreateScheduledTask&#8217; switch.</li>
+</ul>
+
+<h2 id="example-usage">Example Usage</h2>
+
+<p>As already mentioned, you can simply run the script and it will automatically use the online iQuote database (all categories) and prompt the Lync user if they want to replace their personal note or not. But I&#8217;ve also included a few more interesting methods within the script that may be more to your liking.</p>
+
+<pre class="lang:powershell decode:true ">&lt;#
+.EXAMPLE
+.\LyncClientFortuneCookie.ps1 -Silent -CreateScheduledTask
+
+Description
+-----------
+Run the script to create a scheduled task that runs itself without user input (by default at 9am every monday)
+
+.EXAMPLE
+.\LyncClientFortuneCookie.ps1 -CreateScheduledTask -QuoteCategories 'fortune','codehappy'
+
+Description
+-----------
+Run the script to create a scheduled task that runs itself without user input (by default at 9am every monday). 
+When the task runs the iQuote site is queried for a random quote from either fortune or codehappy categories.
+The a pop-up is used to prompt the end user if they want to change their Lync note to the quote or not.
+
+.EXAMPLE
+.\LyncClientFortuneCookie.ps1 -CreateScheduledTask -QuoteSource 'File' -QuoteFile 'example-quotes.txt'
+
+Description
+-----------
+Run the script to create a scheduled task that runs itself. When the scheduled task triggers and the lync client is logged into a the example-quotes.txt file
+will be polled for a random quote and the current user will be prompted if they want to replace their current status note in Lync or not.
+
+.EXAMPLE
+.\LyncClientFortuneCookie.ps1 -CreateScheduledTask -QuoteSource 'File' -QuoteFile 'example-quotes.txt' -Silent
+
+Description
+-----------
+Same as the prior example except it is assumed that all the quotes in example-quotes.txt are acceptable and the random quote is simply assigned in Lync silently.
+#&gt;</pre>
+
+<p>By default (without the Silent option you get a pop-up similar to this:</p>
+
+<div id="attachment_1392" style="width: 310px" class="wp-caption aligncenter">
+  <a href="/wp-content/uploads/2015/02/Replace-Popup.jpg"><img class="size-medium wp-image-1392" src="/wp-content/uploads/2015/02/Replace-Popup.jpg?resize=300%2C209" alt="Hopefully the most difficult decision you have had all day." width="300" height="209" srcset="/wp-content/uploads/2015/02/Replace-Popup.jpg?resize=300%2C209 300w, wp-content/uploads/2015/02/Replace-Popup.jpg?w=599 599w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    Hopefully the most difficult decision you have had all day.
+  </p>
+</div>
+
+<p>If you do choose to use a file as the source you simply put each quote on its own line for the time being. This input method is well suited for manually paring down your quotes to ensure you get business appropriate or personalized notes. Using an input file and the silent option so as to never get a pop-up will likely be how I personally use this little script.</p>
+
+<h2 id="possible-improvements">Possible Improvements</h2>
+
+<p>&#8211; Maybe a little quote management GUI for the input file</p>
+
+<p>&#8211; A deployment batch script or installer?</p>
+
+<h2 id="download">Download</h2>
+
+<p>The script and example quote file can be downloaded from the <a href="https://gallery.technet.microsoft.com/Lync-Client-Automatic-757ac43c">Microsoft Technet Gallery</a> (please rate it if you like it!) or from my <a href="https://github.com/zloeber/Powershell/tree/master/Lync/LyncFortuneCookie">Github repository</a>. I hope the community enjoys this goofy little experiment of mine as much as I enjoyed creating it.</p>
+
+<div id="attachment_1394" style="width: 245px" class="wp-caption aligncenter">
+  <a href="/wp-content/uploads/2015/02/I_Dont_Always.jpg"><img class="size-medium wp-image-1394" src="/wp-content/uploads/2015/02/I_Dont_Always.jpg?resize=235%2C300" alt="This is not how I actually look." width="235" height="300" srcset="/wp-content/uploads/2015/02/I_Dont_Always.jpg?resize=235%2C300 235w, /wp-content/uploads/2015/02/I_Dont_Always.jpg?w=633 633w" sizes="(max-width: 235px) 100vw, 235px" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    This is not how I actually look.
+  </p>
+</div>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/lync-2013">Lync 2013</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/powershell-script">Powershell Script</a>
+                
+                    <a href="/tags/psc">PSC</a>
+                
+                    <a href="/tags/scripting">Scripting</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

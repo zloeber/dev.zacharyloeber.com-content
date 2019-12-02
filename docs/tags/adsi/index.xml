@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ADSI on Zachary Loeber</title>
+    <link>http://dev.zacharyloeber.com/tags/adsi/</link>
+    <description>Recent content in ADSI on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 11 Apr 2014 21:17:43 +0000</lastBuildDate>
+    
+	<atom:link href="http://dev.zacharyloeber.com/tags/adsi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Powershell Tip – Connecting With ADSI to Another Forest</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/</link>
+      <pubDate>Fri, 11 Apr 2014 21:17:43 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/</guid>
+      <description>&lt;p&gt;Using a bit of Powershell and ADSI it is pretty easy to connect to another forest. Finding out how to do so is not very clear though. Here is what I came up with to accomplish this task.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

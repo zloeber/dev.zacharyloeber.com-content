@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Zachary Loeber</title>
+    <link>http://dev.zacharyloeber.com/page/</link>
+    <description>Recent content in Pages on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 01 Nov 2017 13:17:56 +0100</lastBuildDate>
+    
+	<atom:link href="http://dev.zacharyloeber.com/page/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Home</title>
+      <link>http://dev.zacharyloeber.com/page/home/</link>
+      <pubDate>Wed, 01 Nov 2017 13:17:56 +0100</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/page/home/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://dev.zacharyloeber.com/page/about/</link>
+      <pubDate>Sun, 27 Jul 2008 00:24:04 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/page/about/</guid>
+      <description>This site is a collection of some of the things that I&amp;#8217;m working on put in &amp;#8220;How To&amp;#8221; format to possibly assist others. In reality, most of the posted items here are an attempt to document things I&amp;#8217;ve already done some time ago and might need to do again in the future. Most of what you find on this site will be technology related. I believe strongly that what makes a good IT person is the ability to find the right tool for a situation.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>http://dev.zacharyloeber.com/page/about-me/</link>
+      <pubDate>Thu, 01 Nov 2007 21:18:48 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/page/about-me/</guid>
+      <description>Zachary Loeber is an IT enthusiast with over a decade of experience in the field. Zach cut his teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
+When it comes to technology Zach’s primary interests are:
+ Security Networking System Administration Linux Windows VMware Exchange 2010 Powershell Automation  Some of Zach&amp;#8217;s other interests include lifting weights, camping, running, self-improvement, and being a good husband.</description>
+    </item>
+    
+  </channel>
+</rss>

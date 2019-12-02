@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft Lync Server 2013 on Zachary Loeber</title>
+    <link>http://dev.zacharyloeber.com/tags/microsoft-lync-server-2013/</link>
+    <description>Recent content in Microsoft Lync Server 2013 on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 02 Dec 2014 18:11:31 +0000</lastBuildDate>
+    
+	<atom:link href="http://dev.zacharyloeber.com/tags/microsoft-lync-server-2013/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lync: Voice Route Diagram Creation Script</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/</link>
+      <pubDate>Tue, 02 Dec 2014 18:11:31 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/</guid>
+      <description>&lt;p&gt;Lync voice routing boils down to three basic components working in concert to decide call flow. It seems quite simple on paper, you assign voice policies which determine call routes based on PSTN usages (often called the &amp;#8216;glue&amp;#8217;). After looking at Lync voice routing way too many times I finally caved into producing a script to create diagrams of the things over the Thanksgiving holiday weekend.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

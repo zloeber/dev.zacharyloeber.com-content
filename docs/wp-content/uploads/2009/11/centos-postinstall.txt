@@ -1,0 +1,100 @@
+#!/bin/bash
+#######################################################################
+##
+##      centos-postinstall      - setup sudo users, snmp and misc
+##      centos-postinstall.sh
+##
+##      NOTE: 	you may have to run dos2unix on this file if you edit
+##				in windows at all.
+tempinput=""
+snmpreadonly="default"		# change to your snmp 2 read only string
+snmpallowednetwork="10.12.0.0/16"	# change to your network
+snmpcontact="Unset"					# snmp contact info
+snmplocation="Unset"				# snmp location info
+sudousers=""						# users w/ sudo root access
+newuserpass="defaultpassword"		# what their initial pass will be
+									#  (if not changed at prompt)
+
+# Basic update and other things we need to move forward
+yum update
+yum install net-snmp screen system-config-network-tui yum-security
+
+#	We don't use this (yet!)
+echo -e 'blacklist ipv6' >> /etc/modprobe.d/blacklist
+
+# Update these to match your need/environment
+chkconfig bluetooth off
+chkconfig ip6tables off
+chkconfig iptables off
+chkconfig isdn off
+chkconfig kudzu off
+chkconfig rhn-virtualization-host off
+chkconfig cups off
+yum groupremove Virtualization
+
+echo -n "Please enter the snmp contact:"
+read tempinput
+if [ -n "$tempinput" ]
+then
+        snmpcontact="$tempinput"
+fi
+tempintput=""
+
+echo -n "Please enter the snmp location:"
+read tempinput
+if [ -n "$tempinput" ]
+then
+        snmplocation="$tempinput"
+fi
+tempintput=""
+
+echo -n "Please enter the sudo users to add (split with semi-colons):"
+read sudousers
+
+echo -n "Please enter the new user passwords (default is defaultpassword):"
+read tempinput
+if [ -n "$tempinput" ]
+then
+        newuserpass="$tempinput"
+fi
+tempintput=""
+
+echo -n 'replacing /etc/snmp/snmpd.conf (old file is renamed to /etc/snmpd.conf.old2)...'
+
+# Change the snmpd.conf file after saving the old one
+mv /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.old2
+echo -e "com2sec local   localhost       $snmpreadonly" >> /etc/snmp/snmpd.conf
+echo -e "com2sec mynetwork $snmpallowednetwork  $snmpreadonly" >> /etc/snmp/snmpd.conf
+echo -e 'group   MyLocalGroup    v2c     local' >> /etc/snmp/snmpd.conf
+echo -e 'group   MyROGroup       v2c     mynetwork' >> /etc/snmp/snmpd.conf
+echo -e 'view    all     included        .1      80' >> /etc/snmp/snmpd.conf
+echo -e '#view mib2   included  .iso.org.dod.internet.mgmt.mib-2 fc' >> /etc/snmp/snmpd.conf
+echo -e '##                context sec.model sec.level prefix read   write  notif' >> /etc/snmp/snmpd.conf
+echo -e 'access MyROGroup ""      any       noauth    0      all    none   none' >> /etc/snmp/snmpd.conf
+echo -e 'access MyLocalGroup ""   any       noauth    0      all    none   none' >> /etc/snmp/snmpd.conf
+echo -e '#access MyRWGroup ""      any       noauth    0      all    all    all' >> /etc/snmp/snmpd.conf
+echo -e "syslocation $snmplocation" >> /etc/snmp/snmpd.conf
+echo -e "syscontact $snmpcontact" >> /etc/snmp/snmpd.conf
+
+# enable the wheel group in sudo
+echo -e 'Enabling wheel sudo group...'
+echo -e '%wheel\t ALL=(ALL)\t ALL' >> /etc/sudoers
+
+echo -n 'Adding users and placing in wheelgroup...'
+
+IFS=';' read -ra ARR <<< "$sudousers"
+for i in "${ARR[@]}"; do
+        pass=$(perl -e 'print crypt($ARGV[0], "newuserpass")' $newuserpass)
+        useradd "$i" -p "$pass"
+        usermod -a -G wheel "$i"
+done
+unset IFS
+
+echo -e 'Kicking off the network configuration part next, press a key.'
+read
+
+system-config-network
+chkconfig snmpd on
+service snmpd start
+
+echo -n "Complete!"

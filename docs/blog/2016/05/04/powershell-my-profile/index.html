@@ -1,0 +1,434 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> PowerShell: My Profile | Zachary Loeber</title>
+        <meta name="description" content="PowerShell: My Profile - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="PowerShell: My Profile">
+        <meta itemprop="description" content="PowerShell: My Profile - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="PowerShell: My Profile">
+        <meta property="og:description" content="PowerShell: My Profile - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="http://dev.zacharyloeber.com/blog/2016/05/04/powershell-my-profile/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="http://dev.zacharyloeber.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2016/05/04/powershell-my-profile/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2016/05/04/powershell-my-profile/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="http://dev.zacharyloeber.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="http://dev.zacharyloeber.com/blog/2016/05/04/powershell-my-profile/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="http://dev.zacharyloeber.com/blog/2016/05/04/powershell-my-profile/">PowerShell: My Profile</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2016-05-05</span>
+            
+        
+
+        
+            <span class="readingTime">5 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/security">Security</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>I&#8217;m always interested to see how other people setup their working environment or get things done. But rarely do I share my own environment. Since I&#8217;m putting the effort into pushing my scripting environment publicly to github I may as well explain a bit more about some of what I&#8217;ve setup.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This is a collection of scripts, personal profile preferences that I pieced together from people much smarter (or at least more developer minded) than I. This is all for a personal need to be able to setup a standardized environment between my work and home PCs (or rebuild it quickly in either). As part of putting this collection together I created a few scripts worthy of their own mention. One of  the cooler scripts will create a code signing self-signed script and place it in the appropriate certificate stores. Using this cert and another included script you can sign and secure your profile for increased security.</p>
+
+<h2 id="user-content-profile-description.anchor">[]<a href="https://github.com/zloeber/PowerShellProfile#profile-description">1</a></h2>
+
+<p>Profile Description</p>
+
+<p>I found and re-purposed Joel Bennett&#8217;s work for much of this part. His work is genius and I&#8217;m probably doing it an extreme disservice but I made several small changes and simplifications to it where I ran into issues. I re-purposed is environment.psm1 module as a general location for profile related functions (and fixed some path mangling issues I ran into for some reason). But truthfully 95% of the best parts of this environment are Joel&#8217;s script-craft.</p>
+
+<p>Here is how my profile looks after immediately opening up a PowerShell prompt:</p>
+
+<div id="attachment_1599" style="width: 799px" class="wp-caption aligncenter">
+  <img class="size-full wp-image-1599" src="/wp-content/uploads/2016/05/PowerShellProfile-Example.jpg?resize=586%2C297" alt="My PowerShell Profile" width="586" height="297" srcset="/wp-content/uploads/2016/05/PowerShellProfile-Example.jpg?w=789 789w, wp-content/uploads/2016/05/PowerShellProfile-Example.jpg?resize=300%2C152 300w, wp-content/uploads/2016/05/PowerShellProfile-Example.jpg?resize=768%2C389 768w" sizes="(max-width: 586px) 100vw, 586px" data-recalc-dims="1" />
+  
+  <p class="wp-caption-text">
+    My PowerShell Profile
+  </p>
+</div>
+
+<h3 id="user-content-profile-configuration.anchor">[]<a href="https://github.com/zloeber/PowerShellProfile#profile-configuration">2</a></h3>
+
+<p>Profile Configuration</p>
+
+<p>There are two major components of the profile. One is a single file script module called environment.psm1. This module includes the lion&#8217;s share of important functions for the profile. This includes Joel&#8217;s &#8216;Set-Prompt&#8217; function that is used to retain command history across sessions among other things.</p>
+
+<p>I&#8217;ve also included a number of one off scripts that are not used in the actual profile but are part of my personal essential scripts or used in the initial configuration of the profile. This includes:</p>
+
+<ul>
+<li>Connect-ExchangeOnline.ps1  -&gt; My own custom o365 connection script</li>
+<li>Disconnect-ExchangeOnline.ps1</li>
+<li>Load-PowerCLI.ps1 -&gt; Vmware PowerCLI loader (if installed)</li>
+<li>Load-Vagrant.ps1 -&gt; Vagrant custom prompt module</li>
+<li>Remove-ScriptSignature.ps1 -&gt; Unsign scripts (used to clean up scripts before publishing online)</li>
+<li>Set-ProfileScriptSignature.ps1  -&gt; Resign the profile scripts</li>
+<li>New-CodeSigningCertificate.ps1 -&gt; Create a new self-signed code signing cert</li>
+</ul>
+
+<p>The profile directory tree for my configuration looks like this:</p>
+
+<ul>
+<li><code>C:\Users\&lt;user id&gt;\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1</code></li>
+<li><code>C:\Users\&lt;user id&gt;\Documents\WindowsPowerShell\Scripts\*.ps1</code></li>
+<li><code>C:\Users\&lt;user id&gt;\Documents\WindowsPowerShell\Modules\Environment\Environment.psm1</code></li>
+<li><code>C:\Users\&lt;user id&gt;\Documents\WindowsPowerShell\Data\quotes.txt</code></li>
+</ul>
+
+<p>The profile itself automatically adds the &#8216;Scripts&#8217; directory to the local path so all you need to do to make a new script available to every session is drop it in this folder. The environment.psm1 module is the only outside script that is actually loaded by the profile so this needs to be signed if you are using script signing to harden the environment.</p>
+
+<h2 id="user-content-installing.anchor">[]<a href="https://github.com/zloeber/PowerShellProfile#installing">3</a></h2>
+
+<p>Installing</p>
+
+<p>All you need to do is copy the contents of this repo into your WindowsPowerShell directory then optionally create a self-signed code signing certificate and run a script signing script I put together. I put together a quick install.ps1 file to do these tasks.</p>
+
+<blockquote>
+<p><strong>Note:</strong> If I were you I&#8217;d just do this manually so you know nothing is getting accidentally overwritten. I&#8217;ve not heavily tested the install script!</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<pre><code>iex (New-Object Net.WebClient).DownloadString(&quot;https://raw.githubusercontent.com/zloeber/PowerShellProfile/master/Install.ps1&quot;)
+</code></pre>
+
+<p>Once you have installed the basic components you can secure your profile a bit with a code signing certificate. An extra script or two I put together will do just that for ya if you like:</p>
+
+<pre><code>. (Split-Path $Profile)\Scripts\New-CodeSigningCertificate.ps1
+
+. (Split-Path $Profile)\Scripts\Set-ProfileScriptSignature.ps1
+
+Set-ExecutionPolicy AllSigned
+</code></pre>
+
+<p>The script will look for a code signing certificate and attempt to create one if it doesn&#8217;t already exist. It is suggested to go ahead and do this if you aren&#8217;t using one already to sign your scripts. This will give you a few prompts as it tries to move the self-signed certificate to the appropriate store to be trusted.</p>
+
+<p>Assuming that the self-signed code signing certificate gets created or already exists the next script will try to sign the environment.psm1 and Microsoft.PowerShell_profile.ps1 scripts to help prevent tampering of your profile. This really only becomes effective if you also set your local system to have its execution policy of AllSigned. Check your execution policy with this:</p>
+
+<pre><code>Get-ExecutionPolicy -List
+</code></pre>
+
+<blockquote>
+<p><strong>Note:</strong> After the profile loads, it will set the Process scoped execution policy back to RemoteSigned!</p>
+</blockquote>
+
+<h2 id="updating-or-changing-your-profile">Updating or Changing Your Profile</h2>
+
+<p>If you change your profile script or the Environment.psm1 file just run the following to re-sign them again:</p>
+
+<pre><code>. (Split-Path $Profile)\Scripts\Set-ProfileScriptSignature.ps1
+</code></pre>
+
+<h2 id="profile-debugging">Profile Debugging</h2>
+
+<p>Press and hold either the left or right shift key while the profile is loading to see verbose details while the profile is loading.</p>
+
+<h2 id="random-quotes">Random Quotes</h2>
+
+<p>Update the Data\quotes.txt file with whatever quotes you want as part of your random quote generation. Each quote should be on it&#8217;s own line. Nothing needs to be re-signed after updating this.</p>
+
+<h2 id="other-stuff">Other Stuff</h2>
+
+<p>I&#8217;ve included my conemu.xml configuration file in this github repository. I use this with <a href="http://cmder.net/">Cmder</a>, <a href="https://github.com/source-foundry/Hack-windows-installer/releases/tag/v1.1.2">the Hack font</a>, and some transparency to great effect. This config file includes several different console session options (powershell as admin being one of them).</p>
+
+<div id="attachment_1598" style="width: 310px" class="wp-caption aligncenter">
+  <img class="size-medium wp-image-1598" src="/wp-content/uploads/2016/05/Cmder.jpg?resize=300%2C122" alt="Some extra Cmder tab options." width="300" height="122" srcset="/wp-content/uploads/2016/05/Cmder.jpg?resize=300%2C122 300w, wp-content/uploads/2016/05/Cmder.jpg?w=471 471w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" />
+  
+  <p class="wp-caption-text">
+    Some extra Cmder tab options.
+  </p>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>You can download individual components of this profile or the entire thing at the dedicated github repository found <strong><a href="https://github.com/zloeber/PowerShellProfile">here</a></strong>.</p>
+
+<p>I hope some one else finds this useful. I&#8217;m sure I&#8217;m missing all kinds of additional profile goodies I should be adding. I&#8217;d love to hear what others are finding to be indispensable in their PowerShell profiles as well!</p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/security">Security</a>
+                
+                    <a href="/tags/sysadmin">Sysadmin</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+                    <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/">Devops Blog Migration to Hugo</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

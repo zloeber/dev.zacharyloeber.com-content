@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on Zachary Loeber</title>
+    <link>http://dev.zacharyloeber.com/tags/security/</link>
+    <description>Recent content in Security on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 28 Sep 2018 16:49:46 +0000</lastBuildDate>
+    
+	<atom:link href="http://dev.zacharyloeber.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DevOps – Automating Kubernetes Deployments</title>
+      <link>http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</link>
+      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</guid>
+      <description>If you are deploying your own Kubernetes clusters you already know that:
+ Kubernetes is hard  But there is hope!
+There are a few great projects to keep an eye on in this space. I&amp;#8217;ve covered some of them in an article you can read on the Lumen.
+Cheers!</description>
+    </item>
+    
+    <item>
+      <title>Email Reputation and Design: A Condensed Guide</title>
+      <link>http://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/</link>
+      <pubDate>Sat, 24 Feb 2018 15:59:26 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2018/02/24/email-reputation-and-design-a-condensed-guide/</guid>
+      <description>&lt;p&gt;Very few domains implement the holy grail of email identity reputation frameworks, &lt;a href=&#34;https://dmarc.org/&#34;&gt;DMARC&lt;/a&gt;. This guide will cover all the steps required to get it implemented for your domain along with some best practices for overall email reputation design.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PowerShell: My Profile</title>
+      <link>http://dev.zacharyloeber.com/blog/2016/05/04/powershell-my-profile/</link>
+      <pubDate>Thu, 05 May 2016 02:31:54 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2016/05/04/powershell-my-profile/</guid>
+      <description>&lt;p&gt;I&amp;#8217;m always interested to see how other people setup their working environment or get things done. But rarely do I share my own environment. Since I&amp;#8217;m putting the effort into pushing my scripting environment publicly to github I may as well explain a bit more about some of what I&amp;#8217;ve setup.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: Check For Misplaced Certificates</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/12/10/powershell-check-for-misplaced-certificates/</link>
+      <pubDate>Thu, 11 Dec 2014 03:02:28 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/12/10/powershell-check-for-misplaced-certificates/</guid>
+      <description>&lt;p&gt;Here is a script I absentmindedly put together one evening while power watching a TV series on Netflix with the wife. The general idea of this script is to check local machine, trusted root, and intermediate trusted root stores for misplaced or duplicate certificates.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Update: Get-CalendarPermission</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/09/24/update-get-calendarpermission/</link>
+      <pubDate>Wed, 24 Sep 2014 17:43:07 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/09/24/update-get-calendarpermission/</guid>
+      <description>&lt;p&gt;Going through older code is a bit like looking through an old yearbook or photo album. If the pictures within are old enough you usually end up laughing at how little you recognize yourself and maybe even marvel a bit at how far you have come. This old function I wrote isn’t the worst of my code but I was still able to update it for measurable improvements.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Receive Connector Tango! – Part 1</title>
+      <link>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</link>
+      <pubDate>Mon, 07 Jul 2014 03:25:13 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</guid>
+      <description>&lt;p&gt;Exchange receive connectors are often configured incorrectly or worse, insecurely. This is the first of a two part series about Exchange receive connectors and what to look out for when setting them up.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gather Local Group Membership With Powershell</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</link>
+      <pubDate>Wed, 11 Sep 2013 14:11:52 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</guid>
+      <description>Gather system local groups and their members for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems, a switch for inclusion of empty groups in the results, and returns group names with their members. You can view verbose information on each runspace thread in realtime with the -Verbose option.
+Version History 1.0.0 &amp;#8211; 09/11/2013
+ Initial release  Notes None, this is an independent release of a function I’ve recently included in a larger project.</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010 Mailbox Audit Report Script</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</link>
+      <pubDate>Fri, 10 May 2013 02:33:54 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
+      <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
+
+&lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Get Calendar Permissions (multilingual edition)</title>
+      <link>http://dev.zacharyloeber.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</link>
+      <pubDate>Sun, 28 Apr 2013 17:35:54 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</guid>
+      <description>&lt;p&gt;Some time ago I released &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-2010-Calendar-21695fde&#34; title=&#34;Exchange 2010 Calendar Permission GUI&#34;&gt;a rather simplistic GUI for viewing Exchange 2010 mailbox calendar permissions&lt;/a&gt;. Because of a semi-related script I&amp;#8217;m working on currently I rounded back and recreated that GUI script to be a powershell function instead. This is the result.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange – The State Of External Client Access</title>
+      <link>http://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</link>
+      <pubDate>Thu, 22 Nov 2012 19:58:04 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Most within the messaging and collaboration industry are hyped up about the next wave of Microsoft collaboration and messaging products which are soon to be released. Among these products is Exchange 2013 RTM. This type of release typically precedes yet another wave of architecture upgrades across the corporate landscape. Some of these (beta testers) will be will undoubtedly upgrade to Exchange 2013.&lt;/p&gt;
+
+&lt;p&gt;Other corporations will start to feel the burn to upgrade as well. These will be organizations which realize that their Exchange &lt;sup&gt;2003&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; infrastructure is nearing a decade old existence and cannot meet the demands of their ever growing mobile workforce. Realizing they are behind the curve, they may feel hastened to upgrade as well, possibly just to Exchange 2010. Regardless the reason in choosing to upgrade their messaging infrastructure, there are critical design decisions which need to be made in how clients access this infrastructure both internally and externally. This article focuses solely on the external access aspect of the infrastructure.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux: Headless Ubuntu Torrent Home Server</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/</link>
+      <pubDate>Sun, 11 Sep 2011 21:45:15 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/</guid>
+      <description>&lt;p&gt;So it got to that time of the year where I feel the itch to upgrade my aging home server. I assessed the situation and realized that, for what it does, my current server does not need any kind of hardware upgrade. So I just decided to rebuild it with Ubuntu 11.04 64 bit and change up the server software a bit to be more accessible to my wife as well as to be a bit more modern (torrentflux and derivatives have been dead for a while now).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Network Communication Table</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/07/30/exchange-2010-network-communication-table/</link>
+      <pubDate>Sat, 30 Jul 2011 17:06:36 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/07/30/exchange-2010-network-communication-table/</guid>
+      <description>I figured I&amp;#8217;d post the massive table of firewall rules I compiled for my Exchange 2010 firewall generation script. It has both the source and destination roles for many aspects of an Exchange environment. Where there are ???&amp;#8217;s is where I&amp;#8217;m simply not certain (mainly around encryption between certain roles). If anyone spots any mistakes or omissions please let me know and I&amp;#8217;ll update the accordingly.
+Exchange 2010 Network Communication Table By Role</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Automated Firewall Rule Generation 1.2</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</link>
+      <pubDate>Wed, 20 Jul 2011 16:35:08 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/</guid>
+      <description>I made a few changes to this script to make it more modular and to allow for more exceptions in regards to DAGs and sites. Enjoy!
+Exchange 2010 Firewall Rule Generation Script</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Certificate Install Script</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/06/30/exchange-2010-certificate-install-script/</link>
+      <pubDate>Thu, 30 Jun 2011 15:39:27 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/06/30/exchange-2010-certificate-install-script/</guid>
+      <description>&lt;p&gt;Many of the cert providers require that you install both an intermediary and a root trusted cert on the servers which you are configuring your newly requested Unified Communications certificate on. If you are doing an Exchange migration including several ISA/TMG/Exchange (2003 and 2010) servers this can be a tedious process. Here is the quick way to install all three certificates once they are on the server&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Automated Firewall Rule Generation</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/06/24/exchange-2010-automated-firewall-rule-generation/</link>
+      <pubDate>Fri, 24 Jun 2011 16:40:50 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/06/24/exchange-2010-automated-firewall-rule-generation/</guid>
+      <description>&lt;p&gt;A single, or even a dual site Exchange 2010 deployment does not usually require too much internal firewall manipulation. But if you have to setup a Exchange 2010 environment where there are many global sites or a heavily segmented network, the number of firewall requests required to get a fully functioning configuration working can be daunting. Wouldn&amp;#8217;t it be nice to have some of those firewall rules automatically generated for you?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</link>
+      <pubDate>Wed, 04 May 2011 21:26:37 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</guid>
+      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;Prior to starting my new job I wanted to ensure that my previous employer was able to protect VIP mailboxes in their Exchange 2010 SP1 organization. I had to do this with exclusive scopes and these are the steps I had to follow. A general knowledge of role based security is assumed in this post.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OCS 2007 R2: CRL Issue Causing Address Book Download Error</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/03/31/ocs-2007-r2-crl-issue-causing-address-book-download-error/</link>
+      <pubDate>Thu, 31 Mar 2011 15:21:09 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/03/31/ocs-2007-r2-crl-issue-causing-address-book-download-error/</guid>
+      <description>&lt;p&gt;I ran into this issue recently. End users experienced a red splat in communicator exhibiting that there was an issue syncing the corporate address book. I found &lt;a title=&#34;OCS 2007 R2 CRL Issue&#34; href=&#34;http://blog.danovich.com.au/2009/11/04/office-communicator-error-cannot-synchronize-address-book/&#34; target=&#34;_blank&#34;&gt;this excellent article&lt;/a&gt; explaining how an invalid Certificate Revocation List error may be causing this issue. My issue was slightly similar in nature but with some caveats.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Windows: 2003 to 2008 R2 RADIUS Migration</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</link>
+      <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</guid>
+      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I&amp;#8217;m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Active Directory: Role Based Access Modeling</title>
+      <link>http://dev.zacharyloeber.com/blog/2011/02/21/active-directory-role-based-access-modeling/</link>
+      <pubDate>Tue, 22 Feb 2011 04:22:28 +0000</pubDate>
+      
+      <guid>http://dev.zacharyloeber.com/blog/2011/02/21/active-directory-role-based-access-modeling/</guid>
+      <description>&lt;p&gt;Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of &lt;a href=&#34;http://en.wikipedia.org/wiki/AGDLP&#34;&gt;AGDLP (an abbreviation of &amp;#8220;account, global, domain local, permission&amp;#8221;)&lt;/a&gt; to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

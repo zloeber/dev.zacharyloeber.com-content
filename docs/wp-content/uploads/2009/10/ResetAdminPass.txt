@@ -1,0 +1,107 @@
+<--
+ resetpass.hta
+
+ AUTHOR:  Zach Loeber
+ DATE:    7/8/2008
+ COMMENT: Remotely resets the local administrator password of a system (if you have the rights to do so)
+ Can enter multiple computernames divided by ";"
+-->
+
+<HTML>
+<HEAD>
+<META NAME="Get Asset" Content="Get Asset">
+<TITLE>Get Computer Asset Information</TITLE>
+ <HTA:APPLICATION ID="oHTA"
+ APPLICATIONNAME="getAssetHTA"
+ BORDER="thin"
+ BORDERSTYLE="normal"
+ CAPTION="yes"
+ ICON=""
+ MAXIMIZEBUTTON="yes"
+ MINIMIZEBUTTON="yes"
+ SHOWINTASKBAR="yes"
+ SINGLEINSTANCE="yes"
+ SYSMENU="yes"
+ VERSION="1.0">
+
+<SCRIPT LANGUAGE="VBScript">
+
+Sub Window_OnLoad
+	window.resizeTo 470, 270
+End Sub
+
+Sub ResetPass
+ aComputers = Split(strComputer.Value, ";")
+ For Each Computer In aComputers
+	 strResult = ""
+	 If IsAlive(Computer) Then
+		 If WMIEnabled(Computer) Then
+			strResult = strResult & "Computer:" & Computer & VBCrLf
+			'Set objWMIService = GetObject("winmgmts:" & "{impersonationLevel=impersonate}!\\" & Computer & "\root\cimv2")
+			Set objUser = GetObject("WinNT://" & Computer & "/Administrator, user")
+			If Err.Number <> 0 Then
+				 strResult = strResult & "Error" & Err.Description & VBCrLf
+				 Err.Clear
+		 	Else
+				' Set the password for the account
+				objUser.SetPassword strPass.Value
+				objUser.SetInfo
+				If Err.Number <> 0 Then
+					 strResult = strResult & "Error" & Err.Description & VBCrLf
+					 Err.Clear
+		 		Else
+					 strResult = strResult & "Password set for " & strComputer & "\Administrator" & VBCrLf
+		 		End If
+	 		End If
+
+		Else
+			 strResult = strResult & Computer & " does not have WMI." & VBCrLf
+		End If
+	 Else
+		 strResult = strResult & Computer & " is not reachable" & VBCrLf
+	 End If
+	 AssetInfo.Value =  AssetInfo.Value & strResult & VBCrLf
+ Next    
+End Sub
+
+' Ping Check
+Function IsAlive(strHost)
+ Set objPing = GetObject("winmgmts:{impersonationLevel=impersonate}")._
+ ExecQuery("select * from Win32_PingStatus where address = '"_
+ & strHost & "'")
+ For Each objStatus In objPing
+ If IsNull(objStatus.StatusCode) Or objStatus.StatusCode<>0 Then
+ IsAlive = False
+ Else
+ IsAlive = True
+ End If
+ Next
+End Function
+
+' WMI Check
+Function WMIEnabled(strHost)
+ On Error Resume Next
+ Set objWMIService = GetObject("winmgmts:\\" & strHost & "\root\cimv2")
+ If Err.number <> 0 Then
+ WMIEnabled = False
+ Else
+ WMIEnabled = True
+ End If
+ ' Tidy up by destroying the objects created
+ Set objWMIService = Nothing
+End Function
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+ <input type="text" name="strComputer" size="50"> Computer(s) <br></br>
+ <input type="text" name="strPass" size="50"> Password <br></br>
+ <input id=runbutton  type="button" value="Reset" name="run_button"  onClick="ResetPass">
+ <textarea name="AssetInfo" rows="5" cols="50"></textarea>
+</BODY>
+
+</HTML>
+
+
+
