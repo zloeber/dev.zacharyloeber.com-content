@@ -21,15 +21,15 @@
         <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="/blog/2014/07/06/exchange-receive-connector-tango-part-1/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="/blog/2014/07/06/exchange-receive-connector-tango-part-1/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -45,7 +45,7 @@
         <ul class="topnav">
             
                 
-                    <li><a href="/" target="">Home</a></li>
+                    <li><a href="https://zacharyloeber-dev.onrender.com/" target="">Home</a></li>
                 
             
                 
@@ -66,7 +66,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="/" class="logo">
+            <a href="https://zacharyloeber-dev.onrender.com/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -75,7 +75,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="https://zacharyloeber-dev.onrender.com/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -120,27 +120,27 @@
         
             <span class="categories">
                 
-                    <a href="/categories/active-directory">Active Directory</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/active-directory">Active Directory</a>
                 
-                    <a href="/categories/exchange">Exchange</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/exchange">Exchange</a>
                 
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/exchange-2010">Exchange 2010</a>
                 
-                    <a href="/categories/exchange-2013">Exchange 2013</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/exchange-2013">Exchange 2013</a>
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/powershell">Powershell</a>
                 
-                    <a href="/categories/security">Security</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/security">Security</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -195,7 +195,7 @@
 
 <p>Here is a diagram depicting the default connector relationships in an Exchange 2013 environment in a manner which I find easy to digest. Notice that the send connector has no corresponding frontend transport connector unless proxying outbound email is selected. Then it will use the outbound proxy connector (but it is still a hub transport based transport connector!).</p>
 
-<p><a href="/wp-content/uploads/2014/07/image.png"><img class="aligncenter" style="margin: 5px; display: inline; background-image: none;" title="image" src="/wp-content/uploads/2014/07/image_thumb.png?resize=532%2C391" alt="image" width="532" height="391" border="0" data-recalc-dims="1" /></a></p>
+<p><a href="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2014/07/image.png"><img class="aligncenter" style="margin: 5px; display: inline; background-image: none;" title="image" src="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2014/07/image_thumb.png?resize=532%2C391" alt="image" width="532" height="391" border="0" data-recalc-dims="1" /></a></p>
 
 <p>I’m vastly oversimplifying this process but the Frontend Transport will try to find and deliver to the closest healthy Hub Transport service on a mailbox server wherever it might reside. Inbound email from Frontend Transport delivers to the queuing transport services which are called &#8216;Hub Transport&#8217; for further processing or routing. Then if the email is unable to reach its final destination in the organization it will start to queue up for redeliver attempts.</p>
 
@@ -272,7 +272,7 @@ $comparison | Select InputObject,@{n='Connector';e={if ($_.SideIndicator -eq '&l
 
 <pre class="lang:powershell decode:true">Get-ReceiveConnector | Foreach {$Server=$_.Server;$ReceiveName=$_.Name;Write-Host "Enumerating Server: $($Server) - Connector: $($ReceiveName)";Get-ADPermission $_.Identity | Where {$_.IsInherited -ne $true} | select @{n='Server';e={$Server}},@{n='Connector';e={$ReceiveName}},User,extendedrights} | Where {(@('Ms-Exch-SMTP-Accept-Any-Recipient','Ms-Exch-SMTP-Accept-Any-Sender','Ms-Exch-Bypass-Anti-Spam') -contains $_.extendedrights) -and ($_.User -like "*ANONYMOUS LOGON")} | ft -auto</pre>
 
-<p>This concludes the first part of this article. In part two of this series we will build on the topics we have covered and find out how improperly configured connectors can cause mail flow issues, security holes, and migration coexistence mishaps. I&#8217;ll also provide a script to help detect these issues! (Update: <a href="/2014/08/23/exchange-receive-connector-tango-part-2/">Part 2 of this article</a> has been posted)</p>
+<p>This concludes the first part of this article. In part two of this series we will build on the topics we have covered and find out how improperly configured connectors can cause mail flow issues, security holes, and migration coexistence mishaps. I&#8217;ll also provide a script to help detect these issues! (Update: <a href="https://zacharyloeber-dev.onrender.com/2014/08/23/exchange-receive-connector-tango-part-2/">Part 2 of this article</a> has been posted)</p>
     
 </div>
 
@@ -285,19 +285,19 @@ $comparison | Select InputObject,@{n='Connector';e={if ($_.SideIndicator -eq '&l
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="/tags/exchange">Exchange</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/exchange">Exchange</a>
                 
-                    <a href="/tags/exchange-2010">Exchange 2010</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/exchange-2010">Exchange 2010</a>
                 
-                    <a href="/tags/exchange-2013">Exchange 2013</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/exchange-2013">Exchange 2013</a>
                 
-                    <a href="/tags/powershell">Powershell</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/powershell">Powershell</a>
                 
-                    <a href="/tags/psc">PSC</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/psc">PSC</a>
                 
-                    <a href="/tags/receive-connector">Receive Connector</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/receive-connector">Receive Connector</a>
                 
-                    <a href="/tags/security">Security</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/security">Security</a>
                 
             </div>
         </div>
@@ -365,27 +365,27 @@ $comparison | Select InputObject,@{n='Connector';e={if ($_.SideIndicator -eq '&l
 
         
         <div class="categories">
-            <a href="/categories/"><strong>Categories</strong></a>
+            <a href="https://zacharyloeber-dev.onrender.com/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="/categories/system-administration">System administration (130)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/microsoft">Microsoft (120)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/powershell">Powershell (106)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/networking">Networking (53)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -446,11 +446,11 @@ $comparison | Select InputObject,@{n='Connector';e={if ($_.SideIndicator -eq '&l
 
         
         
-        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="https://zacharyloeber-dev.onrender.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="https://zacharyloeber-dev.onrender.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {

@@ -20,15 +20,15 @@
         <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
 
 	
-	  <link href="/tags/microsoft/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
-	  <link href="/tags/microsoft/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="https://zacharyloeber-dev.onrender.com/tags/microsoft/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="https://zacharyloeber-dev.onrender.com/tags/microsoft/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
 	
 
         
         
         
         
-        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+        <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
 
         
 
@@ -44,7 +44,7 @@
         <ul class="topnav">
             
                 
-                    <li><a href="/" target="">Home</a></li>
+                    <li><a href="https://zacharyloeber-dev.onrender.com/" target="">Home</a></li>
                 
             
                 
@@ -65,7 +65,7 @@
         <header>
     <div class="container">
         <div class="logo">
-            <a href="/" class="logo">
+            <a href="https://zacharyloeber-dev.onrender.com/" class="logo">
                 
                     <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
                 
@@ -74,7 +74,7 @@
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            <h3 class="title"><a href="https://zacharyloeber-dev.onrender.com/">Zachary Loeber</a></h3>
             
                 <span class="subtitle">The personal website of Zachary Loeber.</span>
             
@@ -120,26 +120,161 @@
         
             <span class="categories">
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/powershell">Powershell</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
     
         <p>I’ve previously discussed using the excellent plaster module for creating new modules among other things. Now I’ve integrated plaster into my PSModuleBuild project, turned the whole thing into a module, and changed the name to just ‘ModuleBuild’</p>
 
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2017/07/04/powershell-easy-module-authoring-with-modulebuild/" class="more">Continue reading</a>
-        
+<p>PSModuleBuild was one of my lofty attempts to simplify my PowerShell module build process and it adequately met most of my personal needs. But it had some major drawbacks including;</p>
+
+<ul>
+<li>Over-complicated task processing</li>
+<li>New project initialization was a pain</li>
+<li>Migrating existing projects to my new build system was entirely manual.</li>
+<li>Configuration was entirely based on manual file editing</li>
+</ul>
+
+<p>As I looked into plaster and became entirely too enamored with the project I slowly came to realize that PSModuleBuild should probably just be a module itself and started making that thought a reality. But when I got to the point of publishing to the psgallery I found to my dismay that another module with that name already existed. You snooze you lose right?</p>
+
+<p>No worries, I used my new module to initialize a project called ‘ModuleBuild’ and copied everything from PSModuleBuild and did a little recursive find and replace magic. Now, the project is called ModuleBuild! And honestly, the number of additions and changes to the project almost warrants a new name anyway so I’m not lamenting the change. Let’s talk about some of these feature updates shall we?</p>
+
+<h1 id="modulebuild-features">ModuleBuild Features</h1>
+
+<p>ModuleBuild retains many of the features of PSModuleBuild but is now much cleaner and runs as a module. The module itself is used to initialize new projects or ease getting/setting changes for existing ModuleBuild projects. The module also includes helpers for migrating existing projects to a ModuleBuild project. Loading the ModuleBuild module is not a requirement to run a build for your project though, that is still entirely portable as it has always been.</p>
+
+<p>Some of the features I’ve included in this project include:</p>
+
+<ul>
+<li>Fully portable project directory structure and build process. So portable that you can copy it to another PowerShell 5.0 capable system and it should run the same.</li>
+<li>Automatically combine your public and private functions into one clean psm1 file at build time.</li>
+<li>Automatically update your psd1 file with public functions at build time.</li>
+<li>Automatically scan your module release with PSScriptAnalyzer</li>
+<li>Automatically upload your script to the PowerShell Gallery (with appropriate API key)</li>
+<li>Automatically create project documentation folder structure and yml definition file for ReadTheDocs.org integration</li>
+<li>Visual Studio Code integration (tasks)</li>
+<li>Easy to manage build configuration with forward compatible design and easy to use commands</li>
+<li>Includes ability to scan for sensitive terms (like your company domain name or other items that you may not want published)</li>
+<li>Helper functions to import existing project private and public functions into your ModuleBuild based project</li>
+</ul>
+
+<h1 id="getting-started">Getting Started</h1>
+
+<p>I&#8217;m going to run through an example based on a real migration of project code into a ModuleBuild based project. This project is an advanced ADSI project that I&#8217;ve been meaning to release for a long time but never quite got to completing. The module currently works which is all we really need in order to migrate things over to a ModuleBuild backed project. My module name is tentatively going to be called &#8216;PSAD&#8217; (PowerShell AD).</p>
+
+<p>Firstly, the PowerShell 5.0 requirement for this project has not changed. You can install the project from the PowerShell Gallery to start:</p>
+
+<pre class="lang:powershell decode:true" title="Installing ModuleBuild">install-module ModuleBuild -Scope:CurrentUser</pre>
+
+<p>Once you have the module we will go ahead and initialize a new modulebuild based project. For now I just create the project in a temporary directory as the whole thing is portable and can be moved anywhere when I&#8217;m happy with things.</p>
+
+<pre class="lang:powershell decode:true">Import-Module ModuleBuild
+Initialize-ModuleBuild -Path 'C:\Temp\PSAD'</pre>
+
+<p>When prompted, select most default options including using the creative commons license, ReadTheDocs integration, module auto-combine, and sensitive term scanning. Note that the project website I enter doesn&#8217;t exist yet <strong>but it isn&#8217;t just a filler either</strong>, I can plausibly create the site in my github account (and will when I&#8217;m happy with the project and am ready to upload).</p>
+
+<div id="attachment_1724" style="width: 310px" class="wp-caption aligncenter">
+  <a href="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/06/2017-06-18_20-03-51.gif"><img class="size-medium wp-image-1724" src="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/06/2017-06-18_20-03-51.gif?resize=300%2C135" alt="" width="300" height="135" srcset="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/06/2017-06-18_20-03-51.gif?resize=300%2C135 300w, wp-content/uploads/2017/06/2017-06-18_20-03-51.gif?resize=768%2C346 768w, wp-content/uploads/2017/06/2017-06-18_20-03-51.gif?resize=1024%2C461 1024w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    ModuleBuild Initialization
+  </p>
+</div>
+
+<p>That will create pretty much everything we need for the module but we will still need to get all the public and private functions in place. But before then I need to modify the sensitive scan search settings and remove my user ID as I already know that is the same user ID used in my github account so the build will certainly fail (due to my project website having that string within it). I&#8217;m also going to add my own Nuget API key so I can publish to the psgallary. I leave in my short and long domain names though. You will need to modify this sensitive terms list to suit your needs.</p>
+
+<pre class="lang:powershell decode:true">Set-Location C:\Temp\PSAD
+Set-BuildEnvironment -OptionSensitiveTerms 'CONTOSO', 'CONTOSO.COM'
+Set-BuildEnvironment -NugetAPIKey '00000000-0000-0000-0000-00000000000'</pre>
+
+<blockquote>
+<p><strong>NOTE:</strong> The <modulename>.buildenvironment.json configuration file is automatically ignored in an included git configuration file so your api keys and any other sensitive information will always remain local to your workstation.</p>
+</blockquote>
+
+<h2 id="importing-public-functions">Importing Public Functions</h2>
+
+<p>If this were a new module then all I&#8217;d need to do is start creating public functions (ideally one per file but that is not an absolute requirement) in src\public. But since I&#8217;ve got an existing module project I&#8217;m importing there are a few things I can do to kickstart things. Firstly, lets import the public functions from the module (located in c:\c-temp\PSAD)</p>
+
+<pre class="lang:powershell decode:true ">Import-ModulePublicFunction -ModulePath 'C:\c-temp\PSAD\PSAD.psm1'</pre>
+
+<p>This assumes we are in the project folder and will automatically find the buildenvironment.json file to use. Be cognizant that the direct psm1 file is specified and not the psd1. If you have a psd1 file that is setup with properly defined public functions you can use it as well. In either case the module will need to be loaded so we can ascertain what the public functions actually are.</p>
+
+<p>Each found public function will be found and will be prompted for import if the file doesn&#8217;t already exist. If no comment based help is found within the function block, then a default one will be created so we can have a higher likelyhood of a successful build later on.</p>
+
+<h2 id="importing-private-functions">Importing Private Functions</h2>
+
+<p>Private functions are far more nebulous and finding/importing the right ones is a bit of an art. We still load the source module to determine the proper public functions (so they are able to be properly negated as import candidates). But beyond that it is really just guesswork. This part of the import process scans most of the files in the module based directory recursively and looks for top level function definitions that are not public functions and then prompts before importing to your project src\private folder. I&#8217;d closely look over each prompt before importing the function.</p>
+
+<pre class="lang:powershell decode:true ">Import-ModulePrivateFunction -ModulePath 'C:\c-temp\PSAD\PSAD.psm1'</pre>
+
+<h2 id="other-items">Other Items</h2>
+
+<p>If you have any pre or post loading code that your existing module requires then place it in either the src\other\preload.ps1 or src\other\postload.ps1 files.</p>
+
+<p>You should also setup some basic documentation. Keep in mind that your function documentation will automatically be built at build time. Most of the other documentation gets automatically built at build time as well and should be modified in your build\docs folder directly. One bit of documentation that doesn&#8217;t automatically update from the build\docs directory is the base folder readme.md file. You should fill this out more as it will be the first thing people see on github when they stop by for a visit.</p>
+
+<h2 id="kick-off-a-build">Kick Off A Build</h2>
+
+<p>At this point if you think you are ready to go then kick off a build with the included Build.ps1 file. When I do this for the project I run into a few game stoppers. Apparently I didn&#8217;t name some parameters correctly in my comment based help (and in some cases had them entirely wrong or missing!).</p>
+
+<div id="attachment_1728" style="width: 310px" class="wp-caption aligncenter">
+  <a href="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/ConEmu_2017-07-04_13-32-12.jpg"><img class="size-medium wp-image-1728" src="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/ConEmu_2017-07-04_13-32-12.jpg?resize=300%2C135" alt="" width="300" height="135" srcset="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/ConEmu_2017-07-04_13-32-12.jpg?resize=300%2C135 300w, https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/ConEmu_2017-07-04_13-32-12.jpg?resize=768%2C346 768w, https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/ConEmu_2017-07-04_13-32-12.jpg?w=954 954w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    Missing comment based help will stop a build from succeeding.
+  </p>
+</div>
+
+<p>So I cancel the build (ctrl+c) and go back to each of the referenced files to fix the CBH. After that has been done I build again:</p>
+
+<div id="attachment_1729" style="width: 301px" class="wp-caption aligncenter">
+  <a href="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/2017-07-04_14-34-17.gif"><img class="size-medium wp-image-1729" src="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/2017-07-04_14-34-17.gif?resize=291%2C300" alt="" width="291" height="300" srcset="https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/2017-07-04_14-34-17.gif?resize=291%2C300 291w, https://zacharyloeber-dev.onrender.com/wp-content/uploads/2017/07/2017-07-04_14-34-17.gif?resize=768%2C791 768w" sizes="(max-width: 291px) 100vw, 291px" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    A successful build!
+  </p>
+</div>
+
+<p>Once this has completed you will have a release worthy module in your release&lt;modulename&gt; directory. But wait, there&#8217;s more!</p>
+
+<p>You can automatically install and load the module (to test loading it) and upload to the powershell gallery. Oh, you can do all of this within <a href="https://code.visualstudio.com/">Visual Studio Code</a> by pressing ctrl+shift+B and selecting a task as well.</p>
+
+<p>&nbsp;</p>
+
+<h2 id="some-notes">Some Notes</h2>
+
+<p>Due to the complexity of a pipeline like this there are several nuances to be aware of. I document many of these in the documentation. Regardless, here are a few answers to questions you may already be asking:</p>
+
+<p><strong>Question:</strong> Why is there no git integration?</p>
+
+<p>git workflows can vary greatly between different people and development teams so I&#8217;ll just leave that part of a build to your capable hands. It is exceedingly easy to add additional tasks to modulebuild too (as it is really just a set of invoke-build tasks).</p>
+
+<p><strong>Question:</strong> Why does ModuleBuild not include <whatever spins your top>?</p>
+
+<p>I&#8217;ve not gotten to it yet or I don&#8217;t use <whatever spins your top>. If you think it should be added and you want me to do the work then make a case for the feature <a href="https://github.com/zloeber/ModuleBuild">at the github site</a>.</p>
+
+<h2 id="final-words">Final Words</h2>
+
+<p>ModuleBuild is built with its own scaffolding which has ReadTheDocs integration. As such, you can read over more options, guidelines, and other things you may want to do with ModuleBuild at <a href="http://modulebuild.readthedocs.io/en/latest/">its ReadTheDocs site</a>. Otherwise you can install the current version of ModuleBuild and get to authoring your own PowerShell modules right away:</p>
+
+<pre class="lang:powershell decode:true">Install-Module modulebuild -scope CurrentUser</pre>
+
+<p>Github Site: <a href="https://github.com/zloeber/ModuleBuild">ModuleBuild</a></p>
+
+<p>ReadTheDocs Site: <a href="http://modulebuild.readthedocs.io/en/latest/">Documentation</a></p>
+
+<p>I hope to get some feedback from others out there using this project. I look forward to suggestions for features and improvements. Happy PowerShell module authoring!</p>
     
 </div>
 
@@ -152,11 +287,11 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="/tags/microsoft">Microsoft</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/microsoft">Microsoft</a>
                 
-                    <a href="/tags/powershell">Powershell</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/powershell">Powershell</a>
                 
-                    <a href="/tags/powershell-script">Powershell Script</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/powershell-script">Powershell Script</a>
                 
             </div>
         </div>
@@ -195,17 +330,17 @@
         
             <span class="categories">
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/powershell">Powershell</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -227,17 +362,17 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="/tags/microsoft">Microsoft</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/microsoft">Microsoft</a>
                 
-                    <a href="/tags/powershell">Powershell</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/powershell">Powershell</a>
                 
-                    <a href="/tags/powershell-script">Powershell Script</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/powershell-script">Powershell Script</a>
                 
-                    <a href="/tags/scripting">Scripting</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/scripting">Scripting</a>
                 
-                    <a href="/tags/sysadmin">Sysadmin</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/sysadmin">Sysadmin</a>
                 
-                    <a href="/tags/windows">Windows</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/windows">Windows</a>
                 
             </div>
         </div>
@@ -276,17 +411,17 @@
         
             <span class="categories">
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/powershell">Powershell</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/categories/system-administration">System Administration</a>
                 
             </span>
         
 
         
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+            <span class="author"><a href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber">Zachary Loeber</a></span>
         
     </div>
 
@@ -308,15 +443,15 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="/tags/microsoft">Microsoft</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/microsoft">Microsoft</a>
                 
-                    <a href="/tags/powershell">Powershell</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/powershell">Powershell</a>
                 
-                    <a href="/tags/powershell-script">Powershell Script</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/powershell-script">Powershell Script</a>
                 
-                    <a href="/tags/system-administration">System Administration</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/system-administration">System Administration</a>
                 
-                    <a href="/tags/windows">Windows</a>
+                    <a href="https://zacharyloeber-dev.onrender.com/tags/windows">Windows</a>
                 
             </div>
         </div>
@@ -334,7 +469,7 @@
     
     <div class="paginator">
         
-            <a href="/tags/microsoft/page/2/" class="older"><i class="fa fa-angle-double-left"></i> Older posts</a>
+            <a href="https://zacharyloeber-dev.onrender.com/tags/microsoft/page/2/" class="older"><i class="fa fa-angle-double-left"></i> Older posts</a>
         
 
         
@@ -371,27 +506,27 @@
 
         
         <div class="categories">
-            <a href="/categories/"><strong>Categories</strong></a>
+            <a href="https://zacharyloeber-dev.onrender.com/categories/"><strong>Categories</strong></a>
                 <ul>
                 
                     <li>
-                        <a href="/categories/system-administration">System administration (130)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/system-administration">System administration (130)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/microsoft">Microsoft (120)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/microsoft">Microsoft (120)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/powershell">Powershell (106)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/powershell">Powershell (106)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/networking">Networking (53)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/networking">Networking (53)</a>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/categories/active-directory">Active directory (44)</a>
                     </li>
                 
             </ul>
@@ -453,11 +588,11 @@
 
         
         
-        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+        <script type="text/javascript" src="https://zacharyloeber-dev.onrender.com/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
 
         
         
-        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+        <script type="text/javascript" src="https://zacharyloeber-dev.onrender.com/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
 
         <script>
             $(".moment").each(function() {
