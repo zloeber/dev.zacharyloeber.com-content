@@ -2,77 +2,77 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Virtualization on Zachary Loeber</title>
-    <link>https://dev.zacharyloeber.com/categories/virtualization/</link>
+    <link>https://zacharyloeber-dev.onrender.com/categories/virtualization/</link>
     <description>Recent content in Virtualization on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 26 Jul 2013 18:22:43 +0000</lastBuildDate>
     
-	<atom:link href="https://dev.zacharyloeber.com/categories/virtualization/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/virtualization/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Determine if a computer is virtual with powershell</title>
-      <link>https://dev.zacharyloeber.com/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</link>
       <pubDate>Fri, 26 Jul 2013 18:22:43 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2013/07/26/determine-if-a-computer-is-virtual-with-powershell/</guid>
       <description>&lt;p&gt;This function attempts to connect to a computer and find out if it is virtual or not using WMI. If it is virtual, a best guess at the type of virtual platform it is running upon is returned as well.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>VMware: VMware Report Generation GUI</title>
-      <link>https://dev.zacharyloeber.com/blog/2013/02/17/vmware-vmware-report-generation-gui/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2013/02/17/vmware-vmware-report-generation-gui/</link>
       <pubDate>Sun, 17 Feb 2013 17:11:52 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2013/02/17/vmware-vmware-report-generation-gui/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2013/02/17/vmware-vmware-report-generation-gui/</guid>
       <description>&lt;p&gt;Its been a while since I posted something new. This GUI is meant to configure regular vmware report generation. You are able to select reporting scoped to the whole farm down to individual hosts. Reports can be emailed or saved and be generated based on custom thresholds.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>VMware: Migrating a vCenter virtual appliance to a vCenter Windows server</title>
-      <link>https://dev.zacharyloeber.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</link>
       <pubDate>Mon, 17 Dec 2012 04:30:52 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/</guid>
       <description>&lt;p&gt;I finally bit the bullet and migrated my lab from a vCenter virtual appliance to a vCenter Windows server. This is what I did to maintain all my settings and not disrupt any currently running VMs.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Create Your Own Network Assessment Appliance: Additional Tools</title>
-      <link>https://dev.zacharyloeber.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</link>
       <pubDate>Thu, 29 Nov 2012 02:24:46 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 
-&lt;p&gt;I &lt;a href=&#34;https://dev.zacharyloeber.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I&amp;#8217;ve since added a few tools to the VM and documented how they were installed so I figured I&amp;#8217;d share on how it was done. Even if you don&amp;#8217;t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I&amp;#8217;ll start with a tool anyone worth their salt has heard of though, Cacti&amp;#8230;&lt;/p&gt;</description>
+&lt;p&gt;I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I&amp;#8217;ve since added a few tools to the VM and documented how they were installed so I figured I&amp;#8217;d share on how it was done. Even if you don&amp;#8217;t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I&amp;#8217;ll start with a tool anyone worth their salt has heard of though, Cacti&amp;#8230;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Create Your Own Network Assessment Appliance</title>
-      <link>https://dev.zacharyloeber.com/blog/2012/04/08/create-your-own-network-assessment-appliance/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2012/04/08/create-your-own-network-assessment-appliance/</link>
       <pubDate>Mon, 09 Apr 2012 00:49:19 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2012/04/08/create-your-own-network-assessment-appliance/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2012/04/08/create-your-own-network-assessment-appliance/</guid>
       <description>In this write-up I setup several network assessment tools which can be used in the discovery process of a new environment. This can be useful for a newly hired sysadmin or a consultant in rapidly gathering information to assess the health and/or state of a network.
 Introduction I often find myself assessing a foreign network infrastructure for performance or other issues. Depending on the size of the environment, digesting everything can be daunting without the help of some third party tools.</description>
     </item>
     
     <item>
       <title>Virtualization: vCPU Provisioning Best Practices</title>
-      <link>https://dev.zacharyloeber.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</link>
       <pubDate>Fri, 23 Mar 2012 01:31:47 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/</guid>
       <description>&lt;p&gt;I had always been of the mindset that when provisioning new VMs it is best to start out with less vCPUs and add more as they are required (unless you specifically know that you will be using and needing more for such things as sql server or exchange). I had even recently felt some vindication of this provisioning best practice in reading a book recently (&lt;a href=&#34;http://www.amazon.com/Critical-VMware-Mistakes-Should-Avoid/dp/1937061981&#34; title=&#34;Critical VMware Mistakes You Should Avoid&#34;&gt;Critical VMware Mistakes You Should Avoid&lt;/a&gt;)&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ESX &#43; MSCS 2008 R2 &#43; SQL Server 2008</title>
-      <link>https://dev.zacharyloeber.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/</link>
       <pubDate>Wed, 26 Jan 2011 00:41:21 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/</guid>
       <description>Just a quick note on this little combo. Should you be looking to setup a windows 2008 R2 cluster in a virtual environment (details on specific vmware configuration left to the reader) here are some quick notes that I have on some caveats.
 1.) Either keep vmware tools un-uninstalled or make certain not to install the Shared Folder component of vmware tools.
 2.) Don’t clone the second node from the first using vmware.</description>
@@ -80,38 +80,38 @@ Introduction I often find myself assessing a foreign network infrastructure for 
     
     <item>
       <title>ESX 4.0: Post-Install Script</title>
-      <link>https://dev.zacharyloeber.com/blog/2009/12/22/esx-4-0-post-install-script/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2009/12/22/esx-4-0-post-install-script/</link>
       <pubDate>Wed, 23 Dec 2009 04:08:02 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2009/12/22/esx-4-0-post-install-script/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2009/12/22/esx-4-0-post-install-script/</guid>
       <description>Sure there are better ways to mass deploy ESX servers, but this way will save the one off farm deployment person some time 🙂 I took liberties in assuming you would be able to fill in the blanks for variables so  or _VARIABLE_ will need to be replaced ad-lib style. Just for you my friend, served up proper on a hyper-link plate&amp;#8230;.. esx4_postinstall</description>
     </item>
     
     <item>
       <title>Vmware: RVTools</title>
-      <link>https://dev.zacharyloeber.com/blog/2009/11/24/vmware-rvtools/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2009/11/24/vmware-rvtools/</link>
       <pubDate>Tue, 24 Nov 2009 16:38:34 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2009/11/24/vmware-rvtools/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2009/11/24/vmware-rvtools/</guid>
       <description>This sly bastard wrote an excellent little .NET app for enumerating esx farm information. Any sysadmins working with VMware should definitely check this out. I really like the vHealth tab which will show possible zombie vmdks. Add the ability to export to csv and you have a nice tool for on the fly farm enumeration for the boss.
 Go get RVTools now!</description>
     </item>
     
     <item>
       <title>CentOS/Redhat 5.x Kickstart Deployment</title>
-      <link>https://dev.zacharyloeber.com/blog/2009/11/19/centosredhat-5-x-kickstart-deployment/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2009/11/19/centosredhat-5-x-kickstart-deployment/</link>
       <pubDate>Thu, 19 Nov 2009 21:39:18 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2009/11/19/centosredhat-5-x-kickstart-deployment/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2009/11/19/centosredhat-5-x-kickstart-deployment/</guid>
       <description>&lt;p&gt;Not too long ago I was tasked with deploying a decent number of CentOS 5.3 and Redhat servers to BL490 blades and VMs in our datacenter (part of a massive environment deployment with HP C7000 enclosures, virtual connect, and a lot of patience). I hate manual configuration so I figured now is as good of time as any to get on the kickstart bandwagon. Here is how I did it:&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Converting a Physical machine to a vmware file</title>
-      <link>https://dev.zacharyloeber.com/blog/2008/03/12/converting-a-physical-machine-to-a-vmware-file/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2008/03/12/converting-a-physical-machine-to-a-vmware-file/</link>
       <pubDate>Wed, 12 Mar 2008 21:19:44 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2008/03/12/converting-a-physical-machine-to-a-vmware-file/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2008/03/12/converting-a-physical-machine-to-a-vmware-file/</guid>
       <description>Just an FYI, don&amp;#8217;t try to use the vmware converter program to convert a windows 2000 workstation to a virtual machine. It just doesn&amp;#8217;t work. It takes hours and when it is done it tries to setup the disk as a scsi device but doesn&amp;#8217; t install the drivers. Even if you install the drivers ahead of time you may get a BSOD on boot about an inaccessible boot device. Instead use VisionCore&amp;#8217;s vConverter.</description>
     </item>
     

@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Azure on Zachary Loeber</title>
-    <link>https://dev.zacharyloeber.com/tags/azure/</link>
+    <link>https://zacharyloeber-dev.onrender.com/tags/azure/</link>
     <description>Recent content in Azure on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 09 Jan 2019 05:09:51 +0000</lastBuildDate>
     
-	<atom:link href="https://dev.zacharyloeber.com/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Devops Blog Migration to Hugo</title>
-      <link>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</link>
+      <link>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</link>
       <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/posts/devops-blog-migration-to-hugo/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve updated my site to use hugo some time ago but recently added an Azure DevOps pipeline for deploying the thing. This short article will cover how the pipeline code works and dive into multi-stage pipelines.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>DevOps – Automating Kubernetes Deployments</title>
-      <link>https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</link>
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</guid>
       <description>If you are deploying your own Kubernetes clusters you already know that:
  Kubernetes is hard  But there is hope!
 There are a few great projects to keep an eye on in this space. I&amp;#8217;ve covered some of them in an article you can read on the Lumen.
@@ -33,19 +33,19 @@ Cheers!</description>
     
     <item>
       <title>PowerShell: Office 365 Group Based Licencing Cleanup</title>
-      <link>https://dev.zacharyloeber.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</link>
       <pubDate>Thu, 11 Jan 2018 03:35:52 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/</guid>
       <description>&lt;p&gt;A script to remove directly assigned licenses from user accounts if they overlap with group assigned licenses in Office 365.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>PowerShell: Azure ARM Site Overview</title>
-      <link>https://dev.zacharyloeber.com/blog/2017/01/30/powershell-azure-arm-site-overview/</link>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2017/01/30/powershell-azure-arm-site-overview/</link>
       <pubDate>Tue, 31 Jan 2017 03:23:32 +0000</pubDate>
       
-      <guid>https://dev.zacharyloeber.com/blog/2017/01/30/powershell-azure-arm-site-overview/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2017/01/30/powershell-azure-arm-site-overview/</guid>
       <description>&lt;p&gt;Visualizing an Azure deployment can be a bit tricky. This short Azure summary script is a good way to start though.&lt;/p&gt;</description>
     </item>
     
