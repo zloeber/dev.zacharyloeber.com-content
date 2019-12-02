@@ -149,9 +149,23 @@
     
         <p>This is my third and final major update to my AD auditing script. This includes a handful of new useful sections such as domain published printers, NPS servers, DHCP servers, as well as SCCM sites and DPs. Other improvements include easier to use script parameters and bug fixes.</p>
 
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/" class="more">Continue reading</a>
-        
+<p>Here is a general list of improvements in version 1.6 of the script:</p>
+
+<ul>
+<li>Added registered NPS devices</li>
+<li>Added registered DHCP devices</li>
+<li>Added domain registered print devices</li>
+<li>Added SCCM servers and sites</li>
+<li>Added wrapper parameters to entire script with some most used options for directly running the script from a powershell prompt.</li>
+<li>Added ability to prompt for input for all major global variables.</li>
+<li>Fixed verbose calling for priv groups and users</li>
+<li>Updated lastlogontimestamp for user export normalization to show never logged in instead of a date from the 1600&#8217;s.</li>
+<li>Added date translation for account expiration in account normalization</li>
+<li>Updated ad gathering functions to account for inability to connect to a domain and silently exit.</li>
+<li>Slight rearrangement of report sections.</li>
+</ul>
+
+<p>Unless I missed anything really cool in AD which can be gathered with a regular domain user, this will be my last major update to this script. Get <a href="http://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877">the updated script at the Microsoft Technet Gallery</a>. As always I welcome feedback.</p>
     
 </div>
 
