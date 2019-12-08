@@ -4,28 +4,9 @@
     <link>https://zacharyloeber-dev.onrender.com/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 09 Jan 2019 05:09:51 +0000</lastBuildDate>
     
         <atom:link href="https://zacharyloeber-dev.onrender.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Posts</title>
-      <link>https://zacharyloeber-dev.onrender.com/posts/</link>
-      <pubDate>Wed, 09 Jan 2019 05:09:51 +0000</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/posts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Old-articles</title>
-      <link>https://zacharyloeber-dev.onrender.com/old-articles/</link>
-      <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/old-articles/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>
