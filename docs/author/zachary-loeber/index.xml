@@ -31,11 +31,11 @@ When it comes to technology Zach’s primary interests are:
     </item>
     
     <item>
-      <title>Hugo - A devops approach</title>
-      <link>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</link>
+      <title>Hugo - A Devops Approach</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/</link>
       <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
       
-      <guid>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve updated my site to use hugo some time ago. Recently I&amp;rsquo;ve found some time to add a deployment pipeline for this site as well. This short article will cover how the pipeline code works and dive into multi-stage pipelines.&lt;/p&gt;</description>
     </item>
     

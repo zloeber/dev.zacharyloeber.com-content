@@ -28,12 +28,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/azure/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/azure/</loc>
     <lastmod>2019-12-08T12:26:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/azure/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/azure/</loc>
     <lastmod>2019-12-08T12:26:30-06:00</lastmod>
   </url>
   
@@ -58,12 +58,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/devops/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/devops/</loc>
     <lastmod>2019-12-08T12:26:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/devops/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/devops/</loc>
     <lastmod>2019-12-08T12:26:30-06:00</lastmod>
   </url>
   
@@ -73,17 +73,17 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</loc>
-    <lastmod>2019-12-08T12:26:30-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/pipeline/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/</loc>
     <lastmod>2019-12-08T12:26:30-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/pipeline/</loc>
+    <lastmod>2019-12-08T12:26:30-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/pipeline/</loc>
     <lastmod>2019-12-08T12:26:30-06:00</lastmod>
   </url>
   
@@ -103,12 +103,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</loc>
     <lastmod>2019-12-08T12:26:30-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/</loc>
     <lastmod>2019-12-08T12:26:30-06:00</lastmod>
   </url>
   
@@ -118,12 +118,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/linux/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/linux/</loc>
     <lastmod>2018-12-10T22:51:46+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/linux/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/linux/</loc>
     <lastmod>2018-12-10T22:51:46+00:00</lastmod>
   </url>
   
@@ -208,12 +208,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/powershell/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/powershell/</loc>
     <lastmod>2018-05-03T02:29:53+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/powershell/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/powershell/</loc>
     <lastmod>2018-05-03T02:29:53+00:00</lastmod>
   </url>
   
@@ -298,12 +298,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/cloud-pbx/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/cloud-pbx/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/cloud-pbx/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/cloud-pbx/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
@@ -323,12 +323,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/skype-for-business/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/skype-for-business/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/skype-for-business/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/skype-for-business/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
@@ -383,12 +383,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/networking/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/networking/</loc>
     <lastmod>2017-01-31T03:23:32+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/networking/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/networking/</loc>
     <lastmod>2017-01-31T03:23:32+00:00</lastmod>
   </url>
   
@@ -428,12 +428,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/ossposh/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/ossposh/</loc>
     <lastmod>2016-08-21T03:41:03+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/ossposh/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/ossposh/</loc>
     <lastmod>2016-08-21T03:41:03+00:00</lastmod>
   </url>
   
@@ -1318,12 +1318,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/fiber/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/fiber/</loc>
     <lastmod>2011-02-04T01:14:02+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/fiber/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/fiber/</loc>
     <lastmod>2011-02-04T01:14:02+00:00</lastmod>
   </url>
   
