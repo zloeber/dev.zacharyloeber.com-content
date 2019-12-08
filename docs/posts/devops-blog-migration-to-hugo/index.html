@@ -109,12 +109,12 @@
     <div class="meta">
         
             
-                <span class="date moment">2019-12-05</span>
+                <span class="date moment">2019-12-08</span>
             
         
 
         
-            <span class="readingTime">5 min read</span>
+            <span class="readingTime">6 min read</span>
         
 
         
@@ -175,10 +175,12 @@
 </ol></li>
 <li>Create a new public repo in github for publishing your production site (ie. yoursite.com-content).</li>
 <li>Create a new public repo in github for publishing draft/development content (ie. dev.yoursite.com-content)</li>
-<li>Create a new public repo in github to host your Azure Devops (ADO) pipeline template code (or just use mine if you can figure out how to do so)</li>
-<li>Download hugo binary
+<li>Create a new public repo in github to host your Azure Devops (ADO) pipeline template code
 
 <ol>
+<li>You may be able to reference my repo but that may not be wise as I may update things at anytime.</li>
+</ol></li>
+<li>Download hugo binary</li>
 <li>Create new hugo site</li>
 <li>Initialize local git repo in the generated site folder</li>
 <li>Add submodule for some hugo theme to the hugo site</li>
@@ -186,7 +188,6 @@
 <li>Push repo to github authoring site as the upstream source</li>
 <li>Add a &lsquo;develop&rsquo; branch for the dev version of your site</li>
 <li>Push up your develop branch</li>
-</ol></li>
 <li>Create personal azure devops account (dev.azure.com)</li>
 <li>Create a service connector to github and authorize access to all your repos</li>
 </ol>
@@ -208,7 +209,7 @@ Github Pages -&gt; Prod Site: Publish Site
 
 <p>To make any of this work we need a few pipelines in ADO. One to create our hugo site content as an artifact and another to shove the deployment content into our repositories. We will use Azure Devops multi-stage pipelines and templates to get this in place.</p>
 
-<h2 id="the-pipeline">The Pipeline</h2>
+<h2 id="the-pipeline-code">The Pipeline Code</h2>
 
 <p>I&rsquo;ve found that the best way to start working on a pipeline is to declaratively layout the required manifest in what you would like the finished state to look like first. Once you have this, adding the template components is pretty easy.</p>
 
@@ -302,6 +303,10 @@ git checkout master
 git merge develop
 git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
 </code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I don&rsquo;t know if I should be proud or depressed that over 10 years of original site content can be compiled into a static site in under a minute. Either way the entire process for deployment certainly is a fun little project to setup and extremely DevOps friendly. I highly recommend anyone looking for more devops acumen give it a shot.</p>
     
 </div>
 

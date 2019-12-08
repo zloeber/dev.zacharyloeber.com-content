@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/categories/blog/</link>
     <description>Recent content in blog on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Dec 2019 05:09:51 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Dec 2019 12:26:30 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +13,7 @@
     <item>
       <title>Hugo - A devops approach</title>
       <link>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</link>
-      <pubDate>Thu, 05 Dec 2019 05:09:51 +0000</pubDate>
+      <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve updated my site to use hugo some time ago. Recently I&amp;rsquo;ve found some time to add a deployment pipeline for this site as well. This short article will cover how the pipeline code works and dive into multi-stage pipelines.&lt;/p&gt;</description>

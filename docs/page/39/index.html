@@ -102,6 +102,97 @@
         
     <div class="article-wrapper u-cf">
         
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/">Exchange 2010 One-liner: Get All Network Interface Information</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2011-08-19</span>
+            
+        
+
+        
+            <span class="readingTime">1 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        Here are a few quick powershell one-liners to get all the network interface information in your exchange environment:
+$ExchServers=(Get-ExchangeServer); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.Name | select @{Name="Server";Expression={$Srv.Name}},@{Name="DNS Host Name";Expression={$_.DNSHostName}},@{Name="Server Role";Expression={$Srv.ServerRole}},Description,@{Name="IP Address";Expression={$_.IPAddress}},@{Name="IP Subnet";Expression={$_.IPSubnet}},@{Name="Default Gateway";Expression={$_.DefaultIPGateway}},@{Name="Mac Address";Expression={$_.MacAddress}},@{Name="DNS Suffix Search Order";Expression={$_.DNSDomainSuffixSearchOrder}},@{Name="DNS Server Search Order";Expression={$_.DNSServerSearchOrder}},FullDNSRegistrationEnabled}) |Export-Csv -NoTypeInformation "C:\Temp\Exchange-network.csv" If you just want interface information for Exchange 2010 servers:
+$ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne "None"}); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.
+
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/networking">Networking</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+                    <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        
+    <div class="article-wrapper u-cf">
+        
             <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
@@ -257,80 +348,6 @@
                     <a href="/tags/system-administration">System Administration</a>
                 
                     <a href="/tags/windows">Windows</a>
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-</article>
-
-        
-    </div>
-
-    
-        
-    <div class="article-wrapper u-cf">
-        
-            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/08/05/css-pretty-formatting/">
-    <i class="fa fa-fw fa-pencil"></i>
-</a>
-
-<article class="default article">
-    
-
-    <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/05/css-pretty-formatting/">CSS: Pretty Code Snippet Formatting</a></h3>
-    <div class="meta">
-        
-            
-                <span class="date moment">2011-08-05</span>
-            
-        
-
-        
-            <span class="readingTime">1 min read</span>
-        
-
-        
-            <span class="categories">
-                
-                    <a href="/categories/other">Other</a>
-                
-                    <a href="/categories/web-publishing">Web Publishing</a>
-                
-            </span>
-        
-
-        
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
-        
-    </div>
-
-    
-        I forgot where I dredged this up from but here is how I do my code/script posts. I modified the default theme css and add the following for pre-formatted text:
-pre { white-space: pre-wrap; /* css-3 */ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ word-wrap: break-word; /* Internet Explorer 5.5+ */ background: #000000; color: #21FF2C; } 
-
-        
-    
-</div>
-
-    
-<div class="footer">
-
-
-    
-        <div class="tags">
-            <i class="fa fa-tags"></i>
-            <div class="links">
-                
-                    <a href="/tags/other">Other</a>
-                
-                    <a href="/tags/system-administration">System Administration</a>
-                
-                    <a href="/tags/web-publishing">Web Publishing</a>
                 
             </div>
         </div>
