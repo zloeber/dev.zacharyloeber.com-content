@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unified Access Gateway on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/categories/unified-access-gateway/</link>
+    <description>Recent content in Unified Access Gateway on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 22 Nov 2012 19:58:04 +0000</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/unified-access-gateway/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Exchange – The State Of External Client Access</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</link>
+      <pubDate>Thu, 22 Nov 2012 19:58:04 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Most within the messaging and collaboration industry are hyped up about the next wave of Microsoft collaboration and messaging products which are soon to be released. Among these products is Exchange 2013 RTM. This type of release typically precedes yet another wave of architecture upgrades across the corporate landscape. Some of these (beta testers) will be will undoubtedly upgrade to Exchange 2013.&lt;/p&gt;
+
+&lt;p&gt;Other corporations will start to feel the burn to upgrade as well. These will be organizations which realize that their Exchange &lt;sup&gt;2003&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; infrastructure is nearing a decade old existence and cannot meet the demands of their ever growing mobile workforce. Realizing they are behind the curve, they may feel hastened to upgrade as well, possibly just to Exchange 2010. Regardless the reason in choosing to upgrade their messaging infrastructure, there are critical design decisions which need to be made in how clients access this infrastructure both internally and externally. This article focuses solely on the external access aspect of the infrastructure.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microsoft Unified Access Gateway 2010 Notes</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/</link>
+      <pubDate>Mon, 02 Aug 2010 19:11:42 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/</guid>
+      <description>&lt;p&gt;If you are new to the Microsoft Unified Access Gateway then you really should know some of these things I ran into while trying to get my array setup and running smoothly. Sure, to find my single post among the masses is probably not going to happen, but if you do find it before you start your endeavor then I promise you will be saved time and frustration. The first major frustration, the installation&amp;#8230;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

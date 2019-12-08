@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OSS on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/tags/oss/</link>
+    <description>Recent content in OSS on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 21 Aug 2016 03:41:03 +0000</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/oss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OSS PowerShell: Platform Independent Functions</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2016/08/20/oss-powershell-platform-independent-functions/</link>
+      <pubDate>Sun, 21 Aug 2016 03:41:03 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2016/08/20/oss-powershell-platform-independent-functions/</guid>
+      <description>&lt;p&gt;Just the other day Microsoft released PowerShell as open source with builds available for Windows, Mac OSX, and a few flavors of Linux. I’m pretty certain the entire community is super hyped at the news. I know I am!&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

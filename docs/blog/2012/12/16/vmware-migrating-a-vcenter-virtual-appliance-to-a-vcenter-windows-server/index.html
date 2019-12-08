@@ -1,0 +1,424 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> VMware: Migrating a vCenter virtual appliance to a vCenter Windows server | Zachary Loeber</title>
+        <meta name="description" content="VMware: Migrating a vCenter virtual appliance to a vCenter Windows server - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="VMware: Migrating a vCenter virtual appliance to a vCenter Windows server">
+        <meta itemprop="description" content="VMware: Migrating a vCenter virtual appliance to a vCenter Windows server - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="VMware: Migrating a vCenter virtual appliance to a vCenter Windows server">
+        <meta property="og:description" content="VMware: Migrating a vCenter virtual appliance to a vCenter Windows server - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/">VMware: Migrating a vCenter virtual appliance to a vCenter Windows server</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2012-12-17</span>
+            
+        
+
+        
+            <span class="readingTime">3 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/storage">Storage</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+                    <a href="/categories/virtualization">Virtualization</a>
+                
+                    <a href="/categories/vmware">VMware</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>I finally bit the bullet and migrated my lab from a vCenter virtual appliance to a vCenter Windows server. This is what I did to maintain all my settings and not disrupt any currently running VMs.</p>
+
+<ol>
+<li><p>Download <a href="http://labs.vmware.com/flings/inventorysnapshot" title="InventorySnapshot">InventorySnapshot</a> to a workstation or your new VCenter server (as long as the vmware powerCLI and Java 1.5 is installed).</p>
+
+<ol>
+<li>Run the run.bat file to start InventorySnapshot</li>
+<li>Put in the IP or hostname of your old VMware appliance as well as the credentials and a good place to drop the resulting snapshot, select to “Take Snapshot”<a href="wp-content/uploads/2012/12/InvSnap.jpg"><img class="aligncenter size-medium wp-image-704" alt="InvSnap" src="/wp-content/uploads/2012/12/InvSnap.jpg?resize=300%2C133" width="300" height="133" srcset="/wp-content/uploads/2012/12/InvSnap.jpg?resize=300%2C133 300w, wp-content/uploads/2012/12/InvSnap.jpg?w=683 683w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></li>
+<li>A new window will come up with a few tabs that looks like this:<a href="wp-content/uploads/2012/12/InvSnap2.jpg"><img class="aligncenter size-medium wp-image-705" alt="InvSnap2" src="/wp-content/uploads/2012/12/InvSnap2.jpg?resize=300%2C46" width="300" height="46" srcset="/wp-content/uploads/2012/12/InvSnap2.jpg?resize=300%2C46 300w, wp-content/uploads/2012/12/InvSnap2.jpg?w=730 730w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></li>
+<li>Don’t worry about the host passwords, just make sure everything is selected in the Inventory Tree tab and then select the Generate PowerCLI code in the last tab.</li>
+<li>Copy all the output from the folder you specified earlier to the new vCenter server.</li>
+<li>Open a VMware vSphere PowerCLI window and run the following to connect locally:
+<pre>Set-ExecutionPolicy RemoteSigned</pre>
+<br /></li>
+</ol>
+
+<pre>Connect-VIServer localhost</pre>
+
+<ol>
+<li>Open the createInventory.ps1 file then copy and paste everything above the line that states, “# ### START ADDHOSTS CLUSTER”</li>
+<li>At this point you have the basic cluster setup but not much else. I was unable to get the hosts to automatically add. To get around this I just manually added them (kinda stole them from the vCenter virtual appliance). So open up a vSphere client and connect to your new vCenter server, right0click on your cluster and select to add a host. Proceed to add all the hosts in your cluster. (Note: You will get warnings about duplicating configurations and causing issues with the old vCenter server, that is ok, just select Yes and move on as all host configuration for networking and storage will be maintained and no outage for currently running VMs will occur).</li>
+<li>By the time you have gotten to this point your old VMware appliance will show all hosts and VMs as disconnected and your new vCenter server will have all the goods.<a href="wp-content/uploads/2012/12/InvSnap3.jpg"><img class="aligncenter size-full wp-image-706" alt="InvSnap3" src="/wp-content/uploads/2012/12/InvSnap3.jpg?resize=270%2C279" width="270" height="279" data-recalc-dims="1" /></a></li>
+<li>But what about everything else? Luckily enough, most networking and other host settings carry over so your VMs should have stayed live this entire time.  But if you had DRS or host affinities setup there is more you can do to automate the flip to your new server. Go back into that createInventory.ps1 file and comment out (with #) the first several lines of the script which creates the cluster and adds the hosts. It will look something like this when you are done (minus the rest of the script, just leave all that other stuff alone).
+<pre># ### START RESTORE DC: Datacenter</pre>
+<br /></li>
+</ol>
+
+<pre># ### START CREATE DC: Datacenter</pre>
+    
+
+<pre># Create DC: Datacenter in folder: null</pre>
+    
+
+<pre>$parentFolder = Get-Folder -NoRecursion</pre>
+    
+
+<pre><b>#New-Datacenter -Location $parentFolder -name "Datacenter"</b></pre>
+    
+
+<pre># ### END CREATE DC: Datacenter</pre>
+    
+
+<pre># ### START RESTORE CLUSTER: Cluster1</pre>
+    
+
+<pre># ### START CREATE_CLUSTER_IN FOLDER: host</pre>
+    
+
+<pre># ### START CREATE CLUSTER: Cluster1</pre>
+    
+
+<pre># Create cluster: Cluster1 in datacenter Datacenter</pre>
+    
+
+<pre># parent folder of cluster Cluster1 host</pre>
+    
+
+<pre># Finding Parent Folder. Path: //Datacenter/host</pre>
+    
+
+<pre>$si = Get-View -id "SearchIndex-SearchIndex"</pre>
+    
+
+<pre>$parentChain = "//Datacenter/host"</pre>
+    
+
+<pre>$parentFolderId = $si.FindByInventoryPath($parentChain)</pre>
+    
+
+<pre>$parentFolder = Get-Folder -id $parentFolderId</pre>
+    
+
+<pre><b>#New-Cluster -Location $parentFolder -Name "Cluster1"</b></pre>
+    
+
+<pre># ### END CREATE CLUSTER: Cluster1</pre>
+    
+
+<pre># ### END CREATE_CLUSTER_IN FOLDER: host</pre>
+    
+
+<pre># ### START ADDHOSTS CLUSTER: Cluster1</pre>
+    
+
+<pre>$cluster = Get-Cluster -location (get-datacenter -name "Datacenter") -name "Cluster1"</pre>
+    
+
+<pre># Adding host 192.168.1.250 to cluster "Cluster1"</pre>
+    
+
+<pre><b>#Add-VMHost 192.168.1.250 -Location $cluster -user root -password 'PASSWORD' -Force</b></pre>
+    
+
+<pre># Adding host 192.168.1.251 to cluster "Cluster1"</pre>
+    
+
+<pre><b>#Add-VMHost 192.168.1.251 -Location $cluster -user root -password 'PASSWORD' –Force</b></pre>
+
+<ol>
+<li>Then save and run the script in the already open VMware PowerCLI window. You may get a few errors or warnings but it should complete. When this is done all of your old settings should have migrated over without much fanfare.</li>
+</ol></li>
+</ol>
+    
+</div>
+
+    
+<div class="footer no-tags">
+
+
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zacharyloeber-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/">Hugo - A devops approach</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

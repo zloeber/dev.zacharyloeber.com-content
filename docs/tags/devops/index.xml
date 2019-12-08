@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
+    <description>Recent content in DevOps on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 05 Dec 2019 05:09:51 +0000</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo - A devops approach</title>
+      <link>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</link>
+      <pubDate>Thu, 05 Dec 2019 05:09:51 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve updated my site to use hugo some time ago. Recently I&amp;rsquo;ve found some time to add a deployment pipeline for this site as well. This short article will cover how the pipeline code works and dive into multi-stage pipelines.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Devops: Tool of the day – Syncthing</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/</link>
+      <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/</guid>
+      <description>Check out my new article on using syncthing as a devops productivity tool. Cheers!</description>
+    </item>
+    
+    <item>
+      <title>DevOps – Automating Kubernetes Deployments</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</link>
+      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</guid>
+      <description>If you are deploying your own Kubernetes clusters you already know that:
+ Kubernetes is hard  But there is hope!
+There are a few great projects to keep an eye on in this space. I&amp;#8217;ve covered some of them in an article you can read on the Lumen.
+Cheers!</description>
+    </item>
+    
+  </channel>
+</rss>

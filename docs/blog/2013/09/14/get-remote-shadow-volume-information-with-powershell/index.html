@@ -1,0 +1,362 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Get Remote Shadow Volume Information With Powershell | Zachary Loeber</title>
+        <meta name="description" content="Get Remote Shadow Volume Information With Powershell - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Get Remote Shadow Volume Information With Powershell">
+        <meta itemprop="description" content="Get Remote Shadow Volume Information With Powershell - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Get Remote Shadow Volume Information With Powershell">
+        <meta property="og:description" content="Get Remote Shadow Volume Information With Powershell - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/">Get Remote Shadow Volume Information With Powershell</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2013-09-15</span>
+            
+        
+
+        
+            <span class="readingTime">1 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/storage">Storage</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Gather the remote shadow volume information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns shadow volume information, shadow copies, their providers, and settings. You can view verbose information on each runspace thread in realtime with the -Verbose option.</p>
+
+<h3 id="version-history"><strong>Version History</strong></h3>
+
+<p><strong>1.0.0 &#8211; 09/14/2013</strong></p>
+
+<ul>
+<li>Initial release</li>
+</ul>
+
+<h3 id="notes">Notes</h3>
+
+<p>I’m not entirely certain why yet, but it is possible to get shadow volume usage returned which is larger than the entire physical volume it is associated with (his will most likely be seen on backup servers with their own VSS providers).</p>
+
+<h3 id="download"><strong>Download</strong></h3>
+
+<p><a href="http://gallery.technet.microsoft.com/Get-Remote-Shadow-Volume-e5a72619">Download the script at the technet gallery.</a></p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/2008-r2">2008 R2</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/monitoring">Monitoring</a>
+                
+                    <a href="/tags/network-administration">network administration</a>
+                
+                    <a href="/tags/networking">Networking</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/scripting">Scripting</a>
+                
+                    <a href="/tags/sysadmin">Sysadmin</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+                    <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zacharyloeber-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/">Hugo - A devops approach</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

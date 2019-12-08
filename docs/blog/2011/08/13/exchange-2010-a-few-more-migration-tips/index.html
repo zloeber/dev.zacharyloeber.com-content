@@ -1,0 +1,535 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Exchange 2010: A Few More Migration Tips | Zachary Loeber</title>
+        <meta name="description" content="Exchange 2010: A Few More Migration Tips - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Exchange 2010: A Few More Migration Tips">
+        <meta itemprop="description" content="Exchange 2010: A Few More Migration Tips - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Exchange 2010: A Few More Migration Tips">
+        <meta property="og:description" content="Exchange 2010: A Few More Migration Tips - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/">Exchange 2010: A Few More Migration Tips</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2011-08-13</span>
+            
+        
+
+        
+            <span class="readingTime">9 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Here are a few more notes from the field to consider when you are planning your Exchange 2010 deployment and migration. Some of these items are good to know even after you have completed your migration and may help with overall system stability.</p>
+
+<h2 id="make-appropriate-av-exclusions">Make Appropriate AV Exclusions</h2>
+
+<p>If you are using a third party anti-virus solution you will want to ensure that the appropriate directories are excluded from scans. Otherwise you could end up with less than optimal performance. The official article on such exclusions can be found <a href="http://technet.microsoft.com/en-us/library/bb332342.aspx" title="Exchange 2010 AV Exclusion Technet Article">at Microsoft&#8217;s site.</a></p>
+
+<p>Here is a quick summary of some recommended exclusions for some of the more popular Exchange 2010 roles.</p>
+
+<p><a href="/wp-content/uploads/2011/08/exchange-av-table.html" title="Exchange 2010 AV Exclusion Table">Exchange 2010 directories for AV exclusion</a></p>
+
+<p>&nbsp;</p>
+
+<h2 id="tweak-your-dag">Tweak Your DAG</h2>
+
+<p>There are a number of things you can do to increase the resiliency of your DAG. I&#8217;ve only ever worked with DAGs spread across desperate physical locations but it wouldn&#8217;t hurt to consider these tweaks even in a same site configuration as well.</p>
+
+<h3 id="change-cluster-thresholds">Change Cluster Thresholds</h3>
+
+<p>Microsoft&#8217;s article on this process is <a href="http://technet.microsoft.com/en-us/library/dd197562(WS.10).aspx" title="cluster thresholds">documented on their web-site</a>. The gist of the matter is that the cluster thresholds used by default are rather paltry. To help prevent unneeded database failovers you can manually change the threshold on each DAG member. To boost the thresholds to their maximum value run the following:</p>
+
+<pre><strong>cluster /prop SameSubnetDelay=2000:DWORD</strong></pre>
+
+<pre><strong>cluster /prop CrossSubnetDelay=4000:DWORD</strong></pre>
+
+<pre><strong>cluster /prop CrossSubnetThreshold=10:DWORD</strong></pre>
+
+<pre><strong>cluster /prop SameSubnetThreshold=10:DWORD</strong></pre>
+
+<p>To verify the settings run the following:</p>
+
+<pre><strong>cluster /prop</strong></pre>
+
+<h3 id="disable-advanced-nic-settings">Disable Advanced NIC Settings</h3>
+
+<p>Receive Side Scaling (RSS), <a href="http://support.microsoft.com/kb/951037" title="MS Chimney Article">Chimney</a>, and TCP Offload Engine (TOE) sound like cool technology to have enabled on your network interfaces but they tend to make exchange servers crabby. When theya re crabby they tend to have intermittent connectivity issues which makes your DAG do seemingly random fail-over issues. If you look in the failover cluster manager you will likely see errors about connectivity to the witness server. This can be exasperated in a multiple site DAG configuration as advanced nic features like RSS require end-to-end support to be used effectively.</p>
+
+<p>To disable these features it is recommended to physically go into the advanced nic properties and manually disable each related setting as well as disable the setting at the OS level. I&#8217;ve only needed to do the OS level disabling by using the following commands at each DAG server AND on each witness server.</p>
+
+<pre><strong>netsh interface tcp set global rss=disabled</strong></pre>
+
+<pre><strong>netsh interface tcp set global chimney=disabled</strong></pre>
+
+<pre><strong>netsh interface tcp set global autotuninglevel=disabled</strong></pre>
+
+<h2 id="mailboxes-migrate-into-exchange-2010-as-linked-mailboxes">Mailboxes Migrate Into Exchange 2010 as Linked Mailboxes</h2>
+
+<p>I saw this for a few clients, thought it was weird, so I&#8217;m posting it here 🙂</p>
+
+<p>Basically there were extra attributes from some prior migration that was confusing Exchange 2010 during the migration. If you are certain that you are not using linked mailboxes then you can convert all linked mailboxes to user mailboxes in one line.</p>
+
+<pre>Get-Mailbox -RecipientTypeDetails LinkedMailbox | Set-User -LinkedMasterAccount $null</pre>
+
+<p>A Microsoft technician explained a bit more on what causes this to happen. He noted that the affected accounts have msExchMasterAccountSID populated prior to mailbox migration. This attribute should only be populated on disabled accounts that have an associated external account assigned permissions to the mailbox in Exchange 2003. Apparently you can fix this from happening by running <a href="http://archive.msdn.microsoft.com/NoMas" title="NoMAS Download">NoMAS in fix mode.</a></p>
+
+<p>&nbsp;</p>
+
+<h2 id="you-get-8220-this-error-is-not-retriable-8221-when-migrating-a-mailbox">You Get &#8220;This error is not retriable&#8221; When Migrating A Mailbox</h2>
+
+<p>So you are all ramped up and ready to start migrating your mailboxes to the environment you erected with much hard work, sweat, and tears. Everything is great until you see that several users refuse to migrate with an error like this:</p>
+
+<pre><strong>Active Directory operation failed on yourdc.corp.contoso.local. This error is not retriable. Additional information: Insu fficient access rights to perform the operation. Active directory response: 00002098: SecErr: DSID-03150BB9, problem 4003 (INSUFF_ACCESS_RIGHTS), data 0     + CategoryInfo          : NotSpecified: (0:Int32) [New-MoveRequest], ADOperationException     + FullyQualifiedErrorId : B959FFD3,Microsoft.Exchange.Management.RecipientTasks.NewMoveRequest</strong></pre>
+
+<p>What the heck does that mean? Well the Insufficient Access Rights portion of the error says it all. What you may find out is that user mailboxes which exhibit this error tend to not be inheriting permissions in active directory. Even if they are, it doesn&#8217;t hurt to reset the inheritance setting for the account and try again. You can do this in Active directory users and computers by making sure that the &#8220;Advanced&#8221; option is set in the view menu. Then select the account in question, go to the permissions tab, select advanced, and look for the permission inherited checkbox. Either uncheck, apply, recheck, apply or check the box and apply (depending if it is already selected or not). Try to migrate again and you should be golden.</p>
+
+<p>Or if you are using the handy-dandy quest powershell cmdlts you can update the account with a single line:</p>
+
+<pre>Get-QADUser &lt;user&gt; | Set-QADObjectSecurity -LockInheritance</pre>
+
+<p>If you are looking for all the possible trouble accounts run the following for a quick report on those who are not inheriting their OU permissions:</p>
+
+<pre><strong>Get-QADUser -SizeLimit 0 | Select-Object Name,@{n='IncludeInheritablePermissions';e={!$_.DirectoryEntry.PSBase.ObjectSecurity.AreAccessRulesProtected}} | Where {!$_.IncludeInheritablePermissions} &gt; export-csv -notypeinformation c:\temp\not-inheriting.csv</strong></pre>
+
+<p>&nbsp;</p>
+
+<h2 id="arbitration-mailboxes-may-not-always-be-setup-properly">Arbitration Mailboxes May Not Always Be Setup Properly</h2>
+
+<p>This one is a bit of a nuisance,  but it is not a show stopper. You may not even notice that there is an issue with arbitration mailboxes until you want to use a feature which requires them to be 100% functional. For me it was finding out that I could not run admin audit logs but other symptoms of an issue might be that you <a href="http://technet.microsoft.com/en-us/library/dd297936%28EXCHG.140%29.aspx" title="Arbitration mailboxes and moderation">cannot moderate distribution list</a>s or perform discovery. If you find this to be the case then you may be running into an arbitration mailbox issue. I cannot help you if you accidentally deleted these essential mailboxes (ok, I can help you, just reprep your forest/domain, they will likely be recreated with no fanfare). If you find that you are unable to use these mailboxes you may just need to fix them. There are three arbitration mailboxes which get <strong>stored at your forest root</strong>:</p>
+
+<ul>
+<li><strong>Discovery</strong>&#8211; SystemMailbox{e0dc1c29-89c3-4034-b678-e6c29d823ed9}</li>
+<li><strong>Message Approval</strong> &#8211; SystemMailbox{1f05a927-xxxx-xxxx-xxxx-xxxxxxxxxxxx} (<em>where x is a random number</em>)</li>
+<li><strong>Federated E-mail</strong> &#8211; FederatedEmail.4c1f4d8b-8179-4148-93bf-00a95fa1e042</li>
+</ul>
+
+<p>Firstly you might experience issues even seeing these mailboxes. If you are in an environment which follows best AD practices then your forest root is nearly empty and the production domain with all of your users and mailboxes is in a sub-domain of the forest root. You then do most of your work with a domain admin account in that sub-domain. In order to see the arbitration mailboxes you need to change the scope of your default view to include the entire forest in EMC. You will know that you need to do this if you run get-mailbox -arbitration and get an empty result with no errors. To get around this change your scope in EMC</p>
+
+<pre>Set-AdServerSettings -ViewEntireForest $true
+Get-Mailbox -Arbitration</pre>
+
+<p>Unless you foolishly deleted your initial default mailbox or did something else wrong you should see your three federation mailboxes without any errors. If you do get errors they may look something like this:</p>
+
+<pre><span style="font-family: courier new;">WARNING: The object MyDomain.local/Users/SystemMailbox{1f05a927-xxxx-xxxx-xxxx-xxxxxxxxxxxx} has been corrupted, and it's in an inconsistent state. The following validation errors happened: WARNING: Database is mandatory on UserMailbox. </span></pre>
+
+<p><span style="font-family: courier new;">I was confused when I first saw this error. When I looked up these accounts in adsiedit I found that their homeMDB attribute was totally blank. This was not my install so I&#8217;m not certain what was done to mash up the arbitration mailboxes so badly. To fix this is pretty simple though, find the correct homeMDB attribute value and assign it to the accounts. Then make sure that the account is enabled. What I did was looked at the homeMTA attribute and extrapolated what the homeMDB value was supposed to be.</span></p>
+
+<p><span style="font-family: courier new;">You can get to the correct area in adsiedit by selecting the default naming context and making sure that your root domain name is used. Then, by default, these accounts will be located in the Users system object (or I can inaccurately say the Users OU, which it is not).</span></p>
+
+<p>I happened to be lucky. The homeMTA pointed to a server which was in production and all the databases were sequentially numbered. I guessed that the first database was the initial install database&#8230; and it was!</p>
+
+<p>homeMTA looked like this:</p>
+
+<pre>CN=Microsoft MTA,CN=&lt;Your First Mailbox Server&gt;,CN=Servers,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=Your Corporation,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=contoso,DC=local</pre>
+
+<pre>So I made homeMDB the following value:</pre>
+
+<pre>CN=&lt;Your First Database&gt;,CN=Databases,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=Your Corporation,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=contoso,DC=local</pre>
+
+<p>My guess as to why this happened is that between the forest/domain preparations not enough time elapsed before continuing the server role installations in the sub-domain. That is purely a guess though as I wasn&#8217;t around when this particular install occurred and the person doing the install is no longer around. Should you need to recreate the arbitration mailboxes all together <a href="http://msundis.wordpress.com/2010/08/17/recreate-and-enabled-missing-arbitration-user-accounts-and-mailboxes/" title="Recreate Arbitration Mailboxes">here is a good site</a> covering how to do so.</p>
+
+<p>&nbsp;</p>
+
+<h2 id="not-all-issues-are-exchange-related">Not All Issues Are Exchange Related</h2>
+
+<p>I think I&#8217;ve had to deal with just about every Outlook client related issue under the sun when doing Exchange 2010 mailbox migrations. People assume that every issue stems from Exchange and that is simply not the case. Outlook 2003/2007/2010 all behave differently and have their own unique issues to deal with. Here are some basic tips for fixing Outlook <sup>2007</sup>&frasl;<sub>20100</sub> issues (I&#8217;ve been lucky enough not to have to deal with Outlook 2003 as much).</p>
+
+<h3 id="repair-numerous-issues-in-outlook-2007">Repair Numerous Issues in Outlook 2007</h3>
+
+<p>This has fixed more unexplainable issues in outlook 2007 than I can even remember. It requires that your end user be out of outlook, any other office application, and office communicator while it runs. You may want to suggest starting this before lunch.</p>
+
+<ol>
+<li>Go to Help and select “Office Diagnostics…”</li>
+</ol>
+
+<h3 id="clean-fix-ost-pst-files-in-outlook-2007">Clean/Fix OST/PST files in Outlook 2007</h3>
+
+<ol>
+<li><a name="_GoBack"></a>Close both Outlook and Office Communicator</li>
+<li>Run C:\Program Files\Microsoft Office\Office12\SCANPST.EXE</li>
+<li>Browse for OST/PST files in &#8220;%userprofile%\Application Data\Microsoft\Outlook&amp;#8221; and run scanpst.exe against each of them.</li>
+</ol>
+
+<h3 id="clean-fix-ost-pst-files-in-outlook-2010"><strong>Clean/Fix OST/PST files in Outlook 2010</strong></h3>
+
+<p>This is highly recommended if the user has just upgraded to Outlook 2010 from a prior version. No matter how good the SCCM package is that gets pushed to your end users Outlook will still have random and weird issues after being upgraded.</p>
+
+<p>On 64-bit computer</p>
+
+<p>C:\Program Files (x86)\Microsoft Office\Office14\SCANPST.EXE</p>
+
+<p>On 32-bit computer</p>
+
+<p>C:\Program Files\Microsoft Office\Office14\SCANPST.EXE</p>
+
+<h3 id="repair-outlook-2007-profile"><strong>Repair Outlook 2007 profile</strong></h3>
+
+<ol>
+<li>In Outlook 2007, from the Tools menu, click Account Settings.</li>
+<li>In the Account Settings dialog box, on the E-mail tab, select your account, and then click Repair. Follow any prompts from the repair wizard.</li>
+<li>When the repair is done, restart Outlook 2007.</li>
+</ol>
+
+<h3 id="repair-outlook-2010-profile"><strong>Repair Outlook 2010 profile</strong></h3>
+
+<ol>
+<li>In Outlook 2010, on the File tab, click the arrow next to Account Settings, and then click Account Settings.</li>
+<li>In the Account Settings dialog box, on the E-mail tab, select your account, and then click Repair. Follow any prompts from the repair wizard.</li>
+<li>When the repair is done, restart Outlook 2010.</li>
+</ol>
+
+<h3 id="recreate-outlook-profile-snag-if-you-are-forced-to-go-as-far-as-to-recreate-the-profile"><strong>Recreate Outlook Profile Snag (if you are forced to go as far as to recreate the profile)</strong></h3>
+
+<ol>
+<li>After removing the default profile in outlook you will need to rename/move/delete &#8220;%userprofile%\Local Settings\Application Data\Microsoft\Outlook&#8221; for the user</li>
+</ol>
+
+<h3 id="default-location-for-outlook-exe-2010"><strong>Default location for outlook.exe 2010</strong></h3>
+
+<p>On 64-bit computer</p>
+
+<p>C:\Program Files (x86)\Microsoft Office\Office14\outlook.exe</p>
+
+<p>On 32-bit computer</p>
+
+<p>C:\Program Files\Microsoft Office\Office14\outlook.exe</p>
+
+<h3 id="default-location-for-outlook-exe-2007"><strong>Default location for outlook.exe 2007</strong></h3>
+
+<p>On 64-bit computer</p>
+
+<p>C:\Program Files (x86)\Microsoft Office\Office12\outlook.exe</p>
+
+<p>On 32-bit computer</p>
+
+<p>C:\Program Files\Microsoft Office\Office12\outlook.exe</p>
+
+<h3 id="open-outlook-with-a-custom-flag"><strong>Open Outlook With A Custom Flag</strong></h3>
+
+<p>From a run dialog box:</p>
+
+<pre>"c:\&lt;Outlook Location &gt;\outlook.exe" /&lt;command&gt;</pre>
+
+<h3 id="switches-you-can-use-with-outlook-exe-the-clean-switches-can-be-particularly-useful"><strong>Switches You Can Use With Outlook.exe (the /Clean* switches can be particularly useful)</strong></h3>
+
+<p>&nbsp;</p>
+
+<p><a href="/wp-content/uploads/2011/08/Outlook-Flags.html" title="Outlook 2007/2010 command line arguments">Here is a link to a reference table for Outlook <sup>2007</sup>&frasl;<sub>2010</sub> command-line switches.</a></p>
+
+<p>&nbsp;</p>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/networking">Networking</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+                    <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zacharyloeber-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/">Hugo - A devops approach</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

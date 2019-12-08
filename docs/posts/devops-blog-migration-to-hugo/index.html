@@ -1,0 +1,506 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Hugo - A devops approach | Zachary Loeber</title>
+        <meta name="description" content="Hugo - A devops approach - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Hugo - A devops approach">
+        <meta itemprop="description" content="Hugo - A devops approach - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Hugo - A devops approach">
+        <meta property="og:description" content="Hugo - A devops approach - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/posts/devops-blog-migration-to-hugo/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/posts/devops-blog-migration-to-hugo/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/">Hugo - A devops approach</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2019-12-05</span>
+            
+        
+
+        
+            <span class="readingTime">5 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/blog">blog</a>
+                
+                    <a href="/categories/azure">azure</a>
+                
+                    <a href="/categories/devops">devops</a>
+                
+                    <a href="/categories/pipeline">pipeline</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>I&rsquo;ve updated my site to use hugo some time ago. Recently I&rsquo;ve found some time to add a deployment pipeline for this site as well. This short article will cover how the pipeline code works and dive into multi-stage pipelines.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>As I work in the industry I sometimes forget to update the world on what I&rsquo;m doing. It has been almost a full year since I last posted anything to so it was long past time to get more content out there. Problem was, I forgot how to even deploy to my own site after such a long duration. This time I figured I&rsquo;d just setup a proper pipeline to get things going again.</p>
+
+<p>Here is the stack I&rsquo;ve landed with for this website:</p>
+
+<ul>
+<li>Static Site Generator: Hugo</li>
+<li>DNS Hosting: Cloudflare.com</li>
+<li>CDN: Cloudflare.com</li>
+<li>DNS Registrar: Namecheap.com</li>
+<li>Git Hosting: Github.com</li>
+<li>Web Content Hosting #1: Github Pages</li>
+<li>Web Content Hosting #2: Render.com</li>
+<li>Pipeline Platform: Azure Devops</li>
+</ul>
+
+<p>The only cost in all of this is the custom domain name.</p>
+
+<h2 id="the-process-tldr">The Process (TLDR)</h2>
+
+<p>End to end, the process for this looks a bit like this:</p>
+
+<ol>
+<li>Purchase your custom domain name (namecheap.com) <strong>NOTE: this is the only cost for this entire setup and is not strictly required</strong>
+
+<ol>
+<li>Optionally, transfer the domain name to Cloudflare.com (they are not actually a registrar you can buy domains from but you can transfer to them as a hosting registrar once you own one it seems)</li>
+</ol></li>
+<li>Create new private repo in github for authoring content. (ie. yoursite.com)
+
+<ol>
+<li>Optionally, setup a github ssh key to make your life easier.</li>
+</ol></li>
+<li>Create a new public repo in github for publishing your production site (ie. yoursite.com-content).</li>
+<li>Create a new public repo in github for publishing draft/development content (ie. dev.yoursite.com-content)</li>
+<li>Create a new public repo in github to host your Azure Devops (ADO) pipeline template code (or just use mine if you can figure out how to do so)</li>
+<li>Download hugo binary
+
+<ol>
+<li>Create new hugo site</li>
+<li>Initialize local git repo in the generated site folder</li>
+<li>Add submodule for some hugo theme to the hugo site</li>
+<li>Add content from 10+ years of blogging&hellip;</li>
+<li>Push repo to github authoring site as the upstream source</li>
+<li>Add a &lsquo;develop&rsquo; branch for the dev version of your site</li>
+<li>Push up your develop branch</li>
+</ol></li>
+<li>Create personal azure devops account (dev.azure.com)</li>
+<li>Create a service connector to github and authorize access to all your repos</li>
+</ol>
+
+<p>This will set the stage for you to add content to your site in a development environment for review, then approve for release. The workflow for this will be a bit like the following sequence diagram when complete.</p>
+
+<pre><code class="language-sequence">Author -&gt; Site Content Repo: Update develop branch
+Azure DevOps --&gt; Site Content Repo: Trigger Build (dev site)
+Azure DevOps -&gt; Dev Repo: Deploy Dev Site
+Render.com --&gt; Dev Repo: Trigger Deployment
+Render.com -&gt; Dev Site: Publish Site
+Author -&gt; Dev Site: Review Site
+Author --&gt; Site Content Repo: Merge develop to master
+Azure DevOps --&gt; Site Content Repo: Trigger Build (prod)
+Azure DevOps -&gt; Prod Repo: Deploy Prod Site
+Github Pages --&gt; Prod Repo: Trigger Deployment
+Github Pages -&gt; Prod Site: Publish Site
+</code></pre>
+
+<p>To make any of this work we need a few pipelines in ADO. One to create our hugo site content as an artifact and another to shove the deployment content into our repositories. We will use Azure Devops multi-stage pipelines and templates to get this in place.</p>
+
+<h2 id="the-pipeline">The Pipeline</h2>
+
+<p>I&rsquo;ve found that the best way to start working on a pipeline is to declaratively layout the required manifest in what you would like the finished state to look like first. Once you have this, adding the template components is pretty easy.</p>
+
+<blockquote>
+<p>NOTE: If you start with the imperative code first, which I have done before, you may as well just throw it all into a Makefile and then pluck out the parts you need for your pipeline pieces later. But I promise you will be doing more work this way than you might otherwise need to do. If you do your devops work with an end state in mind everything else will fall into place, I promise.</p>
+</blockquote>
+
+<p>My current site azure-pipeline.yml code looks very similar to what I initially put down for my first draft. A full pipeline for my develop branch looks like the following:</p>
+
+<pre><code class="language-yaml">name: $(BuildDefinitionName).$(DayOfYear)$(Rev:.r)
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+    - develop
+
+# Don't trigger on PRs
+pr: none
+
+resources:         
+  repositories:
+  - repository: pipelines
+    type: github
+    endpoint: github_services
+    name: zloeber/azure-pipeline-library
+
+stages:
+## Build Hugo site (DEV)
+- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
+  - template: build/hugo-generate.yml@pipelines
+    parameters:
+      initialize: true
+      version: '0.59.1'
+      theme: 'bilberry-hugo-theme'
+      disqusshortname: 'zacharyloeber-com'
+      baseurl: 'https://zacharyloeber-dev.onrender.com/'
+      testhtml: 'false'
+      staticpath: 'docs'
+      contentpath: 'sites/zacharyloeber.com'
+      drafts: 'true'
+  - template: deploy/git-folder.yml@pipelines
+    parameters:
+      repo: 'https://github.com/zloeber/dev.zacharyloeber.com-content.git'
+      branch: 'master'
+      path: 'docs'
+      environment: 'dev'
+
+## Build Hugo site (PROD)
+- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+  - template: build/hugo-generate.yml@pipelines
+    parameters:
+      initialize: true
+      version: '0.59.1'
+      theme: 'bilberry-hugo-theme'
+      disqusshortname: 'zacharyloeber-com'
+      site: 'zacharyloeber.com'
+      baseurl: 'https://zacharyloeber.com/'
+      staticpath: 'docs'
+      contentpath: 'sites/zacharyloeber.com'
+      testhtml: 'false'
+  - template: deploy/git-folder.yml@pipelines
+    parameters:
+      repo: 'https://github.com/zloeber/zacharyloeber.com-content.git'
+      branch: 'master'
+      path: 'docs'
+      environment: 'production'
+</code></pre>
+
+<p>I added some additional variables which could be cleaned up and simplified further of course. I also have a carry over sub-folder layout for my site that allows me to publish the same site to multiple URLs.</p>
+
+<h2 id="publish-a-draft-post">Publish A Draft Post</h2>
+
+<p>To create and publish a draft post just ensure you are on the develop branch, create a post, then push it up to develop.  Let the pipeline do its thing and review your dev site.</p>
+
+<pre><code class="language-bash">git checkout develop
+make new/post some_awesome_content.md
+## Creates &lt;site content&gt;/posts/some_awesome_content.md for you to work on
+git add --all . &amp;&amp; git commit -m 'post: some awesome content added'
+git push origin develop
+</code></pre>
+
+<h2 id="promote-to-production">Promote to Production</h2>
+
+<p>To promote your draft to production simply update the post&rsquo;s &lsquo;draft&rsquo; front matter to false (or delete it). Then publish to dev, and merge to prod.</p>
+
+<pre><code class="language-bash">## Review your dev site, looks good? Ok, then update your new post to non-draft status by editing the front matter to remove the draft config.
+git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
+git push origin develop
+git checkout master
+git merge develop
+git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
+</code></pre>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/blog">blog</a>
+                
+                    <a href="/tags/azure">azure</a>
+                
+                    <a href="/tags/devops">devops</a>
+                
+                    <a href="/tags/pipeline">pipeline</a>
+                
+                    <a href="/tags/automation">automation</a>
+                
+                    <a href="/tags/azure-pipelines.yml">azure-pipelines.yml</a>
+                
+                    <a href="/tags/hugo">hugo</a>
+                
+                    <a href="/tags/static-site-generator">static site generator</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zacharyloeber-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/">Hugo - A devops approach</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

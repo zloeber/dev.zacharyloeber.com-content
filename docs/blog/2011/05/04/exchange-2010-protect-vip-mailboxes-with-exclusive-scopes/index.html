@@ -1,0 +1,1171 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes | Zachary Loeber</title>
+        <meta name="description" content="Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes">
+        <meta itemprop="description" content="Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes">
+        <meta property="og:description" content="Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/">Exchange 2010: Protect VIP Mailboxes with Exclusive Scopes</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2011-05-04</span>
+            
+        
+
+        
+            <span class="readingTime">13 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/security">Security</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>&nbsp;</p>
+
+<p>Prior to starting my new job I wanted to ensure that my previous employer was able to protect VIP mailboxes in their Exchange 2010 SP1 organization. I had to do this with exclusive scopes and these are the steps I had to follow. A general knowledge of role based security is assumed in this post.</p>
+
+<p>First we create the &#8220;Protected Exec Users&#8221; exclusive scope. When the exclusive scope is created, all users are immediately blocked from modifying the recipients that match the exclusive scope until the scope is associated with a management role assignment. If other role assignments are associated with other exclusive scopes that match the same recipients, those assignments can still modify the recipients.  Note that this scope will not appear in ECP so all assignment is done via powershell only.</p>
+
+<p>The exclusive scope includes all users that contain the string &#8220;VIP&#8221; in CustomAttribute1 in a recipient filter. I chose CustomAttribute1 as it really is only exposed on the exchange side of things (aka. Not in ADUC) so it is not as easy or obvious to subvert by removing the property.</p>
+
+<pre>New-ManagementScope -Name "Protected VIP Users" -RecipientRestrictionFilter { CustomAttribute1 -eq 'VIP' } -Exclusive</pre>
+
+<p>I had initially thought I could just create a universal group in AD and then use that to assign the Mail Recipient rights to the exclusive scope. But that will not work, you must create the group within Exchange and then you can assign it an exclusive scoped role.</p>
+
+<p>So first setup a new “Role Group” which will contain users which you will be allowing to modify modify high profile, executive mailboxes.</p>
+
+<pre>New-RoleGroup -Name "VIP Mailbox Administrators" -Roles "Mail Recipients"</pre>
+
+<p>The exclusive scope is then associated with a “Management Role Assignment” that assigns the Mail Recipients management role to the role group we just created.</p>
+
+<pre>New-ManagementRoleAssignment -Name "VIP Mailbox Administrators" -SecurityGroup "VIP Mailbox Administrators" -Role "Mail Recipients" -ExclusiveRecipientWriteScope "Protected VIP Users"</pre>
+
+<p>Once this is done, anyone who is not within the VIP Mailbox Administrators role group will be denied access from updating information on the mailbox.</p>
+
+<p>This does not fully protect your VIP mailboxes if an appropriate role delegation model is absent from your plan.</p>
+
+<p>You will want to create Exchange Role Groups with least privilege role assignment for different people in your organization. You don’t want someone to just be able to create a transport rule that bcc’s them on all email to a VIP mailbox for instance. Or be able to setup a journaling rule that can siphon sensitive information to another mailbox.</p>
+
+<p>Some of the roles you will need to limit access to would be:</p>
+
+<p style="padding-left: 30px;">
+  Journaling
+</p>
+
+<p style="padding-left: 30px;">
+  Message Tracking
+</p>
+
+<p style="padding-left: 30px;">
+  Retention Management
+</p>
+
+<p style="padding-left: 30px;">
+  Transport Rules
+</p>
+
+<p style="padding-left: 30px;">
+  Legal Hold
+</p>
+
+<p style="padding-left: 30px;">
+  Mailbox Search
+</p>
+
+<p style="padding-left: 30px;">
+  Role Management
+</p>
+
+<p>All of these roles can grant permission that a savvy person could use to get email subversively. Obviously limit the membership of the organizational management role group. If you are removing yourself from this group to hand the reigns of control to your boss (to eat your own dog food and prove you don’t need the keys to the castle to do your job), be certain that your admin account is in all the other role groups you need it to be in ahead of time.</p>
+
+<p>To fine-grain tweak how these are assigned in exchange 2010 sp1 I recommend <a href="http://rbac.codeplex.com/">RBAC Editor GUI</a>. It really gives some good insight on the capabilities which each role is able to perform (all the way down to the associated powershell commands).</p>
+
+<p>Finally, if a technician has the ability to add themselves to any group within AD then all of this setup will have been meaningless. Ways to mitigate AD risk will be something I bring up in a future post. If you are running a near empty root forest and have your exchange organization in a sub-domain of the forest you shouldn’t have too much to worry about though.</p>
+
+<p>Some other roles which may be assigned to role groups are listed for your reference are listed below.</p>
+
+<table width="629" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="bottom" width="206">
+      <strong><span style="text-decoration: underline;">Name</span></strong>
+    </td>
+    
+    <td valign="bottom" width="424">
+      <strong><span style="text-decoration: underline;">Description</span></strong>
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Active Directory Permissions
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to configure Active Directory permissions in an organization. Some features that use Active Directory permissions, or Access Control Lists (ACL), include transport Receive and Send connectors and mailbox send as and send on behalf of permissions.Permissions that are set directly on Active Directory objects can&#8217;t be enforced through RBAC.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Address Lists
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage address lists, global address lists, and offline address lists in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      ApplicationImpersonation
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables applications to impersonate users in an organization in order to perform tasks on behalf of the user.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Audit Logs
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage the cmdlet audit logging in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Cmdlet Extension Agents
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage cmdlet extension agents in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Database Availability Groups
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage database availability groups (DAG) in an organization. Administrators who are assigned this role either directly or indirectly are the highest level administrators responsible for the high availability configuration in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Database Copies
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage database copies on individual servers.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Databases
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to create, manage, mount and dismount mailbox and public folder databases on individual servers.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Disaster Recovery
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to restore mailboxes and database availability groups in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Distribution Groups
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to create and manage distribution groups and distribution group members in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Edge Subscriptions
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage edge synchronization and subscription configuration between Edge Transport servers and Hub Transport servers in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      E-Mail Address Policies
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage e-mail address policies in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Exchange Connectors
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage Exchange connectors in an organization. These connectors include routing group connectors and delivery agent connectors.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Exchange Server Certificates
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to create, import, export, and manage Exchange server certificates on individual servers.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Exchange Servers
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage Exchange server configuration on individual servers.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Exchange Virtual Directories
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage Outlook Web App, Exchange ActiveSync, offline address books, Autodiscover, Windows PowerShell and web administration interface virtual directories on individual servers.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Federated Sharing
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to manage cross-forest and cross-organization sharing in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Information Rights Management
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to managethe Information Rights Management (IRM) features of Exchange in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Journaling
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrator to manage journaling configuration in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Legal Hold
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to configure whether data within a mailbox should be retained for litigation purposes in an organization.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Mail Enabled Public Folders
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to configure whether individual public folders are mail-enabled or mail-disabled in an organization.This role type enables you to manage the e-mail properties of public folders only. It doesn&#8217;t enable you to manage non-e-mail properties of public folders. To manage non-e-mail properties of public folders you need to be assigned a role that&#8217;s associated with the PublicFolders role type.
+    </td>
+  </tr>
+  
+  <tr>
+    <td valign="bottom" width="206">
+      Mail Recipient Creation
+    </td>
+    
+    <td valign="bottom" width="424">
+      This role enables administrators to create mailboxes, mail users, mail contacts, and regular and dynamic distribution groups in an organization. This role can be combined with MailRecipients roles to create and manage recipients.This role type doesn&#8217;t enable you to mail-enable public folders. Use roles of type MailEnabledPublicFolders to mail-enable public folders.</p> 
+      
+      <p>
+        If your organization has a split permissions model where recipient creation is performed by a different group than those who perform recipient management, assign the MailRecipientCreation roles to the group that performs recipient creation and the MailRecipients roles to the group that performs recipient management.</td> </tr> 
+        
+        <tr>
+          <td valign="bottom" width="206">
+            Mail Recipients
+          </td>
+          
+          <td valign="bottom" width="424">
+            This role enables administrators to manage existing mailboxes, mail users, and mail contacts in an organization. This role can&#8217;t create these recipients. Use MailRecipientCreation roles to create them.This role type doesn&#8217;t enable you to  manage mail-enabled public folders or distribution groups. Use the MailEnabledPublicFolders and DistributionGroup roles to manage these objects.</p> 
+            
+            <p>
+              If your organization has a split permissions model where recipient creation and management are performed by different groups, assign the MailRecipientCreation roles to the group that performs recipient creation and the MailRecipients roles to the group that performs recipient management.</td> </tr> 
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Mail Tips
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to manage MailTips in an organization.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Mailbox Import Export
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to import and export mailbox content and to purge unwanted content from a mailbox.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Mailbox Search
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to search the content of one or more mailboxes in an organization.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Message Tracking
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to track messages in an organization.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Migration
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to migrate mailboxes and mailbox content into or out of a server.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Monitoring
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to monitor Exchange server service and component availability in an organization. In addition to administrators, this role can be used with service accounts used by monitoring applications to collect information about the state of Exchange servers.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Move Mailboxes
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to move mailboxes between servers in an organization and between servers in the local organization and another organization.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyAddressInformation
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view and modify their street address and work telephone and fax numbers. This is a custom role created from the &#8220;MyContactInformation&#8221; parent role.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyBaseOptions
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view and modify the basic configuration of their own mailbox and associated settings.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyContactInformation
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to modify their contact information, including address and phone numbers.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyDiagnostics
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables end users to perform basic diagnostics on their mailbox such as retrieving calendar diagnostic information.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyDisplayName
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view and modify their display name. This is a custom role created from the &#8220;MyProfileInformation&#8221; parent role.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyDistributionGroupMembership
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view and modify their membership in distribution groups in an organization, provided that those distribution groups allow manipulation of group membership.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyDistributionGroups
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to create, modify and view distribution groups and modify, view, remove, and add members to distribution groups they own.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyMobileInformation
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view and modify their mobile telephone and pager numbers. This is a custom role created from the &#8220;MyContactInformation&#8221; parent role.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyName
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view and modify their full name and their notes field. This is a custom role created from the &#8220;MyProfileInformation&#8221; parent role.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyPersonalInformation
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view and modify their Web site address and home telephone number. This is a custom role created from the &#8220;MyContactInformation&#8221; parent role.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyProfileInformation
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to modify their name.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyRetentionPolicies
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view their retention tags and view and modify their retention tag settings and defaults.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyTextMessaging
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to create, view, and modify their text messaging settings.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  MyVoiceMail
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables individual users to view and modify their voice mail settings.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Organization Client Access
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to manage Client Access settings in an organization.
+                </td>
+              </tr>
+              
+              <tr>
+                <td valign="bottom" width="206">
+                  Organization Configuration
+                </td>
+                
+                <td valign="bottom" width="424">
+                  This role enables administrators to manage organization-wide settings. Organization configuration that can be controlled with this role type include the following and more:Whether MailTips are enabled or disabled for the organization.</p> 
+                  
+                  <p>
+                    The URL for the managed folder home page.
+                  </p>
+                  
+                  <p>
+                    The Microsoft Exchange recipient SMTP address and alternate e-mail addresses.
+                  </p>
+                  
+                  <p>
+                    The resource mailbox property schema configuration.
+                  </p>
+                  
+                  <p>
+                    The Help URLs for the Exchange Management Console and Outlook Web App.
+                  </p>
+                  
+                  <p>
+                    This role type doesn&#8217;t include the permissions included in the OrganizationClientAccess or OrganizationTransportSettings role types.</td> </tr> 
+                    
+                    <tr>
+                      <td valign="bottom" width="206">
+                        Organization Transport Settings
+                      </td>
+                      
+                      <td valign="bottom" width="424">
+                        This role enables administrators to manage organization-wide transport settings, such as system messages, site configuration, and other organization-wide transport settings.This role doesn&#8217;t enable you to create or manage transport Receive or Send connectors, queues, hygiene, agents, remote and accepted domains, or rules. To create or manage each of the transport features, you must be assigned roles associated with the following role types:</p> 
+                        
+                        <p>
+                          ReceiveConnectors
+                        </p>
+                        
+                        <p>
+                          SendConnectors
+                        </p>
+                        
+                        <p>
+                          TransportQueues
+                        </p>
+                        
+                        <p>
+                          TransportHygiene
+                        </p>
+                        
+                        <p>
+                          TransportAgents
+                        </p>
+                        
+                        <p>
+                          RemoteandAcceptedDomains
+                        </p>
+                        
+                        <p>
+                          TransportRules</td> </tr> 
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              POP3 And IMAP4 Protocols
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage POP3 and IMAP4 configuration, such as authentication and connection settings, on individual servers.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Public Folder Replication
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to start and stop public folder replication in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Public Folders
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage public folders in an organization.This role doesn&#8217;t enable you to manage whether public folders are mail-enabled or to manage public folder replication. To mail-enable or disable a public folder, you must be assigned a role associated with the MailEnabledPublicFolders role type. To configure public folder replication, you must be assigned a role associated with the PublicFolderReplication role type.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Receive Connectors
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage transport Receive connector configuration, such as size limits on an individual server.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Recipient Policies
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage recipient policies, such as provisioning policies, in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Remote and Accepted Domains
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage remote and accepted domains in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Retention Management
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage retention policies in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Role Management
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage management role groups; role assignment policies and management roles; and role entries, assignments, and scopes in an organization.Users assigned this role can override the role group managed by property, configure any role group, and add or remove members to or from any role group.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Security Group Creation and Membership
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to create and manage universal security groups and their memberships in an organization.If your organization maintains a split permissions model where USG creation and management is performed by a different group other than those who manage Exchange servers, assign this role to that group.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Send Connectors
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage transport Send connectors in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Support Diagnostics
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to perform advanced diagnostics under the direction of Microsoft Customer Service and Support in an organization.Caution   This role grants permissions to cmdlets and scripts that should only be used under the direction of Customer Service and Support.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Transport Agents
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage transport agents in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Transport Hygiene
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage antivirus and anti-spam features in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Transport Queues
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage transport queues on an individual server.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Transport Rules
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage transport rules in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              UM Mailboxes
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage the Unified Messaging configuration of mailboxes and other recipients in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              UM Prompts
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to create and manage custom Unified Messaging voice prompts in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              Unified Messaging
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to manage Unified Messaging servers in an organization.This role doesn&#8217;t enable you to manage UM-specific mailbox configuration or UM prompts. To manage UM-specific mailbox configuration, use roles associated with the UMMailbox role type. To manage UM prompts, use the roles associated with the UMPrompts role type.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              UnScoped Role Management
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to create and manage unscoped top-level management roles in an organization. Unscoped top-level management roles enable administrators to provide access to custom scripts and non-Exchange cmdlets.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              User Options
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to view the Outlook Web App options of a user in an organization. This role can be used to help diagnose configuration problems.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              View-Only Audit Logs
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators and end users, such as legal and compliance officers, to search the administrator audit log and view the results that are returned. The audit log can be searched using the Shell or reports can be run from the Exchange Control Panel. Users and groups assigned this role can view anything contained within the audit log, including the cmdlets that were run and who ran them, the objects they were run against, and the parameters and values that were provided. Because the results returned might include sensitive information, this role should only be assigned to those with an explicit need to view the information.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              View-Only Configuration
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to view all of the non-recipient Exchange configuration settings in an organization. Examples of configuration that are viewable are server configuration, transport configuration, database configuration, and organization-wide configuration.This role can be combined with roles associated with the ViewOnlyRecipients role type to create a role group that can view every object in an organization.
+                            </td>
+                          </tr>
+                          
+                          <tr>
+                            <td valign="bottom" width="206">
+                              View-Only Recipients
+                            </td>
+                            
+                            <td valign="bottom" width="424">
+                              This role enables administrators to view the configuration of recipients, such as mailboxes, mail users, mail contacts, distribution groups, and dynamic distribution groups.This role can be combined with roles associated with the ViewOnlyConfiguration role type to create a role group that can view every object in the organization.
+                            </td>
+                          </tr></tbody> </table> 
+                          
+
+<pre><code>                      &lt;p&gt;
+                        &amp;nbsp;
+                      &lt;/p&gt;
+
+                      &lt;p&gt;
+                        &amp;nbsp;
+                      &lt;/p&gt;
+</code></pre>
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/active-directory">Active Directory</a>
+                
+                    <a href="/tags/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/tags/microsoft">Microsoft</a>
+                
+                    <a href="/tags/powershell">Powershell</a>
+                
+                    <a href="/tags/security">Security</a>
+                
+                    <a href="/tags/system-administration">System Administration</a>
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zacharyloeber-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/posts/devops-blog-migration-to-hugo/">Hugo - A devops approach</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2019
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+        
+
+        
+
+
+    </body>
+</html>

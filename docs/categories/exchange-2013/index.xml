@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Exchange 2013 on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/categories/exchange-2013/</link>
+    <description>Recent content in Exchange 2013 on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 19 Apr 2016 21:25:58 +0000</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/exchange-2013/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Office 365: Some Scripts</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2016/04/19/office-365-some-scripts/</link>
+      <pubDate>Tue, 19 Apr 2016 21:25:58 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2016/04/19/office-365-some-scripts/</guid>
+      <description>&lt;p&gt;Hello again world, it sure has been a while since I’ve last written to nameless masses. I’ve got some new scripts to share for those who are interested.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Stop Email Exfiltration</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2015/09/24/excxhange-stop-email-exfiltration/</link>
+      <pubDate>Fri, 25 Sep 2015 01:41:25 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2015/09/24/excxhange-stop-email-exfiltration/</guid>
+      <description>&lt;p&gt;When your users leave or get removed from the organization they may still be getting company confidential information. Here is how you can find out and stop this from happening.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Skype For Business: Planning for Voice – Part 1</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/</link>
+      <pubDate>Tue, 25 Aug 2015 07:47:39 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2015/08/25/skype-for-business-planning-for-voice-part-1/</guid>
+      <description>&lt;p&gt;When planning for a full Skype for Business voice deployment there are a number of elements which should be aligned and setup properly for a smooth transition. This is an introduction article for a series where I’ll provide some insight on what info you need to collect and understand for a successful PBX replacement within your organization.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Database Leveling Redux</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2015/04/06/exchange-database-leveling-redux/</link>
+      <pubDate>Tue, 07 Apr 2015 00:12:33 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2015/04/06/exchange-database-leveling-redux/</guid>
+      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2014/01/07/exchange-20102013-database-leveling-script/&#34;&gt;tackled the challenge&lt;/a&gt; of constructing a variant of the bin packing algorithm for leveling out Exchange databases&amp;#8217; size with the least amount of mailbox migrations necessary. Since then, I&amp;#8217;ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I&amp;#8217;ve finally rounded back to this script to do it some justice.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Powershell: Check For Misplaced Certificates</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/12/10/powershell-check-for-misplaced-certificates/</link>
+      <pubDate>Thu, 11 Dec 2014 03:02:28 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/12/10/powershell-check-for-misplaced-certificates/</guid>
+      <description>&lt;p&gt;Here is a script I absentmindedly put together one evening while power watching a TV series on Netflix with the wife. The general idea of this script is to check local machine, trusted root, and intermediate trusted root stores for misplaced or duplicate certificates.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2013: Server Component State Script</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/12/08/exchange-2013-server-component-state-script/</link>
+      <pubDate>Tue, 09 Dec 2014 01:28:23 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/12/08/exchange-2013-server-component-state-script/</guid>
+      <description>&lt;p&gt;Exchange 2013 includes some powershell commands which allow you to set and view several components in the messaging infrastructure. This is important to be aware of as it means all Exchange related services can be running when looking at them in service manager (services.msc) but not actually doing anything. I went ahead put together a script to better gather this information for administrators.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange Mailbox Auditing with Powershell</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/11/24/exchange-mailbox-auditing-with-powershell/</link>
+      <pubDate>Tue, 25 Nov 2014 05:55:01 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/11/24/exchange-mailbox-auditing-with-powershell/</guid>
+      <description>&lt;p&gt;Some time ago I wrote a script and GUI for performing security audits of Exchange mailbox and calendar rights in an environment. This script was far more popular than I anticipated and, I’m ashamed to say, was rather poorly written by my current Powershell standards. There is an obvious need to simplify the extraction of mailbox permissions or my old script would not still be so popular. So I’ve started to revisit my old code for this project in hopes of remaking it with my PowerShell reporting engine. The first step in this process is to pull out the several bits of code that do the actual rights/permissions extraction. I think I’ve finally got this part done and see no reason not to release this mini-library of functions first.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lync UCS Contacts Reporting with Powershell</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/11/21/lync-ucs-contacts-reporting-with-powershell/</link>
+      <pubDate>Fri, 21 Nov 2014 17:37:30 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/11/21/lync-ucs-contacts-reporting-with-powershell/</guid>
+      <description>By default a Lync enabled account within a Lync/Exchange 2013 environment will be enabled for UCS (Unified Contact Store). This means that the Lync contacts get saved in the Lync user&amp;#8217;s mailbox and not the Lync database. In order to get a list of the contacts associated with these accounts you have to export data to a zip file with some debug Lync commands and, even then, the information is buried in a hard to interpret XML file.</description>
+    </item>
+    
+    <item>
+      <title>Lync and UM Correlation with Powershell</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</link>
+      <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
+      <description>I&amp;#8217;ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
+There are a few necessary results to gather where I believe it can be easy to &amp;#8216;miss&amp;#8217; configuration steps when turning up or disabling users:</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Handling Old Log and Other Files</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/</link>
+      <pubDate>Fri, 26 Sep 2014 19:41:59 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/</guid>
+      <description>In Exchange old logs can really build up fast. Not database transaction logs but rather temporary transport, client access, IIS, and other debug related crap that typically default to locations either on your system drive or Exchange install path. Of course, Powershell scripting can provide a decent solution for this problem.
+Introduction More than any other version, Exchange 2013 seems to like logging information to disk. By default, much of what gets logged will not auto-rotate (or if it does, it happens infrequently) either so you end up with this slow ticking time-bomb in your environment.</description>
+    </item>
+    
+    <item>
+      <title>Update: Get-CalendarPermission</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/09/24/update-get-calendarpermission/</link>
+      <pubDate>Wed, 24 Sep 2014 17:43:07 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/09/24/update-get-calendarpermission/</guid>
+      <description>&lt;p&gt;Going through older code is a bit like looking through an old yearbook or photo album. If the pictures within are old enough you usually end up laughing at how little you recognize yourself and maybe even marvel a bit at how far you have come. This old function I wrote isn’t the worst of my code but I was still able to update it for measurable improvements.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Receive Connector Tango! – Part 2</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/</link>
+      <pubDate>Sat, 23 Aug 2014 21:20:31 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2014/07/06/exchange-receive-connector-tango-part-1/&#34;&gt;In part 1 of this series&lt;/a&gt; I discussed some basic knowledge requirements to get a better grip on receive connectors in Exchange. I continue that conversation with some examples of improperly configured connectors and the issues they may cause. I finish up the discussion with a script you can use to scan your environment for such configurations.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Auto Batching 2013 Migrations</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/07/28/exchange-auto-batching-2013-migrations/</link>
+      <pubDate>Mon, 28 Jul 2014 16:48:24 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/07/28/exchange-auto-batching-2013-migrations/</guid>
+      <description>&lt;p&gt;Here is a quick script I put together for automatically creating Exchange 2013 mailbox migration batches. This is useful for the final stages of an Exchange 2013 upgrade among other things.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange Log Level GUI Script</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-log-level-gui-script/</link>
+      <pubDate>Mon, 07 Jul 2014 03:30:20 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-log-level-gui-script/</guid>
+      <description>&lt;p&gt;I ran into a situation recently where I was forced to amp up the Exchange logging levels to further troubleshoot an issue with some pretty specific Exchange components. I found myself wanting a quick GUI to view and set the levels but found none. So I used this as an opportunity to learn a bit about xaml based GUIs and powershell. The result is this simple, but useful, Exchange log level GUI script which was written for Exchange 2013 but should also run on 2010.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exchange: Receive Connector Tango! – Part 1</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</link>
+      <pubDate>Mon, 07 Jul 2014 03:25:13 +0000</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-receive-connector-tango-part-1/</guid>
+      <description>&lt;p&gt;Exchange receive connectors are often configured incorrectly or worse, insecurely. This is the first of a two part series about Exchange receive connectors and what to look out for when setting them up.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
