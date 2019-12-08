@@ -114,7 +114,7 @@
         
 
         
-            <span class="readingTime">6 min read</span>
+            <span class="readingTime">7 min read</span>
         
 
         
@@ -139,7 +139,7 @@
     
         <p>I&rsquo;ve updated my site to use hugo some time ago. Recently I&rsquo;ve found some time to add a deployment pipeline for this site as well. This short article will cover how the pipeline code works and dive into multi-stage pipelines.</p>
 
-<h1 id="introduction">Introduction</h1>
+<h2 id="introduction">Introduction</h2>
 
 <p>As I work in the industry I sometimes forget to update the world on what I&rsquo;m doing. It has been almost a full year since I last posted anything to so it was long past time to get more content out there. Problem was, I forgot how to even deploy to my own site after such a long duration. This time I figured I&rsquo;d just setup a proper pipeline to get things going again.</p>
 
@@ -219,15 +219,71 @@ Github Pages -&gt; Prod Site: Publish Site
 
 <p>My current site azure-pipeline.yml code looks very similar to what I initially put down for my first draft. A full pipeline for my develop branch looks like the following:</p>
 
-<pre><code class="language-yaml">name: $(BuildDefinitionName).$(DayOfYear)$(Rev:.r)
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">name: $(BuildDefinitionName).$(DayOfYear)$(Rev:.r)
 trigger:
-  batch: true
+  batch: <span style="color:#66d9ef">true</span>
   branches:
     include:
     - master
     - develop
 
-# Don't trigger on PRs
+<span style="color:#75715e"># Don&#39;t trigger on PRs</span>
 pr: none
 
 resources:         
@@ -238,46 +294,41 @@ resources:
     name: zloeber/azure-pipeline-library
 
 stages:
-## Build Hugo site (DEV)
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
+<span style="color:#75715e">## Build Hugo site (DEV)</span>
+- ${{ if eq(variables[<span style="color:#e6db74">&#39;Build.SourceBranch&#39;</span>], <span style="color:#e6db74">&#39;refs/heads/develop&#39;</span>) }}:
   - template: build/hugo-generate.yml@pipelines
     parameters:
-      initialize: true
-      version: '0.59.1'
-      theme: 'bilberry-hugo-theme'
-      disqusshortname: 'zacharyloeber-com'
-      baseurl: 'https://zacharyloeber-dev.onrender.com/'
-      testhtml: 'false'
-      staticpath: 'docs'
-      contentpath: 'sites/zacharyloeber.com'
-      drafts: 'true'
+      initialize: <span style="color:#66d9ef">true</span>
+      baseurl: <span style="color:#e6db74">&#39;https://zacharyloeber-dev.onrender.com/&#39;</span>
+      testhtml: <span style="color:#e6db74">&#39;true&#39;</span>
+      staticpath: <span style="color:#e6db74">&#39;./docs&#39;</span>
+      contentpath: <span style="color:#e6db74">&#39;./sites/zacharyloeber.com&#39;</span>
+      drafts: <span style="color:#e6db74">&#39;true&#39;</span>
   - template: deploy/git-folder.yml@pipelines
     parameters:
-      repo: 'https://github.com/zloeber/dev.zacharyloeber.com-content.git'
-      branch: 'master'
-      path: 'docs'
-      environment: 'dev'
+      repo: <span style="color:#e6db74">&#39;https://github.com/zloeber/dev.zacharyloeber.com-content.git&#39;</span>
+      branch: <span style="color:#e6db74">&#39;master&#39;</span>
+      path: <span style="color:#e6db74">&#39;docs&#39;</span>
+      environment: <span style="color:#e6db74">&#39;dev&#39;</span>
 
-## Build Hugo site (PROD)
-- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+<span style="color:#75715e">## Build Hugo site (PROD)</span>
+- ${{ if eq(variables[<span style="color:#e6db74">&#39;Build.SourceBranch&#39;</span>], <span style="color:#e6db74">&#39;refs/heads/master&#39;</span>) }}:
   - template: build/hugo-generate.yml@pipelines
     parameters:
-      initialize: true
-      version: '0.59.1'
-      theme: 'bilberry-hugo-theme'
-      disqusshortname: 'zacharyloeber-com'
-      site: 'zacharyloeber.com'
-      baseurl: 'https://zacharyloeber.com/'
-      staticpath: 'docs'
-      contentpath: 'sites/zacharyloeber.com'
-      testhtml: 'false'
+      initialize: <span style="color:#66d9ef">true</span>
+      site: <span style="color:#e6db74">&#39;zacharyloeber.com&#39;</span>
+      baseurl: <span style="color:#e6db74">&#39;https://zacharyloeber.com/&#39;</span>
+      staticpath: <span style="color:#e6db74">&#39;docs&#39;</span>
+      contentpath: <span style="color:#e6db74">&#39;sites/zacharyloeber.com&#39;</span>
+      testhtml: <span style="color:#e6db74">&#39;false&#39;</span>
   - template: deploy/git-folder.yml@pipelines
     parameters:
-      repo: 'https://github.com/zloeber/zacharyloeber.com-content.git'
-      branch: 'master'
-      path: 'docs'
-      environment: 'production'
-</code></pre>
+      repo: <span style="color:#e6db74">&#39;https://github.com/zloeber/zacharyloeber.com-content.git&#39;</span>
+      branch: <span style="color:#e6db74">&#39;master&#39;</span>
+      path: <span style="color:#e6db74">&#39;docs&#39;</span>
+      environment: <span style="color:#e6db74">&#39;production&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
 
 <p>I added some additional variables which could be cleaned up and simplified further of course. I also have a carry over sub-folder layout for my site that allows me to publish the same site to multiple URLs.</p>
 
@@ -306,9 +357,27 @@ git merge develop
 git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
 </code></pre>
 
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="last-thoughts">Last Thoughts</h2>
 
-<p>I don&rsquo;t know if I should be proud or depressed that over 10 years of original site content can be compiled into a static site in under a minute. Either way the entire process for deployment certainly is a fun little project to setup and extremely DevOps friendly. I highly recommend anyone looking for more devops acumen give it a shot.</p>
+<p>I don&rsquo;t know if I should be proud or depressed that over 10 years of original site content can be compiled into a static site in under a minute. Either way, the entire process for deployment of such a thing is certainly a fun little side project. Static site generators are <strong>extremely</strong> DevOps friendly as well. I highly recommend anyone looking for more devops acumen give it a shot for their own site. You will hone or even learn foundational devops knowledge in several areas including:</p>
+
+<ul>
+<li>Version Control (git)</li>
+<li>CI/CD</li>
+<li>Pipelines</li>
+<li>Cloud integrations</li>
+<li>DNS</li>
+<li>Webhooks/Triggers</li>
+</ul>
+
+<p>Extra points if you can adhere to some best practice rules in your deployment like:</p>
+
+<ul>
+<li>Emit a stand alone artifact from CI</li>
+<li>Use some form of git branch management</li>
+</ul>
+
+<p>That&rsquo;s about all I have for this post. Only one real post in this year but I promise I&rsquo;ve got more to come as I round back on all I&rsquo;ve learned in my deep diving into the world or kubernetes, devops, and infrastructure as code in the last few years.</p>
     
 </div>
 
@@ -350,26 +419,7 @@ git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to
     </div>
 
     
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "zacharyloeber-com" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
     
 
      
@@ -449,6 +499,8 @@ git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to
                 
                     <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
                 
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
                 
             </div>
             
