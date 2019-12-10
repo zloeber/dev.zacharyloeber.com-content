@@ -35,7 +35,7 @@
 
         
             
-                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/syntax.css">
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
             
         
     </head>
@@ -158,7 +158,7 @@
 <li>Pipeline Platform: Azure Devops</li>
 </ul>
 
-<p>The only cost in all of this is the custom domain name.</p>
+<p>The only cost in all of this is the custom domain name and some time.</p>
 
 <h2 id="the-process-tldr">The Process (TLDR)</h2>
 
@@ -195,17 +195,9 @@
 </ol>
 
 <p>This will set the stage for you to add content to your site in a development environment for review, then approve for release. The workflow for this will be a bit like the following sequence diagram when complete.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sequence" data-lang="sequence">Author -&gt; Site Content Repo: Update develop branch
-Azure DevOps --&gt; Site Content Repo: Trigger Build (dev site)
-Azure DevOps -&gt; Dev Repo: Deploy Dev Site
-Render.com --&gt; Dev Repo: Trigger Deployment
-Render.com -&gt; Dev Site: Publish Site
-Author -&gt; Dev Site: Review Site
-Author --&gt; Site Content Repo: Merge develop to master
-Azure DevOps --&gt; Site Content Repo: Trigger Build (prod)
-Azure DevOps -&gt; Prod Repo: Deploy Prod Site
-Github Pages --&gt; Prod Repo: Trigger Deployment
-Github Pages -&gt; Prod Site: Publish Site</code></pre></div>
+
+<p><img src="/images/sequence-diagram-hugo-flow.png" alt="" /></p>
+
 <p>To make any of this work we need a few pipelines in ADO. One to create our hugo site content as an artifact and another to shove the deployment content into our repositories. We will use Azure Devops multi-stage pipelines and templates to get this in place.</p>
 
 <h2 id="the-pipeline-code">The Pipeline Code</h2>
@@ -218,233 +210,246 @@ Github Pages -&gt; Prod Site: Publish Site</code></pre></div>
 
 <p>My current site azure-pipeline.yml code looks very similar to what I initially put down for my first draft. A full pipeline for my develop branch looks like the following:</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">name<span class="p">:</span><span class="w"> </span>$(BuildDefinitionName).$(DayOfYear)$(Rev<span class="p">:</span>.r)<span class="w">
-</span><span class="w"></span>trigger<span class="p">:</span><span class="w">
-</span><span class="w">  </span>batch<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span>branches<span class="p">:</span><span class="w">
-</span><span class="w">    </span>include<span class="p">:</span><span class="w">
-</span><span class="w">    </span>-<span class="w"> </span>master<span class="w">
-</span><span class="w">    </span>-<span class="w"> </span>develop<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Don&#39;t trigger on PRs</span><span class="w">
-</span><span class="w"></span>pr<span class="p">:</span><span class="w"> </span>none<span class="w">
-</span><span class="w">
-</span><span class="w"></span>resources<span class="p">:</span><span class="w">         
-</span><span class="w">  </span>repositories<span class="p">:</span><span class="w">
-</span><span class="w">  </span>-<span class="w"> </span>repository<span class="p">:</span><span class="w"> </span>pipelines<span class="w">
-</span><span class="w">    </span>type<span class="p">:</span><span class="w"> </span>github<span class="w">
-</span><span class="w">    </span>endpoint<span class="p">:</span><span class="w"> </span>github_services<span class="w">
-</span><span class="w">    </span>name<span class="p">:</span><span class="w"> </span>zloeber/azure-pipeline-library<span class="w">
-</span><span class="w">
-</span><span class="w"></span>stages<span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="c">## Build Hugo site (DEV)</span><span class="w">
-</span><span class="w"></span>-<span class="w"> </span>${{<span class="w"> </span>if<span class="w"> </span>eq(variables<span class="p">[</span><span class="s1">&#39;Build.SourceBranch&#39;</span><span class="p">],</span><span class="w"> </span><span class="s1">&#39;refs/heads/develop&#39;</span>)<span class="w"> </span>}}<span class="p">:</span><span class="w">
-</span><span class="w">  </span>-<span class="w"> </span>template<span class="p">:</span><span class="w"> </span>build/hugo-generate.yml@pipelines<span class="w">
-</span><span class="w">    </span>parameters<span class="p">:</span><span class="w">
-</span><span class="w">      </span>initialize<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">      </span>baseurl<span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://zacharyloeber-dev.onrender.com/&#39;</span><span class="w">
-</span><span class="w">      </span>testhtml<span class="p">:</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w">
-</span><span class="w">      </span>staticpath<span class="p">:</span><span class="w"> </span><span class="s1">&#39;./docs&#39;</span><span class="w">
-</span><span class="w">      </span>contentpath<span class="p">:</span><span class="w"> </span><span class="s1">&#39;./sites/zacharyloeber.com&#39;</span><span class="w">
-</span><span class="w">      </span>drafts<span class="p">:</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w">
-</span><span class="w">  </span>-<span class="w"> </span>template<span class="p">:</span><span class="w"> </span>deploy/git-folder.yml@pipelines<span class="w">
-</span><span class="w">    </span>parameters<span class="p">:</span><span class="w">
-</span><span class="w">      </span>repo<span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://github.com/zloeber/dev.zacharyloeber.com-content.git&#39;</span><span class="w">
-</span><span class="w">      </span>branch<span class="p">:</span><span class="w"> </span><span class="s1">&#39;master&#39;</span><span class="w">
-</span><span class="w">      </span>path<span class="p">:</span><span class="w"> </span><span class="s1">&#39;docs&#39;</span><span class="w">
-</span><span class="w">      </span>environment<span class="p">:</span><span class="w"> </span><span class="s1">&#39;dev&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c">## Build Hugo site (PROD)</span><span class="w">
-</span><span class="w"></span>-<span class="w"> </span>${{<span class="w"> </span>if<span class="w"> </span>eq(variables<span class="p">[</span><span class="s1">&#39;Build.SourceBranch&#39;</span><span class="p">],</span><span class="w"> </span><span class="s1">&#39;refs/heads/master&#39;</span>)<span class="w"> </span>}}<span class="p">:</span><span class="w">
-</span><span class="w">  </span>-<span class="w"> </span>template<span class="p">:</span><span class="w"> </span>build/hugo-generate.yml@pipelines<span class="w">
-</span><span class="w">    </span>parameters<span class="p">:</span><span class="w">
-</span><span class="w">      </span>initialize<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">      </span>site<span class="p">:</span><span class="w"> </span><span class="s1">&#39;zacharyloeber.com&#39;</span><span class="w">
-</span><span class="w">      </span>baseurl<span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://zacharyloeber.com/&#39;</span><span class="w">
-</span><span class="w">      </span>staticpath<span class="p">:</span><span class="w"> </span><span class="s1">&#39;docs&#39;</span><span class="w">
-</span><span class="w">      </span>contentpath<span class="p">:</span><span class="w"> </span><span class="s1">&#39;sites/zacharyloeber.com&#39;</span><span class="w">
-</span><span class="w">      </span>testhtml<span class="p">:</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="w">
-</span><span class="w">  </span>-<span class="w"> </span>template<span class="p">:</span><span class="w"> </span>deploy/git-folder.yml@pipelines<span class="w">
-</span><span class="w">    </span>parameters<span class="p">:</span><span class="w">
-</span><span class="w">      </span>repo<span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://github.com/zloeber/zacharyloeber.com-content.git&#39;</span><span class="w">
-</span><span class="w">      </span>branch<span class="p">:</span><span class="w"> </span><span class="s1">&#39;master&#39;</span><span class="w">
-</span><span class="w">      </span>path<span class="p">:</span><span class="w"> </span><span class="s1">&#39;docs&#39;</span><span class="w">
-</span><span class="w">      </span>environment<span class="p">:</span><span class="w"> </span><span class="s1">&#39;production&#39;</span></code></pre></div>
+<pre><code>name: $(BuildDefinitionName).$(DayOfYear)$(Rev:.r)
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+    - develop
+
+# Don't trigger on PRs
+pr: none
+
+resources:         
+  repositories:
+  - repository: pipelines
+    type: github
+    endpoint: github_services
+    name: zloeber/azure-pipeline-library
+
+stages:
+## Build Hugo site (DEV)
+- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/develop') }}:
+  - template: build/hugo-generate.yml@pipelines
+    parameters:
+      initialize: true
+      baseurl: 'https://zacharyloeber-dev.onrender.com/'
+      testhtml: 'true'
+      staticpath: './docs'
+      contentpath: './sites/zacharyloeber.com'
+      drafts: 'true'
+  - template: deploy/git-folder.yml@pipelines
+    parameters:
+      repo: 'https://github.com/zloeber/dev.zacharyloeber.com-content.git'
+      branch: 'master'
+      path: 'docs'
+      environment: 'dev'
+
+## Build Hugo site (PROD)
+- ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+  - template: build/hugo-generate.yml@pipelines
+    parameters:
+      initialize: true
+      site: 'zacharyloeber.com'
+      baseurl: 'https://zacharyloeber.com/'
+      staticpath: 'docs'
+      contentpath: 'sites/zacharyloeber.com'
+      testhtml: 'false'
+  - template: deploy/git-folder.yml@pipelines
+    parameters:
+      repo: 'https://github.com/zloeber/zacharyloeber.com-content.git'
+      branch: 'master'
+      path: 'docs'
+      environment: 'production'
+</code></pre>
 
 <p>I added some additional variables which could be cleaned up and simplified further of course. I also have a carry over sub-folder layout for my site that allows me to publish the same site to multiple URLs.</p>
 
 <blockquote>
-<p>You will notice that I have stages run only for specific branches. This is only one way to manage this process but it works well enough for me and can integrate well with a variety of git branching models.</p>
+<p>You will notice that I have stages run only for specific branches. This is only one way to manage this process and works well enough for me. It can be used to integrate well with a variety of git branching models.</p>
 </blockquote>
 
 <h3 id="pipeline-template-code">Pipeline Template Code</h3>
 
-<p>Using the deployment above we can infer that a build and a release template will be required. So I created them and put them in their own repo for future site usage (github repo)[<a href="https://github.com/zloeber/azure-pipeline-library">https://github.com/zloeber/azure-pipeline-library</a>].</p>
+<p>Using the deployment above we can infer that a build and a release template will be required. So I created them and put them in their own repo for future site usage <a href="https://github.com/zloeber/azure-pipeline-library">at this github repo</a>.</p>
 
 <p>I found it best to break down my templates based on build and deploy first, then go further into jobs or steps as I progress. Here is the hugo build pipeline:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">parameters:
-  initialize: <span class="nb">true</span>
-  version: <span class="s1">&#39;0.59.1&#39;</span>
-  disqusshortname: <span class="s1">&#39;&#39;</span>
-  binpath: <span class="s1">&#39;~/.local/bin&#39;</span> <span class="c1">## Binary path (default is usually ok)</span>
-  staticpath: <span class="s1">&#39;./static&#39;</span>  <span class="c1">## Hugo static output path (default is usually ok)</span>
-  contentpath: <span class="s1">&#39;./content&#39;</span> <span class="c1">## Site content path (default is usually ok)</span>
-  baseurl: <span class="s1">&#39;&#39;</span>
-  testhtml: <span class="nb">false</span>
-  artifact: <span class="s1">&#39;artifact&#39;</span>  <span class="c1">## Artifact name (if you are generating multiple sites in one pipeline you may need to change this)</span>
-  drafts: <span class="s1">&#39;false&#39;</span> <span class="c1">## to publish drafts set to &#39;true&#39;</span>
+
+<pre><code class="language-bash">parameters:
+  initialize: true
+  version: '0.59.1'
+  disqusshortname: ''
+  binpath: '~/.local/bin' ## Binary path (default is usually ok)
+  staticpath: './static'  ## Hugo static output path (default is usually ok)
+  contentpath: './content' ## Site content path (default is usually ok)
+  baseurl: ''
+  testhtml: false
+  artifact: 'artifact'  ## Artifact name (if you are generating multiple sites in one pipeline you may need to change this)
+  drafts: 'false' ## to publish drafts set to 'true'
 
 stages:
 - stage: Build_Hugo_Site
-  displayName: <span class="s1">&#39;Build Site: ${{ parameters.baseurl }}&#39;</span>
+  displayName: 'Build Site: ${{ parameters.baseurl }}'
   jobs:
   - job: hugo_generate
     pool:
       vmImage: ubuntu-latest
     steps:
     - checkout: self
-      clean: <span class="nb">true</span>
-      submodules: <span class="nb">true</span>
-      persistCredentials: <span class="nb">true</span>
-    - <span class="si">${</span><span class="p">{ if eq(parameters.initialize, </span><span class="s1">&#39;true&#39;</span><span class="p">) </span><span class="si">}</span><span class="o">}</span>:
+      clean: true
+      submodules: true
+      persistCredentials: true
+    - ${{ if eq(parameters.initialize, 'true') }}:
       - template: ../jobs/install-hugo.yml
         parameters:
-          version: <span class="si">${</span><span class="p">{ parameters.version </span><span class="si">}</span><span class="o">}</span>
-          binpath: <span class="s1">&#39;${{ parameters.binpath }}&#39;</span>
-    - bash: <span class="p">|</span>
-        mkdir -p <span class="si">${</span><span class="nv">STATICPATH</span><span class="si">}</span>
-        <span class="c1"># This is required for publishing to github pages and custom domains</span>
-        <span class="nb">echo</span> <span class="k">$(</span>basename <span class="si">${</span><span class="nv">BASEURL</span><span class="si">}</span><span class="k">)</span> &gt; ./<span class="si">${</span><span class="nv">STATICPATH</span><span class="si">}</span>/CNAME
-        <span class="k">if</span> <span class="o">[</span> <span class="nv">$DRAFTS</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-          <span class="nb">echo</span> <span class="s2">&#34;Building Drafts&#34;</span>
-          <span class="nv">BUILDDRAFTS</span><span class="o">=</span>--buildDrafts
-        <span class="k">else</span>
-          <span class="nv">BUILDDRAFTS</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
-        <span class="k">fi</span>
-        <span class="nb">echo</span> <span class="s2">&#34;BASEURL: </span><span class="si">${</span><span class="nv">BASEURL</span><span class="si">}</span><span class="s2">&#34;</span>
-        <span class="nb">echo</span> <span class="s2">&#34;LAYOUTDIR: </span><span class="si">${</span><span class="nv">LAYOUTDIR</span><span class="si">}</span><span class="s2">&#34;</span>
-        <span class="nb">echo</span> <span class="s2">&#34;CONTENTPATH: </span><span class="si">${</span><span class="nv">CONTENTPATH</span><span class="si">}</span><span class="s2">&#34;</span>
-        <span class="nb">echo</span> <span class="s2">&#34;STATICPATH: </span><span class="si">${</span><span class="nv">STATICPATH</span><span class="si">}</span><span class="s2">&#34;</span>
-        <span class="nb">echo</span> <span class="s2">&#34;BUILDDRAFTS: </span><span class="si">${</span><span class="nv">BUILDDRAFTS</span><span class="si">}</span><span class="s2">&#34;</span>
-        <span class="si">${</span><span class="nv">BINPATH</span><span class="si">}</span>/hugo <span class="se">\
-</span><span class="se"></span>          --themesDir themes <span class="se">\
-</span><span class="se"></span>          --layoutDir <span class="si">${</span><span class="nv">LAYOUTDIR</span><span class="si">}</span> <span class="se">\
-</span><span class="se"></span>          --configDir ./ <span class="se">\
-</span><span class="se"></span>          -e production <span class="se">\
-</span><span class="se"></span>          --contentDir <span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONTENTPATH</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span><span class="se"></span>          --config config.toml <span class="se">\
-</span><span class="se"></span>          --baseURL <span class="si">${</span><span class="nv">BASEURL</span><span class="si">}</span> <span class="se">\
-</span><span class="se"></span>          --destination <span class="s2">&#34;</span><span class="si">${</span><span class="nv">STATICPATH</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span><span class="se"></span>          --gc <span class="si">${</span><span class="nv">BUILDDRAFTS</span><span class="si">}</span>
-      displayName: <span class="s1">&#39;Generate Site (${{ parameters.baseurl }})&#39;</span>
+          version: ${{ parameters.version }}
+          binpath: '${{ parameters.binpath }}'
+    - bash: |
+        mkdir -p ${STATICPATH}
+        # This is required for publishing to github pages and custom domains
+        echo $(basename ${BASEURL}) &gt; ./${STATICPATH}/CNAME
+        if [ $DRAFTS = 'true' ]; then
+          echo &quot;Building Drafts&quot;
+          BUILDDRAFTS=--buildDrafts
+        else
+          BUILDDRAFTS=&quot;&quot;
+        fi
+        echo &quot;BASEURL: ${BASEURL}&quot;
+        echo &quot;LAYOUTDIR: ${LAYOUTDIR}&quot;
+        echo &quot;CONTENTPATH: ${CONTENTPATH}&quot;
+        echo &quot;STATICPATH: ${STATICPATH}&quot;
+        echo &quot;BUILDDRAFTS: ${BUILDDRAFTS}&quot;
+        ${BINPATH}/hugo \
+          --themesDir themes \
+          --layoutDir ${LAYOUTDIR} \
+          --configDir ./ \
+          -e production \
+          --contentDir &quot;${CONTENTPATH}&quot; \
+          --config config.toml \
+          --baseURL ${BASEURL} \
+          --destination &quot;${STATICPATH}&quot; \
+          --gc ${BUILDDRAFTS}
+      displayName: 'Generate Site (${{ parameters.baseurl }})'
       env:
-        STATICPATH: <span class="si">${</span><span class="p">{ parameters.staticpath </span><span class="si">}</span><span class="o">}</span>
-        CONTENTPATH: <span class="s1">&#39;${{ parameters.contentpath }}&#39;</span>
-        BINPATH: <span class="s1">&#39;${{ parameters.binpath }}&#39;</span>
-        BASEURL: <span class="s1">&#39;${{ parameters.baseurl }}&#39;</span>
-        LAYOUTDIR: <span class="s1">&#39;themes/${{ parameters.theme }}/layouts&#39;</span>
-        HUGO_DISQUSSHORTNAME: <span class="s1">&#39;${{ parameters.disqusshortname }}&#39;</span>
-        DRAFTS: <span class="si">${</span><span class="p">{ parameters.drafts </span><span class="si">}</span><span class="o">}</span>
+        STATICPATH: ${{ parameters.staticpath }}
+        CONTENTPATH: '${{ parameters.contentpath }}'
+        BINPATH: '${{ parameters.binpath }}'
+        BASEURL: '${{ parameters.baseurl }}'
+        LAYOUTDIR: 'themes/${{ parameters.theme }}/layouts'
+        HUGO_DISQUSSHORTNAME: '${{ parameters.disqusshortname }}'
+        DRAFTS: ${{ parameters.drafts }}
     - task: ArchiveFiles@2
-      displayName: <span class="s1">&#39;Archive Artifacts&#39;</span>
+      displayName: 'Archive Artifacts'
       inputs:
-        rootFolderOrFile: ./<span class="si">${</span><span class="p">{ parameters.staticpath </span><span class="si">}</span><span class="o">}</span>
-        includeRootFolder: <span class="nb">false</span>
+        rootFolderOrFile: ./${{ parameters.staticpath }}
+        includeRootFolder: false
         archiveType: tar
         tarCompression: gz
-        archiveFile: <span class="k">$(</span>Pipeline.Workspace<span class="k">)</span>/<span class="si">${</span><span class="p">{ parameters.artifact </span><span class="si">}</span><span class="o">}</span>.tar.gz
-        replaceExistingArchive: <span class="nb">true</span>
+        archiveFile: $(Pipeline.Workspace)/${{ parameters.artifact }}.tar.gz
+        replaceExistingArchive: true
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: <span class="k">$(</span>Pipeline.Workspace<span class="k">)</span>/<span class="si">${</span><span class="p">{ parameters.artifact </span><span class="si">}</span><span class="o">}</span>.tar.gz
-        artifactName: <span class="si">${</span><span class="p">{ parameters.artifact </span><span class="si">}</span><span class="o">}</span>
-    - <span class="si">${</span><span class="p">{ if eq(parameters.testhtml, </span><span class="s1">&#39;true&#39;</span><span class="p">) </span><span class="si">}</span><span class="o">}</span>:
+        targetPath: $(Pipeline.Workspace)/${{ parameters.artifact }}.tar.gz
+        artifactName: ${{ parameters.artifact }}
+    - ${{ if eq(parameters.testhtml, 'true') }}:
       - template: ../jobs/test-html.yml
         parameters:
-          initialize: <span class="si">${</span><span class="p">{ parameters.initialize </span><span class="si">}</span><span class="o">}</span>
-          binpath: <span class="s1">&#39;${{ parameters.binpath }}&#39;</span>
-          path: <span class="s1">&#39;${{ parameters.staticpath }}&#39;</span></code></pre></div>
+          initialize: ${{ parameters.initialize }}
+          binpath: '${{ parameters.binpath }}'
+          path: '${{ parameters.staticpath }}'
+</code></pre>
+
 <p>This builds the site according to your site config.toml file which should include most of your settings. I also allow for different content and output paths.</p>
 
 <p>And the deployment stage takes the packaged artifact (tar.gz file) and extracts it into a specificed git repo folder of your choosing. This assumes the repo is in github as well and that your created service endpoint for it has access. The release pipeline WILL clear out and overwrite anything in that folder then force pull the changes.</p>
 
 <p>In our case, we shove the output of hugo into a repo&rsquo;s docs folder to make it easier to publish via github pages later (a manual config setting on the repo btw). The release pipeline is pretty simple and also defines an environment which also allows you to setup some gating around final releases if you so desire (bleeding edge ADO manual setting currently).</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## Deploy an artifact bundle (tar.gz) from an azure pipeline to another git repo using inherited credentials.</span>
-<span class="c1">## Author: Zachary Loeber</span>
+
+<pre><code class="language-bash">## Deploy an artifact bundle (tar.gz) from an azure pipeline to another git repo using inherited credentials.
+## Author: Zachary Loeber
 parameters:
-  repo: <span class="s1">&#39;&#39;</span>
-  branch: <span class="s1">&#39;master&#39;</span>
-  path: <span class="s1">&#39;docs&#39;</span>
-  environment: <span class="s1">&#39;&#39;</span>
-  pipelineartifact: <span class="s1">&#39;artifact&#39;</span>
-  artifact: <span class="s1">&#39;artifact.tar.gz&#39;</span>
+  repo: ''
+  branch: 'master'
+  path: 'docs'
+  environment: ''
+  pipelineartifact: 'artifact'
+  artifact: 'artifact.tar.gz'
 
 stages:
 - stage: Deploy_To_Repo
-  displayName: <span class="s1">&#39;Deploy: ${{ parameters.artifact }}&#39;</span>
+  displayName: 'Deploy: ${{ parameters.artifact }}'
   jobs:
   - deployment: deploy_repo_content
-    condition: succeeded<span class="o">()</span>
+    condition: succeeded()
     pool:
       vmImage: ubuntu-latest
-    environment: <span class="si">${</span><span class="p">{ parameters.environment </span><span class="si">}</span><span class="o">}</span>
+    environment: ${{ parameters.environment }}
     strategy:
       runOnce:
         deploy:
           steps:
           - checkout: self
-            clean: <span class="nb">true</span>
-            submodules: <span class="nb">true</span>
-            persistCredentials: <span class="nb">true</span>
+            clean: true
+            submodules: true
+            persistCredentials: true
           - task: DownloadPipelineArtifact@2
             inputs:
-              artifact: <span class="s1">&#39;${{ parameters.pipelineartifact }}&#39;</span>
-              targetPath: <span class="k">$(</span>Pipeline.Workspace<span class="k">)</span>/_artifact
-          - bash: <span class="p">|</span>
-              <span class="nb">echo</span> <span class="s2">&#34;Pulling in repo&#34;</span>
-              <span class="nv">gitorigin</span><span class="o">=</span><span class="sb">`</span>git config remote.origin.url<span class="sb">`</span>
-              <span class="nv">gitextraheader</span><span class="o">=</span><span class="sb">`</span>git config <span class="s2">&#34;http.</span><span class="si">${</span><span class="nv">gitorigin</span><span class="si">}</span><span class="s2">.extraheader&#34;</span><span class="sb">`</span>
+              artifact: '${{ parameters.pipelineartifact }}'
+              targetPath: $(Pipeline.Workspace)/_artifact
+          - bash: |
+              echo &quot;Pulling in repo&quot;
+              gitorigin=`git config remote.origin.url`
+              gitextraheader=`git config &quot;http.${gitorigin}.extraheader&quot;`
               rm -rf _deploy
-              <span class="nb">echo</span> <span class="s2">&#34;Cloning </span><span class="si">${</span><span class="nv">REPO</span><span class="si">}</span><span class="s2">&#34;</span>
-              git clone -c http.extraheader<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">gitextraheader</span><span class="si">}</span><span class="s2">&#34;</span> --depth <span class="m">1</span> --branch <span class="si">${</span><span class="nv">BRANCH</span><span class="si">}</span> <span class="si">${</span><span class="nv">REPO</span><span class="si">}</span> _deploy
-              <span class="nb">echo</span> <span class="s2">&#34;Removing </span><span class="si">${</span><span class="nv">REPOPATH</span><span class="si">}</span><span class="s2"> contents and overwriting with artifact contents&#34;</span>
-              rm -rf ./_deploy/<span class="si">${</span><span class="nv">REPOPATH</span><span class="si">}</span>/*
-              mkdir -p ./_deploy/<span class="si">${</span><span class="nv">REPOPATH</span><span class="si">}</span>
-              tar -xzvf <span class="si">${</span><span class="nv">ARTIFACTPATH</span><span class="si">}</span>/<span class="si">${</span><span class="nv">ARTIFACT</span><span class="si">}</span> --directory ./_deploy/<span class="si">${</span><span class="nv">REPOPATH</span><span class="si">}</span>
-              <span class="nb">cd</span> ./_deploy
-              git config user.email <span class="s2">&#34;cicd@azurepipelines&#34;</span>
-              git config user.name <span class="s2">&#34;cicd&#34;</span>
+              echo &quot;Cloning ${REPO}&quot;
+              git clone -c http.extraheader=&quot;${gitextraheader}&quot; --depth 1 --branch ${BRANCH} ${REPO} _deploy
+              echo &quot;Removing ${REPOPATH} contents and overwriting with artifact contents&quot;
+              rm -rf ./_deploy/${REPOPATH}/*
+              mkdir -p ./_deploy/${REPOPATH}
+              tar -xzvf ${ARTIFACTPATH}/${ARTIFACT} --directory ./_deploy/${REPOPATH}
+              cd ./_deploy
+              git config user.email &quot;cicd@azurepipelines&quot;
+              git config user.name &quot;cicd&quot;
               git add --all .
-              git commit --no-verify -m <span class="s1">&#39;cicd: Automated Deployment&#39;</span>
-              git -c http.extraheader<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">gitextraheader</span><span class="si">}</span><span class="s2">&#34;</span> push
-            displayName: <span class="s1">&#39;Git Content Deployment&#39;</span>
+              git commit --no-verify -m 'cicd: Automated Deployment'
+              git -c http.extraheader=&quot;${gitextraheader}&quot; push
+            displayName: 'Git Content Deployment'
             env:
-              REPO: <span class="si">${</span><span class="p">{ parameters.repo </span><span class="si">}</span><span class="o">}</span>
-              BRANCH: <span class="si">${</span><span class="p">{ parameters.branch </span><span class="si">}</span><span class="o">}</span>
-              REPOPATH: <span class="si">${</span><span class="p">{ parameters.path </span><span class="si">}</span><span class="o">}</span>
-              ARTIFACTPATH: <span class="k">$(</span>Pipeline.Workspace<span class="k">)</span>/_artifact
-              ARTIFACT: <span class="si">${</span><span class="p">{ parameters.artifact </span><span class="si">}</span><span class="o">}</span></code></pre></div>
-<p>The hardest part of all of this was figuring out how to pass the service connection authentication through to the deployment stage. We force another checkout of the current repo to ensure that the proper authentication headers are in place (which we then strip out for our own use). Otherwise you can also use a PAT and maunually add in a username/password via environment variables in the pipeline I suppose. I opted not to do that to ease manual efforts a little.</p>
+              REPO: ${{ parameters.repo }}
+              BRANCH: ${{ parameters.branch }}
+              REPOPATH: ${{ parameters.path }}
+              ARTIFACTPATH: $(Pipeline.Workspace)/_artifact
+              ARTIFACT: ${{ parameters.artifact }}
+</code></pre>
 
-<p>Oh, I also broke down a few other steps for repeat use. This includes htmltest and hugo binary installs well as the htmltest run itself. This was largely to make things a bit more clean and composable. But honestly, it was more to have additional lego pieces in my arsenal for future pipelines :)</p>
+<p>The hardest part of all of this was figuring out how to pass the service connection authentication through to the deployment stage. We force another checkout of the current repo to ensure that the proper authentication headers are in place (which we then strip out for our own use). Otherwise you can also use a PAT and maunually add in a username/password via environment variables in the pipeline. I opted not to do that to ease manual efforts a little.</p>
+
+<p>Oh, I also broke down a few other steps for repeat use. This includes htmltest and hugo binary installs well as the htmltest run itself. This was largely to make things a bit more clean and composable. But honestly, it was more to have additional lego pieces in my arsenal for future pipelines :) You can find them in the pipeline repository referenced earlier.</p>
 
 <h2 id="publish-a-draft-post">Publish A Draft Post</h2>
 
 <p>To create and publish a draft post just ensure you are on the develop branch, create a post, then push it up to develop.  Let the pipeline do its thing and review your dev site.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git checkout develop
+
+<pre><code class="language-bash">git checkout develop
 make new/post some_awesome_content.md
-<span class="c1">## Creates &lt;site content&gt;/posts/some_awesome_content.md for you to work on</span>
-git add --all . <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;post: some awesome content added&#39;</span>
-git push origin develop</code></pre></div>
+## Creates &lt;site content&gt;/posts/some_awesome_content.md for you to work on
+git add --all . &amp;&amp; git commit -m 'post: some awesome content added'
+git push origin develop
+</code></pre>
+
 <h2 id="promote-to-production">Promote to Production</h2>
 
 <p>To promote your draft to production simply update the post&rsquo;s &lsquo;draft&rsquo; front matter to false (or delete it). Then publish to dev, and merge to prod.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## Review your dev site, looks good? Ok, then update your new post to non-draft status by editing the front matter to remove the draft config.</span>
-git add --all . <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;post: some awesome content approved to publish&#39;</span>
+
+<pre><code class="language-bash">## Review your dev site, looks good? Ok, then update your new post to non-draft status by editing the front matter to remove the draft config.
+git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
 git push origin develop
 git checkout master
 git merge develop
-git add --all . <span class="o">&amp;&amp;</span> git commit -m <span class="s1">&#39;post: some awesome content approved to publish&#39;</span></code></pre></div>
+git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
+</code></pre>
+
 <h2 id="last-thoughts">Last Thoughts</h2>
 
 <p>I don&rsquo;t know if I should be proud or depressed that over 10 years of original site content can be compiled into a static site in under a minute. Either way, the entire process for deployment of such a thing is certainly a fun little side project. Static site generators are <strong>extremely</strong> DevOps friendly as well. I highly recommend anyone looking for more devops acumen give it a shot for their own site. You will hone or even learn foundational devops knowledge in several areas including:</p>
@@ -643,6 +648,8 @@ git add --all . <span class="o">&amp;&amp;</span> git commit -m <span class="s1"
         </script>
 
         
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
             
         
 

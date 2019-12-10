@@ -1,0 +1,14 @@
+{{< mermaid align="center" >}}
+sequenceDiagram
+  Author -> Site Content Repo: Update develop branch
+  Azure DevOps --> Site Content Repo: Trigger Build (dev site)
+  Azure DevOps -> Dev Repo: Deploy Dev Site
+  Render.com --> Dev Repo: Trigger Deployment
+  Render.com -> Dev Site: Publish Site
+  Author -> Dev Site: Review Site
+  Author --> Site Content Repo: Merge develop to master
+  Azure DevOps --> Site Content Repo: Trigger Build (prod)
+  Azure DevOps -> Prod Repo: Deploy Prod Site
+  Github Pages --> Prod Repo: Trigger Deployment
+  Github Pages -> Prod Site: Publish Site
+{{< /mermaid >}}

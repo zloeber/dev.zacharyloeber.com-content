@@ -34,7 +34,7 @@
 
         
             
-                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/syntax.css">
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
             
         
     </head>
@@ -141,9 +141,21 @@
     
         <p>Gather the remote shadow volume information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns shadow volume information, shadow copies, their providers, and settings. You can view verbose information on each runspace thread in realtime with the -Verbose option.</p>
 
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2013/09/14/get-remote-shadow-volume-information-with-powershell/" class="more">Continue reading</a>
-        
+<h3 id="version-history"><strong>Version History</strong></h3>
+
+<p><strong>1.0.0 &#8211; 09/14/2013</strong></p>
+
+<ul>
+<li>Initial release</li>
+</ul>
+
+<h3 id="notes">Notes</h3>
+
+<p>I’m not entirely certain why yet, but it is possible to get shadow volume usage returned which is larger than the entire physical volume it is associated with (his will most likely be seen on backup servers with their own VSS providers).</p>
+
+<h3 id="download"><strong>Download</strong></h3>
+
+<p><a href="http://gallery.technet.microsoft.com/Get-Remote-Shadow-Volume-e5a72619">Download the script at the technet gallery.</a></p>
     
 </div>
 
@@ -493,6 +505,8 @@
         </script>
 
         
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
             
         
 
