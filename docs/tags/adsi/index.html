@@ -141,38 +141,9 @@
     
         <p>Using a bit of Powershell and ADSI it is pretty easy to connect to another forest. Finding out how to do so is not very clear though. Here is what I came up with to accomplish this task.</p>
 
-<h3 id="introduction">Introduction</h3>
-
-<p>A fellow scripter, MVP, and Powershell hero, Francois-Xavier posted <a href="http://www.lazywinadmin.com/2013/10/powershell-using-adsi-with-alternate.html">on his blog an article</a> on utilizing alternate credentials against AD. In this scenario he is connecting to AD from a computer which is joined to the same domain/forest he is attempting to use the alternate credential against. This is an ideal example for situations where you need to manage your domain with a separate administrative account than your daily use account (this is best practice actuallly). Since the machine is already joined to the domain, getting the starting bits of information you need to further connect with alternate credentials is fairly trivial. Francois-Xavier gave the following example:</p>
-
-<pre class="lang:powershell decode:true"># Get the current domain
-$DomainDN = $(([adsisearcher]"").Searchroot.path)</pre>
-
-<p>This does not work for connecting to a remote forest though. If you want to connect to a remote forest you have to add some additional components beyond the alternate credentials. Firstly, you will need to connect to a domain controller in order to extrapolate the rest of the connection information. To do this you can supply the IP address or name of a domain controller in the forest you which to connect to along with your remote forest credentials. Here is one way this might be done.</p>
-
-<pre class="lang:powershell decode:true">$ServerName = ''
-$UserName = 'domain\user'
-$Credential = Get-Credential -Credential $UserName
-
-$DomainEntry = New-Object -TypeName System.DirectoryServices.DirectoryEntry "LDAP://$ServerName" ,$($Credential.UserName),$($Credential.GetNetworkCredential().password)
-$DomainName = $DomainEntry.name
-
-# Example search against remote domain (finding all group objects)
-$Searcher = New-Object -TypeName System.DirectoryServices.DirectorySearcher
-$Searcher.Filter = "(objectCategory=Group)"
-$Searcher.SizeLimit = '1000'
-$Searcher.SearchRoot = $DomainEntry
-$Searcher.FindAll()
-
-# Create domain level connection
-$DomainContext = New-Object System.DirectoryServices.ActiveDirectory.DirectoryContext("Domain", $DomainName)
-$domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetDomain($DomainContext)
-
-# Create forest level connection
-$ForestContext = New-Object System.DirectoryServices.ActiveDirectory.DirectoryContext("Forest", $domain.forest)
-$forest = [System.DirectoryServices.ActiveDirectory.Forest]::GetForest($ForestContext)</pre>
-
-<p>There is not much to the code really. I suppose the password extraction from the credential object is nifty but the rest is just standard powershell.</p>
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/" class="more">Continue reading</a>
+        
     
 </div>
 
@@ -261,14 +232,14 @@ $forest = [System.DirectoryServices.ActiveDirectory.Forest]::GetForest($ForestCo
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('http://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/04\/11\/powershell-tip-connecting-with-adsi-to-another-forest\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/04\/11\/powershell-tip-connecting-with-adsi-to-another-forest\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('http://twitter.com/home?status=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/04\/11\/powershell-tip-connecting-with-adsi-to-another-forest\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/04\/11\/powershell-tip-connecting-with-adsi-to-another-forest\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
