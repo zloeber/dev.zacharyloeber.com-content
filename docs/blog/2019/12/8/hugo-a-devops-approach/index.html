@@ -7,12 +7,12 @@
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
         <meta name="generator" content="Hugo 0.59.1" />
-        <title> Hugo - A Devops Approach | Zachary Loeber</title>
-        <meta name="description" content="Hugo - A Devops Approach - Zachary Loeber&#39;s Personal Site">
-        <meta itemprop="name" content="Hugo - A Devops Approach">
-        <meta itemprop="description" content="Hugo - A Devops Approach - Zachary Loeber&#39;s Personal Site">
-        <meta property="og:title" content="Hugo - A Devops Approach">
-        <meta property="og:description" content="Hugo - A Devops Approach - Zachary Loeber&#39;s Personal Site">
+        <title> Hugo - A DevOps Approach | Zachary Loeber</title>
+        <meta name="description" content="Hugo - A DevOps Approach - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Hugo - A DevOps Approach">
+        <meta itemprop="description" content="Hugo - A DevOps Approach - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Hugo - A DevOps Approach">
+        <meta property="og:description" content="Hugo - A DevOps Approach - Zachary Loeber&#39;s Personal Site">
         <meta property="og:image" content="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?size=200">
         <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/">
         <meta property="og:site_name" content="Zachary Loeber">
@@ -107,7 +107,7 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/">Hugo - A Devops Approach</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/">Hugo - A DevOps Approach</a></h3>
     <div class="meta">
         
             
@@ -116,19 +116,19 @@
         
 
         
-            <span class="readingTime">7 min read</span>
+            <span class="readingTime">10 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/blog">blog</a>
+                    <a href="/categories/azure">Azure</a>
                 
-                    <a href="/categories/azure">azure</a>
+                    <a href="/categories/devops">DevOps</a>
                 
-                    <a href="/categories/devops">devops</a>
+                    <a href="/categories/pipeline">Pipeline</a>
                 
-                    <a href="/categories/pipeline">pipeline</a>
+                    <a href="/categories/hugo">Hugo</a>
                 
             </span>
         
@@ -200,12 +200,20 @@
 
 <p>To make any of this work we need a few pipelines in ADO. One to create our hugo site content as an artifact and another to shove the deployment content into our repositories. We will use Azure Devops multi-stage pipelines and templates to get this in place.</p>
 
-<h2 id="the-pipeline-code">The Pipeline Code</h2>
+<h2 id="the-hugo-site">The Hugo Site</h2>
 
-<p>I&rsquo;ve found that the best way to start working on a pipeline is to declaratively layout the required manifest in what you would like the finished state to look like first. Once you have this, adding the template components is pretty easy.</p>
+<p>First setup your hugo website. I&rsquo;m not going to rehash what is already well documented at the Hugo site <a href="https://gohugo.io/getting-started/quick-start/">LINK</a>. You will basically get the binary, run a hugo new command, initialize it as a git repo, and then add a theme as a git submodule. If you are desperate for a site to start with I suppose you could clone my slide deck site <a href="https://github.com/zloeber/deck.loeber.live">LINK</a>. It includes a nice makefile, render.yaml, and azure-pipeline.yml you can modify to suit your needs. But you really should spend a few cycles to just make your own site so you can get familiar with the site layout and some of the methodology behind how Hugo works.</p>
 
 <blockquote>
-<p>NOTE: If you start with the imperative code first, which I have done before, you may as well just throw it all into a Makefile and then pluck out the parts you need for your pipeline pieces later. But I promise you will be doing more work this way than you might otherwise need to do. If you do your devops work with an end state in mind everything else will fall into place, I promise.</p>
+<p>On Git Submodules: I personally avoid git submodules. Submodules tend to obfuscate a git repo&rsquo;s scope and complexity. Few developers I&rsquo;ve worked with know to check for them or how to update them. They are also far more difficult to remove than I believe they should be. But in this case it DOES make working with upstream themes much easier.</p>
+</blockquote>
+
+<h2 id="the-pipeline">The Pipeline</h2>
+
+<p>I&rsquo;ve found that the best way to start working on a new pipeline is to declaratively layout the required manifest. Even if it is pseudocode, throw together some YAML declaring what you would like the finished state to look like. Once you have this, adding the template components is pretty easy.</p>
+
+<blockquote>
+<p>On Authoring Pipelines: If you start with the imperative code first (which I have done before), you may as well just throw it all into a Makefile and then pluck out the parts you need for your pipeline pieces later. But I promise you will be doing more work this way than you might otherwise need to do. If you do your devops work with an end state in mind in a declarative manifest, everything else will fall into place, I promise.</p>
 </blockquote>
 
 <p>My current site azure-pipeline.yml code looks very similar to what I initially put down for my first draft.</p>
@@ -264,17 +272,13 @@ stages:
       environment: 'production'
 </code></pre>
 
-<p>I added some additional variables which could be cleaned up and simplified further. I also have a carry over sub-folder layout for my site that allows me to publish the same site to multiple URLs.</p>
+<p>You will notice that I have stages run only for specific branches and that each branch deployment code points to a different github repository. This is one way to manage this process and works well enough for me. It can be used to integrate well with a variety of git branching models but you lose a bit of visibility when entire stages are skipped over within the pipeline GUI.</p>
 
-<blockquote>
-<p>You will notice that I have stages run only for specific branches. This is only one way to manage this process and works well enough for me. It can be used to integrate well with a variety of git branching models.</p>
-</blockquote>
+<h3 id="the-code">The Code</h3>
 
-<h3 id="pipeline-template-code">Pipeline Template Code</h3>
+<p>Using the deployment above we can infer that a build and a release template will be required. So I created them and put them in their own repo for future site usage [<a href="https://github.com/zloeber/azure-pipeline-library">LINK</a>].</p>
 
-<p>Using the deployment above we can infer that a build and a release template will be required. So I created them and put them in their own repo for future site usage <a href="https://github.com/zloeber/azure-pipeline-library">at this github repo</a>.</p>
-
-<p>I found it best to break down my templates based on build and deploy first, then go further into jobs or steps as I progress. <a href="https://github.com/zloeber/azure-pipeline-library/blob/master/build/hugo-generate.yml">Here</a> is the hugo build pipeline.</p>
+<p>I found it best to break down my templates based on build and deploy first, then go further into jobs or steps as I progress. [<a href="https://github.com/zloeber/azure-pipeline-library/blob/master/build/hugo-generate.yml">Here</a>] is the hugo build pipeline.</p>
 
 <p>This builds the site according to your site config.toml file which should include most of your settings. I also allow for different content and output paths.</p>
 
@@ -286,13 +290,21 @@ stages:
 
 <p>Oh, I also broke down a few other steps for repeat use. This includes htmltest and hugo binary installs well as the htmltest run itself. This was largely to make things a bit more clean and composable. But honestly, it was more to have additional lego pieces in my arsenal for future pipelines :) You can find them in the pipeline repository referenced earlier.</p>
 
-<h2 id="publish-a-draft-post">Publish A Draft Post</h2>
+<h2 id="gluing-it-together">Gluing It Together</h2>
+
+<p>In Azure Devops, select your profile and go to preview features to enable the multi-stage pipelines view as that is what we will be using. We need to create a service connection in Azure Devops with access to the github repositories as well. I like to call this &lsquo;github_services&rsquo; . This will be used for all aspects of the pipeline deployment so ensure it has access to all the repos involved (or just give it full access if you do not care so much). There are no secrets or environment variables added to the deployment other than this connector.</p>
+
+<p>We will have to setup your domain forwarding for custom domains to render.com or github based on how you choose to host your site. I use both for my blog because I&rsquo;m a dork. For my slideshow hugo site I just use render.com (but use the same pipeline code across both)</p>
+
+<p>When your site structure is ready you are ready to publish some content.</p>
+
+<h2 id="publish-the-test-site">Publish The Test Site</h2>
 
 <p>To create and publish a draft post just ensure you are on the develop branch, create a post, then push it up to develop.  Let the pipeline do its thing and review your dev site.</p>
 
 <pre><code class="language-bash">git checkout develop
 make new/post some_awesome_content.md
-## Creates &lt;site content&gt;/posts/some_awesome_content.md for you to work on
+hugo new content/posts/new_blog_post.md
 git add --all . &amp;&amp; git commit -m 'post: some awesome content added'
 git push origin develop
 </code></pre>
@@ -308,9 +320,15 @@ git merge develop
 git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
 </code></pre>
 
-<h2 id="last-thoughts">Last Thoughts</h2>
+<p>This will publish to ./docs of your deployment repo.</p>
 
-<p>I don&rsquo;t know if I should be proud or depressed that over 10 years of original site content can be compiled into a static site in under a minute. Either way, the entire process for deployment of such a thing is certainly a fun little side project. Static site generators are <strong>extremely</strong> DevOps friendly as well. I highly recommend anyone looking for more devops acumen give it a shot for their own site. You will hone or even learn foundational devops knowledge in several areas including:</p>
+<blockquote>
+<p>On Static Site Hosting: For my blog I use github pages along with cloudflare so I can get some nice stats around visitors and, simply put, I&rsquo;ve come to respect cloudflare from personally working with them in the past. If you use Github Pages, you will have to update the deployment repo configuration settings to include the ./docs deployment path and setup the pages hosting. My pipeline automatically creates the CNAME entry in your release artifact that is needed for this to work properly with alternate domain names as well.</p>
+</blockquote>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>The entire process for pipelining a Hugo static site is certainly a fun little side project. Static site generators are <strong>extremely</strong> DevOps friendly. I highly recommend anyone looking for more devops acumen give it a shot for their own site. You will hone or even learn foundational devops knowledge in several areas including:</p>
 
 <ul>
 <li>Version Control (git)</li>
@@ -321,6 +339,8 @@ git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to
 <li>DNS</li>
 <li>Webhooks/Triggers</li>
 </ul>
+
+<p>I don&rsquo;t know if I should be proud or depressed that over 10 years of original site content can be compiled into a static site in under a minute. An entire pipeline deployment is not quite necessary for a simple static site for a personal blog. Render.com will build and host it for you in a jiffy without much of this packaging and pipelining of code (there is even render.yml declarative manifest files you can drop in your repo to automate that process as well). But the moment you are not the sole contributor to a project things become easier to manage with pipelines that clearly divide CI and CD with immutable artifacts inbetween.</p>
 
 <p>And that&rsquo;s about all I have for this post. Only one real post in this year but I promise I&rsquo;ve got more to come as I round back on all I&rsquo;ve learned in my deep diving into the world or kubernetes, devops, and infrastructure as code in the last few years.</p>
     
@@ -343,13 +363,9 @@ git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to
                 
                     <a href="/tags/pipeline">pipeline</a>
                 
-                    <a href="/tags/automation">automation</a>
-                
-                    <a href="/tags/azure-pipelines.yml">azure-pipelines.yml</a>
-                
                     <a href="/tags/hugo">hugo</a>
                 
-                    <a href="/tags/static-site-generator">static site generator</a>
+                    <a href="/tags/yaml">yaml</a>
                 
             </div>
         </div>
@@ -381,7 +397,7 @@ git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/">Hugo - A Devops Approach</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/">Hugo - A DevOps Approach</a>
                     </li>
                 
                     <li>

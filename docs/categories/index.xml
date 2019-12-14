@@ -20,15 +20,6 @@
     </item>
     
     <item>
-      <title>blog</title>
-      <link>https://zacharyloeber-dev.onrender.com/categories/blog/</link>
-      <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/categories/blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>DevOps</title>
       <link>https://zacharyloeber-dev.onrender.com/categories/devops/</link>
       <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
@@ -38,7 +29,16 @@
     </item>
     
     <item>
-      <title>pipeline</title>
+      <title>Hugo</title>
+      <link>https://zacharyloeber-dev.onrender.com/categories/hugo/</link>
+      <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pipeline</title>
       <link>https://zacharyloeber-dev.onrender.com/categories/pipeline/</link>
       <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
       
