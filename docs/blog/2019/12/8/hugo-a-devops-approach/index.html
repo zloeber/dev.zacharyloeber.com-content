@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">10 min read</span>
+            <span class="readingTime">7 min read</span>
         
 
         
@@ -208,7 +208,7 @@
 <p>NOTE: If you start with the imperative code first, which I have done before, you may as well just throw it all into a Makefile and then pluck out the parts you need for your pipeline pieces later. But I promise you will be doing more work this way than you might otherwise need to do. If you do your devops work with an end state in mind everything else will fall into place, I promise.</p>
 </blockquote>
 
-<p>My current site azure-pipeline.yml code looks very similar to what I initially put down for my first draft. A full pipeline for my develop branch looks like the following:</p>
+<p>My current site azure-pipeline.yml code looks very similar to what I initially put down for my first draft.</p>
 
 <pre><code>name: $(BuildDefinitionName).$(DayOfYear)$(Rev:.r)
 trigger:
@@ -235,7 +235,7 @@ stages:
     parameters:
       initialize: true
       baseurl: 'https://zacharyloeber-dev.onrender.com/'
-      testhtml: 'true'
+      testhtml: 'false'
       staticpath: './docs'
       contentpath: './sites/zacharyloeber.com'
       drafts: 'true'
@@ -264,7 +264,7 @@ stages:
       environment: 'production'
 </code></pre>
 
-<p>I added some additional variables which could be cleaned up and simplified further of course. I also have a carry over sub-folder layout for my site that allows me to publish the same site to multiple URLs.</p>
+<p>I added some additional variables which could be cleaned up and simplified further. I also have a carry over sub-folder layout for my site that allows me to publish the same site to multiple URLs.</p>
 
 <blockquote>
 <p>You will notice that I have stages run only for specific branches. This is only one way to manage this process and works well enough for me. It can be used to integrate well with a variety of git branching models.</p>
@@ -274,154 +274,13 @@ stages:
 
 <p>Using the deployment above we can infer that a build and a release template will be required. So I created them and put them in their own repo for future site usage <a href="https://github.com/zloeber/azure-pipeline-library">at this github repo</a>.</p>
 
-<p>I found it best to break down my templates based on build and deploy first, then go further into jobs or steps as I progress. Here is the hugo build pipeline:</p>
-
-<pre><code class="language-bash">parameters:
-  initialize: true
-  version: '0.59.1'
-  disqusshortname: ''
-  binpath: '~/.local/bin' ## Binary path (default is usually ok)
-  staticpath: './static'  ## Hugo static output path (default is usually ok)
-  contentpath: './content' ## Site content path (default is usually ok)
-  baseurl: ''
-  testhtml: false
-  artifact: 'artifact'  ## Artifact name (if you are generating multiple sites in one pipeline you may need to change this)
-  drafts: 'false' ## to publish drafts set to 'true'
-
-stages:
-- stage: Build_Hugo_Site
-  displayName: 'Build Site: ${{ parameters.baseurl }}'
-  jobs:
-  - job: hugo_generate
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - checkout: self
-      clean: true
-      submodules: true
-      persistCredentials: true
-    - ${{ if eq(parameters.initialize, 'true') }}:
-      - template: ../jobs/install-hugo.yml
-        parameters:
-          version: ${{ parameters.version }}
-          binpath: '${{ parameters.binpath }}'
-    - bash: |
-        mkdir -p ${STATICPATH}
-        # This is required for publishing to github pages and custom domains
-        echo $(basename ${BASEURL}) &gt; ./${STATICPATH}/CNAME
-        if [ $DRAFTS = 'true' ]; then
-          echo &quot;Building Drafts&quot;
-          BUILDDRAFTS=--buildDrafts
-        else
-          BUILDDRAFTS=&quot;&quot;
-        fi
-        echo &quot;BASEURL: ${BASEURL}&quot;
-        echo &quot;LAYOUTDIR: ${LAYOUTDIR}&quot;
-        echo &quot;CONTENTPATH: ${CONTENTPATH}&quot;
-        echo &quot;STATICPATH: ${STATICPATH}&quot;
-        echo &quot;BUILDDRAFTS: ${BUILDDRAFTS}&quot;
-        ${BINPATH}/hugo \
-          --themesDir themes \
-          --layoutDir ${LAYOUTDIR} \
-          --configDir ./ \
-          -e production \
-          --contentDir &quot;${CONTENTPATH}&quot; \
-          --config config.toml \
-          --baseURL ${BASEURL} \
-          --destination &quot;${STATICPATH}&quot; \
-          --gc ${BUILDDRAFTS}
-      displayName: 'Generate Site (${{ parameters.baseurl }})'
-      env:
-        STATICPATH: ${{ parameters.staticpath }}
-        CONTENTPATH: '${{ parameters.contentpath }}'
-        BINPATH: '${{ parameters.binpath }}'
-        BASEURL: '${{ parameters.baseurl }}'
-        LAYOUTDIR: 'themes/${{ parameters.theme }}/layouts'
-        HUGO_DISQUSSHORTNAME: '${{ parameters.disqusshortname }}'
-        DRAFTS: ${{ parameters.drafts }}
-    - task: ArchiveFiles@2
-      displayName: 'Archive Artifacts'
-      inputs:
-        rootFolderOrFile: ./${{ parameters.staticpath }}
-        includeRootFolder: false
-        archiveType: tar
-        tarCompression: gz
-        archiveFile: $(Pipeline.Workspace)/${{ parameters.artifact }}.tar.gz
-        replaceExistingArchive: true
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: $(Pipeline.Workspace)/${{ parameters.artifact }}.tar.gz
-        artifactName: ${{ parameters.artifact }}
-    - ${{ if eq(parameters.testhtml, 'true') }}:
-      - template: ../jobs/test-html.yml
-        parameters:
-          initialize: ${{ parameters.initialize }}
-          binpath: '${{ parameters.binpath }}'
-          path: '${{ parameters.staticpath }}'
-</code></pre>
+<p>I found it best to break down my templates based on build and deploy first, then go further into jobs or steps as I progress. <a href="https://github.com/zloeber/azure-pipeline-library/blob/master/build/hugo-generate.yml">Here</a> is the hugo build pipeline.</p>
 
 <p>This builds the site according to your site config.toml file which should include most of your settings. I also allow for different content and output paths.</p>
 
 <p>And the deployment stage takes the packaged artifact (tar.gz file) and extracts it into a specificed git repo folder of your choosing. This assumes the repo is in github as well and that your created service endpoint for it has access. The release pipeline WILL clear out and overwrite anything in that folder then force pull the changes.</p>
 
 <p>In our case, we shove the output of hugo into a repo&rsquo;s docs folder to make it easier to publish via github pages later (a manual config setting on the repo btw). The release pipeline is pretty simple and also defines an environment which also allows you to setup some gating around final releases if you so desire (bleeding edge ADO manual setting currently).</p>
-
-<pre><code class="language-bash">## Deploy an artifact bundle (tar.gz) from an azure pipeline to another git repo using inherited credentials.
-## Author: Zachary Loeber
-parameters:
-  repo: ''
-  branch: 'master'
-  path: 'docs'
-  environment: ''
-  pipelineartifact: 'artifact'
-  artifact: 'artifact.tar.gz'
-
-stages:
-- stage: Deploy_To_Repo
-  displayName: 'Deploy: ${{ parameters.artifact }}'
-  jobs:
-  - deployment: deploy_repo_content
-    condition: succeeded()
-    pool:
-      vmImage: ubuntu-latest
-    environment: ${{ parameters.environment }}
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - checkout: self
-            clean: true
-            submodules: true
-            persistCredentials: true
-          - task: DownloadPipelineArtifact@2
-            inputs:
-              artifact: '${{ parameters.pipelineartifact }}'
-              targetPath: $(Pipeline.Workspace)/_artifact
-          - bash: |
-              echo &quot;Pulling in repo&quot;
-              gitorigin=`git config remote.origin.url`
-              gitextraheader=`git config &quot;http.${gitorigin}.extraheader&quot;`
-              rm -rf _deploy
-              echo &quot;Cloning ${REPO}&quot;
-              git clone -c http.extraheader=&quot;${gitextraheader}&quot; --depth 1 --branch ${BRANCH} ${REPO} _deploy
-              echo &quot;Removing ${REPOPATH} contents and overwriting with artifact contents&quot;
-              rm -rf ./_deploy/${REPOPATH}/*
-              mkdir -p ./_deploy/${REPOPATH}
-              tar -xzvf ${ARTIFACTPATH}/${ARTIFACT} --directory ./_deploy/${REPOPATH}
-              cd ./_deploy
-              git config user.email &quot;cicd@azurepipelines&quot;
-              git config user.name &quot;cicd&quot;
-              git add --all .
-              git commit --no-verify -m 'cicd: Automated Deployment'
-              git -c http.extraheader=&quot;${gitextraheader}&quot; push
-            displayName: 'Git Content Deployment'
-            env:
-              REPO: ${{ parameters.repo }}
-              BRANCH: ${{ parameters.branch }}
-              REPOPATH: ${{ parameters.path }}
-              ARTIFACTPATH: $(Pipeline.Workspace)/_artifact
-              ARTIFACT: ${{ parameters.artifact }}
-</code></pre>
 
 <p>The hardest part of all of this was figuring out how to pass the service connection authentication through to the deployment stage. We force another checkout of the current repo to ensure that the proper authentication headers are in place (which we then strip out for our own use). Otherwise you can also use a PAT and maunually add in a username/password via environment variables in the pipeline. I opted not to do that to ease manual efforts a little.</p>
 
@@ -438,14 +297,13 @@ git add --all . &amp;&amp; git commit -m 'post: some awesome content added'
 git push origin develop
 </code></pre>
 
-<h2 id="promote-to-production">Promote to Production</h2>
+<p>Assuming you have a similar pipeline setup as I have for this site in ADO, you will have a new site generated at your development repo in github. You then need only link up the render.com site to github and the repo you just updated and your site will &lsquo;render&rsquo; pretty quickly thereafter.</p>
 
-<p>To promote your draft to production simply update the post&rsquo;s &lsquo;draft&rsquo; front matter to false (or delete it). Then publish to dev, and merge to prod.</p>
+<h2 id="git-merge-to-production">Git Merge to Production</h2>
 
-<pre><code class="language-bash">## Review your dev site, looks good? Ok, then update your new post to non-draft status by editing the front matter to remove the draft config.
-git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
-git push origin develop
-git checkout master
+<p>To promote your draft to production simply merge to master and push your changes to github.</p>
+
+<pre><code class="language-bash">git checkout master
 git merge develop
 git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to publish'
 </code></pre>
@@ -456,6 +314,7 @@ git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to
 
 <ul>
 <li>Version Control (git)</li>
+<li>Branch management</li>
 <li>CI/CD</li>
 <li>Pipelines</li>
 <li>Cloud integrations</li>
@@ -463,14 +322,7 @@ git add --all . &amp;&amp; git commit -m 'post: some awesome content approved to
 <li>Webhooks/Triggers</li>
 </ul>
 
-<p>Extra points if you can adhere to some best practice rules in your deployment like:</p>
-
-<ul>
-<li>Emit a stand alone artifact from CI</li>
-<li>Use some form of git branch management</li>
-</ul>
-
-<p>That&rsquo;s about all I have for this post. Only one real post in this year but I promise I&rsquo;ve got more to come as I round back on all I&rsquo;ve learned in my deep diving into the world or kubernetes, devops, and infrastructure as code in the last few years.</p>
+<p>And that&rsquo;s about all I have for this post. Only one real post in this year but I promise I&rsquo;ve got more to come as I round back on all I&rsquo;ve learned in my deep diving into the world or kubernetes, devops, and infrastructure as code in the last few years.</p>
     
 </div>
 
