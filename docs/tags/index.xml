@@ -5,35 +5,80 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 08 Dec 2019 12:26:30 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 20:59:43 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>DevOps</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
+      <pubDate>Sun, 22 Dec 2019 20:59:43 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>helm</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/helm/</link>
+      <pubDate>Sun, 22 Dec 2019 20:59:43 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/helm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
+      <pubDate>Sun, 22 Dec 2019 20:59:43 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipeline</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/pipeline/</link>
+      <pubDate>Sun, 22 Dec 2019 20:59:43 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/pipeline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Azure</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/azure/</link>
-      <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
+      <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/azure/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>bash</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/bash/</link>
+      <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>blog</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/blog/</link>
-      <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
+      <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>DevOps</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
-      <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
+      <title>yaml</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/yaml/</link>
+      <pubDate>Sun, 15 Dec 2019 16:02:15 -0600</pubDate>
       
-      <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/tags/yaml/</guid>
       <description></description>
     </item>
     
@@ -43,24 +88,6 @@
       <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pipeline</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/pipeline/</link>
-      <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/pipeline/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>yaml</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/yaml/</link>
-      <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/yaml/</guid>
       <description></description>
     </item>
     
@@ -97,15 +124,6 @@
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
-      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     

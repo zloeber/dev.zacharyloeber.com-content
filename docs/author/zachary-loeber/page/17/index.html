@@ -99,7 +99,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/10/09/powershell-system-report-script-design/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -107,30 +107,24 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/">Exchange: Receive Connector Tango! – Part 2</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/10/09/powershell-system-report-script-design/">Powershell: System Report Script Design</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2014-08-23</span>
+                <span class="date moment">2014-10-09</span>
             
         
 
         
-            <span class="readingTime">16 min read</span>
+            <span class="readingTime">7 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/active-directory">Active Directory</a>
-                
-                    <a href="/categories/exchange">Exchange</a>
-                
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
-                
-                    <a href="/categories/exchange-2013">Exchange 2013</a>
-                
                     <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/networking">Networking</a>
                 
                     <a href="/categories/powershell">Powershell</a>
                 
@@ -147,10 +141,10 @@
     </div>
 
     
-        <p><a href="/2014/07/06/exchange-receive-connector-tango-part-1/">In part 1 of this series</a> I discussed some basic knowledge requirements to get a better grip on receive connectors in Exchange. I continue that conversation with some examples of improperly configured connectors and the issues they may cause. I finish up the discussion with a script you can use to scan your environment for such configurations.</p>
+        <p>In this post I go back and explain some of my reasoning behind decisions I made in the design of an already released script, <a href="https://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569">Get-AssetReport</a>. This was written over a year ago and forgotten about as one of the many unpublished drafts on my blog. The code behind the script I discuss has been upgraded and used in several of my more popular scripts (<a href="https://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877">AD Asset Report</a>, <a href="https://gallery.technet.microsoft.com/Big-IP-F5-LTM-Load-3fc9a2af">F5 LTM Report</a>, and <a href="https://gallery.technet.microsoft.com/Lync-2013-Mirrored-SQL-132c2f06">Lync 2013 Status Report</a>). Some of this content is slightly dated as I&#8217;ve since changed some of the coding but the core concepts are the same. Those digging through my crazy work or learning powershell may get some value from this content so I tidied it up a bit and here it is. Cheers!</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/08/23/exchange-receive-connector-tango-part-2/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/10/09/powershell-system-report-script-design/" class="more">Continue reading</a>
         
     
 </div>
@@ -163,12 +157,6 @@
         <div class="tags">
             <i class="fa fa-tags"></i>
             <div class="links">
-                
-                <a href="/tags/exchange">Exchange</a>
-                
-                <a href="/tags/exchange-2010">Exchange 2010</a>
-                
-                <a href="/tags/exchange-2013">Exchange 2013</a>
                 
                 <a href="/tags/powershell">Powershell</a>
                 
@@ -244,21 +232,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/08\/23\/exchange-receive-connector-tango-part-2\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/10\/09\/powershell-system-report-script-design\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/08\/23\/exchange-receive-connector-tango-part-2\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/10\/09\/powershell-system-report-script-design\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/08\/23\/exchange-receive-connector-tango-part-2\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/10\/09\/powershell-system-report-script-design\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -273,7 +261,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/07/28/exchange-auto-batching-2013-migrations/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -281,26 +269,28 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/07/28/exchange-auto-batching-2013-migrations/">Exchange: Auto Batching 2013 Migrations</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/">Exchange: Handling Old Log and Other Files</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2014-07-28</span>
+                <span class="date moment">2014-09-26</span>
             
         
 
         
-            <span class="readingTime">2 min read</span>
+            <span class="readingTime">7 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/active-directory">Active Directory</a>
+                    <a href="/categories/exchange">Exchange</a>
                 
                     <a href="/categories/exchange-2010">Exchange 2010</a>
                 
                     <a href="/categories/exchange-2013">Exchange 2013</a>
+                
+                    <a href="/categories/iis">IIS</a>
                 
                     <a href="/categories/microsoft">Microsoft</a>
                 
@@ -317,10 +307,11 @@
     </div>
 
     
-        <p>Here is a quick script I put together for automatically creating Exchange 2013 mailbox migration batches. This is useful for the final stages of an Exchange 2013 upgrade among other things.</p>
+        In Exchange old logs can really build up fast. Not database transaction logs but rather temporary transport, client access, IIS, and other debug related crap that typically default to locations either on your system drive or Exchange install path. Of course, Powershell scripting can provide a decent solution for this problem.
+Introduction More than any other version, Exchange 2013 seems to like logging information to disk. By default, much of what gets logged will not auto-rotate (or if it does, it happens infrequently) either so you end up with this slow ticking time-bomb in your environment.
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/07/28/exchange-auto-batching-2013-migrations/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/09/26/exchange-handling-old-log-and-other-files/" class="more">Continue reading</a>
         
     
 </div>
@@ -334,8 +325,6 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/exchange">Exchange</a>
-                
                 <a href="/tags/exchange-2010">Exchange 2010</a>
                 
                 <a href="/tags/exchange-2013">Exchange 2013</a>
@@ -343,6 +332,10 @@
                 <a href="/tags/powershell">Powershell</a>
                 
                 <a href="/tags/psc">PSC</a>
+                
+                <a href="/tags/sysadmin">Sysadmin</a>
+                
+                <a href="/tags/system-administration">System Administration</a>
                 
             </div>
         </div>
@@ -412,21 +405,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/07\/28\/exchange-auto-batching-2013-migrations\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/09\/26\/exchange-handling-old-log-and-other-files\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/07\/28\/exchange-auto-batching-2013-migrations\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/09\/26\/exchange-handling-old-log-and-other-files\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/07\/28\/exchange-auto-batching-2013-migrations\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/09\/26\/exchange-handling-old-log-and-other-files\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -441,7 +434,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-log-level-gui-script/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/09/24/update-get-calendarpermission/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -449,16 +442,16 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-log-level-gui-script/">Exchange Log Level GUI Script</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/09/24/update-get-calendarpermission/">Update: Get-CalendarPermission</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2014-07-07</span>
+                <span class="date moment">2014-09-24</span>
             
         
 
         
-            <span class="readingTime">2 min read</span>
+            <span class="readingTime">3 min read</span>
         
 
         
@@ -474,6 +467,8 @@
                 
                     <a href="/categories/powershell">Powershell</a>
                 
+                    <a href="/categories/security">Security</a>
+                
                     <a href="/categories/system-administration">System Administration</a>
                 
             </span>
@@ -485,10 +480,10 @@
     </div>
 
     
-        <p>I ran into a situation recently where I was forced to amp up the Exchange logging levels to further troubleshoot an issue with some pretty specific Exchange components. I found myself wanting a quick GUI to view and set the levels but found none. So I used this as an opportunity to learn a bit about xaml based GUIs and powershell. The result is this simple, but useful, Exchange log level GUI script which was written for Exchange 2013 but should also run on 2010.</p>
+        <p>Going through older code is a bit like looking through an old yearbook or photo album. If the pictures within are old enough you usually end up laughing at how little you recognize yourself and maybe even marvel a bit at how far you have come. This old function I wrote isn’t the worst of my code but I was still able to update it for measurable improvements.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/07/06/exchange-log-level-gui-script/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/09/24/update-get-calendarpermission/" class="more">Continue reading</a>
         
     
 </div>
@@ -512,7 +507,7 @@
                 
                 <a href="/tags/psc">PSC</a>
                 
-                <a href="/tags/scripting">Scripting</a>
+                <a href="/tags/security">Security</a>
                 
             </div>
         </div>
@@ -582,21 +577,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/07\/06\/exchange-log-level-gui-script\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/09\/24\/update-get-calendarpermission\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/07\/06\/exchange-log-level-gui-script\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/09\/24\/update-get-calendarpermission\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/07\/06\/exchange-log-level-gui-script\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/09\/24\/update-get-calendarpermission\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -635,15 +630,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/">Hugo - A DevOps Approach</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/">Some Cool Kubernetes Tools</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/ado_updating_variable/">ADO - Updating Variable Groups</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/the-raw-helm-chart/">The Raw Helm Chart</a>
                     </li>
                 
                 </ul>

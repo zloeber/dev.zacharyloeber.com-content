@@ -5,10 +5,19 @@
     <link>https://zacharyloeber-dev.onrender.com/categories/pipeline/</link>
     <description>Recent content in Pipeline on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 08 Dec 2019 12:26:30 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 11:33:38 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/pipeline/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ADO - Updating Variable Groups</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/ado_updating_variable/</link>
+      <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/ado_updating_variable/</guid>
+      <description>&lt;p&gt;Azure DevOps Libraries are groups of variables which can be exceedingly useful in your pipelines. I&amp;rsquo;ll cover how one can automate their update and creation via terraform and some simple bash scripting.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Hugo - A DevOps Approach</title>
