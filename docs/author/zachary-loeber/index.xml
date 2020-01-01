@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 22 Dec 2019 20:59:43 -0600</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 16:46:26 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,15 @@
       <description>Zachary Loeber is an IT enthusiast with over a decade of experience in the field. Zach cut his teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
 When it comes to technology Zach’s primary interests are:
  Security Networking System Administration Linux Windows VMware Exchange 2010 Powershell Automation  Some of Zach&amp;#8217;s other interests include lifting weights, camping, running, self-improvement, and being a good husband.</description>
+    </item>
+    
+    <item>
+      <title>Helm3_namespace_creation</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/</link>
+      <pubDate>Wed, 01 Jan 2020 16:46:26 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/</guid>
+      <description>&lt;p&gt;Helm 3 was released and works great except that it no longer creates namespaces for your deployments. Here is one solution along with alternatives worth looking into.&lt;/p&gt;</description>
     </item>
     
     <item>

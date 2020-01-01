@@ -104,6 +104,174 @@
         
     <div class="article-wrapper u-cf">
         
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/08/27/exchange-2010-poor-mans-monitoring-1-5/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/08/27/exchange-2010-poor-mans-monitoring-1-5/">Exchange 2010: Poor Mans Monitoring 1.5</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2012-08-28</span>
+            
+        
+
+        
+            <span class="readingTime">1 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        Just a quick upgrade to the script I posted earlier. This script is for monitoring and/or maintaining your Exchange 2010 mailboxes. It is meant to help an admin be proactive in their exchange environment. I updated the script to be a bit more customizable and fixed some obvious issues. The primary changes are removing the requirement for the MS chart controls as well as introducing an area of code just for custom scripts.
+
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/08/27/exchange-2010-poor-mans-monitoring-1-5/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/exchange-2010">Exchange 2010</a>
+                
+                <a href="/tags/microsoft">Microsoft</a>
+                
+                <a href="/tags/powershell">Powershell</a>
+                
+                <a href="/tags/scripting">Scripting</a>
+                
+                <a href="/tags/sysadmin">Sysadmin</a>
+                
+                <a href="/tags/system-administration">System Administration</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/08\/27\/exchange-2010-poor-mans-monitoring-1-5\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/08\/27\/exchange-2010-poor-mans-monitoring-1-5\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/08\/27\/exchange-2010-poor-mans-monitoring-1-5\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    <div class="article-wrapper u-cf">
+        
             <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/08/11/exchange-2010-automated-firewall-rule-generation-1-5/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
@@ -425,184 +593,6 @@ At the Microsoft Script Repository
     </div>
 
     
-        
-    <div class="article-wrapper u-cf">
-        
-            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/">
-    <i class="fa fa-fw fa-pencil"></i>
-</a>
-
-<article class="default article">
-    
-
-    <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/">Exchange 2010: Even More Migration Tips</a></h3>
-    <div class="meta">
-        
-            
-                <span class="date moment">2012-07-11</span>
-            
-        
-
-        
-            <span class="readingTime">16 min read</span>
-        
-
-        
-            <span class="categories">
-                
-                    <a href="/categories/active-directory">Active Directory</a>
-                
-                    <a href="/categories/active-directory">Active Directory</a>
-                
-                    <a href="/categories/exchange">Exchange</a>
-                
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
-                
-                    <a href="/categories/iis">IIS</a>
-                
-                    <a href="/categories/microsoft">Microsoft</a>
-                
-                    <a href="/categories/powershell">Powershell</a>
-                
-                    <a href="/categories/system-administration">System Administration</a>
-                
-            </span>
-        
-
-        
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
-        
-    </div>
-
-    
-        <p>It has been a while since I passed on some personal experiences when performing Exchange 2010 migrations. I thought it was about time to update my list to include some more of the lesser known aspects of an Exchange 2010 migration.</p>
-
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/07/10/exchange-2010-even-more-migration-tips/" class="more">Continue reading</a>
-        
-    
-</div>
-
-    
-<div class="footer">
-    
-
-        
-        <div class="tags">
-            <i class="fa fa-tags"></i>
-            <div class="links">
-                
-                <a href="/tags/2008-r2">2008 R2</a>
-                
-                <a href="/tags/active-directory">Active Directory</a>
-                
-                <a href="/tags/exchange-2010">Exchange 2010</a>
-                
-                <a href="/tags/microsoft">Microsoft</a>
-                
-                <a href="/tags/powershell">Powershell</a>
-                
-                <a href="/tags/system-administration">System Administration</a>
-                
-                <a href="/tags/windows">Windows</a>
-                
-            </div>
-        </div>
-        
-
-        
-        
-
-
-<style>
-    #share-buttons {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    #share-buttons:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
-    #share-buttons>div {
-        position: relative;
-        text-align: left;
-        height: 36px;
-        width: 32px;
-        float: left;
-        text-align: center;
-    }
-
-    #share-buttons>div>svg {
-        height: 16px;
-        fill: #d5d5d5;
-        margin-top: 10px;
-    }
-
-    #share-buttons>div:hover {
-        cursor: pointer;
-    }
-
-    #share-buttons>div.facebook:hover>svg {
-        fill: #3B5998;
-    }
-
-    #share-buttons>div.twitter:hover>svg {
-        fill: #55ACEE;
-    }
-
-    #share-buttons>div.linkedin:hover>svg {
-        fill: #0077b5;
-    }
-
-    #share-buttons>div.facebook>svg {
-        height: 18px;
-        margin-top: 9px;
-    }
-
-    #share-buttons>div.twitter>svg {
-        height: 20px;
-        margin-top: 8px;
-    }
-
-    #share-buttons>div.linkedin>svg {
-        height: 19px;
-        margin-top: 7px;
-    }
-</style>
-<div id="share-buttons">
-    <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/07\/10\/exchange-2010-even-more-migration-tips\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
-        </svg>
-    </div>
-    <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/07\/10\/exchange-2010-even-more-migration-tips\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
-        </svg>
-    </div>
-    <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/07\/10\/exchange-2010-even-more-migration-tips\/&title=&summary=&source=');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
-        </svg>
-    </div>
-</div>
-    </div>
-</article>
-
-        
-    </div>
-
-    
 
     
     <div class="paginator">
@@ -629,15 +619,15 @@ At the Microsoft Script Repository
                 <ul>
                 
                     <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/">Helm3_namespace_creation</a>
+                    </li>
+                
+                    <li>
                         <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/">Some Cool Kubernetes Tools</a>
                     </li>
                 
                     <li>
                         <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/ado_updating_variable/">ADO - Updating Variable Groups</a>
-                    </li>
-                
-                    <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/the-raw-helm-chart/">The Raw Helm Chart</a>
                     </li>
                 
                 </ul>
@@ -710,7 +700,7 @@ At the Microsoft Script Repository
             <a href="https://github.com/zloeber" target="_blank">
                 &copy;
                 
-                    2019
+                    2020
                 
                 by Zachary Loeber
             </a>

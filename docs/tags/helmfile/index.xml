@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>helmfile on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/tags/helmfile/</link>
+    <description>Recent content in helmfile on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 01 Jan 2020 16:46:26 -0600</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/helmfile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Helm3_namespace_creation</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/</link>
+      <pubDate>Wed, 01 Jan 2020 16:46:26 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/</guid>
+      <description>&lt;p&gt;Helm 3 was released and works great except that it no longer creates namespaces for your deployments. Here is one solution along with alternatives worth looking into.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
