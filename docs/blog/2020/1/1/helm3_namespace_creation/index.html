@@ -200,12 +200,15 @@ releases:
     chart: namespace-cert-manager
     component: &quot;cert-manager&quot;
     namespace: &quot;cert-manager&quot;
+  wait: true
+  installed: {{ env &quot;STACK_CERTMANAGER&quot; | default &quot;true&quot; }}
   values:
   - namespaces:
     - cert-manager
+    helmResourcePolicy: delete
     annotations:
-      certmanager.k8s.io/disable-validation: true
-- name: &quot;cert-manager&quot;
+      certmanager.k8s.io/disable-validation: &quot;true&quot;
+- name: cert-manager
   namespace: &quot;cert-manager&quot;
   labels:
     chart: &quot;cert-manager&quot;
@@ -217,7 +220,9 @@ releases:
   chart: jetstack/cert-manager
   version: &quot;v0.9.0&quot;
   wait: true
-  installed: {{ env &quot;CERT_MANAGER_INSTALLED&quot; | default &quot;true&quot; }}
+  installed: {{ env &quot;STACK_CERTMANAGER&quot; | default &quot;true&quot; }}
+  needs:
+    - kube-system/namespace-cert-manager
   hooks:
     # This hook adds the CRDs
     - events: [&quot;presync&quot;]
@@ -260,17 +265,20 @@ releases:
         requests:
           cpu: &quot;50m&quot;
           memory: &quot;128Mi&quot;
-- name: 'cert-manager-issuers'
+- name: cert-manager-issuers
   chart: &quot;incubator/raw&quot;
   namespace: &quot;cert-manager&quot;
   labels:
-    component: &quot;iam&quot;
+    component: &quot;cert-manager&quot;
     namespace: &quot;cert-manager&quot;
     default: &quot;true&quot;
   wait: true
   force: true
   recreatePods: true
-  installed: {{ env &quot;CERT_MANAGER_INSTALLED&quot; | default &quot;true&quot; }}
+  installed: {{ env &quot;STACK_CERTMANAGER&quot; | default &quot;true&quot; }}
+  needs:
+    - kube-system/namespace-cert-manager
+    - cert-manager/cert-manager
   values:
   - resources:
     - apiVersion: certmanager.k8s.io/v1alpha1
@@ -311,7 +319,7 @@ releases:
 {{- end }}
 </code></pre>
 
-<p>This helmfile will require that you use the helm-git plugin and that the namespace not already exist.</p>
+<p>This helmfile will require that you use the helm-git plugin and that the namespace not already exist. I also use pretty recent helmfile features like &lsquo;needs&rsquo; to ensure that the namespace is created first.</p>
 
 <pre><code>helm plugin install https://github.com/aslafy-z/helm-git.git
 </code></pre>
