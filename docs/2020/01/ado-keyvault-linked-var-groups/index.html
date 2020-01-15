@@ -1,0 +1,626 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Ado Keyvault Linked Var Groups | Zachary Loeber</title>
+        <meta name="description" content="Ado Keyvault Linked Var Groups - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Ado Keyvault Linked Var Groups">
+        <meta itemprop="description" content="Ado Keyvault Linked Var Groups - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Ado Keyvault Linked Var Groups">
+        <meta property="og:description" content="Ado Keyvault Linked Var Groups - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/blog/circuit.jpg">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/2020/01/ado-keyvault-linked-var-groups/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/2020/01/ado-keyvault-linked-var-groups/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">
+            <img src="/images/blog/circuit.jpg" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-01-04</span>
+            
+        
+
+        
+            <span class="readingTime">6 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/devops">devops</a>
+                
+                    <a href="/categories/azure">azure</a>
+                
+                    <a href="/categories/script">script</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Azure DevOps keyvault linked variable groups are not easy to automate but it can be done.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>As of late I&rsquo;ve been working quite a bit with Azure Devops. It is a powerful platform with a dearth of possibilities but I quickly hit the ceiling of the platform&rsquo;s capabilities. It suffers from a common automation platform deficiency, the ability to automate the platform itself (automating the automation platform as it were). This is not uncommon and I&rsquo;ve seen the same issues with Jenkins (props to Jenkins Job Builder for a very clever solution to some of these restrictions).</p>
+
+<p>There has been some progress with a preview az cli extension aptly named &lsquo;devops&rsquo;. If you are a little adept with Bash you can use the az cli to create and manage variable groups but you cannot create keyvault linked variable groups (or if you can, I don&rsquo;t see how). Luckily, like most modern PaaS solutions, Azure DevOps is capable of being automated further than you may think if you are willing ot dive into json templates and their REST API. Oh, you will still need that extension:</p>
+
+<pre><code class="language-bash">az extension add --name azure-devops
+</code></pre>
+
+<h2 id="set-the-stage">Set the Stage</h2>
+
+<p>Automating this thing has more moving parts that I&rsquo;m comfortable with but usually that&rsquo;s how &lsquo;hacks&rsquo; go right? So to automate this with some security in place you need a ton of variables and secrets including&hellip;.</p>
+
+<p>Firstly we need an authorized service endpoint already created within Azure Devops. This should be tied to an SPN which can access the keyvault secrets via access policies. I personally use terraform to generate these and then assign them appropriate policies to only the resources it requires. I use another automation script/hack to create these service connections in ADO.</p>
+
+<blockquote>
+<p>I like to use per stage/team SPNs for service connections. This usually takes the form of STAGE_TEAM and ties back to an AKS cluster, so I can use the connection for deployment pipelines as well as grant the cluster rights to ACR, key vault policies, and so on right from terraform with the native azurerm provider.</p>
+</blockquote>
+
+<p>You will also need A key vault populated with the following secrets that will need to have been granted access to ADO to create libraries (variable groups):
+- ADOUSER (ADO Username)
+- ADOPAT (Personal Access Token)</p>
+
+<p>We also need some environment variables for less secret things. You will see later that I keep these in an .envrc file on a per team basis. Here are the basic ones which are required though</p>
+
+<pre><code class="language-bash">AZ_SUBSCRIPTION=&lt;subscription name&gt;
+AZ_SUBSCRIPTION_ID=&lt;subscription id&gt;
+ADO_ORG=&lt;ADO Org Name&gt;
+ADO_PROJECT=&lt;ADO Project Name&gt;
+KEYVAULTNAME=&lt;Key Vault to link ADO Group with&gt;
+</code></pre>
+
+<p>Finally, we also need
+- Azure CLI
+- Azure CLI devops extension
+- Permission to create library resources in Azure DevOps
+- Fortitude, lots of that.</p>
+
+<p>Finally you will need a json template file for the variable group which I&rsquo;ll describe next.</p>
+
+<h2 id="the-json-template">The JSON Template</h2>
+
+<p>In order to create a keyvault linked variable group you will need to setup a template json file and submit it to the ADO API via an HTTP POST. Easy peasy. I&rsquo;ve done the reverse engineering bits for you on this one. Here is a json file for a variable group called &lsquo;SuperSecret&rsquo; that links to a keyvault called SuperSecretVault and syncs the &lsquo;AIRFLOWFERNETKEY&rsquo; and &lsquo;KUBESECRET&rsquo; vault secrets. One could easily construct this automatically based on an existing key vault and some python I&rsquo;d think.</p>
+
+<pre><code>{
+  &quot;authorized&quot;: true,
+  &quot;description&quot;: &quot;SuperSecret Variable Group (SuperSecretVault)&quot;,
+  &quot;name&quot;: &quot;SuperSecret&quot;,
+  &quot;type&quot;: &quot;AzureKeyVault&quot;,
+  &quot;variableGroupProjectReferences&quot;: [
+    {
+      &quot;projectReference&quot;: {
+        &quot;id&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,
+        &quot;name&quot;: &quot;MyADOProject&quot;
+      },
+      &quot;name&quot;: &quot;SuperSecret&quot;,
+      &quot;description&quot;: &quot;SuperSecret Variable Group (SuperSecretVault)&quot;
+    }
+  ],
+  &quot;providerData&quot;: {
+    &quot;serviceEndpointId&quot;: &quot;${service_endpoint_id}&quot;,
+    &quot;vault&quot;: &quot;SuperSecretVault&quot;
+  },
+  &quot;variables&quot;: {
+    &quot;AIRFLOWFERNETKEY&quot;: {
+      &quot;enabled&quot;: true,
+      &quot;contentType&quot;: &quot;&quot;,
+      &quot;value&quot;: null,
+      &quot;isSecret&quot;: true
+    },
+    &quot;KUBESECRET&quot;: {
+      &quot;enabled&quot;: true,
+      &quot;contentType&quot;: &quot;&quot;,
+      &quot;value&quot;: null,
+      &quot;isSecret&quot;: true
+    },
+  }
+}
+</code></pre>
+
+<p>Shall we tokenize this? Okay,</p>
+
+<pre><code>{
+  &quot;authorized&quot;: true,
+  &quot;description&quot;: &quot;${description}&quot;,
+  &quot;name&quot;: &quot;${name}&quot;,
+  &quot;type&quot;: &quot;AzureKeyVault&quot;,
+  &quot;variableGroupProjectReferences&quot;: [
+    {
+      &quot;projectReference&quot;: {
+        &quot;id&quot;: &quot;${project_id}&quot;,
+        &quot;name&quot;: &quot;${project_name}&quot;
+      },
+      &quot;name&quot;: &quot;${name}&quot;,
+      &quot;description&quot;: &quot;${description}&quot;
+    }
+  ],
+  &quot;providerData&quot;: {
+    &quot;serviceEndpointId&quot;: &quot;${service_endpoint_id}&quot;,
+    &quot;vault&quot;: &quot;${vault_name}&quot;
+  },
+  &quot;variables&quot;: {
+    &quot;AIRFLOWFERNETKEY&quot;: {
+      &quot;enabled&quot;: true,
+      &quot;contentType&quot;: &quot;&quot;,
+      &quot;value&quot;: null,
+      &quot;isSecret&quot;: true
+    },
+    &quot;KUBESECRET&quot;: {
+      &quot;enabled&quot;: true,
+      &quot;contentType&quot;: &quot;&quot;,
+      &quot;value&quot;: null,
+      &quot;isSecret&quot;: true
+    },
+  }
+}
+</code></pre>
+
+<p>With this at hand we can then work our magic.</p>
+
+<h2 id="the-script">The Script</h2>
+
+<p>I put together a script which tokenizes our json file and submits it to Azure DevOps via curl. I used old school envsubst to keep it somewhat more portable.</p>
+
+<pre><code class="language-bash">#!/bin/bash
+TEAM=${TEAM:-&quot;team1&quot;}
+TARGET=${TARGET:-&quot;targetenv&quot;}
+STAGE=${STAGE:-&quot;dev&quot;}
+ENVRC=${ENVRC:-&quot;./.envrc.${TEAM}&quot;}
+SECRET_TEMPLATE=${SECRET_TEMPLATE:-&quot;./secret-var-group.tpl&quot;}
+
+if [ ! -e &quot;$ENVRC&quot; ]; then
+    echo &quot;Without the ENVRC file we are at a loss what to do :(&quot;
+    exit 1
+fi
+
+## Source ENVRC like a boss
+set -a
+. $ENVRC
+set +a
+
+echo &quot;TARGET: ${TARGET}&quot;
+echo &quot;STAGE: ${STAGE}&quot;
+echo &quot;TEAM: ${TEAM}&quot;
+echo &quot;AZ_SUBSCRIPTION: ${AZ_SUBSCRIPTION}&quot;
+echo &quot;ENVRC: $ENVRC&quot;
+echo &quot;KEYVAULTNAME: ${KEYVAULTNAME}&quot;
+echo &quot;ADO_ORG: ${ADO_ORG}&quot;
+echo &quot;ADO_PROJECT: ${ADO_PROJECT}&quot;
+echo &quot;SECRET_TEMPLATE: ${SECRET_TEMPLATE}&quot;
+
+## We pull this from our super secret keyvault
+export ADO_USER=&quot;$(az keyvault secret show --name ADOUSER --vault-name $KEYVAULTNAME --subscription &quot;$AZ_SUBSCRIPTION&quot; --query value -o tsv)&quot;
+export ADO_PAT=&quot;$(az keyvault secret show --name ADOPAT --vault-name $KEYVAULTNAME --subscription &quot;$AZ_SUBSCRIPTION&quot; --query value -o tsv)&quot;
+
+get_ado_connection () {
+  thiscon=`az devops service-endpoint list \
+    --detect false \
+    --subscription &quot;$AZ_SUBSCRIPTION_ID&quot; \
+    --organization &quot;$ADO_ORG&quot; \
+    --project &quot;$ADO_PROJECT&quot; \
+    -o table | grep $1 | head -n1 | awk '{print $1;}'`
+  echo &quot;$thiscon&quot;
+}
+
+get_ado_vargroup () {
+  group=`az pipelines variable-group list \
+    --detect false \
+    --subscription &quot;$AZ_SUBSCRIPTION_ID&quot; \
+    --organization &quot;$ADO_ORG&quot; \
+    --project &quot;$ADO_PROJECT&quot; \
+    -o table | grep $1 | head -n1 | awk '{print $1;}'`
+  echo &quot;$group&quot;
+}
+
+remove_ado_vargroup () {
+  echo &quot;Attempting to remove vargroup id $1&quot;
+  if [ ! -z &quot;$1&quot; ]; then
+    az pipelines variable-group delete \
+      --group-id &quot;$1&quot; \
+      --detect false \
+      --subscription &quot;$AZ_SUBSCRIPTION_ID&quot; \
+      --organization &quot;$ADO_ORG&quot; \
+      --project &quot;$ADO_PROJECT&quot; \
+      -y 2&gt; /dev/null
+  fi;
+}
+
+echo &quot;Retrieving ${STAGE}_${TEAM} service endpoint id first...&quot;
+export service_endpoint_id=`get_ado_connection ${STAGE}_${TEAM}`
+export vault_name=$KEYVAULTNAME
+export name=${STAGE}_${TEAM}_secrets
+export description=&quot;${STAGE}_${TEAM} (linked to ${KEYVAULTNAME})&quot;
+
+## If we have our service endpoint id we are good to go
+if  [ ! -z &quot;$service_endpoint_id&quot; ]; then
+  echo &quot;ID for token replacement - ${STAGE}_${TEAM} = $service_endpoint_id&quot;
+  DEPLOYVARS='$service_endpoint_id:$vault_name:$name:$description'
+  envsubst &quot;$DEPLOYVARS&quot;&lt; &quot;${SECRET_TEMPLATE}&quot;&gt; $(basename ${SECRET_TEMPLATE}).out
+  vargroup=`get_ado_vargroup ${name}`
+  if [[ ! -z &quot;$vargroup&quot; ]]; then 
+    echo &quot;Removing old keyvault linked variable group ${name} ($vargroup)&quot;
+    echo &quot;proceed?&quot;
+    read
+    remove_ado_vargroup $vargroup
+  fi
+  curl -X POST \
+    --user &quot;${ADO_USER}:${ADO_PAT}&quot; \
+    -H &quot;Content-Type: application/json&quot; \
+    -d @${SECRET_TEMPLATE}.out \
+    'https://dev.azure.com/onehavi/NextGen/_apis/distributedtask/variablegroups?api-version=6.0-preview.2'
+fi
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Well that kinda was a stinker &lsquo;eh? The moment this is published I&rsquo;m willing to bet the az cli extension gets updated with some new subcommand to create these things. Tis the way of our industry right?</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/devops">devops</a>
+                
+                <a href="/tags/azure-devops">Azure Devops</a>
+                
+                <a href="/tags/bash">Bash</a>
+                
+                <a href="/tags/keyvault">KeyVault</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/01\/ado-keyvault-linked-var-groups\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/01\/ado-keyvault-linked-var-groups\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/01\/ado-keyvault-linked-var-groups\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/jenkinsx-kube-swiss-army-knife/">Jenkinsx Kube Swiss Army Knife</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/">Helm 3 Namespace Creation</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>

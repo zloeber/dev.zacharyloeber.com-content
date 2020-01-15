@@ -12,10 +12,10 @@
     
     <item>
       <title>ADO - Updating Variable Groups</title>
-      <link>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/ado_updating_variable/</link>
+      <link>https://zacharyloeber-dev.onrender.com/2019/12/ado-updating-variable-groups/</link>
       <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
       
-      <guid>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/ado_updating_variable/</guid>
+      <guid>https://zacharyloeber-dev.onrender.com/2019/12/ado-updating-variable-groups/</guid>
       <description>&lt;p&gt;Azure DevOps Libraries are groups of variables which can be exceedingly useful in your pipelines. I&amp;rsquo;ll cover how one can automate their update and creation via terraform and some simple bash scripting.&lt;/p&gt;</description>
     </item>
     

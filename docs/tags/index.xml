@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 01 Jan 2020 16:46:26 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jan 2020 08:07:58 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,9 +13,36 @@
     <item>
       <title>DevOps</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
-      <pubDate>Wed, 01 Jan 2020 16:46:26 -0600</pubDate>
+      <pubDate>Fri, 10 Jan 2020 08:07:58 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure Devops</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/azure-devops/</link>
+      <pubDate>Sat, 04 Jan 2020 11:00:13 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/azure-devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/bash/</link>
+      <pubDate>Sat, 04 Jan 2020 11:00:13 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KeyVault</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/keyvault/</link>
+      <pubDate>Sat, 04 Jan 2020 11:00:13 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/keyvault/</guid>
       <description></description>
     </item>
     
@@ -61,15 +88,6 @@
       <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/azure/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bash</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/bash/</link>
-      <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/bash/</guid>
       <description></description>
     </item>
     

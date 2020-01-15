@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/categories/</link>
     <description>Recent content in Categories on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 01 Jan 2020 16:46:26 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jan 2020 08:07:58 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,9 +13,27 @@
     <item>
       <title>DevOps</title>
       <link>https://zacharyloeber-dev.onrender.com/categories/devops/</link>
-      <pubDate>Wed, 01 Jan 2020 16:46:26 -0600</pubDate>
+      <pubDate>Fri, 10 Jan 2020 08:07:58 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/categories/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azure</title>
+      <link>https://zacharyloeber-dev.onrender.com/categories/azure/</link>
+      <pubDate>Sat, 04 Jan 2020 11:00:13 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/categories/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>script</title>
+      <link>https://zacharyloeber-dev.onrender.com/categories/script/</link>
+      <pubDate>Sat, 04 Jan 2020 11:00:13 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/categories/script/</guid>
       <description></description>
     </item>
     
@@ -25,15 +43,6 @@
       <pubDate>Wed, 01 Jan 2020 16:46:26 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/categories/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Azure</title>
-      <link>https://zacharyloeber-dev.onrender.com/categories/azure/</link>
-      <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/categories/azure/</guid>
       <description></description>
     </item>
     
