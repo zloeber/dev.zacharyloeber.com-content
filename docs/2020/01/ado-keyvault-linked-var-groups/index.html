@@ -164,9 +164,12 @@
 <p>I like to use per stage/team SPNs for service connections. This usually takes the form of STAGE_TEAM and ties back to an AKS cluster, so I can use the connection for deployment pipelines as well as grant the cluster rights to ACR, key vault policies, and so on right from terraform with the native azurerm provider.</p>
 </blockquote>
 
-<p>You will also need A key vault populated with the following secrets that will need to have been granted access to ADO to create libraries (variable groups):
-- ADOUSER (ADO Username)
-- ADOPAT (Personal Access Token)</p>
+<p>You will also need A key vault populated with the following secrets that will need to have been granted access to ADO to create libraries (variable groups):</p>
+
+<ul>
+<li>ADOUSER (ADO Username)</li>
+<li>ADOPAT (Personal Access Token)</li>
+</ul>
 
 <p>We also need some environment variables for less secret things. You will see later that I keep these in an .envrc file on a per team basis. Here are the basic ones which are required though</p>
 
@@ -177,11 +180,14 @@ ADO_PROJECT=&lt;ADO Project Name&gt;
 KEYVAULTNAME=&lt;Key Vault to link ADO Group with&gt;
 </code></pre>
 
-<p>Finally, we also need
-- Azure CLI
-- Azure CLI devops extension
-- Permission to create library resources in Azure DevOps
-- Fortitude, lots of that.</p>
+<p>Finally, we also need</p>
+
+<ul>
+<li>Azure CLI</li>
+<li>Azure CLI devops extension</li>
+<li>Permission to create library resources in Azure DevOps</li>
+<li>Fortitude, lots of that.</li>
+</ul>
 
 <p>Finally you will need a json template file for the variable group which I&rsquo;ll describe next.</p>
 
