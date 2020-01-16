@@ -164,20 +164,21 @@
 <p>I like to use per stage/team SPNs for service connections. This usually takes the form of STAGE_TEAM and ties back to an AKS cluster, so I can use the connection for deployment pipelines as well as grant the cluster rights to ACR, key vault policies, and so on right from terraform with the native azurerm provider.</p>
 </blockquote>
 
-<p>You will also need A key vault populated with the following secrets that will need to have been granted access to ADO to create libraries (variable groups):</p>
+<p>You will also need A key vault populated with the following secrets that will need to have been granted access to ADO to create libraries (variable groups). In the script I provide I assume it is in the same key vault being linked to.</p>
 
 <ul>
 <li>ADOUSER (ADO Username)</li>
 <li>ADOPAT (Personal Access Token)</li>
 </ul>
 
-<p>We also need some environment variables for less secret things. You will see later that I keep these in an .envrc file on a per team basis. Here are the basic ones which are required though</p>
+<p>We also need some environment variables for less secret things. You will see later that I keep these in an .envrc file on a per team basis. Here are the basic ones which are required for this exercize.</p>
 
 <pre><code class="language-bash">AZ_SUBSCRIPTION=&lt;subscription name&gt;
 AZ_SUBSCRIPTION_ID=&lt;subscription id&gt;
 ADO_ORG=&lt;ADO Org Name&gt;
 ADO_PROJECT=&lt;ADO Project Name&gt;
 KEYVAULTNAME=&lt;Key Vault to link ADO Group with&gt;
+SC_NAME=&lt;service connection name&gt;
 </code></pre>
 
 <p>Finally, we also need</p>
@@ -276,23 +277,14 @@ KEYVAULTNAME=&lt;Key Vault to link ADO Group with&gt;
 <p>I put together a script which tokenizes our json file and submits it to Azure DevOps via curl. I used old school envsubst to keep it somewhat more portable.</p>
 
 <pre><code class="language-bash">#!/bin/bash
-TEAM=${TEAM:-&quot;team1&quot;}
-TARGET=${TARGET:-&quot;targetenv&quot;}
-STAGE=${STAGE:-&quot;dev&quot;}
-ENVRC=${ENVRC:-&quot;./.envrc.${TEAM}&quot;}
+SC_NAME=${SC_NAME:-&quot;Service Connection Name&quot;}
+KEYVAULTNAME=${KEYVAULTNAME:-&quot;keyvault&quot;}
+AZ_SUBSCRIPTION=${AZ_SUBSCRIPTION:-&quot;Azure Subscription&quot;}
+AZ_SUBSCRIPTION_ID=${AZ_SUBSCRIPTION_ID:-&quot;Azure Subscription ID&quot;}
+ADO_ORG=${ADO_ORG:-&quot;https://dev.azure.com/myorgname&quot;}
+ADO_PROJECT=${ADO_PROJECT:-&quot;MyProject&quot;}
 SECRET_TEMPLATE=${SECRET_TEMPLATE:-&quot;./secret-var-group.tpl&quot;}
 
-if [ ! -e &quot;$ENVRC&quot; ]; then
-    echo &quot;Without the ENVRC file we are at a loss what to do :(&quot;
-    exit 1
-fi
-
-## Source ENVRC like a boss
-set -a
-. $ENVRC
-set +a
-
-echo &quot;TARGET: ${TARGET}&quot;
 echo &quot;STAGE: ${STAGE}&quot;
 echo &quot;TEAM: ${TEAM}&quot;
 echo &quot;AZ_SUBSCRIPTION: ${AZ_SUBSCRIPTION}&quot;
@@ -301,6 +293,7 @@ echo &quot;KEYVAULTNAME: ${KEYVAULTNAME}&quot;
 echo &quot;ADO_ORG: ${ADO_ORG}&quot;
 echo &quot;ADO_PROJECT: ${ADO_PROJECT}&quot;
 echo &quot;SECRET_TEMPLATE: ${SECRET_TEMPLATE}&quot;
+echo &quot;SC_NAME: ${SC_NAME}&quot;
 
 ## We pull this from our super secret keyvault
 export ADO_USER=&quot;$(az keyvault secret show --name ADOUSER --vault-name $KEYVAULTNAME --subscription &quot;$AZ_SUBSCRIPTION&quot; --query value -o tsv)&quot;
@@ -339,17 +332,29 @@ remove_ado_vargroup () {
   fi;
 }
 
-echo &quot;Retrieving ${STAGE}_${TEAM} service endpoint id first...&quot;
-export service_endpoint_id=`get_ado_connection ${STAGE}_${TEAM}`
+get_ado_project_id () {
+  id=`az devops project show \
+    --project $1 \
+    --detect false \
+    --subscription &quot;$AZ_SUBSCRIPTION_ID&quot; \
+    --organization &quot;$ADO_ORG&quot; \
+    -o table | head -n1 | awk '{print $1;}'`
+  echo &quot;$id&quot;
+}
+
+echo &quot;Retrieving ${SC_NAME} service endpoint id first...&quot;
+export service_endpoint_id=`get_ado_connection ${SC_NAME}`
 export vault_name=$KEYVAULTNAME
-export name=${STAGE}_${TEAM}_secrets
-export description=&quot;${STAGE}_${TEAM} (linked to ${KEYVAULTNAME})&quot;
+export name=${SC_NAME}_secrets
+export description=&quot;${SC_NAME} (linked to ${KEYVAULTNAME})&quot;
+export project=&quot;${ADO_PROJECT}&quot;
+export project_id=`get_ado_project_id ${ADO_PROJECT}` 
 
 ## If we have our service endpoint id we are good to go
 if  [ ! -z &quot;$service_endpoint_id&quot; ]; then
-  echo &quot;ID for token replacement - ${STAGE}_${TEAM} = $service_endpoint_id&quot;
-  DEPLOYVARS='$service_endpoint_id:$vault_name:$name:$description'
-  envsubst &quot;$DEPLOYVARS&quot;&lt; &quot;${SECRET_TEMPLATE}&quot;&gt; $(basename ${SECRET_TEMPLATE}).out
+  echo &quot;ID for token replacement - ${SC_NAME} = $service_endpoint_id&quot;
+  DEPLOYVARS='$service_endpoint_id:$vault_name:$name:$description:$project:$project_id'
+  envsubst &quot;$DEPLOYVARS&quot;&lt; &quot;${SECRET_TEMPLATE}&quot; &gt;/tmp/$(basename ${SECRET_TEMPLATE}).out
   vargroup=`get_ado_vargroup ${name}`
   if [[ ! -z &quot;$vargroup&quot; ]]; then 
     echo &quot;Removing old keyvault linked variable group ${name} ($vargroup)&quot;
@@ -361,7 +366,7 @@ if  [ ! -z &quot;$service_endpoint_id&quot; ]; then
     --user &quot;${ADO_USER}:${ADO_PAT}&quot; \
     -H &quot;Content-Type: application/json&quot; \
     -d @${SECRET_TEMPLATE}.out \
-    'https://dev.azure.com/onehavi/NextGen/_apis/distributedtask/variablegroups?api-version=6.0-preview.2'
+    &quot;${ADO_ORG}/${ADO_PROJECT}/_apis/distributedtask/variablegroups?api-version=6.0-preview.2&quot;
 fi
 </code></pre>
 
