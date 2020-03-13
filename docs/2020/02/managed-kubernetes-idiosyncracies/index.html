@@ -1,0 +1,779 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Managed Kubernetes Idiosyncracies | Zachary Loeber</title>
+        <meta name="description" content="Managed Kubernetes Idiosyncracies - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Managed Kubernetes Idiosyncracies">
+        <meta itemprop="description" content="Managed Kubernetes Idiosyncracies - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Managed Kubernetes Idiosyncracies">
+        <meta property="og:description" content="Managed Kubernetes Idiosyncracies - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/blog/gears.png">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/2020/02/managed-kubernetes-idiosyncracies/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/2020/02/managed-kubernetes-idiosyncracies/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">
+            <img src="/images/blog/gears.png" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-02-25</span>
+            
+        
+
+        
+            <span class="readingTime">12 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/devops">DevOps</a>
+                
+                    <a href="/categories/kubernetes">Kubernetes</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Managed Kuberentes services allow you to dive into Kubernetes quickly. But even a managed kubernetes cluster requires more thought and care than one may expect.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Before kubernetes burst into the scene like Kramer in a Sienfeld rerun we were all happily running managed conatainers in Azure&rsquo;s ACS, Amazon&rsquo;s ECS/Fargate, or maybe even using Docker on some virtual machines. This was good enough for most enterprises if they decided to run anything in containers at all of course. But the deployments for such containers were fundamentally flawed in that they were tightly bound by the cloud provider running the services you were deploying against. To some extent Docker (compose) bridged some of this cloud gap. This conatainer abstraction only helped at the developer workstation level though. Orchestration beyond the dev workstation meant dancing with a cloud vendor and their tooling of choice. This may explain things like ecs-cli, pre-kubernetes Rancher, and the explosion of devops as a popular IT career choice.</p>
+
+<p>All joking aside, Kubernetes has seen explosive growth partially because it helps abstract the cloud out of the deployment pipelines for businesses. It is exciting for IT veterns like myself as I can start to worry less about the underlying infrastructure and more about the workloads and their lifecycles instead. Unfortunately, Kuberentes still is infrastructure and running it is not like spinning up another golden image VM in your datacenter (yet). So the cloud vendors have come to our rescue again but this time with managed Kubernetes services.</p>
+
+<h2 id="production-grade">Production Grade</h2>
+
+<p>It is important to level set on the component parts of a production grade Kubernetes cluster. The term &lsquo;production grade&rsquo; is key here because many local Kubernetes implementations you may deploy to test the waters (minikube, k3s, et cetera) do do anything for production level high availability.</p>
+
+<p>A quick rundown of the cluster component parts is in order. At its core, a cluster is actually two distinct planes running on servers (called &lsquo;nodes&rsquo;).</p>
+
+<ol>
+<li>Worker Plane</li>
+<li>Control Plane</li>
+</ol>
+
+<p>The worker plane is where your workloads get scheduled and pods actually run. A default cluster deployment will have dedicated nodes for this plane but it is possible (though not recommended) to untaint your control plane nodes to allow for workload scheduling on your control plane nodes as well.</p>
+
+<p>The control plane is significantly more involved. It will contain, at the very least;</p>
+
+<ol>
+<li>kube-api-server - The control center</li>
+<li>Configuration store - etcd cluster in most deployments</li>
+<li>kube-scheduler - Pod placement</li>
+<li>kube-controller-manager - Your state machine</li>
+</ol>
+
+<blockquote>
+<p><strong>NOTE:</strong> Many diagrams also include a fifth component which <a href="https://kubernetes.io/docs/tasks/administer-cluster/running-cloud-controller/">was introduced in v1.6</a> called the cloud-controller-manager that can allow for easier cloud-specific integrations within a cluster.</p>
+</blockquote>
+
+<p>For a primer on what the control plane consists of reading over <a href="https://kubernetes.io/docs/concepts/overview/components/">the official components documentation</a> would be your best bet but here is an obligatory diagram anyway;</p>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/7016517375d10c702489167e704dcb99e570df85/7bb53/images/docs/components-of-kubernetes.png" alt="Kubernetes Components" /></p>
+
+<p>To be &lsquo;production grade&rsquo;, the control plane components should run across at least 3 nodes for high availability, be updated regularly, be monitored, and generally be loved like the rest of your infrastructure.</p>
+
+<h2 id="what-managed-gets-ya">What Managed Gets Ya</h2>
+
+<p>Managed in IT is a contextual term as it holds different meaning based on the person you are talking with. A developer may read it to mean that the operations team manages it. In this light, a dev may then assume that a cloud managed kubernetes cluster is upgraded, patched, rebooted, or generally cared for transparently by the vendor.</p>
+
+<p>Yeah, that&rsquo;s not what managed really means in this case, but here is what managed does get ya.</p>
+
+<h3 id="invisible-control-plane">Invisible Control Plane</h3>
+
+<p>This is the first but most important aspect of managed kubernetes one must know. On a managed kubernetes cluster you are freed from the burden of the control plane. That&rsquo;s right In a managed kubernetes cluster <strong>the entire control plane is managed</strong>.</p>
+
+<p>This means the you can forego the 3-node initial requirement for your cluster and still have some level of HA for the backend components. This alone elminates much operational burden and is why I&rsquo;ll go managed almost everytime.</p>
+
+<p>This also means that if you had any designs to use the cluster etcd implmentation for other means then you will have to deploy and manage this component separately.</p>
+
+<blockquote>
+<p><strong>Takeaway:</strong> Not having a control plane is awesome. It also means you simply don&rsquo;t have that control you otherwise may have had.</p>
+</blockquote>
+
+<h3 id="frosting-on-your-cake">Frosting On Your Cake</h3>
+
+<p>Deploying a kubernetes cluster from scratch for the first time only to realize you are unable to carve out persistent volumes or expose services via ingress feels like getting a brand new car without wheels. Cloud managed clusters provide their own solutions for these essential services to overcome this initial shortcomings. These are, as one might expect, targeted specifically to the cloud provider and usually involves consuming more of their own brand of cloud. The most important integrations in this space that ease operational burden increadibly are;</p>
+
+<ul>
+<li>Loadbalancer provisioning</li>
+<li>Storage provisioning (both block and file based)</li>
+</ul>
+
+<p>This is exceptionally useful and an enormous time saver but there are, as one may expect, some precautions you should take.</p>
+
+<h4 id="loadbalancers">Loadbalancers</h4>
+
+<p>Most loadbalancers create a public IP by default within the cloud. This is insecure and scary for all the reasons you think it would be. The general method to override this at deployment time is with a special annotation <code>service.beta.kubernetes.io/&lt;azure/aws/google&gt;-load-balancer-internal: &quot;true&quot;</code>.</p>
+
+<p>Also, you should question how much a load balancer is really needed for a particular workload. A load balancer is going to be largely required for non-standard traffic workloads like databases, DNS, or any other non-http type of traffic. For everything else there is ingress. In most deployments I&rsquo;d expect no more than a single load balancer which is tied to your ingress controller of choice. At most you may have one ingress controller/loadbalancer per-zone for some stricter segmentation.</p>
+
+<h4 id="persistent-volumes">Persistent Volumes</h4>
+
+<p>Persistent volumes that tie into cloud storage have all the billing considerations to consider. Plus they may not always be suited for your particular workloads. If you have exceptionally heavy IO to disk then keeping a distributed local disk storage solution may be a consideration.</p>
+
+<p>It is also important to be aware that many Kubernetes deployments that I&rsquo;ve done required specific tinkering around the cloud provider storage. This means you may find that your carefully crafted deployments are not all that portable in the end. Getting locked into a cloud provider for using Kubernetes should be considered an anti-pattern. Consider abstracting your storage presentation via something like OpenEBS if this kind of thing matters to you at all.</p>
+
+<p>You also have to consider just how many persistent volumes you will require. Some cloud providers have strict limits on the number of volumes that can be presented to each server node based on model.</p>
+
+<blockquote>
+<p><strong>Takeaway:</strong> Just because its easy to use, doesn&rsquo;t mean you should use alot of it without thought. Loadbalancers and storage in the cloud have cost and security implications.</p>
+</blockquote>
+
+<h3 id="kubernetes-upgrades">Kubernetes Upgrades</h3>
+
+<p>Managed kubernetes offerings should provide some form of upgrade path for the version of Kubernetes on your cluster. This is both a blessing and a burden. It is a blessing as uprading Kubernetes is typically an involved process and this automation can allow you to seamlessly do rolling updates. It is a burden as the cloud providers will attempt to keep up with the rapid clip that Kuberentes is getting released and often stop supporting older versions from being deployed to new clusters. If you deploy your clusters via terraform and have pinned versions you may find that a manifest that once worked without issues suddenly fail, especially if you are not rebuilding your clusters frequently.</p>
+
+<blockquote>
+<p><strong>Takeaway:</strong> Treat your kube clusters as cattle and not pets. Redeploy them often to suss out issues that upgrades may cause your deployments.</p>
+</blockquote>
+
+<h3 id="extra-sauce">Extra Sauce</h3>
+
+<p>Typically each cloud provider has some extra sauce features for further integration with their platform which can be enabled as part of the install or with some minor effort afterwards. This includes;</p>
+
+<ul>
+<li>Multiple node groups/pools</li>
+<li>Additional addons for dashboard or log integration</li>
+<li>Integrated authentication between the cluster and cloud resources</li>
+<li>Serverless virtual node pools for bursting workloads</li>
+<li>And so on&hellip;</li>
+</ul>
+
+<h2 id="what-is-left-to-you">What Is Left to You</h2>
+
+<p>I&rsquo;m fully on the managed Kubernetes cluster bandwagon (regardless of the cloud platform). But there are some aspects of these managed offerings that should be on your radar. Here are just a few worth mentioning.</p>
+
+<h3 id="node-os-updates">Node OS Updates</h3>
+
+<p>The cluster nodes are still running on an OS, one which needs to get updated and be rebooted like all others you have ever administered. If you are rebuilding your clusters frequently enough then this likely isn&rsquo;t a huge issue. But let&rsquo;s be honest, you know you aren&rsquo;t rebuilding them are you?</p>
+
+<p>What&rsquo;s more, I&rsquo;ve personally seen nodes come online pretty much instantly requiring a reboot. And unless you login to your nodes you may never be the wiser. One tool you can use to help figure out what&rsquo;s going on in regards to reboots is <a href="https://github.com/weaveworks/kured">kured</a> made by the fine folk over at Weaveworks.</p>
+
+<p>If you do use this tool (and you should) know that the default behavior is for it to automatically reboot the nodes. This may not be your idea of fun if you have less than durable workloads running (for instance, spark streaming jobs). You can deploy kured so that it emits metrics with the reboot status and not take action though. In fact, simply collecting the metric prevents the daemon from initiating reboots. So, assuming you have prometheus already running on your cluster, you will need to deploy kured to feed its metrics into it (via a servicemonitor) and also point it to scrape prometheus to check for its metrics.</p>
+
+<p>Here is a generic helmfile with how I deployed this particular app to do just that. Obviously, make changes as required.</p>
+
+<pre><code class="language-bash">helmDefaults:
+  tillerless: true
+  tillerNamespace: platform
+  atomic: true
+  verify: false
+  wait: false
+  timeout: 600
+  recreatePods: false
+  force: true
+
+#####################
+## Kured - Automatic kube node reboots
+## Info: https://github.com/weaveworks/kured
+repositories:
+- name: stable
+  url: https://kubernetes-charts.storage.googleapis.com/
+- name: zloeber
+  url: git+https://github.com/zloeber/helm-namespace/chart
+
+releases:
+{{- if eq (env &quot;HELM_VERSION&quot; | default &quot;3&quot;) &quot;3&quot; }}
+- name: namespace-kured
+  chart: zloeber/namespace
+  namespace: kube-system
+  labels:
+    chart: namespace-kured
+    component: kured
+    namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+  wait: true
+  installed: {{ env &quot;STACK_KURED&quot; | default &quot;true&quot; }}
+  values:
+  - namespaces:
+    - {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+{{- end }}
+- name: kured
+  namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+  chart: stable/kured
+  labels:
+    chart: kured
+    component: platform
+    namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+  installed: {{ env &quot;STACK_KURED&quot; | default &quot;true&quot; }}
+{{- if eq (env &quot;HELM_VERSION&quot; | default &quot;2&quot;) &quot;3&quot; }}
+  needs:
+  - kube-system/namespace-kured
+{{- end }}
+  values:
+  - extraArgs:
+      prometheus-url: http://{{ env &quot;STACK_MONITORING_PROMETHEUSINSTANCE&quot; | default &quot;kube-prometheus&quot; }}.{{ env &quot;STACK_MONITORING_NAMESPACE&quot; | default &quot;monitoring&quot; }}.svc:9090
+
+- name: kured-service
+  chart: incubator/raw
+  namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+  labels:
+    component: kured
+    namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+  installed: {{ env &quot;STACK_KURED&quot; | default &quot;true&quot; }}
+  values:
+  - resources:
+    - apiVersion: v1
+      kind: Service
+      metadata:
+        name: kured
+        labels:
+          app: kured
+          chart: kured-service
+          release: kured
+      spec:
+        ports:
+        - name: metrics
+          port: 8088
+          protocol: TCP
+          targetPort: metrics
+        selector:
+          app: kured
+          release: kured
+        sessionAffinity: None
+        type: ClusterIP
+
+- name: kured-servicemonitor
+  chart: &quot;incubator/raw&quot;
+  namespace: {{ env &quot;STACK_MONITORING_NAMESPACE&quot; | default &quot;monitoring&quot; }}
+  labels:
+    component: &quot;kured&quot;
+    namespace: {{ env &quot;STACK_MONITORING_NAMESPACE&quot; | default &quot;monitoring&quot; }}
+    default: &quot;true&quot;
+  installed: {{ env &quot;STACK_KURED&quot; | default &quot;true&quot; }}
+  values:
+  - resources:
+    - apiVersion: monitoring.coreos.com/v1
+      kind: ServiceMonitor
+      metadata:
+        name: kured
+        namespace: {{ env &quot;STACK_MONITORING_NAMESPACE&quot; | default &quot;monitoring&quot; }}
+        labels:
+          app: kured
+          chart: kured-servicemonitor
+          release: kured
+          heritage: Helm
+          prometheus: {{ env &quot;PROMETHEUS_INSTANCE&quot; | default &quot;kube-prometheus&quot; }}
+      spec:
+        jobLabel: kured
+        namespaceSelector:
+          matchNames:
+          - {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+        selector:
+          matchLabels:
+            app: kured
+            release: kured
+        endpoints:
+        - targetPort: 8080
+          path: /metrics
+          interval: 60s
+          scrapeTimeout: 30s
+</code></pre>
+
+<p>And the query for your prometheus alerts that allow you to see which nodes require a reboot</p>
+
+<pre><code class="language-bash">count(kured_reboot_required) BY (instance) * ON (instance) GROUP_LEFT (node) kured_reboot_required &gt; 0
+</code></pre>
+
+<h3 id="your-cluster-is-not-all-yours">Your Cluster Is Not All Yours</h3>
+
+<p>When you get your managed cluster up and running, one may expect to get the sum value of all the RAM and CPU of your nodes to use in your workloads. Nope. Sorry, you don&rsquo;t get all of it. In fact, this is true of pretty much any cluster, managed or otherwise. Kubernetes is not an OS (as much as I so very want it to be). It runs on top of an OS, which immediately gets its share of the resources right off the top. Even worker-only nodes need to run some workload to be useful (mainly networking stuff) to there is more consumed.</p>
+
+<p>When we get into the next section this will make more sense but any &lsquo;real&rsquo; Kuberentes cluster you deploy will also have a slew of related base services that will need to be running. These also gobble up some of the pool of resources in the cluster.</p>
+
+<blockquote>
+<p><strong>Takeaway:</strong> My rule of thumb is to assume about 25-30% of the oveall cluster resources are simply not available and set my upper bounds on autoscaling node pools appropriately.</p>
+</blockquote>
+
+<h3 id="making-it-useful">Making it Useful</h3>
+
+<p>If you create a new managed cluster in your cloud of choice, login to it via kubectrl and list out all the pods across all namespaces it is usually pretty undewhelming. This is because, like a desktop without software, you are only setup with the potential to do great things. It is still up to the intrepid admin to layer in the software and make the cluster worth a damn.</p>
+
+<p>This one may seem obvious. But it is not quite as obvious just how many layers of technology are required to stack into your cluster to make the thing useful. Here is an example of a stack of technologies that may make it into your cluster.</p>
+
+<table>
+<thead>
+<tr>
+<th>Stack</th>
+<th>Purpose</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Fluentbit</td>
+<td>Log Scraping and Forwarding</td>
+</tr>
+
+<tr>
+<td>Prometheus Operator</td>
+<td>Prometheus &amp; AlertManager CRDs</td>
+</tr>
+
+<tr>
+<td>Kube Prometheus</td>
+<td>Kubernetes default service monitors and alerts</td>
+</tr>
+
+<tr>
+<td>Prometheus Adapter</td>
+<td>Custom Metrics Autoscaling</td>
+</tr>
+
+<tr>
+<td>Heapster</td>
+<td>Kubernetes Cluster Metrics</td>
+</tr>
+
+<tr>
+<td>Dashboard</td>
+<td>Admin Dashboard</td>
+</tr>
+
+<tr>
+<td>Kured</td>
+<td>Host Node Autoreboot</td>
+</tr>
+
+<tr>
+<td>RBAC Manager</td>
+<td>CRDs for RBAC</td>
+</tr>
+
+<tr>
+<td>Cert-Manager</td>
+<td>Certificate Generation</td>
+</tr>
+
+<tr>
+<td>Traefik</td>
+<td>Ingress Controller</td>
+</tr>
+
+<tr>
+<td>Grafana</td>
+<td>Metric Dashboards</td>
+</tr>
+
+<tr>
+<td>IAM or Dex integration</td>
+<td>authentication</td>
+</tr>
+
+<tr>
+<td>ArgoCD</td>
+<td>GitOps Controller</td>
+</tr>
+
+<tr>
+<td>Cost Analyzer</td>
+<td>Per-Namespace and Cluster Cost Analysis</td>
+</tr>
+
+<tr>
+<td>Prometheus Push Gateway</td>
+<td>Push-based metrics</td>
+</tr>
+
+<tr>
+<td>Prometheus APM Exporter</td>
+<td>Springboot Prometheus Exporter</td>
+</tr>
+
+<tr>
+<td>Vault Operator</td>
+<td>Hashicorp Vault Integration</td>
+</tr>
+
+<tr>
+<td>Zipkin</td>
+<td>Distributed Tracing</td>
+</tr>
+</tbody>
+</table>
+
+<p>This list does not include any stateful sets deployments (like elasticsearch or postgress), policy engines, additional metrics exporters, or even your workloads. Keep in mind that each needs to be configured and deployed to work in concert with your infrastructure and often one another as well. This will also affect sizing of your cluster nodes accordingly.</p>
+
+<blockquote>
+<p><strong>Takeaway:</strong> View your kubernetes clusters as a server. A server needs software to do anything useful, so will your cluster.</p>
+</blockquote>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>If you are using Kubernetes already then good for you! Welcome to the new declarative world we live in (#declarativenation). No matter how you consume your kubernetes, managed or bare metal, on your laptop or in the cloud, there is lots to consider. Generally, choosing managed Kubernetes clusters will be easier for most organizations. I&rsquo;d just set your expectations to reasonable levels and things should be fine.</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/kubernetes">kubernetes</a>
+                
+                <a href="/tags/helm">helm</a>
+                
+                <a href="/tags/aws">AWS</a>
+                
+                <a href="/tags/azure">Azure</a>
+                
+                <a href="/tags/eks">EKS</a>
+                
+                <a href="/tags/aks">AKS</a>
+                
+                <a href="/tags/cloud">Cloud</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/02\/managed-kubernetes-idiosyncracies\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/02\/managed-kubernetes-idiosyncracies\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/02\/managed-kubernetes-idiosyncracies\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/">Helm 3 Namespace Creation</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>

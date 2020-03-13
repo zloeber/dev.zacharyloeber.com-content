@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>EKS on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/tags/eks/</link>
+    <description>Recent content in EKS on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 25 Feb 2020 13:27:15 -0600</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/eks/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Managed Kubernetes Idiosyncracies</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/</link>
+      <pubDate>Tue, 25 Feb 2020 13:27:15 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/</guid>
+      <description>&lt;p&gt;Managed Kuberentes services allow you to dive into Kubernetes quickly. But even a managed kubernetes cluster requires more thought and care than one may expect.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
