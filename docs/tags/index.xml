@@ -5,10 +5,64 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 25 Feb 2020 13:27:15 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 11:33:38 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Azure</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/azure/</link>
+      <pubDate>Mon, 23 Mar 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/bash/</link>
+      <pubDate>Mon, 23 Mar 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/blog/</link>
+      <pubDate>Mon, 23 Mar 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DevOps</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
+      <pubDate>Mon, 23 Mar 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipeline</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/pipeline/</link>
+      <pubDate>Mon, 23 Mar 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/pipeline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yaml</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/yaml/</link>
+      <pubDate>Mon, 23 Mar 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/yaml/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>AKS</title>
@@ -25,15 +79,6 @@
       <pubDate>Tue, 25 Feb 2020 13:27:15 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Azure</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/azure/</link>
-      <pubDate>Tue, 25 Feb 2020 13:27:15 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/azure/</guid>
       <description></description>
     </item>
     
@@ -83,24 +128,6 @@
     </item>
     
     <item>
-      <title>Bash</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/bash/</link>
-      <pubDate>Sat, 04 Jan 2020 11:00:13 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/bash/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DevOps</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
-      <pubDate>Sat, 04 Jan 2020 11:00:13 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>KeyVault</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/keyvault/</link>
       <pubDate>Sat, 04 Jan 2020 11:00:13 -0600</pubDate>
@@ -115,33 +142,6 @@
       <pubDate>Wed, 01 Jan 2020 16:46:26 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/helmfile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pipeline</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/pipeline/</link>
-      <pubDate>Sun, 22 Dec 2019 20:59:43 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/pipeline/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blog</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/blog/</link>
-      <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>yaml</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/yaml/</link>
-      <pubDate>Sun, 15 Dec 2019 16:02:15 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/yaml/</guid>
       <description></description>
     </item>
     

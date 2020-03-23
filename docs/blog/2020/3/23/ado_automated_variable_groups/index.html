@@ -1,0 +1,673 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.59.1" />
+        <title> Azure Devops Automated Variable Groups | Zachary Loeber</title>
+        <meta name="description" content="Azure Devops Automated Variable Groups - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Azure Devops Automated Variable Groups">
+        <meta itemprop="description" content="Azure Devops Automated Variable Groups - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Azure Devops Automated Variable Groups">
+        <meta property="og:description" content="Azure Devops Automated Variable Groups - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/blog/backlit_keyboard.jpg">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2020/3/23/ado_automated_variable_groups/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2020/3/23/ado_automated_variable_groups/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">
+            <img src="/images/blog/backlit_keyboard.jpg" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-03-23</span>
+            
+        
+
+        
+            <span class="readingTime">7 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/azure">Azure</a>
+                
+                    <a href="/categories/devops">DevOps</a>
+                
+                    <a href="/categories/pipeline">Pipeline</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>In this article I&rsquo;ll cover how one can automate creating and updating ADO libraries (aka. variable groups) using pipeline as code.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In a prior post I covered the somewhat painful automation of Azure DevOps keyvault linked variable groups. In this post I&rsquo;ll do the same for updating regular variable groups (aka. ADO &lsquo;Libraries&rsquo;). Azure DevOps Libraries are groups of variables which can be exceedingly useful in your pipelines. Unfortunately, they tend to be manually updated and tinkered with outside of version control. Deploying variable groups from a pipeline helps ensure all aspects of my deployments are under version control.</p>
+
+<h2 id="how-to-do-it">How To Do It</h2>
+
+<p>It would be much easier to use a terraform provider to do such things but the only one out there for ADO <a href="https://github.com/microsoft/terraform-provider-azuredevops">is so beta that you&rsquo;d have to compile it yourself to use it</a>. So we are left with bash scripts and prayers again. No worries, that&rsquo;s the stuff pipelines are made of right?</p>
+
+<p>On the surface the script to accomplish this task is pretty easy. Use one azure cli command to create the variable group and populate it with all of its variables.</p>
+
+<pre><code class="language-bash"># Login
+az login --service-principal \
+  --username &quot;${SPNAPPID}&quot; \
+  --password &quot;${SPNSECRET}&quot; \
+  --tenant &quot;${TENANTID}&quot;
+
+# Add the cli extension
+az extension add --name azure-devops
+
+# Profit!
+az pipelines variable-group create \
+  --name &quot;$name&quot; \
+  --authorize true \
+  --detect false \
+  --subscription &quot;$AZSUB&quot; \
+  --organization &quot;$ADO_ORG&quot; \
+  --project &quot;$ADO_PROJECT&quot; \
+  --variables &quot;${arr[@]}&quot;
+</code></pre>
+
+<p>Clear as mud right? It will make more sense in context of an pipeline, promise.</p>
+
+<h2 id="the-pipeline">The Pipeline</h2>
+
+<p>The pipeline code I will use consumes a file with a simple key pair value list. This is commonly known as a <code>.env</code> file.</p>
+
+<pre><code class="language-bash">MYVAR=somevalue1
+MYVAR2=somevalue2
+</code></pre>
+
+<p>I use this format because it is easy to create, update, and consume in other scripts (like Makefiles). This also is easy to review and keep in version control. To use the file, just read it into a bash array and wrap it in some other script logic. The final pipeline code is a template for a job to be used in other pipeline stages with little effort.</p>
+
+<pre><code class="language-bash">## ado-variable-group.yml
+# Use az cli to update or create an ADO variable group like a crazy person
+# sourceFile is a generic .env file with entries in VAR=VALUE format.
+
+parameters:
+  sourceFile: ''
+  groupName: ''
+  overwrite: 'true'
+  adoProject: ''
+  adoOrg: ''
+  adoUser: ''
+  adoPAT: ''
+
+steps:
+- bash: |
+    export ADO_USER=${ADOUSER}
+    export ADO_PAT=${ADOPAT}
+    export AZURE_DEVOPS_EXT_PAT=${ADOPAT}
+    if [ ! -e &quot;$SOURCEFILE&quot; ]; then
+        echo &quot;Without the SOURCEFILE file we are at a loss what to do :(&quot;
+        exit 1
+    fi
+    AZSUB=$(az account show --output tsv --query id)
+    if [ -z &quot;$AZSUB&quot; ]; then
+      echo &quot;Unable to determine current Azure subscription!&quot;
+      exit 1
+    fi
+    echo &quot;Sourcing variables: $SOURCEFILE&quot;
+    myvalues=()
+    while IFS= read -r line; do
+        var=`echo $line | tr -d '&quot;'`
+        myvalues+=(&quot;$var&quot;)
+    done &lt; &quot;${SOURCEFILE}&quot;
+
+    set -a
+    . &quot;${SOURCEFILE}&quot;
+    set +a
+
+    echo &quot;AZSUB: ${AZSUB}&quot;
+    echo &quot;ADO_USER: ${ADO_USER}&quot;
+    echo &quot;ADO_PAT: ${ADO_PAT}&quot;
+    echo &quot;ADO_ORG: ${ADO_ORG}&quot;
+    echo &quot;ADO_PROJECT: ${ADO_PROJECT}&quot;
+    get_ado_vargroup () {
+      group=`az pipelines variable-group list \
+        --detect false \
+        --subscription &quot;$AZSUB&quot; \
+        --organization &quot;$ADO_ORG&quot; \
+        --project &quot;$ADO_PROJECT&quot; \
+        -o table | grep $1 | head -n1 | awk '{print $1;}'`
+      echo &quot;$group&quot;
+    }
+    remove_ado_vargroup () {
+      echo &quot;Attempting to remove vargroup id $1&quot;
+      if [ ! -z &quot;$1&quot; ]; then
+        az pipelines variable-group delete \
+          --group-id &quot;$1&quot; \
+          --detect false \
+          --subscription &quot;$AZSUB&quot; \
+          --organization &quot;$ADO_ORG&quot; \
+          --project &quot;$ADO_PROJECT&quot; \
+          -y 2&gt; /dev/null
+      fi;
+    }
+    add_ado_vargroup () {
+      if [ ! -z &quot;$1&quot; ]; then
+        local name=&quot;$1&quot;
+        shift
+        local arr=(&quot;$@&quot;)
+        echo &quot;Attempting to add vargroup - $name&quot;
+        echo &quot;  Variables = $arr&quot;
+        az pipelines variable-group create \
+          --name &quot;$name&quot; \
+          --authorize true \
+          --detect false \
+          --subscription &quot;$AZSUB&quot; \
+          --organization &quot;$ADO_ORG&quot; \
+          --project &quot;$ADO_PROJECT&quot; \
+          --variables &quot;${arr[@]}&quot;
+      fi;
+    }
+    vargroup=`get_ado_vargroup ${GROUPNAME}`
+    if [ ! -z &quot;$vargroup&quot; ]; then
+      if [ &quot;$OVERWRITE&quot; = true ]; then
+        echo &quot;Removing ADO variable group ${GROUPNAME} ($vargroup)&quot;
+        remove_ado_vargroup $vargroup
+      else
+        echo &quot;Variable already exists and OVERWRITE = ${OVERWRITE}&quot;
+        exit 1
+      fi
+    fi
+    add_ado_vargroup ${GROUPNAME} &quot;${myvalues[@]}&quot;
+    
+  displayName: 'ADO Var Group - ${{ parameters.groupName }}'
+  env:
+    SOURCEFILE: '${{ parameters.sourceFile }}'
+    GROUPNAME: '${{ parameters.groupName }}'
+    OVERWRITE: '${{ parameters.overwrite }}'
+    ADO_ORG: '${{ parameters.adoOrg }}'
+    ADO_PROJECT: '${{ parameters.adoProject }}'
+    ADOUSER: '${{ parameters.adoUser }}'
+    ADOPAT: '${{ parameters.adoPAT }}'
+</code></pre>
+
+<p>If you are paying attention, you can see that we actually source in the source env file which is not strictly necessary.</p>
+
+<pre><code class="language-bash">    set -a
+    . &quot;${SOURCEFILE}&quot;
+    set +a
+</code></pre>
+
+<p>This may or may not be what you want depending on your requirements but it does allow for some pipeline trickery. For instance, it can be useful to include deployment specific information within the env file that can then be used later in the same pipeline. So you could, in theory, include the ADO_ORG, ADO_PROJECT, GROUPNAME, AZSUB, and more within this file and use it later in the script to reduce your pipeline code and parameters quite a bit.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>In order to run the commands in the pipeline code you will need to have an existing keyvault linked variable group (I call mine <code>cicd_secrets</code>)with some secrets already in place. These are:</p>
+
+<ul>
+<li>clientid</li>
+<li>clientsecret</li>
+<li>tenantid</li>
+<li>ADOUSER</li>
+<li>ADOPAT</li>
+</ul>
+
+<p>The clientid/clientsecret/tenantid are mainly just to login to the subscription, I use my terraform spn just to be certain. The ADOUSER and ADOPAT are a bit of a bummer as you need to precreate one manually with your own account. You can create this PAT with the following permissions:</p>
+
+<ul>
+<li>Variable Groups - Read, create, &amp; manage</li>
+<li>Service Connections - Read, query, &amp; manage (optional)</li>
+</ul>
+
+<p>I&rsquo;ll cover in another post the automation of service connections via pipeline as code. I&rsquo;ll leave it up to you if you want to include this permission in your PAT but it is technically optional for this excercise.</p>
+
+<blockquote>
+<p><strong>NOTE</strong> ADO PATs are the preferred method for automating ADO via cli. These are called <code>personal</code> access tokens for a reason, they are not able to be scoped at a project level and so you are required to create them with your own account! Be kind to future owners of this process and well document that fact so that when your account gets deactivated a new PAT can be generated and the appropriate key vault secrets updated.</p>
+</blockquote>
+
+<h2 id="usage">Usage</h2>
+
+<p>As the pipeline is reusable template code, you would need to place it into your own repo and reference it in your calling pipeline.</p>
+
+<pre><code class="language-bash">name: ado-var-group-sync
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - config/*
+
+pr: none
+
+resources:
+  repositories:
+    - repository: platform
+      type: git
+      name: MyProject/pipelinecode
+      ref: refs/heads/master
+
+stages:
+- stage: ADO_Sync
+  displayName: 'Update ADO'
+  jobs:
+  - job: Update_ADO
+    pool:
+      vmImage: ubuntu-latest
+    variables:
+    - group: cicd_secrets
+
+    steps:
+    - bash: |
+        az login --service-principal \
+          --username &quot;${SPNAPPID}&quot; \
+          --password &quot;${SPNSECRET}&quot; \
+          --tenant &quot;${TENANTID}&quot;
+        az extension add --name azure-devops
+      displayName: &quot;Initialize&quot;
+      env:
+        TENANTID: &quot;$(tenantid)&quot;
+        SPNAPPID: &quot;$(clientid)&quot;
+        SPNSECRET: &quot;$(clientsecret)&quot;
+
+    # Variable Group Update
+    - template: job/ado-variable-group.yml@platform
+      parameters:
+        sourceFile: 'config/vargroup.env'
+        groupName: 'pipeline_parameters'
+        overwrite: 'true'
+        adoProject: 'MyProject'
+        adoOrg: 'https://dev.azure.com/myADOorg'
+        adoUser: $(ADOUSER)
+        adoPAT: $(ADOPAT)
+</code></pre>
+
+<p>This example would trigger on the master branch of a repo only when files within the &lsquo;config&rsquo; folder are updated. This is where one would want to drop the source env file and this pipeline code yaml file.</p>
+
+<blockquote>
+<p><strong>NOTE</strong> This example assumes that your ADO org is <code>myADOorg</code> and that the project <code>MyProject</code> in ADO hosts the repository <code>pipelinecode</code> which includes the template pipeline as code shown in the prior section. This also assumes the required variables mentioned earlier are in the keyvault linked variable group called <code>cicd_secrets</code>.</p>
+</blockquote>
+
+<h2 id="pipeline-code-reuse">Pipeline Code Reuse</h2>
+
+<p>I highly recommend you start doing this for all of your pipeline code as it will make things far easier to support and expand upon down the line. My personal preference is to store the code within folders that describe the component part that the template should be used within. For example, the following folders might be present in your pipeline as code library:</p>
+
+<ul>
+<li>multistage</li>
+<li>build</li>
+<li>deploy</li>
+<li>job</li>
+</ul>
+
+<p>You get the picture. The nice thing about this format is that you can see immediately what the code is used for within your pipelines when calling the template: <code>- template: job/ado-variable-group.yml@platform</code></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>For a while I was on the fence on if I should even be using these ADO libraries in my pipelines as they tend to get updated outside of version control. Not anymore though. With this pipeline code I can now put the configuration itself into version control and have PR approved updates along with the rest of the code that gets deployed. Pairing this kind of variable group maintenence with a well thought out naming convention, pipeline as code shared library, and per-environment deployment git repositories can be a powerful combo worth looking into.</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/blog">blog</a>
+                
+                <a href="/tags/azure">azure</a>
+                
+                <a href="/tags/devops">devops</a>
+                
+                <a href="/tags/pipeline">pipeline</a>
+                
+                <a href="/tags/bash">bash</a>
+                
+                <a href="/tags/yaml">yaml</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/3\/23\/ado_automated_variable_groups\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/3\/23\/ado_automated_variable_groups\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/3\/23\/ado_automated_variable_groups\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/active-directory">Active directory (44)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>

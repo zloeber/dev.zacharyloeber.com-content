@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 25 Feb 2020 13:27:15 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 11:33:38 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,15 @@
       <description>Zachary Loeber is an IT enthusiast with over a decade of experience in the field. Zach cut his teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
 When it comes to technology Zach’s primary interests are:
  Security Networking System Administration Linux Windows VMware Exchange 2010 Powershell Automation  Some of Zach&amp;#8217;s other interests include lifting weights, camping, running, self-improvement, and being a good husband.</description>
+    </item>
+    
+    <item>
+      <title>Azure Devops Automated Variable Groups</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/</link>
+      <pubDate>Mon, 23 Mar 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/</guid>
+      <description>&lt;p&gt;In this article I&amp;rsquo;ll cover how one can automate creating and updating ADO libraries (aka. variable groups) using pipeline as code.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -64,15 +73,6 @@ When it comes to technology Zach’s primary interests are:
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/</guid>
       <description>&lt;p&gt;Are you working with kubernetes regularly? There are so many tools out there it can be difficult to know which ones to use. Here are a few of them I&amp;rsquo;ve found to be useful but may have flown under your radar.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>ADO - Updating Variable Groups</title>
-      <link>https://zacharyloeber-dev.onrender.com/2019/12/ado-updating-variable-groups/</link>
-      <pubDate>Sun, 22 Dec 2019 11:33:38 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/2019/12/ado-updating-variable-groups/</guid>
-      <description>&lt;p&gt;Azure DevOps Libraries are groups of variables which can be exceedingly useful in your pipelines. I&amp;rsquo;ll cover how one can automate their update and creation via terraform and some simple bash scripting.&lt;/p&gt;</description>
     </item>
     
     <item>

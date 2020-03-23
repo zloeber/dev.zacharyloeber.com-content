@@ -143,9 +143,77 @@
     
         <p>Here is a script I whipped up to perform a report on your Big-IP LTM load balancers using powershell. The report currently includes the virtual servers, pools, and various bits of status information on both. <a href="https://devcentral.f5.com/d/microsoft-powershell-with-icontrol">Big-IP iControl modules</a> are needed (for obvious reasons).</p>
 
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/01/03/big-ip-f5-ltm-load-balancer-documentation-script-with-powershell/" class="more">Continue reading</a>
-        
+<h3 id="details">Details</h3>
+
+<p>The following information is gathered and shown in the report which is generated:</p>
+
+<ul>
+<li>Virtual Server Summary
+
+<ul>
+<li>Virtual server name</li>
+<li>Address</li>
+<li>Port</li>
+<li>Pool</li>
+<li>Enable state</li>
+<li>Availability</li>
+</ul></li>
+<li>Virtual Server Details
+
+<ul>
+<li>Virtual server name</li>
+<li>Persistence profile</li>
+<li>iRules</li>
+</ul></li>
+<li>Pools
+
+<ul>
+<li>Pool name</li>
+<li>Active members</li>
+<li>Enable state</li>
+<li>Availability</li>
+<li>Load balance method</li>
+</ul></li>
+<li>Pool Members
+
+<ul>
+<li>Pool name</li>
+<li>Address</li>
+<li>Port</li>
+<li>Total connections</li>
+<li>Current connections</li>
+<li>Bytes in</li>
+<li>Enable state</li>
+<li>Availability</li>
+</ul></li>
+</ul>
+
+<h3 id="version">Version</h3>
+
+<p>Version 1.0.0 &#8211; 01/02/2014</p>
+
+<ul>
+<li>Initial Release</li>
+</ul>
+
+<h3 id="notes">Notes</h3>
+
+<ul>
+<li>The script requires powershell 3.0 as well as .Net 3.5 for Linq to be able to highlight HTML table cells.</li>
+<li>I&#8217;ve decided to try out something new and put a wrapper around the entire script to allow for calling the script directly from a powershell console without modification. This gives you the most common report options with as few parameters as possible and should help simplify usage. To run the script without any modifications at all simply run it with the -PromptForInput option.</li>
+</ul>
+
+<h3 id="screenshots">Screenshots</h3>
+
+<p><img style="margin: 5px;" alt="" src="http://i1.gallery.technet.s-msft.com/big-ip-f5-ltm-load-3fc9a2af/image/file/106436/1/2014-01-03%2011_26_44-system%20report.jpg?resize=585%2C194" width="585" height="194" data-recalc-dims="1" /></p>
+
+<p><img style="margin: 5px;" alt="" src="http:///i1.gallery.technet.s-msft.com/big-ip-f5-ltm-load-3fc9a2af/image/file/106437/1/2014-01-03%2011_29_13-system%20report.jpg?resize=577%2C149" width="577" height="149" data-recalc-dims="1" /></p>
+
+<p><img style="margin: 5px;" alt="" src="http:///i1.gallery.technet.s-msft.com/big-ip-f5-ltm-load-3fc9a2af/image/file/106438/1/2014-01-03%2011_29_57-system%20report.jpg?resize=576%2C101" width="576" height="101" data-recalc-dims="1" /></p>
+
+<h3 id="download">Download</h3>
+
+<p>Download the most recent version of this script <a href="http://gallery.technet.microsoft.com/Big-IP-F5-LTM-Load-3fc9a2af">at the Microsoft Technet Gallery</a></p>
     
 </div>
 
@@ -447,15 +515,15 @@
                 <ul>
                 
                     <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                    </li>
+                
+                    <li>
                         <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
                     </li>
                 
                     <li>
                         <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
-                    </li>
-                
-                    <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/">Helm 3 Namespace Creation</a>
                     </li>
                 
                 </ul>
