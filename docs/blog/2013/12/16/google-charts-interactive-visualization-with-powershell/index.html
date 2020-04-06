@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Google Charts: Interactive Visualization with Powershell | Zachary Loeber</title>
         <meta name="description" content="Google Charts: Interactive Visualization with Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Google Charts: Interactive Visualization with Powershell">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">6 min read</span>
+            <span class="readingTime">4 min read</span>
         
 
         
@@ -138,189 +138,37 @@
 
     
         <p>In this script I use powershell to gather system volume information which is then converted into a javascript array. This array is fed into the google charts to create a semi-attractive visualization of server disk space utilization in a single html report. Although this approach is a bit unconventional the results are both fun and useful.</p>
-
 <h3 id="introduction">Introduction</h3>
-
 <p>Everyone likes a good visualization. A decent chart can turn boring data into something meaningful or at the very least reduce eye strain when discerning meaning from a data set. Because of this I was looking into what it would take to create html reports with charts and other visualizations without dlls or other dependencies. The first method I discovered was the <a href="https://developers.google.com/chart/image/">Google Image Charts API.</a> There are people who have written whole dashboards around these handy charts. There are a few unfortunate down sides to using the Google Image Charts API though;</p>
-
 <ol>
 <li>You have to send your data outside of your organization</li>
 <li>There is little interactivity</li>
 <li>In 2015 the Google Image Charts API will be depreciated</li>
 </ol>
-
 <p>To get around these drawbacks I’ve started tinkering with the Google Charts API. The primary difference from the Google Image Charts API is that all the charts are rendered in the client browser using code embedded from Google. This means all the data is kept local and there is a greater degree of interactivity which can be implemented.</p>
-
 <p>In order to use the Google Chart elements you will first need to feed your data into javascript. As I’m looking to keep things simple and am not trying to create a full AJAX project, I fabricated a function which will take an array of psobjects and convert the psobject NoteProperty elements into a javascript array:</p>
-
-<pre class="wrap:true lang:powershell decode:true" title="ConvertTo-JSArray">Function ConvertTo-JSArray 
-{
-    &lt;#
-    .SYNOPSIS
-    Convert an array of PSObjects to a javascript array.
-    .DESCRIPTION
-    Convert an array of PSObjects to a javascript array. Only NoteProperty values will be included in the results.
-    .PARAMETER InputObject
-    An array of psobjects to convert.
-    .PARAMETER IncludeHeader
-    This will add the NoteProperty Name as the topmost element of the array.
-    .EXAMPLE
-    DriveInfo | ConvertTo-JSArray -IncludeHeader
-    .NOTES
-        Version    : 1.0.0 12/13/2013
-                     - First release
-        Author     : Zachary Loeber
-    .LINK
-        http://zacharyloeber.com/
-    .LINK
-        http://nl.linkedin.com/in/zloeber
-    #&gt; 
-    [cmdletbinding()]
-    PARAM
-    (
-        [Parameter(Mandatory=$true,
-                   ValueFromPipeline=$true)]
-        [PSObject]
-        $InputObject,
-
-        [switch]
-        $IncludeHeader
-    )
-
-    BEGIN
-    {
-        #init array to dump all objects into
-        $AllObjects = @()
-        $jsarray = ''
-        $header = ''
-    }
-    PROCESS
-    {
-        $AllObjects += $InputObject
-    }
-    END
-    {
-        $objcount = 0
-        ForEach ($obj in $AllObjects) 
-        {
-            $properties = @($obj.psobject.properties | Where {$_.MemberType -eq 'NoteProperty'})
-            if ($properties.Count -gt 0)
-            {
-                $propcount = 1
-                $arrayelement = ''
-                $objcount++
-                ForEach($property in $properties)
-                {
-                    switch ($property.TypeNameOfValue)
-                    {
-                        'System.String' {
-                            # escape the escape characters
-                            $strval = ($property.Value).replace('\','\\')
-                            $arrayval = "'$($strval)'"
-                        }
-                        default {
-                            $arrayval = $property.Value
-                        }
-                    }
-                    # if this is not the last property then add a comma
-                    if ($properties.count -ne $propcount)
-                    {
-                        $arrayval = "$arrayval,"
-                    }
-                    $arrayelement = $arrayelement+$arrayval
-                    $propcount++
-                }
-                $arrayelement = "[$arrayelement]"
-                # if this is not the last property then add a comma
-                if ($AllObjects.count -ne $objcount)
-                {
-                    $arrayelement = "$arrayelement,"
-                }
-                $jsarray = $jsarray + $arrayelement
-            }
-        }
-        if ($IncludeHeader)
-        {
-            $headerpropcount = 0
-            $headerprops = @(($AllObjects[0]).psobject.properties | Where {$_.MemberType -eq 'NoteProperty'} | %{$_.Name})
-            Foreach ($headerprop in $headerprops)
-            {
-                $headerpropcount++
-                $header = $header + "'$headerprop'"
-                # if this is will be followed by array elements then add a comma
-                if (($headerpropcount -ne $headerprops.count))
-                {
-                    $header = "$header,"
-                }
-            }
-            if ($jsarray -eq '')
-            {
-                $header = "[$header]"
-            }
-            else
-            {
-                $header = "[$header],"
-            }
-        }
-        return "[$($header)$($jsarray)]"
-    }
-}</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>From there it is just a matter of getting data I want to report upon properly represented in the portal html template. In order to do this I actually create the data structure first (using the previously generated array), then use a few data views, one for the table and one for the chart. This allows us not only to use the same data in the chart table and bar chart elements but also lets us customize the element styles and other roles. Simply select the columns you want to use and which role they play. Here is an example of pulling view data for a chart element where I include both style and roles to change the color of the bars and overlay annotations:</p>
-
-<pre class="lang:js decode:true">customchartview.setColumns([0, 5, {sourceColumn: 9,role:'style'}, {sourceColumn: 7,role:'annotation'}, 6, {sourceColumn: 10,role:'style'}, {sourceColumn: 8,role:'annotation'}]);</pre>
-
+<!-- raw HTML omitted -->
 <p>So we use column 0 and 5 as normal data elements, then use columns 9 and 7 as a style and annotation respectively. Since we are stacking bar chart data we then add in column 6 as regular data and do the same trick with style/annotation with columns 10 and 8.</p>
-
 <p>In the powershell code the ‘columns’ are all defined in order by selecting them from the output of another function I’ve included to gather local or remote disk information. This is worthy of looking at because I pull off two additional powershell tricks:</p>
-
-<pre class="wrap:true lang:powershell decode:true"># Report elements to select
-$DiskReportElements = @('Drive',
-                        'Disk',
-                        'DiskType',
-                        'Model',
-                        'DiskSize',
-                        'PercentUsed',
-                        'PercentFree',
-                        'UsedSpace',
-                        'FreeSpace',
-                        @{n='UsedStyle';e={ if ($_.PercentUsed -gt $DriveusageAlert)
-                                            {
-                                                'red'
-                                            }
-                                            elseif ($_.PercentUsed -gt $DriveUsageWarn)
-                                            {
-                                                'orange'
-                                            }
-                                            else
-                                            {
-                                                'green'
-                                            }
-                                          }},
-                        @{n='UnUsedStyle';e={'black'}})
-$DriveInfo = @(Get-RemoteDiskInformation  | 
-                Where {$_.Drive} | 
-                    Select $DiskReportElements)</pre>
-
-<p>The first trick is that I define all the object properties I’m going to later select in $DiskReportElements. This is useful for more easily tracking the object properties you are working with in larger selections of data. Within this list of properties I pull off another trick of performing inline logic to determine the value of the UsedStyle member. In this case UsedStyle is ‘green’ by default, becomes ‘orange’ if disk utilization percent is above $DriveUsageWarn, and is ‘red’ if the disk utilization percent is above $DriveUsageAlert. If you have been reading up to this point and counted the number of elements in my selection you will see that ‘UsageStyle’ is our 10th item, that conveniently matches up with {sourceColumn: 10,role:&#8217;style&#8217;} in the javascript template I’ve defined.</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The first trick is that I define all the object properties I’m going to later select in $DiskReportElements. This is useful for more easily tracking the object properties you are working with in larger selections of data. Within this list of properties I pull off another trick of performing inline logic to determine the value of the UsedStyle member. In this case UsedStyle is ‘green’ by default, becomes ‘orange’ if disk utilization percent is above $DriveUsageWarn, and is ‘red’ if the disk utilization percent is above $DriveUsageAlert. If you have been reading up to this point and counted the number of elements in my selection you will see that ‘UsageStyle’ is our 10th item, that conveniently matches up with {sourceColumn: 10,role:’style’} in the javascript template I’ve defined.</p>
 <h3 id="screenshots">Screenshots</h3>
-
-<h5 id="img-style-margin-5px-display-inline-background-image-none-title-2013-12-16-13-56-57-test-html-alt-2013-12-16-13-56-57-test-html-src-wp-content-uploads-2013-12-2013-12-16-13-56-57-test-html-thumb-png-resize-566-2c152-width-566-height-152-border-0-data-recalc-dims-1-2"><a href="wp-content/uploads/2013/12/2013-12-16-13_56_57-test.html_.png"><img style="margin: 5px; display: inline; background-image: none;" title="2013-12-16 13_56_57-test.html" alt="2013-12-16 13_56_57-test.html" src="/wp-content/uploads/2013/12/2013-12-16-13_56_57-test.html_thumb.png?resize=566%2C152" width="566" height="152" border="0" data-recalc-dims="1" /></a></h5>
-
+<h5 id="img-stylemargin-5px-display-inline-background-image-none-title2013-12-16-13_56_57-testhtml-alt2013-12-16-13_56_57-testhtml-srcwp-contentuploads2013122013-12-16-13_56_57-testhtml_thumbpngresize5662c152-width566-height152-border0-data-recalc-dims1-2"><a href="wp-content/uploads/2013/12/2013-12-16-13_56_57-test.html_.png"><!-- raw HTML omitted --></a></h5>
+<h5 id="heading"></h5>
 <h3 id="notes">Notes</h3>
-
 <ul>
-<li>Although the report does work in IE, I&#8217;ve found that sometimes the browser will need to be refreshed to get the chart elements to render properly.</li>
+<li>Although the report does work in IE, I’ve found that sometimes the browser will need to be refreshed to get the chart elements to render properly.</li>
 <li>If you sort the columns in the chart table, the bar charts sort as well!</li>
 <li>You can easily modify this to use the disk information function for remote system drive reports instead.</li>
 <li>I use some google chart trickery to create the bar charts both stacked and with no margins in order to make it appear to be a utilization bar instead.</li>
 <li>The charts have mouse over effects for both the annotations (for used and unused space) and percentage utilization.</li>
-<li>I didn&#8217;t add much flair to this script as it was put together in the midnight hours as an intellectual exercise more than anything (after my crabby teething children finally fall asleep).</li>
+<li>I didn’t add much flair to this script as it was put together in the midnight hours as an intellectual exercise more than anything (after my crabby teething children finally fall asleep).</li>
 </ul>
-
 <h3 id="download">Download</h3>
-
 <p>You can get the script in its entirety <a href="http://gallery.technet.microsoft.com/Google-Charts-Interactive-87327b40">at the Microsoft Technet Gallery</a>.</p>
     
 </div>
@@ -459,15 +307,15 @@ $DriveInfo = @(Get-RemoteDiskInformation  |
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -496,7 +344,7 @@ $DriveInfo = @(Get-RemoteDiskInformation  |
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

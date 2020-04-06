@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Enhanced Remote Server Connectivity Testing With Powershell | Zachary Loeber</title>
         <meta name="description" content="Enhanced Remote Server Connectivity Testing With Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Enhanced Remote Server Connectivity Testing With Powershell">
@@ -140,11 +140,8 @@
 
     
         <p>Test the following connectivity methods to a server: RDP, ping, rpc, wsman, sccm agent, scom agent, and remote registry. Optionally an alternate credential can be used. Versatility is added with options to return only true/false when singular tests are performed.</p>
-
 <h4 id="description">Description</h4>
-
 <p>There are several methods to test server connectivity prior to performing remote administration. This function bundles up some of the most pertinent methods into one versatile tool. You can test any combination of the following remote connectivity methods:</p>
-
 <ul>
 <li>RDP</li>
 <li>Ping</li>
@@ -154,17 +151,11 @@
 <li>SCOM agent (and management groups)</li>
 <li>Remote Registry</li>
 </ul>
-
 <p>This function was a result of personally not being satisfied with test-connection (a simple ping test) and not liking to put in wmi or other testing hacks repeatedly. This script also provides the ability to pass alternate credentials (a feature I’m undeniably fond of).</p>
-
 <h4 id="version">Version</h4>
-
 <p>Version : 1.0.0 June 24th 2013</p>
-
-<p>&#8211; First release</p>
-
+<p>– First release</p>
 <h4 id="notes">Notes</h4>
-
 <ul>
 <li>This is a heavily modified version of the script found here: <a href="http://gallery.technet.microsoft.com/scriptcenter/Powershell-Test-RemoteServer-e0cdea9a">http://gallery.technet.microsoft.com/scriptcenter/Powershell-Test-RemoteServer-e0cdea9a</a></li>
 <li>Be aware that if the DNS lookup for the tested host returns multiple IP addresses all IP addresses will be tested and multiple results will be returned.</li>
@@ -176,11 +167,8 @@
 <li>The remote registry actually tests the remote registry service is running, thus WMI must test as running for the remote registry test to succeed. The same goes for the SCCM/SCOM tests. Coincidentally, if the RPC test fails and TrueFalseMode is not in effect then all tests related to wmi connectivity will be set to false.</li>
 <li>The SCOM groups result will not work with alternate credentials (yet!)</li>
 </ul>
-
 <h4 id="downloads">Downloads</h4>
-
 <p><a href="http://gallery.technet.microsoft.com/Enhanced-Remote-Server-84c63560">Download the script from the technet gallery (more frequently updated)</a></p>
-
 <p><a href="/2013/06/23/use-powershell-to-gather-diskpartitionmount-point-information/" title="Use Powershell to Gather Disk/Partition/Mount Point Information">Download the script from this site (less frequently updated)</a></p>
     
 </div>
@@ -325,15 +313,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -362,7 +350,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

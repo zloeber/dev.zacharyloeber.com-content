@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> The personal website of Zachary Loeber. | Zachary Loeber</title>
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="The personal website of Zachary Loeber.">
@@ -99,7 +99,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2017/07/30/powershell-inheriting-parameters-proxy-functions/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2018/02/04/powershell-azuread-dynamic-groups/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -107,176 +107,28 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2017/07/30/powershell-inheriting-parameters-proxy-functions/">PowerShell: Inheriting Parameters (Proxy Functions)</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2018/02/04/powershell-azuread-dynamic-groups/">PowerShell: AzureAD Dynamic Groups</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2017-07-30</span>
+                <span class="date moment">2018-02-04</span>
             
         
 
         
-            <span class="readingTime">8 min read</span>
+            <span class="readingTime">2 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="/categories/active-directory">Active Directory</a>
                 
-            </span>
-        
-
-        
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
-        
-    </div>
-
-    
-        <p>If you want one function to have all the parameters of another function here is one method you could use.</p>
-
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2017/07/30/powershell-inheriting-parameters-proxy-functions/" class="more">Continue reading</a>
-        
-    
-</div>
-
-    
-<div class="footer">
-    
-
-        
-        <div class="tags">
-            <i class="fa fa-tags"></i>
-            <div class="links">
-                
-                <a href="/tags/powershell">Powershell</a>
-                
-                <a href="/tags/powershell-script">Powershell Script</a>
-                
-                <a href="/tags/scripting">Scripting</a>
-                
-            </div>
-        </div>
-        
-
-        
-        
-
-
-<style>
-    #share-buttons {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    #share-buttons:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
-    #share-buttons>div {
-        position: relative;
-        text-align: left;
-        height: 36px;
-        width: 32px;
-        float: left;
-        text-align: center;
-    }
-
-    #share-buttons>div>svg {
-        height: 16px;
-        fill: #d5d5d5;
-        margin-top: 10px;
-    }
-
-    #share-buttons>div:hover {
-        cursor: pointer;
-    }
-
-    #share-buttons>div.facebook:hover>svg {
-        fill: #3B5998;
-    }
-
-    #share-buttons>div.twitter:hover>svg {
-        fill: #55ACEE;
-    }
-
-    #share-buttons>div.linkedin:hover>svg {
-        fill: #0077b5;
-    }
-
-    #share-buttons>div.facebook>svg {
-        height: 18px;
-        margin-top: 9px;
-    }
-
-    #share-buttons>div.twitter>svg {
-        height: 20px;
-        margin-top: 8px;
-    }
-
-    #share-buttons>div.linkedin>svg {
-        height: 19px;
-        margin-top: 7px;
-    }
-</style>
-<div id="share-buttons">
-    <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/07\/30\/powershell-inheriting-parameters-proxy-functions\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
-        </svg>
-    </div>
-    <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/07\/30\/powershell-inheriting-parameters-proxy-functions\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
-        </svg>
-    </div>
-    <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/07\/30\/powershell-inheriting-parameters-proxy-functions\/&title=&summary=&source=');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
-        </svg>
-    </div>
-</div>
-    </div>
-</article>
-
-            
-        </div>
-    
-        <div class="article-wrapper u-cf">
-            
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2017/07/04/powershell-easy-module-authoring-with-modulebuild/">
-    <i class="fa fa-fw fa-pencil"></i>
-</a>
-
-<article class="default article">
-    
-
-    <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2017/07/04/powershell-easy-module-authoring-with-modulebuild/">PowerShell: Easy Module Authoring with ModuleBuild</a></h3>
-    <div class="meta">
-        
-            
-                <span class="date moment">2017-07-05</span>
-            
-        
-
-        
-            <span class="readingTime">8 min read</span>
-        
-
-        
-            <span class="categories">
+                    <a href="/categories/azure">Azure</a>
                 
                     <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/office-365">Office 365</a>
                 
                     <a href="/categories/powershell">Powershell</a>
                 
@@ -291,10 +143,10 @@
     </div>
 
     
-        <p>I’ve previously discussed using the excellent plaster module for creating new modules among other things. Now I’ve integrated plaster into my PSModuleBuild project, turned the whole thing into a module, and changed the name to just ‘ModuleBuild’</p>
+        <p>A few code snippets for Azure AD dynamic groups. One for creating standard groups for your environment. Another for finding duplicates.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2017/07/04/powershell-easy-module-authoring-with-modulebuild/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2018/02/04/powershell-azuread-dynamic-groups/" class="more">Continue reading</a>
         
     
 </div>
@@ -308,11 +160,15 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/microsoft">Microsoft</a>
+                <a href="/tags/office-365">Office 365</a>
                 
                 <a href="/tags/powershell">Powershell</a>
                 
                 <a href="/tags/powershell-script">Powershell Script</a>
+                
+                <a href="/tags/scripting">Scripting</a>
+                
+                <a href="/tags/system-administration">System Administration</a>
                 
             </div>
         </div>
@@ -382,21 +238,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/07\/04\/powershell-easy-module-authoring-with-modulebuild\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/02\/04\/powershell-azuread-dynamic-groups\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/07\/04\/powershell-easy-module-authoring-with-modulebuild\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/02\/04\/powershell-azuread-dynamic-groups\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/07\/04\/powershell-easy-module-authoring-with-modulebuild\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/02\/04\/powershell-azuread-dynamic-groups\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -411,7 +267,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -419,26 +275,28 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/">Powershell: Creating Plaster Manifest Files</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/">PowerShell: Office 365 Group Based Licencing Cleanup</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2017-05-15</span>
+                <span class="date moment">2018-01-11</span>
             
         
 
         
-            <span class="readingTime">7 min read</span>
+            <span class="readingTime">1 min read</span>
         
 
         
             <span class="categories">
                 
+                    <a href="/categories/azure">Azure</a>
+                
                     <a href="/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="/categories/office-365">Office 365</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="/categories/powershell">Powershell</a>
                 
             </span>
         
@@ -449,10 +307,10 @@
     </div>
 
     
-        <p>I&#8217;ve kicked the tires on a great PowerShell code scaffolding tool called &#8216;Plaster&#8217;. Here is my take on this nifty module.</p>
+        <p>A script to remove directly assigned licenses from user accounts if they overlap with group assigned licenses in Office 365.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2018/01/10/powershell-office-365-group-based-licencing-cleanup/" class="more">Continue reading</a>
         
     
 </div>
@@ -466,17 +324,13 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/microsoft">Microsoft</a>
+                <a href="/tags/azure">Azure</a>
+                
+                <a href="/tags/office-365">Office 365</a>
                 
                 <a href="/tags/powershell">Powershell</a>
                 
-                <a href="/tags/powershell-script">Powershell Script</a>
-                
-                <a href="/tags/scripting">Scripting</a>
-                
-                <a href="/tags/sysadmin">Sysadmin</a>
-                
-                <a href="/tags/windows">Windows</a>
+                <a href="/tags/system-administration">System Administration</a>
                 
             </div>
         </div>
@@ -546,21 +400,199 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/05\/15\/powershell-creating-plaster-manifest-files\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/01\/10\/powershell-office-365-group-based-licencing-cleanup\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/05\/15\/powershell-creating-plaster-manifest-files\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/01\/10\/powershell-office-365-group-based-licencing-cleanup\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/05\/15\/powershell-creating-plaster-manifest-files\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/01\/10\/powershell-office-365-group-based-licencing-cleanup\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+            
+        </div>
+    
+        <div class="article-wrapper u-cf">
+            
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/">Cloud PBX: Polycom VVX Master Directory</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2017-09-10</span>
+            
+        
+
+        
+            <span class="readingTime">6 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/cloud-pbx">Cloud PBX</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/office-365">Office 365</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/skype-for-business">Skype For Business</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+                    <a href="/categories/uncategorized">Uncategorized</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Reverse number lookup in Skype for Business online (cloud PBX) doesn’t give you much control. If you are deploying Polycom VVX phones you can get around this with a directory file.</p>
+
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2017/09/10/cloud-pbx-polycom-vvx-master-directory/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/cloud-pbx">Cloud PBX</a>
+                
+                <a href="/tags/office-365">Office 365</a>
+                
+                <a href="/tags/polycom">Polycom</a>
+                
+                <a href="/tags/powershell">Powershell</a>
+                
+                <a href="/tags/powershell-script">Powershell Script</a>
+                
+                <a href="/tags/sip">SIP</a>
+                
+                <a href="/tags/skype-for-business">Skype For Business</a>
+                
+                <a href="/tags/system-administration">System Administration</a>
+                
+                <a href="/tags/vvx">VVX</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/09\/10\/cloud-pbx-polycom-vvx-master-directory\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/09\/10\/cloud-pbx-polycom-vvx-master-directory\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2017\/09\/10\/cloud-pbx-polycom-vvx-master-directory\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -599,15 +631,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -636,7 +668,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

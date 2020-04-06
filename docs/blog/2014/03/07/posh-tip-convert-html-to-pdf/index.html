@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Powershell Tip: Convert HTML to PDF | Zachary Loeber</title>
         <meta name="description" content="Powershell Tip: Convert HTML to PDF - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Powershell Tip: Convert HTML to PDF">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">4 min read</span>
+            <span class="readingTime">3 min read</span>
         
 
         
@@ -136,157 +136,29 @@
 
     
         <p>There are no native methods to create a pdf file in Powershell. So I looked into outside sources for converting HTML output to PDF. I ended up using a stand alone dll and some .NET calls to achieve my goal.</p>
-
 <h3 id="introduction">Introduction</h3>
-
 <p>Honestly I forgot why I thought it would be important that my report generation scripts be able to create pdf output. I had a fun time figuring out how to make it happen though. I settled on using <a href="http://pdfgenerator.codeplex.com/">a third party dll</a> from codeplex (supposedly codeplex.com is all about open source projects but I’ve yet to see the source for several of the cooler projects hosted here). While watching a movie with the wife I proceeded to work my way backwards from a VB example to come up with a Powershell alternative. This is how it works.</p>
-
 <h3 id="details">Details</h3>
-
 <p>Here is the singular example given for this dll:</p>
-
 <blockquote>
 <p>Generate PDF with one line of code:</p>
-
-<pre>var pdfBytes = (new NReco.HtmlToPdfConverter()).GeneratePdf(htmlContent);</pre>
+<!-- raw HTML omitted -->
 </blockquote>
-
 <p>The code seems simple enough, feed the GeneratePdf object member some html and a pdf will get created like magic. The minor challenge is taking this .Net based dll, loading it into memory, defining the correct object from its assemblies, and feeding it the properly formatted html data so that it can create a pdf.</p>
-
 <p>First lets define the dll location (which we test actually exists in a full blown function provided later):</p>
-
-<pre>$PdfGenerator = "$((Get-Location).Path)\NReco.PdfGenerator.dll"</pre>
-
+<!-- raw HTML omitted -->
 <p>Next lets load up the assembly and create a new NReco.HtmlToPdfConverter object to work with:</p>
-
-<pre>$Assembly = [Reflection.Assembly]::LoadFrom($PdfGenerator)
- $PdfCreator = New-Object NReco.PdfGenerator.HtmlToPdfConverter</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Finally, use the GeneratePdf method to create a pdf which we then write to a file in byte mode (pdf output is not simple text after all)</p>
-
-<pre>$ReportOutput = $PdfCreator.GeneratePdf([string]$HTML)
-Add-Content -Value $ReportOutput -Encoding byte -Path $FileName</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>You will notice that I explicitly cast the $html to a string. With the function I provide you will have to send the html data cast this way. I found that if I pulled in html content from a file it would result in an array of strings which the GeneratePdf method would treat individually. This would end up creating 100+ page pdf pages (a page for every element).</p>
-
 <p>If you play around with $PdfCreator you will find that there are several methods included for changing page size and other document properties as well.</p>
-
 <h3 id="the-code">The Code</h3>
-
 <p>Here is the function I came up with to convert html to a pdf. Included at the end is a quick example. If you are going to use this code then you will likely have to unblock the dll after extracting it into the same directory as the script. Also, I had to run PowerGUI as admin otherwise I didn’t have enough permission to load the dll into memory. Enjoy!</p>
-
-<pre class="lang:powershell decode:true">Function ConvertTo-PDF
-{
-    &lt;#
-    .SYNOPSIS
-        Converts HTML strings to pdf files.
-    .DESCRIPTION
-        Converts HTML strings to pdf files.
-    .PARAMETER HTML
-        HTML to convert to pdf format.
-    .PARAMETER ReportName
-        File name to create as a pdf.
-
-    .EXAMPLE
-        $html = 'test'
-        try 
-        {
-            ConvertTo-PDF -HTML $html -FileName 'test.pdf' #-ErrorAction SilentlyContinue) 
-            Write-Output 'HTML converted to PDF file test.pdf'
-        } 
-        catch
-        {
-            Write-Output 'Something bad happened! :('
-        }
-
-        Description:
-        ------------------
-        Create a pdf file with the content of 'test' if the pdf creation dll is available.
-
-    .NOTES
-        Requires   : NReco.PdfGenerator.dll (http://pdfgenerator.codeplex.com/)
-        Version    : 1.0 03/07/2014
-                     - Initial release
-        Author     : Zachary Loeber
-
-        Disclaimer : This script is provided AS IS without warranty of any kind. I 
-                     disclaim all implied warranties including, without limitation,
-                     any implied warranties of merchantability or of fitness for a 
-                     particular purpose. The entire risk arising out of the use or
-                     performance of the sample scripts and documentation remains
-                     with you. In no event shall I be liable for any damages 
-                     whatsoever (including, without limitation, damages for loss of 
-                     business profits, business interruption, loss of business 
-                     information, or other pecuniary loss) arising out of the use of or 
-                     inability to use the script or documentation. 
-
-        Copyright  : I believe in sharing knowledge, so this script and its use is 
-                     subject to : http://creativecommons.org/licenses/by-sa/3.0/
-    .LINK
-        http://zacharyloeber.com/
-
-    .LINK
-        http://nl.linkedin.com/in/zloeber
-    #&gt;
-    [CmdletBinding()]
-    param
-    (
-        [Parameter( HelpMessage="Report body, in HTML format.", 
-                    ValueFromPipeline=$true )]
-        [string]
-        $HTML,
-        [Parameter( HelpMessage="Report filename to create." )]
-        [string]
-        $FileName
-    )
-    BEGIN
-    {
-        $DllLoaded = $false
-        $PdfGenerator = "$((Get-Location).Path)\NReco.PdfGenerator.dll"
-        if (Test-Path $PdfGenerator)
-        {
-            try
-            {
-                $Assembly = [Reflection.Assembly]::LoadFrom($PdfGenerator)
-                $PdfCreator = New-Object NReco.PdfGenerator.HtmlToPdfConverter
-                $DllLoaded = $true
-            }
-            catch
-            {
-                Write-Error ('ConvertTo-PDF: Issue loading or using NReco.PdfGenerator.dll: {0}' -f $_.Exception.Message)
-            }
-        }
-        else
-        {
-            Write-Error ('ConvertTo-PDF: NReco.PdfGenerator.dll was not found.')
-        }
-    }
-    PROCESS
-    {
-        if ($DllLoaded)
-        {
-            $ReportOutput = $PdfCreator.GeneratePdf([string]$HTML)
-            Add-Content -Value $ReportOutput -Encoding byte -Path $FileName
-        }
-        else
-        {
-            Throw 'Error Occurred'
-        }
-    }
-    END
-    {}
-}
-
-$html = 'test'
-try 
-{
-    ConvertTo-PDF -HTML $html -FileName 'test.pdf' #-ErrorAction SilentlyContinue) 
-    Write-Output 'HTML converted to PDF file test.pdf'
-} 
-catch
-{
-    Write-Output 'Something bad happened! :('
-}</pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
     
 </div>
 
@@ -418,15 +290,15 @@ catch
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -455,7 +327,7 @@ catch
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

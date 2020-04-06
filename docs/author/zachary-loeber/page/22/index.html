@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> The personal website of Zachary Loeber. | Zachary Loeber</title>
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="The personal website of Zachary Loeber.">
@@ -99,7 +99,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -107,20 +107,22 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/">Powershell Tip: Save and Load Calculated Property Definitions</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/">Powershell Tip – Connecting With ADSI to Another Forest</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2014-02-10</span>
+                <span class="date moment">2014-04-11</span>
             
         
 
         
-            <span class="readingTime">4 min read</span>
+            <span class="readingTime">2 min read</span>
         
 
         
             <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
                 
                     <a href="/categories/microsoft">Microsoft</a>
                 
@@ -137,10 +139,10 @@
     </div>
 
     
-        <p>Using Export-CliXML and Import-CliXML (as well as some custom code) you can save calculated properties in a file for later use. Although the need for something like this is rather infrequent the exercise can better familiarize you with multiple Powershell techniques and concepts.</p>
+        <p>Using a bit of Powershell and ADSI it is pretty easy to connect to another forest. Finding out how to do so is not very clear though. Here is what I came up with to accomplish this task.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/02/09/powershell-tip-save-and-load-calculated-property-definitions/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/04/11/powershell-tip-connecting-with-adsi-to-another-forest/" class="more">Continue reading</a>
         
     
 </div>
@@ -154,11 +156,9 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/calculated-properties">Calculated Properties</a>
+                <a href="/tags/active-directory">Active Directory</a>
                 
-                <a href="/tags/export-clixml">Export-CliXML</a>
-                
-                <a href="/tags/import-clixml">Import-CliXML</a>
+                <a href="/tags/adsi">ADSI</a>
                 
                 <a href="/tags/powershell">Powershell</a>
                 
@@ -232,21 +232,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/02\/09\/powershell-tip-save-and-load-calculated-property-definitions\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/04\/11\/powershell-tip-connecting-with-adsi-to-another-forest\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/02\/09\/powershell-tip-save-and-load-calculated-property-definitions\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/04\/11\/powershell-tip-connecting-with-adsi-to-another-forest\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/02\/09\/powershell-tip-save-and-load-calculated-property-definitions\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/04\/11\/powershell-tip-connecting-with-adsi-to-another-forest\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -261,7 +261,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/02/02/powershell-gui-script-wrapper-utility/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/03/16/powershell-wordexcel-helper-functions/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -269,11 +269,11 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/02/02/powershell-gui-script-wrapper-utility/">Powershell GUI Script Wrapper Utility</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/03/16/powershell-wordexcel-helper-functions/">Powershell: Word/Excel Helper Functions</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2014-02-03</span>
+                <span class="date moment">2014-03-17</span>
             
         
 
@@ -299,10 +299,168 @@
     </div>
 
     
-        <p>Creating GUIs for your scripts can be a tedious process. That is why I don’t do so for each powershell project I release. Instead of wasting my precious little free time putting together yet another GUI for a one off script I decided to create a tool which will create the GUI scripts for me automatically!</p>
+        <p>Using powershell I wrap up MS Word and Excel COM objects within a custom psobject. This object contains a handful of methods for making docx and xslx creation and manipulation easier.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/02/02/powershell-gui-script-wrapper-utility/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/03/16/powershell-wordexcel-helper-functions/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/powershell">Powershell</a>
+                
+                <a href="/tags/psc">PSC</a>
+                
+                <a href="/tags/reporting">Reporting</a>
+                
+                <a href="/tags/scripting">Scripting</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/03\/16\/powershell-wordexcel-helper-functions\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/03\/16\/powershell-wordexcel-helper-functions\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/03\/16\/powershell-wordexcel-helper-functions\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+            
+        </div>
+    
+        <div class="article-wrapper u-cf">
+            
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/03/07/posh-tip-convert-html-to-pdf/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/03/07/posh-tip-convert-html-to-pdf/">Powershell Tip: Convert HTML to PDF</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2014-03-07</span>
+            
+        
+
+        
+            <span class="readingTime">3 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>There are no native methods to create a pdf file in Powershell. So I looked into outside sources for converting HTML output to PDF. I ended up using a stand alone dll and some .NET calls to achieve my goal.</p>
+
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/03/07/posh-tip-convert-html-to-pdf/" class="more">Continue reading</a>
         
     
 </div>
@@ -322,10 +480,6 @@
                 
                 <a href="/tags/scripting">Scripting</a>
                 
-                <a href="/tags/sysadmin">Sysadmin</a>
-                
-                <a href="/tags/system-administration">System Administration</a>
-                
             </div>
         </div>
         
@@ -394,197 +548,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/02\/02\/powershell-gui-script-wrapper-utility\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/03\/07\/posh-tip-convert-html-to-pdf\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/02\/02\/powershell-gui-script-wrapper-utility\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/03\/07\/posh-tip-convert-html-to-pdf\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/02\/02\/powershell-gui-script-wrapper-utility\/&title=&summary=&source=');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
-        </svg>
-    </div>
-</div>
-    </div>
-</article>
-
-            
-        </div>
-    
-        <div class="article-wrapper u-cf">
-            
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/">
-    <i class="fa fa-fw fa-pencil"></i>
-</a>
-
-<article class="default article">
-    
-
-    <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/">AD Audit Report with Powershell: Part 3</a></h3>
-    <div class="meta">
-        
-            
-                <span class="date moment">2014-01-11</span>
-            
-        
-
-        
-            <span class="readingTime">1 min read</span>
-        
-
-        
-            <span class="categories">
-                
-                    <a href="/categories/active-directory">Active Directory</a>
-                
-                    <a href="/categories/exchange">Exchange</a>
-                
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
-                
-                    <a href="/categories/lync">Lync</a>
-                
-                    <a href="/categories/mscs">MSCS</a>
-                
-                    <a href="/categories/networking">Networking</a>
-                
-                    <a href="/categories/office-communicator-server">Office Communicator Server</a>
-                
-                    <a href="/categories/powershell">Powershell</a>
-                
-                    <a href="/categories/system-administration">System Administration</a>
-                
-            </span>
-        
-
-        
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
-        
-    </div>
-
-    
-        <p>This is my third and final major update to my AD auditing script. This includes a handful of new useful sections such as domain published printers, NPS servers, DHCP servers, as well as SCCM sites and DPs. Other improvements include easier to use script parameters and bug fixes.</p>
-
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2014/01/10/ad-audit-report-with-powershell-part-3/" class="more">Continue reading</a>
-        
-    
-</div>
-
-    
-<div class="footer">
-    
-
-        
-        <div class="tags">
-            <i class="fa fa-tags"></i>
-            <div class="links">
-                
-                <a href="/tags/active-directory">Active Directory</a>
-                
-                <a href="/tags/exchange">Exchange</a>
-                
-                <a href="/tags/lync">Lync</a>
-                
-                <a href="/tags/powershell">Powershell</a>
-                
-                <a href="/tags/psc">PSC</a>
-                
-                <a href="/tags/system-administration">System Administration</a>
-                
-            </div>
-        </div>
-        
-
-        
-        
-
-
-<style>
-    #share-buttons {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    #share-buttons:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
-    #share-buttons>div {
-        position: relative;
-        text-align: left;
-        height: 36px;
-        width: 32px;
-        float: left;
-        text-align: center;
-    }
-
-    #share-buttons>div>svg {
-        height: 16px;
-        fill: #d5d5d5;
-        margin-top: 10px;
-    }
-
-    #share-buttons>div:hover {
-        cursor: pointer;
-    }
-
-    #share-buttons>div.facebook:hover>svg {
-        fill: #3B5998;
-    }
-
-    #share-buttons>div.twitter:hover>svg {
-        fill: #55ACEE;
-    }
-
-    #share-buttons>div.linkedin:hover>svg {
-        fill: #0077b5;
-    }
-
-    #share-buttons>div.facebook>svg {
-        height: 18px;
-        margin-top: 9px;
-    }
-
-    #share-buttons>div.twitter>svg {
-        height: 20px;
-        margin-top: 8px;
-    }
-
-    #share-buttons>div.linkedin>svg {
-        height: 19px;
-        margin-top: 7px;
-    }
-</style>
-<div id="share-buttons">
-    <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/01\/10\/ad-audit-report-with-powershell-part-3\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
-        </svg>
-    </div>
-    <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/01\/10\/ad-audit-report-with-powershell-part-3\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
-        </svg>
-    </div>
-    <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/01\/10\/ad-audit-report-with-powershell-part-3\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2014\/03\/07\/posh-tip-convert-html-to-pdf\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -623,15 +601,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -660,7 +638,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

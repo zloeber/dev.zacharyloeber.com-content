@@ -5,10 +5,37 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
     <description>Recent content in DevOps on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 23 Mar 2020 11:33:38 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2020 20:13:58 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes Clearing Finalizers</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/</link>
+      <pubDate>Sun, 05 Apr 2020 20:13:58 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/</guid>
+      <description>&lt;p&gt;Some short blurb&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Devops Patterns Part 1</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/</link>
+      <pubDate>Sun, 05 Apr 2020 13:18:32 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/</guid>
+      <description>&lt;p&gt;Some patterns in devops are relatively well known. Others are more difficult to identify and categorize. In this article I&amp;rsquo;m going to cover a few of these patterns as it relates to the emerging realm of pipelines as code, declarative deployments, and where they might be found in the wild.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes App Deployments with Terraform</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/</link>
+      <pubDate>Thu, 02 Apr 2020 12:31:40 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/</guid>
+      <description>&lt;p&gt;Deploying applications via the kubernetes terraform provider is a viable solution for some workloads.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Azure Devops Automated Variable Groups</title>
@@ -53,7 +80,6 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/the-raw-helm-chart/</guid>
       <description>&lt;h1 id=&#34;devops-the-raw-helm-chart&#34;&gt;DevOps: The Raw Helm Chart&lt;/h1&gt;
-
 &lt;p&gt;The raw helm chart is designed to glue raw kubernetes configuration elements into the application deployment stack. This can be one way to put lifecycle around your cluster configuration and its super handy to have in your toolbelt.&lt;/p&gt;</description>
     </item>
     
@@ -82,8 +108,8 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</guid>
       <description>If you are deploying your own Kubernetes clusters you already know that:
- Kubernetes is hard  But there is hope!
-There are a few great projects to keep an eye on in this space. I&amp;#8217;ve covered some of them in an article you can read on the Lumen.
+But there is hope!
+There are a few great projects to keep an eye on in this space. I’ve covered some of them in an article you can read on the Lumen.
 Cheers!</description>
     </item>
     

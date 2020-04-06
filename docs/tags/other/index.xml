@@ -17,7 +17,6 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/12/11/defining-best-of-breed-in-it/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
 &lt;p&gt;Soon I’ll be starting a new position with a company which produces some of the highest quality products in their industry. The company’s products are of such high quality that they typically set the bar in their industry. This made me think of what a truly comprises an excellent solution within the Information Technology.  This article is a non-technical personal view of what defines the “Best of breed” technical solutions.&lt;/p&gt;</description>
     </item>
     
@@ -37,7 +36,7 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/08/05/css-pretty-formatting/</guid>
       <description>I forgot where I dredged this up from but here is how I do my code/script posts. I modified the default theme css and add the following for pre-formatted text:
-pre { white-space: pre-wrap; /* css-3 */ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ word-wrap: break-word; /* Internet Explorer 5.5+ */ background: #000000; color: #21FF2C; } </description>
+  </description>
     </item>
     
     <item>
@@ -46,8 +45,7 @@ pre { white-space: pre-wrap; /* css-3 */ white-space: -moz-pre-wrap !important; 
       <pubDate>Tue, 22 Feb 2011 04:02:28 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/02/21/funny-microsoft-goes-chick-flick/</guid>
-      <description>My wife saw this on my laptop screen while we were on a plane trip. She pointed to it, and said “Awwwww!!” as if I were reading a book on relationships rather than a technical pdf going over general SCOM 2007 concepts.
- Microsoft gets a bit soft...  </description>
+      <description>My wife saw this on my laptop screen while we were on a plane trip. She pointed to it, and said “Awwwww!!” as if I were reading a book on relationships rather than a technical pdf going over general SCOM 2007 concepts.</description>
     </item>
     
   </channel>

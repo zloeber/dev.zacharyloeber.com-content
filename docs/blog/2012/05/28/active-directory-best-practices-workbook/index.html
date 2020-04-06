@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Active Directory: Best Practices Workbook | Zachary Loeber</title>
         <meta name="description" content="Active Directory: Best Practices Workbook - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Active Directory: Best Practices Workbook">
@@ -146,25 +146,15 @@
 
     
         <p>This is a checklist for technicians performing Active Directory assessments. It is broken down by category and best practice. Some items listed are not really a best practice, but rather something which you may find in an environment which should be rectified (as part of an audit perhaps).</p>
-
 <p>This is actually part of a comprehensive template I’m working on for clients of my company but minus the pretty report, technical references, and the matching scripts/procedures to gather all the required information to determine if these best practices are being followed. Starting this list on my own time stemmed from multiple discussions I’ve found myself in regarding best practice (for AD, Exchange, VMware, server builds, et cetera). I recognize that all IT environments are different and that things change faster than a newborn’s diapers. Regardless, I believe that a general set of best practices for any non-emergent technology can be 90-95% agreed upon.</p>
-
 <p>Active directory in a Windows heavy infrastructure is certainly non-emergent. The first real version of the LDAP based database goes back over a decade to Windows 2000. In 2003 the upgrade to Windows 2003 fixed many of the shortcomings of the original release of the OS as well as the AD service (like XP did for windows ME) and a good many companies are still at this version. Active directory is also one of the areas of a client’s infrastructure which constantly causes no end of issues in other business related and tightly integrated technologies (ie. Exchange, Sharepoint, Lync, et cetera). Thus it is good to review these things every now and again so the next Exchange upgrade or Lync implementation you want to perform is not waylaid by AD infrastructure issues…*hint* *hint*</p>
-
-<p>I’ve put together a list of general best practices I’ve experienced and come across through the years and through other professionals&#8217; ranting/informational posts on the web. Later on I may release some of the powershell code I use to gather AD info from an environment. Until then, all the methods to determine if an AD implementation follows the best practices listed are easily attained via a quick web search.</p>
-
+<p>I’ve put together a list of general best practices I’ve experienced and come across through the years and through other professionals’ ranting/informational posts on the web. Later on I may release some of the powershell code I use to gather AD info from an environment. Until then, all the methods to determine if an AD implementation follows the best practices listed are easily attained via a quick web search.</p>
 <p>Some of the “best practices” listed were hard to nail down (in particular local nic DNS settings) so I went with personal experience as a tie breaker in these cases. I also took information liberally from some outside sources in coming up with this list (in my deliverable report I only include Microsoft references though). A list of some of these sites and a kudos to their authors:</p>
-
 <p><a href="http://robsilver.org/2012/04/07/active-directory-sites-best-practices/">Rob Silver recently posted a great article with a really nice list of AD site best practices</a>.</p>
-
 <p><a href="http://andywolf.com/microsoft-risk-assessment-program-for-active-directory">Andy Wolf posts an example of what Microsoft looks for in their Risk Assessment Program for AD.</a></p>
-
 <p><a href="http://redmondmag.com/articles/2007/01/01/8-ad-mistakes-you-may-have-missed.aspx">8 AD Mistakes You May Have Missed</a></p>
-
 <p><a href="http://networkadminkb.com/KB/a4/windows-2003-dns-best-practices.aspx">Windows 2003 DNS Best Practices</a></p>
-
 <p>Here is the workbook itself, hope it proves to be of some value to the community:</p>
-
 <p><strong><a href="/wp-content/uploads/2012/05/AD-Best-Practices-Table.docx">AD Best Practices Workbook</a></strong></p>
     
 </div>
@@ -303,15 +293,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -340,7 +330,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

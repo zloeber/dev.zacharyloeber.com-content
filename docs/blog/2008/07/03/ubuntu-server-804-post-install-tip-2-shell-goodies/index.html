@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Ubuntu Server 8.04 Post Install Tip #2: Shell Goodies | Zachary Loeber</title>
         <meta name="description" content="Ubuntu Server 8.04 Post Install Tip #2: Shell Goodies - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Ubuntu Server 8.04 Post Install Tip #2: Shell Goodies">
@@ -133,16 +133,11 @@
     </div>
 
     
-        <p>OK, I promised a friend some time ago that I&#8217;d post all of my post-install procedures and I&#8217;ve not quite followed through with that so I&#8217;m doing a few before finishing up my three part post on the &#8220;Home Hacker&#8217;s Network&#8221;. These are all just little hacks I&#8217;ve come across and modified to suit my needs. I like this one a bunch as it gives me a nice shell prompt when I login as well as when I use screen (although the gnu screen configuration part is mutually exclusive to the shell modification part).</p>
-
-<p>So lets get started&#8230;</p>
-
+        <p>OK, I promised a friend some time ago that I’d post all of my post-install procedures and I’ve not quite followed through with that so I’m doing a few before finishing up my three part post on the “Home Hacker’s Network”. These are all just little hacks I’ve come across and modified to suit my needs. I like this one a bunch as it gives me a nice shell prompt when I login as well as when I use screen (although the gnu screen configuration part is mutually exclusive to the shell modification part).</p>
+<p>So lets get started…</p>
 <p>I got this nice prompt script from <a href="http://www.iml.ece.mcgill.ca/~stephan/bash_pompt">http://www.iml.ece.mcgill.ca/~stephan/bash_pompt</a></p>
-
 <p><code>nano ~/myprompt.env</code></p>
-
 <p>Add the following and save</p>
-
 <pre><code>#!/bin/bash
 function myprompt
 {
@@ -222,34 +217,19 @@ $RBRACE\
 $LIGHT_PURPLE$SYMBOL$NONE &quot;
 }
 </code></pre>
-
-<p>A quick note here, the prompt is defined by the last statement starting at PS1=, you can change this as you see fit, the &#8220;&amp;#8221; is an escape character and will be needed at the end of every line. the author conveniently defined all the colors at the top of the script. Typical bash escape characters apply so \h = hostname of machine and \u = username. Uncomment the first 4 lines of PS1 and remove the second PS1 line to add the time at the beginning of the prompt.</p>
-
+<p>A quick note here, the prompt is defined by the last statement starting at PS1=, you can change this as you see fit, the “&amp;#8221; is an escape character and will be needed at the end of every line. the author conveniently defined all the colors at the top of the script. Typical bash escape characters apply so \h = hostname of machine and \u = username. Uncomment the first 4 lines of PS1 and remove the second PS1 line to add the time at the beginning of the prompt.</p>
 <p>Fix up your bash profile by sourcing the above file at each login and by adding a few more sysadmin type paths.</p>
-
 <p><code>nano ~/.bash_profile</code></p>
-
 <p>add the following and save:</p>
-
-<p><code>export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/share&lt;br /&gt;
-source ~/myprompt.env&lt;br /&gt;
-myprompt</code></p>
-
+<p><code>export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/share&lt;br /&gt; source ~/myprompt.env&lt;br /&gt; myprompt</code></p>
 <blockquote>
 <p>Note: Ok, the previous instructions work just fine on a headless system which, consequently, is what I base my write-ups on. But to be true to the rules of bash you should actually put the previous code at the end of ~/.bashrc</p>
 </blockquote>
-
 <p>Now make screen act a bit nicer when you open new screens (if, that is, you use screen like every good geek should do)</p>
-
-<p><code>sudo apt-get install screen&lt;br /&gt;
-sudo nano /etc/screenrc</code></p>
-
+<p><code>sudo apt-get install screen&lt;br /&gt; sudo nano /etc/screenrc</code></p>
 <p>Add this at the very end:</p>
-
-<p><code># make the shell in every window a login shell&lt;br /&gt;
-shell -$SHELL</code></p>
-
-<p><strong>explanation:</strong>Screen does not source .bash_profile by default as a new screen is not a new login screen but just a derivative of the current running screen. This fixes that so we have nice paths and prompts with new windows in screen. If you are a hard core screen user you can do other things like set it up to start up multiple screens and run a program in each one when you start up screen. Maybe more on that later?</p>
+<p><code># make the shell in every window a login shell&lt;br /&gt; shell -$SHELL</code></p>
+<p>**explanation:**Screen does not source .bash_profile by default as a new screen is not a new login screen but just a derivative of the current running screen. This fixes that so we have nice paths and prompts with new windows in screen. If you are a hard core screen user you can do other things like set it up to start up multiple screens and run a program in each one when you start up screen. Maybe more on that later?</p>
     
 </div>
 
@@ -368,15 +348,15 @@ shell -$SHELL</code></p>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -405,7 +385,7 @@ shell -$SHELL</code></p>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Headless torrentbox with ipblock | Zachary Loeber</title>
         <meta name="description" content="Headless torrentbox with ipblock - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Headless torrentbox with ipblock">
@@ -137,61 +137,29 @@
     </div>
 
     
-        <p>As you may or may not know there are a lot of people who seem to be interested in the torrent activities of others. Some just like to track, others are government agencies, and of course the RIAA. I personally don&#8217;t like this intrusion into my habits so I do my best to block their attempts. In this small tutorial I&#8217;m going to cover how to install torrentflux with ipblock and fail2ban in a headless mode so you can download and seed torrents a bit more securely.</p>
-
+        <p>As you may or may not know there are a lot of people who seem to be interested in the torrent activities of others. Some just like to track, others are government agencies, and of course the RIAA. I personally don’t like this intrusion into my habits so I do my best to block their attempts. In this small tutorial I’m going to cover how to install torrentflux with ipblock and fail2ban in a headless mode so you can download and seed torrents a bit more securely.</p>
 <p>This is going to assume you have an ubuntu 7.10 LAMP server already setup. Here we go!</p>
-
 <p>First get the prerequisites:</p>
-
 <p><code>apt-get install libnetfilter-queue1 libnfnetlink0</code></p>
-
 <p>Get the iplist package <a href="http://superb-east.dl.sourceforge.net/sourceforge/iplist/iplist_0.18-0gutsy1_i386.deb" title="iplist">here</a> this package includes the ipblock software as well.</p>
-
 <p><code>wget &lt;link to ipblock software&gt;</code></p>
-
-<p>``Now since we are not using a front end we have to finagle the deb file so there aren&#8217;t any dependency issues with uninstalled graphical interfaces and tools.</p>
-
-<p><code>dpkg-deb -x iplist_0.18-0gutsy1_i386.deb ./iplist_deb&lt;br /&gt;
-dpkg-deb -e iplist_0.18-0gutsy1_i386.deb iplist_deb/DEBIAN&lt;br /&gt;
-cd iplist_deb/DEBIAN/&lt;br /&gt;
-nano ./control&lt;br /&gt;
-</code></p>
-
-<p>In the line that starts with &#8220;Depends:&#8221; get rid of the last three dependencies. So kill of the following at the end of the line:</p>
-
+<p>``Now since we are not using a front end we have to finagle the deb file so there aren’t any dependency issues with uninstalled graphical interfaces and tools.</p>
+<p><code>dpkg-deb -x iplist_0.18-0gutsy1_i386.deb ./iplist_deb&lt;br /&gt; dpkg-deb -e iplist_0.18-0gutsy1_i386.deb iplist_deb/DEBIAN&lt;br /&gt; cd iplist_deb/DEBIAN/&lt;br /&gt; nano ./control&lt;br /&gt;</code></p>
+<p>In the line that starts with “Depends:” get rid of the last three dependencies. So kill of the following at the end of the line:</p>
 <p><code>&quot;, sun-java5-jre | sun-java6-jre, gksu&quot;</code></p>
-
 <p>Save and exit then rebuild the package</p>
-
-<p><code>cd ../../&lt;br /&gt;
-dpkg -b ./iplist_deb iplist_0.18-0gutsy1_i386.deb&lt;br /&gt;
-sudo dpkg -i iplist_0.18-0-headless_gusty_i386.deb</code></p>
-
-<p><code>sudo cp /usr/share/doc/iplist/examples/ipblock.conf /etc/&lt;br /&gt;
-sudo cp /usr/share/doc/iplist/examples/allow.p2p /etc/</code></p>
-
+<p><code>cd ../../&lt;br /&gt; dpkg -b ./iplist_deb iplist_0.18-0gutsy1_i386.deb&lt;br /&gt; sudo dpkg -i iplist_0.18-0-headless_gusty_i386.deb</code></p>
+<p><code>sudo cp /usr/share/doc/iplist/examples/ipblock.conf /etc/&lt;br /&gt; sudo cp /usr/share/doc/iplist/examples/allow.p2p /etc/</code></p>
 <p><code>sudo nano /etc/ipblock.conf</code></p>
-
-<p>Set to start at boot (not sure if this actually works w/o the gui but it doesn&#8217;t hurt)</p>
-
+<p>Set to start at boot (not sure if this actually works w/o the gui but it doesn’t hurt)</p>
 <p><code>AUTOSTART=&quot;Yes&quot;</code></p>
-
 <p>Setup your blocklists based on your preferences from the files listed in /usr/share/doc/iplist/README.lists</p>
-
 <p><code>BLOCK_LIST=&quot;level1.gz Microsoft.gz ads-trackers-and-bad-pr0n.gz spy bogon.gz templist.gz&quot;</code></p>
-
 <p>I also like to keep my logfiles in one tidy spot and thusly change the LOG_FILE variable as follows, but this is entirely personal preference.</p>
-
 <p><code>LOG_FILE=&quot;/var/log/ipblock.log&quot;</code></p>
-
-<p><code>sudo ipblock -u&lt;br /&gt;
-sudo /etc/init.d/ipblock start&lt;br /&gt;
-sudo ipblock -l</code></p>
-
+<p><code>sudo ipblock -u&lt;br /&gt; sudo /etc/init.d/ipblock start&lt;br /&gt; sudo ipblock -l</code></p>
 <p>Note: The updates run daily and the script can be found as /etc/cron.daily/ipblock Move or update this as you see fit, I like it updating daily though.</p>
-
 <p>Finally make sure it starts at boot by checking with sysv-rc-conf or similar rc level tools.</p>
-
 <p>Cheers!</p>
     
 </div>
@@ -311,15 +279,15 @@ sudo ipblock -l</code></p>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -348,7 +316,7 @@ sudo ipblock -l</code></p>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

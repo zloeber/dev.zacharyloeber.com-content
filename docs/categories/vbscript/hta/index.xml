@@ -5,7 +5,6 @@
     <link>https://zacharyloeber-dev.onrender.com/categories/vbscript/hta/</link>
     <description>Recent content in vbscript/hta on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 22 Jan 2011 17:51:51 +0000</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/vbscript/hta/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,10 +25,8 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/10/30/windows-some-small-system-administration-scripts/</guid>
       <description>&lt;p&gt;Here are a few scripts that I have cobbled together over the last few years. They are small and useful but nothing earth-shattering. One gets information about a remote system and who is logged in. The other can remotely reset the administrator password. Both obviously require  you have the permissions to do so on the remote machines. Both accept multiple computer names divided by a semi-colon.  Save and change the extension from .txt to .hta&lt;/p&gt;
-
-&lt;p&gt;&lt;a rel=&#34;attachment wp-att-92&#34; href=&#34;https://zacharyloeber-dev.onrender.com/?attachment_id=92&#34;&gt;&lt;/a&gt;&lt;a rel=&#34;attachment wp-att-97&#34; href=&#34;https://zacharyloeber-dev.onrender.com/?attachment_id=97&#34;&gt;GetAsset&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a rel=&#34;attachment wp-att-94&#34; href=&#34;https://zacharyloeber-dev.onrender.com/?attachment_id=94&#34;&gt;ResetAdminPass&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;GetAsset&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;ResetAdminPass&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

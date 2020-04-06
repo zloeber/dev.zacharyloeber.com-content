@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Microsoft Unified Access Gateway 2010 Notes | Zachary Loeber</title>
         <meta name="description" content="Microsoft Unified Access Gateway 2010 Notes - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Microsoft Unified Access Gateway 2010 Notes">
@@ -139,48 +139,29 @@
     </div>
 
     
-        <p>If you are new to the Microsoft Unified Access Gateway then you really should know some of these things I ran into while trying to get my array setup and running smoothly. Sure, to find my single post among the masses is probably not going to happen, but if you do find it before you start your endeavor then I promise you will be saved time and frustration. The first major frustration, the installation&#8230;.</p>
-
+        <p>If you are new to the Microsoft Unified Access Gateway then you really should know some of these things I ran into while trying to get my array setup and running smoothly. Sure, to find my single post among the masses is probably not going to happen, but if you do find it before you start your endeavor then I promise you will be saved time and frustration. The first major frustration, the installation….</p>
 <h3 id="1-install-uag-2010-from-rdp">1.) Install UAG 2010 from RDP:</h3>
-
 <p>Yup, you read that right, just do it and you will save yourself some frustration right form the start. If you install from a console (in my case a slow vmware consol) then some of the automatic rules which might help you out never get put in place and you have to do them manually. The remote desktop is an admins window to their responsibilities. If you install UAG 2010 from it, the rules that allow you to access your new reverse proxy are created automatically. Otherwise you have to manually add the rules inside of the Threat Management Gateway console before you can have your remote bliss.</p>
-
-<h3 id="2-get-all-servers-to-the-same-update-level-then-create-your-array">2.) Get all servers to the same update level..then create your array:</h3>
-
+<h3 id="2-get-all-servers-to-the-same-update-levelthen-create-your-array">2.) Get all servers to the same update level..then create your array:</h3>
 <p>This seems logical enough but I thought that the Unified Access Gateway, a pinnacle of technology from Microsoft, would be able to handle (and possibly even sync updates) between members of the same array. WRONG! That does not happen. Get them all to update 1 (at the time of this writing) then get to building your array.</p>
-
-<h3 id="3-speaking-of-updates-8230-msp-files-need-to-run-as-admin">3.) Speaking of updates&#8230;.msp files need to run as admin:</h3>
-
-<p>This is more of a general windows 2008 tip. Yeah, so a MSP file literally stands for an &#8220;MSI Patch&#8221; which is written long hand as &#8220;MicroSoft Installer Patch&#8221;.. or something like that. So you would think that in 2008 (R2) you could right click and run as an administrator to install Update 1 for UAG. Nope. To install this (and other install files that are giving you problems for that matter), right click on cmd.exe in your start menu and choose to &#8220;Run as Administrator&#8221;. Then CD to the place where the MSP is located and run from there. I&#8217;ve had to tell this to countless of my coworkers less versed in Microsoft&#8217;s strange logic and it has amazed them all. I know that there are registry entries to accomplish this same goal, in fact I have such a reg hack for HTA files somewhere in my collection that I&#8217;ll have to dig up and post some time.</p>
-
-<h3 id="3-know-your-routes-know-your-ip-8217-s">3.) Know your routes, know your IP&#8217;s:</h3>
-
-<p>This seems logical as well. But if you don&#8217;t think you can get the courage up to just put it all in a document for the next poor soul who has to administer the damn thing then please at least use this <a href="/wp-content/uploads/2010/08/UAG_Workbook_Blank1.xlsx">UAG_Workbook</a> (for a two server array, copy and paste worthy to any number of nodes of course).</p>
-
+<h3 id="3-speaking-of-updates8230msp-files-need-to-run-as-admin">3.) Speaking of updates….msp files need to run as admin:</h3>
+<p>This is more of a general windows 2008 tip. Yeah, so a MSP file literally stands for an “MSI Patch” which is written long hand as “MicroSoft Installer Patch”.. or something like that. So you would think that in 2008 (R2) you could right click and run as an administrator to install Update 1 for UAG. Nope. To install this (and other install files that are giving you problems for that matter), right click on cmd.exe in your start menu and choose to “Run as Administrator”. Then CD to the place where the MSP is located and run from there. I’ve had to tell this to countless of my coworkers less versed in Microsoft’s strange logic and it has amazed them all. I know that there are registry entries to accomplish this same goal, in fact I have such a reg hack for HTA files somewhere in my collection that I’ll have to dig up and post some time.</p>
+<h3 id="3-know-your-routes-know-your-ip8217s">3.) Know your routes, know your IP’s:</h3>
+<p>This seems logical as well. But if you don’t think you can get the courage up to just put it all in a document for the next poor soul who has to administer the damn thing then please at least use this <a href="/wp-content/uploads/2010/08/UAG_Workbook_Blank1.xlsx">UAG_Workbook</a> (for a two server array, copy and paste worthy to any number of nodes of course).</p>
 <h3 id="4-requesting-internal-certificates-for-testing-some-major-caveats">4.) Requesting internal certificates for testing? Some major caveats:</h3>
-
-<p>&#8211; Your certificate private keys will need to be requested as exportable if they are part of an array. If it does not have that little key in the upper left corner of it&#8217;s icon in the local machine certificate store within the mmc console you did something wrong.</p>
-
-<p>&#8211; Although the certificates should sync automatically in an array, it never hurts to double check if it was actually done or not. I found UAG refused to sync a cert a few times. I am not certain if it was me or UAG but after a manual export of the cert <strong>(with the private key!)</strong> from one server and import into another things started working as they should.</p>
-
-<p>&#8211; If you want to test serving internal certificates through your external UAG interfaces you will need to hack the registry to make it happen. Copy and paste the following into a .reg file to work this magic. Apply to each server and reboot.</p>
-
+<p>– Your certificate private keys will need to be requested as exportable if they are part of an array. If it does not have that little key in the upper left corner of it’s icon in the local machine certificate store within the mmc console you did something wrong.</p>
+<p>– Although the certificates should sync automatically in an array, it never hurts to double check if it was actually done or not. I found UAG refused to sync a cert a few times. I am not certain if it was me or UAG but after a manual export of the cert <strong>(with the private key!)</strong> from one server and import into another things started working as they should.</p>
+<p>– If you want to test serving internal certificates through your external UAG interfaces you will need to hack the registry to make it happen. Copy and paste the following into a .reg file to work this magic. Apply to each server and reboot.</p>
 <p><code>Windows Registry Editor Version 5.00&lt;br /&gt; [HKEY_LOCAL_MACHINE\SOFTWARE\WhaleCom\e-Gap\von\UrlFilter\Comm\SSL]&lt;br /&gt; &quot;ValidateRwsCert&quot;=dword:00000000&lt;br /&gt; &quot;ValidateRwsCertCRL&quot;=dword:00000000&lt;br /&gt;</code></p>
-
-<p>&#8211; If you want to request a certificate from the UAG server to an internal PKI you will want to do so from the command line and with the certreq -submit -rpc command (basically request without using rpc as TMG has some filters and such in place locally that will prevent it from working.</p>
-
-<p>First create a file like the following and save as ssl.inf<br />
-<code>[Version]&lt;br /&gt; Signature=&quot;$Windows NT$&quot;&lt;br /&gt; [NewRequest]&lt;br /&gt; Subject = &quot;CN=ext.contsoso.com&quot;   ; For a wildcard use &quot;CN=*.CONTOSO.COM&quot; for example&lt;br /&gt; ; For an empty subject use the following line instead&lt;br /&gt; ; Subject =&lt;br /&gt; Exportable = TRUE          ; Private key is not exportable&lt;br /&gt; KeyLength = 2048                    ; Common key sizes: 512, 1024, 2048, 4096, 8192, 16384&lt;br /&gt; KeySpec = 1                           ; AT_KEYEXCHANGE&lt;br /&gt; KeyUsage = 0xA0                     ; Digital Signature, Key Encipherment&lt;br /&gt; MachineKeySet = True              ; The key belongs to the local computer account&lt;br /&gt; ProviderName = &quot;Microsoft RSA SChannel Cryptographic Provider&quot;&lt;br /&gt; ProviderType = 12&lt;br /&gt; SMIME = FALSE&lt;br /&gt; RequestType = CMC&lt;br /&gt; ; At least certreq.exe shipping with Windows Vista/Server 2008 is required to interpret the [Strings] and [Extensions] sections below&lt;br /&gt; [Strings]&lt;br /&gt; szOID_SUBJECT_ALT_NAME2 = &quot;2.5.29.17&quot;&lt;br /&gt; szOID_ENHANCED_KEY_USAGE = &quot;2.5.29.37&quot;&lt;br /&gt; szOID_PKIX_KP_SERVER_AUTH = &quot;1.3.6.1.5.5.7.3.1&quot;&lt;br /&gt; szOID_PKIX_KP_CLIENT_AUTH = &quot;1.3.6.1.5.5.7.3.2&quot;&lt;br /&gt; ; These will be your Subject alternative names&lt;br /&gt; %szOID_SUBJECT_ALT_NAME2% = &quot;{text}dns=ext.contsoso.com&amp;dns=san1.ext.contsoso.com&amp;dns=san2.ext.contsoso.com&quot;&lt;br /&gt; %szOID_ENHANCED_KEY_USAGE% = &quot;{text}%szOID_PKIX_KP_SERVER_AUTH%,%szOID_PKIX_KP_CLIENT_AUTH%&quot;&lt;br /&gt; [RequestAttributes]&lt;br /&gt; CertificateTemplate = CertificateWebTemplateWithoutSpaces ;&quot;Certificate Web Template Without Spaces&quot;</code><br />
-For the above file run the following commands to get and import your certificate:<br />
+<p>– If you want to request a certificate from the UAG server to an internal PKI you will want to do so from the command line and with the certreq -submit -rpc command (basically request without using rpc as TMG has some filters and such in place locally that will prevent it from working.</p>
+<p>First create a file like the following and save as ssl.inf<br>
+<code>[Version]&lt;br /&gt; Signature=&quot;$Windows NT$&quot;&lt;br /&gt; [NewRequest]&lt;br /&gt; Subject = &quot;CN=ext.contsoso.com&quot;   ; For a wildcard use &quot;CN=*.CONTOSO.COM&quot; for example&lt;br /&gt; ; For an empty subject use the following line instead&lt;br /&gt; ; Subject =&lt;br /&gt; Exportable = TRUE		    ; Private key is not exportable&lt;br /&gt; KeyLength = 2048                    ; Common key sizes: 512, 1024, 2048, 4096, 8192, 16384&lt;br /&gt; KeySpec = 1                           ; AT_KEYEXCHANGE&lt;br /&gt; KeyUsage = 0xA0                     ; Digital Signature, Key Encipherment&lt;br /&gt; MachineKeySet = True              ; The key belongs to the local computer account&lt;br /&gt; ProviderName = &quot;Microsoft RSA SChannel Cryptographic Provider&quot;&lt;br /&gt; ProviderType = 12&lt;br /&gt; SMIME = FALSE&lt;br /&gt; RequestType = CMC&lt;br /&gt; ; At least certreq.exe shipping with Windows Vista/Server 2008 is required to interpret the [Strings] and [Extensions] sections below&lt;br /&gt; [Strings]&lt;br /&gt; szOID_SUBJECT_ALT_NAME2 = &quot;2.5.29.17&quot;&lt;br /&gt; szOID_ENHANCED_KEY_USAGE = &quot;2.5.29.37&quot;&lt;br /&gt; szOID_PKIX_KP_SERVER_AUTH = &quot;1.3.6.1.5.5.7.3.1&quot;&lt;br /&gt; szOID_PKIX_KP_CLIENT_AUTH = &quot;1.3.6.1.5.5.7.3.2&quot;&lt;br /&gt; ; These will be your Subject alternative names&lt;br /&gt; %szOID_SUBJECT_ALT_NAME2% = &quot;{text}dns=ext.contsoso.com&amp;dns=san1.ext.contsoso.com&amp;dns=san2.ext.contsoso.com&quot;&lt;br /&gt; %szOID_ENHANCED_KEY_USAGE% = &quot;{text}%szOID_PKIX_KP_SERVER_AUTH%,%szOID_PKIX_KP_CLIENT_AUTH%&quot;&lt;br /&gt; [RequestAttributes]&lt;br /&gt; CertificateTemplate = CertificateWebTemplateWithoutSpaces ;&quot;Certificate Web Template Without Spaces&quot;</code><br>
+For the above file run the following commands to get and import your certificate:<br>
 <code>certreq -new ssl.inf ssl.req&lt;br /&gt; certreq -submit -rpc ssl.req ssl.cer&lt;br /&gt; certreq -accept -machine ssl.cer</code></p>
-
 <h3 id="5-if-you-have-a-custom-ou-structure-for-ad-you-will-have-to-customize-your-base-search-root">5.) If you have a custom OU structure for AD you will have to customize your base search root:</h3>
-
-<p>UAG will try to be intelligent and select a base DN that makes sense to it. But if you don&#8217;t create all your users in the Users OU that doesn&#8217;t help much. So change your base DN (search root) on a new authentication server being configured to the correct location where you will be authenticating users from.</p>
-
+<p>UAG will try to be intelligent and select a base DN that makes sense to it. But if you don’t create all your users in the Users OU that doesn’t help much. So change your base DN (search root) on a new authentication server being configured to the correct location where you will be authenticating users from.</p>
 <h3 id="6-you-may-have-to-restart-iis-after-activation">6.) You may have to restart IIS after activation:</h3>
-
-<p>At least I had to do so. It would even show in the web monitor that the nodes in my array were synced and all ready to start serving up the goodness. But I&#8217;d find that one or even both of the load balanced nodes would not reflect the changes I had made until IIS was restarted. Weird.</p>
+<p>At least I had to do so. It would even show in the web monitor that the nodes in my array were synced and all ready to start serving up the goodness. But I’d find that one or even both of the load balanced nodes would not reflect the changes I had made until IIS was restarted. Weird.</p>
     
 </div>
 
@@ -299,15 +280,15 @@ For the above file run the following commands to get and import your certificate
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -336,7 +317,7 @@ For the above file run the following commands to get and import your certificate
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

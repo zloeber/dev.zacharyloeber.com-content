@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> AD Audit Report With Powershell: Part 2 | Zachary Loeber</title>
         <meta name="description" content="AD Audit Report With Powershell: Part 2 - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="AD Audit Report With Powershell: Part 2">
@@ -149,100 +149,55 @@
     </div>
 
     
-        <p>I&#8217;ve updated my AD auditing report. The forest level report now includes AD integrated zones, GPOs, and fixed code to conform to strict v2 Powershell. I&#8217;ve also included a new domain level report! This report provides some user/group stats, all privileged group membership, and more.</p>
-
+        <p>I’ve updated my AD auditing report. The forest level report now includes AD integrated zones, GPOs, and fixed code to conform to strict v2 Powershell. I’ve also included a new domain level report! This report provides some user/group stats, all privileged group membership, and more.</p>
 <h3 id="reporting-features">Reporting Features</h3>
-
 <p>I’ve been gradually updating my server asset reporting script as part of this project. This means several output methods are baked right in from my earlier efforts and a few new ones have been added which are specific to the AD auditing scropt.</p>
-
-<h4 id="report-containers-types">Report Containers/Types</h4>
-
+<h4 id="report-containerstypes">Report Containers/Types</h4>
 <p>Each report hash structure acts as a container for all the sections and report types available. The container can have any number of report type definitions. For the AD reports I define two structures. One for forest level reporting and another for domain level reporting. These each have their own report types which suit different needs.</p>
-
-<p><em><span style="text-decoration: underline;">$ADForestReport</span></em></p>
-
+<p><em><!-- raw HTML omitted -->$ADForestReport<!-- raw HTML omitted --></em></p>
 <p>This is for the forest level reporting. The report types to choose from are:</p>
-
 <p>FullDocumentation – This is suitable for the HTML/PDF reports. This is the default report type.</p>
-
 <p>ExcelExport – This is suitable for excel exports. Even though you can use the –ExportToExcel switch on any report type, this report has multiline output elements which require specially formatted html elements that do not lend themselves to excel workbooks. This is all the data in the FullDocumentation report but without the special HTML formatting. If you use this report type then you will want to suppress the HTML output (basically use the following flags: -ExportToExcel –NoReport)</p>
-
-<p><span style="text-decoration: underline;"><em>$ADDomainReport</em></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->$ADDomainReport<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <p>This is for the domain level reporting. There is only one type of report type to choose (so you don’t really have to even supply this in the function as it will default to the first reporttype).</p>
-
 <p>FullDocumentation – This is suitable for HTML/PDF reports as well as excel exports.</p>
-
 <h4 id="html-templates">HTML Templates</h4>
-
 <p>These HTML templates have not changed.</p>
-
 <p>DynamicGrid – A heavily modified CSS layout. This is the default HTML output format.</p>
-
 <p>EmailFriendly – A basic layout suitable for emailed embedded reports.</p>
-
 <h4 id="saved-report-layout">Saved Report Layout</h4>
-
 <p>There are a few different ways  PDF/HTMLs can be output. This AD information is mostly suited to individual reports.</p>
-
 <p>Individual – Each asset saves as its own file</p>
-
 <p>One big report – Only a single report will be generated.</p>
-
 <h3 id="report-output">Report Output</h3>
-
 <p>HTML – See the HTML templates for a few different options on this one.</p>
-
 <p>PDF – This converts the HTML format to PDF files using a third-party open source DLL (so you still have to choose HTML templates when exporting to PDF).</p>
-
-<p>Email &#8211; HTML embedded email.</p>
-
-<p>Excel Export &#8211; Export all results to individual worksheets within Excel. Each section generates its own workbook.</p>
-
+<p>Email – HTML embedded email.</p>
+<p>Excel Export – Export all results to individual worksheets within Excel. Each section generates its own workbook.</p>
 <h3 id="optional-report-output">Optional Report Output</h3>
-
 <p>The $ADDomainReport includes a few export options which can be set by global variables. The variables are:</p>
-
 <p>$EXPORTTOCSV_ALLUSERS – Create a CSV file with all users of the domain.</p>
-
 <p>$EXPORTTOCSV_PRIVUSERS – Create a separate CSV file with all privileged users of the domain.</p>
-
 <p>This may slow down the report but the output can be quite interesting. Exporting all the users in each domain also includes appended output from a special function I wrote to pull out all useraccountcontrol information for a user account and another special function I wrote to normalize attribute information. This is useful when some users are exchange/lync enabled and some are not. Exchange/Lync enabling a user adds extra attributes which otherwise are not there. This normalization accounts for these attributes and assigns them a null value if unavailable.</p>
-
 <h4 id="graphs">Graphs</h4>
-
 <p>Aside from the report, additionally three diagrams can be created which this script is run against the $ADForestReport container:</p>
-
 <ul>
 <li>Domain trusts</li>
 <li>Site replication connections</li>
 <li>Site adjacencies</li>
 </ul>
-
 <p>You can choose to create a diagram source text file and/or a png file with the following global variables:</p>
-
 <p>$AD_CreateDiagramSourceFiles</p>
-
 <p>$AD_CreateDiagrams</p>
-
 <p>To actually generate the diagrams you will need graphviz’s dot.exe executable which can be downloaded and installed <a href="http://graphviz.org/">here</a>. Or <a href="https://code.google.com/p/graph-viz-portable/downloads/list">here is a portable version</a> of the application you can try utilizing. All you need is for the dot.exe file to work correctly to generate your diagram. You may have to modify this script to use the appropriate path to the executable if you use the portable version of graphviz.</p>
-
 <p>You can specify the path of dot.exe with the following global variable:</p>
-
 <p>$Graphviz_Path</p>
-
 <h3 id="report-data">Report Data</h3>
-
 <p>I’ve included only items which can be gathered from Active Directory with a regular user account and without any special AD modules. Each report contains different information worth checking out:</p>
-
 <h4 id="adforestreport">$ADForestReport</h4>
-
 <p>This contains forest wide information.</p>
-
-<h5 id="forest-information"><strong><em>Forest Information</em></strong></h5>
-
-<p><span style="text-decoration: underline;">Forest Summary</span></p>
-
+<h5 id="_forest-information_"><strong><em>Forest Information</em></strong></h5>
+<p><!-- raw HTML omitted -->Forest Summary<!-- raw HTML omitted --></p>
 <ul>
 <li>Name</li>
 <li>Functional Level</li>
@@ -253,38 +208,29 @@
 <li>Exchange Count</li>
 <li>Lync/Pool counts</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Forest Features</span></p>
-
+<p><!-- raw HTML omitted -->Forest Features<!-- raw HTML omitted --></p>
 <ul>
 <li>Tombstone Lifetime</li>
 <li>Recycle Bin Enabled</li>
 <li>Lync AD Container</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Exchange Servers</span></p>
-
+<p><!-- raw HTML omitted -->Exchange Servers<!-- raw HTML omitted --></p>
 <ul>
 <li>Organization</li>
 <li>Administrative Group</li>
 <li>Name</li>
 <li>Roles</li>
 <li>Site</li>
-<li><span style="line-height: 1.6;">Serial/Product ID</span></li>
+<li><!-- raw HTML omitted -->Serial/Product ID<!-- raw HTML omitted --></li>
 </ul>
-
-<p><span style="text-decoration: underline;">Lync/OCS</span></p>
-
+<p><!-- raw HTML omitted -->Lync/OCS<!-- raw HTML omitted --></p>
 <ul>
 <li>Element (Server/Pool)</li>
 <li>Type (Internal/Edge/Backend/Pool)</li>
 <li>Name/FQDN</li>
 </ul>
-
-<h5 id="site-information"><em><strong>Site Information</strong></em></h5>
-
-<p><span style="text-decoration: underline;">Summary</span></p>
-
+<h5 id="_site-information_"><em><strong>Site Information</strong></em></h5>
+<p><!-- raw HTML omitted -->Summary<!-- raw HTML omitted --></p>
 <ul>
 <li>Site Name</li>
 <li>Location</li>
@@ -292,9 +238,7 @@
 <li>DCs</li>
 <li>Subnets</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Details</span></p>
-
+<p><!-- raw HTML omitted -->Details<!-- raw HTML omitted --></p>
 <ul>
 <li>Site Name</li>
 <li>Options</li>
@@ -303,28 +247,21 @@
 <li>Bridgeheads</li>
 <li>Adjacencies</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Subnets</span></p>
-
+<p><!-- raw HTML omitted -->Subnets<!-- raw HTML omitted --></p>
 <ul>
 <li>Subnet</li>
 <li>Site Name</li>
 <li>Location</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Site Connections</span></p>
-
+<p><!-- raw HTML omitted -->Site Connections<!-- raw HTML omitted --></p>
 <ul>
 <li>Enabled</li>
 <li>Options</li>
 <li>From</li>
 <li>To</li>
 </ul>
-
-<h5 id="domain-information"><em><strong>Domain Information</strong></em></h5>
-
-<p><span style="text-decoration: underline;">Forest Domains</span></p>
-
+<h5 id="_domain-information_"><em><strong>Domain Information</strong></em></h5>
+<p><!-- raw HTML omitted -->Forest Domains<!-- raw HTML omitted --></p>
 <ul>
 <li>Name</li>
 <li>NetBIOS</li>
@@ -332,9 +269,7 @@
 <li>Forest Root</li>
 <li>Assigned FSMO Roles</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Domain Password Policies</span></p>
-
+<p><!-- raw HTML omitted -->Domain Password Policies<!-- raw HTML omitted --></p>
 <ul>
 <li>Domain Name</li>
 <li>NetBIOS Name</li>
@@ -344,9 +279,7 @@
 <li>Min Pass Age</li>
 <li>Min Pass Length</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Domain Controllers</span></p>
-
+<p><!-- raw HTML omitted -->Domain Controllers<!-- raw HTML omitted --></p>
 <ul>
 <li>Domain</li>
 <li>Site</li>
@@ -357,9 +290,7 @@
 <li>GC</li>
 <li>FSMO Roles</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Domain Trusts</span></p>
-
+<p><!-- raw HTML omitted -->Domain Trusts<!-- raw HTML omitted --></p>
 <ul>
 <li>Domain</li>
 <li>Trusted Domain</li>
@@ -369,27 +300,21 @@
 <li>Created</li>
 <li>Modified</li>
 </ul>
-
-<p><span style="text-decoration: underline;">DFS Shares</span></p>
-
+<p><!-- raw HTML omitted -->DFS Shares<!-- raw HTML omitted --></p>
 <ul>
 <li>Domain</li>
 <li>Name</li>
 <li>DN</li>
 <li>Remote Server</li>
 </ul>
-
-<p><span style="text-decoration: underline;">DFSR Shares</span></p>
-
+<p><!-- raw HTML omitted -->DFSR Shares<!-- raw HTML omitted --></p>
 <ul>
 <li>Domain</li>
 <li>Name</li>
 <li>Content (shares)</li>
 <li>Remote Servers</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Integrated DNS Zones</span></p>
-
+<p><!-- raw HTML omitted -->Integrated DNS Zones<!-- raw HTML omitted --></p>
 <ul>
 <li>Zone Name</li>
 <li>Domain</li>
@@ -398,22 +323,16 @@
 <li>Created</li>
 <li>Changed</li>
 </ul>
-
-<p><span style="text-decoration: underline;">GPOs</span></p>
-
+<p><!-- raw HTML omitted -->GPOs<!-- raw HTML omitted --></p>
 <ul>
 <li>Domain</li>
 <li>Name</li>
 <li>Created</li>
 <li>Changed</li>
 </ul>
-
 <h4 id="addomainreport">$ADDomainReport</h4>
-
 <p>This contains per-domain account and group information which is largely focused on account security and discovery.</p>
-
-<p><span style="text-decoration: underline;">Account Statistics (count) 1</span></p>
-
+<p><!-- raw HTML omitted -->Account Statistics (count) 1<!-- raw HTML omitted --></p>
 <ul>
 <li>Total User Accounts</li>
 <li>Enabled</li>
@@ -422,9 +341,7 @@
 <li>Password Does Not Expire</li>
 <li>Password Must Change</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Account Statistics (count) 2</span></p>
-
+<p><!-- raw HTML omitted -->Account Statistics (count) 2<!-- raw HTML omitted --></p>
 <ul>
 <li>Password Not Required</li>
 <li>Dial-in Enabled</li>
@@ -433,9 +350,7 @@
 <li>Not Trusted For Delegation</li>
 <li>No Pre-Auth Required</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Group Statistics</span></p>
-
+<p><!-- raw HTML omitted -->Group Statistics<!-- raw HTML omitted --></p>
 <ul>
 <li>Total Groups</li>
 <li>Built-in</li>
@@ -446,17 +361,13 @@
 <li>Domain Local Security</li>
 <li>Domain Local Distribution</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Privileged Group Statistics</span></p>
-
+<p><!-- raw HTML omitted -->Privileged Group Statistics<!-- raw HTML omitted --></p>
 <ul>
 <li>Default Priv Group Name</li>
 <li>Current Group Name (if it were changed)</li>
 <li>Member Count</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Privileged Group Membership for the following groups</span></p>
-
+<p><!-- raw HTML omitted -->Privileged Group Membership for the following groups<!-- raw HTML omitted --></p>
 <ul>
 <li>Enterprise Admins</li>
 <li>Schema Admins</li>
@@ -468,9 +379,7 @@
 <li>Backup Operators</li>
 <li>Print Operators</li>
 </ul>
-
-<p><span style="text-decoration: underline;">Account information for the prior sections:</span></p>
-
+<p><!-- raw HTML omitted -->Account information for the prior sections:<!-- raw HTML omitted --></p>
 <ul>
 <li>Logon ID</li>
 <li>Name</li>
@@ -480,21 +389,13 @@
 <li>Password Reversable</li>
 <li>Password Not Required</li>
 </ul>
-
 <h3 id="screenshots">Screenshots</h3>
-
-<p><a href="wp-content/uploads/2013/10/Trusts-screenshot.jpg"><img class="aligncenter size-medium wp-image-994" alt="Trusts-screenshot.jpg" src="/wp-content/uploads/2013/10/Trusts-screenshot.jpg?resize=300%2C86" width="300" height="86" srcset="/wp-content/uploads/2013/10/Trusts-screenshot.jpg?resize=300%2C86 300w, wp-content/uploads/2013/10/Trusts-screenshot.jpg?w=622 622w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a> <a href="/wp-content/uploads/2013/10/trusts-screenshot2.jpg"><img class="aligncenter size-medium wp-image-996" alt="trusts-screenshot2.jpg" src="/wp-content/uploads/2013/10/trusts-screenshot2.jpg?resize=300%2C72" width="300" height="72" srcset="/wp-content/uploads/2013/10/trusts-screenshot2.jpg?resize=300%2C72 300w, /wp-content/uploads/2013/10/trusts-screenshot2.jpg?w=961 961w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a> <a href="wp-content/uploads/2013/10/Lync-sreenshot.jpg"><img class="aligncenter size-medium wp-image-988" alt="Lync-sreenshot.jpg" src="/wp-content/uploads/2013/10/Lync-sreenshot.jpg?resize=300%2C240" width="300" height="240" srcset="/wp-content/uploads/2013/10/Lync-sreenshot.jpg?resize=300%2C240 300w, wp-content/uploads/2013/10/Lync-sreenshot.jpg?w=413 413w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a> <a href="/wp-content/uploads/2013/10/SiteSubnets-screenshot.jpg"><img class="aligncenter size-medium wp-image-992" alt="SiteSubnets-screenshot.jpg" src="/wp-content/uploads/2013/10/SiteSubnets-screenshot.jpg?resize=300%2C172" width="300" height="172" srcset="/wp-content/uploads/2013/10/SiteSubnets-screenshot.jpg?resize=300%2C172 300w, /wp-content/uploads/2013/10/SiteSubnets-screenshot.jpg?w=351 351w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a> <a href="wp-content/uploads/2013/10/SiteConnections-screenshot.jpg"><img class="aligncenter size-medium wp-image-990" alt="SiteConnections-screenshot.jpg" src="/wp-content/uploads/2013/10/SiteConnections-screenshot.jpg?resize=300%2C182" width="300" height="182" srcset="/wp-content/uploads/2013/10/SiteConnections-screenshot.jpg?resize=300%2C182 300w, wp-content/uploads/2013/10/SiteConnections-screenshot.jpg?w=408 408w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a> <a href="wp-content/uploads/2013/10/ForestSummary-screenshot.jpg"><img class="aligncenter size-medium wp-image-986" alt="ForestSummary-screenshot.jpg" src="/wp-content/uploads/2013/10/ForestSummary-screenshot.jpg?resize=300%2C106" width="300" height="106" srcset="/wp-content/uploads/2013/10/ForestSummary-screenshot.jpg?resize=300%2C106 300w, wp-content/uploads/2013/10/ForestSummary-screenshot.jpg?w=736 736w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a> <a href="/wp-content/uploads/2013/10/DCs-Screenshot_thumb.jpg"><img class="aligncenter size-medium wp-image-983" alt="DCs-Screenshot_thumb.jpg" src="/wp-content/uploads/2013/10/DCs-Screenshot_thumb.jpg?resize=300%2C138" width="300" height="138" srcset="/wp-content/uploads/2013/10/DCs-Screenshot_thumb.jpg?resize=300%2C138 300w, /wp-content/uploads/2013/10/DCs-Screenshot_thumb.jpg?w=555 555w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
-
-<p>Here are some reports from the Domain level report&#8230;</p>
-
-<p><a href="/wp-content/uploads/2013/11/Domain-Stats-Screenshot.jpg"><img class="aligncenter size-medium wp-image-1012" alt="Domain-Stats-Screenshot" src="/wp-content/uploads/2013/11/Domain-Stats-Screenshot.jpg?resize=300%2C128" width="300" height="128" srcset="/wp-content/uploads/2013/11/Domain-Stats-Screenshot.jpg?resize=300%2C128 300w, /wp-content/uploads/2013/11/Domain-Stats-Screenshot.jpg?w=813 813w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a> <a href="wp-content/uploads/2013/11/Domain-Groups-Screenshot.jpg"><img class="aligncenter size-medium wp-image-1013" alt="Domain-Groups-Screenshot" src="/wp-content/uploads/2013/11/Domain-Groups-Screenshot.jpg?resize=300%2C89" width="300" height="89" srcset="/wp-content/uploads/2013/11/Domain-Groups-Screenshot.jpg?resize=300%2C89 300w, wp-content/uploads/2013/11/Domain-Groups-Screenshot.jpg?w=658 658w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a> <a href="/wp-content/uploads/2013/11/Domain-PrivGroupMembership-Screenshot.jpg"><img class="aligncenter size-medium wp-image-1014" alt="Domain-PrivGroupMembership-Screenshot" src="/wp-content/uploads/2013/11/Domain-PrivGroupMembership-Screenshot.jpg?resize=300%2C199" width="300" height="199" srcset="/wp-content/uploads/2013/11/Domain-PrivGroupMembership-Screenshot.jpg?resize=300%2C199 300w, /wp-content/uploads/2013/11/Domain-PrivGroupMembership-Screenshot.jpg?w=812 812w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
-
+<p><a href="wp-content/uploads/2013/10/Trusts-screenshot.jpg"><!-- raw HTML omitted --></a> <a href="/wp-content/uploads/2013/10/trusts-screenshot2.jpg"><!-- raw HTML omitted --></a> <a href="wp-content/uploads/2013/10/Lync-sreenshot.jpg"><!-- raw HTML omitted --></a> <a href="/wp-content/uploads/2013/10/SiteSubnets-screenshot.jpg"><!-- raw HTML omitted --></a> <a href="wp-content/uploads/2013/10/SiteConnections-screenshot.jpg"><!-- raw HTML omitted --></a> <a href="wp-content/uploads/2013/10/ForestSummary-screenshot.jpg"><!-- raw HTML omitted --></a> <a href="/wp-content/uploads/2013/10/DCs-Screenshot_thumb.jpg"><!-- raw HTML omitted --></a></p>
+<p>Here are some reports from the Domain level report…</p>
+<p><a href="/wp-content/uploads/2013/11/Domain-Stats-Screenshot.jpg"><!-- raw HTML omitted --></a> <a href="wp-content/uploads/2013/11/Domain-Groups-Screenshot.jpg"><!-- raw HTML omitted --></a> <a href="/wp-content/uploads/2013/11/Domain-PrivGroupMembership-Screenshot.jpg"><!-- raw HTML omitted --></a></p>
 <h3 id="conclusion">Conclusion</h3>
-
-<p>This script represents a good deal of work on my part so I&#8217;m thrilled to get any feedback or suggestions for improvement. If you browse through the code I think you will find a good deal to learn from (there are even some unused functions which do some neat things with LDAP paths tucked away in here).</p>
-
+<p>This script represents a good deal of work on my part so I’m thrilled to get any feedback or suggestions for improvement. If you browse through the code I think you will find a good deal to learn from (there are even some unused functions which do some neat things with LDAP paths tucked away in here).</p>
 <h3 id="downloads">Downloads</h3>
-
 <p><strong><a href="http://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877">Download from the technet gallery</a></strong></p>
     
 </div>
@@ -614,15 +515,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -651,7 +552,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

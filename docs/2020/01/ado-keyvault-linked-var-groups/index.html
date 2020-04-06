@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Ado Keyvault Linked Var Groups | Zachary Loeber</title>
         <meta name="description" content="Ado Keyvault Linked Var Groups - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Ado Keyvault Linked Var Groups">
@@ -144,58 +144,38 @@
 
     
         <p>Azure DevOps keyvault linked variable groups are not easy to automate but it can be done.</p>
-
 <h2 id="introduction">Introduction</h2>
-
 <p>As of late I&rsquo;ve been working quite a bit with Azure Devops. It is a powerful platform with a dearth of possibilities but I quickly hit the ceiling of the platform&rsquo;s capabilities. It suffers from a common automation platform deficiency, the ability to automate the platform itself (automating the automation platform as it were). This is not uncommon and I&rsquo;ve seen the same issues with Jenkins (props to Jenkins Job Builder for a very clever solution to some of these restrictions).</p>
-
 <p>There has been some progress with a preview az cli extension aptly named &lsquo;devops&rsquo;. If you are a little adept with Bash you can use the az cli to create and manage variable groups but you cannot create keyvault linked variable groups (or if you can, I don&rsquo;t see how). Luckily, like most modern PaaS solutions, Azure DevOps is capable of being automated further than you may think if you are willing ot dive into json templates and their REST API. Oh, you will still need that extension:</p>
-
-<pre><code class="language-bash">az extension add --name azure-devops
-</code></pre>
-
-<h2 id="set-the-stage">Set the Stage</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">az extension add --name azure-devops
+</code></pre></div><h2 id="set-the-stage">Set the Stage</h2>
 <p>Automating this thing has more moving parts that I&rsquo;m comfortable with but usually that&rsquo;s how &lsquo;hacks&rsquo; go right? So to automate this with some security in place you need a ton of variables and secrets including&hellip;.</p>
-
 <p>Firstly we need an authorized service endpoint already created within Azure Devops. This should be tied to an SPN which can access the keyvault secrets via access policies. I personally use terraform to generate these and then assign them appropriate policies to only the resources it requires. I use another automation script/hack to create these service connections in ADO.</p>
-
 <blockquote>
 <p>I like to use per stage/team SPNs for service connections. This usually takes the form of STAGE_TEAM and ties back to an AKS cluster, so I can use the connection for deployment pipelines as well as grant the cluster rights to ACR, key vault policies, and so on right from terraform with the native azurerm provider.</p>
 </blockquote>
-
 <p>You will also need A key vault populated with the following secrets that will need to have been granted access to ADO to create libraries (variable groups). In the script I provide I assume it is in the same key vault being linked to.</p>
-
 <ul>
 <li>ADOUSER (ADO Username)</li>
 <li>ADOPAT (Personal Access Token)</li>
 </ul>
-
 <p>We also need some environment variables for less secret things. You will see later that I keep these in an .envrc file on a per team basis. Here are the basic ones which are required for this exercize.</p>
-
-<pre><code class="language-bash">AZ_SUBSCRIPTION=&lt;subscription name&gt;
-AZ_SUBSCRIPTION_ID=&lt;subscription id&gt;
-ADO_ORG=&lt;ADO Org Name&gt;
-ADO_PROJECT=&lt;ADO Project Name&gt;
-KEYVAULTNAME=&lt;Key Vault to link ADO Group with&gt;
-SC_NAME=&lt;service connection name&gt;
-</code></pre>
-
-<p>Finally, we also need</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">AZ_SUBSCRIPTION<span style="color:#f92672">=</span>&lt;subscription name&gt;
+AZ_SUBSCRIPTION_ID<span style="color:#f92672">=</span>&lt;subscription id&gt;
+ADO_ORG<span style="color:#f92672">=</span>&lt;ADO Org Name&gt;
+ADO_PROJECT<span style="color:#f92672">=</span>&lt;ADO Project Name&gt;
+KEYVAULTNAME<span style="color:#f92672">=</span>&lt;Key Vault to link ADO Group with&gt;
+SC_NAME<span style="color:#f92672">=</span>&lt;service connection name&gt;
+</code></pre></div><p>Finally, we also need</p>
 <ul>
 <li>Azure CLI</li>
 <li>Azure CLI devops extension</li>
 <li>Permission to create library resources in Azure DevOps</li>
 <li>Fortitude, lots of that.</li>
 </ul>
-
 <p>Finally you will need a json template file for the variable group which I&rsquo;ll describe next.</p>
-
 <h2 id="the-json-template">The JSON Template</h2>
-
 <p>In order to create a keyvault linked variable group you will need to setup a template json file and submit it to the ADO API via an HTTP POST. Easy peasy. I&rsquo;ve done the reverse engineering bits for you on this one. Here is a json file for a variable group called &lsquo;SuperSecret&rsquo; that links to a keyvault called SuperSecretVault and syncs the &lsquo;AIRFLOWFERNETKEY&rsquo; and &lsquo;KUBESECRET&rsquo; vault secrets. One could easily construct this automatically based on an existing key vault and some python I&rsquo;d think.</p>
-
 <pre><code>{
   &quot;authorized&quot;: true,
   &quot;description&quot;: &quot;SuperSecret Variable Group (SuperSecretVault)&quot;,
@@ -230,10 +210,7 @@ SC_NAME=&lt;service connection name&gt;
     },
   }
 }
-</code></pre>
-
-<p>Shall we tokenize this? Okay,</p>
-
+</code></pre><p>Shall we tokenize this? Okay,</p>
 <pre><code>{
   &quot;authorized&quot;: true,
   &quot;description&quot;: &quot;${description}&quot;,
@@ -268,110 +245,102 @@ SC_NAME=&lt;service connection name&gt;
     },
   }
 }
-</code></pre>
-
-<p>With this at hand we can then work our magic.</p>
-
+</code></pre><p>With this at hand we can then work our magic.</p>
 <h2 id="the-script">The Script</h2>
-
 <p>I put together a script which tokenizes our json file and submits it to Azure DevOps via curl. I used old school envsubst to keep it somewhat more portable.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>SC_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>SC_NAME<span style="color:#66d9ef">:-</span><span style="color:#e6db74">&#34;Service Connection Name&#34;</span><span style="color:#e6db74">}</span>
+KEYVAULTNAME<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>KEYVAULTNAME<span style="color:#66d9ef">:-</span><span style="color:#e6db74">&#34;keyvault&#34;</span><span style="color:#e6db74">}</span>
+AZ_SUBSCRIPTION<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>AZ_SUBSCRIPTION<span style="color:#66d9ef">:-</span><span style="color:#e6db74">&#34;Azure Subscription&#34;</span><span style="color:#e6db74">}</span>
+AZ_SUBSCRIPTION_ID<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>AZ_SUBSCRIPTION_ID<span style="color:#66d9ef">:-</span><span style="color:#e6db74">&#34;Azure Subscription ID&#34;</span><span style="color:#e6db74">}</span>
+ADO_ORG<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>ADO_ORG<span style="color:#66d9ef">:-</span><span style="color:#e6db74">&#34;https://dev.azure.com/myorgname&#34;</span><span style="color:#e6db74">}</span>
+ADO_PROJECT<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>ADO_PROJECT<span style="color:#66d9ef">:-</span><span style="color:#e6db74">&#34;MyProject&#34;</span><span style="color:#e6db74">}</span>
+SECRET_TEMPLATE<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>SECRET_TEMPLATE<span style="color:#66d9ef">:-</span><span style="color:#e6db74">&#34;./secret-var-group.tpl&#34;</span><span style="color:#e6db74">}</span>
 
-<pre><code class="language-bash">#!/bin/bash
-SC_NAME=${SC_NAME:-&quot;Service Connection Name&quot;}
-KEYVAULTNAME=${KEYVAULTNAME:-&quot;keyvault&quot;}
-AZ_SUBSCRIPTION=${AZ_SUBSCRIPTION:-&quot;Azure Subscription&quot;}
-AZ_SUBSCRIPTION_ID=${AZ_SUBSCRIPTION_ID:-&quot;Azure Subscription ID&quot;}
-ADO_ORG=${ADO_ORG:-&quot;https://dev.azure.com/myorgname&quot;}
-ADO_PROJECT=${ADO_PROJECT:-&quot;MyProject&quot;}
-SECRET_TEMPLATE=${SECRET_TEMPLATE:-&quot;./secret-var-group.tpl&quot;}
+echo <span style="color:#e6db74">&#34;STAGE: </span><span style="color:#e6db74">${</span>STAGE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;TEAM: </span><span style="color:#e6db74">${</span>TEAM<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;AZ_SUBSCRIPTION: </span><span style="color:#e6db74">${</span>AZ_SUBSCRIPTION<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;ENVRC: </span>$ENVRC<span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;KEYVAULTNAME: </span><span style="color:#e6db74">${</span>KEYVAULTNAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;ADO_ORG: </span><span style="color:#e6db74">${</span>ADO_ORG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;ADO_PROJECT: </span><span style="color:#e6db74">${</span>ADO_PROJECT<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;SECRET_TEMPLATE: </span><span style="color:#e6db74">${</span>SECRET_TEMPLATE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;SC_NAME: </span><span style="color:#e6db74">${</span>SC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 
-echo &quot;STAGE: ${STAGE}&quot;
-echo &quot;TEAM: ${TEAM}&quot;
-echo &quot;AZ_SUBSCRIPTION: ${AZ_SUBSCRIPTION}&quot;
-echo &quot;ENVRC: $ENVRC&quot;
-echo &quot;KEYVAULTNAME: ${KEYVAULTNAME}&quot;
-echo &quot;ADO_ORG: ${ADO_ORG}&quot;
-echo &quot;ADO_PROJECT: ${ADO_PROJECT}&quot;
-echo &quot;SECRET_TEMPLATE: ${SECRET_TEMPLATE}&quot;
-echo &quot;SC_NAME: ${SC_NAME}&quot;
+<span style="color:#75715e">## We pull this from our super secret keyvault</span>
+export ADO_USER<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>az keyvault secret show --name ADOUSER --vault-name $KEYVAULTNAME --subscription <span style="color:#e6db74">&#34;</span>$AZ_SUBSCRIPTION<span style="color:#e6db74">&#34;</span> --query value -o tsv<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+export ADO_PAT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>az keyvault secret show --name ADOPAT --vault-name $KEYVAULTNAME --subscription <span style="color:#e6db74">&#34;</span>$AZ_SUBSCRIPTION<span style="color:#e6db74">&#34;</span> --query value -o tsv<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 
-## We pull this from our super secret keyvault
-export ADO_USER=&quot;$(az keyvault secret show --name ADOUSER --vault-name $KEYVAULTNAME --subscription &quot;$AZ_SUBSCRIPTION&quot; --query value -o tsv)&quot;
-export ADO_PAT=&quot;$(az keyvault secret show --name ADOPAT --vault-name $KEYVAULTNAME --subscription &quot;$AZ_SUBSCRIPTION&quot; --query value -o tsv)&quot;
+get_ado_connection <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  thiscon<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>az devops service-endpoint list <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --detect false <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --subscription <span style="color:#e6db74">&#34;</span>$AZ_SUBSCRIPTION_ID<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --organization <span style="color:#e6db74">&#34;</span>$ADO_ORG<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --project <span style="color:#e6db74">&#34;</span>$ADO_PROJECT<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -o table | grep $1 | head -n1 | awk <span style="color:#e6db74">&#39;{print $1;}&#39;</span><span style="color:#e6db74">`</span>
+  echo <span style="color:#e6db74">&#34;</span>$thiscon<span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">}</span>
 
-get_ado_connection () {
-  thiscon=`az devops service-endpoint list \
-    --detect false \
-    --subscription &quot;$AZ_SUBSCRIPTION_ID&quot; \
-    --organization &quot;$ADO_ORG&quot; \
-    --project &quot;$ADO_PROJECT&quot; \
-    -o table | grep $1 | head -n1 | awk '{print $1;}'`
-  echo &quot;$thiscon&quot;
-}
+get_ado_vargroup <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  group<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>az pipelines variable-group list <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --detect false <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --subscription <span style="color:#e6db74">&#34;</span>$AZ_SUBSCRIPTION_ID<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --organization <span style="color:#e6db74">&#34;</span>$ADO_ORG<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --project <span style="color:#e6db74">&#34;</span>$ADO_PROJECT<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -o table | grep $1 | head -n1 | awk <span style="color:#e6db74">&#39;{print $1;}&#39;</span><span style="color:#e6db74">`</span>
+  echo <span style="color:#e6db74">&#34;</span>$group<span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">}</span>
 
-get_ado_vargroup () {
-  group=`az pipelines variable-group list \
-    --detect false \
-    --subscription &quot;$AZ_SUBSCRIPTION_ID&quot; \
-    --organization &quot;$ADO_ORG&quot; \
-    --project &quot;$ADO_PROJECT&quot; \
-    -o table | grep $1 | head -n1 | awk '{print $1;}'`
-  echo &quot;$group&quot;
-}
+remove_ado_vargroup <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  echo <span style="color:#e6db74">&#34;Attempting to remove vargroup id </span>$1<span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -z <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    az pipelines variable-group delete <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>      --group-id <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>      --detect false <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>      --subscription <span style="color:#e6db74">&#34;</span>$AZ_SUBSCRIPTION_ID<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>      --organization <span style="color:#e6db74">&#34;</span>$ADO_ORG<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>      --project <span style="color:#e6db74">&#34;</span>$ADO_PROJECT<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>      -y 2&gt; /dev/null
+  <span style="color:#66d9ef">fi</span>;
+<span style="color:#f92672">}</span>
 
-remove_ado_vargroup () {
-  echo &quot;Attempting to remove vargroup id $1&quot;
-  if [ ! -z &quot;$1&quot; ]; then
-    az pipelines variable-group delete \
-      --group-id &quot;$1&quot; \
-      --detect false \
-      --subscription &quot;$AZ_SUBSCRIPTION_ID&quot; \
-      --organization &quot;$ADO_ORG&quot; \
-      --project &quot;$ADO_PROJECT&quot; \
-      -y 2&gt; /dev/null
-  fi;
-}
+get_ado_project_id <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  id<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>az devops project show <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --project $1 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --detect false <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --subscription <span style="color:#e6db74">&#34;</span>$AZ_SUBSCRIPTION_ID<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --organization <span style="color:#e6db74">&#34;</span>$ADO_ORG<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -o table | head -n1 | awk <span style="color:#e6db74">&#39;{print $1;}&#39;</span><span style="color:#e6db74">`</span>
+  echo <span style="color:#e6db74">&#34;</span>$id<span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">}</span>
 
-get_ado_project_id () {
-  id=`az devops project show \
-    --project $1 \
-    --detect false \
-    --subscription &quot;$AZ_SUBSCRIPTION_ID&quot; \
-    --organization &quot;$ADO_ORG&quot; \
-    -o table | head -n1 | awk '{print $1;}'`
-  echo &quot;$id&quot;
-}
+echo <span style="color:#e6db74">&#34;Retrieving </span><span style="color:#e6db74">${</span>SC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74"> service endpoint id first...&#34;</span>
+export service_endpoint_id<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>get_ado_connection <span style="color:#e6db74">${</span>SC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+export vault_name<span style="color:#f92672">=</span>$KEYVAULTNAME
+export name<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>SC_NAME<span style="color:#e6db74">}</span>_secrets
+export description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74"> (linked to </span><span style="color:#e6db74">${</span>KEYVAULTNAME<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>
+export project<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ADO_PROJECT<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+export project_id<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>get_ado_project_id <span style="color:#e6db74">${</span>ADO_PROJECT<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> 
 
-echo &quot;Retrieving ${SC_NAME} service endpoint id first...&quot;
-export service_endpoint_id=`get_ado_connection ${SC_NAME}`
-export vault_name=$KEYVAULTNAME
-export name=${SC_NAME}_secrets
-export description=&quot;${SC_NAME} (linked to ${KEYVAULTNAME})&quot;
-export project=&quot;${ADO_PROJECT}&quot;
-export project_id=`get_ado_project_id ${ADO_PROJECT}` 
-
-## If we have our service endpoint id we are good to go
-if  [ ! -z &quot;$service_endpoint_id&quot; ]; then
-  echo &quot;ID for token replacement - ${SC_NAME} = $service_endpoint_id&quot;
-  DEPLOYVARS='$service_endpoint_id:$vault_name:$name:$description:$project:$project_id'
-  envsubst &quot;$DEPLOYVARS&quot;&lt; &quot;${SECRET_TEMPLATE}&quot; &gt;/tmp/$(basename ${SECRET_TEMPLATE}).out
-  vargroup=`get_ado_vargroup ${name}`
-  if [[ ! -z &quot;$vargroup&quot; ]]; then 
-    echo &quot;Removing old keyvault linked variable group ${name} ($vargroup)&quot;
-    echo &quot;proceed?&quot;
+<span style="color:#75715e">## If we have our service endpoint id we are good to go</span>
+<span style="color:#66d9ef">if</span>  <span style="color:#f92672">[</span> ! -z <span style="color:#e6db74">&#34;</span>$service_endpoint_id<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  echo <span style="color:#e6db74">&#34;ID for token replacement - </span><span style="color:#e6db74">${</span>SC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span>$service_endpoint_id<span style="color:#e6db74">&#34;</span>
+  DEPLOYVARS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;$service_endpoint_id:$vault_name:$name:$description:$project:$project_id&#39;</span>
+  envsubst <span style="color:#e6db74">&#34;</span>$DEPLOYVARS<span style="color:#e6db74">&#34;</span>&lt; <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SECRET_TEMPLATE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> &gt;/tmp/<span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">${</span>SECRET_TEMPLATE<span style="color:#e6db74">}</span><span style="color:#66d9ef">)</span>.out
+  vargroup<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>get_ado_vargroup <span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> ! -z <span style="color:#e6db74">&#34;</span>$vargroup<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span> 
+    echo <span style="color:#e6db74">&#34;Removing old keyvault linked variable group </span><span style="color:#e6db74">${</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span>$vargroup<span style="color:#e6db74">)&#34;</span>
+    echo <span style="color:#e6db74">&#34;proceed?&#34;</span>
     read
     remove_ado_vargroup $vargroup
-  fi
-  curl -X POST \
-    --user &quot;${ADO_USER}:${ADO_PAT}&quot; \
-    -H &quot;Content-Type: application/json&quot; \
-    -d @${SECRET_TEMPLATE}.out \
-    &quot;${ADO_ORG}/${ADO_PROJECT}/_apis/distributedtask/variablegroups?api-version=6.0-preview.2&quot;
-fi
-</code></pre>
-
-<h2 id="conclusion">Conclusion</h2>
-
+  <span style="color:#66d9ef">fi</span>
+  curl -X POST <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --user <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ADO_USER<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>ADO_PAT<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -d @<span style="color:#e6db74">${</span>SECRET_TEMPLATE<span style="color:#e6db74">}</span>.out <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ADO_ORG<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>ADO_PROJECT<span style="color:#e6db74">}</span><span style="color:#e6db74">/_apis/distributedtask/variablegroups?api-version=6.0-preview.2&#34;</span>
+<span style="color:#66d9ef">fi</span>
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Well that kinda was a stinker &lsquo;eh? The moment this is published I&rsquo;m willing to bet the az cli extension gets updated with some new subcommand to create these things. Tis the way of our industry right?</p>
     
 </div>
@@ -506,15 +475,15 @@ fi
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -543,7 +512,7 @@ fi
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

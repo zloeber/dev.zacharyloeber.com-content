@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Some Cool Kubernetes Tools | Zachary Loeber</title>
         <meta name="description" content="Some Cool Kubernetes Tools - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Some Cool Kubernetes Tools">
@@ -142,9 +142,7 @@
 
     
         <p>Are you working with kubernetes regularly? There are so many tools out there it can be difficult to know which ones to use. Here are a few of them I&rsquo;ve found to be useful but may have flown under your radar.</p>
-
 <p>So these tools aren&rsquo;t the first ones you will install on a cluster but are more like hidden gems worthy of more public attention. Operating kubernetes is much less like brain surgery with the right tooling.</p>
-
 <figure>
     <img src="/images/blog/drill_to_the_head.jpg"
          alt="The right tooling for kubernetes"/> <figcaption>
@@ -152,52 +150,30 @@
         </figcaption>
 </figure>
 
-
 <p>Let us just hop straight to the first one shall we?</p>
-
 <h2 id="katafygio">Katafygio</h2>
-
 <p>I&rsquo;ve decided to start with the one that has the weirdest name but is arguablely the most valuable of the lot, <a href="https://github.com/bpineau/katafygio">katafygio</a>.</p>
-
 <p>If you have ever been a progressive network admin, you may have used Really awesome Cisco config Differ (aka. RANCID) to backup your slew of devices into version control. Kubernetes is a bunch of configuration with an api so we should back that up too right? That&rsquo;s where katafygio comes in and takes over where RANCID leaves off.</p>
-
 <p>This app is a single binary that can be used to continuously backup yaml manifests of your cluster&rsquo;s configuration to a git repository. If you don&rsquo;t have an external git repo it will simply create one locally and start pumping configuration into it instead. I&rsquo;ve seen (and used, and modified) whole bash script wrappers around kubectrl to do such tasks in the past. Yeah, I&rsquo;ll never do that again. You can run this app in your pipeline before a deployment or as a helm chart deployment on your cluster.</p>
-
 <p><a href="https://github.com/bpineau/katafygio">katafygio Github Page</a></p>
-
 <h2 id="popeye">Popeye</h2>
-
-<p>It is refreshing to have kubernetes project names without &lsquo;kube&rsquo; or &lsquo;k8s&rsquo; in their name. I&rsquo;m not certain what I think of all the nautilus based names but here is another one to add to the list, <a href="https://github.com/derailed/popeye">Popeye</a>. This project terms itself as a &lsquo;Kubernetes cluster resource sanitizer&rsquo;. This description can be a bit misleading though as it only operates in a read-only mode and does not sanitize or change anything in your cluster. Popeye is pretty neat, it scans a cluster for over and under utilized nodes, dead/inactive namespaces, and a slew of other items at a glance. You even get a nice report card score at the end. <img src="https://raw.githubusercontent.com/derailed/popeye/master/assets/d_score.png?raw=true" alt="" /></p>
-
+<p>It is refreshing to have kubernetes project names without &lsquo;kube&rsquo; or &lsquo;k8s&rsquo; in their name. I&rsquo;m not certain what I think of all the nautilus based names but here is another one to add to the list, <a href="https://github.com/derailed/popeye">Popeye</a>. This project terms itself as a &lsquo;Kubernetes cluster resource sanitizer&rsquo;. This description can be a bit misleading though as it only operates in a read-only mode and does not sanitize or change anything in your cluster. Popeye is pretty neat, it scans a cluster for over and under utilized nodes, dead/inactive namespaces, and a slew of other items at a glance. You even get a nice report card score at the end. <img src="https://raw.githubusercontent.com/derailed/popeye/master/assets/d_score.png?raw=true" alt=""></p>
 <p>There is no official helm chart for popeye but if you were running this on your cluster it would be as a simple Kubernetes cronjob anyway. Otherwise the single binary can be installed and run in a CI/CD pipeline or from your workstation as well.</p>
-
 <p><a href="https://github.com/derailed/popeye">Popeye Github Page</a></p>
-
 <h2 id="packages">Packages</h2>
-
 <p>This last one is not specifically a tool for kubernetes but it fills a niche that is hard to deny. <a href="https://github.com/cloudposse/packages">Packages</a> provides an easy way to tap into github releases to pull down and extract the appropriate binary for your tools. It uses simple Makefile, docker, and bash to install or access the latest versions of a great tools either directly or via a container image.</p>
-
 <p>I believe this is important as a great deal of our modern devops tools are released via github releases, not through any form of package management system. This tool can help the devops engineer stay on top of these releases without admin rights and in a fairly transparent way. Using packages via makefile spits out reusable bash snippets you can scrape out and easily embed into your own project or CI/CD pipelines as well.</p>
-
 <p>Anyone who has dealt with a custom toolchain of apps released on github already know that each release is its own unique butterfly. The OS name may be references as Darwin, darwin, Linux, linux, or may not have an OS referenced in the download URL at all. Packages offeres an easy way around this mess with simple makefile tasks like this which will install the jenkins-x (jx) release binary for either OSX or Linux (or in Windows, WSL right?) and show you the curl commands used to do the install.</p>
-
 <pre><code># I like to drop my binaries into ~/.local/bin from a long history of using pip for Python.
 
 make -C install jx INSTALL_PATH=~/.local/bin
-</code></pre>
-
-<p>Packages includes several cool kubernetes specific tools such as k9s, jx, k3d, duffle, and more are being added regularly. It also includes foundational devops tooling like jq and gomplate.</p>
-
+</code></pre><p>Packages includes several cool kubernetes specific tools such as k9s, jx, k3d, duffle, and more are being added regularly. It also includes foundational devops tooling like jq and gomplate.</p>
 <blockquote>
 <p>It should be noted that the team behind this project creates some of the best helmfile manifests I&rsquo;ve seen as well as several other tools absolutely worth checking out and contributing towards.</p>
 </blockquote>
-
 <p><a href="https://github.com/cloudposse/packages">Packages Github Page</a></p>
-
 <h2 id="bonus-tools">Bonus Tools</h2>
-
 <p>I could write all day on the various tools out there. I&rsquo;ve got no time for that so I&rsquo;ll just pop out a few more worth giving a whirl or keeping tabs on;</p>
-
 <ul>
 <li><a href="https://github.com/stakater/Forecastle">Forecastle</a> - Automatic dashboard of links to your kubernetes published applications</li>
 <li><a href="https://github.com/rchakode/kube-opex-analytics">kube-opex-analytics</a> - Kubernetes cost allocation and capacity analytics tool.</li>
@@ -205,7 +181,6 @@ make -C install jx INSTALL_PATH=~/.local/bin
 <li><a href="https://github.com/FairwindsOps/polaris">polaris</a> - Validation of best practices in your Kubernetes clusters. Creates a health report card similar to popeye exept web-based.</li>
 <li><a href="https://github.com/FairwindsOps/goldilocks">goldilocks</a> - Create baselines for vertical pod autoscaling (which is more difficult than you may think)</li>
 </ul>
-
 <p>Enjoy yet more tooling to add to your long backlist of things to look into as we dive into 2020!</p>
     
 </div>
@@ -340,15 +315,15 @@ make -C install jx INSTALL_PATH=~/.local/bin
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -377,7 +352,7 @@ make -C install jx INSTALL_PATH=~/.local/bin
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

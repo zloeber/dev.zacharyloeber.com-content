@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Ubuntu Server 8.04 Post Install Tip #3: Blacklist Modules | Zachary Loeber</title>
         <meta name="description" content="Ubuntu Server 8.04 Post Install Tip #3: Blacklist Modules - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Ubuntu Server 8.04 Post Install Tip #3: Blacklist Modules">
@@ -136,32 +136,12 @@
 
     
         <p>Here is another one that you may find useful to do after a default install of probably any Linux server, Disabling extra stuff from loading at startup. Ubuntu loads a ton of them and many I do not use at all. Since when do you need joystick or sound support on a server anyway? Anyways, here are some I disable and how I disable them.</p>
-
 <p>IPV6 might cause you some trouble. If your router does not support IPV6 (or still only supports IPV4, which is 99% of all routers), you will have no use for IPV6. Unless you are using IPv6 it also adds an entire network stack to your running server. A stack that needs to be secured for every service. So ipv6 will be the first blacklisting it in /etc/modprobe.d/blacklist.</p>
-
-<p>We may as well disable all those annoying sound modules from loading. So lets find out what sound modules should be blacklisted. I have on-board sound and I believe that the modules gets auto detected via a series of detection scripts in /etc/modprobe.d/alsa-base so I have to be a bit more specific in the blacklist. Find out how the sound modules are getting loaded. As you can see from the command below the via82xx on board sound module is getting loaded. If in doubt just blacklist &#8217;em all.</p>
-
-<p><code>12:59:13 shadowbox /etc/modprobe.d: lsmod | grep snd&lt;br /&gt;
-snd_via82xx            29464  0&lt;br /&gt;
-snd_ac97_codec        100260  1 snd_via82xx&lt;br /&gt;
-ac97_bus                3200  1 snd_ac97_codec&lt;br /&gt;
-snd_pcm                80388  2 snd_via82xx,snd_ac97_codec&lt;br /&gt;
-snd_timer              24324  1 snd_pcm&lt;br /&gt;
-snd_page_alloc         11528  2 snd_via82xx,snd_pcm&lt;br /&gt;
-snd_mpu401_uart         9600  1 snd_via82xx&lt;br /&gt;
-snd_rawmidi            25728  1 snd_mpu401_uart&lt;br /&gt;
-snd_seq_device          9228  1 snd_rawmidi&lt;br /&gt;
-snd                    54532  7 snd_via82xx,snd_ac97_codec,snd_pcm,snd_timer,&lt;br /&gt;
-snd_mpu401_uart,snd_rawmidi,snd_seq_device&lt;br /&gt;
-gameport               16776  2 snd_via82xx,analog&lt;br /&gt;
-soundcore               8800  1 snd</code></p>
-
-<p>Ok with this knowledge we will begin blacklisting. I&#8217;ve added a few others related to sound and joystick devices just to be all inclusive</p>
-
+<p>We may as well disable all those annoying sound modules from loading. So lets find out what sound modules should be blacklisted. I have on-board sound and I believe that the modules gets auto detected via a series of detection scripts in /etc/modprobe.d/alsa-base so I have to be a bit more specific in the blacklist. Find out how the sound modules are getting loaded. As you can see from the command below the via82xx on board sound module is getting loaded. If in doubt just blacklist ’em all.</p>
+<p><code>12:59:13 shadowbox /etc/modprobe.d: lsmod | grep snd&lt;br /&gt; snd_via82xx            29464  0&lt;br /&gt; snd_ac97_codec        100260  1 snd_via82xx&lt;br /&gt; ac97_bus                3200  1 snd_ac97_codec&lt;br /&gt; snd_pcm                80388  2 snd_via82xx,snd_ac97_codec&lt;br /&gt; snd_timer              24324  1 snd_pcm&lt;br /&gt; snd_page_alloc         11528  2 snd_via82xx,snd_pcm&lt;br /&gt; snd_mpu401_uart         9600  1 snd_via82xx&lt;br /&gt; snd_rawmidi            25728  1 snd_mpu401_uart&lt;br /&gt; snd_seq_device          9228  1 snd_rawmidi&lt;br /&gt; snd                    54532  7 snd_via82xx,snd_ac97_codec,snd_pcm,snd_timer,&lt;br /&gt; snd_mpu401_uart,snd_rawmidi,snd_seq_device&lt;br /&gt; gameport               16776  2 snd_via82xx,analog&lt;br /&gt; soundcore               8800  1 snd</code></p>
+<p>Ok with this knowledge we will begin blacklisting. I’ve added a few others related to sound and joystick devices just to be all inclusive</p>
 <p><code>sudo nano /etc/modprobe.d/blacklist</code></p>
-
 <p>add the following at the bottom</p>
-
 <pre><code># Stop ipv6 from loading
 blacklist ipv6
 
@@ -175,12 +155,9 @@ blacklist snd_via82xx
 blacklist gameport
 blacklist snd_ac97_codec
 </code></pre>
-
 <p>Then reboot like so:</p>
-
 <p><code>sudo reboot now</code></p>
-
-<p>I&#8217;m sure I could shave off a few other modules like the printer port (parport_pc) and the floppy (floppy) but this generally suites my needs and is a good start.</p>
+<p>I’m sure I could shave off a few other modules like the printer port (parport_pc) and the floppy (floppy) but this generally suites my needs and is a good start.</p>
     
 </div>
 
@@ -299,15 +276,15 @@ blacklist snd_ac97_codec
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -336,7 +313,7 @@ blacklist snd_ac97_codec
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Multithreaded Remote Registry Gathering with Powershell | Zachary Loeber</title>
         <meta name="description" content="Multithreaded Remote Registry Gathering with Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Multithreaded Remote Registry Gathering with Powershell">
@@ -140,19 +140,12 @@
 
     
         <p>Gather specific subkey values or an entire registry key’s subkey values with powershell and multithreading.</p>
-
 <h2 id="introduction">Introduction</h2>
-
 <p>I’ve become a bit enamored with a multithreaded function I found recently on the Internet. (After reading through a good portion of the Powershell Deep Dive book I’m almost certain the roots of that function are from the legendary Boe Prox). Using this function as a template I’ve <a href="/2013/08/05/multithreaded-system-asset-gathering-with-powershell/">released my own function</a> which gathers several bits of system information from WMI using within runspaces. As gathering remote registry information is really just a wmi connection I modified this same script to gather anything from a remote system’s registry as well. This is the resulting function.</p>
-
 <p>As always (in my general scripts at least), this function supports supplying or prompting for alternate credentials. The default examples included in the comment based help show a very nice use case scenario for such a multithreaded powershell function, gathering remote time server information from a server. If you had to do this for 800 servers then this might be very handy indeed.</p>
-
 <p>Many times you may need more than just one subkey value from a remote registry so instead of adding additional connections and processing I included the ability to just skip the subkey altogether and return all of the subkey values found under the key instead.</p>
-
 <h2 id="downloads">Downloads</h2>
-
 <p><a href="http://gallery.technet.microsoft.com/Multithreaded-Remote-ca714e12">Download the script from the technet gallery (more frequently updated)</a></p>
-
 <p><a href="/wp-content/uploads/2013/08/Get-RemoteRegistryInformation.ps1">Download the script from this site (less frequently updated)</a></p>
     
 </div>
@@ -295,15 +288,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -332,7 +325,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

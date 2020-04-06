@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> GNS3 on Ubuntu 8.04 – Migrating Your Install | Zachary Loeber</title>
         <meta name="description" content="GNS3 on Ubuntu 8.04 – Migrating Your Install - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="GNS3 on Ubuntu 8.04 – Migrating Your Install">
@@ -139,19 +139,12 @@
     </div>
 
     
-        <p>Don&#8217;t have much time due to work obligations but I wanted to quickly drop this one out there for any who have followed my install guides. I was always ragging on and on about making the install somewhat portable by putting it into the /opt/ directory and now I&#8217;ll give a good example why.</p>
-
+        <p>Don’t have much time due to work obligations but I wanted to quickly drop this one out there for any who have followed my install guides. I was always ragging on and on about making the install somewhat portable by putting it into the /opt/ directory and now I’ll give a good example why.</p>
 <p>Not too long ago I got a new laptop and gave my wife my Ubunbut loaded laptop. On the new laptop I was able to easily migrate over the GNS3 install, labs, and IOS images I was using with very little effort. You simply do the following and you are pretty much done!</p>
-
 <p><code>sudo apt-get install dynagen python-qt4</code></p>
-
 <p>Then move over your entire /opt/GNS3/ directory from the old machine to the new (you choose how) and reset your permissions on some of the directories like so:</p>
-
-<p><code>sudo chmod o+rw -R ./Project&lt;br /&gt;
-sudo chmod o+rw -R ./tmp</code></p>
-
+<p><code>sudo chmod o+rw -R ./Project&lt;br /&gt; sudo chmod o+rw -R ./tmp</code></p>
 <p>Finally make sure to move over your GNS3 settings file. In GNS3 preferences it shows you were it is at (usually in the home directory as gns3.ini).</p>
-
 <p>And that is it! Note that you may have to redo some of the idle-pc values for your IOS images.</p>
     
 </div>
@@ -271,15 +264,15 @@ sudo chmod o+rw -R ./tmp</code></p>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -308,7 +301,7 @@ sudo chmod o+rw -R ./tmp</code></p>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

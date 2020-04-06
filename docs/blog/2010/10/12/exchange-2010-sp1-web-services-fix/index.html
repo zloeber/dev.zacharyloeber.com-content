@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010 SP1: Web Services Fix | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010 SP1: Web Services Fix - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010 SP1: Web Services Fix">
@@ -139,18 +139,12 @@
     </div>
 
     
-        <p>I&#8217;m utilizing 2 CAS servers behind an F5 load balancer and was finding that a migrated user to my new CAS array would get a red spat in communicator and get authorization prompts for the autodiscover url. I fixed it, finally, just today.</p>
-
+        <p>I’m utilizing 2 CAS servers behind an F5 load balancer and was finding that a migrated user to my new CAS array would get a red spat in communicator and get authorization prompts for the autodiscover url. I fixed it, finally, just today.</p>
 <p>Some people recommend using setspn to add a service principal name for the cas server to help fix the autodiscover prompting. Do NOT do this in a load balanced situation as you can only have one spn per account in AD. Otherwise duplicates defeat the purpose of having the spn anyways (to uniquely locate a service in AD for kerberos authentication). If you do want kerberos you need to setup a shared service account to use via this complicated</p>
-
-<p><a title="procedure" href="http://technet.microsoft.com/en-us/library/ff808312.aspx" target="_blank">procedure</a>.</p>
-
-<p>Also, <a title="this" href="http://blogs.msdn.com/b/scottos/archive/2008/10/16/why-is-communicator-prompting-me-for-credentials.aspx" target="_blank">this</a> procedure may fix the issue for communicator accessing autodiscover over the internet.</p>
-
+<p><!-- raw HTML omitted -->procedure<!-- raw HTML omitted -->.</p>
+<p>Also, <!-- raw HTML omitted -->this<!-- raw HTML omitted --> procedure may fix the issue for communicator accessing autodiscover over the internet.</p>
 <p>To fix this in a cas array where you are not implementing kerberos for autodiscover and web services MAKE SURE TO DELETE ALL HTTP SPNs.</p>
-
-<p>If an HTTP spn is showing when you run setspn -L <cas servername> then just go ahead and remove it, (setspn -D http/autodiscover.contoso.com casservername). Yup remove them all. Then things will start to use NTLM authentication instead of trying Kerberos and giving annoying autodiscover prompts.</p>
-
+<p>If an HTTP spn is showing when you run setspn -L <!-- raw HTML omitted --> then just go ahead and remove it, (setspn -D http/autodiscover.contoso.com casservername). Yup remove them all. Then things will start to use NTLM authentication instead of trying Kerberos and giving annoying autodiscover prompts.</p>
 <p>Hope this helps someone as I never ran across this in any deployment documentation from either F5 or Microsoft or anyone else.</p>
     
 </div>
@@ -270,15 +264,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -307,7 +301,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

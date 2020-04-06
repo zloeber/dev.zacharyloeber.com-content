@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Assessing Like A Microsoft Technician | Zachary Loeber</title>
         <meta name="description" content="Assessing Like A Microsoft Technician - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Assessing Like A Microsoft Technician">
@@ -146,76 +146,44 @@
 
     
         <h1 id="troubleshooting-like-a-microsoft-technician">Troubleshooting Like A Microsoft Technician</h1>
-
 <p>I have been doing more and more site assessments for Active Directory, Exchange, Lync, and VMware. As such, I’ve been slowly refining the toolset that I use to gather data and troubleshoot existing environment issues. Here is a list of site assessment tools I’m finding that I regularly return to for rapid analysis or information gathering at a site. All of these tools are free.</p>
-
 <p>I should probably state that if you don’t know the concepts and best practices around a technology then any tool used on it loses much of its purpose. After all, a hammer in the hands of a skilled carpenter may be used to build a house whereas that same hammer in the hands of a baboon may be used bust open a skull.</p>
-
 <h2 id="windows-environment-utilities">Windows Environment Utilities</h2>
-
-<h3 id="active-directory-risk-and-health-assessment-adrap-scoping-tool">Active Directory Risk And Health Assessment (ADRAP) – Scoping Tool</h3>
-
+<h3 id="active-directory-risk-and-health-assessment-adrap--scoping-tool">Active Directory Risk And Health Assessment (ADRAP) – Scoping Tool</h3>
 <p>This scoping tool is used by Microsoft engineers prior to having a live engineer assess an environment. Any errors which crop up could help forewarn of future issues you may have during your assessment. It also produces a nice HTML formatted table of all DCs in a particular forest (with GC status and FSMO roles) for your deliverable report.</p>
-
 <p><a href="http://www.microsoft.com/download/en/details.aspx?id=19464">Download ADRAP – Scoping Tool Here</a></p>
-
 <h3 id="ms-product-support-reports-mps">MS Product Support Reports (MPS)</h3>
-
 <p>This is what a Microsoft technician may have you run to collect comprehensive information about your environment if you were to call their support hotline. The MPS tool is actually a large list of customized VBScript, powershell, and utility binaries which you can use for yourself if you know where to find them. Basically start the program up then look for its temporary file location <a href="http://www.verboon.info/index.php/2011/07/get-the-latest-version-of-the-gpotool-exe/">as described here</a>. Then copy it elsewhere to keep for yourself! I keep a copy of both the 32 and 64 bit toolkit with me.</p>
-
-<p>One of the tools in this kit I use regularly is the Exchdump.exe binary. Using this with the /ALL switch will generate a pretty lengthily report of many aspects of an exchange <sup>2003</sup>&frasl;<sub>2007</sub> environment with notes of possible issues.  (Also, ExchInfo.vbs can be used for just Exchange <sup>2000</sup>&frasl;<sub>2003</sub> environments).</p>
-
+<p>One of the tools in this kit I use regularly is the Exchdump.exe binary. Using this with the /ALL switch will generate a pretty lengthily report of many aspects of an exchange 2003/2007 environment with notes of possible issues.  (Also, ExchInfo.vbs can be used for just Exchange 2000/2003 environments).</p>
 <p>If you are feeling frisky and want to hack at some powershell aspects of MPS explore the numerous weirdly named folders under  tools/packages (ie. C:\temp\mpsreports\tools\packages\A5ECA148-20AD-4ed5-AF77-9AAA72350884)</p>
-
 <p>Some of interest to you might be:</p>
-
 <p>A5ECA148-20AD-4ed5-AF77-9AAA72350884 – GetDirectoryServiceInfo.ps1</p>
-
 <p>18A69DCA-3560-42bd-908C-5EC9C9D87209 – GetExchangeInfo.ps1</p>
-
 <p><a href="http://www.microsoft.com/download/en/details.aspx?id=24745">Download MPS Reports Here</a></p>
-
 <h3 id="ms-product-support-reports-viewer">MS Product Support Reports Viewer</h3>
-
 <p>This is what a Microsoft technician may use to analyze the results of the previously run MPS utility. I’ve not had 100% success rate utilizing them both together, but when they do work together the results are pretty nice. You get color coded logs of several of the information gathering scripts included in MPS.  If I have limited access to an environment or am working on a workstation related issue I may have someone run the MPS utility and upload the resulting CAB file to me. I’ve also gotten into the habit of simply running the MPS utility and saving the resulting CAB for any other assessment I do (in case it is able to quickly find some issue that I was unable to locate)</p>
-
 <p><a href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=18325">Download MPS Reports Viewer Here</a></p>
-
 <h3 id="microsoft-assessment-and-planning-map-toolkit">Microsoft Assessment And Planning (MAP) Toolkit</h3>
-
 <p>The MAP Toolkit can do many things. Here is the description as stated on the MAP Toolkit homepage:</p>
-
 <p>“The Microsoft Assessment and Planning (MAP) Toolkit is an agentless inventory, assessment, and reporting tool that can securely assess IT environments for various platform migrations—including Windows 7, Office 2010 and 365, Windows Server 2008 R2, Hyper-V, Windows Azure, and Microsoft Private Cloud Fast Track”</p>
-
 <p>What that doesn’t state is that MAP can collect AD and Exchange information and generate nice excel output with connected devices. The MAP Toolkit is the Microsoft version of the VMware Capacity Analyzer tool but for more than just planning out virtualization road maps.</p>
-
 <p><a href="http://technet.microsoft.com/en-us/solutionaccelerators/dd537566">Download MAP Toolkit here</a></p>
-
 <h3 id="fixit-center-pro-beta">Fixit Center Pro (Beta)</h3>
-
 <p>Looks like this has been discontinued..</p>
-
-<p><del>Microsoft provides a beta service for collecting data about an environment and can automatically analyze and offer resolution recommendations on several key product offerings. This free service is called Fixit Center Pro (beta) and can be accessed with your Live ID <a href="https://wc.ficp.support.microsoft.com/Dashboards/Main/SelfHelpCase/Create?showReturn=True">at this website.</a></del></p>
-
-<p><del>Some of the Analysis packages you can run in Fixit Center Pro include:</del></p>
-
+<p><!-- raw HTML omitted -->Microsoft provides a beta service for collecting data about an environment and can automatically analyze and offer resolution recommendations on several key product offerings. This free service is called Fixit Center Pro (beta) and can be accessed with your Live ID <!-- raw HTML omitted -->at this website.<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->Some of the Analysis packages you can run in Fixit Center Pro include:<!-- raw HTML omitted --></p>
 <ul>
-<li><del>Directory Services – Windows 7 and Server 2008 R2</del></li>
-<li><del>Hyper-V – Windows Server 2008 R2</del></li>
-<li><del>Exchange Server 2007 SP3 and Exchange Server 2010 Troubleshooter for Windows 2008 R2</del></li>
-<li><del>Lync Server 2010 Diagnostics Package for Windows 2008 R2</del></li>
-<li><del>Lync 2010 and Microsoft Office Communicator 2007 R2 Basic Diagnostics Package</del></li>
-<li><del>Performance &#8211; Windows 7 and Server 2008 R2</del></li>
+<li><!-- raw HTML omitted -->Directory Services – Windows 7 and Server 2008 R2<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Hyper-V – Windows Server 2008 R2<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Exchange Server 2007 SP3 and Exchange Server 2010 Troubleshooter for Windows 2008 R2<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Lync Server 2010 Diagnostics Package for Windows 2008 R2<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Lync 2010 and Microsoft Office Communicator 2007 R2 Basic Diagnostics Package<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Performance – Windows 7 and Server 2008 R2<!-- raw HTML omitted --></li>
 </ul>
-
-<p><del>There are also some basic issue-tracking features in the “Work Items” area that you can store notes and links that pertain to current issues you might be researching. If you are not organizing your notes in one of the several great options at your disposal (I’m kind of a OneNote/Tomboy fan myself) then you can use this to give you a quick and easy scratchpad area to track some of those nagging issues you may end up researching.</del></p>
-
-<p><del>This site is a bit new to me so I don’t have as much information on its effectiveness as I’d like. The first site I had it analyze I also knew to be “clean” and it did say as much.</del></p>
-
-<p><del><a href="https://wc.ficp.support.microsoft.com/Dashboards/Main/SelfHelpCase/Create?showReturn=True">Access Fixit Center Pro (Beta) Here</a></del></p>
-
+<p><!-- raw HTML omitted -->There are also some basic issue-tracking features in the “Work Items” area that you can store notes and links that pertain to current issues you might be researching. If you are not organizing your notes in one of the several great options at your disposal (I’m kind of a OneNote/Tomboy fan myself) then you can use this to give you a quick and easy scratchpad area to track some of those nagging issues you may end up researching.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->This site is a bit new to me so I don’t have as much information on its effectiveness as I’d like. The first site I had it analyze I also knew to be “clean” and it did say as much.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->Access Fixit Center Pro (Beta) Here<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="conclusion">Conclusion</h2>
-
 <p>This is far from being the end-all of my list of tools I utilize on a regular basis. I’ve not even mentioned any of the custom (or public) scripts I’ve come to rely upon. Nor have I discussed what common issues to look for in Exchange/AD.  Coming soon will be my list of tools utilized for VMWare assessments.</p>
     
 </div>
@@ -335,15 +303,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -372,7 +340,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

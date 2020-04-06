@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> The personal website of Zachary Loeber. | Zachary Loeber</title>
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="The personal website of Zachary Loeber.">
@@ -99,7 +99,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -107,32 +107,28 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/">Exchange 2010: Client Access Role Configuration Report</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/">Virtualization: vCPU Provisioning Best Practices</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2012-02-04</span>
+                <span class="date moment">2012-03-23</span>
             
         
 
         
-            <span class="readingTime">1 min read</span>
+            <span class="readingTime">9 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/exchange">Exchange</a>
-                
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
-                
-                    <a href="/categories/iis">IIS</a>
-                
                     <a href="/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="/categories/networking">Networking</a>
                 
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="/categories/virtualization">Virtualization</a>
+                
+                    <a href="/categories/vmware">VMware</a>
                 
             </span>
         
@@ -143,10 +139,10 @@
     </div>
 
     
-        Ok, so I woke up and was wide awake at 4am this morning. I took it as a sign to lose my mind for a while and get to hacking another script. The result is a client access setting report script which includes all internal and external paths along with their authentication settings. It needs some prettying up and a bit of love but it does exactly what I&#8217;ve wanted in Exchange 2010, gives me an overall view of all client access settings (specifically related to IIS).
+        <p>I had always been of the mindset that when provisioning new VMs it is best to start out with less vCPUs and add more as they are required (unless you specifically know that you will be using and needing more for such things as sql server or exchange). I had even recently felt some vindication of this provisioning best practice in reading a book recently (<a href="http://www.amazon.com/Critical-VMware-Mistakes-Should-Avoid/dp/1937061981" title="Critical VMware Mistakes You Should Avoid">Critical VMware Mistakes You Should Avoid</a>)</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/03/22/virtualization-vcpu-provisioning-best-practices/" class="more">Continue reading</a>
         
     
 </div>
@@ -160,11 +156,13 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/exchange-2010">Exchange 2010</a>
+                <a href="/tags/hyper-v">hyper-v</a>
                 
-                <a href="/tags/powershell">Powershell</a>
+                <a href="/tags/network-administration">network administration</a>
                 
-                <a href="/tags/scripting">Scripting</a>
+                <a href="/tags/virtualization">virtualization</a>
+                
+                <a href="/tags/vmware">vmware</a>
                 
             </div>
         </div>
@@ -234,21 +232,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/02\/04\/exchange-2010-client-access-role-configuration-report\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/22\/virtualization-vcpu-provisioning-best-practices\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/02\/04\/exchange-2010-client-access-role-configuration-report\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/22\/virtualization-vcpu-provisioning-best-practices\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/02\/04\/exchange-2010-client-access-role-configuration-report\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/22\/virtualization-vcpu-provisioning-best-practices\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -263,7 +261,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/11/18/chicago-commuting-dictionary-new-definitions/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/03/09/assessing-like-a-microsoft-technician/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -271,22 +269,34 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/11/18/chicago-commuting-dictionary-new-definitions/">Chicago Commuting Dictionary: New Definitions</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/03/09/assessing-like-a-microsoft-technician/">Assessing Like A Microsoft Technician</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2011-11-19</span>
+                <span class="date moment">2012-03-10</span>
             
         
 
         
-            <span class="readingTime">6 min read</span>
+            <span class="readingTime">5 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/chicago-commuting">Chicago Commuting</a>
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
                 
             </span>
         
@@ -297,10 +307,11 @@
     </div>
 
     
-        <p>I found myself subjected to the commuting lifestyle again for a recent Lync 2010 deployment I&#8217;ve been working on. I realized that after several months without commuting that I had forgotten just how funny it is to experience the commuter&#8217;s lifestyle. So I&#8217;m continuing my Chicago Commuting Dictionary so that others may be able to understand this weird weird world should they find themselves within it&#8230;</p>
+        <h1 id="troubleshooting-like-a-microsoft-technician">Troubleshooting Like A Microsoft Technician</h1>
+<p>I have been doing more and more site assessments for Active Directory, Exchange, Lync, and VMware. As such, I’ve been slowly refining the toolset that I use to gather data and troubleshoot existing environment issues. Here is a list of site assessment tools I’m finding that I regularly return to for rapid analysis or information gathering at a site. All of these tools are free.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/11/18/chicago-commuting-dictionary-new-definitions/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/03/09/assessing-like-a-microsoft-technician/" class="more">Continue reading</a>
         
     
 </div>
@@ -375,21 +386,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/11\/18\/chicago-commuting-dictionary-new-definitions\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/09\/assessing-like-a-microsoft-technician\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/11\/18\/chicago-commuting-dictionary-new-definitions\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/09\/assessing-like-a-microsoft-technician\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/11\/18\/chicago-commuting-dictionary-new-definitions\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/09\/assessing-like-a-microsoft-technician\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -404,7 +415,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -412,28 +423,38 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/">Linux: Headless Ubuntu Torrent Home Server</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/">Exchange 2010: Changing an invalid DNS suffixed server</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2011-09-11</span>
+                <span class="date moment">2012-03-01</span>
             
         
 
         
-            <span class="readingTime">10 min read</span>
+            <span class="readingTime">5 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/linux">Linux</a>
+                    <a href="/categories/active-directory">Active Directory</a>
                 
-                    <a href="/categories/other">Other</a>
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/iis">IIS</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
                 
                     <a href="/categories/system-administration">System Administration</a>
-                
-                    <a href="/categories/ubuntu">Ubuntu</a>
                 
             </span>
         
@@ -444,10 +465,11 @@
     </div>
 
     
-        <p>So it got to that time of the year where I feel the itch to upgrade my aging home server. I assessed the situation and realized that, for what it does, my current server does not need any kind of hardware upgrade. So I just decided to rebuild it with Ubuntu 11.04 64 bit and change up the server software a bit to be more accessible to my wife as well as to be a bit more modern (torrentflux and derivatives have been dead for a while now).</p>
+        <p>I ran into an interesting Exchange 2010/2007 co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be</p>
+<!-- raw HTML omitted -->
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/09/11/linux-headless-ubuntu-torrent-home-server/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/" class="more">Continue reading</a>
         
     
 </div>
@@ -461,15 +483,17 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/linux">Linux</a>
+                <a href="/tags/active-directory">Active Directory</a>
                 
-                <a href="/tags/other">Other</a>
+                <a href="/tags/exchange-2010">Exchange 2010</a>
                 
-                <a href="/tags/security">Security</a>
+                <a href="/tags/microsoft">Microsoft</a>
+                
+                <a href="/tags/powershell">Powershell</a>
                 
                 <a href="/tags/system-administration">System Administration</a>
                 
-                <a href="/tags/ubuntu">Ubuntu</a>
+                <a href="/tags/windows">Windows</a>
                 
             </div>
         </div>
@@ -539,21 +563,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/09\/11\/linux-headless-ubuntu-torrent-home-server\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/02\/29\/exchange-2010-changing-an-invalid-dns-suffixed-server\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/09\/11\/linux-headless-ubuntu-torrent-home-server\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/02\/29\/exchange-2010-changing-an-invalid-dns-suffixed-server\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/09\/11\/linux-headless-ubuntu-torrent-home-server\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/02\/29\/exchange-2010-changing-an-invalid-dns-suffixed-server\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -592,15 +616,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -629,7 +653,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

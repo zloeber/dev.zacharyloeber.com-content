@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Gather Applied GPOs from Remote Systems With Powershell | Zachary Loeber</title>
         <meta name="description" content="Gather Applied GPOs from Remote Systems With Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Gather Applied GPOs from Remote Systems With Powershell">
@@ -142,23 +142,15 @@
 
     
         <p>Gather the applied GPO information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns GPO name, applied order, source, no override settings, and more. You can view verbose information on each runspace thread in realtime with the -Verbose option.</p>
-
 <h3 id="version-history"><strong>Version History</strong></h3>
-
 <p><strong>1.0.0 – 09/01/2013</strong></p>
-
 <ul>
 <li>Initial release</li>
 </ul>
-
 <h3 id="notes">Notes</h3>
-
 <p>Only note for this function is that it was a plesant surprise to find out how easy it is to get applied GPO information on a system with powershell and wmi. It is really cool information to gather when troubleshooting GPO related issues or for better understanding your environment. I guess another note would be that I drop all the applie GPO information in an array of PSObjects as a noteproperty within the returned object (as AppliedGPOs). This is largely to make it easier to parse resulting output when being run against multiple systems concurrently (more releases coming soon which will better illustrate what I mean).</p>
-
 <h3 id="downloads">Downloads</h3>
-
 <p><a href="http://gallery.technet.microsoft.com/Gather-Applied-GPOs-from-74250d0e">Download the script from the technet gallery (more frequently updated)</a></p>
-
 <p><a href="/wp-content/uploads/2013/09/Get-RemoteAppliedGPOs.ps1">Download the script from this site (less frequently updated)</a></p>
     
 </div>
@@ -278,15 +270,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -315,7 +307,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

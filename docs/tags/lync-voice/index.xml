@@ -25,7 +25,7 @@
       <pubDate>Fri, 04 Sep 2015 03:18:40 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/09/03/skype-for-business-planning-for-voice-part-2/</guid>
-      <description>&lt;p&gt;I&amp;#8217;ve already gone over the basic phases of a Skype for Business enterprise voice deployment &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2015/08/25/skype-for-business-planning-for-voice-part-1/&#34;&gt;in my prior article&lt;/a&gt;. Now it is time to skip right over the first two of those phases and start preparing to replace your existing PBXs. To prepare you need to know what you are going to be replacing. In this article we will be focusing on beginning the information gathering process.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’ve already gone over the basic phases of a Skype for Business enterprise voice deployment &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2015/08/25/skype-for-business-planning-for-voice-part-1/&#34;&gt;in my prior article&lt;/a&gt;. Now it is time to skip right over the first two of those phases and start preparing to replace your existing PBXs. To prepare you need to know what you are going to be replacing. In this article we will be focusing on beginning the information gathering process.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@
       <pubDate>Sat, 04 Apr 2015 21:41:51 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/04/04/lync-2013-scripting-qos-config-on-edge-servers/</guid>
-      <description>&lt;p&gt;In many environments the Lync 2013 edge servers are configured in a standalone workgroup without any easy method for setting standard policies (such as GPOs). To make QoS configuration a bit less manual and error prone I&amp;#8217;ve put together this script which can be run in an administrative powershell prompt. It will update the NLA setting (or create it if it doesn&amp;#8217;t already exist), backup and prompt for removal any existing Qos settings, then import the registry settings for Audio, Video, and App QoS settings as defined in the script parameters.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In many environments the Lync 2013 edge servers are configured in a standalone workgroup without any easy method for setting standard policies (such as GPOs). To make QoS configuration a bit less manual and error prone I’ve put together this script which can be run in an administrative powershell prompt. It will update the NLA setting (or create it if it doesn’t already exist), backup and prompt for removal any existing Qos settings, then import the registry settings for Audio, Video, and App QoS settings as defined in the script parameters.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -52,7 +52,7 @@
       <pubDate>Tue, 13 Jan 2015 02:37:46 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/01/12/lync-local-and-site-to-site-dial-plan-gui-script/</guid>
-      <description>&lt;p&gt;In a multiple, or even single, site VOIP deployment there are some  steps you can take to make life a whole lot easier on your end users. One of of the common features implemented across phone deployments (VoIP or otherwise) is site local and site-to-site dialing shortcuts. These shortcuts generally reduce the number of digits users have to dial to reach one another. In this post I&amp;#8217;ll go over how you might setup such a dial plan in Lync. First I&amp;#8217;ll go over how you might setup such a plan manually then I&amp;#8217;ll provide a GUI tool to do the same thing.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In a multiple, or even single, site VOIP deployment there are some  steps you can take to make life a whole lot easier on your end users. One of of the common features implemented across phone deployments (VoIP or otherwise) is site local and site-to-site dialing shortcuts. These shortcuts generally reduce the number of digits users have to dial to reach one another. In this post I’ll go over how you might setup such a dial plan in Lync. First I’ll go over how you might setup such a plan manually then I’ll provide a GUI tool to do the same thing.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -61,7 +61,7 @@
       <pubDate>Tue, 02 Dec 2014 18:11:31 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2014/12/02/lync-voice-route-diagram-creation-script/</guid>
-      <description>&lt;p&gt;Lync voice routing boils down to three basic components working in concert to decide call flow. It seems quite simple on paper, you assign voice policies which determine call routes based on PSTN usages (often called the &amp;#8216;glue&amp;#8217;). After looking at Lync voice routing way too many times I finally caved into producing a script to create diagrams of the things over the Thanksgiving holiday weekend.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Lync voice routing boils down to three basic components working in concert to decide call flow. It seems quite simple on paper, you assign voice policies which determine call routes based on PSTN usages (often called the ‘glue’). After looking at Lync voice routing way too many times I finally caved into producing a script to create diagrams of the things over the Thanksgiving holiday weekend.&lt;/p&gt;</description>
     </item>
     
   </channel>

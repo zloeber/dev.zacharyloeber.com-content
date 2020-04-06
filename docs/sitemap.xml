@@ -19,16 +19,91 @@
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/author/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/devops/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/devops/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/posts/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/</loc>
+    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/</loc>
+    <lastmod>2020-04-05T13:18:32-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/helm/</loc>
+    <lastmod>2020-04-05T13:18:32-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</loc>
+    <lastmod>2020-04-05T13:18:32-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/kubernetes/</loc>
+    <lastmod>2020-04-05T13:18:32-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/pipeline/</loc>
+    <lastmod>2020-04-05T13:18:32-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/</loc>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/terraform/</loc>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/azure/</loc>
     <lastmod>2020-03-23T11:33:38-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/categories/azure/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/azure/</loc>
     <lastmod>2020-03-23T11:33:38-06:00</lastmod>
   </url>
   
@@ -48,52 +123,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/devops/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/devops/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zacharyloeber-dev.onrender.com/categories/pipeline/</loc>
     <lastmod>2020-03-23T11:33:38-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/pipeline/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/posts/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/yaml/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</loc>
-    <lastmod>2020-03-23T11:33:38-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/</loc>
     <lastmod>2020-03-23T11:33:38-06:00</lastmod>
   </url>
   
@@ -114,21 +149,6 @@
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/eks/</loc>
-    <lastmod>2020-02-25T13:27:15-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/helm/</loc>
-    <lastmod>2020-02-25T13:27:15-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/kubernetes/</loc>
-    <lastmod>2020-02-25T13:27:15-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</loc>
     <lastmod>2020-02-25T13:27:15-06:00</lastmod>
   </url>
   
@@ -233,22 +253,22 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/docker/</loc>
-    <lastmod>2018-09-28T16:49:46+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/docker/</loc>
     <lastmod>2018-09-28T16:49:46+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/microservices/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/docker/</loc>
     <lastmod>2018-09-28T16:49:46+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/microservices/</loc>
+    <lastmod>2018-09-28T16:49:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/microservices/</loc>
     <lastmod>2018-09-28T16:49:46+00:00</lastmod>
   </url>
   
@@ -288,12 +308,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/python/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/python/</loc>
     <lastmod>2018-05-03T02:29:53+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/python/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/python/</loc>
     <lastmod>2018-05-03T02:29:53+00:00</lastmod>
   </url>
   
@@ -363,12 +383,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/cloud-pbx/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/cloud-pbx/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/cloud-pbx/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/cloud-pbx/</loc>
     <lastmod>2017-09-10T20:38:59+00:00</lastmod>
   </url>
   
@@ -493,12 +513,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/ossposh/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/ossposh/</loc>
     <lastmod>2016-08-21T03:41:03+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/ossposh/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/ossposh/</loc>
     <lastmod>2016-08-21T03:41:03+00:00</lastmod>
   </url>
   
@@ -513,12 +533,22 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/exchange-2013/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/exchange/</loc>
+    <lastmod>2016-04-19T21:25:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/exchange/</loc>
     <lastmod>2016-04-19T21:25:58+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/exchange-2013/</loc>
+    <lastmod>2016-04-19T21:25:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/exchange-2013/</loc>
     <lastmod>2016-04-19T21:25:58+00:00</lastmod>
   </url>
   
@@ -558,11 +588,6 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/exchange/</loc>
-    <lastmod>2015-09-25T01:41:25+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/exchange-2010/</loc>
     <lastmod>2015-09-25T01:41:25+00:00</lastmod>
   </url>
@@ -575,6 +600,11 @@
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/blog/2015/09/24/excxhange-stop-email-exfiltration/</loc>
     <lastmod>2015-09-25T01:41:25+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/lync/</loc>
+    <lastmod>2015-09-12T20:05:26+00:00</lastmod>
   </url>
   
   <url>
@@ -645,11 +675,6 @@
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</loc>
     <lastmod>2015-07-18T04:09:12+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/lync/</loc>
-    <lastmod>2015-05-01T19:00:48+00:00</lastmod>
   </url>
   
   <url>
@@ -745,11 +770,6 @@
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/blog/2014/11/21/lync-ucs-contacts-reporting-with-powershell/</loc>
     <lastmod>2014-11-21T17:37:30+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/exchange/</loc>
-    <lastmod>2014-11-14T03:31:13+00:00</lastmod>
   </url>
   
   <url>
@@ -1298,12 +1318,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/web-publishing/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/web-publishing/</loc>
     <lastmod>2011-08-05T12:58:12+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/web-publishing/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/web-publishing/</loc>
     <lastmod>2011-08-05T12:58:12+00:00</lastmod>
   </url>
   
@@ -1398,12 +1418,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/virtual-connect/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/virtual-connect/</loc>
     <lastmod>2011-02-04T01:14:02+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/virtual-connect/</loc>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/virtual-connect/</loc>
     <lastmod>2011-02-04T01:14:02+00:00</lastmod>
   </url>
   
@@ -1424,11 +1444,6 @@
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/</loc>
-    <lastmod>2011-01-22T17:51:51+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/vbscript/hta/</loc>
     <lastmod>2011-01-22T17:51:51+00:00</lastmod>
   </url>
   
@@ -1495,11 +1510,6 @@
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/blog/2010/07/01/windows-2008-and-2008-r2-tips/</loc>
     <lastmod>2010-07-01T16:15:46+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/redhat/centos/</loc>
-    <lastmod>2010-06-18T16:17:39+00:00</lastmod>
   </url>
   
   <url>
@@ -1610,6 +1620,14 @@
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/blog/2007/11/02/moving-the-pdc-emulator-fsmo-role-time-server-issues/</loc>
     <lastmod>2007-11-02T17:16:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/redhat/centos/</loc>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/vbscript/hta/</loc>
   </url>
   
 </urlset>

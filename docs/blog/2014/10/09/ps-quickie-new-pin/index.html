@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> PS Quickie: New-PIN | Zachary Loeber</title>
         <meta name="description" content="PS Quickie: New-PIN - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="PS Quickie: New-PIN">
@@ -138,23 +138,10 @@
 
     
         <p>Setting a bunch of PINs for Lync devices is not difficult at all. Here is a script to pre-generate them should you find the need to do so. The function simply generates random digits between 0 and 9 and convert to a string. An exception is made for the first digit (as zeros are often not displayed in csv files when opened in excel) and only digits 1-9 are used.</p>
-
-<pre class="lang:powershell decode:true ">Function New-PIN ($pindigits)
-{
-    [string]$pin = ''
-    1..$pindigits | foreach {
-        switch ($_) {
-            1 { $pin += [string](Get-Random -Minimum 1 -Maximum 10) }
-            default { $pin += [string](Get-Random -Minimum 0 -Maximum 10) }
-        }
-    }
-    $pin
-}
-
-#Example
-$numberofpins = 10
-$pindigits = 5
-1..$numberofpins | Foreach {New-PIN $pindigits}</pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<blockquote>
+</blockquote>
 
     
 </div>
@@ -291,15 +278,15 @@ $pindigits = 5
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -328,7 +315,7 @@ $pindigits = 5
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

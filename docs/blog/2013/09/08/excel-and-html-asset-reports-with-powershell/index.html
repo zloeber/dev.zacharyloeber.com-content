@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Excel and HTML Asset Reports With Powershell | Zachary Loeber</title>
         <meta name="description" content="Excel and HTML Asset Reports With Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Excel and HTML Asset Reports With Powershell">
@@ -142,65 +142,57 @@
 
     
         <p>This set of powershell functions collates and generates reports upon system information it gathers. Information gathered includes hardware health, system information, networking information and much much more. Multiple types of html reports can be generated and all data can be exported directly to an excel workbook, saved as individual reports, and emailed.</p>
-
 <p>The reports offer a high level of data customization and currently come with two example data sets. One for daily system reports which contains less overall information. And another, far more inclusive, system documentation report. The html output can be highly customized as well. Currently there is a dynamic grid html report based on responsive design templates as well as a less glitzy email capable html format. The report data can also be returned directly to an excel workbook where several sheets will automatically populate and be formatted for easier reading and further manipulating.</p>
-
 <h3 id="features">Features</h3>
-
 <p>Generate system asset reports in multiple formats including:</p>
-
 <ul>
 <li>Report Containers/Types
-
 <ul>
-<li>Troubleshooting &#8211; A small subset of system information meant for daily reports</li>
-<li>Documentation &#8211; A large amount of system information meant for environment analysis and documentation</li>
-</ul></li>
+<li>Troubleshooting – A small subset of system information meant for daily reports</li>
+<li>Documentation – A large amount of system information meant for environment analysis and documentation</li>
+</ul>
+</li>
 <li>HTML Templates
-
 <ul>
-<li>DynamicGrid &#8211; A heavily modified CSS layout</li>
-<li>EmailFriendly &#8211; A basic layout</li>
-</ul></li>
+<li>DynamicGrid – A heavily modified CSS layout</li>
+<li>EmailFriendly – A basic layout</li>
+</ul>
+</li>
 <li>Saved Report Layout
-
 <ul>
-<li>Individual &#8211; Each asset saves as its own file</li>
-<li>One big report &#8211; All assets are included in one big report</li>
-</ul></li>
+<li>Individual – Each asset saves as its own file</li>
+<li>One big report – All assets are included in one big report</li>
+</ul>
+</li>
 <li>Saved Report File Format
-
 <ul>
 <li>HTML</li>
 <li>PDF <strong>*New*</strong></li>
-</ul></li>
+</ul>
+</li>
 <li>Email Reports (HTML only)</li>
 </ul>
-
 <h3 id="report-data">Report Data</h3>
-
 <p>Sections included in the system asset report include:</p>
-
 <ul>
 <li>System Information
-
 <ul>
 <li>Summary
-
 <ul>
 <li>OS</li>
 <li>CPUs</li>
 <li>Memory Usage</li>
 <li>Server Models</li>
 <li>Virtualization detection</li>
-</ul></li>
+</ul>
+</li>
 <li>Extended Summary
-
 <ul>
 <li>NTP information</li>
 <li>Product key</li>
 <li>Registration Info</li>
-</ul></li>
+</ul>
+</li>
 <li>Dell Warranty Information</li>
 <li>Disk Report</li>
 <li>Environmental Variables <strong>*New*</strong></li>
@@ -209,29 +201,29 @@
 <li>Startup Commands <strong>*New*</strong></li>
 <li>Stopped services (which are set to start automatically)</li>
 <li>Services starting with non-standard credentials</li>
-</ul></li>
+</ul>
+</li>
 <li>Event Log Information
-
 <ul>
 <li>Event Log Settings</li>
 <li>Event log errors/warnings/security failures for past number of hours</li>
-</ul></li>
+</ul>
+</li>
 <li>Networking Information
-
 <ul>
 <li>Network Adapters</li>
 <li>Local Hosts File Contents <strong>*New*</strong></li>
 <li>Local DNS Cache <strong>*New*</strong></li>
 <li>Route Table</li>
-</ul></li>
+</ul>
+</li>
 <li>Software Audit
-
 <ul>
 <li>Installed Hotfixes</li>
 <li>Installed Applications</li>
-</ul></li>
+</ul>
+</li>
 <li>File/Print
-
 <ul>
 <li>Shares</li>
 <li>Share session information</li>
@@ -240,15 +232,15 @@
 <li>VSS Writers <strong>*New*</strong></li>
 <li>WSUS settings</li>
 <li>Installed printers</li>
-</ul></li>
+</ul>
+</li>
 <li>Local Security
-
 <ul>
 <li>Local Group Membership</li>
 <li>Applied GPOs</li>
-</ul></li>
+</ul>
+</li>
 <li>HP hardware health
-
 <ul>
 <li>HP general hardware health</li>
 <li>HP ethernet team health</li>
@@ -257,59 +249,43 @@
 <li>HP HBA health</li>
 <li>HP power supply health</li>
 <li>HP temperature sensor readings</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h3 id="version-info">Version Info</h3>
-
-<p><strong>1.1.0 &#8211; 09/22/2013</strong></p>
-
+<p><strong>1.1.0 – 09/22/2013</strong></p>
 <ul>
 <li>Added option to save results to PDF with the help of a nifty library from <a href="https://pdfgenerator.codeplex.com/">https://pdfgenerator.codeplex.com/</a></li>
 <li>Added a few more resport sections for the system report:
-
 <ul>
 <li>Startup programs</li>
 <li>Local host file entries</li>
 <li>Cached DNS entries (and type)</li>
 <li>Shadow volumes</li>
 <li>VSS Writer status</li>
-</ul></li>
+</ul>
+</li>
 <li>Added the ability to add different section types, specifically section headers</li>
-<li>Added ability to completely skip over previously mentioned section headers&#8230;</li>
+<li>Added ability to completely skip over previously mentioned section headers…</li>
 <li>Added ability to add section comments which show up directly below the section table titles and just above the section table data</li>
 <li>Added ability to save reports as PDF files</li>
 <li>Modified grid html layout to be slightly more condensed.</li>
 <li>Added ThrottleLimit and Timeout to main function (applied only to multi-runspace called functions)</li>
 <li></li>
 </ul>
-
 <h3 id="notes">Notes</h3>
-
-<p>I suppose I&#8217;ll upgrade this from beta status to non-beta, or whatever comes next. I&#8217;m mostly happy with the report layout and formatting for the DynamicGrid template. I&#8217;ve also breached new ground with a whole new set of data results for inclusion in the asset reports (with a recently released set of functions for returning the results of a remotely run command via alternate credentials). The EmailFriendly format still needs some attention but should serve its purpose.</p>
-
+<p>I suppose I’ll upgrade this from beta status to non-beta, or whatever comes next. I’m mostly happy with the report layout and formatting for the DynamicGrid template. I’ve also breached new ground with a whole new set of data results for inclusion in the asset reports (with a recently released set of functions for returning the results of a remotely run command via alternate credentials). The EmailFriendly format still needs some attention but should serve its purpose.</p>
 <p>While the reports are pretty, I think that the real value to professionals is in the excel export this script can automatically generate. You can determine a whole lot from the information this script gathers. You can quickly isolate nic cards in promiscuous mode, find servers using strange license keys, and more.</p>
-
 <h3 id="screenshots">Screenshots</h3>
-
 <p>One of the excel sheets</p>
-
-<p><img alt="" src="http:///gallery.technet.microsoft.com/site/view/file/95459/1/excel-1.jpg?resize=586%2C197" width="586" height="197" data-recalc-dims="1" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>The HP hardware health section of an html report:</p>
-
-<p><img alt="" src="http:///gallery.technet.microsoft.com/site/view/file/95460/1/HP_Health.jpg?resize=586%2C240" width="586" height="240" data-recalc-dims="1" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>A summary section of an html report:</p>
-
-<p><img alt="" src="http://gallery.technet.microsoft.com/site/view/file/95461/1/Summary_Section.jpg?resize=586%2C400" width="586" height="400" data-recalc-dims="1" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>A disk usage html report section:</p>
-
-<p><img alt="" src="http:///gallery.technet.microsoft.com/site/view/file/95463/1/Disk-Usage.jpg?resize=586%2C109" width="586" height="109" data-recalc-dims="1" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <h3 id="downloads">Downloads</h3>
-
 <p><a href="http://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569">Download the script from the technet gallery (more frequently updated)</a></p>
     
 </div>
@@ -454,15 +430,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -491,7 +467,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

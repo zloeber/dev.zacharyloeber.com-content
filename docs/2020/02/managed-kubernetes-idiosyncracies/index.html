@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Managed Kubernetes Idiosyncracies | Zachary Loeber</title>
         <meta name="description" content="Managed Kubernetes Idiosyncracies - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Managed Kubernetes Idiosyncracies">
@@ -142,104 +142,64 @@
 
     
         <p>Managed Kuberentes services allow you to dive into Kubernetes quickly. But even a managed kubernetes cluster requires more thought and care than one may expect.</p>
-
 <h2 id="introduction">Introduction</h2>
-
 <p>Before kubernetes burst into the scene like Kramer in a Sienfeld rerun we were all happily running managed conatainers in Azure&rsquo;s ACS, Amazon&rsquo;s ECS/Fargate, or maybe even using Docker on some virtual machines. This was good enough for most enterprises if they decided to run anything in containers at all of course. But the deployments for such containers were fundamentally flawed in that they were tightly bound by the cloud provider running the services you were deploying against. To some extent Docker (compose) bridged some of this cloud gap. This conatainer abstraction only helped at the developer workstation level though. Orchestration beyond the dev workstation meant dancing with a cloud vendor and their tooling of choice. This may explain things like ecs-cli, pre-kubernetes Rancher, and the explosion of devops as a popular IT career choice.</p>
-
 <p>All joking aside, Kubernetes has seen explosive growth partially because it helps abstract the cloud out of the deployment pipelines for businesses. It is exciting for IT veterns like myself as I can start to worry less about the underlying infrastructure and more about the workloads and their lifecycles instead. Unfortunately, Kuberentes still is infrastructure and running it is not like spinning up another golden image VM in your datacenter (yet). So the cloud vendors have come to our rescue again but this time with managed Kubernetes services.</p>
-
 <h2 id="production-grade">Production Grade</h2>
-
 <p>It is important to level set on the component parts of a production grade Kubernetes cluster. The term &lsquo;production grade&rsquo; is key here because many local Kubernetes implementations you may deploy to test the waters (minikube, k3s, et cetera) do do anything for production level high availability.</p>
-
 <p>A quick rundown of the cluster component parts is in order. At its core, a cluster is actually two distinct planes running on servers (called &lsquo;nodes&rsquo;).</p>
-
 <ol>
 <li>Worker Plane</li>
 <li>Control Plane</li>
 </ol>
-
 <p>The worker plane is where your workloads get scheduled and pods actually run. A default cluster deployment will have dedicated nodes for this plane but it is possible (though not recommended) to untaint your control plane nodes to allow for workload scheduling on your control plane nodes as well.</p>
-
 <p>The control plane is significantly more involved. It will contain, at the very least;</p>
-
 <ol>
 <li>kube-api-server - The control center</li>
 <li>Configuration store - etcd cluster in most deployments</li>
 <li>kube-scheduler - Pod placement</li>
 <li>kube-controller-manager - Your state machine</li>
 </ol>
-
 <blockquote>
 <p><strong>NOTE:</strong> Many diagrams also include a fifth component which <a href="https://kubernetes.io/docs/tasks/administer-cluster/running-cloud-controller/">was introduced in v1.6</a> called the cloud-controller-manager that can allow for easier cloud-specific integrations within a cluster.</p>
 </blockquote>
-
 <p>For a primer on what the control plane consists of reading over <a href="https://kubernetes.io/docs/concepts/overview/components/">the official components documentation</a> would be your best bet but here is an obligatory diagram anyway;</p>
-
-<p><img src="https://d33wubrfki0l68.cloudfront.net/7016517375d10c702489167e704dcb99e570df85/7bb53/images/docs/components-of-kubernetes.png" alt="Kubernetes Components" /></p>
-
+<p><img src="https://d33wubrfki0l68.cloudfront.net/7016517375d10c702489167e704dcb99e570df85/7bb53/images/docs/components-of-kubernetes.png" alt="Kubernetes Components"></p>
 <p>To be &lsquo;production grade&rsquo;, the control plane components should run across at least 3 nodes for high availability, be updated regularly, be monitored, and generally be loved like the rest of your infrastructure.</p>
-
 <h2 id="what-managed-gets-ya">What Managed Gets Ya</h2>
-
 <p>Managed in IT is a contextual term as it holds different meaning based on the person you are talking with. A developer may read it to mean that the operations team manages it. In this light, a dev may then assume that a cloud managed kubernetes cluster is upgraded, patched, rebooted, or generally cared for transparently by the vendor.</p>
-
 <p>Yeah, that&rsquo;s not what managed really means in this case, but here is what managed does get ya.</p>
-
 <h3 id="invisible-control-plane">Invisible Control Plane</h3>
-
 <p>This is the first but most important aspect of managed kubernetes one must know. On a managed kubernetes cluster you are freed from the burden of the control plane. That&rsquo;s right In a managed kubernetes cluster <strong>the entire control plane is managed</strong>.</p>
-
 <p>This means the you can forego the 3-node initial requirement for your cluster and still have some level of HA for the backend components. This alone elminates much operational burden and is why I&rsquo;ll go managed almost everytime.</p>
-
 <p>This also means that if you had any designs to use the cluster etcd implmentation for other means then you will have to deploy and manage this component separately.</p>
-
 <blockquote>
 <p><strong>Takeaway:</strong> Not having a control plane is awesome. It also means you simply don&rsquo;t have that control you otherwise may have had.</p>
 </blockquote>
-
 <h3 id="frosting-on-your-cake">Frosting On Your Cake</h3>
-
 <p>Deploying a kubernetes cluster from scratch for the first time only to realize you are unable to carve out persistent volumes or expose services via ingress feels like getting a brand new car without wheels. Cloud managed clusters provide their own solutions for these essential services to overcome this initial shortcomings. These are, as one might expect, targeted specifically to the cloud provider and usually involves consuming more of their own brand of cloud. The most important integrations in this space that ease operational burden increadibly are;</p>
-
 <ul>
 <li>Loadbalancer provisioning</li>
 <li>Storage provisioning (both block and file based)</li>
 </ul>
-
 <p>This is exceptionally useful and an enormous time saver but there are, as one may expect, some precautions you should take.</p>
-
 <h4 id="loadbalancers">Loadbalancers</h4>
-
 <p>Most loadbalancers create a public IP by default within the cloud. This is insecure and scary for all the reasons you think it would be. The general method to override this at deployment time is with a special annotation <code>service.beta.kubernetes.io/&lt;azure/aws/google&gt;-load-balancer-internal: &quot;true&quot;</code>.</p>
-
 <p>Also, you should question how much a load balancer is really needed for a particular workload. A load balancer is going to be largely required for non-standard traffic workloads like databases, DNS, or any other non-http type of traffic. For everything else there is ingress. In most deployments I&rsquo;d expect no more than a single load balancer which is tied to your ingress controller of choice. At most you may have one ingress controller/loadbalancer per-zone for some stricter segmentation.</p>
-
 <h4 id="persistent-volumes">Persistent Volumes</h4>
-
 <p>Persistent volumes that tie into cloud storage have all the billing considerations to consider. Plus they may not always be suited for your particular workloads. If you have exceptionally heavy IO to disk then keeping a distributed local disk storage solution may be a consideration.</p>
-
 <p>It is also important to be aware that many Kubernetes deployments that I&rsquo;ve done required specific tinkering around the cloud provider storage. This means you may find that your carefully crafted deployments are not all that portable in the end. Getting locked into a cloud provider for using Kubernetes should be considered an anti-pattern. Consider abstracting your storage presentation via something like OpenEBS if this kind of thing matters to you at all.</p>
-
 <p>You also have to consider just how many persistent volumes you will require. Some cloud providers have strict limits on the number of volumes that can be presented to each server node based on model.</p>
-
 <blockquote>
 <p><strong>Takeaway:</strong> Just because its easy to use, doesn&rsquo;t mean you should use alot of it without thought. Loadbalancers and storage in the cloud have cost and security implications.</p>
 </blockquote>
-
 <h3 id="kubernetes-upgrades">Kubernetes Upgrades</h3>
-
 <p>Managed kubernetes offerings should provide some form of upgrade path for the version of Kubernetes on your cluster. This is both a blessing and a burden. It is a blessing as uprading Kubernetes is typically an involved process and this automation can allow you to seamlessly do rolling updates. It is a burden as the cloud providers will attempt to keep up with the rapid clip that Kuberentes is getting released and often stop supporting older versions from being deployed to new clusters. If you deploy your clusters via terraform and have pinned versions you may find that a manifest that once worked without issues suddenly fail, especially if you are not rebuilding your clusters frequently.</p>
-
 <blockquote>
 <p><strong>Takeaway:</strong> Treat your kube clusters as cattle and not pets. Redeploy them often to suss out issues that upgrades may cause your deployments.</p>
 </blockquote>
-
 <h3 id="extra-sauce">Extra Sauce</h3>
-
 <p>Typically each cloud provider has some extra sauce features for further integration with their platform which can be enabled as part of the install or with some minor effort afterwards. This includes;</p>
-
 <ul>
 <li>Multiple node groups/pools</li>
 <li>Additional addons for dashboard or log integration</li>
@@ -247,34 +207,26 @@
 <li>Serverless virtual node pools for bursting workloads</li>
 <li>And so on&hellip;</li>
 </ul>
-
 <h2 id="what-is-left-to-you">What Is Left to You</h2>
-
 <p>I&rsquo;m fully on the managed Kubernetes cluster bandwagon (regardless of the cloud platform). But there are some aspects of these managed offerings that should be on your radar. Here are just a few worth mentioning.</p>
-
 <h3 id="node-os-updates">Node OS Updates</h3>
-
 <p>The cluster nodes are still running on an OS, one which needs to get updated and be rebooted like all others you have ever administered. If you are rebuilding your clusters frequently enough then this likely isn&rsquo;t a huge issue. But let&rsquo;s be honest, you know you aren&rsquo;t rebuilding them are you?</p>
-
 <p>What&rsquo;s more, I&rsquo;ve personally seen nodes come online pretty much instantly requiring a reboot. And unless you login to your nodes you may never be the wiser. One tool you can use to help figure out what&rsquo;s going on in regards to reboots is <a href="https://github.com/weaveworks/kured">kured</a> made by the fine folk over at Weaveworks.</p>
-
 <p>If you do use this tool (and you should) know that the default behavior is for it to automatically reboot the nodes. This may not be your idea of fun if you have less than durable workloads running (for instance, spark streaming jobs). You can deploy kured so that it emits metrics with the reboot status and not take action though. In fact, simply collecting the metric prevents the daemon from initiating reboots. So, assuming you have prometheus already running on your cluster, you will need to deploy kured to feed its metrics into it (via a servicemonitor) and also point it to scrape prometheus to check for its metrics.</p>
-
 <p>Here is a generic helmfile with how I deployed this particular app to do just that. Obviously, make changes as required.</p>
-
-<pre><code class="language-bash">helmDefaults:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helmDefaults:
   tillerless: true
   tillerNamespace: platform
   atomic: true
   verify: false
   wait: false
-  timeout: 600
+  timeout: <span style="color:#ae81ff">600</span>
   recreatePods: false
   force: true
 
-#####################
-## Kured - Automatic kube node reboots
-## Info: https://github.com/weaveworks/kured
+<span style="color:#75715e">#####################</span>
+<span style="color:#75715e">## Kured - Automatic kube node reboots</span>
+<span style="color:#75715e">## Info: https://github.com/weaveworks/kured</span>
 repositories:
 - name: stable
   url: https://kubernetes-charts.storage.googleapis.com/
@@ -282,43 +234,43 @@ repositories:
   url: git+https://github.com/zloeber/helm-namespace/chart
 
 releases:
-{{- if eq (env &quot;HELM_VERSION&quot; | default &quot;3&quot;) &quot;3&quot; }}
+<span style="color:#f92672">{{</span>- <span style="color:#66d9ef">if</span> eq <span style="color:#f92672">(</span>env <span style="color:#e6db74">&#34;HELM_VERSION&#34;</span> | default <span style="color:#e6db74">&#34;3&#34;</span><span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;3&#34;</span> <span style="color:#f92672">}}</span>
 - name: namespace-kured
   chart: zloeber/namespace
   namespace: kube-system
   labels:
     chart: namespace-kured
     component: kured
-    namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+    namespace: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;kured&#34;</span> <span style="color:#f92672">}}</span>
   wait: true
-  installed: {{ env &quot;STACK_KURED&quot; | default &quot;true&quot; }}
+  installed: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED&#34;</span> | default <span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">}}</span>
   values:
   - namespaces:
-    - {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
-{{- end }}
+    - <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;kured&#34;</span> <span style="color:#f92672">}}</span>
+<span style="color:#f92672">{{</span>- end <span style="color:#f92672">}}</span>
 - name: kured
-  namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+  namespace: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;kured&#34;</span> <span style="color:#f92672">}}</span>
   chart: stable/kured
   labels:
     chart: kured
     component: platform
-    namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
-  installed: {{ env &quot;STACK_KURED&quot; | default &quot;true&quot; }}
-{{- if eq (env &quot;HELM_VERSION&quot; | default &quot;2&quot;) &quot;3&quot; }}
+    namespace: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;kured&#34;</span> <span style="color:#f92672">}}</span>
+  installed: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED&#34;</span> | default <span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">}}</span>
+<span style="color:#f92672">{{</span>- <span style="color:#66d9ef">if</span> eq <span style="color:#f92672">(</span>env <span style="color:#e6db74">&#34;HELM_VERSION&#34;</span> | default <span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;3&#34;</span> <span style="color:#f92672">}}</span>
   needs:
   - kube-system/namespace-kured
-{{- end }}
+<span style="color:#f92672">{{</span>- end <span style="color:#f92672">}}</span>
   values:
   - extraArgs:
-      prometheus-url: http://{{ env &quot;STACK_MONITORING_PROMETHEUSINSTANCE&quot; | default &quot;kube-prometheus&quot; }}.{{ env &quot;STACK_MONITORING_NAMESPACE&quot; | default &quot;monitoring&quot; }}.svc:9090
+      prometheus-url: http://<span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_MONITORING_PROMETHEUSINSTANCE&#34;</span> | default <span style="color:#e6db74">&#34;kube-prometheus&#34;</span> <span style="color:#f92672">}}</span>.<span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_MONITORING_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;monitoring&#34;</span> <span style="color:#f92672">}}</span>.svc:9090
 
 - name: kured-service
   chart: incubator/raw
-  namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+  namespace: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;kured&#34;</span> <span style="color:#f92672">}}</span>
   labels:
     component: kured
-    namespace: {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
-  installed: {{ env &quot;STACK_KURED&quot; | default &quot;true&quot; }}
+    namespace: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;kured&#34;</span> <span style="color:#f92672">}}</span>
+  installed: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED&#34;</span> | default <span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">}}</span>
   values:
   - resources:
     - apiVersion: v1
@@ -332,7 +284,7 @@ releases:
       spec:
         ports:
         - name: metrics
-          port: 8088
+          port: <span style="color:#ae81ff">8088</span>
           protocol: TCP
           targetPort: metrics
         selector:
@@ -342,63 +294,51 @@ releases:
         type: ClusterIP
 
 - name: kured-servicemonitor
-  chart: &quot;incubator/raw&quot;
-  namespace: {{ env &quot;STACK_MONITORING_NAMESPACE&quot; | default &quot;monitoring&quot; }}
+  chart: <span style="color:#e6db74">&#34;incubator/raw&#34;</span>
+  namespace: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_MONITORING_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;monitoring&#34;</span> <span style="color:#f92672">}}</span>
   labels:
-    component: &quot;kured&quot;
-    namespace: {{ env &quot;STACK_MONITORING_NAMESPACE&quot; | default &quot;monitoring&quot; }}
-    default: &quot;true&quot;
-  installed: {{ env &quot;STACK_KURED&quot; | default &quot;true&quot; }}
+    component: <span style="color:#e6db74">&#34;kured&#34;</span>
+    namespace: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_MONITORING_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;monitoring&#34;</span> <span style="color:#f92672">}}</span>
+    default: <span style="color:#e6db74">&#34;true&#34;</span>
+  installed: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED&#34;</span> | default <span style="color:#e6db74">&#34;true&#34;</span> <span style="color:#f92672">}}</span>
   values:
   - resources:
     - apiVersion: monitoring.coreos.com/v1
       kind: ServiceMonitor
       metadata:
         name: kured
-        namespace: {{ env &quot;STACK_MONITORING_NAMESPACE&quot; | default &quot;monitoring&quot; }}
+        namespace: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_MONITORING_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;monitoring&#34;</span> <span style="color:#f92672">}}</span>
         labels:
           app: kured
           chart: kured-servicemonitor
           release: kured
           heritage: Helm
-          prometheus: {{ env &quot;PROMETHEUS_INSTANCE&quot; | default &quot;kube-prometheus&quot; }}
+          prometheus: <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;PROMETHEUS_INSTANCE&#34;</span> | default <span style="color:#e6db74">&#34;kube-prometheus&#34;</span> <span style="color:#f92672">}}</span>
       spec:
         jobLabel: kured
         namespaceSelector:
           matchNames:
-          - {{ env &quot;STACK_KURED_NAMESPACE&quot; | default &quot;kured&quot; }}
+          - <span style="color:#f92672">{{</span> env <span style="color:#e6db74">&#34;STACK_KURED_NAMESPACE&#34;</span> | default <span style="color:#e6db74">&#34;kured&#34;</span> <span style="color:#f92672">}}</span>
         selector:
           matchLabels:
             app: kured
             release: kured
         endpoints:
-        - targetPort: 8080
+        - targetPort: <span style="color:#ae81ff">8080</span>
           path: /metrics
           interval: 60s
           scrapeTimeout: 30s
-</code></pre>
-
-<p>And the query for your prometheus alerts that allow you to see which nodes require a reboot</p>
-
-<pre><code class="language-bash">count(kured_reboot_required) BY (instance) * ON (instance) GROUP_LEFT (node) kured_reboot_required &gt; 0
-</code></pre>
-
-<h3 id="your-cluster-is-not-all-yours">Your Cluster Is Not All Yours</h3>
-
+</code></pre></div><p>And the query for your prometheus alerts that allow you to see which nodes require a reboot</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">count<span style="color:#f92672">(</span>kured_reboot_required<span style="color:#f92672">)</span> BY <span style="color:#f92672">(</span>instance<span style="color:#f92672">)</span> * ON <span style="color:#f92672">(</span>instance<span style="color:#f92672">)</span> GROUP_LEFT <span style="color:#f92672">(</span>node<span style="color:#f92672">)</span> kured_reboot_required &gt; <span style="color:#ae81ff">0</span>
+</code></pre></div><h3 id="your-cluster-is-not-all-yours">Your Cluster Is Not All Yours</h3>
 <p>When you get your managed cluster up and running, one may expect to get the sum value of all the RAM and CPU of your nodes to use in your workloads. Nope. Sorry, you don&rsquo;t get all of it. In fact, this is true of pretty much any cluster, managed or otherwise. Kubernetes is not an OS (as much as I so very want it to be). It runs on top of an OS, which immediately gets its share of the resources right off the top. Even worker-only nodes need to run some workload to be useful (mainly networking stuff) to there is more consumed.</p>
-
 <p>When we get into the next section this will make more sense but any &lsquo;real&rsquo; Kuberentes cluster you deploy will also have a slew of related base services that will need to be running. These also gobble up some of the pool of resources in the cluster.</p>
-
 <blockquote>
 <p><strong>Takeaway:</strong> My rule of thumb is to assume about 25-30% of the oveall cluster resources are simply not available and set my upper bounds on autoscaling node pools appropriately.</p>
 </blockquote>
-
 <h3 id="making-it-useful">Making it Useful</h3>
-
 <p>If you create a new managed cluster in your cloud of choice, login to it via kubectrl and list out all the pods across all namespaces it is usually pretty undewhelming. This is because, like a desktop without software, you are only setup with the potential to do great things. It is still up to the intrepid admin to layer in the software and make the cluster worth a damn.</p>
-
 <p>This one may seem obvious. But it is not quite as obvious just how many layers of technology are required to stack into your cluster to make the thing useful. Here is an example of a stack of technologies that may make it into your cluster.</p>
-
 <table>
 <thead>
 <tr>
@@ -406,108 +346,86 @@ releases:
 <th>Purpose</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>Fluentbit</td>
 <td>Log Scraping and Forwarding</td>
 </tr>
-
 <tr>
 <td>Prometheus Operator</td>
 <td>Prometheus &amp; AlertManager CRDs</td>
 </tr>
-
 <tr>
 <td>Kube Prometheus</td>
 <td>Kubernetes default service monitors and alerts</td>
 </tr>
-
 <tr>
 <td>Prometheus Adapter</td>
 <td>Custom Metrics Autoscaling</td>
 </tr>
-
 <tr>
 <td>Heapster</td>
 <td>Kubernetes Cluster Metrics</td>
 </tr>
-
 <tr>
 <td>Dashboard</td>
 <td>Admin Dashboard</td>
 </tr>
-
 <tr>
 <td>Kured</td>
 <td>Host Node Autoreboot</td>
 </tr>
-
 <tr>
 <td>RBAC Manager</td>
 <td>CRDs for RBAC</td>
 </tr>
-
 <tr>
 <td>Cert-Manager</td>
 <td>Certificate Generation</td>
 </tr>
-
 <tr>
 <td>Traefik</td>
 <td>Ingress Controller</td>
 </tr>
-
 <tr>
 <td>Grafana</td>
 <td>Metric Dashboards</td>
 </tr>
-
 <tr>
 <td>IAM or Dex integration</td>
 <td>authentication</td>
 </tr>
-
 <tr>
 <td>ArgoCD</td>
 <td>GitOps Controller</td>
 </tr>
-
 <tr>
 <td>Cost Analyzer</td>
 <td>Per-Namespace and Cluster Cost Analysis</td>
 </tr>
-
 <tr>
 <td>Prometheus Push Gateway</td>
 <td>Push-based metrics</td>
 </tr>
-
 <tr>
 <td>Prometheus APM Exporter</td>
 <td>Springboot Prometheus Exporter</td>
 </tr>
-
 <tr>
 <td>Vault Operator</td>
 <td>Hashicorp Vault Integration</td>
 </tr>
-
 <tr>
 <td>Zipkin</td>
 <td>Distributed Tracing</td>
 </tr>
 </tbody>
 </table>
-
 <p>This list does not include any stateful sets deployments (like elasticsearch or postgress), policy engines, additional metrics exporters, or even your workloads. Keep in mind that each needs to be configured and deployed to work in concert with your infrastructure and often one another as well. This will also affect sizing of your cluster nodes accordingly.</p>
-
 <blockquote>
 <p><strong>Takeaway:</strong> View your kubernetes clusters as a server. A server needs software to do anything useful, so will your cluster.</p>
 </blockquote>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>If you are using Kubernetes already then good for you! Welcome to the new declarative world we live in (#declarativenation). No matter how you consume your kubernetes, managed or bare metal, on your laptop or in the cloud, there is lots to consider. Generally, choosing managed Kubernetes clusters will be easier for most organizations. I&rsquo;d just set your expectations to reasonable levels and things should be fine.</p>
     
 </div>
@@ -648,15 +566,15 @@ releases:
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -685,7 +603,7 @@ releases:
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

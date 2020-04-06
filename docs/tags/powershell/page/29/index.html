@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Powershell | Zachary Loeber</title>
         <meta name="description" content="Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Powershell">
@@ -143,7 +143,7 @@
     </div>
 
     
-        Ok, so I woke up and was wide awake at 4am this morning. I took it as a sign to lose my mind for a while and get to hacking another script. The result is a client access setting report script which includes all internal and external paths along with their authentication settings. It needs some prettying up and a bit of love but it does exactly what I&#8217;ve wanted in Exchange 2010, gives me an overall view of all client access settings (specifically related to IIS).
+        Ok, so I woke up and was wide awake at 4am this morning. I took it as a sign to lose my mind for a while and get to hacking another script. The result is a client access setting report script which includes all internal and external paths along with their authentication settings. It needs some prettying up and a bit of love but it does exactly what I’ve wanted in Exchange 2010, gives me an overall view of all client access settings (specifically related to IIS).
 
         
             <a href="https://zacharyloeber-dev.onrender.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/" class="more">Continue reading</a>
@@ -308,11 +308,9 @@
 
     
         Here are a few quick powershell one-liners to get all the network interface information in your exchange environment:
-$ExchServers=(Get-ExchangeServer); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.Name | select @{Name="Server";Expression={$Srv.Name}},@{Name="DNS Host Name";Expression={$_.DNSHostName}},@{Name="Server Role";Expression={$Srv.ServerRole}},Description,@{Name="IP Address";Expression={$_.IPAddress}},@{Name="IP Subnet";Expression={$_.IPSubnet}},@{Name="Default Gateway";Expression={$_.DefaultIPGateway}},@{Name="Mac Address";Expression={$_.MacAddress}},@{Name="DNS Suffix Search Order";Expression={$_.DNSDomainSuffixSearchOrder}},@{Name="DNS Server Search Order";Expression={$_.DNSServerSearchOrder}},FullDNSRegistrationEnabled}) |Export-Csv -NoTypeInformation "C:\Temp\Exchange-network.csv" If you just want interface information for Exchange 2010 servers:
-$ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne "None"}); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.
+If you just want interface information for Exchange 2010 servers:
+ 
 
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/" class="more">Continue reading</a>
         
     
 </div>
@@ -476,6 +474,7 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne "None"}); @(foreach 
 
     
         <p>Here are a few more notes from the field to consider when you are planning your Exchange 2010 deployment and migration. Some of these items are good to know even after you have completed your migration and may help with overall system stability.</p>
+<h2 id="heading"></h2>
 
         
             <a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/" class="more">Continue reading</a>
@@ -625,15 +624,15 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne "None"}); @(foreach 
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -662,7 +661,7 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne "None"}); @(foreach 
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

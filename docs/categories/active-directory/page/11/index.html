@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Active Directory | Zachary Loeber</title>
         <meta name="description" content="Active Directory - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Active Directory">
@@ -99,7 +99,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/04/08/create-your-own-network-assessment-appliance/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/02/21/active-directory-role-based-access-modeling/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -107,26 +107,22 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/04/08/create-your-own-network-assessment-appliance/">Create Your Own Network Assessment Appliance</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/21/active-directory-role-based-access-modeling/">Active Directory: Role Based Access Modeling</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2012-04-09</span>
+                <span class="date moment">2011-02-22</span>
             
         
 
         
-            <span class="readingTime">12 min read</span>
+            <span class="readingTime">10 min read</span>
         
 
         
             <span class="categories">
                 
                     <a href="/categories/active-directory">Active Directory</a>
-                
-                    <a href="/categories/active-directory">Active Directory</a>
-                
-                    <a href="/categories/linux">Linux</a>
                 
                     <a href="/categories/microsoft">Microsoft</a>
                 
@@ -135,10 +131,6 @@
                     <a href="/categories/security">Security</a>
                 
                     <a href="/categories/system-administration">System Administration</a>
-                
-                    <a href="/categories/virtualization">Virtualization</a>
-                
-                    <a href="/categories/vmware">VMware</a>
                 
             </span>
         
@@ -149,11 +141,10 @@
     </div>
 
     
-        In this write-up I setup several network assessment tools which can be used in the discovery process of a new environment. This can be useful for a newly hired sysadmin or a consultant in rapidly gathering information to assess the health and/or state of a network.
-Introduction I often find myself assessing a foreign network infrastructure for performance or other issues. Depending on the size of the environment, digesting everything can be daunting without the help of some third party tools.
+        <p>Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of <a href="http://en.wikipedia.org/wiki/AGDLP">AGDLP (an abbreviation of “account, global, domain local, permission”)</a> to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/04/08/create-your-own-network-assessment-appliance/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/21/active-directory-role-based-access-modeling/" class="more">Continue reading</a>
         
     
 </div>
@@ -169,19 +160,11 @@ Introduction I often find myself assessing a foreign network infrastructure for 
                 
                 <a href="/tags/active-directory">Active Directory</a>
                 
-                <a href="/tags/linux">Linux</a>
+                <a href="/tags/microsoft">Microsoft</a>
                 
-                <a href="/tags/network-administration">network administration</a>
-                
-                <a href="/tags/networking">Networking</a>
-                
-                <a href="/tags/sysadmin">Sysadmin</a>
+                <a href="/tags/security">Security</a>
                 
                 <a href="/tags/system-administration">System Administration</a>
-                
-                <a href="/tags/virtualization">virtualization</a>
-                
-                <a href="/tags/vmware">vmware</a>
                 
             </div>
         </div>
@@ -251,21 +234,21 @@ Introduction I often find myself assessing a foreign network infrastructure for 
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/04\/08\/create-your-own-network-assessment-appliance\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/active-directory-role-based-access-modeling\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/04\/08\/create-your-own-network-assessment-appliance\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/active-directory-role-based-access-modeling\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/04\/08\/create-your-own-network-assessment-appliance\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/active-directory-role-based-access-modeling\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -280,7 +263,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/03/24/sysadmin-task-migrate-dns/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -288,180 +271,25 @@ Introduction I often find myself assessing a foreign network infrastructure for 
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/03/24/sysadmin-task-migrate-dns/">Sysadmin Task: Migrate DNS</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/">Outlook 2010: Photo Sizing Tool</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2012-03-24</span>
+                <span class="date moment">2011-02-01</span>
             
         
 
         
-            <span class="readingTime">8 min read</span>
+            <span class="readingTime">2 min read</span>
         
 
         
             <span class="categories">
-                
-                    <a href="/categories/active-directory">Active Directory</a>
-                
-                    <a href="/categories/linux">Linux</a>
-                
-                    <a href="/categories/microsoft">Microsoft</a>
-                
-                    <a href="/categories/networking">Networking</a>
-                
-                    <a href="/categories/powershell">Powershell</a>
-                
-                    <a href="/categories/system-administration">System Administration</a>
-                
-            </span>
-        
-
-        
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
-        
-    </div>
-
-    
-        <p>I&#8217;ve migrated DNS servers more than a few times and find that I&#8217;m doing the same tasks or using the same custom scripts over and over again. Here is my quick and dirty task list with some powershell scripts you too might find of use. As there are a hundred ways to skin this cat I don&#8217;t claim my methods to be the best but they sure are fast and far easier than manually changing a dns address on hundreds of servers, workstations, and network devices.</p>
-
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/03/24/sysadmin-task-migrate-dns/" class="more">Continue reading</a>
-        
-    
-</div>
-
-    
-    <div class="footer no-tags">
-        
-
-        
-
-        
-        
-
-
-<style>
-    #share-buttons {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    #share-buttons:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
-    #share-buttons>div {
-        position: relative;
-        text-align: left;
-        height: 36px;
-        width: 32px;
-        float: left;
-        text-align: center;
-    }
-
-    #share-buttons>div>svg {
-        height: 16px;
-        fill: #d5d5d5;
-        margin-top: 10px;
-    }
-
-    #share-buttons>div:hover {
-        cursor: pointer;
-    }
-
-    #share-buttons>div.facebook:hover>svg {
-        fill: #3B5998;
-    }
-
-    #share-buttons>div.twitter:hover>svg {
-        fill: #55ACEE;
-    }
-
-    #share-buttons>div.linkedin:hover>svg {
-        fill: #0077b5;
-    }
-
-    #share-buttons>div.facebook>svg {
-        height: 18px;
-        margin-top: 9px;
-    }
-
-    #share-buttons>div.twitter>svg {
-        height: 20px;
-        margin-top: 8px;
-    }
-
-    #share-buttons>div.linkedin>svg {
-        height: 19px;
-        margin-top: 7px;
-    }
-</style>
-<div id="share-buttons">
-    <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/24\/sysadmin-task-migrate-dns\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
-        </svg>
-    </div>
-    <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/24\/sysadmin-task-migrate-dns\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
-        </svg>
-    </div>
-    <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/24\/sysadmin-task-migrate-dns\/&title=&summary=&source=');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
-        </svg>
-    </div>
-</div>
-    </div>
-</article>
-
-            
-        </div>
-    
-        <div class="article-wrapper u-cf">
-            
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/03/09/assessing-like-a-microsoft-technician/">
-    <i class="fa fa-fw fa-pencil"></i>
-</a>
-
-<article class="default article">
-    
-
-    <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/03/09/assessing-like-a-microsoft-technician/">Assessing Like A Microsoft Technician</a></h3>
-    <div class="meta">
-        
-            
-                <span class="date moment">2012-03-10</span>
-            
-        
-
-        
-            <span class="readingTime">5 min read</span>
-        
-
-        
-            <span class="categories">
-                
-                    <a href="/categories/active-directory">Active Directory</a>
                 
                     <a href="/categories/active-directory">Active Directory</a>
                 
                     <a href="/categories/exchange">Exchange</a>
                 
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
-                
                     <a href="/categories/microsoft">Microsoft</a>
                 
                     <a href="/categories/powershell">Powershell</a>
@@ -477,12 +305,174 @@ Introduction I often find myself assessing a foreign network infrastructure for 
     </div>
 
     
-        <h1 id="troubleshooting-like-a-microsoft-technician">Troubleshooting Like A Microsoft Technician</h1>
-
-<p>I have been doing more and more site assessments for Active Directory, Exchange, Lync, and VMware. As such, I’ve been slowly refining the toolset that I use to gather data and troubleshoot existing environment issues. Here is a list of site assessment tools I’m finding that I regularly return to for rapid analysis or information gathering at a site. All of these tools are free.</p>
+        <p>We are about to get into full swing with our Exchange 2010 mailbox migrations and, soon afterwards, Office 2007 to 2010 upgrades as well. Unfortunately, we don’t have our Sharepoint farm upgraded to 2010 yet so there will be no automatic syncing of user photos into the GAL for those nice vanity pics which you can view in Outlook 2010. I know people like to be seen so I found a nice <!-- raw HTML omitted -->powershell based GUI <!-- raw HTML omitted -->for our (awesome) service desk team to use to upload these photos for users as requested. But you still have to get these photos thumbnailed to approximately 96×96 before uploading. Repeated manual labor is the anathema of any self respecting sysadmin who knows how to hack other people’s code to suit their needs. So I whipped up a very dirty (as in, “wow, get the bar of soap” dirty) hack which combines <!-- raw HTML omitted -->this person’s clever photo-sizing hack<!-- raw HTML omitted --> with the prior mentioned gui.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/03/09/assessing-like-a-microsoft-technician/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/active-directory">Active Directory</a>
+                
+                <a href="/tags/exchange-2010">Exchange 2010</a>
+                
+                <a href="/tags/powershell">Powershell</a>
+                
+                <a href="/tags/system-administration">System Administration</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/01\/outlook-2010-photo-sizing-tool\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/01\/outlook-2010-photo-sizing-tool\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/01\/outlook-2010-photo-sizing-tool\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+            
+        </div>
+    
+        <div class="article-wrapper u-cf">
+            
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/">Exchange: Remove entire OU from address book</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2011-01-22</span>
+            
+        
+
+        
+            <span class="readingTime">1 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+                    <a href="/categories/vbscript/hta">vbscript/hta</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Here is another script that I hacked together in part of an AD/Exchange cleanup task to remove disabled users from the address book. This script, more specifically, removes an entire OU of users from the address book, so make sure that all the users are disabled in the OU you will be running this against! 🙂</p>
+
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/" class="more">Continue reading</a>
         
     
 </div>
@@ -557,21 +547,21 @@ Introduction I often find myself assessing a foreign network infrastructure for 
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/09\/assessing-like-a-microsoft-technician\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/22\/exchange-remove-entire-ou-from-address-book\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/09\/assessing-like-a-microsoft-technician\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/22\/exchange-remove-entire-ou-from-address-book\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/03\/09\/assessing-like-a-microsoft-technician\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/22\/exchange-remove-entire-ou-from-address-book\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -610,15 +600,15 @@ Introduction I often find myself assessing a foreign network infrastructure for 
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -647,7 +637,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

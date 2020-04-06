@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Multithreaded System Asset Gathering with Powershell | Zachary Loeber</title>
         <meta name="description" content="Multithreaded System Asset Gathering with Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Multithreaded System Asset Gathering with Powershell">
@@ -142,43 +142,24 @@
 
     
         <p>This function gathers a plethora of useful system information via WMI and multithreading with powershell.</p>
-
 <p><strong>About</strong></p>
-
 <p>I took another script and modified it to suit my needs for yet another personal project I’m working on. This is the result.</p>
-
 <p><strong>Version History</strong></p>
-
-<p><strong>1.1.0 &#8211; 8/3/2013</strong></p>
-
+<p><strong>1.1.0 – 8/3/2013</strong></p>
 <p>· Added several parameters</p>
-
 <p>· Removed parameter sets in favor of arrays of custom object as note properties</p>
-
 <p>· Removed ICMP response requirements</p>
-
 <p>· Included more verbose runspace logging</p>
-
-<p><strong>1.0.2 &#8211; 8/2/2013</strong></p>
-
+<p><strong>1.0.2 – 8/2/2013</strong></p>
 <p>· Split out system and OS architecture (changing how each it determined)</p>
-
-<p><strong>1.0.1 &#8211; 8/1/2013</strong></p>
-
+<p><strong>1.0.1 – 8/1/2013</strong></p>
 <p>· Updated to include several more bits of information and customization variables</p>
-
-<p><strong>1.0.0 &#8211; ???</strong></p>
-
+<p><strong>1.0.0 – ???</strong></p>
 <p>· Discovered original script on the internet and totally was blown away at how awesome it is.</p>
-
 <p><strong>Notes</strong></p>
-
 <p>WMI prefered over CIM as there no speed advantage using cimsessions in multithreading against old systems. Starting around line 263 you can modify the WMI_Props arrays to include extra wmi data for each element should you require information I may have missed. You can also change the default display properties by modifying $defaultProperties. Keep in mind that including extra elements like the drive space and network information will increase the processing time per system. You may need to increase the timeout parameter accordingly.</p>
-
 <p><strong>Script</strong></p>
-
 <p><a href="http://gallery.technet.microsoft.com/Multithreaded-System-Asset-856a8f7c">Download the script from the technet gallery (more frequently updated)</a></p>
-
 <p><a href="/wp-content/uploads/2013/08/Get-ComputerAssetInformation.ps1">Download the script from this site (less frequently updated)</a></p>
     
 </div>
@@ -321,15 +302,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -358,7 +339,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> GNS3 on Ubuntu 8.04 – Pemu Guide | Zachary Loeber</title>
         <meta name="description" content="GNS3 on Ubuntu 8.04 – Pemu Guide - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="GNS3 on Ubuntu 8.04 – Pemu Guide">
@@ -133,50 +133,24 @@
     </div>
 
     
-        <p>Ok, so far we have gone through the hoops to get GNS3 with dynamips/dynagen working nicely in an (almost) fully contained directory in /opt. We then went through choosing an IOS image that is right for you, if you actually have multiple legal images to choose from of course. Now lets setup a pix firewall. The PIX is out of life as far as Cisco is concerned and had been superseded by the ASA line of security devices. But, there are still a lot of the PIX around and the concepts haven&#8217;t changed too much between them. So let us go through the motions already!</p>
-
-<p>Too get Pemu going on Ubuntu you first need to download it. It is based of of Qemu and the binary is actually quite small. Digging up the right one to use can be a pain but if you are a rockin&#8217; network geek and go to the 7200emu.hacki.at forums, you will be able to find it there.</p>
-
+        <p>Ok, so far we have gone through the hoops to get GNS3 with dynamips/dynagen working nicely in an (almost) fully contained directory in /opt. We then went through choosing an IOS image that is right for you, if you actually have multiple legal images to choose from of course. Now lets setup a pix firewall. The PIX is out of life as far as Cisco is concerned and had been superseded by the ASA line of security devices. But, there are still a lot of the PIX around and the concepts haven’t changed too much between them. So let us go through the motions already!</p>
+<p>Too get Pemu going on Ubuntu you first need to download it. It is based of of Qemu and the binary is actually quite small. Digging up the right one to use can be a pain but if you are a rockin’ network geek and go to the 7200emu.hacki.at forums, you will be able to find it there.</p>
 <p>Get pemu for at <a href="http://7200emu.hacki.at/viewtopic.php?t=5383">http://7200emu.hacki.at/viewtopic.php?t=5383</a> (note that you have to register to download the fille). Grab  pemu_2008-03-03_bin.tar.bz2 and save it to some temporary location.</p>
-
-<p>Extract the pemu files and copy them to the pemu directory in GNS3. Then make a Pix directory for your &#8220;legal&#8221; pix images. Copy your image files to this location.</p>
-
-<p><code>tar xjvf pemu_2008-03-03_bin.tar.bz2&lt;br /&gt;
-cd pemu_2008-03-03_bin&lt;br /&gt;
-sudo cp ./* /opt/GNS3/pemu&lt;br /&gt;
-sudo mkdir /opt/GNS3/Pix</code></p>
-
+<p>Extract the pemu files and copy them to the pemu directory in GNS3. Then make a Pix directory for your “legal” pix images. Copy your image files to this location.</p>
+<p><code>tar xjvf pemu_2008-03-03_bin.tar.bz2&lt;br /&gt; cd pemu_2008-03-03_bin&lt;br /&gt; sudo cp ./* /opt/GNS3/pemu&lt;br /&gt; sudo mkdir /opt/GNS3/Pix</code></p>
 <p>Then copy over your pix images to /opt/GNS3/Pix/</p>
-
 <p>Now lets make sure GNS3 is setup properly. The pemuwrapper.py comes with GNS3 and you need to set the path accordingly. You will want to change your GNS3 settings to point to the image by default and enter in the serial number and activation codes as well. My setup looks like this:</p>
-
-<p><a href="/wp-content/uploads/2008/07/preferences-pemu.png"><img class="aligncenter size-medium wp-image-33" title="preferences-pemu" src="/wp-content/uploads/2008/07/preferences-pemu.png?resize=300%2C271" alt="GNS3 Pemu Preferences" width="300" height="271" data-recalc-dims="1" /></a></p>
-
+<p><a href="/wp-content/uploads/2008/07/preferences-pemu.png"><!-- raw HTML omitted --></a></p>
 <p>Notice that the activation key is 4 hex values and has to be separated by commas. After it was setup there were still issues with the activation key when I started up a pix firewall. I had to do the following in a console of the emulated pix router to get the unrestricted activation key working.</p>
-
-<p><code>enable&lt;br /&gt;
-format flash:&lt;br /&gt;
-activation-key 0x-------- 0x-------- 0x-------- 0x--------&lt;br /&gt;
-copy run start&lt;br /&gt;
-reload</code></p>
-
-<p>After doing this I had issues getting the console to come back up so I closed GNS3 and killed any open gnome-terminal process (there was one in the process list that looked like &#8220;/bin/sh gnome-terminal&#8221;) and then restarted GNS3. After that, everything worked fine.</p>
-
-<p>&#8212; UPDATE &#8212;</p>
-
-<p>Thomas mentioned issues in maintaining settings in labs. I didn&#8217;t have the same issue from one lab to the next initially but after a reboot I did. Here is one way to save the files for loading at a later time. What you want to do is copy the FLASH file from /opt/GNS3/tmp/<your pix name in GNS>/ to another location after you have written it and saved it within the emulator. If you want to setup the serial and activation key to always work, even with a brand new lab do the following:</p>
-
-<p><code>cd /opt/GNS3/tmp/&lt;name of pix which you have already activated in previous instructions&gt;/&lt;br /&gt;
-sudo cp ./FLASH ../../Pix/FLASH.bin&lt;br /&gt;
-sudo chmod +r ../../Pix/FLASH.bin</code></p>
-
+<p><code>enable&lt;br /&gt; format flash:&lt;br /&gt; activation-key 0x-------- 0x-------- 0x-------- 0x--------&lt;br /&gt; copy run start&lt;br /&gt; reload</code></p>
+<p>After doing this I had issues getting the console to come back up so I closed GNS3 and killed any open gnome-terminal process (there was one in the process list that looked like “/bin/sh gnome-terminal”) and then restarted GNS3. After that, everything worked fine.</p>
+<p>— UPDATE —</p>
+<p>Thomas mentioned issues in maintaining settings in labs. I didn’t have the same issue from one lab to the next initially but after a reboot I did. Here is one way to save the files for loading at a later time. What you want to do is copy the FLASH file from /opt/GNS3/tmp/<!-- raw HTML omitted -->/ to another location after you have written it and saved it within the emulator. If you want to setup the serial and activation key to always work, even with a brand new lab do the following:</p>
+<p><code>cd /opt/GNS3/tmp/&lt;name of pix which you have already activated in previous instructions&gt;/&lt;br /&gt; sudo cp ./FLASH ../../Pix/FLASH.bin&lt;br /&gt; sudo chmod +r ../../Pix/FLASH.bin</code></p>
 <p>Then enter in the default flash image in in the Pemu preferences of GNS3 as /opt/GNS3/Pix/FLASH.bin and that base FLASH file will be copied over (and renamed to FLASH) for every new Pix instance you create.</p>
-
-<p>As for backing up the running configuration for a future lab you may be able to copy out the Flash file to another location and put it back the next time you startup your machine. I&#8217;ve not tinkered with that yet.</p>
-
-<p>&#8212; END OF UPDATE &#8212;</p>
-
-<p>In my next testing I&#8217;ll be messing around with connecting your devices to physical and virtual interfaces. This will let us do connectivity testing (in the case of the virtual interface) and connect to a live network for other fun experiments.</p>
+<p>As for backing up the running configuration for a future lab you may be able to copy out the Flash file to another location and put it back the next time you startup your machine. I’ve not tinkered with that yet.</p>
+<p>— END OF UPDATE —</p>
+<p>In my next testing I’ll be messing around with connecting your devices to physical and virtual interfaces. This will let us do connectivity testing (in the case of the virtual interface) and connect to a live network for other fun experiments.</p>
     
 </div>
 
@@ -295,15 +269,15 @@ sudo chmod +r ../../Pix/FLASH.bin</code></p>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -332,7 +306,7 @@ sudo chmod +r ../../Pix/FLASH.bin</code></p>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

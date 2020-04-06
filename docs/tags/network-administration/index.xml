@@ -52,7 +52,7 @@
       <pubDate>Fri, 04 Sep 2015 03:18:40 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/09/03/skype-for-business-planning-for-voice-part-2/</guid>
-      <description>&lt;p&gt;I&amp;#8217;ve already gone over the basic phases of a Skype for Business enterprise voice deployment &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2015/08/25/skype-for-business-planning-for-voice-part-1/&#34;&gt;in my prior article&lt;/a&gt;. Now it is time to skip right over the first two of those phases and start preparing to replace your existing PBXs. To prepare you need to know what you are going to be replacing. In this article we will be focusing on beginning the information gathering process.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’ve already gone over the basic phases of a Skype for Business enterprise voice deployment &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2015/08/25/skype-for-business-planning-for-voice-part-1/&#34;&gt;in my prior article&lt;/a&gt;. Now it is time to skip right over the first two of those phases and start preparing to replace your existing PBXs. To prepare you need to know what you are going to be replacing. In this article we will be focusing on beginning the information gathering process.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -61,7 +61,7 @@
       <pubDate>Sat, 18 Jul 2015 04:09:12 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</guid>
-      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the &amp;#8216;login as batch job&amp;#8217; local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I&amp;#8217;ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
+      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the ‘login as batch job’ local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I’ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
     </item>
     
     <item>
@@ -70,9 +70,8 @@
       <pubDate>Sun, 22 Mar 2015 16:13:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</guid>
-      <description>&lt;p class=&#34;projectSummary&#34;&gt;
-  This is a self-contained organizational unit selection dialog box using powershell, xaml, wpf, and ADSI. Should be useful in any number of one off Powershell projects I imagine.
-&lt;/p&gt;</description>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -81,7 +80,7 @@
       <pubDate>Fri, 21 Nov 2014 17:37:30 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2014/11/21/lync-ucs-contacts-reporting-with-powershell/</guid>
-      <description>By default a Lync enabled account within a Lync/Exchange 2013 environment will be enabled for UCS (Unified Contact Store). This means that the Lync contacts get saved in the Lync user&amp;#8217;s mailbox and not the Lync database. In order to get a list of the contacts associated with these accounts you have to export data to a zip file with some debug Lync commands and, even then, the information is buried in a hard to interpret XML file.</description>
+      <description>By default a Lync enabled account within a Lync/Exchange 2013 environment will be enabled for UCS (Unified Contact Store). This means that the Lync contacts get saved in the Lync user’s mailbox and not the Lync database. In order to get a list of the contacts associated with these accounts you have to export data to a zip file with some debug Lync commands and, even then, the information is buried in a hard to interpret XML file.</description>
     </item>
     
     <item>
@@ -99,7 +98,7 @@
       <pubDate>Wed, 18 Dec 2013 18:53:18 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/12/18/gather-and-diagram-installed-roles-and-features-with-powershell/</guid>
-      <description>&lt;p&gt;Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I&amp;#8217;ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).&lt;/p&gt;</description>
+      <description>&lt;p&gt;Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I’ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -109,7 +108,7 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/10/16/gather-remote-event-logs-with-powershell/</guid>
       <description>About Gather the remote event log information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns Event Log information for the specified number of past hours. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 10/16/2013
+Version History 1.0.0 – 10/16/2013
  Initial release  Notes By default 24 hours is what we filter against for the results.</description>
     </item>
     
@@ -119,7 +118,7 @@ Version History 1.0.0 &amp;#8211; 10/16/2013
       <pubDate>Sun, 06 Oct 2013 22:50:35 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/10/06/visualize-active-directory-site-connections/</guid>
-      <description>&lt;h4 id=&#34;span-style-color-bbbbbb-font-size-12px-font-weight-normal-line-height-1-6-in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-i-ve-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagram-span&#34;&gt;&lt;span style=&#34;color: #bbbbbb; font-size: 12px; font-weight: normal; line-height: 1.6;&#34;&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;/span&gt;&lt;/h4&gt;</description>
+      <description>&lt;h4 id=&#34;span-stylecolor-bbbbbb-font-size-12px-font-weight-normal-line-height-16in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-ive-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagramspan&#34;&gt;&lt;!-- raw HTML omitted --&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;!-- raw HTML omitted --&gt;&lt;/h4&gt;</description>
     </item>
     
     <item>
@@ -156,7 +155,7 @@ Version History 1.0.0 &amp;#8211; 10/16/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</guid>
       <description>Gather system local groups and their members for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems, a switch for inclusion of empty groups in the results, and returns group names with their members. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 09/11/2013
+Version History 1.0.0 – 09/11/2013
  Initial release  Notes None, this is an independent release of a function I’ve recently included in a larger project.</description>
     </item>
     
@@ -175,7 +174,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Wed, 28 Aug 2013 13:25:22 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/08/28/gather-remote-installed-programs-with-powershell/</guid>
-      <description>&lt;p&gt;&lt;span style=&#34;line-height: 1.6;&#34;&gt;Gather program install information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns from the registry program name, manufacturer, and uninstall information. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/span&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Gather program install information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns from the registry program name, manufacturer, and uninstall information. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -266,7 +265,6 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
       <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
-
 &lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
     </item>
     
@@ -285,7 +283,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Thu, 18 Apr 2013 03:03:36 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/04/17/powershell-colorize-table-function/</guid>
-      <description>&lt;p&gt;Here is a function I modified for quickly modifying the attributes of a table&amp;#8217;s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn&amp;#8217;t hurt either.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Here is a function I modified for quickly modifying the attributes of a table’s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn’t hurt either.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -303,7 +301,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Wed, 16 Jan 2013 03:36:50 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/</guid>
-      <description>&lt;p&gt;If you upgrade Exchange in a co-existence scenario (you want to keep the same client access namespace) there is one crucial moment of truth which must be overcome. This is the phase of the migration I&amp;#8217;ve come to call the &amp;#8220;dns flip-over&amp;#8221; or the &amp;#8220;client access part&amp;#8221;. Without preparation this part of the migration can be a real headache as issues are directly experienced by your end users.  This is a simple report card you can use to prepare you for this moment.&lt;/p&gt;</description>
+      <description>&lt;p&gt;If you upgrade Exchange in a co-existence scenario (you want to keep the same client access namespace) there is one crucial moment of truth which must be overcome. This is the phase of the migration I’ve come to call the “dns flip-over” or the “client access part”. Without preparation this part of the migration can be a real headache as issues are directly experienced by your end users.  This is a simple report card you can use to prepare you for this moment.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -313,7 +311,6 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/12/11/defining-best-of-breed-in-it/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
 &lt;p&gt;Soon I’ll be starting a new position with a company which produces some of the highest quality products in their industry. The company’s products are of such high quality that they typically set the bar in their industry. This made me think of what a truly comprises an excellent solution within the Information Technology.  This article is a non-technical personal view of what defines the “Best of breed” technical solutions.&lt;/p&gt;</description>
     </item>
     
@@ -324,8 +321,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
-&lt;p&gt;I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I&amp;#8217;ve since added a few tools to the VM and documented how they were installed so I figured I&amp;#8217;d share on how it was done. Even if you don&amp;#8217;t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I&amp;#8217;ll start with a tool anyone worth their salt has heard of though, Cacti&amp;#8230;&lt;/p&gt;</description>
+&lt;p&gt;I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I’ve since added a few tools to the VM and documented how they were installed so I figured I’d share on how it was done. Even if you don’t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I’ll start with a tool anyone worth their salt has heard of though, Cacti…&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> CentOS/Redhat 5.x Kickstart Deployment | Zachary Loeber</title>
         <meta name="description" content="CentOS/Redhat 5.x Kickstart Deployment - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="CentOS/Redhat 5.x Kickstart Deployment">
@@ -140,57 +140,31 @@
 
     
         <p>Not too long ago I was tasked with deploying a decent number of CentOS 5.3 and Redhat servers to BL490 blades and VMs in our datacenter (part of a massive environment deployment with HP C7000 enclosures, virtual connect, and a lot of patience). I hate manual configuration so I figured now is as good of time as any to get on the kickstart bandwagon. Here is how I did it:</p>
-
 <p>First you want to make your source install disc and kickstart config files available on the network (more on a good kickstart config file a bit later. There are a number of ways to do this and I actually used both windows and linux for different locations on our network. Essentially you need to make a directory browsable read-only web site on a server that your kickstart configuration can reach from the source host.</p>
-
-<p>The windows configuration is easy so I&#8217;ll leave that exercise to the reader to figure out&#8230;. Ok, the linux part is easy too but requires less bandwidth to explain as I don&#8217;t need screenshots 🙂</p>
-
+<p>The windows configuration is easy so I’ll leave that exercise to the reader to figure out…. Ok, the linux part is easy too but requires less bandwidth to explain as I don’t need screenshots 🙂</p>
 <p>In linux-land you create another apache site with a configuration like the following. Note that I used /opt/kickstart/ as my configuration file location and my cdrom as the source disc location:</p>
-
-<pre>$sudo nano /etc/apache2/sites-available/kickstart</pre>
-
-<pre>Alias /kickstart "/opt/kickstart/"</pre>
-
-<pre>Alias /cdrom "/media/cdrom/"</pre>
-
-<pre>&lt;Directory "/opt/kickstart/"&gt;</pre>
-
-<pre>Options Indexes MultiViews FollowSymLinks</pre>
-
-<pre>AllowOverride None</pre>
-
-<pre>Order allow,deny</pre>
-
-<pre>allow from all</pre>
-
-<pre>&lt;/Directory&gt;</pre>
-
-<pre>&lt;Directory "/media/cdrom/"&gt;</pre>
-
-<pre>Options Indexes MultiViews FollowSymLinks</pre>
-
-<pre>AllowOverride None</pre>
-
-<pre>Order allow,deny</pre>
-
-<pre>allow from all</pre>
-
-<pre>&lt;/Directory&gt;</pre>
-
-<pre>$a2ensite kickstart</pre>
-
-<pre>$/etc/init.d/apache2 restart</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>If all is well then you have two directories on your server that can be reached over the local network and the files can be browsed.</p>
-
 <p>Next create something like the kickstart file attached to this post for /opt/kickstart/ks-network.txt</p>
-
-<p>Note that the name of the file is arbitrary, it is what will be called when you boot to the inital setup screen on your server and instead of pressing enter to continue with the Linux install you enter in linux ks=http://<server ip>/kickstart/ks-network.txt</p>
-
+<p>Note that the name of the file is arbitrary, it is what will be called when you boot to the inital setup screen on your server and instead of pressing enter to continue with the Linux install you enter in linux ks=http://<!-- raw HTML omitted -->/kickstart/ks-network.txt</p>
 <p>I actually have several kickstart files for different situations. The server you will be installing to must be on a subnet with a dhcp address available or you can comment out the url in the file and uncomment the cdrom line to do the install from the local cdrom if you like.</p>
-
 <p>The included kickstart file is a very slimmed down and unforgiving install that will wipe /dev/sda and do a fresh install. There is very little running on the system after this completes.</p>
-
 <p><a href="/wp-content/uploads/2009/11/ks-network1.txt">ks-network</a></p>
     
 </div>
@@ -310,15 +284,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -347,7 +321,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

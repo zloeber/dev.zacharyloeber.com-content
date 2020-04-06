@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> PowerShell: New Project – OhMyPsh | Zachary Loeber</title>
         <meta name="description" content="PowerShell: New Project – OhMyPsh - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="PowerShell: New Project – OhMyPsh">
@@ -136,39 +136,23 @@
 
     
         <p>A PowerShell 5.0 terminal experience with lots of smart features that make you look cool at the command line.</p>
-
 <p>Ok, so the ‘zinger’ line at the beginning of this post sounds like a sales pitch for a motorcycle or something but it is an apt description given the amount of features I’ve baked into this module. Here is probably a more accurate description:</p>
-
 <blockquote>
 <p>OhMyPsh is a personal profile management and profile loading wizard for PowerShell 5.0 (and greater) users that uses a simple json configuration file to manage plugins, themes, module auto-loading, module upgrading, module cleanup, and other chores so that you can be more productive in the shell.</p>
 </blockquote>
-
 <p>Before I go over what this module does, lets get a short background of why I went off the deep end and coded this project shall we?</p>
-
 <h2 id="background">Background</h2>
-
 <p>This project started with a simple need to be able to quickly use one off scripts without the need to put them in my profile or dot source them. I also wanted to be able to distribute scripts to my team without having to give instructions for how to get them to work or worry too much about prerequisite modules and other nonsense. Finally, I wanted to be able to quickly replicate my console experience between systems, automate module upgrades, and just make my PowerShell experience smarter in general.</p>
-
 <p>In looking for already created solutions for this kind of thing I first looked at <a href="https://github.com/zloeber/PowerShellProfile">a highly customized powershell profile</a>. But this setup suffers from several drawbacks, most notably that you have to maintain the profile itself. It is also not easy to add/remove features without a bunch of manual effort and it is certainly not portable.</p>
-
 <p>I found a few other projects that have the same name but are totally different incarnations of the same concept. These are as follows:</p>
-
-<p><a href="https://github.com/pecigonzalo/Oh-My-Posh">Oh-My-Posh (pecigonzalo)</a> &#8211; Powershell amazingness inspired on Oh-My-Zsh, pshazz, fish. This provides a repository for PowerShell Customizations.</p>
-
-<p><a href="https://github.com/JanJoris/oh-my-posh">Oh-My-Posh (JanJoris)</a> &#8211; A prompt theming engine for Powershell running in ConEmu</p>
-
+<p><a href="https://github.com/pecigonzalo/Oh-My-Posh">Oh-My-Posh (pecigonzalo)</a> – Powershell amazingness inspired on Oh-My-Zsh, pshazz, fish. This provides a repository for PowerShell Customizations.</p>
+<p><a href="https://github.com/JanJoris/oh-my-posh">Oh-My-Posh (JanJoris)</a> – A prompt theming engine for Powershell running in ConEmu</p>
 <p>The first oh-my-posh listed above was more heavily structured around the original oh-my-zsh. It includes plugins and other such fun but I found that the code structure didn’t quite suit my needs. Besides, a zsh structured shell doesn’t necessarily carry over well to a Windows or Powershell based system. Regardless, I can honestly say that this was the module that inspired this project.</p>
-
 <p>The second listed oh-my-posh above had some great ideas around theming and I really like it as well. It didn’t have any other real features though. It is also Conemu based with many of the theme prompts reliant upon the author’s favorite fonts.</p>
-
 <p>Another module worth mentioning is <a href="https://github.com/Davlind/PSColor">PSColor</a>. If you want to ‘theme’ your console it involves intercepting the ‘out-default’ function which is generally called at the end of every baked in cmdlet in PowerShell. I initially was going to make PSColor a required module but there was a fatal flaw in its implementation that broke the out-default function upon unloading the module. I fixed this issue and submitted a pull request for the project but it hasn’t been merged as of yet. I decided simply to simply absorb the functionality of this module into oh-my-psh as that solves several issues for me and ensures that theming always works with my module the way it is intended to.</p>
-
 <p>That all being said, I started building my own version of oh-my-psh and went totally off the deep end. Lets talk features shall we?</p>
-
 <h2 id="features">Features</h2>
-
 <p>OhMyPsh includes several appealing features for the PowerShell user. This included (but is not limited to):</p>
-
 <ul>
 <li>Automatic module updating (Via psget)</li>
 <li>Automatic old module cleaning (Via psget)</li>
@@ -177,47 +161,22 @@
 <li>Persistent custom profile settings.</li>
 <li>Integrated PSColor output (that can safely be unloaded)</li>
 </ul>
-
 <h2 id="installation">Installation</h2>
-
 <p>Simple, this a PowerShell 5.0 based module that can be installed with a single command:</p>
-
-<pre class="lang:powershell decode:true">install-module ohmypsh -scope:currentuser</pre>
-
+<!-- raw HTML omitted -->
 <h2 id="use">Use</h2>
-
 <p>Again, simple stuff:</p>
-
-<pre class="lang:powershell decode:true">import-module ohmypsh</pre>
-
-<p>But when you import the module nothing will change. That&#8217;s cool, lets spruce things up a little.</p>
-
-<pre class="lang:powershell decode:true">Add-OMPPlugin psreadline
-Add-OMPPlugin pscolor
-Add-OMPPlugin banner
-Add-OMPPlugin psdefaultparams
-Add-OMPPlugin qod
-Add-OMPPlugin fzf
-Add-OMPPlugin powerline
-Add-OMPPlugin psgit
-Add-OMPPlugin moduleupgrade
-Add-OMPPlugin moduleclean
-Set-OMPTheme powerline</pre>
-
+<!-- raw HTML omitted -->
+<p>But when you import the module nothing will change. That’s cool, lets spruce things up a little.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>This particular setup includes a theme that works very well with Conemu (which my favorite console app, cmder, wraps nicely around). If you are just using a plain powershell prompt then you may want to give either the jaykul or golagola themes a whirl instead.</p>
-
-<h2 id="related-projects-credits">Related Projects/Credits</h2>
-
+<h2 id="related-projectscredits">Related Projects/Credits</h2>
 <p>This project is <a href="https://github.com/zloeber/OhMyPsh">hosted on github</a> and I welcome pull requests.</p>
-
-<p>Here are some of the other references project sites, you should check &#8217;em out too.</p>
-
+<p>Here are some of the other references project sites, you should check ’em out too.</p>
 <p>[PSColor](<a href="https://github.com/Davlind/PSColor">https://github.com/Davlind/PSColor)</a></p>
-
 <p>[PSReadline](<a href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/psreadline/psreadline">https://msdn.microsoft.com/en-us/powershell/reference/5.1/psreadline/psreadline)</a></p>
-
 <p>[Oh-My-Posh (pecigonzalo)](<a href="https://github.com/pecigonzalo/Oh-My-Posh)">https://github.com/pecigonzalo/Oh-My-Posh)</a></p>
-
 <p>[Oh-My-Posh (JanJoris)](<a href="https://github.com/JanJoris/oh-my-posh">https://github.com/JanJoris/oh-my-posh</a>)</p>
     
 </div>
@@ -350,15 +309,15 @@ Set-OMPTheme powerline</pre>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -387,7 +346,7 @@ Set-OMPTheme powerline</pre>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

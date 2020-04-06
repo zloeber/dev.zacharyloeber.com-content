@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> ESX &#43; MSCS 2008 R2 &#43; SQL Server 2008 | Zachary Loeber</title>
         <meta name="description" content="ESX &#43; MSCS 2008 R2 &#43; SQL Server 2008 - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="ESX &#43; MSCS 2008 R2 &#43; SQL Server 2008">
@@ -142,21 +142,13 @@
 
     
         <p>Just a quick note on this little combo. Should you be looking to setup a windows 2008 R2 cluster in a virtual environment (details on specific vmware configuration left to the reader) here are some quick notes that I have on some caveats.</p>
-
 <p>1.)    Either keep vmware tools un-uninstalled or make certain not to install the Shared Folder component of vmware tools.</p>
-
 <p>2.)    Don’t clone the second node from the first using vmware. Even if it changes the SID it does <strong>NOT</strong> change athe NIC card underlying GUID which causes issues in the cluster validation wizard.</p>
-
 <p>3.)    Make sure to configure all networking prior to presenting any raw data mappings in vmware.</p>
-
 <p>4.)    Increase the cluster heartbeat timeout to prevent unnessesary failovers:</p>
-
-<pre>cluster.exe /prop ClusSvcHangTimeout=120</pre>
-
+<!-- raw HTML omitted -->
 <p>5.)    No thin provisioned disks.</p>
-
-<p>There are other caveats and such but these are the ones that bit me personally (well except for the thin provisioned disks, we don&#8217;t use them where I&#8217;m at now unfortunately).</p>
-
+<p>There are other caveats and such but these are the ones that bit me personally (well except for the thin provisioned disks, we don’t use them where I’m at now unfortunately).</p>
 <p>Unfortunately setting up a MS cluster in vmware sort of erases most the benefits of having a vm in the first place sometimes you just need a cluster without all the hardware and hassle thereof 🙂</p>
 
     
@@ -277,15 +269,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -314,7 +306,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

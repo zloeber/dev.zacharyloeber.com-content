@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010: Poor Man’s Monitoring | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010: Poor Man’s Monitoring - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010: Poor Man’s Monitoring">
@@ -144,40 +144,24 @@
 
     
         <p>I quietly released a new script into the wild the other day, Troubleshoot-MailboxServer.ps1. This script is meant for monitoring, fixing, and reporting on Exchange 2010 database servers. It pretty much just wraps around and reports on troubleshooting scripts found in %ExchangeInstallPath%Scripts. I also set it so you can have an email sent including warning/error color coded report upon completion.</p>
-
 <p>Optionally, an overall system health overview can be sent following any warnings/errors which are generated from the scripts. This last report is purely optional and is actually just another person’s script which I rolled into Troubleshoot-MailboxServer.ps1. This report has some external requirements though. <a href="http://www.simple-talk.com/sysadmin/powershell/building-a-daily-systems-report-email-with-powershell/">The original author’s release of the script can be read here</a>. The external requirements are <a href="http://www.microsoft.com/download/en/details.aspx?id=14422">MS Chart Controls for .Net 3.5</a>. So if you are not wanting to install these requirements on your Exchange server then make certain to set $SendSystemReport to $false.</p>
-
 <p>The scripts which Troubleshoot-MailboxServer.ps1 calls are as follows:</p>
-
 <ul>
 <li>Troubleshoot-CI.ps1 (I cannot seem to find the ms technet article for this one)</li>
 <li><a href="http://technet.microsoft.com/en-us/library/ff798271">Troubleshoot-DatabaseLatency.ps1</a></li>
 <li><a href="http://technet.microsoft.com/en-us/library/ff477617.aspx">Troubleshoot-DatabaseSpace.ps1</a></li>
 </ul>
-
 <p>More information about the <a href="http://blogs.technet.com/b/exchange/archive/2011/01/18/3411844.aspx">Exchange 2010 Troubleshooters can be found here.</a></p>
-
 <p>For good measure I tossed in the option to redistribute your DAG(s) with <a href="http://technet.microsoft.com/library/dd335158%28v=EXCHG.141%29">RedistributeActiveDatabases.ps1</a>.</p>
-
 <p>Be cautioned that, although this script does have a “testing” mode, it does not prevent the troubleshooter scripts from disabling provisioning of mailboxes to databases as that feature is not available as part of the troubleshooter scripts. Should you find that databases have become unprovisionable and you want the ability to provision to them again you need to run the following from an Exchange 2010 management shell:</p>
-
-<pre>Set-MailboxDatabase &lt;database name&gt; -IsExcludedFromProvisioning:$false</pre>
-
+<!-- raw HTML omitted -->
 <p>In Exchange 2010 SP1 the CheckDatabaseRedundancy.ps1 script is included and scheduled to automatically run. Apparently they used ManageScheduledTask.ps1 (which is also new to SP1) to automate scheduling the task. As when you use ManageScheduledTask.ps1 the description given to any new scheduled task you create with it reads that it is a task for checking database redundancy J. Regardless, you can use that script to schedule Exchange-DatabaseMonitoring.ps1.</p>
-
-<pre>cd $exscripts</pre>
-
-<pre>.\ManageScheduledTask.ps1 -Install -ServerName &lt;Your Server&gt; -PsScriptPath C:\Scripts\Troubleshoot-MailboxServer.ps1 -TaskName "Troubleshoot Exchange 2010 Mailbox Servers"</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>(Note: this adds the scheduled task as a generic task, you will still need to go into scheduled tasks  and set a schedule for it to run and add change the description).</p>
-
 <p>Download the script: <a href="/wp-content/uploads/2012/07/Troubleshoot-MailboxServer.ps1">Troubleshoot-MailboxServer.ps1</a></p>
-
 <p>or</p>
-
-<p class="MsoNoSpacing">
-  <a title="Troubleshoot-MailboxDatabase on Technet script center" href="http://gallery.technet.microsoft.com/scriptcenter/Troubleshoot-Exchange-2010-aecdc23f">From here</a>
-</p>
+<!-- raw HTML omitted -->
     
 </div>
 
@@ -313,15 +297,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -350,7 +334,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Powershell: PSCloudflare Module | Zachary Loeber</title>
         <meta name="description" content="Powershell: PSCloudflare Module - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Powershell: PSCloudflare Module">
@@ -136,36 +136,22 @@
 
     
         <p>A well documented API without a PowerShell Module is like an itch begging to be scratched.</p>
-
-<p>I&#8217;ve been working on a re-architecture of an existing CDN solution into Cloudflare and had to add over 500 ip firewall rules to maintain parity with the existing solution. So I created this module to help accomplish the task. It started out pretty small but I think it is in a decent enough state to properly announce.</p>
-
+<p>I’ve been working on a re-architecture of an existing CDN solution into Cloudflare and had to add over 500 ip firewall rules to maintain parity with the existing solution. So I created this module to help accomplish the task. It started out pretty small but I think it is in a decent enough state to properly announce.</p>
 <h2 id="introduction">Introduction</h2>
-
-<p>Firstly the original script I based this on can be located <strong><a href="https://github.com/poshsecurity/PowerShell-CloudFlare-Tor-Whitelist">Here</a>.</strong> I believe due credit should be given for great work 🙂 As we all already know, PowerShell benefits from such a large community because of how easily one can take other&#8217;s work and expand upon it.</p>
-
-<p>This project tears apart the original script and converts it into a proper module. In the process I&#8217;ve added a few improvements:</p>
-
+<p>Firstly the original script I based this on can be located <strong><a href="https://github.com/poshsecurity/PowerShell-CloudFlare-Tor-Whitelist">Here</a>.</strong> I believe due credit should be given for great work 🙂 As we all already know, PowerShell benefits from such a large community because of how easily one can take other’s work and expand upon it.</p>
+<p>This project tears apart the original script and converts it into a proper module. In the process I’ve added a few improvements:</p>
 <ul>
 <li>Implemented a proper build process (<a href="https://github.com/zloeber/PSModuleBuild">PSModuleBuild</a>)</li>
 <li>Added documentation (via comment based help which PSModuleBuild converts to proper documentation via PlatyPS)</li>
 <li>Generalized the functions</li>
 <li>Added validation around some of the parameters</li>
 </ul>
-
 <p>This project starts with a few functions I needed to add a large number of firewall rules but can be very easily added and expanded upon to suit your needs. The full documentation for the api can be found <strong><a href="https://api.cloudflare.com/">Here</a></strong></p>
-
-<h2 id="user-content-install.anchor">[]<a href="https://github.com/zloeber/PSCloudflare#install">4</a></h2>
-
-<p>Install</p>
-
+<h2 id="user-content-install" class="anchor"><a href="https://github.com/zloeber/PSCloudflare#install"></a></h2>
 <p>You can use the installer script included with this project or, if you are using PowerShell 5.0 or greater simply run:</p>
-
-<pre class="lang:powershell decode:true">install-module pscloudflare</pre>
-
-<p><span style="color: #eeeeee; font-size: 16px;">Example</span></p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->Example<!-- raw HTML omitted --></p>
 <p>Here is a small example of some stuff you can do thus far.</p>
-
 <pre><code>$Token = 'aaaaaaaaaabbbbbbbbbbccccccccccc1234552'
 $Email = 'jdoe@contoso.com'
 $Zone = 'contoso.com'
@@ -196,28 +182,16 @@ if ($Connected) {
     Get-CFFirewallRule -Verbose
 }
 </code></pre>
-
-<h2 id="user-content-contributing.anchor">[]<a href="https://github.com/zloeber/PSCloudflare#contributing">5</a></h2>
-
-<p>Design Decisions</p>
-
-<p>I&#8217;ve begun to notice a trend in the modules that I write. I know full well that I&#8217;m likely never going to encapsulate all of an API in my module so I try to code it in a way that makes it easier to expand in the future.</p>
-
+<h2 id="user-content-contributing" class="anchor"><a href="https://github.com/zloeber/PSCloudflare#contributing"></a></h2>
+<p>I’ve begun to notice a trend in the modules that I write. I know full well that I’m likely never going to encapsulate all of an API in my module so I try to code it in a way that makes it easier to expand in the future.</p>
 <p>All the real work for invoking REST calls to the Cloudflare API is done by Invoke-CFAPI4Request. Prior to calling this function I use another function called Set-CFRequestData to populate a private variable (psobject) that will be used for the REST request. This will ensure that the most recent call data is always kept in a module variable that you can expose with Get-CFRequestData for troubleshooting and debugging purposes. This also makes it easier to log all API requests later on in a single function if I wanted to do so.</p>
-
 <p>So even though I only created the functions for adding, listing, modifying, and removing firewall entries in Cloudflare it would be very easy for me (or others) to later on add any of the other Cloudflare API functionalities to this module.</p>
-
-<p>I did something similar with my PSPaloAlto module but since all calls for it&#8217;s API are convoluted XML it is a different beast (but the same concept and module methodology apply).</p>
-
+<p>I did something similar with my PSPaloAlto module but since all calls for it’s API are convoluted XML it is a different beast (but the same concept and module methodology apply).</p>
 <h2 id="links">Links</h2>
-
 <p><a href="https://github.com/zloeber/PSCloudflare">PSCloudFlare Github Project Page</a></p>
-
 <p><a href="https://www.powershellgallery.com/packages/PSCloudFlare/0.0.3">PSCloudFlare on PowerShell Gallary</a></p>
-
 <p><a href="https://api.cloudflare.com/">Cloudflare API documentation</a></p>
-
-<p>&nbsp;</p>
+<p> </p>
     
 </div>
 
@@ -353,15 +327,15 @@ if ($Connected) {
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -390,7 +364,7 @@ if ($Connected) {
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

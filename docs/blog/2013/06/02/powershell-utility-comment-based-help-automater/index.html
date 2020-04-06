@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Powershell Utility: Comment Based Help Automater | Zachary Loeber</title>
         <meta name="description" content="Powershell Utility: Comment Based Help Automater - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Powershell Utility: Comment Based Help Automater">
@@ -138,53 +138,25 @@
 
     
         <p>Comment based help is used in powershell-land to provide fast and easy help for cmdlets at the console. This little powershell based GUI helps fellow coders automatically construct comment based help blocks for their functions.</p>
-
 <h1 id="about"><strong>About</strong></h1>
-
-<p>Comment based help allows you to run ‘get-help <command />’ at a powershell console to get more information about a cmdlet or function. And it is extremely easy to add comment based help to your own custom powershell functions with a specially formatted comment block just before, or immediately inside of a function.</p>
-
+<p>Comment based help allows you to run ‘get-help <!-- raw HTML omitted -->’ at a powershell console to get more information about a cmdlet or function. And it is extremely easy to add comment based help to your own custom powershell functions with a specially formatted comment block just before, or immediately inside of a function.</p>
 <p>Unfortunately only a third of powershell functions I’ve come across on the internet have the appropriate comment blocks included with them. This utility aims to make it easier for script writers to add comment based help to their scripts with an easy to use GUI which can automatically capture all the parameters of their function (as well as any specified HelpMessage if it exists).</p>
-
 <h1 id="version"><strong>Version</strong></h1>
-
 <p>Version         :   1.0.0 May 31th 2013</p>
-
-<p>&#8211; First release</p>
-
+<p>– First release</p>
 <h1 id="notes"><strong>Notes</strong></h1>
-
 <p>The zip includes a stand-alone ps1 script, a compiled executable of the script, and a folder with all the project files I put together with Sapien Powershell Studio 2012.</p>
-
 <p>The hardest part of this script was converting the text to a script block and trying to figure out all the ways to yank out parameters with [Management.Automation.PSParser]::Tokenize. If you are purely interested in that aspect of the tool you can find the function “Get-FunctionParameters” in the globals.ps1 script with the project files. The one item I’ve not resolved is parsing out a parameter which is of type [ScriptBlock] with a default value set (something with the curly braces but I’ve not put too much effort into this due to its infrequent occurrence).</p>
-
 <p>This utility will only parse a single function at a time. In fact, you only need to supply the param block to get the full results.</p>
-
 <h1 id="screenshots"><strong>Screenshots</strong></h1>
-
-<div id="attachment_787" style="width: 310px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2013/06/CBH-Example.jpg"><img class="size-medium wp-image-787" alt="Comment Based Help Main Screen" src="/wp-content/uploads/2013/06/CBH-Example-300x188.jpg?resize=300%2C188" width="300" height="188" srcset="/wp-content/uploads/2013/06/CBH-Example.jpg?resize=300%2C188 300w, /wp-content/uploads/2013/06/CBH-Example.jpg?w=925 925w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a>
-  
-  <p class="wp-caption-text">
-    Comment Based Help Main Screen
-  </p>
-</div>
-
-<div id="attachment_788" style="width: 277px" class="wp-caption aligncenter">
-  <a href="/wp-content/uploads/2013/06/Options.jpg"><img class="size-medium wp-image-788" alt="Options to select for comment based help construction" src="/wp-content/uploads/2013/06/Options.jpg?resize=267%2C300" width="267" height="300" srcset="/wp-content/uploads/2013/06/Options.jpg?resize=267%2C300 267w, wp-content/uploads/2013/06/Options.jpg?w=560 560w" sizes="(max-width: 267px) 100vw, 267px" data-recalc-dims="1" /></a>
-  
-  <p class="wp-caption-text">
-    Comment based help options
-  </p>
-</div>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h1 id="conclusion"><strong>Conclusion</strong></h1>
-
 <p>I hope that this little tool finds its way into fellow scripter’s utility collections. Give me a holler if you have any ideas for improvement (or improve it yourself!).</p>
-
 <h1 id="download">Download</h1>
-
 <p><a href="http://gallery.technet.microsoft.com/Powershell-Utility-Comment-da6baaf3">Microsoft Technet Gallery</a></p>
-
 <p><a href="/wp-content/uploads/2013/06/New-CommentBasedHelp.zip" title="Right Here">Right Here</a></p>
     
 </div>
@@ -317,15 +289,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -354,7 +326,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

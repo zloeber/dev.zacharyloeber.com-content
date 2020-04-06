@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Lync 2013: Scripting QoS Config on Edge Servers | Zachary Loeber</title>
         <meta name="description" content="Lync 2013: Scripting QoS Config on Edge Servers - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Lync 2013: Scripting QoS Config on Edge Servers">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">3 min read</span>
+            <span class="readingTime">1 min read</span>
         
 
         
@@ -139,88 +139,12 @@
     </div>
 
     
-        <p>In many environments the Lync 2013 edge servers are configured in a standalone workgroup without any easy method for setting standard policies (such as GPOs). To make QoS configuration a bit less manual and error prone I&#8217;ve put together this script which can be run in an administrative powershell prompt. It will update the NLA setting (or create it if it doesn&#8217;t already exist), backup and prompt for removal any existing Qos settings, then import the registry settings for Audio, Video, and App QoS settings as defined in the script parameters.</p>
-
+        <p>In many environments the Lync 2013 edge servers are configured in a standalone workgroup without any easy method for setting standard policies (such as GPOs). To make QoS configuration a bit less manual and error prone I’ve put together this script which can be run in an administrative powershell prompt. It will update the NLA setting (or create it if it doesn’t already exist), backup and prompt for removal any existing Qos settings, then import the registry settings for Audio, Video, and App QoS settings as defined in the script parameters.</p>
 <h2 id="details">Details</h2>
-
 <p>QoS settings in Windows are simply registry keys with some values underneath. All this script does behind the scenes is create a .reg file based on a template and imports it. The default settings are fairly standard but are also easy to change to suit your needs or environment. Although the current QoS settings are displayed and exported to a backup .reg file I still recommend caution when running this script in your production environment.</p>
-
 <p>Here is the obligatory comment based help for the script:</p>
-
-<pre class="lang:powershell decode:true">&lt;# 
-.SYNOPSIS 
-Sets Qos configuration on Lync edge servers quickly. 
-.DESCRIPTION 
-Sets Qos configuration on Lync edge servers quickly. This is meant to be run locally at each edge server. 
-.PARAMETER AudioPortStart 
-Audio Qos port start. Default value is 49152 
-.PARAMETER AudioPortEnd 
-Audio Qos port End. Default value is 57500 
-.PARAMETER AudioDSCP 
-Audio Qos DSCP value. Default value is 46 
-.PARAMETER VideoPortStart 
-Video Qos port start. Default value is 57501 
-.PARAMETER VideoPortEnd 
-Video Qos port start. Default value is 65535 
-.PARAMETER VideoDSCP 
-Video Qos DSCP value. Default value is 32  
-.PARAMETER AppPortStart 
-App Qos port start. Default value is 40803 
-.PARAMETER AppPortEnd 
-App Qos port start. Default value is 48837 
-.PARAMETER AppDSCP 
-App Qos DSCP value. Default value is 0 
-.EXAMPLE 
-PS &gt; Set-LyncEdgeQos 
- 
-Description 
------------ 
-Sets the egde server Qos values to the defaults defined in the script parameters then displays them.  
- 
-The default values will look something like this when used: 
- 
-    Policy            : Lync App Sharing 
-    Local Ports       : * 
-    Local Port Begin  : NA 
-    Local Port End    : NA 
-    Local Port Count  : NA 
-    Remote Ports      : 40803:48837 
-    Remote Port Begin : 40803 
-    Remote Port End   : 48837 
-    Remote Port Count : 8034 
-    DSCP Value        : 0 
- 
-    Policy            : Lync Audio 
-    Local Ports       : * 
-    Local Port Begin  : NA 
-    Local Port End    : NA 
-    Local Port Count  : NA 
-    Remote Ports      : 49152:57500 
-    Remote Port Begin : 49152 
-    Remote Port End   : 57500 
-    Remote Port Count : 8348 
-    DSCP Value        : 46 
- 
-    Policy            : Lync Video 
-    Local Ports       : * 
-    Local Port Begin  : NA 
-    Local Port End    : NA 
-    Local Port Count  : NA 
-    Remote Ports      : 57501:65535 
-    Remote Port Begin : 57501 
-    Remote Port End   : 65535 
-    Remote Port Count : 8034 
-    DSCP Value        : 32 
-.NOTES 
-Author: Zachary Loeber 
- 
-Requires: Powershell 3.0 
- 
-Version History 
-1.0.0 - 03/31/2015 
-- Initial release 
-#&gt;</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>As usual, the script has been uploaded to the <a href="https://gallery.technet.microsoft.com/Lync-2013-Set-Local-Server-724655df">Microsoft technet gallary</a> and <a href="https://github.com/zloeber/Powershell/blob/master/Lync/Set-LyncEdgeQos.ps1">my github repo</a>.</p>
     
 </div>
@@ -363,15 +287,15 @@ Version History
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -400,7 +324,7 @@ Version History
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

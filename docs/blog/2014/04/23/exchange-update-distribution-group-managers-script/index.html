@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange: Update Distribution Group Managers Script | Zachary Loeber</title>
         <meta name="description" content="Exchange: Update Distribution Group Managers Script - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange: Update Distribution Group Managers Script">
@@ -140,13 +140,9 @@
 
     
         <p>A small script to automatically update distribution group owners based on an AD security group.</p>
-
 <p>Not much to the script really. This was a quick solution to an issue I ran into in the wild. A supplied security group will be unrolled and any account within which is also mail enabled and not already listed as a manager for the supplied distribution group will be automatically added to the managedby attribute list for the distribution group. If no distribution group is supplied then all distribution groups will be evaluated and updated.</p>
-
 <p>This is really meant to help allow helpdesk or other staff to manage Exchange distribution lists from within the Exchange ECP. Otherwise they may have to resort to powershell in order to force management bypass checks when modifying distribution group membership.</p>
-
 <p>In many regards this script is just a simplified version of an already <a href="http://gallery.technet.microsoft.com/756b02bd-fb8c-4071-b7b3-3e9022831678">published solution found here</a>.</p>
-
 <p>Anyway, <a href="http://gallery.technet.microsoft.com/Exchange-Update-Distributio-788dd3f0">here is the modified solution I came up with</a>. Enjoy!</p>
     
 </div>
@@ -281,15 +277,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -318,7 +314,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

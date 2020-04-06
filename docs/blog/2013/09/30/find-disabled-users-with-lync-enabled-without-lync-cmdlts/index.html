@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Find Disabled Users With Lync Enabled Without Lync Cmdlts | Zachary Loeber</title>
         <meta name="description" content="Find Disabled Users With Lync Enabled Without Lync Cmdlts - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Find Disabled Users With Lync Enabled Without Lync Cmdlts">
@@ -140,77 +140,35 @@
 
     
         <p>Here is a quick tip which applies to more than just Lync. I use powershell with .NET ADSI to gather a list of all users which are disabled but still have Lync sip addresses assigned. There are numerous reasons to disable lync on such accounts. One reason would be to make certain that users whom are no longer with the organization get removed from the Lync address list. Another is so these same users can no longer access Lync! (Yes, a disabled AD account may still be authorized to access Lync).</p>
-
 <p>It is a common misnomer that the Lync administration console is required to access basic Lync information. In all actuality, you need only have a domain user account and a bit of active directory acumen to report upon a whole bunch of Lync related attributes. And you can get even more information from AD about Exchange (See my article <a href="http://www.peters.com/blog/Lists/Posts/Post.aspx?ID=48">comparing the level of AD reliance Lync and Exchange exhibit</a>).</p>
-
 <p>Here is a small example on getting some of this kind of info. Essentially all we are looking for are accounts in AD with a disabled account but which still have a primary sip address assigned to the msRTCSIP-PrimaryUserAddress attribute.</p>
-
 <p>Lets start with the disabled user part. An LDAP filter which will find all the disabled accounts is:</p>
-
-<pre>(objectCategory=person)(objectClass=user)(useraccountcontrol:1.2.840.113556.1.4.803:=2)</pre>
-
-<p>Ok, so now add in any account where  msRTCSIP-PrimaryUserAddress contains any value. Easy peasy&#8230;</p>
-
-<pre>(msRTCSIP-PrimaryUserAddress=*)</pre>
-
+<!-- raw HTML omitted -->
+<p>Ok, so now add in any account where  msRTCSIP-PrimaryUserAddress contains any value. Easy peasy…</p>
+<!-- raw HTML omitted -->
 <p>So the new LDAP filter becomes:</p>
-
-<pre>(objectCategory=person)(objectClass=user)(useraccountcontrol:1.2.840.113556.1.4.803:=2)(msRTCSIP-PrimaryUserAddress=*)</pre>
-
-<p>So with the magic filter at hand, all that is left to do is query AD with it. You actually don&#8217;t even need to do this with powershell. If so inclined, you can simply create a new advanced query in Active Directory Users and Computers:</p>
-
-<p><a href="wp-content/uploads/2013/09/ldap-aduc-filter.jpg"><img class="aligncenter size-medium wp-image-963" alt="ldap-aduc-filter" src="/wp-content/uploads/2013/09/ldap-aduc-filter.jpg?resize=300%2C270" width="300" height="270" srcset="/wp-content/uploads/2013/09/ldap-aduc-filter.jpg?resize=300%2C270 300w, wp-content/uploads/2013/09/ldap-aduc-filter.jpg?w=398 398w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></p>
-
+<!-- raw HTML omitted -->
+<p>So with the magic filter at hand, all that is left to do is query AD with it. You actually don’t even need to do this with powershell. If so inclined, you can simply create a new advanced query in Active Directory Users and Computers:</p>
+<p><a href="wp-content/uploads/2013/09/ldap-aduc-filter.jpg"><!-- raw HTML omitted --></a></p>
 <p>This should instantly show you all your disabled accounts which are still associated with a primary sip address in ADUC. But I promised a powershell way to do this as well. Here it is, without any AD or Lync modules.</p>
-
-<pre>$ADS_UF_ACCOUNTDISABLE = 0x00002
-$root = [ADSI]''
-$search = [adsisearcher]$root
-$search.PageSize = 2000
-$search.Filter = '(&(&(&(objectCategory=person)(objectClass=user)(useraccountcontrol:1.2.840.113556.1.4.803:=2)(msRTCSIP-PrimaryUserAddress=*))))'
-$colResults = $Search.FindAll()
-$Output = @()
-foreach ($i in $colResults)
-{
- $ObjProps = @{
- Name = [string]$i.Properties.Item('Name')
- Disabled = [bool]([string]$i.Properties.Item('useraccountcontrol') -band $ADS_UF_ACCOUNTDISABLE)
- PrimarySipAddress = [string]$i.Properties.Item('msRTCSIP-PrimaryUserAddress')
- }
- $Output += New-Object psobject -Property $ObjProps
-}</pre>
-
-<pre>$Output</pre>
-
-<p>I added in a few items just for aesthetics (The actual sip address and proof that the account is in fact disabled) but it is easy to get the gist of what I&#8217;m doing here. Note that [ADSI]&#8221; is essentially the root of the default naming context, also known as the top of your domain. You can target other partitions to get other information though. Of particular interest is the configuration partition. You can quickly start querying the configuration partition with the following code:</p>
-
-<pre>$RootDSC = [adsi]"LDAP://RootDSE"
-$ConfigNamingContext = $RootDSC.configurationNamingContext
-$Root = [ADSI]"LDAP://$([string]$ConfigNamingContext)"</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>I added in a few items just for aesthetics (The actual sip address and proof that the account is in fact disabled) but it is easy to get the gist of what I’m doing here. Note that [ADSI]” is essentially the root of the default naming context, also known as the top of your domain. You can target other partitions to get other information though. Of particular interest is the configuration partition. You can quickly start querying the configuration partition with the following code:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>If you search the configuration partition for the following:</p>
-
-<pre>(&(objectClass=msRTCSIP-Pool))</pre>
-
+<!-- raw HTML omitted -->
 <p>And then return the dnshostname attribute, you will have effectively queried AD for all Lync pool names.</p>
-
 <p>Or filter for internal lync server names:</p>
-
-<pre>Filter: (&(objectClass=msRTCSIP-TrustedServer))</pre>
-
-<pre>Attribute: msrtcsip-trustedserverfqdn</pre>
-
-<p>Or find the Lync edge servers&#8230;</p>
-
-<pre>Filter: (&(objectClass=msRTCSIP-EdgeProxy))</pre>
-
-<pre>Attribute: msrtcsip-edgeproxyfqdn</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Or find the Lync edge servers…</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Well, you get the picture. AD is a very big open book for those who know where to look 🙂</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
+<p> </p>
+<p> </p>
     
 </div>
 
@@ -352,15 +310,15 @@ $Root = [ADSI]"LDAP://$([string]$ConfigNamingContext)"</pre>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -389,7 +347,7 @@ $Root = [ADSI]"LDAP://$([string]$ConfigNamingContext)"</pre>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

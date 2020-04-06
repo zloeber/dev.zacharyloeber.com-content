@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010: Changing an invalid DNS suffixed server | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010: Changing an invalid DNS suffixed server - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010: Changing an invalid DNS suffixed server">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">6 min read</span>
+            <span class="readingTime">5 min read</span>
         
 
         
@@ -149,64 +149,35 @@
     </div>
 
     
-        <p>I ran into an interesting Exchange <sup>2010</sup>&frasl;<sub>2007</sub> co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be</p>
-
-<pre>“Initial error: 451 4.4.0 dns query failed. The error was: SMTPsend.dns.nonexistentdomain; nonexistent”</pre>
-
+        <p>I ran into an interesting Exchange 2010/2007 co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be</p>
+<!-- raw HTML omitted -->
 <p>The general setup was a single site layout with 2 Exchange 2007 servers. One as a hub/cas server and the other as a database server.  The upgrade was for a separate forest in a larger organization but sharing the same root namespace (ie. clientdomain.organization.com but a completely different forest not sharing DCs or other services with organization.com). The new TMG and Exchange 2010 servers were setup by the client before I arrived per my recommendations. For this discussion let’s use the following as our server names:</p>
-
 <p>Exchange 2007 Front-End: Exch2007FE.clientdomain.bigorg.local</p>
-
 <p>Exchange 2007 Mailbox – Exch2007Mail.clientdomain.bigorg.local</p>
-
 <p>New Exchange 2010 server – Exch2010.clientdomain.bigorg.local</p>
-
 <p>I configured the Exch2010.clientdomain.bigorg.local server about 90% and had started replicating public folders to it, or thought I was at least. Being a bit of a pessimist (not about everything, just Exchange deployments), I made sure to check the queues on both the 2007 and 2010 side. Low and behold there were about 500 messages waiting in the “Hub-Version-14” queue on the 2007 server. Bummer….</p>
-
 <p>Now this wouldn’t be so interesting had I not already <a href="http://exchangeserverpro.com/public-folders-not-replicating-between-exchange-2007-and-2010">manually removed the empty SERVERS container from the First Administrative Group via ADSIEdit</a> in preparation for the public folder migration.  Also there were no other real issues, the domain was clean as could be (after I cleaned it up of course) and the two servers were even on the same subnet.  I also validated that email could be sent from 2010 to the 2007 servers and out the network, just not the other way around. I know that there have been prior issues with Exchange 2007 running on Windows 2008 with IPv6 disabled (as is was the case in this environment) but I couldn’t believe that to be the issue as the environment works in all other aspects except for email being sent to the Exchange 2010 server.</p>
-
 <p>After trying a number of different things I broke down and ran the Exchange BPA on the 2010 server. Surprisingly enough it did come up with a few items but they were warnings that were not immediately visible unless I dug into the results. The warning which peaked my interest was that name resolution did not return a result for <em>Exch2010.bigorg.local.</em> Note that the prior DNS name did not at all include the “clientdomain” portion.</p>
-
 <p>I validated that the server was added to the domain properly but for whatever reason, exchange seemed to think that the server should be in just the bigorg.local forest for DNS resolution. As this was an entirely separate forest running under the same namespace as bigorg.local it is highly unlikely that exch2010.bigorg.local would ever resolve properly J. Digging into exch2010 a bit further revealed that the server must have been templated from a VM in the bigorg.local domain as both the new TMG and new Exchange 2010 server had their DNS suffix <strong><em>manually set</em></strong> to just be bigorg.local. I don’t know why a large organization with several sub-forests would template out their VMs with a manual suffix but they did.</p>
-
 <p>I tried being slick (or cheap) and just changed it to what it was supposed to be locally and rebooted. That not only failed to fix the issue but caused all exchange services to have issues as well(kinda expected it to though). With a deadline to meet, no desire to wait for a new server to be built, and even less of a desire to remove the entire installation and try re-installation on the system I opted to resolve this the hard way. Here is what I did:</p>
-
 <p>1.)    First I started looking for exch2010.bigorg.local all over the place. There are little references to it in any of the files or registry on the server. And this actually makes sense if you think about it. If you run a setup.com /m:recoverserver how would the exchange installer know what roles and names need to actually be recovered on a new server anyway? It would have to gather that information from active directory. So I then popped up ADSIEdit and started looking at the properties of the exch2010 server in the configuration container under:</p>
-
-<pre>CN=EXCH2010,CN=Servers,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=OrgName,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=clientdomain,DC=bigorg,DC=local</pre>
-
+<!-- raw HTML omitted -->
 <p>In the attributes for the server I found networkaddress had multiple entries, one of which looked like this:</p>
-
-<pre>ncacn_ip_tcp:exch2010.bigcorp.local</pre>
-
+<!-- raw HTML omitted -->
 <p>Looking up ncacn_ip_tcp brought me <a href="http://technet.microsoft.com/en-us/library/aa997105%28v=exchg.80%29.aspx">to this article</a> from 7 years ago. I went ahead and removed ncacn_ip_tcp:exch2010.bigcorp.local and added ncacn_ip_tcp:exch2010.clientdomain.bigorg.local.</p>
-
 <p>After restarting the server again, mail started flowing from the 2007 server to the 2010 server. But now the 2010 exchange management console was broken and all sorts of errors were still occurring from the suffix name change.</p>
-
 <p>2.)    I knew this couldn’t be the only reference to the server FQDN in AD. Almost all the errors seemed to be related to the IIS related services so taking <a href="http://technet.microsoft.com/en-us/library/dd535378%28v=exchg.80%29.aspx">a hint from this article</a> I started looking at the protocols attributes in ADSIEdit. I found that I needed to change the msExchMetabasePath for all of the EXCH2010 virtual directory protocol objects. I’ll not list them all here but the one for owa looks something like this:</p>
-
-<pre>CN=owa (Default Web Site),CN=HTTP,CN=Protocols,CN=EXCH2010,CN=Servers,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=ORGNAME,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=clientdomain,DC=bigorg,DC=local</pre>
-
+<!-- raw HTML omitted -->
 <p>3.)    I also needed to change msExchInternalHostName attribute for the powershell virtual directory object in adsiedit:</p>
-
-<pre>CN=PowerShell (Default Web Site),CN=HTTP,CN=Protocols,CN=EXCH2010,CN=Servers,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=ORGNAME,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=clientdomain,DC=bigorg,DC=local</pre>
-
+<!-- raw HTML omitted -->
 <p>4.)    I updated msExchSmtpFullyQualifiedDomainName on:</p>
-
-<pre>CN=1,CN=SMTP,CN=Protocols,CN=EXCH2010,CN=Servers,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=ORGNAME,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=clientdomain,DC=bigorg,DC=local</pre>
-
+<!-- raw HTML omitted -->
 <p>5.)    Finally, updated serviceBindingInformation on:</p>
-
-<pre>CN=EXCH2010,CN=Autodiscover,CN=Protocols,CN=EXCH2010,CN=Servers,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=ORGNAME,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=clientdomain,DC=bigorg,DC=local</pre>
-
+<!-- raw HTML omitted -->
 <p>Doing this and restarting the server cleared up any of the lingering errors that were left over from it’s traumatic dns suffix change. The last thing which was really irritating is that the EMC would still reference the old server name and error out. I knew that it was some user profile setting and <a href="http://lyncdup.com/2011/11/exchange-management-console-pointing-to-wrong-server-the-attempt-to-connect-to-httpserver-domain-compowershell-using-kerberos-authentication-failed/">found this site</a> with good directions on fixed this issue. The resolution is simple, delete the MMC cache for EMC and kill a registry key.</p>
-
 <p>1.)     Close EMC</p>
-
-<p>2.)     Delete MMC cache files from C:\users&lt;username&gt;\AppData\Roaming\Microsoft\MMC\Exchange Management Console</p>
-
+<p>2.)     Delete MMC cache files from C:\users&lt;username&gt;\AppData\Roaming\Microsoft\MMC\Exchange Management Console\</p>
 <p>3.)     Delete NodeStructureSettings in registry from HKCU\Software\Microsoft\Exchangeserver\v14\AdminTools\NodeStructureSettings</p>
-
 <p>There, now everything was right as rain again! Well you will still have to change the autodiscoverinternaluri and do a few other changes, but you can use powershell for that part.</p>
     
 </div>
@@ -345,15 +316,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -382,7 +353,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

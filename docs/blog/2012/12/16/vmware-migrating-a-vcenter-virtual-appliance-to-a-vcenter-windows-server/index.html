@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> VMware: Migrating a vCenter virtual appliance to a vCenter Windows server | Zachary Loeber</title>
         <meta name="description" content="VMware: Migrating a vCenter virtual appliance to a vCenter Windows server - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="VMware: Migrating a vCenter virtual appliance to a vCenter Windows server">
@@ -144,106 +144,75 @@
 
     
         <p>I finally bit the bullet and migrated my lab from a vCenter virtual appliance to a vCenter Windows server. This is what I did to maintain all my settings and not disrupt any currently running VMs.</p>
-
 <ol>
-<li><p>Download <a href="http://labs.vmware.com/flings/inventorysnapshot" title="InventorySnapshot">InventorySnapshot</a> to a workstation or your new VCenter server (as long as the vmware powerCLI and Java 1.5 is installed).</p>
-
-<ol>
+<li>Download <a href="http://labs.vmware.com/flings/inventorysnapshot" title="InventorySnapshot">InventorySnapshot</a> to a workstation or your new VCenter server (as long as the vmware powerCLI and Java 1.5 is installed).</li>
 <li>Run the run.bat file to start InventorySnapshot</li>
-<li>Put in the IP or hostname of your old VMware appliance as well as the credentials and a good place to drop the resulting snapshot, select to “Take Snapshot”<a href="wp-content/uploads/2012/12/InvSnap.jpg"><img class="aligncenter size-medium wp-image-704" alt="InvSnap" src="/wp-content/uploads/2012/12/InvSnap.jpg?resize=300%2C133" width="300" height="133" srcset="/wp-content/uploads/2012/12/InvSnap.jpg?resize=300%2C133 300w, wp-content/uploads/2012/12/InvSnap.jpg?w=683 683w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></li>
-<li>A new window will come up with a few tabs that looks like this:<a href="wp-content/uploads/2012/12/InvSnap2.jpg"><img class="aligncenter size-medium wp-image-705" alt="InvSnap2" src="/wp-content/uploads/2012/12/InvSnap2.jpg?resize=300%2C46" width="300" height="46" srcset="/wp-content/uploads/2012/12/InvSnap2.jpg?resize=300%2C46 300w, wp-content/uploads/2012/12/InvSnap2.jpg?w=730 730w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /></a></li>
+<li>Put in the IP or hostname of your old VMware appliance as well as the credentials and a good place to drop the resulting snapshot, select to “Take Snapshot”<a href="wp-content/uploads/2012/12/InvSnap.jpg"><!-- raw HTML omitted --></a></li>
+<li>A new window will come up with a few tabs that looks like this:<a href="wp-content/uploads/2012/12/InvSnap2.jpg"><!-- raw HTML omitted --></a></li>
 <li>Don’t worry about the host passwords, just make sure everything is selected in the Inventory Tree tab and then select the Generate PowerCLI code in the last tab.</li>
 <li>Copy all the output from the folder you specified earlier to the new vCenter server.</li>
 <li>Open a VMware vSphere PowerCLI window and run the following to connect locally:
-<pre>Set-ExecutionPolicy RemoteSigned</pre>
-<br /></li>
+<!-- raw HTML omitted -->Set-ExecutionPolicy RemoteSigned<!-- raw HTML omitted --></li>
 </ol>
-
-<pre>Connect-VIServer localhost</pre>
-
-<ol>
+<pre><code>&lt;pre&gt;Connect-VIServer localhost&lt;/pre&gt;
+</code></pre>
+<ol start="8">
 <li>Open the createInventory.ps1 file then copy and paste everything above the line that states, “# ### START ADDHOSTS CLUSTER”</li>
 <li>At this point you have the basic cluster setup but not much else. I was unable to get the hosts to automatically add. To get around this I just manually added them (kinda stole them from the vCenter virtual appliance). So open up a vSphere client and connect to your new vCenter server, right0click on your cluster and select to add a host. Proceed to add all the hosts in your cluster. (Note: You will get warnings about duplicating configurations and causing issues with the old vCenter server, that is ok, just select Yes and move on as all host configuration for networking and storage will be maintained and no outage for currently running VMs will occur).</li>
-<li>By the time you have gotten to this point your old VMware appliance will show all hosts and VMs as disconnected and your new vCenter server will have all the goods.<a href="wp-content/uploads/2012/12/InvSnap3.jpg"><img class="aligncenter size-full wp-image-706" alt="InvSnap3" src="/wp-content/uploads/2012/12/InvSnap3.jpg?resize=270%2C279" width="270" height="279" data-recalc-dims="1" /></a></li>
+<li>By the time you have gotten to this point your old VMware appliance will show all hosts and VMs as disconnected and your new vCenter server will have all the goods.<a href="wp-content/uploads/2012/12/InvSnap3.jpg"><!-- raw HTML omitted --></a></li>
 <li>But what about everything else? Luckily enough, most networking and other host settings carry over so your VMs should have stayed live this entire time.  But if you had DRS or host affinities setup there is more you can do to automate the flip to your new server. Go back into that createInventory.ps1 file and comment out (with #) the first several lines of the script which creates the cluster and adds the hosts. It will look something like this when you are done (minus the rest of the script, just leave all that other stuff alone).
-<pre># ### START RESTORE DC: Datacenter</pre>
-<br /></li>
+<!-- raw HTML omitted --># ### START RESTORE DC: Datacenter<!-- raw HTML omitted --></li>
 </ol>
+<pre><code>&lt;pre&gt;# ### START CREATE DC: Datacenter&lt;/pre&gt;
 
-<pre># ### START CREATE DC: Datacenter</pre>
-    
+&lt;pre&gt;# Create DC: Datacenter in folder: null&lt;/pre&gt;
 
-<pre># Create DC: Datacenter in folder: null</pre>
-    
+&lt;pre&gt;$parentFolder = Get-Folder -NoRecursion&lt;/pre&gt;
 
-<pre>$parentFolder = Get-Folder -NoRecursion</pre>
-    
+&lt;pre&gt;&lt;b&gt;#New-Datacenter -Location $parentFolder -name &quot;Datacenter&quot;&lt;/b&gt;&lt;/pre&gt;
 
-<pre><b>#New-Datacenter -Location $parentFolder -name "Datacenter"</b></pre>
-    
+&lt;pre&gt;# ### END CREATE DC: Datacenter&lt;/pre&gt;
 
-<pre># ### END CREATE DC: Datacenter</pre>
-    
+&lt;pre&gt;# ### START RESTORE CLUSTER: Cluster1&lt;/pre&gt;
 
-<pre># ### START RESTORE CLUSTER: Cluster1</pre>
-    
+&lt;pre&gt;# ### START CREATE_CLUSTER_IN FOLDER: host&lt;/pre&gt;
 
-<pre># ### START CREATE_CLUSTER_IN FOLDER: host</pre>
-    
+&lt;pre&gt;# ### START CREATE CLUSTER: Cluster1&lt;/pre&gt;
 
-<pre># ### START CREATE CLUSTER: Cluster1</pre>
-    
+&lt;pre&gt;# Create cluster: Cluster1 in datacenter Datacenter&lt;/pre&gt;
 
-<pre># Create cluster: Cluster1 in datacenter Datacenter</pre>
-    
+&lt;pre&gt;# parent folder of cluster Cluster1 host&lt;/pre&gt;
 
-<pre># parent folder of cluster Cluster1 host</pre>
-    
+&lt;pre&gt;# Finding Parent Folder. Path: //Datacenter/host&lt;/pre&gt;
 
-<pre># Finding Parent Folder. Path: //Datacenter/host</pre>
-    
+&lt;pre&gt;$si = Get-View -id &quot;SearchIndex-SearchIndex&quot;&lt;/pre&gt;
 
-<pre>$si = Get-View -id "SearchIndex-SearchIndex"</pre>
-    
+&lt;pre&gt;$parentChain = &quot;//Datacenter/host&quot;&lt;/pre&gt;
 
-<pre>$parentChain = "//Datacenter/host"</pre>
-    
+&lt;pre&gt;$parentFolderId = $si.FindByInventoryPath($parentChain)&lt;/pre&gt;
 
-<pre>$parentFolderId = $si.FindByInventoryPath($parentChain)</pre>
-    
+&lt;pre&gt;$parentFolder = Get-Folder -id $parentFolderId&lt;/pre&gt;
 
-<pre>$parentFolder = Get-Folder -id $parentFolderId</pre>
-    
+&lt;pre&gt;&lt;b&gt;#New-Cluster -Location $parentFolder -Name &quot;Cluster1&quot;&lt;/b&gt;&lt;/pre&gt;
 
-<pre><b>#New-Cluster -Location $parentFolder -Name "Cluster1"</b></pre>
-    
+&lt;pre&gt;# ### END CREATE CLUSTER: Cluster1&lt;/pre&gt;
 
-<pre># ### END CREATE CLUSTER: Cluster1</pre>
-    
+&lt;pre&gt;# ### END CREATE_CLUSTER_IN FOLDER: host&lt;/pre&gt;
 
-<pre># ### END CREATE_CLUSTER_IN FOLDER: host</pre>
-    
+&lt;pre&gt;# ### START ADDHOSTS CLUSTER: Cluster1&lt;/pre&gt;
 
-<pre># ### START ADDHOSTS CLUSTER: Cluster1</pre>
-    
+&lt;pre&gt;$cluster = Get-Cluster -location (get-datacenter -name &quot;Datacenter&quot;) -name &quot;Cluster1&quot;&lt;/pre&gt;
 
-<pre>$cluster = Get-Cluster -location (get-datacenter -name "Datacenter") -name "Cluster1"</pre>
-    
+&lt;pre&gt;# Adding host 192.168.1.250 to cluster &quot;Cluster1&quot;&lt;/pre&gt;
 
-<pre># Adding host 192.168.1.250 to cluster "Cluster1"</pre>
-    
+&lt;pre&gt;&lt;b&gt;#Add-VMHost 192.168.1.250 -Location $cluster -user root -password 'PASSWORD' -Force&lt;/b&gt;&lt;/pre&gt;
 
-<pre><b>#Add-VMHost 192.168.1.250 -Location $cluster -user root -password 'PASSWORD' -Force</b></pre>
-    
+&lt;pre&gt;# Adding host 192.168.1.251 to cluster &quot;Cluster1&quot;&lt;/pre&gt;
 
-<pre># Adding host 192.168.1.251 to cluster "Cluster1"</pre>
-    
-
-<pre><b>#Add-VMHost 192.168.1.251 -Location $cluster -user root -password 'PASSWORD' –Force</b></pre>
-
-<ol>
+&lt;pre&gt;&lt;b&gt;#Add-VMHost 192.168.1.251 -Location $cluster -user root -password 'PASSWORD' –Force&lt;/b&gt;&lt;/pre&gt;
+</code></pre>
+<ol start="12">
 <li>Then save and run the script in the already open VMware PowerCLI window. You may get a few errors or warnings but it should complete. When this is done all of your old settings should have migrated over without much fanfare.</li>
-</ol></li>
 </ol>
     
 </div>
@@ -363,15 +332,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -400,7 +369,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

@@ -25,7 +25,7 @@
       <pubDate>Thu, 09 Oct 2014 21:29:24 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2014/10/09/powershell-system-report-script-design/</guid>
-      <description>&lt;p&gt;In this post I go back and explain some of my reasoning behind decisions I made in the design of an already released script, &lt;a href=&#34;https://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569&#34;&gt;Get-AssetReport&lt;/a&gt;. This was written over a year ago and forgotten about as one of the many unpublished drafts on my blog. The code behind the script I discuss has been upgraded and used in several of my more popular scripts (&lt;a href=&#34;https://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877&#34;&gt;AD Asset Report&lt;/a&gt;, &lt;a href=&#34;https://gallery.technet.microsoft.com/Big-IP-F5-LTM-Load-3fc9a2af&#34;&gt;F5 LTM Report&lt;/a&gt;, and &lt;a href=&#34;https://gallery.technet.microsoft.com/Lync-2013-Mirrored-SQL-132c2f06&#34;&gt;Lync 2013 Status Report&lt;/a&gt;). Some of this content is slightly dated as I&amp;#8217;ve since changed some of the coding but the core concepts are the same. Those digging through my crazy work or learning powershell may get some value from this content so I tidied it up a bit and here it is. Cheers!&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this post I go back and explain some of my reasoning behind decisions I made in the design of an already released script, &lt;a href=&#34;https://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569&#34;&gt;Get-AssetReport&lt;/a&gt;. This was written over a year ago and forgotten about as one of the many unpublished drafts on my blog. The code behind the script I discuss has been upgraded and used in several of my more popular scripts (&lt;a href=&#34;https://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877&#34;&gt;AD Asset Report&lt;/a&gt;, &lt;a href=&#34;https://gallery.technet.microsoft.com/Big-IP-F5-LTM-Load-3fc9a2af&#34;&gt;F5 LTM Report&lt;/a&gt;, and &lt;a href=&#34;https://gallery.technet.microsoft.com/Lync-2013-Mirrored-SQL-132c2f06&#34;&gt;Lync 2013 Status Report&lt;/a&gt;). Some of this content is slightly dated as I’ve since changed some of the coding but the core concepts are the same. Those digging through my crazy work or learning powershell may get some value from this content so I tidied it up a bit and here it is. Cheers!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -70,7 +70,7 @@
       <pubDate>Wed, 28 Aug 2013 13:25:22 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/08/28/gather-remote-installed-programs-with-powershell/</guid>
-      <description>&lt;p&gt;&lt;span style=&#34;line-height: 1.6;&#34;&gt;Gather program install information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns from the registry program name, manufacturer, and uninstall information. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/span&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Gather program install information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns from the registry program name, manufacturer, and uninstall information. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -133,7 +133,7 @@
       <pubDate>Wed, 16 Jan 2013 03:36:50 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/</guid>
-      <description>&lt;p&gt;If you upgrade Exchange in a co-existence scenario (you want to keep the same client access namespace) there is one crucial moment of truth which must be overcome. This is the phase of the migration I&amp;#8217;ve come to call the &amp;#8220;dns flip-over&amp;#8221; or the &amp;#8220;client access part&amp;#8221;. Without preparation this part of the migration can be a real headache as issues are directly experienced by your end users.  This is a simple report card you can use to prepare you for this moment.&lt;/p&gt;</description>
+      <description>&lt;p&gt;If you upgrade Exchange in a co-existence scenario (you want to keep the same client access namespace) there is one crucial moment of truth which must be overcome. This is the phase of the migration I’ve come to call the “dns flip-over” or the “client access part”. Without preparation this part of the migration can be a real headache as issues are directly experienced by your end users.  This is a simple report card you can use to prepare you for this moment.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -152,7 +152,6 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/12/11/defining-best-of-breed-in-it/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
 &lt;p&gt;Soon I’ll be starting a new position with a company which produces some of the highest quality products in their industry. The company’s products are of such high quality that they typically set the bar in their industry. This made me think of what a truly comprises an excellent solution within the Information Technology.  This article is a non-technical personal view of what defines the “Best of breed” technical solutions.&lt;/p&gt;</description>
     </item>
     
@@ -163,8 +162,7 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
-&lt;p&gt;I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I&amp;#8217;ve since added a few tools to the VM and documented how they were installed so I figured I&amp;#8217;d share on how it was done. Even if you don&amp;#8217;t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I&amp;#8217;ll start with a tool anyone worth their salt has heard of though, Cacti&amp;#8230;&lt;/p&gt;</description>
+&lt;p&gt;I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I’ve since added a few tools to the VM and documented how they were installed so I figured I’d share on how it was done. Even if you don’t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I’ll start with a tool anyone worth their salt has heard of though, Cacti…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -174,10 +172,8 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
 &lt;p&gt;Most within the messaging and collaboration industry are hyped up about the next wave of Microsoft collaboration and messaging products which are soon to be released. Among these products is Exchange 2013 RTM. This type of release typically precedes yet another wave of architecture upgrades across the corporate landscape. Some of these (beta testers) will be will undoubtedly upgrade to Exchange 2013.&lt;/p&gt;
-
-&lt;p&gt;Other corporations will start to feel the burn to upgrade as well. These will be organizations which realize that their Exchange &lt;sup&gt;2003&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; infrastructure is nearing a decade old existence and cannot meet the demands of their ever growing mobile workforce. Realizing they are behind the curve, they may feel hastened to upgrade as well, possibly just to Exchange 2010. Regardless the reason in choosing to upgrade their messaging infrastructure, there are critical design decisions which need to be made in how clients access this infrastructure both internally and externally. This article focuses solely on the external access aspect of the infrastructure.&lt;/p&gt;</description>
+&lt;p&gt;Other corporations will start to feel the burn to upgrade as well. These will be organizations which realize that their Exchange 2003/2007 infrastructure is nearing a decade old existence and cannot meet the demands of their ever growing mobile workforce. Realizing they are behind the curve, they may feel hastened to upgrade as well, possibly just to Exchange 2010. Regardless the reason in choosing to upgrade their messaging infrastructure, there are critical design decisions which need to be made in how clients access this infrastructure both internally and externally. This article focuses solely on the external access aspect of the infrastructure.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -226,7 +222,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Sat, 24 Mar 2012 16:07:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/03/24/sysadmin-task-migrate-dns/</guid>
-      <description>&lt;p&gt;I&amp;#8217;ve migrated DNS servers more than a few times and find that I&amp;#8217;m doing the same tasks or using the same custom scripts over and over again. Here is my quick and dirty task list with some powershell scripts you too might find of use. As there are a hundred ways to skin this cat I don&amp;#8217;t claim my methods to be the best but they sure are fast and far easier than manually changing a dns address on hundreds of servers, workstations, and network devices.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’ve migrated DNS servers more than a few times and find that I’m doing the same tasks or using the same custom scripts over and over again. Here is my quick and dirty task list with some powershell scripts you too might find of use. As there are a hundred ways to skin this cat I don’t claim my methods to be the best but they sure are fast and far easier than manually changing a dns address on hundreds of servers, workstations, and network devices.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -244,9 +240,8 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Thu, 01 Mar 2012 05:30:13 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</guid>
-      <description>&lt;p&gt;I ran into an interesting Exchange &lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be&lt;/p&gt;
-
-&lt;pre&gt;“Initial error: 451 4.4.0 dns query failed. The error was: SMTPsend.dns.nonexistentdomain; nonexistent”&lt;/pre&gt;</description>
+      <description>&lt;p&gt;I ran into an interesting Exchange 2010/2007 co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -256,8 +251,8 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/</guid>
       <description>Here are a few quick powershell one-liners to get all the network interface information in your exchange environment:
-$ExchServers=(Get-ExchangeServer); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.Name | select @{Name=&#34;Server&#34;;Expression={$Srv.Name}},@{Name=&#34;DNS Host Name&#34;;Expression={$_.DNSHostName}},@{Name=&#34;Server Role&#34;;Expression={$Srv.ServerRole}},Description,@{Name=&#34;IP Address&#34;;Expression={$_.IPAddress}},@{Name=&#34;IP Subnet&#34;;Expression={$_.IPSubnet}},@{Name=&#34;Default Gateway&#34;;Expression={$_.DefaultIPGateway}},@{Name=&#34;Mac Address&#34;;Expression={$_.MacAddress}},@{Name=&#34;DNS Suffix Search Order&#34;;Expression={$_.DNSDomainSuffixSearchOrder}},@{Name=&#34;DNS Server Search Order&#34;;Expression={$_.DNSServerSearchOrder}},FullDNSRegistrationEnabled}) |Export-Csv -NoTypeInformation &#34;C:\Temp\Exchange-network.csv&#34; If you just want interface information for Exchange 2010 servers:
-$ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.</description>
+If you just want interface information for Exchange 2010 servers:
+ </description>
     </item>
     
     <item>
@@ -266,7 +261,7 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(
       <pubDate>Sat, 30 Jul 2011 17:06:36 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/07/30/exchange-2010-network-communication-table/</guid>
-      <description>I figured I&amp;#8217;d post the massive table of firewall rules I compiled for my Exchange 2010 firewall generation script. It has both the source and destination roles for many aspects of an Exchange environment. Where there are ???&amp;#8217;s is where I&amp;#8217;m simply not certain (mainly around encryption between certain roles). If anyone spots any mistakes or omissions please let me know and I&amp;#8217;ll update the accordingly.
+      <description>I figured I’d post the massive table of firewall rules I compiled for my Exchange 2010 firewall generation script. It has both the source and destination roles for many aspects of an Exchange environment. Where there are ???’s is where I’m simply not certain (mainly around encryption between certain roles). If anyone spots any mistakes or omissions please let me know and I’ll update the accordingly.
 Exchange 2010 Network Communication Table By Role</description>
     </item>
     
@@ -295,7 +290,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Fri, 24 Jun 2011 16:40:50 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/06/24/exchange-2010-automated-firewall-rule-generation/</guid>
-      <description>&lt;p&gt;A single, or even a dual site Exchange 2010 deployment does not usually require too much internal firewall manipulation. But if you have to setup a Exchange 2010 environment where there are many global sites or a heavily segmented network, the number of firewall requests required to get a fully functioning configuration working can be daunting. Wouldn&amp;#8217;t it be nice to have some of those firewall rules automatically generated for you?&lt;/p&gt;</description>
+      <description>&lt;p&gt;A single, or even a dual site Exchange 2010 deployment does not usually require too much internal firewall manipulation. But if you have to setup a Exchange 2010 environment where there are many global sites or a heavily segmented network, the number of firewall requests required to get a fully functioning configuration working can be daunting. Wouldn’t it be nice to have some of those firewall rules automatically generated for you?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -304,7 +299,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</guid>
-      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I&amp;#8217;m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I’m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -313,7 +308,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Tue, 01 Mar 2011 00:35:06 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/02/28/big-ip-quick-tip/</guid>
-      <description>They silently (well maybe not so silent as I didn&amp;#8217;t check if it was announced) published an internal tool that the F5 support engineers use for troubleshooting Big-ip load balancer configuration dumps. With a login account you can access this tool at the aptly named URL of http://ihealth.f5.com. This has some really cool info that you might fine useful in resolving load balancer issues in your environment.</description>
+      <description>They silently (well maybe not so silent as I didn’t check if it was announced) published an internal tool that the F5 support engineers use for troubleshooting Big-ip load balancer configuration dumps. With a login account you can access this tool at the aptly named URL of http://ihealth.f5.com. This has some really cool info that you might fine useful in resolving load balancer issues in your environment.</description>
     </item>
     
     <item>
@@ -322,7 +317,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Tue, 22 Feb 2011 04:22:28 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/02/21/active-directory-role-based-access-modeling/</guid>
-      <description>&lt;p&gt;Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of &lt;a href=&#34;http://en.wikipedia.org/wiki/AGDLP&#34;&gt;AGDLP (an abbreviation of &amp;#8220;account, global, domain local, permission&amp;#8221;)&lt;/a&gt; to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of &lt;a href=&#34;http://en.wikipedia.org/wiki/AGDLP&#34;&gt;AGDLP (an abbreviation of “account, global, domain local, permission”)&lt;/a&gt; to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -340,7 +335,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Sat, 22 Jan 2011 17:32:01 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/01/22/big-ip-custom-iis-soap-monitor/</guid>
-      <description>&lt;p&gt;In working on a production issue with my company&amp;#8217;s flagship SaaS product I worked with some of the brilliant F5 engineers to isolate one web server in the load balanced pool which was intermittently failing. The F5 engineer recommended a health monitor that does more than just poll for a static page. He suggested we implement some kind of soap call to make the application pool do some work and return a result (I guess in case the IIS application pool is misbehaving but not down). So I worked with one of our developers to do just that but ran into some caveats which required yet another custom health monitor.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In working on a production issue with my company’s flagship SaaS product I worked with some of the brilliant F5 engineers to isolate one web server in the load balanced pool which was intermittently failing. The F5 engineer recommended a health monitor that does more than just poll for a static page. He suggested we implement some kind of soap call to make the application pool do some work and return a result (I guess in case the IIS application pool is misbehaving but not down). So I worked with one of our developers to do just that but ran into some caveats which required yet another custom health monitor.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -349,7 +344,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Fri, 21 Jan 2011 15:08:24 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/01/21/big-ip-sharepoint-2010-monitor/</guid>
-      <description>&lt;p&gt;While specing out a Sharepoint 2007 to 2010 migration I discovered that the default monitor created by the application template on our big-ip LTM load balancers does not work. In seeking a solution I ran across this &lt;a href=&#34;http://www.thef5guy.com/blog/2010/08/sharepoint-2010-ntlm-and-big-ip-health-monitors/#more-1070&#34; target=&#34;_blank&#34;&gt;gentleman&amp;#8217;s blog with a custom external monitor&lt;/a&gt; but found that it didn&amp;#8217;t really work. The solution to make it work was simple (as I explained on his blog in a comment). I went ahead and extended it to be more environment generic.&lt;/p&gt;</description>
+      <description>&lt;p&gt;While specing out a Sharepoint 2007 to 2010 migration I discovered that the default monitor created by the application template on our big-ip LTM load balancers does not work. In seeking a solution I ran across this &lt;!-- raw HTML omitted --&gt;gentleman’s blog with a custom external monitor&lt;!-- raw HTML omitted --&gt; but found that it didn’t really work. The solution to make it work was simple (as I explained on his blog in a comment). I went ahead and extended it to be more environment generic.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -358,7 +353,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Fri, 05 Nov 2010 02:58:44 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2010/11/04/run-updates-rocket-science/</guid>
-      <description>&lt;p&gt;So, I just recently tried to do some basic updates for ocs 2007 R2 by running the venerable &amp;#8220;serverupdateinstaller.exe&amp;#8221; found &lt;a title=&#34;HERE&#34; href=&#34;http://www.microsoft.com/downloads/en/details.aspx?displaylang=en&amp;FamilyID=b3b02475-150c-41fa-844a-c10a517040f4&#34; target=&#34;_blank&#34;&gt;HERE&lt;/a&gt;. Thank goodness I setup a highly redundant load balanced farm of front end servers as the first server updated immediately had issues with the front-end services starting. Wow, updates strike again (other stories forthcoming soon, I promise).&lt;/p&gt;</description>
+      <description>&lt;p&gt;So, I just recently tried to do some basic updates for ocs 2007 R2 by running the venerable “serverupdateinstaller.exe” found &lt;!-- raw HTML omitted --&gt;HERE&lt;!-- raw HTML omitted --&gt;. Thank goodness I setup a highly redundant load balanced farm of front end servers as the first server updated immediately had issues with the front-end services starting. Wow, updates strike again (other stories forthcoming soon, I promise).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -368,7 +363,6 @@ Exchange 2010 Firewall Rule Generation Script</description>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2010/11/04/exchange-2010-sp1-dag-node-maintenance/</guid>
       <description>&lt;p&gt;If you are performing maintenance on DAG nodes here is the process you want to go through (along with a slight caveat to fix a possible active copy move issue you may run into). In my environment I have three nodes in a cross-site dag.&lt;/p&gt;
-
 &lt;p&gt;All the commands below are run in an administrative exchange powershell prompt.&lt;/p&gt;</description>
     </item>
     
@@ -378,7 +372,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Mon, 02 Aug 2010 19:11:42 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2010/08/02/microsoft-unified-access-gateway-2010-notes/</guid>
-      <description>&lt;p&gt;If you are new to the Microsoft Unified Access Gateway then you really should know some of these things I ran into while trying to get my array setup and running smoothly. Sure, to find my single post among the masses is probably not going to happen, but if you do find it before you start your endeavor then I promise you will be saved time and frustration. The first major frustration, the installation&amp;#8230;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;If you are new to the Microsoft Unified Access Gateway then you really should know some of these things I ran into while trying to get my array setup and running smoothly. Sure, to find my single post among the masses is probably not going to happen, but if you do find it before you start your endeavor then I promise you will be saved time and frustration. The first major frustration, the installation….&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -405,7 +399,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Wed, 23 Dec 2009 04:08:02 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/12/22/esx-4-0-post-install-script/</guid>
-      <description>Sure there are better ways to mass deploy ESX servers, but this way will save the one off farm deployment person some time 🙂 I took liberties in assuming you would be able to fill in the blanks for variables so  or _VARIABLE_ will need to be replaced ad-lib style. Just for you my friend, served up proper on a hyper-link plate&amp;#8230;.. esx4_postinstall</description>
+      <description>Sure there are better ways to mass deploy ESX servers, but this way will save the one off farm deployment person some time 🙂 I took liberties in assuming you would be able to fill in the blanks for variables so or _VARIABLE_ will need to be replaced ad-lib style. Just for you my friend, served up proper on a hyper-link plate….. esx4_postinstall</description>
     </item>
     
     <item>
@@ -414,7 +408,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Mon, 07 Dec 2009 14:46:24 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/12/07/big-ip-load-balancer-upgrade/</guid>
-      <description>&lt;p&gt;I had the pleasure of doing an F5 BIG-IP load balancer upgrade recently and am happy with the way the F5 people have designed their systems for fail over. Essentially you will use different system partitions to host different versions of their product and you change which one you want to boot to after updating the inactive partition. This, theoretically, means you can always go back to a working configuration if something goes awry. I&amp;#8217;m unhappy with how fragmented their documentation is in getting from point A to point B though. Here is a quick rundown of what I had to do&amp;#8230;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I had the pleasure of doing an F5 BIG-IP load balancer upgrade recently and am happy with the way the F5 people have designed their systems for fail over. Essentially you will use different system partitions to host different versions of their product and you change which one you want to boot to after updating the inactive partition. This, theoretically, means you can always go back to a working configuration if something goes awry. I’m unhappy with how fragmented their documentation is in getting from point A to point B though. Here is a quick rundown of what I had to do…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -423,7 +417,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Sat, 21 Nov 2009 18:51:06 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/11/21/centosredhat-5-x-post-install-script/</guid>
-      <description>I whipped up a post install script to run on our new linux servers that drastically reduced the amount of manual effort involved with post-deployment configuration. I&amp;#8217;m sure this could some how be integrated into the kick deployment. In any case, this script helps setup your sudo users, snmp services, and some other basic things. Modify to your environment and run directly after deployment on your headless linux servers. Save the script and change to .</description>
+      <description>I whipped up a post install script to run on our new linux servers that drastically reduced the amount of manual effort involved with post-deployment configuration. I’m sure this could some how be integrated into the kick deployment. In any case, this script helps setup your sudo users, snmp services, and some other basic things. Modify to your environment and run directly after deployment on your headless linux servers. Save the script and change to .</description>
     </item>
     
     <item>
@@ -442,10 +436,8 @@ Exchange 2010 Firewall Rule Generation Script</description>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/10/30/windows-some-small-system-administration-scripts/</guid>
       <description>&lt;p&gt;Here are a few scripts that I have cobbled together over the last few years. They are small and useful but nothing earth-shattering. One gets information about a remote system and who is logged in. The other can remotely reset the administrator password. Both obviously require  you have the permissions to do so on the remote machines. Both accept multiple computer names divided by a semi-colon.  Save and change the extension from .txt to .hta&lt;/p&gt;
-
-&lt;p&gt;&lt;a rel=&#34;attachment wp-att-92&#34; href=&#34;https://zacharyloeber-dev.onrender.com/?attachment_id=92&#34;&gt;&lt;/a&gt;&lt;a rel=&#34;attachment wp-att-97&#34; href=&#34;https://zacharyloeber-dev.onrender.com/?attachment_id=97&#34;&gt;GetAsset&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a rel=&#34;attachment wp-att-94&#34; href=&#34;https://zacharyloeber-dev.onrender.com/?attachment_id=94&#34;&gt;ResetAdminPass&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;GetAsset&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;ResetAdminPass&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -454,7 +446,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Tue, 09 Sep 2008 20:39:00 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/09/09/gns3-on-ubuntu-804-migrating-your-install/</guid>
-      <description>&lt;p&gt;Don&amp;#8217;t have much time due to work obligations but I wanted to quickly drop this one out there for any who have followed my install guides. I was always ragging on and on about making the install somewhat portable by putting it into the /opt/ directory and now I&amp;#8217;ll give a good example why.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Don’t have much time due to work obligations but I wanted to quickly drop this one out there for any who have followed my install guides. I was always ragging on and on about making the install somewhat portable by putting it into the /opt/ directory and now I’ll give a good example why.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -463,7 +455,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Thu, 03 Jul 2008 16:42:43 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/07/03/ubuntu-server-804-post-install-tip-1-auto-updating/</guid>
-      <description>&lt;p&gt;On a headless server that you have at home or for testing I like to make sure that all security updates and trivial updates are done automatically. A good sys admin will shy away from this practice for a good reason, updates can mess things up. In a production environment or where the server setup is very complex I can understand the need to manually run updates. For me, well I&amp;#8217;m lazy when it comes to my home machines and generally don&amp;#8217;t have too complex of setups. Also, in my experience, I&amp;#8217;ve hardly ever seen an apt security or trivial update cause any harm (desktop linux I have seen issues though). That being said, I like to force security and trivial updates to happen daily.&lt;/p&gt;</description>
+      <description>&lt;p&gt;On a headless server that you have at home or for testing I like to make sure that all security updates and trivial updates are done automatically. A good sys admin will shy away from this practice for a good reason, updates can mess things up. In a production environment or where the server setup is very complex I can understand the need to manually run updates. For me, well I’m lazy when it comes to my home machines and generally don’t have too complex of setups. Also, in my experience, I’ve hardly ever seen an apt security or trivial update cause any harm (desktop linux I have seen issues though). That being said, I like to force security and trivial updates to happen daily.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -482,7 +474,6 @@ Exchange 2010 Firewall Rule Generation Script</description>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/06/12/gns3-on-ubuntu-804-choosing-and-using-your-ios/</guid>
       <description>&lt;p&gt;As promised here is the post regarding choosing and using an IOS image that will fit your study needs.&lt;/p&gt;
-
 &lt;p&gt;If you followed the first post in this series you are technically now ready to start loading up images and making labs of your own. You will need to get your hands on some IOS images (legally of course).But which IOS should you use?&lt;/p&gt;</description>
     </item>
     
@@ -492,7 +483,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Thu, 12 Jun 2008 13:53:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/06/12/gns3-on-ubuntu-804/</guid>
-      <description>&lt;p&gt;GNS3 is a frontend for dynagen (which is a scripting language for dynamips). Getting it to work nicely in Ubuntu was a bit of a pain in the arse but I was able to get it to work in a manner I&amp;#8217;m happy with. This setup will essentially encapsulate a large portion of the install to one directory in /opt. Some libraries and executables will be installed through apt though, but not many. I previously wrote part of a writeup for this on Ubuntu 7.10, I&amp;#8217;d ignore that in favor of this one which is much more up to date and polished.&lt;/p&gt;</description>
+      <description>&lt;p&gt;GNS3 is a frontend for dynagen (which is a scripting language for dynamips). Getting it to work nicely in Ubuntu was a bit of a pain in the arse but I was able to get it to work in a manner I’m happy with. This setup will essentially encapsulate a large portion of the install to one directory in /opt. Some libraries and executables will be installed through apt though, but not many. I previously wrote part of a writeup for this on Ubuntu 7.10, I’d ignore that in favor of this one which is much more up to date and polished.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -501,7 +492,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Thu, 14 Feb 2008 16:10:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/02/14/headless-torrentbox-with-ipblock/</guid>
-      <description>&lt;p&gt;As you may or may not know there are a lot of people who seem to be interested in the torrent activities of others. Some just like to track, others are government agencies, and of course the RIAA. I personally don&amp;#8217;t like this intrusion into my habits so I do my best to block their attempts. In this small tutorial I&amp;#8217;m going to cover how to install torrentflux with ipblock and fail2ban in a headless mode so you can download and seed torrents a bit more securely.&lt;/p&gt;</description>
+      <description>&lt;p&gt;As you may or may not know there are a lot of people who seem to be interested in the torrent activities of others. Some just like to track, others are government agencies, and of course the RIAA. I personally don’t like this intrusion into my habits so I do my best to block their attempts. In this small tutorial I’m going to cover how to install torrentflux with ipblock and fail2ban in a headless mode so you can download and seed torrents a bit more securely.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -511,8 +502,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2007/11/02/moving-the-pdc-emulator-fsmo-role-time-server-issues/</guid>
       <description>&lt;p&gt;I did not want this to be my first post but it needs to be posted out there somewhere for all to read.&lt;/p&gt;
-
-&lt;p&gt;There are plenty of documents out there on how to seize the FSMO roles in a windows 2003 domain controller, so I&amp;#8217;ll not discuss how that is done. But many of them do not tell you a few extra steps needed if you are moving the PDC Emulator role and that server is (as it should be by default&lt;/p&gt;</description>
+&lt;p&gt;There are plenty of documents out there on how to seize the FSMO roles in a windows 2003 domain controller, so I’ll not discuss how that is done. But many of them do not tell you a few extra steps needed if you are moving the PDC Emulator role and that server is (as it should be by default&lt;/p&gt;</description>
     </item>
     
   </channel>

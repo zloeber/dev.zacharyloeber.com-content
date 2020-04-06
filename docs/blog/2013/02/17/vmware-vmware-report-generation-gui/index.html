@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> VMware: VMware Report Generation GUI | Zachary Loeber</title>
         <meta name="description" content="VMware: VMware Report Generation GUI - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="VMware: VMware Report Generation GUI">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">3 min read</span>
+            <span class="readingTime">2 min read</span>
         
 
         
@@ -142,60 +142,30 @@
 
     
         <p>Its been a while since I posted something new. This GUI is meant to configure regular vmware report generation. You are able to select reporting scoped to the whole farm down to individual hosts. Reports can be emailed or saved and be generated based on custom thresholds.</p>
-
-<h2 style="margin: 10pt 0in 0pt;">
-  <span style="font-family: Cambria;">Version History<br /> </span>
-</h2>
-
-<p class="MsoNormal" style="line-height: normal; margin: 0in 0in 0pt; mso-layout-grid-align: none;">
-  <span style="font-family: 'Microsoft Sans Serif','sans-serif'; font-size: 8.5pt;">0.0.1 &#8211; 02/12/2013<br /> &#8211; First release<br /> 0.0.2 &#8211; 03/29/2013<br /> &#8211; Removed clear text password from config file<br /> &#8211; Allowed for alternate credentials for wmi calls<br /> &#8211; Many GUI updates and fixes.<br /> </span>
-</p>
-
-<h2 style="margin: 10pt 0in 0pt;">
-  History
-</h2>
-
-<p>The short history of this script stems from two side projects I had started several months ago. One was to better template out an option saving gui/script/xml project for future script releases. Another was for redoing some of the vmware reporting scripts I&#8217;ve used in the past. Currently the generated report is in a pretty ugly format (for me at least) but it is serviceable for the data currently gathered. In the future I aim to change the template to allow for stylized reports as well as allow a rudimentary automatic scheduling of the script from within the GUI.</p>
-
-<h2 id="span-style-font-family-cambria-options-span"><span style="font-family: Cambria;">Options</span></h2>
-
-<p class="MsoNormal" style="line-height: normal; margin: 0in 0in 0pt; mso-layout-grid-align: none;">
-  <span style="font-family: 'Microsoft Sans Serif','sans-serif'; font-size: 8.5pt;">There are several options for those interested in monitoring their environment. Some options include;</span>
-</p>
-
-<h3 style="margin: 10pt 0in 0pt;">
-  <span style="font-family: Cambria;">General Options</span>
-</h3>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The short history of this script stems from two side projects I had started several months ago. One was to better template out an option saving gui/script/xml project for future script releases. Another was for redoing some of the vmware reporting scripts I’ve used in the past. Currently the generated report is in a pretty ugly format (for me at least) but it is serviceable for the data currently gathered. In the future I aim to change the template to allow for stylized reports as well as allow a rudimentary automatic scheduling of the script from within the GUI.</p>
+<h2 id="span-stylefont-family-cambriaoptionsspan"><!-- raw HTML omitted -->Options<!-- raw HTML omitted --></h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <ul>
-<li><span style="font-family: 'Microsoft Sans Serif','sans-serif'; font-size: 8.5pt;">Generating reports if thresholds are surpassed</span></li>
+<li><!-- raw HTML omitted -->Generating reports if thresholds are surpassed<!-- raw HTML omitted --></li>
 </ul>
-
-<h3 style="margin: 10pt 0in 0pt;">
-  <span style="font-family: Cambria;">Virtual Center</span>
-</h3>
-
+<!-- raw HTML omitted -->
 <ul>
 <li>VC event errors (with threshold in # of days)</li>
 <li>VMs created/cloned/deleted</li>
 <li>VC windows server errors/warnings (with threshold in # of days)</li>
 <li>VC windows server service status</li>
 </ul>
-
-<h3 style="margin: 10pt 0in 0pt;">
-  <span style="font-family: Cambria;">ESX/vSphere Hosts</span>
-</h3>
-
+<!-- raw HTML omitted -->
 <ul>
 <li>Hosts not responding</li>
 <li>Hosts in maintenance</li>
 <li>Host datastore utilization (with % free utilization threshold)</li>
 </ul>
-
-<h3 style="margin: 10pt 0in 0pt;">
-  <span style="font-family: Cambria;">Virtual Machines</span>
-</h3>
-
+<!-- raw HTML omitted -->
 <ul>
 <li>VM snapshots (with threshold in # of days)</li>
 <li>VMs with thin provisioned disks</li>
@@ -203,29 +173,14 @@
 <li>VMs with connected CD drives</li>
 <li>VMs with connected floppy drives</li>
 </ul>
-
-<h2 style="margin: 10pt 0in 0pt;">
-  Usage
-</h2>
-
+<!-- raw HTML omitted -->
 <p>The GUI is used to perform an initial test connection to the server and to save options. Once connected to the server you can select more granular scoped reports based on the datacenter, cluster, and host if desired. Currently you need to report on the whole farm to get virtual center reporting options. Once the configuration is saved another script, VMware-Report.ps1 can be used to schedule the job (it will automatically load the saved xml config file and run without any interface).</p>
-
 <p><strong>Note:</strong> Alternately you can just modify the Globals.ps1 script variables and not use either the save file or the gui and the VMware-Report.ps1 script will run on that information alone.</p>
-
 <p><strong>Another Note:</strong> If you want to generate several kinds of reports at different times simply copy all three ps1 files to another directory and create a new config file with the GUI and use scheduled tasks to run the script.</p>
-
-<h2 class="MsoNormal" style="line-height: normal; margin: 0in 0in 0pt; mso-layout-grid-align: none;">
-  Screenshots
-</h2>
-
-<p class="MsoNormal" style="line-height: normal; margin: 0in 0in 0pt; mso-layout-grid-align: none;">
-  <span style="font-family: 'Microsoft Sans Serif','sans-serif'; font-size: 8.5pt;"><a href="/wp-content/uploads/2013/02/vmware-report-gui-1.jpg"><img class="aligncenter size-full wp-image-730" alt="vmware-report-gui-1" src="/wp-content/uploads/2013/02/vmware-report-gui-1.jpg?resize=462%2C500" width="462" height="500" srcset="/wp-content/uploads/2013/02/vmware-report-gui-1.jpg?w=462 462w, /wp-content/uploads/2013/02/vmware-report-gui-1.jpg?resize=277%2C300 277w" sizes="(max-width: 462px) 100vw, 462px" data-recalc-dims="1" /></a> <a href="/wp-content/uploads/2013/02/vmware-report-gui-2.jpg"><img class="aligncenter size-full wp-image-731" alt="vmware-report-gui-2" src="/wp-content/uploads/2013/02/vmware-report-gui-2.jpg?resize=464%2C505" width="464" height="505" srcset="/wp-content/uploads/2013/02/vmware-report-gui-2.jpg?w=464 464w, wp-content/uploads/2013/02/vmware-report-gui-2.jpg?resize=275%2C300 275w" sizes="(max-width: 464px) 100vw, 464px" data-recalc-dims="1" /></a> <a href="/wp-content/uploads/2013/02/vmware-report-gui-3.jpg"><img class="aligncenter size-full wp-image-732" alt="vmware-report-gui-3" src="/wp-content/uploads/2013/02/vmware-report-gui-3.jpg?resize=466%2C505" width="466" height="505" srcset="/wp-content/uploads/2013/02/vmware-report-gui-3.jpg?w=466 466w, wp-content/uploads/2013/02/vmware-report-gui-3.jpg?resize=276%2C300 276w" sizes="(max-width: 466px) 100vw, 466px" data-recalc-dims="1" /></a> <a href="/wp-content/uploads/2013/02/vmware-report-gui-4.jpg"><img class="aligncenter size-full wp-image-733" alt="vmware-report-gui-4" src="/wp-content/uploads/2013/02/vmware-report-gui-4.jpg?resize=586%2C701" width="586" height="701" srcset="/wp-content/uploads/2013/02/vmware-report-gui-4.jpg?w=652 652w, wp-content/uploads/2013/02/vmware-report-gui-4.jpg?resize=250%2C300 250w" sizes="(max-width: 586px) 100vw, 586px" data-recalc-dims="1" /></a><br /> </span>
-</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Download: <a href="/wp-content/uploads/2013/02/VMware-Report-GUI.zip">VMware-Report-GUI</a></p>
-
 <p><a href="http://communities.vmware.com/docs/DOC-21801#cf" title="VMware Report GUI at VMware Community">At VMware Community Site</a></p>
-
 <p><a href="/2013/01/15/exchange-co-existence-client-access-preparation-report/" title="VMware Report GUI at Microsoft Script Gallery">At Microsoft Script Gallery</a></p>
     
 </div>
@@ -364,15 +319,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -401,7 +356,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

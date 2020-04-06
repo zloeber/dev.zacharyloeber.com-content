@@ -34,7 +34,7 @@
       <pubDate>Thu, 05 May 2016 02:31:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2016/05/04/powershell-my-profile/</guid>
-      <description>&lt;p&gt;I&amp;#8217;m always interested to see how other people setup their working environment or get things done. But rarely do I share my own environment. Since I&amp;#8217;m putting the effort into pushing my scripting environment publicly to github I may as well explain a bit more about some of what I&amp;#8217;ve setup.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’m always interested to see how other people setup their working environment or get things done. But rarely do I share my own environment. Since I’m putting the effort into pushing my scripting environment publicly to github I may as well explain a bit more about some of what I’ve setup.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -52,7 +52,7 @@
       <pubDate>Sat, 18 Jul 2015 04:09:12 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</guid>
-      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the &amp;#8216;login as batch job&amp;#8217; local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I&amp;#8217;ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
+      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the ‘login as batch job’ local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I’ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
     </item>
     
     <item>
@@ -79,8 +79,8 @@
       <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
-      <description>I&amp;#8217;ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
-There are a few necessary results to gather where I believe it can be easy to &amp;#8216;miss&amp;#8217; configuration steps when turning up or disabling users:</description>
+      <description>I’ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
+There are a few necessary results to gather where I believe it can be easy to ‘miss’ configuration steps when turning up or disabling users:</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@ There are a few necessary results to gather where I believe it can be easy to &a
       <pubDate>Thu, 09 Oct 2014 21:29:24 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2014/10/09/powershell-system-report-script-design/</guid>
-      <description>&lt;p&gt;In this post I go back and explain some of my reasoning behind decisions I made in the design of an already released script, &lt;a href=&#34;https://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569&#34;&gt;Get-AssetReport&lt;/a&gt;. This was written over a year ago and forgotten about as one of the many unpublished drafts on my blog. The code behind the script I discuss has been upgraded and used in several of my more popular scripts (&lt;a href=&#34;https://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877&#34;&gt;AD Asset Report&lt;/a&gt;, &lt;a href=&#34;https://gallery.technet.microsoft.com/Big-IP-F5-LTM-Load-3fc9a2af&#34;&gt;F5 LTM Report&lt;/a&gt;, and &lt;a href=&#34;https://gallery.technet.microsoft.com/Lync-2013-Mirrored-SQL-132c2f06&#34;&gt;Lync 2013 Status Report&lt;/a&gt;). Some of this content is slightly dated as I&amp;#8217;ve since changed some of the coding but the core concepts are the same. Those digging through my crazy work or learning powershell may get some value from this content so I tidied it up a bit and here it is. Cheers!&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this post I go back and explain some of my reasoning behind decisions I made in the design of an already released script, &lt;a href=&#34;https://gallery.technet.microsoft.com/Excel-and-HTML-Asset-0ffbf569&#34;&gt;Get-AssetReport&lt;/a&gt;. This was written over a year ago and forgotten about as one of the many unpublished drafts on my blog. The code behind the script I discuss has been upgraded and used in several of my more popular scripts (&lt;a href=&#34;https://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877&#34;&gt;AD Asset Report&lt;/a&gt;, &lt;a href=&#34;https://gallery.technet.microsoft.com/Big-IP-F5-LTM-Load-3fc9a2af&#34;&gt;F5 LTM Report&lt;/a&gt;, and &lt;a href=&#34;https://gallery.technet.microsoft.com/Lync-2013-Mirrored-SQL-132c2f06&#34;&gt;Lync 2013 Status Report&lt;/a&gt;). Some of this content is slightly dated as I’ve since changed some of the coding but the core concepts are the same. Those digging through my crazy work or learning powershell may get some value from this content so I tidied it up a bit and here it is. Cheers!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -126,7 +126,7 @@ There are a few necessary results to gather where I believe it can be easy to &a
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/10/16/gather-remote-event-logs-with-powershell/</guid>
       <description>About Gather the remote event log information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns Event Log information for the specified number of past hours. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 10/16/2013
+Version History 1.0.0 – 10/16/2013
  Initial release  Notes By default 24 hours is what we filter against for the results.</description>
     </item>
     
@@ -146,7 +146,7 @@ Version History 1.0.0 &amp;#8211; 10/16/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</guid>
       <description>Gather system local groups and their members for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems, a switch for inclusion of empty groups in the results, and returns group names with their members. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 09/11/2013
+Version History 1.0.0 – 09/11/2013
  Initial release  Notes None, this is an independent release of a function I’ve recently included in a larger project.</description>
     </item>
     
@@ -193,7 +193,6 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
       <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
-
 &lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
     </item>
     
@@ -204,7 +203,6 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/04/07/exchange-mailbox-gui/</guid>
       <description>&lt;h1 id=&#34;exchange-2010-mailbox-gui&#34;&gt;Exchange 2010 Mailbox GUI&lt;/h1&gt;
-
 &lt;p&gt;A powershell GUI for selecting and performing actions against multiple Exchange mailboxes.&lt;/p&gt;</description>
     </item>
     
@@ -236,7 +234,8 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Thu, 11 Aug 2011 18:35:00 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/08/11/active-directory-essential-tools/</guid>
-      <description>&lt;p&gt;During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.&lt;/p&gt;</description>
+      <description>&lt;p&gt;During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;</description>
     </item>
     
     <item>
@@ -245,7 +244,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Sat, 30 Jul 2011 17:06:36 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/07/30/exchange-2010-network-communication-table/</guid>
-      <description>I figured I&amp;#8217;d post the massive table of firewall rules I compiled for my Exchange 2010 firewall generation script. It has both the source and destination roles for many aspects of an Exchange environment. Where there are ???&amp;#8217;s is where I&amp;#8217;m simply not certain (mainly around encryption between certain roles). If anyone spots any mistakes or omissions please let me know and I&amp;#8217;ll update the accordingly.
+      <description>I figured I’d post the massive table of firewall rules I compiled for my Exchange 2010 firewall generation script. It has both the source and destination roles for many aspects of an Exchange environment. Where there are ???’s is where I’m simply not certain (mainly around encryption between certain roles). If anyone spots any mistakes or omissions please let me know and I’ll update the accordingly.
 Exchange 2010 Network Communication Table By Role</description>
     </item>
     
@@ -283,7 +282,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Fri, 24 Jun 2011 16:40:50 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/06/24/exchange-2010-automated-firewall-rule-generation/</guid>
-      <description>&lt;p&gt;A single, or even a dual site Exchange 2010 deployment does not usually require too much internal firewall manipulation. But if you have to setup a Exchange 2010 environment where there are many global sites or a heavily segmented network, the number of firewall requests required to get a fully functioning configuration working can be daunting. Wouldn&amp;#8217;t it be nice to have some of those firewall rules automatically generated for you?&lt;/p&gt;</description>
+      <description>&lt;p&gt;A single, or even a dual site Exchange 2010 deployment does not usually require too much internal firewall manipulation. But if you have to setup a Exchange 2010 environment where there are many global sites or a heavily segmented network, the number of firewall requests required to get a fully functioning configuration working can be daunting. Wouldn’t it be nice to have some of those firewall rules automatically generated for you?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -292,8 +291,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Wed, 04 May 2011 21:26:37 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/05/04/exchange-2010-protect-vip-mailboxes-with-exclusive-scopes/</guid>
-      <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-
+      <description>&lt;p&gt; &lt;/p&gt;
 &lt;p&gt;Prior to starting my new job I wanted to ensure that my previous employer was able to protect VIP mailboxes in their Exchange 2010 SP1 organization. I had to do this with exclusive scopes and these are the steps I had to follow. A general knowledge of role based security is assumed in this post.&lt;/p&gt;</description>
     </item>
     
@@ -303,7 +301,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Thu, 31 Mar 2011 15:21:09 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/03/31/ocs-2007-r2-crl-issue-causing-address-book-download-error/</guid>
-      <description>&lt;p&gt;I ran into this issue recently. End users experienced a red splat in communicator exhibiting that there was an issue syncing the corporate address book. I found &lt;a title=&#34;OCS 2007 R2 CRL Issue&#34; href=&#34;http://blog.danovich.com.au/2009/11/04/office-communicator-error-cannot-synchronize-address-book/&#34; target=&#34;_blank&#34;&gt;this excellent article&lt;/a&gt; explaining how an invalid Certificate Revocation List error may be causing this issue. My issue was slightly similar in nature but with some caveats.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I ran into this issue recently. End users experienced a red splat in communicator exhibiting that there was an issue syncing the corporate address book. I found &lt;!-- raw HTML omitted --&gt;this excellent article&lt;!-- raw HTML omitted --&gt; explaining how an invalid Certificate Revocation List error may be causing this issue. My issue was slightly similar in nature but with some caveats.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -312,7 +310,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</guid>
-      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I&amp;#8217;m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I’m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -321,7 +319,7 @@ Exchange 2010 Firewall Rule Generation Script</description>
       <pubDate>Tue, 22 Feb 2011 04:22:28 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/02/21/active-directory-role-based-access-modeling/</guid>
-      <description>&lt;p&gt;Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of &lt;a href=&#34;http://en.wikipedia.org/wiki/AGDLP&#34;&gt;AGDLP (an abbreviation of &amp;#8220;account, global, domain local, permission&amp;#8221;)&lt;/a&gt; to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of &lt;a href=&#34;http://en.wikipedia.org/wiki/AGDLP&#34;&gt;AGDLP (an abbreviation of “account, global, domain local, permission”)&lt;/a&gt; to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.&lt;/p&gt;</description>
     </item>
     
   </channel>

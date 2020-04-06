@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Use Powershell to Gather Disk/Partition/Mount Point Information | Zachary Loeber</title>
         <meta name="description" content="Use Powershell to Gather Disk/Partition/Mount Point Information - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Use Powershell to Gather Disk/Partition/Mount Point Information">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">3 min read</span>
+            <span class="readingTime">2 min read</span>
         
 
         
@@ -142,50 +142,24 @@
 
     
         <p>I put together a function for remotely gathering Windows disk information. This was specifically written to accommodate alternate credentials. This script also accounts for the glaring disconnect between win32_Volume and win32_DiskDrive within WMI.</p>
-
 <h2 id="description">Description</h2>
-
 <p>I was looking at powershell functions which gather remote disk information via WMI and was unable to find any which return both information about local disks/partitions and mount points to my satisfaction. So I rolled up my sleeves and hacked away at this script in between taking care of the kids and wife this weekend.</p>
-
 <p>The issues I have with current disk drive powershell scripts on the internet are two-fold. Firstly, none of the functions I found were properly written for utilizing alternate credentials. Secondly, using the Win32_DiskDrive provides excellent details on physical disks and partitions (using associators to Win32_DiskDriveToDiskPartition and then to Win32_LogicalDiskToPartition). But you need to use Win32_Volume to get anything at all about mount points on a disk. And there is literally no solid correlation between the Win32_Volume and the other classes. So you can use Win32_Volume to get mount point and disk information but it will not have vendor information or other pertinent properties. You can also get up to a certain point with Win32_DiskDriveToDiskPartition for mount points. Basically you can guess what might be a mount point but there is no way to get the capacity or free space.</p>
-
 <p>To get around these issues I wrote this function to return as much information about disks which can be found without Win32_Volume. I then tack on educated guesses on possible mount points from Win32_Volume as well (by looking for volumes returned without a drive letter assigned). The end result is that you will get more results from running this script than you will have drives on the system if there are mount points! I rectified this with custom properties for each type of result; disk, partition, and mountpoint.</p>
-
 <p>For the mountpoint information returned, I use a regex to include a sortable drive letter property among other things. The end result is more than enough information to filter out your results to get the drive data you are seeking.</p>
-
 <h2 id="version">Version</h2>
-
 <p>Version         :   1.0.0 June 21th 2013</p>
-
-<p>&#8211; First release</p>
-
+<p>– First release</p>
 <h2 id="notes">Notes</h2>
-
 <p>None but all recommendations and improvements are welcome.</p>
-
 <h2 id="screenshots">Screenshots</h2>
-
 <p>Here is an example of output just run locally against my laptop:</p>
-
-<pre>Model            : SAMSUNG SSD PM800 TH 64G
-Disk             : \\.\PHYSICALDRIVE0
-PrimaryPartition : True
-Drive            : C:
-VolumeName       : 
-FreeSpace        : 11.77
-Description      : Installable File System
-SerialNumber     :</pre>
-
-<pre>PercentageFree   : 19.75
-DiskSize         : 59.62
-Partition        : Disk #0, Partition #0
-DiskType         : Partition
-Computer         :</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h2 id="downloads">Downloads</h2>
-
 <p><a href="http://gallery.technet.microsoft.com/Use-Powershell-to-Gather-b5c746d0">Download the script from the technet gallery (more frequently updated)</a></p>
-
 <p><a href="/wp-content/uploads/2013/06/Get-RemoteDiskInformation.ps1">Download the script from this site (less frequently updated)</a></p>
     
 </div>
@@ -332,15 +306,15 @@ Computer         :</pre>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -369,7 +343,7 @@ Computer         :</pre>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

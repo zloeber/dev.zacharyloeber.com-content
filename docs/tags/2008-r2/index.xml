@@ -44,7 +44,7 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</guid>
       <description>Gather system local groups and their members for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems, a switch for inclusion of empty groups in the results, and returns group names with their members. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 09/11/2013
+Version History 1.0.0 – 09/11/2013
  Initial release  Notes None, this is an independent release of a function I’ve recently included in a larger project.</description>
     </item>
     
@@ -99,7 +99,8 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Thu, 11 Aug 2011 18:35:00 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/08/11/active-directory-essential-tools/</guid>
-      <description>&lt;p&gt;During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.&lt;/p&gt;</description>
+      <description>&lt;p&gt;During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;</description>
     </item>
     
     <item>
@@ -108,7 +109,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</guid>
-      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I&amp;#8217;m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I’m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
     </item>
     
   </channel>

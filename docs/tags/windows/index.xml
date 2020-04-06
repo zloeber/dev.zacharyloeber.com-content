@@ -16,7 +16,7 @@
       <pubDate>Mon, 15 May 2017 17:49:48 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/</guid>
-      <description>&lt;p&gt;I&amp;#8217;ve kicked the tires on a great PowerShell code scaffolding tool called &amp;#8216;Plaster&amp;#8217;. Here is my take on this nifty module.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’ve kicked the tires on a great PowerShell code scaffolding tool called ‘Plaster’. Here is my take on this nifty module.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -52,7 +52,7 @@
       <pubDate>Thu, 05 May 2016 02:31:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2016/05/04/powershell-my-profile/</guid>
-      <description>&lt;p&gt;I&amp;#8217;m always interested to see how other people setup their working environment or get things done. But rarely do I share my own environment. Since I&amp;#8217;m putting the effort into pushing my scripting environment publicly to github I may as well explain a bit more about some of what I&amp;#8217;ve setup.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’m always interested to see how other people setup their working environment or get things done. But rarely do I share my own environment. Since I’m putting the effort into pushing my scripting environment publicly to github I may as well explain a bit more about some of what I’ve setup.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -70,7 +70,7 @@
       <pubDate>Sat, 03 Oct 2015 18:57:04 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/10/03/powershell-thoughts-on-module-design/</guid>
-      <description>&lt;p&gt;I&amp;#8217;ve finally decided to grow up and start making modules out of my rather large PowerShell code base. Here are a few things I&amp;#8217;ve learned.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’ve finally decided to grow up and start making modules out of my rather large PowerShell code base. Here are a few things I’ve learned.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -79,7 +79,7 @@
       <pubDate>Sat, 18 Jul 2015 04:09:12 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</guid>
-      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the &amp;#8216;login as batch job&amp;#8217; local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I&amp;#8217;ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
+      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the ‘login as batch job’ local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I’ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
     </item>
     
     <item>
@@ -88,7 +88,7 @@
       <pubDate>Tue, 07 Apr 2015 00:12:33 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/04/06/exchange-database-leveling-redux/</guid>
-      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2014/01/07/exchange-20102013-database-leveling-script/&#34;&gt;tackled the challenge&lt;/a&gt; of constructing a variant of the bin packing algorithm for leveling out Exchange databases&amp;#8217; size with the least amount of mailbox migrations necessary. Since then, I&amp;#8217;ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I&amp;#8217;ve finally rounded back to this script to do it some justice.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2014/01/07/exchange-20102013-database-leveling-script/&#34;&gt;tackled the challenge&lt;/a&gt; of constructing a variant of the bin packing algorithm for leveling out Exchange databases’ size with the least amount of mailbox migrations necessary. Since then, I’ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I’ve finally rounded back to this script to do it some justice.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -97,7 +97,7 @@
       <pubDate>Sat, 04 Apr 2015 21:41:51 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/04/04/lync-2013-scripting-qos-config-on-edge-servers/</guid>
-      <description>&lt;p&gt;In many environments the Lync 2013 edge servers are configured in a standalone workgroup without any easy method for setting standard policies (such as GPOs). To make QoS configuration a bit less manual and error prone I&amp;#8217;ve put together this script which can be run in an administrative powershell prompt. It will update the NLA setting (or create it if it doesn&amp;#8217;t already exist), backup and prompt for removal any existing Qos settings, then import the registry settings for Audio, Video, and App QoS settings as defined in the script parameters.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In many environments the Lync 2013 edge servers are configured in a standalone workgroup without any easy method for setting standard policies (such as GPOs). To make QoS configuration a bit less manual and error prone I’ve put together this script which can be run in an administrative powershell prompt. It will update the NLA setting (or create it if it doesn’t already exist), backup and prompt for removal any existing Qos settings, then import the registry settings for Audio, Video, and App QoS settings as defined in the script parameters.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -106,9 +106,8 @@
       <pubDate>Sun, 22 Mar 2015 16:13:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</guid>
-      <description>&lt;p class=&#34;projectSummary&#34;&gt;
-  This is a self-contained organizational unit selection dialog box using powershell, xaml, wpf, and ADSI. Should be useful in any number of one off Powershell projects I imagine.
-&lt;/p&gt;</description>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -117,7 +116,7 @@
       <pubDate>Sun, 15 Mar 2015 01:51:53 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/03/14/lync-book-review-lync-server-cookbook/</guid>
-      <description>&lt;p&gt;I had planned to purchase this book at some point but instead was pleasantly surprised by an offer from one of the authors to provide an objective review of &amp;#8216;&lt;a href=&#34;http://www.amazon.com/Lync-Server-Cookbook-Fabrizio-Volpe-ebook/dp/B00SVBFBQS/ref=dp_kinw_strp_1&#34;&gt;Lync Server Cookbook&lt;/a&gt;&amp;#8216;! As I have worked with the product in some form since LCS/OCS days I believe I can speak with some authority on subject matter and readily agreed. With that being said, lets start with the book&amp;#8217;s overarching scope and structure.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I had planned to purchase this book at some point but instead was pleasantly surprised by an offer from one of the authors to provide an objective review of ‘&lt;a href=&#34;http://www.amazon.com/Lync-Server-Cookbook-Fabrizio-Volpe-ebook/dp/B00SVBFBQS/ref=dp_kinw_strp_1&#34;&gt;Lync Server Cookbook&lt;/a&gt;‘! As I have worked with the product in some form since LCS/OCS days I believe I can speak with some authority on subject matter and readily agreed. With that being said, lets start with the book’s overarching scope and structure.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -135,8 +134,8 @@
       <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
-      <description>I&amp;#8217;ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
-There are a few necessary results to gather where I believe it can be easy to &amp;#8216;miss&amp;#8217; configuration steps when turning up or disabling users:</description>
+      <description>I’ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
+There are a few necessary results to gather where I believe it can be easy to ‘miss’ configuration steps when turning up or disabling users:</description>
     </item>
     
     <item>
@@ -145,7 +144,7 @@ There are a few necessary results to gather where I believe it can be easy to &a
       <pubDate>Wed, 18 Dec 2013 18:53:18 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/12/18/gather-and-diagram-installed-roles-and-features-with-powershell/</guid>
-      <description>&lt;p&gt;Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I&amp;#8217;ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).&lt;/p&gt;</description>
+      <description>&lt;p&gt;Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I’ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -154,7 +153,7 @@ There are a few necessary results to gather where I believe it can be easy to &a
       <pubDate>Mon, 25 Nov 2013 18:16:24 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/11/25/lync-2013-monitoring-mirrored-sql-databases-with-powershell/</guid>
-      <description>&lt;p&gt;In Lync 2013 you are given a powerful new backend redundancy option for your important databases in the form of SQL mirroring. In this article I’ll discuss which services are able to be mirrored, the databases they encompass, and provide a PowerShell script to generate a report on the database mirror status. I also threw in Lync CMS replication and service status sections because it is the civil thing to do&amp;#8230;&lt;/p&gt;</description>
+      <description>&lt;p&gt;In Lync 2013 you are given a powerful new backend redundancy option for your important databases in the form of SQL mirroring. In this article I’ll discuss which services are able to be mirrored, the databases they encompass, and provide a PowerShell script to generate a report on the database mirror status. I also threw in Lync CMS replication and service status sections because it is the civil thing to do…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -164,7 +163,7 @@ There are a few necessary results to gather where I believe it can be easy to &a
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/10/16/gather-remote-event-logs-with-powershell/</guid>
       <description>About Gather the remote event log information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns Event Log information for the specified number of past hours. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 10/16/2013
+Version History 1.0.0 – 10/16/2013
  Initial release  Notes By default 24 hours is what we filter against for the results.</description>
     </item>
     
@@ -183,7 +182,7 @@ Version History 1.0.0 &amp;#8211; 10/16/2013
       <pubDate>Sun, 06 Oct 2013 22:50:35 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/10/06/visualize-active-directory-site-connections/</guid>
-      <description>&lt;h4 id=&#34;span-style-color-bbbbbb-font-size-12px-font-weight-normal-line-height-1-6-in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-i-ve-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagram-span&#34;&gt;&lt;span style=&#34;color: #bbbbbb; font-size: 12px; font-weight: normal; line-height: 1.6;&#34;&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;/span&gt;&lt;/h4&gt;</description>
+      <description>&lt;h4 id=&#34;span-stylecolor-bbbbbb-font-size-12px-font-weight-normal-line-height-16in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-ive-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagramspan&#34;&gt;&lt;!-- raw HTML omitted --&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;!-- raw HTML omitted --&gt;&lt;/h4&gt;</description>
     </item>
     
     <item>
@@ -220,7 +219,7 @@ Version History 1.0.0 &amp;#8211; 10/16/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</guid>
       <description>Gather system local groups and their members for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems, a switch for inclusion of empty groups in the results, and returns group names with their members. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 09/11/2013
+Version History 1.0.0 – 09/11/2013
  Initial release  Notes None, this is an independent release of a function I’ve recently included in a larger project.</description>
     </item>
     
@@ -240,7 +239,6 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/</guid>
       <description>&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
-
 &lt;p&gt;This function attempts to query the HP WBEM WMI provider information to ascertain the general health of a physical server. By default just the general health status is returned. Optionally you can include the following components in the results: ethernet teams, array controllers , ethernet adapters, fans, HBAs, power supplies, and temperature sensors.&lt;/p&gt;</description>
     </item>
     
@@ -323,7 +321,6 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
       <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
-
 &lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
     </item>
     
@@ -334,10 +331,8 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/11/22/exchange-the-state-of-external-client-access/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
 &lt;p&gt;Most within the messaging and collaboration industry are hyped up about the next wave of Microsoft collaboration and messaging products which are soon to be released. Among these products is Exchange 2013 RTM. This type of release typically precedes yet another wave of architecture upgrades across the corporate landscape. Some of these (beta testers) will be will undoubtedly upgrade to Exchange 2013.&lt;/p&gt;
-
-&lt;p&gt;Other corporations will start to feel the burn to upgrade as well. These will be organizations which realize that their Exchange &lt;sup&gt;2003&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; infrastructure is nearing a decade old existence and cannot meet the demands of their ever growing mobile workforce. Realizing they are behind the curve, they may feel hastened to upgrade as well, possibly just to Exchange 2010. Regardless the reason in choosing to upgrade their messaging infrastructure, there are critical design decisions which need to be made in how clients access this infrastructure both internally and externally. This article focuses solely on the external access aspect of the infrastructure.&lt;/p&gt;</description>
+&lt;p&gt;Other corporations will start to feel the burn to upgrade as well. These will be organizations which realize that their Exchange 2003/2007 infrastructure is nearing a decade old existence and cannot meet the demands of their ever growing mobile workforce. Realizing they are behind the curve, they may feel hastened to upgrade as well, possibly just to Exchange 2010. Regardless the reason in choosing to upgrade their messaging infrastructure, there are critical design decisions which need to be made in how clients access this infrastructure both internally and externally. This article focuses solely on the external access aspect of the infrastructure.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -364,9 +359,8 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Thu, 01 Mar 2012 05:30:13 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/02/29/exchange-2010-changing-an-invalid-dns-suffixed-server/</guid>
-      <description>&lt;p&gt;I ran into an interesting Exchange &lt;sup&gt;2010&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2007&lt;/sub&gt; co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be&lt;/p&gt;
-
-&lt;pre&gt;“Initial error: 451 4.4.0 dns query failed. The error was: SMTPsend.dns.nonexistentdomain; nonexistent”&lt;/pre&gt;</description>
+      <description>&lt;p&gt;I ran into an interesting Exchange 2010/2007 co-existence issue today. After a new Exchange 2010 (all-in-one) server was introduced into the environment traffic would only flow from the 2010 server to the 2007 hub/cas server and not the other way around. The mail queues stated the last error to be&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -376,8 +370,8 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/08/19/exchange-2010-one-liner-get-all-network-interface-information/</guid>
       <description>Here are a few quick powershell one-liners to get all the network interface information in your exchange environment:
-$ExchServers=(Get-ExchangeServer); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.Name | select @{Name=&#34;Server&#34;;Expression={$Srv.Name}},@{Name=&#34;DNS Host Name&#34;;Expression={$_.DNSHostName}},@{Name=&#34;Server Role&#34;;Expression={$Srv.ServerRole}},Description,@{Name=&#34;IP Address&#34;;Expression={$_.IPAddress}},@{Name=&#34;IP Subnet&#34;;Expression={$_.IPSubnet}},@{Name=&#34;Default Gateway&#34;;Expression={$_.DefaultIPGateway}},@{Name=&#34;Mac Address&#34;;Expression={$_.MacAddress}},@{Name=&#34;DNS Suffix Search Order&#34;;Expression={$_.DNSDomainSuffixSearchOrder}},@{Name=&#34;DNS Server Search Order&#34;;Expression={$_.DNSServerSearchOrder}},FullDNSRegistrationEnabled}) |Export-Csv -NoTypeInformation &#34;C:\Temp\Exchange-network.csv&#34; If you just want interface information for Exchange 2010 servers:
-$ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(foreach ($Srv in $ExchServers) {Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName $Srv.</description>
+If you just want interface information for Exchange 2010 servers:
+ </description>
     </item>
     
     <item>
@@ -386,7 +380,8 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(
       <pubDate>Sat, 13 Aug 2011 23:43:04 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/08/13/exchange-2010-a-few-more-migration-tips/</guid>
-      <description>&lt;p&gt;Here are a few more notes from the field to consider when you are planning your Exchange 2010 deployment and migration. Some of these items are good to know even after you have completed your migration and may help with overall system stability.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Here are a few more notes from the field to consider when you are planning your Exchange 2010 deployment and migration. Some of these items are good to know even after you have completed your migration and may help with overall system stability.&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;</description>
     </item>
     
     <item>
@@ -395,7 +390,8 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(
       <pubDate>Thu, 11 Aug 2011 18:35:00 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/08/11/active-directory-essential-tools/</guid>
-      <description>&lt;p&gt;During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.&lt;/p&gt;</description>
+      <description>&lt;p&gt;During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;</description>
     </item>
     
     <item>
@@ -404,7 +400,7 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(
       <pubDate>Thu, 31 Mar 2011 15:21:09 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/03/31/ocs-2007-r2-crl-issue-causing-address-book-download-error/</guid>
-      <description>&lt;p&gt;I ran into this issue recently. End users experienced a red splat in communicator exhibiting that there was an issue syncing the corporate address book. I found &lt;a title=&#34;OCS 2007 R2 CRL Issue&#34; href=&#34;http://blog.danovich.com.au/2009/11/04/office-communicator-error-cannot-synchronize-address-book/&#34; target=&#34;_blank&#34;&gt;this excellent article&lt;/a&gt; explaining how an invalid Certificate Revocation List error may be causing this issue. My issue was slightly similar in nature but with some caveats.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I ran into this issue recently. End users experienced a red splat in communicator exhibiting that there was an issue syncing the corporate address book. I found &lt;!-- raw HTML omitted --&gt;this excellent article&lt;!-- raw HTML omitted --&gt; explaining how an invalid Certificate Revocation List error may be causing this issue. My issue was slightly similar in nature but with some caveats.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -413,7 +409,7 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(
       <pubDate>Thu, 17 Mar 2011 12:58:12 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/03/17/windows-2003-to-2008-r2-radius-migration/</guid>
-      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I&amp;#8217;m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I found myself doing yet another Windows 2003 IAS Radius server migration to 2008 R2 NPS. I found that I had my prior notes and was able to do this quickly but, hell, if I’m looking this up in my own notes I may as well just post this succinct little procedure.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -422,7 +418,8 @@ $ExchServers=(Get-ExchangeServer | where {$_.ServerRole -ne &#34;None&#34;}); @(
       <pubDate>Fri, 17 Dec 2010 18:55:00 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2010/12/17/exchange-2010-sp1-pre-deployment-tips/</guid>
-      <description>&lt;p&gt;I recently had the opportunity to experience all of the blood, sweat, and tears of migrating a minimally maintained Exchange 2003 infrastructure to Exchange 2010 (and mid-way through, an upgrade to 2010 SP1). All of the docs out on the web for migrations make it seem soooo easy. But if you are going to do anything other than a single server install and are doing things like, oh say; hardware load balancing, Exchange 2003 co-existence, or working in an old multi-domain forest then you are in for some punishment. I think I ran into every possible issue that you can have with an Exchange 2010 migration. One guide that helped me in this endeavor was the &lt;a title=&#34;Rapid Exchange 2003 to 2010 Transition Guide&#34; href=&#34;http://msexchangegeek.com/2010/01/30/rapid-transition-guide-from-exchange-2003-to-exchange-2010/&#34; target=&#34;_blank&#34;&gt;rapid transition guide from Exchange 2003 to Exchange 2010&lt;/a&gt;. This guide didn&amp;#8217;t cover every aspect for me though, here are a few things that may save you a little bit of hassle. I&amp;#8217;ve been meaning to publish this for a while and I have a whole lot more notes from this experience but this is a start.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I recently had the opportunity to experience all of the blood, sweat, and tears of migrating a minimally maintained Exchange 2003 infrastructure to Exchange 2010 (and mid-way through, an upgrade to 2010 SP1). All of the docs out on the web for migrations make it seem soooo easy. But if you are going to do anything other than a single server install and are doing things like, oh say; hardware load balancing, Exchange 2003 co-existence, or working in an old multi-domain forest then you are in for some punishment. I think I ran into every possible issue that you can have with an Exchange 2010 migration. One guide that helped me in this endeavor was the &lt;!-- raw HTML omitted --&gt;rapid transition guide from Exchange 2003 to Exchange 2010&lt;!-- raw HTML omitted --&gt;. This guide didn’t cover every aspect for me though, here are a few things that may save you a little bit of hassle. I’ve been meaning to publish this for a while and I have a whole lot more notes from this experience but this is a start.&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;</description>
     </item>
     
   </channel>

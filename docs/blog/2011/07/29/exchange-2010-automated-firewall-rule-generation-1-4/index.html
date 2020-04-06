@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010: Automated Firewall Rule Generation 1.4 | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010: Automated Firewall Rule Generation 1.4 - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010: Automated Firewall Rule Generation 1.4">
@@ -142,33 +142,19 @@
 
     
         <p>I made some updates to the automated firewall rule generation script. This includes some updates to the firewall rule spreadsheet to give information on setting setic ports and port ranges for RPC based services. This csv file may be a good general reference even without the script.</p>
-
 <p>Change Log</p>
-
-<p>1.4 &#8211; Fixed some logic around Client-Network processing to generate just rules to the same site for hub-transport/</p>
-
+<p>1.4 – Fixed some logic around Client-Network processing to generate just rules to the same site for hub-transport/</p>
 <p>Client-Access roles and to bypass $SkipSameSite settings.</p>
-
-<p>&#8211; Updated the FirewallRules.csv to be more detailed for setting static ports for cross-site dags</p>
-
+<p>– Updated the FirewallRules.csv to be more detailed for setting static ports for cross-site dags</p>
 <p>(This is actually a really convenient reference in its own right)</p>
-
-<p>&#8211; Added a region column to the exchange environment csv file for processing</p>
-
-<p>1.3 &#8211; Added logic for client-network rules to only process them if they are in the same site as the Role</p>
-
+<p>– Added a region column to the exchange environment csv file for processing</p>
+<p>1.3 – Added logic for client-network rules to only process them if they are in the same site as the Role</p>
 <p>In our input exchange environment csv file if you want 2 sites to generate rules that allow them</p>
-
 <p>to reach two other sites instead of just their own you will need to put the network in twice, once</p>
-
 <p>for each site like so:</p>
-
-<p>Client-Network,10.203.2.0/24,End User Network &#8211; Site1,Site1</p>
-
-<p>Client-Network,10.203.2.0/24,End User Network &#8211; Site1,Site2</p>
-
+<p>Client-Network,10.203.2.0/24,End User Network – Site1,Site1</p>
+<p>Client-Network,10.203.2.0/24,End User Network – Site1,Site2</p>
 <p>Download:</p>
-
 <p><a href="/wp-content/uploads/2011/07/GenerateExchangeFirewalls_1-4.zip" title="Automated Firewall Rule Generation 1.4">Automated Firewall Rule Generation 1.4</a></p>
     
 </div>
@@ -305,15 +291,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -342,7 +328,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

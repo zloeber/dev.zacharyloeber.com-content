@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010 SP1: DAG Node Maintenance | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010 SP1: DAG Node Maintenance - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010 SP1: DAG Node Maintenance">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">2 min read</span>
+            <span class="readingTime">1 min read</span>
         
 
         
@@ -140,53 +140,33 @@
 
     
         <p>If you are performing maintenance on DAG nodes here is the process you want to go through (along with a slight caveat to fix a possible active copy move issue you may run into). In my environment I have three nodes in a cross-site dag.</p>
-
 <p>All the commands below are run in an administrative exchange powershell prompt.</p>
-
 <p><strong>Process for running maintenance on exchange database servers</strong></p>
-
-<pre>& "C:\Program Files\Microsoft\Exchange Server\V14\scripts\StartDagServerMaintenance.ps1" -ServerName &lt;Dag Node 1&gt;</pre>
-
+<!-- raw HTML omitted -->
 <ul>
-<li>Run maintenance on <Dag Node 1></li>
+<li>Run maintenance on &lt;Dag Node 1&gt;</li>
 </ul>
-
-<pre>& "C:\Program Files\Microsoft\Exchange Server\V14\scripts\StopDagServerMaintenance.ps1" -ServerName &lt;Dag Node 1&gt;</pre>
-
-<pre>& "C:\Program Files\Microsoft\Exchange Server\V14\scripts\StartDagServerMaintenance.ps1" -ServerName &lt;Dag Node 2&gt;</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <ul>
-<li>run maintenance on <Dag Node 2></li>
+<li>run maintenance on &lt;Dag Node 2&gt;</li>
 </ul>
-
-<pre>& "C:\Program Files\Microsoft\Exchange Server\V14\scripts\StopDagServerMaintenance.ps1" -ServerName &lt;Dag Node 2&gt;</pre>
-
-<pre>& "C:\Program Files\Microsoft\Exchange Server\V14\scripts\StartDagServerMaintenance.ps1" -ServerName &lt;Dag Node 3&gt;</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <ul>
-<li>run maintenance on <Dag Node 3></li>
+<li>run maintenance on &lt;Dag Node 3&gt;</li>
 </ul>
-
-<pre>& "C:\Program Files\Microsoft\Exchange Server\V14\scripts\StopDagServerMaintenance.ps1" -ServerName &lt;Dag Node 3&gt;</pre>
-
+<!-- raw HTML omitted -->
 <p>When done performing maintenance on one or multiple servers (hopefully one at a time to maintain full database availability for end users!) you can end up with a sub-optimal active database layout, especially if you have a cross-site DAG. To resolve this you have to rebalance the databases based on the priorities set for them upon creation.</p>
-
 <p><strong>Rebalance databases across dag</strong></p>
-
-<pre>& “C:\Program Files\Microsoft\Exchange Server\V14\scripts\RedistributeActiveDatabases.ps1”
--DagName &lt;Your DAG Name&gt; -BalanceDbsByActivationPreference -ShowFinalDatabaseDistribution -Confirm:$false</pre>
-
-<hr />
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<hr>
 <p>If you get any errors you may have to re-index the search catalog for the passive database. Rather than hunting down which ones need to be fixed you can just fix them all with the custom script I wrote below (or for only the mail servers with issues). When finished running these commands then try to run the maintenance or rebalance scripts again.</p>
-
 <p><strong>Fix/Rebuild Search Catalogs</strong></p>
-
-<pre>Get-MailboxDatabaseCopyStatus -Server &lt;Dag Node 1&gt; | where {$_.Status -like "Healthy"} | Update-MailboxDatabaseCopy -catalogonly</pre>
-
-<pre>Get-MailboxDatabaseCopyStatus -Server &lt;Dag Node 2&gt; | where {$_.Status -like "Healthy"} | Update-MailboxDatabaseCopy -catalogonly</pre>
-
-<pre>Get-MailboxDatabaseCopyStatus -Server &lt;Dag Node 3&gt; | where {$_.Status -like "Healthy"} | Update-MailboxDatabaseCopy -catalogonly</pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
     
 </div>
 
@@ -305,15 +285,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -342,7 +322,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> OCS 2007 R2: Quick Script | Zachary Loeber</title>
         <meta name="description" content="OCS 2007 R2: Quick Script - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="OCS 2007 R2: Quick Script">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">2 min read</span>
+            <span class="readingTime">1 min read</span>
         
 
         
@@ -140,108 +140,57 @@
 
     
         <p>I ran across this in one of the documents I wrote up while doing a side by side migration of our office communication server 2007  pool to 2007 R2. It is a quick script to automate the process of creating and assigning permissions for the shares needed in the front end server installation. I wrote it pretty quickly so use at your own discretion of course. Save as a .cmd or .bat and run directly on the front end server.</p>
-
 <p>Two notes:</p>
-
-<p>&#8211;       <em>RTCUniversalServerAdmins and Administrator = Full right on both NTFS and Share level permissions on all folders</em> __</p>
-
-<p>&#8211;       <em>Everyone group is removed from all share level permissions except Presentations</em></p>
-
+<p>–       <em>RTCUniversalServerAdmins and Administrator = Full right on both NTFS and Share level permissions on all folders</em> __</p>
+<p>–       <em>Everyone group is removed from all share level permissions except Presentations</em></p>
 <p> </p>
-
-<pre>mkdir c:\OCSShares</pre>
-
-<pre>mkdir c:\OCSShares\Presentations</pre>
-
-<pre>mkdir c:\OCSShares\Metadata</pre>
-
-<pre>mkdir c:\OCSShares\ABS</pre>
-
-<pre>mkdir c:\OCSShares\Applications</pre>
-
-<pre>mkdir c:\OCSShares\Updates</pre>
-
-<pre>mkdir c:\OCSShares\MeetingComp</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>__</p>
-
-<pre>net share Presentations=c:\OCSShares\Presentations /GRANT:NA1\RTCUniversalServerAdmins,FULL /GRANT:administrators,FULL /GRANT:everyone,READ /GRANT:NA1\RTCComponentUniversalServices,FULL /GRANT:NA1\RTCUniversalGuestAccessGroup,READ</pre>
-
-<pre>icacls c:\OCSShares\Presentations  /GRANT NA1\RTCUniversalServerAdmins:(F)</pre>
-
-<pre>icacls c:\OCSShares\Presentations  /GRANT administrators:(F)</pre>
-
-<pre>icacls c:\OCSShares\Presentations  /GRANT everyone:(R)</pre>
-
-<pre>icacls c:\OCSShares\Presentations  /GRANT NA1\RTCUniversalGuestAccessGroup:(RD)</pre>
-
-<pre>icacls c:\OCSShares\Presentations  /GRANT NA1\RTCComponentUniversalServices:(M)</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>__</p>
-
-<pre>net share Metadata=c:\OCSShares\Metadata /GRANT:NA1\RTCUniversalServerAdmins,FULL /GRANT:administrators,FULL</pre>
-
-<pre>/GRANT:NA1\RTCComponentUniversalServices,FULL</pre>
-
-<pre>icacls c:\OCSShares\Metadata  /GRANT NA1\RTCUniversalServerAdmins:(F)</pre>
-
-<pre>icacls c:\OCSShares\Metadata  /GRANT NA1\RTCComponentUniversalServices:(F)</pre>
-
-<pre>icacls c:\OCSShares\Metadata  /GRANT administrators:(F)</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>__</p>
-
-<pre>net share ABS=c:\OCSShares\ABS  /GRANT:NA1\RTCUniversalServerAdmins,FULL /GRANT:administrators,FULL /GRANT:”Authenticated Users”,READ /GRANT:NA1\RTCHSUniversalServices,FULL /GRANT:NA1\RTCUniversalGuestAccessGroup,READ</pre>
-
+<!-- raw HTML omitted -->
 <p>__</p>
-
-<pre>icacls c:\OCSShares\ABS  /GRANT NA1\RTCUniversalServerAdmins:(F)</pre>
-
-<pre>icacls c:\OCSShares\ABS   /GRANT administrators:(F)</pre>
-
-<pre>icacls c:\OCSShares\ABS  /GRANT NA1/RTCHSUniversalServices:(M)</pre>
-
-<pre>icacls c:\OCSShares\ABS  /GRANT NA1/RTCUniversalGuestAccessGroup:(RD)</pre>
-
-<pre>icacls c:\OCSShares\ABS  /GRANT ”Authenticated Users”:(RD)</pre>
-
-<pre> </pre>
-
-<pre>net share Applications=c:\OCSShares\Applications /GRANT:NA1\RTCUniversalServerAdmins,FULL /GRANT:administrators,FULL</pre>
-
-<pre>/GRANT:NA1\ RTCComponentUniversalServices,FULL</pre>
-
-<pre>icacls c:\OCSShares\Applications /GRANT NA1\RTCComponentUniversalServices:(F)</pre>
-
-<pre>icacls c:\OCSShares\Applications /GRANT NA1\RTCUniversalServerAdmins:(F)</pre>
-
-<pre>icacls c:\OCSShares\Applications /GRANT administrators:(F)</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>__</p>
-
-<pre>net share Updates=c:\OCSShares\Updates /GRANT:NA1\RTCUniversalServerAdmins,FULL /GRANT:administrators,FULL /GRANT:NA1\RTCHSUniversalServices,READ /GRANT:NA1\RTCUniversalGuestAccessGroup,READ /GRANT:NA1\RTCComponentUniversalServices,FULL</pre>
-
+<!-- raw HTML omitted -->
 <p>__</p>
-
-<pre>icacls c:\OCSShares\Updates /GRANT NA1\RTCUniversalServerAdmins:(F)</pre>
-
-<pre>icacls c:\OCSShares\Updates /GRANT administrators:(F)</pre>
-
-<pre>icacls c:\OCSShares\Updates /GRANT NA1\RTCUniversalGuestAccessGroup:(RD)</pre>
-
-<pre>icacls c:\OCSShares\Updates /GRANT NA1\RTCHSUniversalServices:(RD)</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>__</p>
-
-<pre>net share MeetingComp=c:\OCSShares\MeetingComp /GRANT:NA1\RTCUniversalServerAdmins,FULL /GRANT:administrators,FULL /GRANT:NA1\RTCComponentUniversalServices,FULL</pre>
-
+<!-- raw HTML omitted -->
 <p>__</p>
-
-<pre>icacls c:\OCSShares\MeetingComp /GRANT NA1\RTCUniversalServerAdmins:(F)</pre>
-
-<pre>icacls c:\OCSShares\MeetingComp /GRANT administrators:(F)</pre>
-
-<pre>icacls c:\OCSShares\MeetingComp /GRANT NA1\RTCComponentUniversalServices:(M)</pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
     
 </div>
 
@@ -360,15 +309,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -397,7 +346,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

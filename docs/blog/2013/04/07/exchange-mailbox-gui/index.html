@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange: Mailbox GUI | Zachary Loeber</title>
         <meta name="description" content="Exchange: Mailbox GUI - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange: Mailbox GUI">
@@ -148,11 +148,8 @@
 
     
         <h1 id="exchange-2010-mailbox-gui">Exchange 2010 Mailbox GUI</h1>
-
 <p>A powershell GUI for selecting and performing actions against multiple Exchange mailboxes.</p>
-
 <p>The scope of mailbox selection can be:</p>
-
 <ul>
 <li>An entire organization</li>
 <li>The mailboxes within a DAG</li>
@@ -160,31 +157,18 @@
 <li>The mailboxes on one mailbox database</li>
 <li>Individually selected mailboxes from any of the above scopes</li>
 </ul>
-
 <h2 id="introduction">Introduction</h2>
-
 <p>This GUI was developed specifically for environments with multiple DAGs or where there may be split Exchange organizational responsibility in the same forest. I wanted to be able to work on mailboxes within a singular DAG or other granular scopes without having to reinvent the wheel for every new script. So I came up with this generic container GUI to work on mailboxes instead. This is actually a subset of another script I’ve been working on which I believe may be valuable to others as a general template for their own work.</p>
-
 <p>Many of my other scripts are meant to be scheduled for recurring execution. Currently this script is meant for a more immediate or one off execution. If there is a need in the future this may change.</p>
-
 <h2 id="usage">Usage</h2>
-
 <p>At the moment, you need to define a custom script (aptly called “Custom-Script.ps1”) to call against your selection of mailboxes. This script must take an array of PSObjects and should be self-contained. So if you want to get information back, make sure Custom-Script.ps1 does so within the function called “Custom-Function”. An example custom-script.ps1 file is included with a function which will return activesync information on all selected mailboxes. This function drops a CSV file called ActivesyncDevices.csv.</p>
-
 <h2 id="notes">Notes</h2>
-
 <p>Be patient in larger environments, it can take a while to load up the mailboxes and other form elements. If the form shows “(Not Responding)” very likely it is still working on getting your results.</p>
-
 <p>This script is still very new, there may be kinks to work out. If you run into any “kinks” that you want worked out, clue me in and I’ll do what I can to get things squared away.</p>
-
 <p>Remoting seems to work but you get the fastest results running directly from a server.</p>
-
 <p>If you want to just get results against a DAG, server, or database don’t even select to load the mailboxes. If you do load the mailboxes and want results from larger scopes just make sure that no mailboxes are selected.</p>
-
 <p>Once connected, all DAGs and databases will be listed. Once you select a DAG, only databases within that DAG will be listed. If you just select a DAG, all mailboxes in that DAG are the target audience.</p>
-
 <p><a href="/wp-content/uploads/2013/04/Exchange-Mailbox-GUI.zip">Exchange-Mailbox-GUI</a></p>
-
 <p><a href="http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590">Technet Link</a></p>
     
 </div>
@@ -304,15 +288,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -341,7 +325,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange Mailbox Auditing with Powershell | Zachary Loeber</title>
         <meta name="description" content="Exchange Mailbox Auditing with Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange Mailbox Auditing with Powershell">
@@ -146,32 +146,19 @@
 
     
         <p>Some time ago I wrote a script and GUI for performing security audits of Exchange mailbox and calendar rights in an environment. This script was far more popular than I anticipated and, I’m ashamed to say, was rather poorly written by my current Powershell standards. There is an obvious need to simplify the extraction of mailbox permissions or my old script would not still be so popular. So I’ve started to revisit my old code for this project in hopes of remaking it with my PowerShell reporting engine. The first step in this process is to pull out the several bits of code that do the actual rights/permissions extraction. I think I’ve finally got this part done and see no reason not to release this mini-library of functions first.</p>
-
 <p>I came up with these powershell functions due to some of the idiosyncrasies in exchange mailbox permissions and rights delegations. These functions are broken down as follows:</p>
-
-<p><strong>Get-MailboxForwardAndRedirectRules</strong> &#8211; Retrieves a list of mailbox rules which forward or redirect email elsewhere. This can be extremely helpful to audit every now and a gain. Users whom have left the organization are fully capable of configuring a rule in Outlook to forward all inbound email to their personal mail account. Little do you realize that mail may be flowing into then right out of your organization.</p>
-
+<p><strong>Get-MailboxForwardAndRedirectRules</strong> – Retrieves a list of mailbox rules which forward or redirect email elsewhere. This can be extremely helpful to audit every now and a gain. Users whom have left the organization are fully capable of configuring a rule in Outlook to forward all inbound email to their personal mail account. Little do you realize that mail may be flowing into then right out of your organization.</p>
 <p>This function really just wraps up Get-InboxRule and filters out rules that forward, forward as attachment, or Redirects anywhere that isn’t an exchange address (preceded by EX:/) or null. I actually had a less pretty function for this created when I found a decent function from someone else (referenced in script notes) and recreated it to my liking.</p>
-
-<p><strong>Get-MailboxCalendarDelegates</strong> &#8211; Retrieves a list of user delegated calendar permissions. This is different than calendar permissions in that delegates are really just resource delegates in many cases and respond on behalf of the mailbox owners. This is a permission set by the mailbox owner within Outlook in most cases and can slip under the radar. The function itself is a simple wrapper around Get-CalendarProcessing and returns a prettified list of the resourcedelegates property.</p>
-
-<p><strong>Get-MailboxExtendedRights</strong> &#8211; Gathers a list of extended rights like &#8216;send-as&#8217; on exchange mailboxes. This is the typical AD rights associated with a mailbox and can be inherited from the database level (or higher) and can also be directly assigned. The function defaults to send-as but you can also get all extended rights by passing * instead I suppose. I put this together as extended rights are obscurely nestled behind get-adpermission in a non-default property (doesn’t get displayed in output unless using select *).</p>
-
+<p><strong>Get-MailboxCalendarDelegates</strong> – Retrieves a list of user delegated calendar permissions. This is different than calendar permissions in that delegates are really just resource delegates in many cases and respond on behalf of the mailbox owners. This is a permission set by the mailbox owner within Outlook in most cases and can slip under the radar. The function itself is a simple wrapper around Get-CalendarProcessing and returns a prettified list of the resourcedelegates property.</p>
+<p><strong>Get-MailboxExtendedRights</strong> – Gathers a list of extended rights like ‘send-as’ on exchange mailboxes. This is the typical AD rights associated with a mailbox and can be inherited from the database level (or higher) and can also be directly assigned. The function defaults to send-as but you can also get all extended rights by passing * instead I suppose. I put this together as extended rights are obscurely nestled behind get-adpermission in a non-default property (doesn’t get displayed in output unless using select *).</p>
 <p>So if you wanted to get all the explicitly set rights on mailboxes for send-as you just run the following:</p>
-
-<pre class="lang:powershell decode:true">Get-Mailbox -ResultSize Unlimited | Get-MailboxExtendedRights</pre>
-
-<p><strong>Get-MailboxSendOnBehalfRights</strong> &#8211; Gathers a list of users with sendonbehalf rights for a mailbox. This is a separate right on mailboxes for whatever reason so it is in a separate function here as well. Like the prior command you can easily get all mailboxes that have other users able to send on behalf of permissions like so:</p>
-
-<pre class="lang:powershell decode:true">Get-Mailbox -ResultSize Unlimited | Get-MailboxSendOnBehalfRights</pre>
-
-<p><span style="line-height: 1.6;">These particular rights are directly on the mailbox object itself and can be attained with Get-Mailbox. This function simply wraps that cmdlet up and pulls the names buried in the properties of grantsendonbehalfto on the Mailbox.</span></p>
-
-<p><strong>Get-MailboxCalendarPermission</strong> &#8211; Get a list of permissions for mailbox calendars in an exchange environment. As different languages spell &#8216;calendar&#8217; differently this script first pulls the actual name of the calendar by using get-mailboxfolderstatistics and has proven to work across multi-lingual organizations. This has recently been updated to work with Office 365 as well, sweet.</p>
-
-<p><strong><em>Get-MailboxPermission</em></strong> – Ok, this isn’t my function but rather is baked right into Exchange. You would use this to get full access permissions and most any other permissions you are looking for from Exchange. A permission is not really the same as a right and isn&#8217;t in my little function library.</p>
-
-<p>Most of this stuff isn&#8217;t ground breaking or difficult to get out of Exchange but I thought that a few functions for the most common tasks would make my future code more readable. You can get these functions at the <a href="https://gallery.technet.microsoft.com/Exchange-Mailbox-Auditing-00d2e2a8">Microsoft Technet Gallery</a> and my <a href="https://github.com/zloeber/Powershell/tree/master/Exchange">Github repository</a>. Enjoy!</p>
+<!-- raw HTML omitted -->
+<p><strong>Get-MailboxSendOnBehalfRights</strong> – Gathers a list of users with sendonbehalf rights for a mailbox. This is a separate right on mailboxes for whatever reason so it is in a separate function here as well. Like the prior command you can easily get all mailboxes that have other users able to send on behalf of permissions like so:</p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->These particular rights are directly on the mailbox object itself and can be attained with Get-Mailbox. This function simply wraps that cmdlet up and pulls the names buried in the properties of grantsendonbehalfto on the Mailbox.<!-- raw HTML omitted --></p>
+<p><strong>Get-MailboxCalendarPermission</strong> – Get a list of permissions for mailbox calendars in an exchange environment. As different languages spell ‘calendar’ differently this script first pulls the actual name of the calendar by using get-mailboxfolderstatistics and has proven to work across multi-lingual organizations. This has recently been updated to work with Office 365 as well, sweet.</p>
+<p><strong><em>Get-MailboxPermission</em></strong> – Ok, this isn’t my function but rather is baked right into Exchange. You would use this to get full access permissions and most any other permissions you are looking for from Exchange. A permission is not really the same as a right and isn’t in my little function library.</p>
+<p>Most of this stuff isn’t ground breaking or difficult to get out of Exchange but I thought that a few functions for the most common tasks would make my future code more readable. You can get these functions at the <a href="https://gallery.technet.microsoft.com/Exchange-Mailbox-Auditing-00d2e2a8">Microsoft Technet Gallery</a> and my <a href="https://github.com/zloeber/Powershell/tree/master/Exchange">Github repository</a>. Enjoy!</p>
     
 </div>
 
@@ -307,15 +294,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -344,7 +331,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Audit User Profile Folders With Powershell | Zachary Loeber</title>
         <meta name="description" content="Audit User Profile Folders With Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Audit User Profile Folders With Powershell">
@@ -144,11 +144,8 @@
 
     
         <p>This function will aggregate sub-folders within a folder on a server and attempt to associate them with user IDs within a domain and provide additional information. This script can also be used to move folders for disabled or non-existent accounts.</p>
-
 <h2 id="description">Description</h2>
-
 <p>If you find yourself needing to go through a load of old user profiles this function may be able to help. This function goes through a specified directory and can perform the following:</p>
-
 <ul>
 <li>Look up user ids in AD which match the folder names and determine if they are enabled or even exist.</li>
 <li>Move profiles where users are disabled to another folder</li>
@@ -157,27 +154,16 @@
 <li>Report on the most recently updated file within each profile folder</li>
 <li>Report if errors were found accessing any files within a profile folder</li>
 </ul>
-
 <h2 id="version">Version</h2>
-
 <p>Version : 1.0.0 June 21th 2013</p>
-
-<p>&#8211; First release</p>
-
+<p>– First release</p>
 <h2 id="notes">Notes</h2>
-
 <p>I only included the ability to move folders to the local volume. Also, deeply nested folders may throw errors. These are both shortcomings/limitations of the built in move-item powershell command and .NET. I tinkered with using powerrobocopy.ps1 instead but ultimately left it out to remove a dependency.</p>
-
 <p>I use the lastlogontimestap AD property to determine the last logon for a user. If you are on a pre-2003 AD infrastructure then this script may not be for you (In fact, this decade may not be for you, upgrade your domain already!).</p>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>This script may be a good starting point for a user profile migration move or possibly a data archiving initiative within your organization. The function is currently limited to a single server and folder but can easily be expanded upon (that is the nature of free scripts after all!)</p>
-
 <h2 id="downloads">Downloads</h2>
-
 <p><a href="http://gallery.technet.microsoft.com/scriptcenter/Audit-User-Profile-Folders-4d13ef94">Download the script from the technet gallery (more frequently updated)</a></p>
-
 <p><a href="/wp-content/uploads/2013/06/Get-UserProfileShareFolderAudit.ps1">Download the script from this site (less frequently updated)</a></p>
     
 </div>
@@ -322,15 +308,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -359,7 +345,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

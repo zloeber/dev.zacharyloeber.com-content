@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Use Powershell to Create a Windows Service Dependency Diagrams | Zachary Loeber</title>
         <meta name="description" content="Use Powershell to Create a Windows Service Dependency Diagrams - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Use Powershell to Create a Windows Service Dependency Diagrams">
@@ -140,74 +140,37 @@
 
     
         <p>I use powershell with graphviz to generate color coded service dependency diagrams for windows services. Besides creating useful and beautiful diagrams for your environment, this will also provide some interesting functions for gathering remote service information with alternate credentials.</p>
-
 <h2 id="description">Description</h2>
-
 <p>It seems like I come across something begging for a solution every day in my industry. For instance, I was working on performing a full dependency relationship table for services across my infrastructure and I got to thinking how cool it would be to have the ability to quickly create dependency diagrams for the services running on a server. Not finding anything free or simple, I whipped up a quick powershell script with a recursive function to utilize the built in cmdlets and return services, their dependencies, the dependencies of the dependencies, and so on. I then hacked this data into a template file for graphviz’s dot.exe diagram generation tool.</p>
-
 <p>This probably should have been good enough but I wanted to also be able to do the same across multiple servers using alternate admin credentials. I found myself unrolling the solution into several sub-functions when get-service simply wasn’t filling my needs. This lead me to a better understanding of wmi and powershell functions in general. The end results are the following functions:</p>
-
-<p style="padding-left: 30px;">
-  Get-RemoteService
-</p>
-
-<p style="padding-left: 30px;">
-  Get-RemoteServiceDependency
-</p>
-
-<p style="padding-left: 30px;">
-  Get-RemoteServiceDependencyTree
-</p>
-
-<p style="padding-left: 30px;">
-  Get-RemoteRegistry (Not actually used in this script but included as a bonus!)
-</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>To actually generate the diagrams you will need graphviz’s dot.exe executable which can be downloaded and installed <a href="http://graphviz.org/">here</a>. Or <a href="https://code.google.com/p/graph-viz-portable/downloads/list">here is a portable version</a> of the application you can try utilizing. All you need is for the dot.exe file to work correctly to generate your diagrams though. You may have to modify this script to use the appropriate path to the executable if you use the portable version of graphviz.</p>
-
 <h2 id="version">Version</h2>
-
 <p>Version         :   1.0.0 June 16th 2013</p>
-
-<p>&#8211; First release</p>
-
+<p>– First release</p>
 <h2 id="notes">Notes</h2>
-
 <p>I included several functions in this exercise but I didn’t create any separate functions for the actual dot file generation. This is largely because there are so many ways this can be done. By default this script will create dependency diagrams which include hidden services in the dependency tree (as dashed nodes). This will also color code the nodes based on the status of the service.</p>
-
 <p>The primary function you will use to create the dependency tree is the Get-RemoteServiceDependencyTree function. Here are three examples on how you might generate this data.</p>
-
-<pre># Example 1: Get the netlogon service locally 
-$servicetree = @(Get-RemoteServiceDependencyTree -Name 'netlogon' -IsRootService $true)</pre>
-
-<pre># Example 2: Get the netlogon service on the remote 'server1' prompting for credentials before connecting 
-$servicetree = @(Get-RemoteServiceDependencyTree -Name 'netlogon' -IsRootService $true -ComputerName 'server1' -PromptForCredential)</pre>
-
-<pre># Example 3: Get any service with "Exchange" in the name on a remote server called 'server1' 
-$Cred = Get-Credential 
-$servicetree = @(get-remoteservice -IncludeDriverServices $true -Credential $Cred -ComputerName 'server1' | where {$_.Name -like "*exchange*"} | Get-RemoteServiceDependencyTree -IsRootService $true -Credential $Cred -ComputerName 'server1')</pre>
-
-<pre># This removes possible duplicate node connections and should be done for all examples 
-$servicetree = $servicetree | Sort-Object ID –Unique</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h2 id="screenshots">Screenshots</h2>
-
 <p>Here is a diagram generated for the netlogon service (remotely to a test DC of mine for what it is worth).</p>
-
-<p><a href="/wp-content/uploads/2013/06/clip_image0021.jpg"><img style="margin: 0px; display: inline; background-image: none;" title="clip_image002[1]" alt="clip_image002[1]" src="/wp-content/uploads/2013/06/clip_image0021_thumb.jpg?resize=244%2C78" width="244" height="78" border="0" data-recalc-dims="1" /></a></p>
-
+<p><a href="/wp-content/uploads/2013/06/clip_image0021.jpg"><!-- raw HTML omitted --></a></p>
 <p>Here is a more complex diagram depicting all of the services with “exchange” in the name on an exchange 2010 mailbox.</p>
-
-<p><a href="wp-content/uploads/2013/06/clip_image0041.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="clip_image004[1]" alt="clip_image004[1]" src="/wp-content/uploads/2013/06/clip_image0041_thumb.jpg?resize=244%2C147" width="244" height="147" border="0" data-recalc-dims="1" /></a></p>
-
+<p><a href="wp-content/uploads/2013/06/clip_image0041.jpg"><!-- raw HTML omitted --></a></p>
 <h2 id="conclusion">Conclusion</h2>
-
 <p>This may be a good starting point for documentation of some of the essentials services running on your servers. Or if you are simply interested in to flow of service dependencies and need a good visual to understand them on your servers, this should certainly help you out.</p>
-
 <h2 id="downloads">Downloads</h2>
-
 <p><a href="http://gallery.technet.microsoft.com/Use-Powershell-to-Create-a-ca883479">Download the script from the technet gallery (more frequently updated)</a></p>
-
 <p><a href="http://gallery.technet.microsoft.com/Use-Powershell-to-Create-a-ca883479">Download the script from this site (less frequently updated)</a></p>
     
 </div>
@@ -346,15 +309,15 @@ $servicetree = $servicetree | Sort-Object ID –Unique</pre>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -383,7 +346,7 @@ $servicetree = $servicetree | Sort-Object ID –Unique</pre>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

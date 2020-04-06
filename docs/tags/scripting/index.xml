@@ -17,8 +17,8 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/</guid>
       <description>If you are deploying your own Kubernetes clusters you already know that:
- Kubernetes is hard  But there is hope!
-There are a few great projects to keep an eye on in this space. I&amp;#8217;ve covered some of them in an article you can read on the Lumen.
+But there is hope!
+There are a few great projects to keep an eye on in this space. I’ve covered some of them in an article you can read on the Lumen.
 Cheers!</description>
     </item>
     
@@ -46,7 +46,7 @@ Cheers!</description>
       <pubDate>Mon, 15 May 2017 17:49:48 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2017/05/15/powershell-creating-plaster-manifest-files/</guid>
-      <description>&lt;p&gt;I&amp;#8217;ve kicked the tires on a great PowerShell code scaffolding tool called &amp;#8216;Plaster&amp;#8217;. Here is my take on this nifty module.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’ve kicked the tires on a great PowerShell code scaffolding tool called ‘Plaster’. Here is my take on this nifty module.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -118,7 +118,7 @@ Cheers!</description>
       <pubDate>Sat, 18 Jul 2015 04:09:12 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/07/17/powershell-login-as-batch-job-security-rights/</guid>
-      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the &amp;#8216;login as batch job&amp;#8217; local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I&amp;#8217;ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
+      <description>Here is a quick bit of PowerShell. It is some snippets of C# code wrapped up with PowerShell which will allow you to assign accounts to the ‘login as batch job’ local security rights of a local machine. The code is no great shakes but it is a good example of how you might take some existing online code and modify to suit your needs in PowerShell. This function also compliments another script I’ve released in the past for automatically scheduling PowerShell scheduled tasks rather well.</description>
     </item>
     
     <item>
@@ -127,7 +127,7 @@ Cheers!</description>
       <pubDate>Tue, 07 Apr 2015 00:12:33 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/04/06/exchange-database-leveling-redux/</guid>
-      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2014/01/07/exchange-20102013-database-leveling-script/&#34;&gt;tackled the challenge&lt;/a&gt; of constructing a variant of the bin packing algorithm for leveling out Exchange databases&amp;#8217; size with the least amount of mailbox migrations necessary. Since then, I&amp;#8217;ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I&amp;#8217;ve finally rounded back to this script to do it some justice.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2014/01/07/exchange-20102013-database-leveling-script/&#34;&gt;tackled the challenge&lt;/a&gt; of constructing a variant of the bin packing algorithm for leveling out Exchange databases’ size with the least amount of mailbox migrations necessary. Since then, I’ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I’ve finally rounded back to this script to do it some justice.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -136,9 +136,8 @@ Cheers!</description>
       <pubDate>Sun, 22 Mar 2015 16:13:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/03/22/powershell-wpftreeview-ou-selection-dialog/</guid>
-      <description>&lt;p class=&#34;projectSummary&#34;&gt;
-  This is a self-contained organizational unit selection dialog box using powershell, xaml, wpf, and ADSI. Should be useful in any number of one off Powershell projects I imagine.
-&lt;/p&gt;</description>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -147,7 +146,7 @@ Cheers!</description>
       <pubDate>Sun, 08 Feb 2015 23:30:30 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2015/02/08/lync-client-automatic-fortune-cookie-utility/</guid>
-      <description>&lt;p&gt;Here&amp;#8217;s a just for fun powershell script for the Lync user. In the not so old days of Unix administration it was not too uncommon to have a &amp;#8216;&lt;a href=&#34;http://en.wikipedia.org/wiki/Fortune_%28Unix%29&#34;&gt;fortune cookie&amp;#8217; display when logging into a system&lt;/a&gt;. I’ve always thought that it would be neat to have something similar in the Lync client that would allow for an easy rotation of your personal note field. Little did I realize how easy it would be to add such functionality myself with some powershell and the Lync SDK!&lt;/p&gt;</description>
+      <description>&lt;p&gt;Here’s a just for fun powershell script for the Lync user. In the not so old days of Unix administration it was not too uncommon to have a ‘&lt;a href=&#34;http://en.wikipedia.org/wiki/Fortune_%28Unix%29&#34;&gt;fortune cookie’ display when logging into a system&lt;/a&gt;. I’ve always thought that it would be neat to have something similar in the Lync client that would allow for an easy rotation of your personal note field. Little did I realize how easy it would be to add such functionality myself with some powershell and the Lync SDK!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -183,7 +182,7 @@ Cheers!</description>
       <pubDate>Fri, 21 Nov 2014 17:37:30 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2014/11/21/lync-ucs-contacts-reporting-with-powershell/</guid>
-      <description>By default a Lync enabled account within a Lync/Exchange 2013 environment will be enabled for UCS (Unified Contact Store). This means that the Lync contacts get saved in the Lync user&amp;#8217;s mailbox and not the Lync database. In order to get a list of the contacts associated with these accounts you have to export data to a zip file with some debug Lync commands and, even then, the information is buried in a hard to interpret XML file.</description>
+      <description>By default a Lync enabled account within a Lync/Exchange 2013 environment will be enabled for UCS (Unified Contact Store). This means that the Lync contacts get saved in the Lync user’s mailbox and not the Lync database. In order to get a list of the contacts associated with these accounts you have to export data to a zip file with some debug Lync commands and, even then, the information is buried in a hard to interpret XML file.</description>
     </item>
     
     <item>
@@ -228,7 +227,7 @@ Cheers!</description>
       <pubDate>Wed, 18 Dec 2013 18:53:18 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/12/18/gather-and-diagram-installed-roles-and-features-with-powershell/</guid>
-      <description>&lt;p&gt;Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I&amp;#8217;ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).&lt;/p&gt;</description>
+      <description>&lt;p&gt;Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I’ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -237,7 +236,7 @@ Cheers!</description>
       <pubDate>Mon, 25 Nov 2013 18:16:24 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/11/25/lync-2013-monitoring-mirrored-sql-databases-with-powershell/</guid>
-      <description>&lt;p&gt;In Lync 2013 you are given a powerful new backend redundancy option for your important databases in the form of SQL mirroring. In this article I’ll discuss which services are able to be mirrored, the databases they encompass, and provide a PowerShell script to generate a report on the database mirror status. I also threw in Lync CMS replication and service status sections because it is the civil thing to do&amp;#8230;&lt;/p&gt;</description>
+      <description>&lt;p&gt;In Lync 2013 you are given a powerful new backend redundancy option for your important databases in the form of SQL mirroring. In this article I’ll discuss which services are able to be mirrored, the databases they encompass, and provide a PowerShell script to generate a report on the database mirror status. I also threw in Lync CMS replication and service status sections because it is the civil thing to do…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -247,7 +246,7 @@ Cheers!</description>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/10/16/gather-remote-event-logs-with-powershell/</guid>
       <description>About Gather the remote event log information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns Event Log information for the specified number of past hours. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 10/16/2013
+Version History 1.0.0 – 10/16/2013
  Initial release  Notes By default 24 hours is what we filter against for the results.</description>
     </item>
     
@@ -266,7 +265,7 @@ Version History 1.0.0 &amp;#8211; 10/16/2013
       <pubDate>Sun, 06 Oct 2013 22:50:35 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/10/06/visualize-active-directory-site-connections/</guid>
-      <description>&lt;h4 id=&#34;span-style-color-bbbbbb-font-size-12px-font-weight-normal-line-height-1-6-in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-i-ve-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagram-span&#34;&gt;&lt;span style=&#34;color: #bbbbbb; font-size: 12px; font-weight: normal; line-height: 1.6;&#34;&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;/span&gt;&lt;/h4&gt;</description>
+      <description>&lt;h4 id=&#34;span-stylecolor-bbbbbb-font-size-12px-font-weight-normal-line-height-16in-this-post-i-use-powershell-with-graphviz-to-create-an-active-directory-diagram-of-all-site-connections-between-servers-additionally-ive-included-some-code-which-displays-site-connection-options-you-may-be-able-to-use-this-to-find-isolated-dcs-or-just-to-see-a-pretty-diagramspan&#34;&gt;&lt;!-- raw HTML omitted --&gt;In this post I use powershell with graphviz to create an Active Directory diagram of all site connections between servers. Additionally, I’ve included some code which displays site connection options. You may be able to use this to find isolated DCs or just to see a pretty diagram.&lt;!-- raw HTML omitted --&gt;&lt;/h4&gt;</description>
     </item>
     
     <item>
@@ -303,7 +302,7 @@ Version History 1.0.0 &amp;#8211; 10/16/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/09/11/gather-local-group-membership-with-powershell/</guid>
       <description>Gather system local groups and their members for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems, a switch for inclusion of empty groups in the results, and returns group names with their members. You can view verbose information on each runspace thread in realtime with the -Verbose option.
-Version History 1.0.0 &amp;#8211; 09/11/2013
+Version History 1.0.0 – 09/11/2013
  Initial release  Notes None, this is an independent release of a function I’ve recently included in a larger project.</description>
     </item>
     
@@ -313,7 +312,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Wed, 28 Aug 2013 13:25:22 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/08/28/gather-remote-installed-programs-with-powershell/</guid>
-      <description>&lt;p&gt;&lt;span style=&#34;line-height: 1.6;&#34;&gt;Gather program install information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns from the registry program name, manufacturer, and uninstall information. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;/span&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Gather program install information for one or more systems using wmi, alternate credentials, and multiple runspaces. Function supports custom timeout parameters in case of wmi problems and returns from the registry program name, manufacturer, and uninstall information. You can view verbose information on each runspace thread in realtime with the -Verbose option.&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -323,7 +322,6 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/</guid>
       <description>&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
-
 &lt;p&gt;This function attempts to query the HP WBEM WMI provider information to ascertain the general health of a physical server. By default just the general health status is returned. Optionally you can include the following components in the results: ethernet teams, array controllers , ethernet adapters, fans, HBAs, power supplies, and temperature sensors.&lt;/p&gt;</description>
     </item>
     
@@ -432,7 +430,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Sun, 28 Apr 2013 17:35:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</guid>
-      <description>&lt;p&gt;Some time ago I released &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-2010-Calendar-21695fde&#34; title=&#34;Exchange 2010 Calendar Permission GUI&#34;&gt;a rather simplistic GUI for viewing Exchange 2010 mailbox calendar permissions&lt;/a&gt;. Because of a semi-related script I&amp;#8217;m working on currently I rounded back and recreated that GUI script to be a powershell function instead. This is the result.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some time ago I released &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-2010-Calendar-21695fde&#34; title=&#34;Exchange 2010 Calendar Permission GUI&#34;&gt;a rather simplistic GUI for viewing Exchange 2010 mailbox calendar permissions&lt;/a&gt;. Because of a semi-related script I’m working on currently I rounded back and recreated that GUI script to be a powershell function instead. This is the result.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -441,7 +439,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Thu, 18 Apr 2013 03:03:36 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/04/17/powershell-colorize-table-function/</guid>
-      <description>&lt;p&gt;Here is a function I modified for quickly modifying the attributes of a table&amp;#8217;s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn&amp;#8217;t hurt either.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Here is a function I modified for quickly modifying the attributes of a table’s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn’t hurt either.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -468,7 +466,7 @@ Version History 1.0.0 &amp;#8211; 09/11/2013
       <pubDate>Sat, 04 Feb 2012 14:03:29 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/02/04/exchange-2010-client-access-role-configuration-report/</guid>
-      <description>Ok, so I woke up and was wide awake at 4am this morning. I took it as a sign to lose my mind for a while and get to hacking another script. The result is a client access setting report script which includes all internal and external paths along with their authentication settings. It needs some prettying up and a bit of love but it does exactly what I&amp;#8217;ve wanted in Exchange 2010, gives me an overall view of all client access settings (specifically related to IIS).</description>
+      <description>Ok, so I woke up and was wide awake at 4am this morning. I took it as a sign to lose my mind for a while and get to hacking another script. The result is a client access setting report script which includes all internal and external paths along with their authentication settings. It needs some prettying up and a bit of love but it does exactly what I’ve wanted in Exchange 2010, gives me an overall view of all client access settings (specifically related to IIS).</description>
     </item>
     
   </channel>

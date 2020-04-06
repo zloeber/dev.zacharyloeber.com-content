@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Ubuntu Server 8.04 Post Install Tip #1: Auto Updating | Zachary Loeber</title>
         <meta name="description" content="Ubuntu Server 8.04 Post Install Tip #1: Auto Updating - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Ubuntu Server 8.04 Post Install Tip #1: Auto Updating">
@@ -137,86 +137,45 @@
     </div>
 
     
-        <p>On a headless server that you have at home or for testing I like to make sure that all security updates and trivial updates are done automatically. A good sys admin will shy away from this practice for a good reason, updates can mess things up. In a production environment or where the server setup is very complex I can understand the need to manually run updates. For me, well I&#8217;m lazy when it comes to my home machines and generally don&#8217;t have too complex of setups. Also, in my experience, I&#8217;ve hardly ever seen an apt security or trivial update cause any harm (desktop linux I have seen issues though). That being said, I like to force security and trivial updates to happen daily.</p>
-
-<p>You have a few ways to do this, you can setup a custom script to run the upgrades or you can use apt-cron. I&#8217;ve done both and am now using apt-cron for my needs as it supports syslog logging which is good for logwatch daily updates. The default setup of apt-cron doesn&#8217;t do much so I&#8217;ll cover a more complex setup in a bit. But if you just want to setup your own script here it is:</p>
-
+        <p>On a headless server that you have at home or for testing I like to make sure that all security updates and trivial updates are done automatically. A good sys admin will shy away from this practice for a good reason, updates can mess things up. In a production environment or where the server setup is very complex I can understand the need to manually run updates. For me, well I’m lazy when it comes to my home machines and generally don’t have too complex of setups. Also, in my experience, I’ve hardly ever seen an apt security or trivial update cause any harm (desktop linux I have seen issues though). That being said, I like to force security and trivial updates to happen daily.</p>
+<p>You have a few ways to do this, you can setup a custom script to run the upgrades or you can use apt-cron. I’ve done both and am now using apt-cron for my needs as it supports syslog logging which is good for logwatch daily updates. The default setup of apt-cron doesn’t do much so I’ll cover a more complex setup in a bit. But if you just want to setup your own script here it is:</p>
 <p><code>sudo nano /usr/local/sbin/auto-update.sh</code></p>
-
 <p>Paste all of this:</p>
-
-<p>``#!/bin/bash<br />
-#<br />
-#(modified from: <a href="http://ubuntuforums.org/showthread.php?t=100803">http://ubuntuforums.org/showthread.php?t=100803</a>)<br /></p>
-
-<h1 id="simple-script-which-does-automatic-security-updates-br">simple script which does automatic security updates!<br /></h1>
-
-<h1 id="daniel-br">Daniel<br /></h1>
-
-<p>#<br />
-function warning () {<br />
-echo | mail -s &ldquo;<code>uname -n</code>:$0: error [$1].&rdquo; user@localhost<br />
-}<br />
-apt-get update &gt; /dev/null 2&gt;&amp;1 || warning update<br />
-apt-get upgrade -y -t <code>lsb_release -cs</code>-security &gt;&gt; /var/log/apt/security.log 2&gt;&amp;1 || warning upgrade.security<br />
-apt-get upgrade -y &ndash;trivial-only &gt;&gt; /var/log/apt/trivial.log 2&gt;&amp;1 || warning updade.trivial<br />
-apt-get autoclean -y &gt; /dev/null 2&gt;&amp;1<br />
-exit<br />
+<p>``#!/bin/bash<!-- raw HTML omitted -->
+#<!-- raw HTML omitted -->
+#(modified from: <a href="http://ubuntuforums.org/showthread.php?t=100803">http://ubuntuforums.org/showthread.php?t=100803</a>)<!-- raw HTML omitted --></p>
+<h1 id="simple-script-which-does-automatic-security-updatesbr-">simple script which does automatic security updates!<!-- raw HTML omitted --></h1>
+<h1 id="danielbr-">Daniel<!-- raw HTML omitted --></h1>
+<p>#<!-- raw HTML omitted -->
+function warning () {<!-- raw HTML omitted -->
+echo | mail -s &ldquo;<code>uname -n</code>:$0: error [$1].&rdquo; user@localhost<!-- raw HTML omitted -->
+}<!-- raw HTML omitted -->
+apt-get update &gt; /dev/null 2&gt;&amp;1 || warning update<!-- raw HTML omitted -->
+apt-get upgrade -y -t <code>lsb_release -cs</code>-security &raquo; /var/log/apt/security.log 2&gt;&amp;1 || warning upgrade.security<!-- raw HTML omitted -->
+apt-get upgrade -y &ndash;trivial-only &raquo; /var/log/apt/trivial.log 2&gt;&amp;1 || warning updade.trivial<!-- raw HTML omitted -->
+apt-get autoclean -y &gt; /dev/null 2&gt;&amp;1<!-- raw HTML omitted -->
+exit<!-- raw HTML omitted -->
 ``</p>
-
 <p><code>sudo chmod +x /usr/local/sbin/auto-update.sh</code></p>
-
 <p>Test your script:</p>
-
-<p><code>sudo /usr/local/sbin/auto-update.sh&lt;br /&gt;
-less /var/log/apt/security.log&lt;br /&gt;
-</code></p>
-
+<p><code>sudo /usr/local/sbin/auto-update.sh&lt;br /&gt; less /var/log/apt/security.log&lt;br /&gt;</code></p>
 <p>Now make it run daily</p>
-
-<p><code>sudo ln -s /usr/local/sbin/auto-update.sh /etc/cron.daily/auto-update&lt;br /&gt;
-</code></p>
-
+<p><code>sudo ln -s /usr/local/sbin/auto-update.sh /etc/cron.daily/auto-update&lt;br /&gt;</code></p>
 <p><strong>The cron-apt way</strong></p>
-
-<p>Install cron-apt, remove the default cron-apt schedule and set it to run daily instead. Also remove the default download-only action file as we don&#8217;t need it, we are going to install stuff instead.</p>
-
-<p><code>sudo apt-get install cron-apt&lt;br /&gt;
-ln -s /usr/sbin/cron-apt /etc/cron.daily/cron-apt&lt;br /&gt;
-sudo mv /etc/cron.d/cron-apt ~/oldffiles/cron-apt&lt;br /&gt;
-sudo mv  /etc/cron-apt/action.d ~/oldfiles/</code></p>
-
+<p>Install cron-apt, remove the default cron-apt schedule and set it to run daily instead. Also remove the default download-only action file as we don’t need it, we are going to install stuff instead.</p>
+<p><code>sudo apt-get install cron-apt&lt;br /&gt; ln -s /usr/sbin/cron-apt /etc/cron.daily/cron-apt&lt;br /&gt; sudo mv /etc/cron.d/cron-apt ~/oldffiles/cron-apt&lt;br /&gt; sudo mv  /etc/cron-apt/action.d ~/oldfiles/</code></p>
 <p>create your install action file. Note that I have hardy-security in here as I was not able to get lsb_release -cs to work in the config file properly, you may have a different distro and will have to change accordingly. In /etc/apt/sources.list you can see the different types that you can use by looking at the following part of the source line.</p>
-
 <p>deb <a href="http://security.ubuntu.com/ubuntu">http://security.ubuntu.com/ubuntu</a> <strong>hardy-security</strong> main restricted</p>
-
 <p><code>sudo nano /etc/cron-apt/action.d/2-install</code></p>
-
 <p>Insert the following:</p>
-
-<p><code>upgrade -y -t hardy-security&lt;br /&gt;
-upgrade -y --trivial-only&lt;br /&gt;
-autoclean -y&lt;br /&gt;
-</code></p>
-
+<p><code>upgrade -y -t hardy-security&lt;br /&gt; upgrade -y --trivial-only&lt;br /&gt; autoclean -y&lt;br /&gt;</code></p>
 <p>Change the default configuration to do no mailing or debugging. Also error out on errors and always dump all actions to syslog.</p>
-
-<p><code>nano /etc/cron-apt/config&lt;br /&gt;
-</code></p>
-
+<p><code>nano /etc/cron-apt/config&lt;br /&gt;</code></p>
 <p>You will have to uncomment and change the lines noted.</p>
-
-<p><code>ERROR=&quot;/var/log/cron-apt/error&quot;&lt;br /&gt;
-DEBUG=&quot;&quot;&lt;br /&gt;
-MAILON=&quot;&quot;&lt;br /&gt;
-SYSLOGON=&quot;always&quot;</code></p>
-
+<p><code>ERROR=&quot;/var/log/cron-apt/error&quot;&lt;br /&gt; DEBUG=&quot;&quot;&lt;br /&gt; MAILON=&quot;&quot;&lt;br /&gt; SYSLOGON=&quot;always&quot;</code></p>
 <p>Test by running cron-apt</p>
-
 <p><code>sudo cron-apt</code></p>
-
 <p>Then take a look in syslog</p>
-
 <p><code>less /var/log/syslog</code></p>
     
 </div>
@@ -336,15 +295,15 @@ SYSLOGON=&quot;always&quot;</code></p>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -373,7 +332,7 @@ SYSLOGON=&quot;always&quot;</code></p>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

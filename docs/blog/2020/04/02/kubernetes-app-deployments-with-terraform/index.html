@@ -1,0 +1,565 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.68.3" />
+        <title> Kubernetes App Deployments with Terraform | Zachary Loeber</title>
+        <meta name="description" content="Kubernetes App Deployments with Terraform - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Kubernetes App Deployments with Terraform">
+        <meta itemprop="description" content="Kubernetes App Deployments with Terraform - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Kubernetes App Deployments with Terraform">
+        <meta property="og:description" content="Kubernetes App Deployments with Terraform - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/blog/backlit_keyboard.jpg">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/blog/2020/04/02/kubernetes-app-deployments-with-terraform/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/blog/2020/04/02/kubernetes-app-deployments-with-terraform/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">
+            <img src="/images/blog/backlit_keyboard.jpg" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-04-02</span>
+            
+        
+
+        
+            <span class="readingTime">7 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/devops">DevOps</a>
+                
+                    <a href="/categories/kubernetes">Kubernetes</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Deploying applications via the kubernetes terraform provider is a viable solution for some workloads.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Admit it, at one point you may have attempted to get a kubernetes application deployment working with Terraform, got frustrated for one of many reasons and gave up entirely on using the tool in favor of other, less finicky solutions. That is exactly what I did at least. Well that was then and now is now. Multiple updates to both the helm and kubernetes providers have been done so maybe it is time to re-evaluate how you can use Terraform for deploying some of your workloads.</p>
+<h2 id="usage">Usage</h2>
+<p>It is fairly common to see managed kubernetes cluster deployments being done with the venerable infrastructure as code tool, <a href="https://www.terraform.io/">Terraform</a>. Jenkins-x will even create cloud specific terraform manifests to stand up new environment clusters. These deployments are driven by cloud specific terraform providers which are maintained and updated via their respective cloud owners. For a primer on how to deploy a managed cluster for one of the three &lsquo;big clouds&rsquo; you can hit up their resource documentation and find examples online. I&rsquo;ll not cover that aspect of the deployment but here are some good starting points:</p>
+<ul>
+<li><strong>Azure</strong>: <a href="https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html">AKS Terraform Resource</a></li>
+<li><strong>AWS</strong>: <a href="https://www.terraform.io/docs/providers/aws/r/eks_cluster.html">EKS Terraform Resource</a></li>
+<li><strong>Google</strong>: <a href="https://www.terraform.io/docs/providers/google/r/container_cluster.html">GKE Terraform Resource</a></li>
+</ul>
+<p>What is less commonly talked about is using the terraform kubernetes provider afterwards to deploy custom workloads. Usually, once the initial cluster is constructed, the deployment of workloads into the cluster tend to fall to other tools of the trade like helm, helmfile, kustomize, straight YAML, or a combination of one or more of these technologies. Kuberentes is just a state machine with an API after all right?</p>
+<p>In this article I&rsquo;m going to go down the rabbit hole of how one can use terraform to not only deploy the cluster, but also to setup initial resources like namespaces, secrets, configmaps, and put them all into a deployment via the kubernetes provider.  And we will do this all with a single state file and manifest.</p>
+<blockquote>
+<p><strong>NOTE:</strong> We can also do custom helm deployments via the helm provider but that is not the purpose of this exercise.</p>
+</blockquote>
+<p>Here is the obligatory diagram showing some component parts of a multiple part deployment into kubernetes.</p>
+<figure>
+    <img src="/images/kube-deployment-diagram.png"
+         alt="A multi-part kubernetes deployment"/> <figcaption>
+            <p>A multi-part kubernetes deployment</p>
+        </figcaption>
+</figure>
+
+<h2 id="why-and-when">Why and When</h2>
+<p>Why would you want to do such a thing?  Well I&rsquo;m glad I asked myself that question very loudly and with a slight tone of derision to my voice. Honestly, you likely don&rsquo;t want to do this, at least for every project. But there are some sound reasons. My reasons were fairly nuanced. I needed to quickly convert a custom kubernetes deployment into a pipeline that would fully stand up a Kuberentes cluster with the deployment so it could be run on-demand and shutdown after it was done processing.</p>
+<ul>
+<li>There is a need to take some snowflake kubernetes cluster app and turn it into a pipelined deployment for multiple environments.</li>
+<li>You must be able to ensure that a deployment state is always the same.</li>
+</ul>
+<h2 id="how---part-1">How - Part 1</h2>
+<p>In my case I already had a bespoke deployment running in a cluster that I needed to mimic. So I used an existing tool that was able to generate a good deal of the Terraform starting manifest automatically. It turned a manual slog into a fairly rapid affair. <a href="https://github.com/sl1pm4t/k2tf">The tool is called k2tf</a> and it will convert kubernetes yaml into terraform. This is a great starting point and I recommend you start here if your situation allows.</p>
+<h2 id="how---part-2">How - Part 2</h2>
+<p>The terraform kubernetes provider exposes most of the attributes of the resources it generates via the metadata of the resource. This makes chaining your resource dependencies very easy. Lets look at a partial example that I&rsquo;ve pared back here for brevity sake.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">resource kubernetes_namespace deployment <span style="color:#f92672">{</span>
+  metadata <span style="color:#f92672">{</span>
+    name <span style="color:#f92672">=</span> var.namespace
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+// Example Secrets to expose as env vars in deployment
+resource kubernetes_secret appsecrets <span style="color:#f92672">{</span>
+  metadata <span style="color:#f92672">{</span>
+    name      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;appsecrets&#34;</span>
+    namespace <span style="color:#f92672">=</span> kubernetes_namespace.deployment.metadata.0.name
+  <span style="color:#f92672">}</span>
+  type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Opaque&#34;</span>
+  data <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    ACCOUNT_KEY <span style="color:#f92672">=</span> var.account_key
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+// Example configmap settings to expose as env vars in deployment
+resource kubernetes_config_map settings <span style="color:#f92672">{</span>
+  metadata <span style="color:#f92672">{</span>
+    name      <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;appconfig&#34;</span>
+    namespace <span style="color:#f92672">=</span> kubernetes_namespace.deployment.metadata.0.name
+  <span style="color:#f92672">}</span>
+  data <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+    SOMEPATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/root/why/is/this/parameterized&#34;</span>
+    APPNAMESPACE <span style="color:#f92672">=</span> kubernetes_namespace.deployment.metadata.0.name
+    CLOUDSERVICE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Azure&#34;</span>
+    ACCOUNTNAME <span style="color:#f92672">=</span> var.account_name
+    APPNAME <span style="color:#f92672">=</span> var.kubernetes_app_name
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+resource kubernetes_deployment app <span style="color:#f92672">{</span>
+  metadata <span style="color:#f92672">{</span>
+    name      <span style="color:#f92672">=</span> var.kubernetes_app_name
+    namespace <span style="color:#f92672">=</span> kubernetes_namespace.deployment.metadata.0.name
+    labels <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+      app <span style="color:#f92672">=</span> var.kubernetes_app_name
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  spec <span style="color:#f92672">{</span>
+    replicas <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    selector <span style="color:#f92672">{</span>
+      match_labels <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+        app <span style="color:#f92672">=</span> var.kubernetes_app_name
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    template <span style="color:#f92672">{</span>
+      metadata <span style="color:#f92672">{</span>
+        labels <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+          app <span style="color:#f92672">=</span> var.kubernetes_app_name
+        <span style="color:#f92672">}</span>
+      <span style="color:#f92672">}</span>
+
+      spec <span style="color:#f92672">{</span>
+        container <span style="color:#f92672">{</span>
+          name    <span style="color:#f92672">=</span> var.kubernetes_app_name
+          image   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>var.container_registry<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>var.image<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span>var.image_tag<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+          command <span style="color:#f92672">=</span> var.container_command
+          
+          // This is a configmap to envvar setup
+          env_from <span style="color:#f92672">{</span>
+            config_map_ref <span style="color:#f92672">{</span>
+              name <span style="color:#f92672">=</span> kubernetes_config_map.settings.metadata.0.name
+            <span style="color:#f92672">}</span>
+          <span style="color:#f92672">}</span>
+          
+          // And a secret to envvar setup
+          env <span style="color:#f92672">{</span>
+            name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ACCOUNT_KEY&#34;</span>
+            value_from <span style="color:#f92672">{</span>
+              secret_key_ref <span style="color:#f92672">{</span>
+                name <span style="color:#f92672">=</span> kubernetes_secret.appsecrets.metadata.0.name
+                key  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ACCOUNT_KEY&#34;</span>
+              <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+          <span style="color:#f92672">}</span>
+
+          resources <span style="color:#f92672">{</span>
+            requests <span style="color:#f92672">{</span>
+              memory <span style="color:#f92672">=</span> var.kubernetes_pod_memory
+            <span style="color:#f92672">}</span>
+          <span style="color:#f92672">}</span>
+
+          termination_message_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/dev/termination-log&#34;</span>
+          image_pull_policy        <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Always&#34;</span>
+        <span style="color:#f92672">}</span>
+
+        restart_policy                   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Always&#34;</span>
+        termination_grace_period_seconds <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+        dns_policy                       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ClusterFirst&#34;</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    strategy <span style="color:#f92672">{</span>
+      type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;RollingUpdate&#34;</span>
+
+      rolling_update <span style="color:#f92672">{</span>
+        max_unavailable <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1&#34;</span>
+        max_surge       <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1&#34;</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+    revision_history_limit <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>As you can see, we create the namespace, a secret, a configmap, and connect them all to a deployment. I purposefully included the config map in this deployment as it was rather hard to find an example of one in action via terraform HCL.</p>
+<p>For a fuller example of <a href="https://github.com/zloeber/aks-tf-deployment">a terraform deployment in tandem with an Azure AKS cluster</a> check out my repo. I include some additional nuances around permissions that are also rather difficult to find for whatever reason.</p>
+<h2 id="possible-issues">Possible Issues</h2>
+<ol>
+<li>
+<p>Using the kubernetes provider is considered a faux pas in terraform land when used alongside a cluster deployment. This is usually due to provider dependency issues (because terraform providers don&rsquo;t adhere to any kind of dependency rules). Because of this, it is recommended to do deployment and cluster construction in separate manifests and thus, separate state databases. We work around this mostly by the way we configure the provider to eat output from the cluster creation resource. This may lead to race conditions and other issues if not carefully managed.</p>
+</li>
+<li>
+<p>As with the kubernetes provider, the same is true for the helm provider. We may have to run the terraform apply multiple times to get the deployment to go through if you decide to implement a helm chart concurrently. Moreso, when using Azure ACR as helm private repositories it seems. These private repos seem to have an abysmally short lived authentication token that can time out well before the cluster has been created. This will mean that the helm deployment is likely to not find the chart when it comes time to actually deploy it. You can get around this by including custom helm charts local with the deployment or with carefully crafted null_resource scripts to run azure cli commands and depends_on constructs.</p>
+</li>
+<li>
+<p>From my experience, cluster destruction takes far longer than construction. My theory is that all the resource finalizer annotations that cloud providers like to force upon us cause the destruction of resources to hang to the point of hitting some kind of internal cloud provider timeout. That&rsquo;s just my personal theory though. Obviously your experiences may vary.</p>
+</li>
+</ol>
+<blockquote>
+<p>Kubernetes finalizers are the hidden <strong>WTF?!?!</strong> of resource redeployments. Be aware that they exist, that some operators like to use them, that some cloud providers will use them, and that they can and will prevent you from deleting or redeploying resources in your clusters. Know how to clear them out in a pinch.</p>
+</blockquote>
+<h2 id="conclusion">Conclusion</h2>
+<p>While Terraform may not be the best solution for maintaining state in kubernetes clusters with fluctuating workloads (where you may not have an expected state from day to day), it is a perfectly sound solution for known workloads and can be easily adopted for use in ephemeral cluster deployments.</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/devops">devops</a>
+                
+                <a href="/tags/pipeline">pipeline</a>
+                
+                <a href="/tags/kubernetes">kubernetes</a>
+                
+                <a href="/tags/terraform">terraform</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/04\/02\/kubernetes-app-deployments-with-terraform\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/04\/02\/kubernetes-app-deployments-with-terraform\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/04\/02\/kubernetes-app-deployments-with-terraform\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/exchange">Exchange (38)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>

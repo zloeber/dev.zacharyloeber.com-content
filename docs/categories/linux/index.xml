@@ -25,7 +25,7 @@
       <pubDate>Mon, 26 Mar 2018 13:49:26 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2018/03/26/powershell-windows-subsystem-for-linux/</guid>
-      <description>I&amp;#8217;ve delved into Windows Subsystem for Linux recently and wrote an article on the topic here. Included is a script to automatically install your chosen WSL ditribution. Check it out!</description>
+      <description>I’ve delved into Windows Subsystem for Linux recently and wrote an article on the topic here. Included is a script to automatically install your chosen WSL ditribution. Check it out!</description>
     </item>
     
     <item>
@@ -44,8 +44,7 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/11/28/create-your-own-network-assessment-appliance-additional-tools/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-
-&lt;p&gt;I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I&amp;#8217;ve since added a few tools to the VM and documented how they were installed so I figured I&amp;#8217;d share on how it was done. Even if you don&amp;#8217;t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I&amp;#8217;ll start with a tool anyone worth their salt has heard of though, Cacti&amp;#8230;&lt;/p&gt;</description>
+&lt;p&gt;I &lt;a href=&#34;https://zacharyloeber-dev.onrender.com/2012/04/08/create-your-own-network-assessment-appliance/&#34; title=&#34;Create your own network assessment appliance&#34;&gt;previously did a write up&lt;/a&gt; on a personal virtual machine I like to keep at hand for performing network analysis and discovery. I’ve since added a few tools to the VM and documented how they were installed so I figured I’d share on how it was done. Even if you don’t setup everything in this post it may be worthwhile to glance through it for some network engineering tools which are free to setup and use but not highly publicized. Anyone who cares to read this post has likely heard of Solarwinds but I highly doubt you have heard of all the tools in this list (let alone how to set them up). Regardless, I’ll start with a tool anyone worth their salt has heard of though, Cacti…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -64,7 +63,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Sat, 24 Mar 2012 16:07:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2012/03/24/sysadmin-task-migrate-dns/</guid>
-      <description>&lt;p&gt;I&amp;#8217;ve migrated DNS servers more than a few times and find that I&amp;#8217;m doing the same tasks or using the same custom scripts over and over again. Here is my quick and dirty task list with some powershell scripts you too might find of use. As there are a hundred ways to skin this cat I don&amp;#8217;t claim my methods to be the best but they sure are fast and far easier than manually changing a dns address on hundreds of servers, workstations, and network devices.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I’ve migrated DNS servers more than a few times and find that I’m doing the same tasks or using the same custom scripts over and over again. Here is my quick and dirty task list with some powershell scripts you too might find of use. As there are a hundred ways to skin this cat I don’t claim my methods to be the best but they sure are fast and far easier than manually changing a dns address on hundreds of servers, workstations, and network devices.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -82,7 +81,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Sat, 22 Jan 2011 17:32:01 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/01/22/big-ip-custom-iis-soap-monitor/</guid>
-      <description>&lt;p&gt;In working on a production issue with my company&amp;#8217;s flagship SaaS product I worked with some of the brilliant F5 engineers to isolate one web server in the load balanced pool which was intermittently failing. The F5 engineer recommended a health monitor that does more than just poll for a static page. He suggested we implement some kind of soap call to make the application pool do some work and return a result (I guess in case the IIS application pool is misbehaving but not down). So I worked with one of our developers to do just that but ran into some caveats which required yet another custom health monitor.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In working on a production issue with my company’s flagship SaaS product I worked with some of the brilliant F5 engineers to isolate one web server in the load balanced pool which was intermittently failing. The F5 engineer recommended a health monitor that does more than just poll for a static page. He suggested we implement some kind of soap call to make the application pool do some work and return a result (I guess in case the IIS application pool is misbehaving but not down). So I worked with one of our developers to do just that but ran into some caveats which required yet another custom health monitor.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -91,7 +90,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Fri, 21 Jan 2011 15:08:24 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2011/01/21/big-ip-sharepoint-2010-monitor/</guid>
-      <description>&lt;p&gt;While specing out a Sharepoint 2007 to 2010 migration I discovered that the default monitor created by the application template on our big-ip LTM load balancers does not work. In seeking a solution I ran across this &lt;a href=&#34;http://www.thef5guy.com/blog/2010/08/sharepoint-2010-ntlm-and-big-ip-health-monitors/#more-1070&#34; target=&#34;_blank&#34;&gt;gentleman&amp;#8217;s blog with a custom external monitor&lt;/a&gt; but found that it didn&amp;#8217;t really work. The solution to make it work was simple (as I explained on his blog in a comment). I went ahead and extended it to be more environment generic.&lt;/p&gt;</description>
+      <description>&lt;p&gt;While specing out a Sharepoint 2007 to 2010 migration I discovered that the default monitor created by the application template on our big-ip LTM load balancers does not work. In seeking a solution I ran across this &lt;!-- raw HTML omitted --&gt;gentleman’s blog with a custom external monitor&lt;!-- raw HTML omitted --&gt; but found that it didn’t really work. The solution to make it work was simple (as I explained on his blog in a comment). I went ahead and extended it to be more environment generic.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -100,7 +99,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Fri, 18 Jun 2010 16:17:39 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2010/06/18/yum-list-only-security-updates/</guid>
-      <description>I&amp;#8217;ve been really MS inundated at work lately with exchange 2010, UAG 2010, and Communicator deployments/migrations. So to balance my life a bit I better do a quick post of a linux hack 🙂 Here is a quick one I tacked together about 6 months ago. This will generate a detailed report of all the security updates you are missing with a description of what the update will fix. You will need the yum-security package installed for this to work.</description>
+      <description>I’ve been really MS inundated at work lately with exchange 2010, UAG 2010, and Communicator deployments/migrations. So to balance my life a bit I better do a quick post of a linux hack 🙂 Here is a quick one I tacked together about 6 months ago. This will generate a detailed report of all the security updates you are missing with a description of what the update will fix. You will need the yum-security package installed for this to work.</description>
     </item>
     
     <item>
@@ -109,7 +108,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Wed, 23 Dec 2009 04:08:02 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/12/22/esx-4-0-post-install-script/</guid>
-      <description>Sure there are better ways to mass deploy ESX servers, but this way will save the one off farm deployment person some time 🙂 I took liberties in assuming you would be able to fill in the blanks for variables so  or _VARIABLE_ will need to be replaced ad-lib style. Just for you my friend, served up proper on a hyper-link plate&amp;#8230;.. esx4_postinstall</description>
+      <description>Sure there are better ways to mass deploy ESX servers, but this way will save the one off farm deployment person some time 🙂 I took liberties in assuming you would be able to fill in the blanks for variables so or _VARIABLE_ will need to be replaced ad-lib style. Just for you my friend, served up proper on a hyper-link plate….. esx4_postinstall</description>
     </item>
     
     <item>
@@ -118,7 +117,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Mon, 07 Dec 2009 14:46:24 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/12/07/big-ip-load-balancer-upgrade/</guid>
-      <description>&lt;p&gt;I had the pleasure of doing an F5 BIG-IP load balancer upgrade recently and am happy with the way the F5 people have designed their systems for fail over. Essentially you will use different system partitions to host different versions of their product and you change which one you want to boot to after updating the inactive partition. This, theoretically, means you can always go back to a working configuration if something goes awry. I&amp;#8217;m unhappy with how fragmented their documentation is in getting from point A to point B though. Here is a quick rundown of what I had to do&amp;#8230;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I had the pleasure of doing an F5 BIG-IP load balancer upgrade recently and am happy with the way the F5 people have designed their systems for fail over. Essentially you will use different system partitions to host different versions of their product and you change which one you want to boot to after updating the inactive partition. This, theoretically, means you can always go back to a working configuration if something goes awry. I’m unhappy with how fragmented their documentation is in getting from point A to point B though. Here is a quick rundown of what I had to do…&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -127,7 +126,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Sat, 21 Nov 2009 18:51:06 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/11/21/centosredhat-5-x-post-install-script/</guid>
-      <description>I whipped up a post install script to run on our new linux servers that drastically reduced the amount of manual effort involved with post-deployment configuration. I&amp;#8217;m sure this could some how be integrated into the kick deployment. In any case, this script helps setup your sudo users, snmp services, and some other basic things. Modify to your environment and run directly after deployment on your headless linux servers. Save the script and change to .</description>
+      <description>I whipped up a post install script to run on our new linux servers that drastically reduced the amount of manual effort involved with post-deployment configuration. I’m sure this could some how be integrated into the kick deployment. In any case, this script helps setup your sudo users, snmp services, and some other basic things. Modify to your environment and run directly after deployment on your headless linux servers. Save the script and change to .</description>
     </item>
     
     <item>
@@ -145,7 +144,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Tue, 09 Sep 2008 20:39:00 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/09/09/gns3-on-ubuntu-804-migrating-your-install/</guid>
-      <description>&lt;p&gt;Don&amp;#8217;t have much time due to work obligations but I wanted to quickly drop this one out there for any who have followed my install guides. I was always ragging on and on about making the install somewhat portable by putting it into the /opt/ directory and now I&amp;#8217;ll give a good example why.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Don’t have much time due to work obligations but I wanted to quickly drop this one out there for any who have followed my install guides. I was always ragging on and on about making the install somewhat portable by putting it into the /opt/ directory and now I’ll give a good example why.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -155,8 +154,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/07/11/ubuntu-server-804-post-install-tip-4-setup-smart/</guid>
       <description>&lt;p&gt;Setup SMART Disk Monitoring&lt;/p&gt;
-
-&lt;p&gt;If your disk is going bad no one going to tell you about it until you start hearing it. And if you start hearing issues with your drive it may be too late to backup your data or do anything else you need to do to not be driveless. I&amp;#8217;m uncertain why some of this is not available as an install option for more distros but a good warning before the storm can save your data and your sanity.&lt;/p&gt;</description>
+&lt;p&gt;If your disk is going bad no one going to tell you about it until you start hearing it. And if you start hearing issues with your drive it may be too late to backup your data or do anything else you need to do to not be driveless. I’m uncertain why some of this is not available as an install option for more distros but a good warning before the storm can save your data and your sanity.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -174,7 +172,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Thu, 03 Jul 2008 16:42:43 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/07/03/ubuntu-server-804-post-install-tip-1-auto-updating/</guid>
-      <description>&lt;p&gt;On a headless server that you have at home or for testing I like to make sure that all security updates and trivial updates are done automatically. A good sys admin will shy away from this practice for a good reason, updates can mess things up. In a production environment or where the server setup is very complex I can understand the need to manually run updates. For me, well I&amp;#8217;m lazy when it comes to my home machines and generally don&amp;#8217;t have too complex of setups. Also, in my experience, I&amp;#8217;ve hardly ever seen an apt security or trivial update cause any harm (desktop linux I have seen issues though). That being said, I like to force security and trivial updates to happen daily.&lt;/p&gt;</description>
+      <description>&lt;p&gt;On a headless server that you have at home or for testing I like to make sure that all security updates and trivial updates are done automatically. A good sys admin will shy away from this practice for a good reason, updates can mess things up. In a production environment or where the server setup is very complex I can understand the need to manually run updates. For me, well I’m lazy when it comes to my home machines and generally don’t have too complex of setups. Also, in my experience, I’ve hardly ever seen an apt security or trivial update cause any harm (desktop linux I have seen issues though). That being said, I like to force security and trivial updates to happen daily.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -193,7 +191,6 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/06/12/gns3-on-ubuntu-804-choosing-and-using-your-ios/</guid>
       <description>&lt;p&gt;As promised here is the post regarding choosing and using an IOS image that will fit your study needs.&lt;/p&gt;
-
 &lt;p&gt;If you followed the first post in this series you are technically now ready to start loading up images and making labs of your own. You will need to get your hands on some IOS images (legally of course).But which IOS should you use?&lt;/p&gt;</description>
     </item>
     
@@ -203,7 +200,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Thu, 12 Jun 2008 13:53:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/06/12/gns3-on-ubuntu-804/</guid>
-      <description>&lt;p&gt;GNS3 is a frontend for dynagen (which is a scripting language for dynamips). Getting it to work nicely in Ubuntu was a bit of a pain in the arse but I was able to get it to work in a manner I&amp;#8217;m happy with. This setup will essentially encapsulate a large portion of the install to one directory in /opt. Some libraries and executables will be installed through apt though, but not many. I previously wrote part of a writeup for this on Ubuntu 7.10, I&amp;#8217;d ignore that in favor of this one which is much more up to date and polished.&lt;/p&gt;</description>
+      <description>&lt;p&gt;GNS3 is a frontend for dynagen (which is a scripting language for dynamips). Getting it to work nicely in Ubuntu was a bit of a pain in the arse but I was able to get it to work in a manner I’m happy with. This setup will essentially encapsulate a large portion of the install to one directory in /opt. Some libraries and executables will be installed through apt though, but not many. I previously wrote part of a writeup for this on Ubuntu 7.10, I’d ignore that in favor of this one which is much more up to date and polished.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -221,7 +218,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Thu, 14 Feb 2008 16:10:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2008/02/14/headless-torrentbox-with-ipblock/</guid>
-      <description>&lt;p&gt;As you may or may not know there are a lot of people who seem to be interested in the torrent activities of others. Some just like to track, others are government agencies, and of course the RIAA. I personally don&amp;#8217;t like this intrusion into my habits so I do my best to block their attempts. In this small tutorial I&amp;#8217;m going to cover how to install torrentflux with ipblock and fail2ban in a headless mode so you can download and seed torrents a bit more securely.&lt;/p&gt;</description>
+      <description>&lt;p&gt;As you may or may not know there are a lot of people who seem to be interested in the torrent activities of others. Some just like to track, others are government agencies, and of course the RIAA. I personally don’t like this intrusion into my habits so I do my best to block their attempts. In this small tutorial I’m going to cover how to install torrentflux with ipblock and fail2ban in a headless mode so you can download and seed torrents a bit more securely.&lt;/p&gt;</description>
     </item>
     
   </channel>

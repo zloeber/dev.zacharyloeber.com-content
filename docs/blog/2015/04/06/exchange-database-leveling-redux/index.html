@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange: Database Leveling Redux | Zachary Loeber</title>
         <meta name="description" content="Exchange: Database Leveling Redux - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange: Database Leveling Redux">
@@ -143,12 +143,9 @@
     </div>
 
     
-        <p>Some time ago I <a href="/2014/01/07/exchange-20102013-database-leveling-script/">tackled the challenge</a> of constructing a variant of the bin packing algorithm for leveling out Exchange databases&#8217; size with the least amount of mailbox migrations necessary. Since then, I&#8217;ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I&#8217;ve finally rounded back to this script to do it some justice.</p>
-
-<p>This was one of those scripts I initially put together as an intellectual exercise so I could stop thinking about it. I worked rather hard in late night hours logically constructing the process of what needed to be done for the algorithm. Once I got working results and a decent write up performed I breathed a sigh of relief that I could be free of the mental obsession and didn&#8217;t even look back at the quality of the script. This simultaneously made this one of the works I&#8217;ve been most proud and ashamed of.</p>
-
-<p>There were a number of issues with the script I&#8217;ve either always known or have been made aware by others in the last year. Some of the notable ones are:</p>
-
+        <p>Some time ago I <a href="/2014/01/07/exchange-20102013-database-leveling-script/">tackled the challenge</a> of constructing a variant of the bin packing algorithm for leveling out Exchange databases’ size with the least amount of mailbox migrations necessary. Since then, I’ve been approached by a few people in dreadfully large environments looking for help with errors and compatibility issues around the script I released. I’ve finally rounded back to this script to do it some justice.</p>
+<p>This was one of those scripts I initially put together as an intellectual exercise so I could stop thinking about it. I worked rather hard in late night hours logically constructing the process of what needed to be done for the algorithm. Once I got working results and a decent write up performed I breathed a sigh of relief that I could be free of the mental obsession and didn’t even look back at the quality of the script. This simultaneously made this one of the works I’ve been most proud and ashamed of.</p>
+<p>There were a number of issues with the script I’ve either always known or have been made aware by others in the last year. Some of the notable ones are:</p>
 <ol>
 <li>Inability to run in Exchange 2010 environments</li>
 <li>Needing to be run directly in an Exchange session (thus possibly over utilizing resources)</li>
@@ -156,51 +153,28 @@
 <li>Overall script complexity making it difficult to approach for many who might want to use it in their environment</li>
 <li>Some environments exhibited strange errors while processing mailboxes/databases</li>
 </ol>
-
 <p>As with most of my work, I made a mental note to come back to it and re-release with some fixes should no other kind-hearted Powershell scripter decide to do so themselves. Of course no one has so here I am working on this thing yet again 🙂</p>
-
-<p>To address the complexity (issue #4) I&#8217;ve wrapped the entire script with some parameters. You can still fine tune variables directly in the script but to keep things light and easy (and force a bit of usage rules) I&#8217;m only going to have two flags, SaveData and LoadData. Coincidentally, this will address points one and two as well. I&#8217;ve decided to divorce the information gathering portion from the processing portion of the script. I believe that issues with running the script I wrote in an exchange 2010 environment is largely due to the powershell version differences.</p>
-
+<p>To address the complexity (issue #4) I’ve wrapped the entire script with some parameters. You can still fine tune variables directly in the script but to keep things light and easy (and force a bit of usage rules) I’m only going to have two flags, SaveData and LoadData. Coincidentally, this will address points one and two as well. I’ve decided to divorce the information gathering portion from the processing portion of the script. I believe that issues with running the script I wrote in an exchange 2010 environment is largely due to the powershell version differences.</p>
 <p>So for those running into pipeline errors and other such nonsense when running this script, please attempt to run this updated script with the -ExportData flag on your server, copy over the ExchangeData.csv file to your workstation (in the same folder as the script), then run the same script with the -ImportData flag. Optionally you can use the -verbose flag to see some more details fly by the screen.</p>
-
 <p>For issue #5 I was not able to really zero in on a specific cause but in performing a code review I found that I was doing a few things that may lead to issues in specific environments. One such thing was not properly escaping strings for regular expression matching. So I was doing this:</p>
-
-<pre class="lang:powershell decode:true">$_.Name -match ($IGNORED_MAILBOXES -join '|')</pre>
-
-<p><span style="line-height: 1.6;">When I should have been doing this:</span></p>
-
-<pre class="lang:powershell decode:true">$IGNORED_DATABASES = @()
-$ESC_IGNORED_DATABASES = @($IGNORED_DATABASES | Foreach {[regex]::Escape($_)})
-
-$_.Name -match ($ESC_IGNORED_DATABASES -join '|')</pre>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->When I should have been doing this:<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Oh, and if you pay close attention to that last line you can find a pretty big mistake. What if there are no ignored databases? If $IGNORED_MAILBOXES = @() then this line will always match! So to be correct we need to make a regular expression that is positionally correct as well:</p>
-
-<pre class="lang:powershell decode:true">$_.Name -match ('^(' + ($ESC_IGNORED_DATABASES -join '|') + ')$')
-</pre>
-
-<p>I also found some bizarre constructs I put together that I&#8217;d normally never release. For instance here I try to get all the unique databases but first select the property of the objects then try to filter them:</p>
-
-<pre class="lang:powershell decode:true">$DBSet = @(($Mailboxes | select Database -Unique | Where {$_.Database -notmatch [regex]::Escape($IGNORED_DATABASES -join '|')}).Database)</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>I also found some bizarre constructs I put together that I’d normally never release. For instance here I try to get all the unique databases but first select the property of the objects then try to filter them:</p>
+<!-- raw HTML omitted -->
 <p>But  it makes more sense and is slightly less cumbersome to filter first then get the property. Actually, how about I filter at the mailbox information gathering portion and reduce that long line down to this instead?</p>
-
-<pre class="lang:powershell decode:true">$DBSet = @(($Mailboxes).Database | Select -Unique)</pre>
-
+<!-- raw HTML omitted -->
 <p>While that works on severs and workstations which default to newer versions of powershell but if you run that on a windows 2008 R2 server you will likely see that $DBSet ends up with a $null value. So I finally had to land on using the following instead (slightly less ugly than the original but irritatingly long winded compared to the last line though):</p>
-
-<pre class="lang:powershell decode:true">$DBSet = @($Mailboxes | Select Database -unique | Foreach {$_.Database})</pre>
-
+<!-- raw HTML omitted -->
 <p>These are just a few of the fixes I made in my code review. I also improved processing speeds a bit by reducing the overall number of mailboxes in the total processing set, improved output to page through long results, and cleaned out unused code among other things.</p>
-
 <h2 id="download">Download</h2>
-
-<p>I&#8217;ve uploaded the script within <a href="https://gallery.technet.microsoft.com/Leveling-Exchange-Database-3e9cdbc9">the Microsoft Technet Gallary</a> and have uploaded a copy <a href="https://github.com/zloeber/Powershell/blob/master/Exchange/New-ExchangeRebalancingReport.ps1">to my Github repo</a> as well.</p>
-
+<p>I’ve uploaded the script within <a href="https://gallery.technet.microsoft.com/Leveling-Exchange-Database-3e9cdbc9">the Microsoft Technet Gallary</a> and have uploaded a copy <a href="https://github.com/zloeber/Powershell/blob/master/Exchange/New-ExchangeRebalancingReport.ps1">to my Github repo</a> as well.</p>
 <h2 id="note">Note</h2>
-
 <p>If you really want to know the general idea and logic of the algorithm behind the script <a href="/2014/01/07/exchange-20102013-database-leveling-script/">read my prior article on the matter</a>. I go as far as to use some equations and even some diagrams in the write up and I consider it all very well thought out from an academic standpoint (at least no one has said otherwise).</p>
-
 <p>I hope to get some feedback around this from you if you do end up using it. People reaching out to me with suggestions and stories of how they use my work in their environments is part of what keeps me releasing new and useful tools.</p>
     
 </div>
@@ -345,15 +319,15 @@ $_.Name -match ($ESC_IGNORED_DATABASES -join '|')</pre>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -382,7 +356,7 @@ $_.Name -match ($ESC_IGNORED_DATABASES -join '|')</pre>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

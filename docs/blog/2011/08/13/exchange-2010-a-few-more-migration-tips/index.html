@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010: A Few More Migration Tips | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010: A Few More Migration Tips - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010: A Few More Migration Tips">
@@ -140,203 +140,117 @@
 
     
         <p>Here are a few more notes from the field to consider when you are planning your Exchange 2010 deployment and migration. Some of these items are good to know even after you have completed your migration and may help with overall system stability.</p>
-
+<h2 id="heading"></h2>
 <h2 id="make-appropriate-av-exclusions">Make Appropriate AV Exclusions</h2>
-
-<p>If you are using a third party anti-virus solution you will want to ensure that the appropriate directories are excluded from scans. Otherwise you could end up with less than optimal performance. The official article on such exclusions can be found <a href="http://technet.microsoft.com/en-us/library/bb332342.aspx" title="Exchange 2010 AV Exclusion Technet Article">at Microsoft&#8217;s site.</a></p>
-
+<p>If you are using a third party anti-virus solution you will want to ensure that the appropriate directories are excluded from scans. Otherwise you could end up with less than optimal performance. The official article on such exclusions can be found <a href="http://technet.microsoft.com/en-us/library/bb332342.aspx" title="Exchange 2010 AV Exclusion Technet Article">at Microsoft’s site.</a></p>
 <p>Here is a quick summary of some recommended exclusions for some of the more popular Exchange 2010 roles.</p>
-
 <p><a href="/wp-content/uploads/2011/08/exchange-av-table.html" title="Exchange 2010 AV Exclusion Table">Exchange 2010 directories for AV exclusion</a></p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <h2 id="tweak-your-dag">Tweak Your DAG</h2>
-
-<p>There are a number of things you can do to increase the resiliency of your DAG. I&#8217;ve only ever worked with DAGs spread across desperate physical locations but it wouldn&#8217;t hurt to consider these tweaks even in a same site configuration as well.</p>
-
+<p>There are a number of things you can do to increase the resiliency of your DAG. I’ve only ever worked with DAGs spread across desperate physical locations but it wouldn’t hurt to consider these tweaks even in a same site configuration as well.</p>
 <h3 id="change-cluster-thresholds">Change Cluster Thresholds</h3>
-
-<p>Microsoft&#8217;s article on this process is <a href="http://technet.microsoft.com/en-us/library/dd197562(WS.10).aspx" title="cluster thresholds">documented on their web-site</a>. The gist of the matter is that the cluster thresholds used by default are rather paltry. To help prevent unneeded database failovers you can manually change the threshold on each DAG member. To boost the thresholds to their maximum value run the following:</p>
-
-<pre><strong>cluster /prop SameSubnetDelay=2000:DWORD</strong></pre>
-
-<pre><strong>cluster /prop CrossSubnetDelay=4000:DWORD</strong></pre>
-
-<pre><strong>cluster /prop CrossSubnetThreshold=10:DWORD</strong></pre>
-
-<pre><strong>cluster /prop SameSubnetThreshold=10:DWORD</strong></pre>
-
+<p>Microsoft’s article on this process is <a href="http://technet.microsoft.com/en-us/library/dd197562(WS.10).aspx" title="cluster thresholds">documented on their web-site</a>. The gist of the matter is that the cluster thresholds used by default are rather paltry. To help prevent unneeded database failovers you can manually change the threshold on each DAG member. To boost the thresholds to their maximum value run the following:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>To verify the settings run the following:</p>
-
-<pre><strong>cluster /prop</strong></pre>
-
+<!-- raw HTML omitted -->
 <h3 id="disable-advanced-nic-settings">Disable Advanced NIC Settings</h3>
-
 <p>Receive Side Scaling (RSS), <a href="http://support.microsoft.com/kb/951037" title="MS Chimney Article">Chimney</a>, and TCP Offload Engine (TOE) sound like cool technology to have enabled on your network interfaces but they tend to make exchange servers crabby. When theya re crabby they tend to have intermittent connectivity issues which makes your DAG do seemingly random fail-over issues. If you look in the failover cluster manager you will likely see errors about connectivity to the witness server. This can be exasperated in a multiple site DAG configuration as advanced nic features like RSS require end-to-end support to be used effectively.</p>
-
-<p>To disable these features it is recommended to physically go into the advanced nic properties and manually disable each related setting as well as disable the setting at the OS level. I&#8217;ve only needed to do the OS level disabling by using the following commands at each DAG server AND on each witness server.</p>
-
-<pre><strong>netsh interface tcp set global rss=disabled</strong></pre>
-
-<pre><strong>netsh interface tcp set global chimney=disabled</strong></pre>
-
-<pre><strong>netsh interface tcp set global autotuninglevel=disabled</strong></pre>
-
+<p>To disable these features it is recommended to physically go into the advanced nic properties and manually disable each related setting as well as disable the setting at the OS level. I’ve only needed to do the OS level disabling by using the following commands at each DAG server AND on each witness server.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="heading-1"></h2>
 <h2 id="mailboxes-migrate-into-exchange-2010-as-linked-mailboxes">Mailboxes Migrate Into Exchange 2010 as Linked Mailboxes</h2>
-
-<p>I saw this for a few clients, thought it was weird, so I&#8217;m posting it here 🙂</p>
-
+<p>I saw this for a few clients, thought it was weird, so I’m posting it here 🙂</p>
 <p>Basically there were extra attributes from some prior migration that was confusing Exchange 2010 during the migration. If you are certain that you are not using linked mailboxes then you can convert all linked mailboxes to user mailboxes in one line.</p>
-
-<pre>Get-Mailbox -RecipientTypeDetails LinkedMailbox | Set-User -LinkedMasterAccount $null</pre>
-
+<!-- raw HTML omitted -->
 <p>A Microsoft technician explained a bit more on what causes this to happen. He noted that the affected accounts have msExchMasterAccountSID populated prior to mailbox migration. This attribute should only be populated on disabled accounts that have an associated external account assigned permissions to the mailbox in Exchange 2003. Apparently you can fix this from happening by running <a href="http://archive.msdn.microsoft.com/NoMas" title="NoMAS Download">NoMAS in fix mode.</a></p>
-
-<p>&nbsp;</p>
-
-<h2 id="you-get-8220-this-error-is-not-retriable-8221-when-migrating-a-mailbox">You Get &#8220;This error is not retriable&#8221; When Migrating A Mailbox</h2>
-
+<p> </p>
+<h2 id="you-get-8220this-error-is-not-retriable8221-when-migrating-a-mailbox">You Get “This error is not retriable” When Migrating A Mailbox</h2>
 <p>So you are all ramped up and ready to start migrating your mailboxes to the environment you erected with much hard work, sweat, and tears. Everything is great until you see that several users refuse to migrate with an error like this:</p>
-
-<pre><strong>Active Directory operation failed on yourdc.corp.contoso.local. This error is not retriable. Additional information: Insu fficient access rights to perform the operation. Active directory response: 00002098: SecErr: DSID-03150BB9, problem 4003 (INSUFF_ACCESS_RIGHTS), data 0     + CategoryInfo          : NotSpecified: (0:Int32) [New-MoveRequest], ADOperationException     + FullyQualifiedErrorId : B959FFD3,Microsoft.Exchange.Management.RecipientTasks.NewMoveRequest</strong></pre>
-
-<p>What the heck does that mean? Well the Insufficient Access Rights portion of the error says it all. What you may find out is that user mailboxes which exhibit this error tend to not be inheriting permissions in active directory. Even if they are, it doesn&#8217;t hurt to reset the inheritance setting for the account and try again. You can do this in Active directory users and computers by making sure that the &#8220;Advanced&#8221; option is set in the view menu. Then select the account in question, go to the permissions tab, select advanced, and look for the permission inherited checkbox. Either uncheck, apply, recheck, apply or check the box and apply (depending if it is already selected or not). Try to migrate again and you should be golden.</p>
-
+<!-- raw HTML omitted -->
+<p>What the heck does that mean? Well the Insufficient Access Rights portion of the error says it all. What you may find out is that user mailboxes which exhibit this error tend to not be inheriting permissions in active directory. Even if they are, it doesn’t hurt to reset the inheritance setting for the account and try again. You can do this in Active directory users and computers by making sure that the “Advanced” option is set in the view menu. Then select the account in question, go to the permissions tab, select advanced, and look for the permission inherited checkbox. Either uncheck, apply, recheck, apply or check the box and apply (depending if it is already selected or not). Try to migrate again and you should be golden.</p>
 <p>Or if you are using the handy-dandy quest powershell cmdlts you can update the account with a single line:</p>
-
-<pre>Get-QADUser &lt;user&gt; | Set-QADObjectSecurity -LockInheritance</pre>
-
+<!-- raw HTML omitted -->
 <p>If you are looking for all the possible trouble accounts run the following for a quick report on those who are not inheriting their OU permissions:</p>
-
-<pre><strong>Get-QADUser -SizeLimit 0 | Select-Object Name,@{n='IncludeInheritablePermissions';e={!$_.DirectoryEntry.PSBase.ObjectSecurity.AreAccessRulesProtected}} | Where {!$_.IncludeInheritablePermissions} &gt; export-csv -notypeinformation c:\temp\not-inheriting.csv</strong></pre>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p> </p>
 <h2 id="arbitration-mailboxes-may-not-always-be-setup-properly">Arbitration Mailboxes May Not Always Be Setup Properly</h2>
-
 <p>This one is a bit of a nuisance,  but it is not a show stopper. You may not even notice that there is an issue with arbitration mailboxes until you want to use a feature which requires them to be 100% functional. For me it was finding out that I could not run admin audit logs but other symptoms of an issue might be that you <a href="http://technet.microsoft.com/en-us/library/dd297936%28EXCHG.140%29.aspx" title="Arbitration mailboxes and moderation">cannot moderate distribution list</a>s or perform discovery. If you find this to be the case then you may be running into an arbitration mailbox issue. I cannot help you if you accidentally deleted these essential mailboxes (ok, I can help you, just reprep your forest/domain, they will likely be recreated with no fanfare). If you find that you are unable to use these mailboxes you may just need to fix them. There are three arbitration mailboxes which get <strong>stored at your forest root</strong>:</p>
-
 <ul>
-<li><strong>Discovery</strong>&#8211; SystemMailbox{e0dc1c29-89c3-4034-b678-e6c29d823ed9}</li>
-<li><strong>Message Approval</strong> &#8211; SystemMailbox{1f05a927-xxxx-xxxx-xxxx-xxxxxxxxxxxx} (<em>where x is a random number</em>)</li>
-<li><strong>Federated E-mail</strong> &#8211; FederatedEmail.4c1f4d8b-8179-4148-93bf-00a95fa1e042</li>
+<li><strong>Discovery</strong>– SystemMailbox{e0dc1c29-89c3-4034-b678-e6c29d823ed9}</li>
+<li><strong>Message Approval</strong> – SystemMailbox{1f05a927-xxxx-xxxx-xxxx-xxxxxxxxxxxx} (<em>where x is a random number</em>)</li>
+<li><strong>Federated E-mail</strong> – FederatedEmail.4c1f4d8b-8179-4148-93bf-00a95fa1e042</li>
 </ul>
-
 <p>Firstly you might experience issues even seeing these mailboxes. If you are in an environment which follows best AD practices then your forest root is nearly empty and the production domain with all of your users and mailboxes is in a sub-domain of the forest root. You then do most of your work with a domain admin account in that sub-domain. In order to see the arbitration mailboxes you need to change the scope of your default view to include the entire forest in EMC. You will know that you need to do this if you run get-mailbox -arbitration and get an empty result with no errors. To get around this change your scope in EMC</p>
-
-<pre>Set-AdServerSettings -ViewEntireForest $true
-Get-Mailbox -Arbitration</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Unless you foolishly deleted your initial default mailbox or did something else wrong you should see your three federation mailboxes without any errors. If you do get errors they may look something like this:</p>
-
-<pre><span style="font-family: courier new;">WARNING: The object MyDomain.local/Users/SystemMailbox{1f05a927-xxxx-xxxx-xxxx-xxxxxxxxxxxx} has been corrupted, and it's in an inconsistent state. The following validation errors happened: WARNING: Database is mandatory on UserMailbox. </span></pre>
-
-<p><span style="font-family: courier new;">I was confused when I first saw this error. When I looked up these accounts in adsiedit I found that their homeMDB attribute was totally blank. This was not my install so I&#8217;m not certain what was done to mash up the arbitration mailboxes so badly. To fix this is pretty simple though, find the correct homeMDB attribute value and assign it to the accounts. Then make sure that the account is enabled. What I did was looked at the homeMTA attribute and extrapolated what the homeMDB value was supposed to be.</span></p>
-
-<p><span style="font-family: courier new;">You can get to the correct area in adsiedit by selecting the default naming context and making sure that your root domain name is used. Then, by default, these accounts will be located in the Users system object (or I can inaccurately say the Users OU, which it is not).</span></p>
-
-<p>I happened to be lucky. The homeMTA pointed to a server which was in production and all the databases were sequentially numbered. I guessed that the first database was the initial install database&#8230; and it was!</p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->I was confused when I first saw this error. When I looked up these accounts in adsiedit I found that their homeMDB attribute was totally blank. This was not my install so I’m not certain what was done to mash up the arbitration mailboxes so badly. To fix this is pretty simple though, find the correct homeMDB attribute value and assign it to the accounts. Then make sure that the account is enabled. What I did was looked at the homeMTA attribute and extrapolated what the homeMDB value was supposed to be.<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->You can get to the correct area in adsiedit by selecting the default naming context and making sure that your root domain name is used. Then, by default, these accounts will be located in the Users system object (or I can inaccurately say the Users OU, which it is not).<!-- raw HTML omitted --></p>
+<p>I happened to be lucky. The homeMTA pointed to a server which was in production and all the databases were sequentially numbered. I guessed that the first database was the initial install database… and it was!</p>
 <p>homeMTA looked like this:</p>
-
-<pre>CN=Microsoft MTA,CN=&lt;Your First Mailbox Server&gt;,CN=Servers,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=Your Corporation,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=contoso,DC=local</pre>
-
-<pre>So I made homeMDB the following value:</pre>
-
-<pre>CN=&lt;Your First Database&gt;,CN=Databases,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=Your Corporation,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=contoso,DC=local</pre>
-
-<p>My guess as to why this happened is that between the forest/domain preparations not enough time elapsed before continuing the server role installations in the sub-domain. That is purely a guess though as I wasn&#8217;t around when this particular install occurred and the person doing the install is no longer around. Should you need to recreate the arbitration mailboxes all together <a href="http://msundis.wordpress.com/2010/08/17/recreate-and-enabled-missing-arbitration-user-accounts-and-mailboxes/" title="Recreate Arbitration Mailboxes">here is a good site</a> covering how to do so.</p>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>My guess as to why this happened is that between the forest/domain preparations not enough time elapsed before continuing the server role installations in the sub-domain. That is purely a guess though as I wasn’t around when this particular install occurred and the person doing the install is no longer around. Should you need to recreate the arbitration mailboxes all together <a href="http://msundis.wordpress.com/2010/08/17/recreate-and-enabled-missing-arbitration-user-accounts-and-mailboxes/" title="Recreate Arbitration Mailboxes">here is a good site</a> covering how to do so.</p>
+<p> </p>
 <h2 id="not-all-issues-are-exchange-related">Not All Issues Are Exchange Related</h2>
-
-<p>I think I&#8217;ve had to deal with just about every Outlook client related issue under the sun when doing Exchange 2010 mailbox migrations. People assume that every issue stems from Exchange and that is simply not the case. Outlook 2003/2007/2010 all behave differently and have their own unique issues to deal with. Here are some basic tips for fixing Outlook <sup>2007</sup>&frasl;<sub>20100</sub> issues (I&#8217;ve been lucky enough not to have to deal with Outlook 2003 as much).</p>
-
+<p>I think I’ve had to deal with just about every Outlook client related issue under the sun when doing Exchange 2010 mailbox migrations. People assume that every issue stems from Exchange and that is simply not the case. Outlook 2003/2007/2010 all behave differently and have their own unique issues to deal with. Here are some basic tips for fixing Outlook 2007/20100 issues (I’ve been lucky enough not to have to deal with Outlook 2003 as much).</p>
 <h3 id="repair-numerous-issues-in-outlook-2007">Repair Numerous Issues in Outlook 2007</h3>
-
 <p>This has fixed more unexplainable issues in outlook 2007 than I can even remember. It requires that your end user be out of outlook, any other office application, and office communicator while it runs. You may want to suggest starting this before lunch.</p>
-
 <ol>
 <li>Go to Help and select “Office Diagnostics…”</li>
 </ol>
-
-<h3 id="clean-fix-ost-pst-files-in-outlook-2007">Clean/Fix OST/PST files in Outlook 2007</h3>
-
+<h3 id="cleanfix-ostpst-files-in-outlook-2007">Clean/Fix OST/PST files in Outlook 2007</h3>
 <ol>
-<li><a name="_GoBack"></a>Close both Outlook and Office Communicator</li>
+<li><!-- raw HTML omitted --><!-- raw HTML omitted -->Close both Outlook and Office Communicator</li>
 <li>Run C:\Program Files\Microsoft Office\Office12\SCANPST.EXE</li>
-<li>Browse for OST/PST files in &#8220;%userprofile%\Application Data\Microsoft\Outlook&amp;#8221; and run scanpst.exe against each of them.</li>
+<li>Browse for OST/PST files in “%userprofile%\Application Data\Microsoft\Outlook&amp;#8221; and run scanpst.exe against each of them.</li>
 </ol>
-
-<h3 id="clean-fix-ost-pst-files-in-outlook-2010"><strong>Clean/Fix OST/PST files in Outlook 2010</strong></h3>
-
+<h3 id="cleanfix-ostpst-files-in-outlook-2010"><strong>Clean/Fix OST/PST files in Outlook 2010</strong></h3>
 <p>This is highly recommended if the user has just upgraded to Outlook 2010 from a prior version. No matter how good the SCCM package is that gets pushed to your end users Outlook will still have random and weird issues after being upgraded.</p>
-
 <p>On 64-bit computer</p>
-
 <p>C:\Program Files (x86)\Microsoft Office\Office14\SCANPST.EXE</p>
-
 <p>On 32-bit computer</p>
-
 <p>C:\Program Files\Microsoft Office\Office14\SCANPST.EXE</p>
-
 <h3 id="repair-outlook-2007-profile"><strong>Repair Outlook 2007 profile</strong></h3>
-
 <ol>
 <li>In Outlook 2007, from the Tools menu, click Account Settings.</li>
 <li>In the Account Settings dialog box, on the E-mail tab, select your account, and then click Repair. Follow any prompts from the repair wizard.</li>
 <li>When the repair is done, restart Outlook 2007.</li>
 </ol>
-
 <h3 id="repair-outlook-2010-profile"><strong>Repair Outlook 2010 profile</strong></h3>
-
 <ol>
 <li>In Outlook 2010, on the File tab, click the arrow next to Account Settings, and then click Account Settings.</li>
 <li>In the Account Settings dialog box, on the E-mail tab, select your account, and then click Repair. Follow any prompts from the repair wizard.</li>
 <li>When the repair is done, restart Outlook 2010.</li>
 </ol>
-
 <h3 id="recreate-outlook-profile-snag-if-you-are-forced-to-go-as-far-as-to-recreate-the-profile"><strong>Recreate Outlook Profile Snag (if you are forced to go as far as to recreate the profile)</strong></h3>
-
 <ol>
-<li>After removing the default profile in outlook you will need to rename/move/delete &#8220;%userprofile%\Local Settings\Application Data\Microsoft\Outlook&#8221; for the user</li>
+<li>After removing the default profile in outlook you will need to rename/move/delete “%userprofile%\Local Settings\Application Data\Microsoft\Outlook” for the user</li>
 </ol>
-
-<h3 id="default-location-for-outlook-exe-2010"><strong>Default location for outlook.exe 2010</strong></h3>
-
+<h3 id="default-location-for-outlookexe-2010"><strong>Default location for outlook.exe 2010</strong></h3>
 <p>On 64-bit computer</p>
-
 <p>C:\Program Files (x86)\Microsoft Office\Office14\outlook.exe</p>
-
 <p>On 32-bit computer</p>
-
 <p>C:\Program Files\Microsoft Office\Office14\outlook.exe</p>
-
-<h3 id="default-location-for-outlook-exe-2007"><strong>Default location for outlook.exe 2007</strong></h3>
-
+<h3 id="default-location-for-outlookexe-2007"><strong>Default location for outlook.exe 2007</strong></h3>
 <p>On 64-bit computer</p>
-
 <p>C:\Program Files (x86)\Microsoft Office\Office12\outlook.exe</p>
-
 <p>On 32-bit computer</p>
-
 <p>C:\Program Files\Microsoft Office\Office12\outlook.exe</p>
-
 <h3 id="open-outlook-with-a-custom-flag"><strong>Open Outlook With A Custom Flag</strong></h3>
-
 <p>From a run dialog box:</p>
-
-<pre>"c:\&lt;Outlook Location &gt;\outlook.exe" /&lt;command&gt;</pre>
-
-<h3 id="switches-you-can-use-with-outlook-exe-the-clean-switches-can-be-particularly-useful"><strong>Switches You Can Use With Outlook.exe (the /Clean* switches can be particularly useful)</strong></h3>
-
-<p>&nbsp;</p>
-
-<p><a href="/wp-content/uploads/2011/08/Outlook-Flags.html" title="Outlook 2007/2010 command line arguments">Here is a link to a reference table for Outlook <sup>2007</sup>&frasl;<sub>2010</sub> command-line switches.</a></p>
-
-<p>&nbsp;</p>
+<!-- raw HTML omitted -->
+<h3 id="switches-you-can-use-with-outlookexe-the-clean-switches-can-be-particularly-useful"><em><em>Switches You Can Use With Outlook.exe (the /Clean</em> switches can be particularly useful)</em>*</h3>
+<p> </p>
+<p><a href="/wp-content/uploads/2011/08/Outlook-Flags.html" title="Outlook 2007/2010 command line arguments">Here is a link to a reference table for Outlook 2007/2010 command-line switches.</a></p>
+<p> </p>
     
 </div>
 
@@ -474,15 +388,15 @@ Get-Mailbox -Arbitration</pre>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -511,7 +425,7 @@ Get-Mailbox -Arbitration</pre>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

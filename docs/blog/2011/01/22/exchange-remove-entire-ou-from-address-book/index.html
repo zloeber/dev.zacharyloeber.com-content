@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange: Remove entire OU from address book | Zachary Loeber</title>
         <meta name="description" content="Exchange: Remove entire OU from address book - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange: Remove entire OU from address book">
@@ -142,48 +142,27 @@
 
     
         <p>Here is another script that I hacked together in part of an AD/Exchange cleanup task to remove disabled users from the address book. This script, more specifically, removes an entire OU of users from the address book, so make sure that all the users are disabled in the OU you will be running this against! 🙂</p>
-
 <p>Save as a VBS file and run from your exchange server:</p>
-
-<pre>On Error Resume Next
-Const ADS_SCOPE_SUBTREE = 2
-Set objConnection = CreateObject("ADODB.Connection")</pre>
-
-<pre>Set objCommand =   CreateObject("ADODB.Command")</pre>
-
-<pre>objConnection.Provider = "ADsDSOObject"</pre>
-
-<pre>objConnection.Open "Active Directory Provider"</pre>
-
-<pre>Set objCommand.ActiveConnection = objConnection</pre>
-
-<pre>objCommand.Properties("Page Size") = 1000</pre>
-
-<pre>objCommand.Properties("Searchscope") = ADS_SCOPE_SUBTREE</pre>
-
-<pre>objCommand.CommandText = _</pre>
-
-<pre>"SELECT ADsPath FROM 'LDAP://OU=Some 2nd level OU,OU=Some Top level OU,dc=corp,dc=contoso,dc=com' WHERE objectClass='User'"</pre>
-
-<pre>Set objRecordSet = objCommand.Execute</pre>
-
-<pre>objRecordSet.MoveFirst</pre>
-
-<pre>Do Until objRecordSet.EOF</pre>
-
-<pre>strContactPath = objRecordSet.Fields("ADsPath").Value</pre>
-
-<pre>MsgBox (strContactPath)</pre>
-
-<pre>Set objContact = GetObject(strContactPath)</pre>
-
-<pre>objContact.MSExchHideFromAddressLists = TRUE</pre>
-
-<pre>objContact.SetInfo</pre>
-
-<pre>objRecordSet.MoveNext</pre>
-
-<pre>Loop</pre>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
     
 </div>
 
@@ -302,15 +281,15 @@ Set objConnection = CreateObject("ADODB.Connection")</pre>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -339,7 +318,7 @@ Set objConnection = CreateObject("ADODB.Connection")</pre>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

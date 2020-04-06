@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Powershell: Get-iQuote | Zachary Loeber</title>
         <meta name="description" content="Powershell: Get-iQuote - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Powershell: Get-iQuote">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">2 min read</span>
+            <span class="readingTime">1 min read</span>
         
 
         
@@ -136,64 +136,10 @@
 
     
         <p>While scratching an itch I found a cool little site that has a simple to use REST api for returning random quotes from multiple categories. Here is a small function which utilizes this online source to pull quotes from the web!</p>
-
 <p>I must have hundreds of these one off scripts laying around in my personal repository collecting dust. I’m trying to get more of these out there as examples (either good or bad!) for others to use in their scripting endeavors. This one is just for fun but has some good examples of; ValidateScript parameter validation, Invoke-WebRequest, Regular Expressions.</p>
-
-<pre class="lang:powershell decode:true">function Get-iQuote {
-    &lt;#
-    #Valid Sources
-    #From geek: esr humorix_misc humorix_stories joel_on_software macintosh math mav_flame osp_rules paul_graham prog_style subversion
-    #From general: 1811_dictionary_of_the_vulgar_tongue codehappy fortune liberty literature misc murphy oneliners riddles rkba shlomif shlomif_fav stephen_wright
-    #From pop: calvin forrestgump friends futurama holygrail powerpuff simon_garfunkel simpsons_cbg simpsons_chalkboard simpsons_homer simpsons_ralph south_park starwars xfiles
-    #From religious: bible contentions osho
-    #From scifi: cryptonomicon discworld dune hitchhiker
-    
-    # Example
-    Get-iQuote -max_lines 2 -source @('esr','math')
-    #&gt;
-
-    param (
-        [Parameter(Position=0,HelpMessage='return format of quote')]
-        [ValidateSet('text','html','json')]
-        [string]$format = 'text',
-        [Parameter(Position=1,HelpMessage='Maximum number of lines to return')]
-        [int]$max_lines,
-        [Parameter(Position=2,HelpMessage='Minimum number of lines to return')]
-        [int]$min_lines,
-        [Parameter(Position=3,HelpMessage='Maximum number of characters to return')]
-        [int]$max_characters,
-        [Parameter(Position=4,HelpMessage='Minimum number of characters to return')]
-        [int]$min_characters,
-        [Parameter(Position=5,HelpMessage='One or more quote categories to query.')]
-        [ValidateScript({
-            $validsources = @('esr','humorix_misc','humorix_stories','joel_on_software','macintosh','math','mav_flame','osp_rules','paul_graham','prog_style','subversion','1811_dictionary_of_the_vulgar_tongue','codehappy','fortune','liberty','literature','misc','murphy','oneliners','riddles','rkba','shlomif','shlomif_fav','stephen_wright','calvin','forrestgump','friends','futurama','holygrail','powerpuff','simon_garfunkel','simpsons_cbg','simpsons_chalkboard','simpsons_homer','simpsons_ralph','south_park','starwars','xfiles','bible','contentions','osho','cryptonomicon','discworld','dune','hitchhiker')
-            if ((Compare-Object -ReferenceObject $validsources -DifferenceObject $_).SideIndicator -contains '=&gt;') {
-                $false
-            }
-            else {
-                $true
-            }
-        })]
-        [string[]]$source = @('esr','humorix_misc','humorix_stories','joel_on_software','macintosh','math','mav_flame','osp_rules','paul_graham','prog_style','subversion','1811_dictionary_of_the_vulgar_tongue','codehappy','fortune','liberty','literature','misc','murphy','oneliners','riddles','rkba','shlomif','shlomif_fav','stephen_wright','calvin','forrestgump','friends','futurama','holygrail','powerpuff','simon_garfunkel','simpsons_cbg','simpsons_chalkboard','simpsons_homer','simpsons_ralph','south_park','starwars','xfiles','bible','contentions','osho','cryptonomicon','discworld','dune','hitchhiker')
-    )
-    $req_uri = 'http://www.iheartquotes.com/api/v1/random?format=' + $format 
-    $PSBoundParameters.Keys | Foreach {
-        if ($_ -ne 'format') {
-            $paramval = 
-            $req_uri += '&' + $_ + '=' + ($PSBoundParameters[$_] -join '+')
-        }
-    }
-
-    $sources = ($source | % { [regex]::escape($_) } ) -join '|'
-    $sourceregex = '(?m)^([^\[]*)(?:\[(' + $sources + ')\].+)$'
-    
-    $quote = (Invoke-WebRequest -Uri $req_uri).content
-
-    ((([regex]::Match($quote,$sourceregex)).Groups)[1]).Value -replace '"','"'
-}</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>One of the more interesting items about this script is that the parameters are actually named exactly as the parameters used in the web request. So all I have to do is parse through the parameters which were passed to the function by key name to build up the web request. This dramatically decreases the overall function size and is a semi-clever hack if I do say so myself.</p>
-
 <p>Keep on scripting my friends!</p>
     
 </div>
@@ -326,15 +272,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -363,7 +309,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

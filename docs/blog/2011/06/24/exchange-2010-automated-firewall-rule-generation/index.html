@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010: Automated Firewall Rule Generation | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010: Automated Firewall Rule Generation - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010: Automated Firewall Rule Generation">
@@ -143,19 +143,13 @@
     </div>
 
     
-        <p>A single, or even a dual site Exchange 2010 deployment does not usually require too much internal firewall manipulation. But if you have to setup a Exchange 2010 environment where there are many global sites or a heavily segmented network, the number of firewall requests required to get a fully functioning configuration working can be daunting. Wouldn&#8217;t it be nice to have some of those firewall rules automatically generated for you?</p>
-
+        <p>A single, or even a dual site Exchange 2010 deployment does not usually require too much internal firewall manipulation. But if you have to setup a Exchange 2010 environment where there are many global sites or a heavily segmented network, the number of firewall requests required to get a fully functioning configuration working can be daunting. Wouldn’t it be nice to have some of those firewall rules automatically generated for you?</p>
 <p><a href="/wp-content/uploads/2011/06/ExchangeFirewallRequestGenerator.zip" title="Exchange 2010 Firewall Request Generator">Here is a quick powershell script I put together while on vacation to accomplish such a task.</a></p>
-
 <p>ExchangeEnvironment.csv is a fictitious 2010 environment with three sites, one which has edge servers, the other two go through a third-party antispam vendor (used messagelabs as an example).</p>
-
-<p>FirewallRules.csv is self-explanatory, it contains a tabular list of all the firewall requirements for all roles in an exchange environment. I&#8217;ve connected with Michel de Rooij over at <a href="http://eightwone.com/" title="Eightwone Blog">Eightwone</a> to go over this for accuracy so this may be updated very soon.</p>
-
+<p>FirewallRules.csv is self-explanatory, it contains a tabular list of all the firewall requirements for all roles in an exchange environment. I’ve connected with Michel de Rooij over at <a href="http://eightwone.com/" title="Eightwone Blog">Eightwone</a> to go over this for accuracy so this may be updated very soon.</p>
 <p>Firewall-request.csv is the example output when the script is run as is.</p>
-
 <p>GenerateFirewallRules.ps1 is the hacked together script that takes the two input files and spits out our firewall-request.csv file.</p>
-
-<p>The areas which I&#8217;ve probably not fleshed out so much are where there are exceptions. I tried to think of as many as possible though. Let me know what you think.</p>
+<p>The areas which I’ve probably not fleshed out so much are where there are exceptions. I tried to think of as many as possible though. Let me know what you think.</p>
     
 </div>
 
@@ -291,15 +285,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -328,7 +322,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

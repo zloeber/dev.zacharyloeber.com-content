@@ -26,7 +26,6 @@
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/08/22/multithreaded-hp-server-health-check-with-powershell/</guid>
       <description>&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
-
 &lt;p&gt;This function attempts to query the HP WBEM WMI provider information to ascertain the general health of a physical server. By default just the general health status is returned. Optionally you can include the following components in the results: ethernet teams, array controllers , ethernet adapters, fans, HBAs, power supplies, and temperature sensors.&lt;/p&gt;</description>
     </item>
     
@@ -36,7 +35,7 @@
       <pubDate>Thu, 18 Apr 2013 03:03:36 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/04/17/powershell-colorize-table-function/</guid>
-      <description>&lt;p&gt;Here is a function I modified for quickly modifying the attributes of a table&amp;#8217;s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn&amp;#8217;t hurt either.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Here is a function I modified for quickly modifying the attributes of a table’s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn’t hurt either.&lt;/p&gt;</description>
     </item>
     
   </channel>

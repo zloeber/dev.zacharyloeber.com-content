@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/exchange/</link>
     <description>Recent content in Exchange on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 14 Nov 2014 03:31:13 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Apr 2016 21:25:58 +0000</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/exchange/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,8 +16,8 @@
       <pubDate>Fri, 14 Nov 2014 03:31:13 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2014/11/13/lync-and-um-correlation-with-powershell/</guid>
-      <description>I&amp;#8217;ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
-There are a few necessary results to gather where I believe it can be easy to &amp;#8216;miss&amp;#8217; configuration steps when turning up or disabling users:</description>
+      <description>I’ve been working on an Exchange/Lync voice deployment lately and have found a new level of frustration for the lack of connectivity between the several voice components involved in turning up such a solution. That being said it is not very difficult to validate your deployment with a bit of Powershell.
+There are a few necessary results to gather where I believe it can be easy to ‘miss’ configuration steps when turning up or disabling users:</description>
     </item>
     
     <item>
@@ -81,7 +81,6 @@ There are a few necessary results to gather where I believe it can be easy to &a
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/05/09/exchange-2010-mailbox-audit-report-script/</guid>
       <description>&lt;h1 id=&#34;exchange-2010-mailbox-audit-report-script&#34;&gt;Exchange 2010 Mailbox Audit Report Script&lt;/h1&gt;
-
 &lt;p&gt;Recently I’ve released a number of scripts such as the &lt;a href=&#34;http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd&#34;&gt;HTML Table Colorizer&lt;/a&gt;, &lt;a href=&#34;http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527&#34;&gt;Exchange Mailbox Calendar Permission Function&lt;/a&gt;, and the &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590&#34;&gt;Exchange Mailbox GUI&lt;/a&gt;. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.&lt;/p&gt;</description>
     </item>
     
@@ -91,7 +90,7 @@ There are a few necessary results to gather where I believe it can be easy to &a
       <pubDate>Sun, 28 Apr 2013 17:35:54 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2013/04/28/exchange-get-calendar-permissions-multilingual-edition/</guid>
-      <description>&lt;p&gt;Some time ago I released &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-2010-Calendar-21695fde&#34; title=&#34;Exchange 2010 Calendar Permission GUI&#34;&gt;a rather simplistic GUI for viewing Exchange 2010 mailbox calendar permissions&lt;/a&gt;. Because of a semi-related script I&amp;#8217;m working on currently I rounded back and recreated that GUI script to be a powershell function instead. This is the result.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some time ago I released &lt;a href=&#34;http://gallery.technet.microsoft.com/Exchange-2010-Calendar-21695fde&#34; title=&#34;Exchange 2010 Calendar Permission GUI&#34;&gt;a rather simplistic GUI for viewing Exchange 2010 mailbox calendar permissions&lt;/a&gt;. Because of a semi-related script I’m working on currently I rounded back and recreated that GUI script to be a powershell function instead. This is the result.&lt;/p&gt;</description>
     </item>
     
   </channel>

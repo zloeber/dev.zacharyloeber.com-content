@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Gather (and Diagram) Installed Roles and Features With Powershell | Zachary Loeber</title>
         <meta name="description" content="Gather (and Diagram) Installed Roles and Features With Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Gather (and Diagram) Installed Roles and Features With Powershell">
@@ -137,22 +137,14 @@
     </div>
 
     
-        <p>Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I&#8217;ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).</p>
-
+        <p>Use this powershell script to gather installed features and roles from remote systems. This uses two wmi classes in an attempt to gather as much information as possible. Win32_ServerFeature will contain roles and their dependencies on systems running Windows 2008 and above. For these systems we can use this hierarchy to also produce pretty diagrams using graphviz and techniques I’ve exhibited in some of my other scripts (I added this last part in cause it is easy to do, not really certain how useful it is other than maybe exploring the dependencies between windows roles/features).</p>
 <p>To actually generate the diagrams you will need graphviz’s dot.exe executable which can be downloaded and installed <a href="http://graphviz.org/">here</a>. Or <a href="https://code.google.com/p/graph-viz-portable/downloads/list">here is a portable version</a> of the application you can try utilizing. All you need is for the dot.exe file to work correctly to generate your diagram. You may have to modify this script to use the appropriate path to the executable if you use the portable version of graphviz.</p>
-
 <h3 id="version">Version</h3>
-
-<p>1.0.1: 12/17/2013        &#8211; Initial release</p>
-
-<p>1.0.0: 10/12/2013        &#8211; Initial creation</p>
-
+<p>1.0.1: 12/17/2013        – Initial release</p>
+<p>1.0.0: 10/12/2013        – Initial creation</p>
 <h3 id="screenshot">Screenshot</h3>
-
-<p><a href="wp-content/uploads/2013/12/2013-12-18-12_41_14-GVEdit-For-Graphviz-ver_1.02.png"><img style="margin: 5px; display: inline; background-image: none;" title="2013-12-18 12_41_14-GVEdit For Graphviz ver_1.02" alt="2013-12-18 12_41_14-GVEdit For Graphviz ver_1.02" src="/wp-content/uploads/2013/12/2013-12-18-12_41_14-GVEdit-For-Graphviz-ver_1.02_thumb.png?resize=326%2C145" width="326" height="145" border="0" data-recalc-dims="1" /></a></p>
-
+<p><a href="wp-content/uploads/2013/12/2013-12-18-12_41_14-GVEdit-For-Graphviz-ver_1.02.png"><!-- raw HTML omitted --></a></p>
 <h3 id="downloads">Downloads</h3>
-
 <p>Download the most recent version of this script from <a href="http://gallery.technet.microsoft.com/Gather-and-Graph-Remote-e2f022ec">the Microsoft Technet Gallery</a></p>
     
 </div>
@@ -295,15 +287,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -332,7 +324,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

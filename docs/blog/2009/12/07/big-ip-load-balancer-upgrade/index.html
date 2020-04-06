@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> BIG-IP: Load Balancer Upgrade | Zachary Loeber</title>
         <meta name="description" content="BIG-IP: Load Balancer Upgrade - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="BIG-IP: Load Balancer Upgrade">
@@ -139,46 +139,20 @@
     </div>
 
     
-        <p>I had the pleasure of doing an F5 BIG-IP load balancer upgrade recently and am happy with the way the F5 people have designed their systems for fail over. Essentially you will use different system partitions to host different versions of their product and you change which one you want to boot to after updating the inactive partition. This, theoretically, means you can always go back to a working configuration if something goes awry. I&#8217;m unhappy with how fragmented their documentation is in getting from point A to point B though. Here is a quick rundown of what I had to do&#8230;</p>
-
+        <p>I had the pleasure of doing an F5 BIG-IP load balancer upgrade recently and am happy with the way the F5 people have designed their systems for fail over. Essentially you will use different system partitions to host different versions of their product and you change which one you want to boot to after updating the inactive partition. This, theoretically, means you can always go back to a working configuration if something goes awry. I’m unhappy with how fragmented their documentation is in getting from point A to point B though. Here is a quick rundown of what I had to do…</p>
 <p>Remote into your bigip management interface as an administration account then get to root</p>
-
-<p>su &#8211;</p>
-
+<p>su –</p>
 <p>Save your license file information just in case</p>
-
 <p>cat bigip.license</p>
-
-<p>Download your iso upgrade image and copy it to /shared/images with something like winscp for windows or just scp for linux. If the images directory doesn&#8217;t exist you must create it first (so they say in the docs)</p>
-
+<p>Download your iso upgrade image and copy it to /shared/images with something like winscp for windows or just scp for linux. If the images directory doesn’t exist you must create it first (so they say in the docs)</p>
 <p>If you are on an old version like me (9.x.x) you will have to run im ./shared/images/youriso.iso to extract and install the new upgrade utility. This will also show you active vs. an inactive drives:</p>
-
-<p><code>[admin@bigip2:Active] config # su -&lt;br /&gt;
-[admin@bigip2:Active] config # cd /shared/images/&lt;br /&gt;
-[admin@bigip2:Active] images # im ./BIGIP-10.0.1.283.0.iso&lt;br /&gt;
-/tmp/rpmdisk.ursNzQ /shared/images&lt;br /&gt;
-info: system has tm_install-2.5.0-80.0&lt;br /&gt;
-info: system has perl-RPM2-0.67-10.0.1.283.0&lt;br /&gt;
-The im utility is no longer used to upgrade software images.&lt;br /&gt;
-Please use 'image2disk'. For help, use 'image2disk -h'.&lt;br /&gt;
-You must always install to an image location that is not in use.&lt;br /&gt;
-Here is your current image-location status:&lt;br /&gt;
-bigip.license   CF1.1 active no default no title BIG-IP 9.3.0 Build 178.5&lt;br /&gt;
-HD1.1 active yes default yes title BIG-IP 9.4.5 Build 1049.10&lt;br /&gt;
-HD1.2 active no default no title BIG-IP 10.0.1 Build 283.0</code></p>
-
-<p>So you see that I&#8217;ll be installing (or rather already installed to) HD1.2. You may have to find and clear out old images if you are short on space. There /shared directory is literally shared between partitions so clearing from the live system from that location will clear from both install partitions. If you are ready then install like so:</p>
-
+<p><code>[admin@bigip2:Active] config # su -&lt;br /&gt; [admin@bigip2:Active] config # cd /shared/images/&lt;br /&gt; [admin@bigip2:Active] images # im ./BIGIP-10.0.1.283.0.iso&lt;br /&gt; /tmp/rpmdisk.ursNzQ /shared/images&lt;br /&gt; info: system has tm_install-2.5.0-80.0&lt;br /&gt; info: system has perl-RPM2-0.67-10.0.1.283.0&lt;br /&gt; The im utility is no longer used to upgrade software images.&lt;br /&gt; Please use 'image2disk'. For help, use 'image2disk -h'.&lt;br /&gt; You must always install to an image location that is not in use.&lt;br /&gt; Here is your current image-location status:&lt;br /&gt; bigip.license   CF1.1 active no default no title BIG-IP 9.3.0 Build 178.5&lt;br /&gt; HD1.1 active yes default yes title BIG-IP 9.4.5 Build 1049.10&lt;br /&gt; HD1.2 active no default no title BIG-IP 10.0.1 Build 283.0</code></p>
+<p>So you see that I’ll be installing (or rather already installed to) HD1.2. You may have to find and clear out old images if you are short on space. There /shared directory is literally shared between partitions so clearing from the live system from that location will clear from both install partitions. If you are ready then install like so:</p>
 <p><code>[admin@bigip2:Active] images # image2disk --instslot=HD1.2 ./BIGIP-10.0.1.283.0.iso</code></p>
-
-<p>After I did this it complained about a license file check and said I had to run with the &#8211;nvlicenseok option. So I did:</p>
-
+<p>After I did this it complained about a license file check and said I had to run with the –nvlicenseok option. So I did:</p>
 <p><code>[admin@bigip2:Active] images # image2disk --instslot=HD1.2 --nvlicenseok ./BIGIP-10.0.1.283.0.iso</code></p>
-
 <p>When all was done you have to make that partition the default and reboot to it.</p>
-
 <p><code>switchboot</code></p>
-
 <p><code>reboot</code></p>
     
 </div>
@@ -298,15 +272,15 @@ HD1.2 active no default no title BIG-IP 10.0.1 Build 283.0</code></p>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -335,7 +309,7 @@ HD1.2 active no default no title BIG-IP 10.0.1 Build 283.0</code></p>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

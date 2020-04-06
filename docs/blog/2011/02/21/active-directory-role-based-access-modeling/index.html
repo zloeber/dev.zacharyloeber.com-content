@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Active Directory: Role Based Access Modeling | Zachary Loeber</title>
         <meta name="description" content="Active Directory: Role Based Access Modeling - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Active Directory: Role Based Access Modeling">
@@ -141,14 +141,10 @@
     </div>
 
     
-        <p>Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of <a href="http://en.wikipedia.org/wiki/AGDLP">AGDLP (an abbreviation of &#8220;account, global, domain local, permission&#8221;)</a> to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.</p>
-
-<p>Essentially I did a simple recreation of RBAC (Role Based Access Control) that is used in Exchange. Actually I found out about this Exchange RBAC model out after I came up with this diagram and started implementing it in our company. I&#8217;m always late to the party it seems. Anyway, I use end user company position in a hierarchical model where higher up positions always have access to resources that lower positions are granted. (ie. A tech analyst 1 is granted rights to a particular resource so automatically tech analyst 2, team lead, and manager will have access to this resource as well). I also define a top level department group which contains all the other groups in the department for blanket permissions. I arbitrarily chose group naming convention where the first 3 letters denotes the type of group that is being defined. The naming convention is obviously flexible to the needs of your organization.</p>
-
+        <p>Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of <a href="http://en.wikipedia.org/wiki/AGDLP">AGDLP (an abbreviation of “account, global, domain local, permission”)</a> to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.</p>
+<p>Essentially I did a simple recreation of RBAC (Role Based Access Control) that is used in Exchange. Actually I found out about this Exchange RBAC model out after I came up with this diagram and started implementing it in our company. I’m always late to the party it seems. Anyway, I use end user company position in a hierarchical model where higher up positions always have access to resources that lower positions are granted. (ie. A tech analyst 1 is granted rights to a particular resource so automatically tech analyst 2, team lead, and manager will have access to this resource as well). I also define a top level department group which contains all the other groups in the department for blanket permissions. I arbitrarily chose group naming convention where the first 3 letters denotes the type of group that is being defined. The naming convention is obviously flexible to the needs of your organization.</p>
 <p>We also create duplicate department/position groups with “-SU” appended to the end of them for our privileged accounts which have access to the internal company servers and other infrastructure items which should not be accessed using general workstation credentials.</p>
-
 <p>A couple of notes about this model:</p>
-
 <ul>
 <li>This model is probably only scales well for small to medium companies due to how quickly you can end up with token bloat from too many nested groups. For larger companies some form of identity management software would probably be the best way to go.</li>
 <li>As mentioned before, I blatantly ripped of the well-known concept of AGDLP. So the originality of my design is questionable.</li>
@@ -156,138 +152,118 @@
 <li>This model works exceptionally well if you have several environments in the same domain. You can assign all computers in an environment to a security group to which you can then use GPO preferences to apply your assigned permissions (sorry 2008 or above domain functional level only).</li>
 <li>Although there is a bit of work involved in setting up the initial groups, you can do so progressively. I did whole sets of department groups as I was required to grant permissions and eventually a large quantity of them got completed.</li>
 <li>Even if you don’t have a solid organizational tree most people know who they report to at the very least. You can use this information to change the organization tab in ADUC to update the manager of a person and start setting up department groups by title somewhat generically.</li>
-<li>If titles or department names change, updating a group name in AD is a nominal task which will have zero impact on most environments (the only time I see it being an issue is if the group name is statically coded as an ldap string somewhere for linux integration, even then you would use a resource group for such a static encoding, not a security group name which refers to a specific department/title&#8230;right?).</li>
+<li>If titles or department names change, updating a group name in AD is a nominal task which will have zero impact on most environments (the only time I see it being an issue is if the group name is statically coded as an ldap string somewhere for linux integration, even then you would use a resource group for such a static encoding, not a security group name which refers to a specific department/title…right?).</li>
 </ul>
+<p>At the very least you can use <!-- raw HTML omitted -->the included visio diagram<!-- raw HTML omitted --> in your documentation or sales pitch for a more organized security model for your company or as a template to model your own company standard.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<pre><code>&lt;p class=&quot;MsoNormal&quot;&gt;
+  Essentially I did a simple recreation of RBAC (Role Based Access Control) that is used in Exchange, well I found this out after I came up with this diagram and started implementing it in our company. I use end user company position in a hierarchical model where higher up positions always have access to resources that lower positions are granted. (ie. A tech analyst 1 is granted rights to a particular resource so automatically tech analyst 2, team lead, and manager will have access to this resource as well). I also define a top level department group which contains all the other groups in the department for blanket permissions. I arbitrarily chose group naming convention where the first 3 letters denotes the type of group that is being defined. So res = resource and sec = security. The naming convention is obviously flexible to the needs of your organization.
+&lt;/p&gt;
 
-<p>At the very least you can use <a title="Role Based Access Security VSD" href="/wp-content/uploads/2011/02/RoleBased-Security-Reference-Diagram.vsd" target="_blank">the included visio diagram</a> in your documentation or sales pitch for a more organized security model for your company or as a template to model your own company standard.</p>
+&lt;p class=&quot;MsoNormal&quot;&gt;
+  We also create duplicate groups with “-SU” appended to the end of them for our privileged accounts which have access to the internal company servers and other infrastructure items which should not be accessed using workstation credentials.
+&lt;/p&gt;
 
-<div id="attachment_294" style="width: 334px" class="wp-caption alignleft">
-  <a href="/wp-content/uploads/2011/02/RoleBased-Security-Reference-Diagram.jpg"><img class="size-full wp-image-294 " title="An example RBAC AD Security Model" src="/wp-content/uploads/2011/02/RoleBased-Security-Reference-Diagram.jpg?resize=324%2C371" alt="An example RBAC AD Security Model" width="324" height="371" data-recalc-dims="1" /></a>
-  
-  <p class="wp-caption-text">
-    An example RBAC AD Security Model
-  </p>
-</div>
+&lt;p class=&quot;MsoNormal&quot;&gt;
+  A couple of notes about this model:
+&lt;/p&gt;
 
-<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow: hidden;">
-  <!--[if gte mso 9]><xml> <o:officedocumentsettings> <o:allowpng /> </o:officedocumentsettings> </xml>< ![endif]-->
-  
-  <!--[if gte mso 9]><xml> <w:worddocument> <w:view>Normal</w:view> <w:zoom>0</w:zoom> <w:trackmoves /> <w:trackformatting /> <w:punctuationkerning /> <w:validateagainstschemas /> <w:saveifxmlinvalid>false</w:saveifxmlinvalid> <w:ignoremixedcontent>false</w:ignoremixedcontent> <w:alwaysshowplaceholdertext>false</w:alwaysshowplaceholdertext> <w:donotpromoteqf /> <w:lidthemeother>EN-US</w:lidthemeother> <w:lidthemeasian>X-NONE</w:lidthemeasian> <w:lidthemecomplexscript>X-NONE</w:lidthemecomplexscript> <w:compatibility> <w:breakwrappedtables /> <w:snaptogridincell /> <w:wraptextwithpunct /> <w:useasianbreakrules /> <w:dontgrowautofit /> <w:splitpgbreakandparamark /> <w:enableopentypekerning /> <w:dontflipmirrorindents /> <w:overridetablestylehps /> </w:compatibility> <m:mathpr> <m:mathfont m:val="Cambria Math" /> <m:brkbin m:val="before" /> <m:brkbinsub m:val="&#45;-" /> <m:smallfrac m:val="off" /> <m:dispdef /> <m:lmargin m:val="0" /> <m:rmargin m:val="0" /> <m:defjc m:val="centerGroup" /> <m:wrapindent m:val="1440" /> <m:intlim m:val="subSup" /> <m:narylim m:val="undOvr" /> </m:mathpr></w:worddocument> </xml>< ![endif]-->
-  
-  <!--[if gte mso 9]><xml> <w:latentstyles DefLockedState="false" DefUnhideWhenUsed="true"   DefSemiHidden="true" DefQFormat="false" DefPriority="99"   LatentStyleCount="267"> <w:lsdexception Locked="false" Priority="0" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Normal" /> <w:lsdexception Locked="false" Priority="9" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="heading 1" /> <w:lsdexception Locked="false" Priority="9" QFormat="true" Name="heading 2" /> <w:lsdexception Locked="false" Priority="9" QFormat="true" Name="heading 3" /> <w:lsdexception Locked="false" Priority="9" QFormat="true" Name="heading 4" /> <w:lsdexception Locked="false" Priority="9" QFormat="true" Name="heading 5" /> <w:lsdexception Locked="false" Priority="9" QFormat="true" Name="heading 6" /> <w:lsdexception Locked="false" Priority="9" QFormat="true" Name="heading 7" /> <w:lsdexception Locked="false" Priority="9" QFormat="true" Name="heading 8" /> <w:lsdexception Locked="false" Priority="9" QFormat="true" Name="heading 9" /> <w:lsdexception Locked="false" Priority="39" Name="toc 1" /> <w:lsdexception Locked="false" Priority="39" Name="toc 2" /> <w:lsdexception Locked="false" Priority="39" Name="toc 3" /> <w:lsdexception Locked="false" Priority="39" Name="toc 4" /> <w:lsdexception Locked="false" Priority="39" Name="toc 5" /> <w:lsdexception Locked="false" Priority="39" Name="toc 6" /> <w:lsdexception Locked="false" Priority="39" Name="toc 7" /> <w:lsdexception Locked="false" Priority="39" Name="toc 8" /> <w:lsdexception Locked="false" Priority="39" Name="toc 9" /> <w:lsdexception Locked="false" Priority="35" QFormat="true" Name="caption" /> <w:lsdexception Locked="false" Priority="10" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Title" /> <w:lsdexception Locked="false" Priority="1" Name="Default Paragraph Font" /> <w:lsdexception Locked="false" Priority="11" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Subtitle" /> <w:lsdexception Locked="false" Priority="22" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Strong" /> <w:lsdexception Locked="false" Priority="20" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Emphasis" /> <w:lsdexception Locked="false" Priority="59" SemiHidden="false"    UnhideWhenUsed="false" Name="Table Grid" /> <w:lsdexception Locked="false" UnhideWhenUsed="false" Name="Placeholder Text" /> <w:lsdexception Locked="false" Priority="1" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="No Spacing" /> <w:lsdexception Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading" /> <w:lsdexception Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List" /> <w:lsdexception Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid" /> <w:lsdexception Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1" /> <w:lsdexception Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2" /> <w:lsdexception Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1" /> <w:lsdexception Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2" /> <w:lsdexception Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1" /> <w:lsdexception Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2" /> <w:lsdexception Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3" /> <w:lsdexception Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List" /> <w:lsdexception Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading" /> <w:lsdexception Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List" /> <w:lsdexception Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid" /> <w:lsdexception Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 1" /> <w:lsdexception Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 1" /> <w:lsdexception Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 1" /> <w:lsdexception Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1" /> <w:lsdexception Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1" /> <w:lsdexception Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 1" /> <w:lsdexception Locked="false" UnhideWhenUsed="false" Name="Revision" /> <w:lsdexception Locked="false" Priority="34" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="List Paragraph" /> <w:lsdexception Locked="false" Priority="29" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Quote" /> <w:lsdexception Locked="false" Priority="30" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Intense Quote" /> <w:lsdexception Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 1" /> <w:lsdexception Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1" /> <w:lsdexception Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1" /> <w:lsdexception Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1" /> <w:lsdexception Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 1" /> <w:lsdexception Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 1" /> <w:lsdexception Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 1" /> <w:lsdexception Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 1" /> <w:lsdexception Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 2" /> <w:lsdexception Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 2" /> <w:lsdexception Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 2" /> <w:lsdexception Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2" /> <w:lsdexception Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2" /> <w:lsdexception Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 2" /> <w:lsdexception Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 2" /> <w:lsdexception Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2" /> <w:lsdexception Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2" /> <w:lsdexception Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2" /> <w:lsdexception Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 2" /> <w:lsdexception Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 2" /> <w:lsdexception Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 2" /> <w:lsdexception Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 2" /> <w:lsdexception Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 3" /> <w:lsdexception Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 3" /> <w:lsdexception Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 3" /> <w:lsdexception Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3" /> <w:lsdexception Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3" /> <w:lsdexception Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 3" /> <w:lsdexception Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 3" /> <w:lsdexception Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3" /> <w:lsdexception Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3" /> <w:lsdexception Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3" /> <w:lsdexception Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 3" /> <w:lsdexception Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 3" /> <w:lsdexception Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 3" /> <w:lsdexception Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 3" /> <w:lsdexception Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 4" /> <w:lsdexception Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 4" /> <w:lsdexception Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 4" /> <w:lsdexception Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4" /> <w:lsdexception Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4" /> <w:lsdexception Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 4" /> <w:lsdexception Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 4" /> <w:lsdexception Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4" /> <w:lsdexception Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4" /> <w:lsdexception Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4" /> <w:lsdexception Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 4" /> <w:lsdexception Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 4" /> <w:lsdexception Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 4" /> <w:lsdexception Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 4" /> <w:lsdexception Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 5" /> <w:lsdexception Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 5" /> <w:lsdexception Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 5" /> <w:lsdexception Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5" /> <w:lsdexception Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5" /> <w:lsdexception Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 5" /> <w:lsdexception Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 5" /> <w:lsdexception Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5" /> <w:lsdexception Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5" /> <w:lsdexception Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5" /> <w:lsdexception Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 5" /> <w:lsdexception Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 5" /> <w:lsdexception Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 5" /> <w:lsdexception Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 5" /> <w:lsdexception Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 6" /> <w:lsdexception Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 6" /> <w:lsdexception Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 6" /> <w:lsdexception Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6" /> <w:lsdexception Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6" /> <w:lsdexception Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 6" /> <w:lsdexception Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 6" /> <w:lsdexception Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6" /> <w:lsdexception Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6" /> <w:lsdexception Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6" /> <w:lsdexception Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 6" /> <w:lsdexception Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 6" /> <w:lsdexception Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 6" /> <w:lsdexception Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 6" /> <w:lsdexception Locked="false" Priority="19" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis" /> <w:lsdexception Locked="false" Priority="21" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis" /> <w:lsdexception Locked="false" Priority="31" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference" /> <w:lsdexception Locked="false" Priority="32" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Intense Reference" /> <w:lsdexception Locked="false" Priority="33" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Book Title" /> <w:lsdexception Locked="false" Priority="37" Name="Bibliography" /> <w:lsdexception Locked="false" Priority="39" QFormat="true" Name="TOC Heading" /> </w:latentstyles> </xml>< ![endif]-->
-  
-  <!--[if gte mso 10]> <mce:style>< !   /* Style Definitions */  table.MsoNormalTable   {mso-style-name:"Table Normal";     mso-tstyle-rowband-size:0;  mso-tstyle-colband-size:0;  mso-style-noshow:yes;   mso-style-priority:99;  mso-style-parent:"";    mso-padding-alt:0in 5.4pt 0in 5.4pt;    mso-para-margin-top:0in;    mso-para-margin-right:0in;  mso-para-margin-bottom:10.0pt;  mso-para-margin-left:0in;   line-height:115%;   mso-pagination:widow-orphan;    font-size:11.0pt;   font-family:"Calibri","sans-serif";     mso-ascii-font-family:Calibri;  mso-ascii-theme-font:minor-latin;   mso-hansi-font-family:Calibri;  mso-hansi-theme-font:minor-latin;   mso-bidi-font-family:"Times New Roman";     mso-bidi-theme-font:minor-bidi;} -->
-  
-  <!--[endif]--></p> 
-  
-  <p class="MsoNormal">
-    Active Directory: Role Based Access Model
-  </p>
-  
-  <p class="MsoNormal">
-    <p class="MsoNormal">
-      Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of <a href="http://en.wikipedia.org/wiki/AGDLP">AGDLP (an abbreviation of &#8220;account, global, domain local, permission&#8221;)</a><span class="MsoHyperlink"><span style="text-decoration: none;"> </span></span>to meet our needs. Regardless here is a quick rundown of this security group model if anyone is interested.
-    </p>
-    
-    <p class="MsoNormal">
-      Essentially I did a simple recreation of RBAC (Role Based Access Control) that is used in Exchange, well I found this out after I came up with this diagram and started implementing it in our company. I use end user company position in a hierarchical model where higher up positions always have access to resources that lower positions are granted. (ie. A tech analyst 1 is granted rights to a particular resource so automatically tech analyst 2, team lead, and manager will have access to this resource as well). I also define a top level department group which contains all the other groups in the department for blanket permissions. I arbitrarily chose group naming convention where the first 3 letters denotes the type of group that is being defined. So res = resource and sec = security. The naming convention is obviously flexible to the needs of your organization.
-    </p>
-    
-    <p class="MsoNormal">
-      We also create duplicate groups with “-SU” appended to the end of them for our privileged accounts which have access to the internal company servers and other infrastructure items which should not be accessed using workstation credentials.
-    </p>
-    
-    <p class="MsoNormal">
-      A couple of notes about this model:
-    </p>
-    
-    <p class="MsoListParagraphCxSpFirst" style="text-indent: -0.25in;">
-      <span style="font-family: Symbol;"><span>·<span style="font: 7pt &amp;amp;"> </span></span></span>This model is probably only scales well for small to medium companies due to how quickly you can end up with token bloat from too many nested groups. For larger companies some form of identity management software would probably be the best way to go.
-    </p>
-    
-    <p class="MsoListParagraphCxSpMiddle" style="text-indent: -0.25in;">
-      <span style="font-family: Symbol;"><span>·<span style="font: 7pt &amp;amp;"> </span></span></span>As mentioned before, I blatantly ripped of the well-known concept of AGDLP. So the originality of my design is questionable.
-    </p>
-    
-    <p class="MsoListParagraphCxSpMiddle" style="text-indent: -0.25in;">
-      <span style="font-family: Symbol;"><span>·<span style="font: 7pt &amp;amp;"> </span></span></span>This model depends on top down tiered approach to permissions based on company role. So, if you work with another person at the same level as you but with more/less access you will have to modify this model appropriately.
-    </p>
-    
-    <p class="MsoListParagraphCxSpMiddle" style="text-indent: -0.25in;">
-      <span style="font-family: Symbol;"><span>·<span style="font: 7pt &amp;amp;"> </span></span></span>This model works exceptionally well if you have several environments in the same domain. You can assign all computers in an environment to a group to which you can then use GPO preferences to apply your assigned permissions (sorry 2008 or above domain functional level only).
-    </p>
-    
-    <p class="MsoListParagraphCxSpMiddle" style="text-indent: -0.25in;">
-      <span style="font-family: Symbol;"><span>·<span style="font: 7pt &amp;amp;"> </span></span></span>Although there is a bit of work involved in setting up the initial groups, you can do so progressively. I did whole sets of department groups as I was required to grant permissions and eventually a large quantity of them got completed.
-    </p>
-    
-    <p class="MsoListParagraphCxSpMiddle" style="text-indent: -0.25in;">
-      <span style="font-family: Symbol;"><span>·<span style="font: 7pt &amp;amp;"> </span></span></span>Even if you don’t have a solid organizational tree most people know who they report to at the very least. You can use this information to change the organization tab in ADUC to update the manager of a person and start setting up department gr
-    </p>
-    
-    <p>
-      Active Directory: Role Based Access Model
-    </p>
-    
-    <p>
-      Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of <a href="http://en.wikipedia.org/wiki/AGDLP">AGDLP (an abbreviation of &#8220;account, global, domain local, permission&#8221;)</a> to meet our needs. Regardless here is a quick rundown of this security group model if anyone is interested.
-    </p>
-    
-    <p>
-      Essentially I did a simple recreation of RBAC (Role Based Access Control) that is used in Exchange, well I found this out after I came up with this diagram and started implementing it in our company. I use end user company position in a hierarchical model where higher up positions always have access to resources that lower positions are granted. (ie. A tech analyst 1 is granted rights to a particular resource so automatically tech analyst 2, team lead, and manager will have access to this resource as well). I also define a top level department group which contains all the other groups in the department for blanket permissions. I arbitrarily chose group naming convention where the first 3 letters denotes the type of group that is being defined. So res = resource and sec = security. The naming convention is obviously flexible to the needs of your organization.
-    </p>
-    
-    <p>
-      We also create duplicate groups with “-SU” appended to the end of them for our privileged accounts which have access to the internal company servers and other infrastructure items which should not be accessed using workstation credentials.
-    </p>
-    
-    <p>
-      A couple of notes about this model:
-    </p>
-    
-    <ul>
-      <li>
-        This model is probably only scales well for small to medium companies due to how quickly you can end up with token bloat from too many nested groups. For larger companies some form of identity management software would probably be the best way to go.
-      </li>
-      <li>
-        As mentioned before, I blatantly ripped of the well-known concept of AGDLP. So the originality of my design is questionable.
-      </li>
-      <li>
-        This model depends on top down tiered approach to permissions based on company role. So, if you work with another person at the same level as you but with more/less access you will have to modify this model appropriately.
-      </li>
-      <li>
-        This model works exceptionally well if you have several environments in the same domain. You can assign all computers in an environment to a group to which you can then use GPO preferences to apply your assigned permissions (sorry 2008 or above domain functional level only).
-      </li>
-      <li>
-        Although there is a bit of work involved in setting up the initial groups, you can do so progressively. I did whole sets of department groups as I was required to grant permissions and eventually a large quantity of them got completed.
-      </li>
-      <li>
-        Even if you don’t have a solid organizational tree most people know who they report to at the very least. You can use this information to change the organization tab in ADUC to update the manager of a person and start setting up department groups by title somewhat generically.
-      </li>
-      <li>
-        If titles or department names change, updating a group name in AD is a nominal task which will have zero impact on most environments (the only time I see it being an issue is if the group name is statically coded as an ldap string somewhere for linux integration or something, even then you would use a resource group for such a static encoding, not a security group name which refers to a specific department/title).
-      </li>
-    </ul>
-    
-    <p>
-      At the very least you can use the included visio diagram in your documentation or sales pitch for a more organized security model for your company or as a template to model your own company standard.
-    </p>
-    
-    <p class="MsoListParagraphCxSpMiddle" style="text-indent: -0.25in;">
-      oups by title somewhat generically.
-    </p>
-    
-    <p class="MsoListParagraphCxSpLast" style="text-indent: -0.25in;">
-      <span style="font-family: Symbol;"><span>·<span style="font: 7pt &amp;amp;"> </span></span></span>If titles or department names change, updating a group name in AD is a nominal task which will have zero impact on most environments (the only time I see it being an issue is if the group name is statically coded as an ldap string somewhere for linux integration or something, even then you would use a resource group for such a static encoding, not a security group name which refers to a specific department/title).
-    </p>
-    
-    <p class="MsoNormal">
-      At the very least you can use the included visio diagram in your documentation or sales pitch for a more organized security model for your company or as a template to model your own company standard.
-    </p>
-    
-    <p class="MsoNormal">
-      <p>
-        </mce:style></div>
+&lt;p class=&quot;MsoListParagraphCxSpFirst&quot; style=&quot;text-indent: -0.25in;&quot;&gt;
+  &lt;span style=&quot;font-family: Symbol;&quot;&gt;&lt;span&gt;·&lt;span style=&quot;font: 7pt &amp;amp;amp;&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;This model is probably only scales well for small to medium companies due to how quickly you can end up with token bloat from too many nested groups. For larger companies some form of identity management software would probably be the best way to go.
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoListParagraphCxSpMiddle&quot; style=&quot;text-indent: -0.25in;&quot;&gt;
+  &lt;span style=&quot;font-family: Symbol;&quot;&gt;&lt;span&gt;·&lt;span style=&quot;font: 7pt &amp;amp;amp;&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;As mentioned before, I blatantly ripped of the well-known concept of AGDLP. So the originality of my design is questionable.
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoListParagraphCxSpMiddle&quot; style=&quot;text-indent: -0.25in;&quot;&gt;
+  &lt;span style=&quot;font-family: Symbol;&quot;&gt;&lt;span&gt;·&lt;span style=&quot;font: 7pt &amp;amp;amp;&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;This model depends on top down tiered approach to permissions based on company role. So, if you work with another person at the same level as you but with more/less access you will have to modify this model appropriately.
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoListParagraphCxSpMiddle&quot; style=&quot;text-indent: -0.25in;&quot;&gt;
+  &lt;span style=&quot;font-family: Symbol;&quot;&gt;&lt;span&gt;·&lt;span style=&quot;font: 7pt &amp;amp;amp;&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;This model works exceptionally well if you have several environments in the same domain. You can assign all computers in an environment to a group to which you can then use GPO preferences to apply your assigned permissions (sorry 2008 or above domain functional level only).
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoListParagraphCxSpMiddle&quot; style=&quot;text-indent: -0.25in;&quot;&gt;
+  &lt;span style=&quot;font-family: Symbol;&quot;&gt;&lt;span&gt;·&lt;span style=&quot;font: 7pt &amp;amp;amp;&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;Although there is a bit of work involved in setting up the initial groups, you can do so progressively. I did whole sets of department groups as I was required to grant permissions and eventually a large quantity of them got completed.
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoListParagraphCxSpMiddle&quot; style=&quot;text-indent: -0.25in;&quot;&gt;
+  &lt;span style=&quot;font-family: Symbol;&quot;&gt;&lt;span&gt;·&lt;span style=&quot;font: 7pt &amp;amp;amp;&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;Even if you don’t have a solid organizational tree most people know who they report to at the very least. You can use this information to change the organization tab in ADUC to update the manager of a person and start setting up department gr
+&lt;/p&gt;
+
+&lt;p&gt;
+  Active Directory: Role Based Access Model
+&lt;/p&gt;
+
+&lt;p&gt;
+  Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of &lt;a href=&quot;http://en.wikipedia.org/wiki/AGDLP&quot;&gt;AGDLP (an abbreviation of &amp;#8220;account, global, domain local, permission&amp;#8221;)&lt;/a&gt; to meet our needs. Regardless here is a quick rundown of this security group model if anyone is interested.
+&lt;/p&gt;
+
+&lt;p&gt;
+  Essentially I did a simple recreation of RBAC (Role Based Access Control) that is used in Exchange, well I found this out after I came up with this diagram and started implementing it in our company. I use end user company position in a hierarchical model where higher up positions always have access to resources that lower positions are granted. (ie. A tech analyst 1 is granted rights to a particular resource so automatically tech analyst 2, team lead, and manager will have access to this resource as well). I also define a top level department group which contains all the other groups in the department for blanket permissions. I arbitrarily chose group naming convention where the first 3 letters denotes the type of group that is being defined. So res = resource and sec = security. The naming convention is obviously flexible to the needs of your organization.
+&lt;/p&gt;
+
+&lt;p&gt;
+  We also create duplicate groups with “-SU” appended to the end of them for our privileged accounts which have access to the internal company servers and other infrastructure items which should not be accessed using workstation credentials.
+&lt;/p&gt;
+
+&lt;p&gt;
+  A couple of notes about this model:
+&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    This model is probably only scales well for small to medium companies due to how quickly you can end up with token bloat from too many nested groups. For larger companies some form of identity management software would probably be the best way to go.
+  &lt;/li&gt;
+  &lt;li&gt;
+    As mentioned before, I blatantly ripped of the well-known concept of AGDLP. So the originality of my design is questionable.
+  &lt;/li&gt;
+  &lt;li&gt;
+    This model depends on top down tiered approach to permissions based on company role. So, if you work with another person at the same level as you but with more/less access you will have to modify this model appropriately.
+  &lt;/li&gt;
+  &lt;li&gt;
+    This model works exceptionally well if you have several environments in the same domain. You can assign all computers in an environment to a group to which you can then use GPO preferences to apply your assigned permissions (sorry 2008 or above domain functional level only).
+  &lt;/li&gt;
+  &lt;li&gt;
+    Although there is a bit of work involved in setting up the initial groups, you can do so progressively. I did whole sets of department groups as I was required to grant permissions and eventually a large quantity of them got completed.
+  &lt;/li&gt;
+  &lt;li&gt;
+    Even if you don’t have a solid organizational tree most people know who they report to at the very least. You can use this information to change the organization tab in ADUC to update the manager of a person and start setting up department groups by title somewhat generically.
+  &lt;/li&gt;
+  &lt;li&gt;
+    If titles or department names change, updating a group name in AD is a nominal task which will have zero impact on most environments (the only time I see it being an issue is if the group name is statically coded as an ldap string somewhere for linux integration or something, even then you would use a resource group for such a static encoding, not a security group name which refers to a specific department/title).
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+  At the very least you can use the included visio diagram in your documentation or sales pitch for a more organized security model for your company or as a template to model your own company standard.
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoListParagraphCxSpMiddle&quot; style=&quot;text-indent: -0.25in;&quot;&gt;
+  oups by title somewhat generically.
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoListParagraphCxSpLast&quot; style=&quot;text-indent: -0.25in;&quot;&gt;
+  &lt;span style=&quot;font-family: Symbol;&quot;&gt;&lt;span&gt;·&lt;span style=&quot;font: 7pt &amp;amp;amp;&quot;&gt; &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;If titles or department names change, updating a group name in AD is a nominal task which will have zero impact on most environments (the only time I see it being an issue is if the group name is statically coded as an ldap string somewhere for linux integration or something, even then you would use a resource group for such a static encoding, not a security group name which refers to a specific department/title).
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoNormal&quot;&gt;
+  At the very least you can use the included visio diagram in your documentation or sales pitch for a more organized security model for your company or as a template to model your own company standard.
+&lt;/p&gt;
+
+&lt;p class=&quot;MsoNormal&quot;&gt;
+  &lt;p&gt;
+    &lt;/mce:style&gt;&lt;/div&gt;
+</code></pre>
     
 </div>
 
@@ -421,15 +397,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -458,7 +434,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

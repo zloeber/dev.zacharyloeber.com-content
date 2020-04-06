@@ -73,7 +73,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       <pubDate>Wed, 23 Dec 2009 04:08:02 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/12/22/esx-4-0-post-install-script/</guid>
-      <description>Sure there are better ways to mass deploy ESX servers, but this way will save the one off farm deployment person some time 🙂 I took liberties in assuming you would be able to fill in the blanks for variables so  or _VARIABLE_ will need to be replaced ad-lib style. Just for you my friend, served up proper on a hyper-link plate&amp;#8230;.. esx4_postinstall</description>
+      <description>Sure there are better ways to mass deploy ESX servers, but this way will save the one off farm deployment person some time 🙂 I took liberties in assuming you would be able to fill in the blanks for variables so or _VARIABLE_ will need to be replaced ad-lib style. Just for you my friend, served up proper on a hyper-link plate….. esx4_postinstall</description>
     </item>
     
     <item>
@@ -83,7 +83,7 @@ Introduction I often find myself assessing a foreign network infrastructure for 
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2009/11/24/vmware-rvtools/</guid>
       <description>This sly bastard wrote an excellent little .NET app for enumerating esx farm information. Any sysadmins working with VMware should definitely check this out. I really like the vHealth tab which will show possible zombie vmdks. Add the ability to export to csv and you have a nice tool for on the fly farm enumeration for the boss.
-Go get RVTools now!</description>
+Go get RVToolsnow!</description>
     </item>
     
   </channel>

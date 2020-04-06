@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Active Directory Audit Report With Powershell | Zachary Loeber</title>
         <meta name="description" content="Active Directory Audit Report With Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Active Directory Audit Report With Powershell">
@@ -148,160 +148,144 @@
 
     
         <p>Not too long ago I wrote a quick post on how easy it is to gather information from AD. As a case in point example I provided a script to gather all the disabled user accounts which are still assigned Lync IDs. In this script I take it one step further and provide a full blown Active Directory reporting script which can be produced with any non-privileged domain user account.</p>
-
 <h3 id="features">Features</h3>
-
-<p><span style="line-height: 1.6;">To create the output I repurposed my server asset reporting script. This means several output methods are baked right in.</span></p>
-
+<p><!-- raw HTML omitted -->To create the output I repurposed my server asset reporting script. This means several output methods are baked right in.<!-- raw HTML omitted --></p>
 <ul>
-<li><p>Report Containers/Types</p></li>
-
-<li><p>Documentation – Currently the only format for this type of report. This returns all data gathered in the report.</p></li>
-
-<li><p>HTML Templates</p>
-
+<li>
+<p>Report Containers/Types</p>
+</li>
+<li>
+<p>Documentation – Currently the only format for this type of report. This returns all data gathered in the report.</p>
+</li>
+<li>
+<p>HTML Templates</p>
 <ul>
 <li>DynamicGrid – A heavily modified CSS layout</li>
 <li>EmailFriendly – A basic layout</li>
-</ul></li>
-
-<li><p>Saved Report Layout</p>
-
+</ul>
+</li>
+<li>
+<p>Saved Report Layout</p>
 <ul>
-<li><span style="text-decoration: line-through;">Individual – Each asset saves as its own file </span></li>
+<li><!-- raw HTML omitted -->Individual – Each asset saves as its own file <!-- raw HTML omitted --></li>
 <li>One big report – Only a single report will be generated no matter which option you choose.</li>
-</ul></li>
-
-<li><p>Saved Report File Format</p>
-
+</ul>
+</li>
+<li>
+<p>Saved Report File Format</p>
 <ul>
 <li>HTML</li>
 <li>PDF</li>
-</ul></li>
-
-<li><p>Email Reports (HTML only)</p></li>
-
-<li><p>Export all data to individual worksheets within Excel</p></li>
 </ul>
-
+</li>
+<li>
+<p>Email Reports (HTML only)</p>
+</li>
+<li>
+<p>Export all data to individual worksheets within Excel</p>
+</li>
+</ul>
 <p>Aside from the report, additionally three diagrams will be created which this script is run. One for domain trusts, another for site replication connections, and a third for site adjacencies. By default the diagram source text file and a png file will get created in the directory which you run the script.</p>
-
 <p>To actually generate the diagrams you will need graphviz’s dot.exe executable which can be downloaded and installed <a href="http://graphviz.org/">here</a>. Or <a href="https://code.google.com/p/graph-viz-portable/downloads/list">here is a portable version</a> of the application you can try utilizing. All you need is for the dot.exe file to work correctly to generate your diagram. You may have to modify this script to use the appropriate path to the executable if you use the portable version of graphviz.</p>
-
-<p>(If you don&#8217;t care about the diagrams either comment out the code or ignore the errors as it tries to run dot.exe)</p>
-
+<p>(If you don’t care about the diagrams either comment out the code or ignore the errors as it tries to run dot.exe)</p>
 <h3 id="report-data">Report Data</h3>
-
 <p>I’ve included only items which can be gathered from Active Directory with a regular user account and without any special AD modules. This is what has been added thus far:</p>
-
 <ul>
 <li>Forest Information
-
 <ul>
 <li>Forest Summary
-
 <ul>
-<li>Name/<span style="line-height: 1.6;">Functional Level</span></li>
-<li><span style="line-height: 1.6;">Domain/Site/</span><span style="line-height: 1.6;">DC/GC/Exchange/Lync/Pool counts</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Forest Features</span>
-
+<li>Name/<!-- raw HTML omitted -->Functional Level<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Domain/Site/<!-- raw HTML omitted --><!-- raw HTML omitted -->DC/GC/Exchange/Lync/Pool counts<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Forest Features<!-- raw HTML omitted -->
 <ul>
 <li>Tombstone Lifetime</li>
-<li><span style="line-height: 1.6;">Recycle Bin Enabled</span></li>
-<li><span style="line-height: 1.6;">Lync AD Container</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Exchange Servers</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Organization/Administrative Group/Name/Roles/Site</span></li>
-<li><span style="line-height: 1.6;">Serial/Product ID</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Lync</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Element (Server/Pool)</span></li>
-<li><span style="line-height: 1.6;">Type (Internal/Edge/Backend/Pool)</span></li>
-<li><span style="line-height: 1.6;">Name/FQDN</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Site Information</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Summary</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Site Name/Location/Domains/DCs/Subnets</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Details</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Site Name/Options/ISTG/Links/Bridgeheads/Adjacencies</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Subnets</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Subnet/Site Name/Location</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Site Connections</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Enabled/Options/From/To</span></li>
-</ul></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Domain Information</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Domains</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Name/NetBIOS/Functional Level/Forest Root/Assigned FSMO Roles</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Domain Password Policies</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Name/NetBIOS/Lockout Threshold/Pass History Length/Max Pass Age/Min Pass Age/Min Pass Length</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Domain Controllers</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Domain/Site/Name/OS/Time/IP/GC/FSMO Roles</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Domain Trusts</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Domain/Trusted Domain/Direction/Attributes/Trust Type/Created/Modified</span></li>
-</ul></li>
-<li><span style="line-height: 1.6;">Domain DFS Shares</span>
-
-<ul>
-<li><span style="line-height: 1.6;">Domain/Name/DN/Remote Server</span></li>
-</ul></li>
-</ul></li>
-</ul></li>
+<li><!-- raw HTML omitted -->Recycle Bin Enabled<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Lync AD Container<!-- raw HTML omitted --></li>
 </ul>
-
+</li>
+<li><!-- raw HTML omitted -->Exchange Servers<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Organization/Administrative Group/Name/Roles/Site<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Serial/Product ID<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Lync<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Element (Server/Pool)<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Type (Internal/Edge/Backend/Pool)<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->Name/FQDN<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Site Information<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Summary<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Site Name/Location/Domains/DCs/Subnets<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Details<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Site Name/Options/ISTG/Links/Bridgeheads/Adjacencies<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Subnets<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Subnet/Site Name/Location<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Site Connections<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Enabled/Options/From/To<!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Domain Information<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Domains<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Name/NetBIOS/Functional Level/Forest Root/Assigned FSMO Roles<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Domain Password Policies<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Name/NetBIOS/Lockout Threshold/Pass History Length/Max Pass Age/Min Pass Age/Min Pass Length<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Domain Controllers<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Domain/Site/Name/OS/Time/IP/GC/FSMO Roles<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Domain Trusts<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Domain/Trusted Domain/Direction/Attributes/Trust Type/Created/Modified<!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li><!-- raw HTML omitted -->Domain DFS Shares<!-- raw HTML omitted -->
+<ul>
+<li><!-- raw HTML omitted -->Domain/Name/DN/Remote Server<!-- raw HTML omitted --></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="screenshots">Screenshots</h3>
-
 <p>Here are some screenshots of the reports and diagrams which can be created:</p>
-
-<p><a href="wp-content/uploads/2013/10/DCs-Screenshot.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="DCs-Screenshot" alt="DCs-Screenshot" src="/wp-content/uploads/2013/10/DCs-Screenshot_thumb.jpg?resize=555%2C257" width="555" height="257" border="0" data-recalc-dims="1" /></a></p>
-
-<p><a href="wp-content/uploads/2013/10/domains-screenshot.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="domains-screenshot" alt="domains-screenshot" src="/wp-content/uploads/2013/10/domains-screenshot_thumb.jpg?resize=557%2C50" width="557" height="50" border="0" data-recalc-dims="1" /></a></p>
-
-<p><a href="wp-content/uploads/2013/10/ForestSummary-screenshot.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="ForestSummary-screenshot" alt="ForestSummary-screenshot" src="/wp-content/uploads/2013/10/ForestSummary-screenshot_thumb.jpg?resize=428%2C154" width="428" height="154" border="0" data-recalc-dims="1" /></a></p>
-
-<p><a href="wp-content/uploads/2013/10/Lync-sreenshot.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="Lync-sreenshot" alt="Lync-sreenshot" src="/wp-content/uploads/2013/10/Lync-sreenshot_thumb.jpg?resize=268%2C215" width="268" height="215" border="0" data-recalc-dims="1" /></a></p>
-
-<p><a href="wp-content/uploads/2013/10/SiteConnections-screenshot.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="SiteConnections-screenshot" alt="SiteConnections-screenshot" src="/wp-content/uploads/2013/10/SiteConnections-screenshot_thumb.jpg?resize=267%2C164" width="267" height="164" border="0" data-recalc-dims="1" /></a></p>
-
-<p><a href="/wp-content/uploads/2013/10/SiteSubnets-screenshot.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="SiteSubnets-screenshot" alt="SiteSubnets-screenshot" src="/wp-content/uploads/2013/10/SiteSubnets-screenshot_thumb.jpg?resize=261%2C152" width="261" height="152" border="0" data-recalc-dims="1" /></a></p>
-
-<p><a href="wp-content/uploads/2013/10/Trusts-screenshot.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="Trusts-screenshot" alt="Trusts-screenshot" src="/wp-content/uploads/2013/10/Trusts-screenshot_thumb.jpg?resize=359%2C106" width="359" height="106" border="0" data-recalc-dims="1" /></a></p>
-
-<p><a href="/wp-content/uploads/2013/10/trusts-screenshot2.jpg"><img style="margin: 5px; display: inline; background-image: none;" title="trusts-screenshot2" alt="trusts-screenshot2" src="/wp-content/uploads/2013/10/trusts-screenshot2_thumb.jpg?resize=410%2C102" width="410" height="102" border="0" data-recalc-dims="1" /></a></p>
-
+<p><a href="wp-content/uploads/2013/10/DCs-Screenshot.jpg"><!-- raw HTML omitted --></a></p>
+<p><a href="wp-content/uploads/2013/10/domains-screenshot.jpg"><!-- raw HTML omitted --></a></p>
+<p><a href="wp-content/uploads/2013/10/ForestSummary-screenshot.jpg"><!-- raw HTML omitted --></a></p>
+<p><a href="wp-content/uploads/2013/10/Lync-sreenshot.jpg"><!-- raw HTML omitted --></a></p>
+<p><a href="wp-content/uploads/2013/10/SiteConnections-screenshot.jpg"><!-- raw HTML omitted --></a></p>
+<p><a href="/wp-content/uploads/2013/10/SiteSubnets-screenshot.jpg"><!-- raw HTML omitted --></a></p>
+<p><a href="wp-content/uploads/2013/10/Trusts-screenshot.jpg"><!-- raw HTML omitted --></a></p>
+<p><a href="/wp-content/uploads/2013/10/trusts-screenshot2.jpg"><!-- raw HTML omitted --></a></p>
 <h3 id="downloads">Downloads</h3>
-
 <p><a href="http://gallery.technet.microsoft.com/Active-Directory-Audit-7754a877">You can download the script from the technet galleries.</a></p>
     
 </div>
@@ -421,15 +405,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -458,7 +442,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

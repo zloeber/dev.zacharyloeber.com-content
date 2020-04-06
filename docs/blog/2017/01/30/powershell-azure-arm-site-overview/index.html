@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> PowerShell: Azure ARM Site Overview | Zachary Loeber</title>
         <meta name="description" content="PowerShell: Azure ARM Site Overview - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="PowerShell: Azure ARM Site Overview">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">2 min read</span>
+            <span class="readingTime">1 min read</span>
         
 
         
@@ -140,29 +140,11 @@
 
     
         <p>Visualizing an Azure deployment can be a bit tricky. This short Azure summary script is a good way to start though.</p>
-
-<p>I&#8217;ve been noodling around with an existing Azure deployment recently and wanted to get a quick tree view report of the networking elements. I didn&#8217;t find anything out there readily available so I put this quick script together. It is a tad simplistic but manages to capture some relationships pretty well I think. At the very least you should be able to quickly see if oddball things are being done like assigning NSGs to individual interfaces or gateway subnets. It will only show regions where you have active resources and just dumps all output to the screen (via Write-Output so you can pipe it wherever).</p>
-
+<p>I’ve been noodling around with an existing Azure deployment recently and wanted to get a quick tree view report of the networking elements. I didn’t find anything out there readily available so I put this quick script together. It is a tad simplistic but manages to capture some relationships pretty well I think. At the very least you should be able to quickly see if oddball things are being done like assigning NSGs to individual interfaces or gateway subnets. It will only show regions where you have active resources and just dumps all output to the screen (via Write-Output so you can pipe it wherever).</p>
 <p>Here is a quick overview of what it will output:</p>
-
-<pre class="lang:powershell decode:true ">&lt;#
-    Quick report of ARM based Azure networking that includes:
-
-    - Location (region)
-        - Virtual Networks (region based!)
-            - Subnets
-                - Associated NSGs
-                - Associated Interfaces (VMs)
-        - Network Security Groups (and rule counts)
-                - Associated Subnets
-        - Interfaces
-        - Resource Groups
-                - Associated Interfaces
-                - Associated Availability Sets
-#&gt;</pre>
-
-<p>You will need the AzureRM module and an ARM based deployment to get use from this. It would be cool to turn this into some graphviz charts (I&#8217;m looking at PSGraph for this if I can find the time).</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>You will need the AzureRM module and an ARM based deployment to get use from this. It would be cool to turn this into some graphviz charts (I’m looking at PSGraph for this if I can find the time).</p>
 <p>Anyway, the script is <a href="https://github.com/zloeber/Powershell/blob/master/Azure/Get-AzureRMNetworkSummary.ps1">on github buried in my piles of other scripts</a> if anyone wants it.</p>
     
 </div>
@@ -303,15 +285,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -340,7 +322,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

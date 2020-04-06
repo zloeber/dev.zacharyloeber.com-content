@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Lync UCS Contacts Reporting with Powershell | Zachary Loeber</title>
         <meta name="description" content="Lync UCS Contacts Reporting with Powershell - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Lync UCS Contacts Reporting with Powershell">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">2 min read</span>
+            <span class="readingTime">1 min read</span>
         
 
         
@@ -141,22 +141,11 @@
     </div>
 
     
-        <p>By default a Lync enabled account within a Lync/Exchange 2013 environment will be enabled for UCS (Unified Contact Store). This means that the Lync contacts get saved in the Lync user&#8217;s mailbox and not the Lync database. In order to get a list of the contacts associated with these accounts you have to export data to a zip file with some debug Lync commands and, even then, the information is buried in a hard to interpret XML file.</p>
-
-<p>I had a need to validate the contacts which were getting stored in UCS for Lync users and so I came up with this script to accomplish the task. It creates a temporary directory and exports all the passed Lync users&#8217; UCS contact information in a zip file within the directory. The function then parses and returns psobjects with the contact information by reading in the xml file directly from the zip file (no extraction to disk). After returning contact information back as nicely formatted powershell objects the temporary files are all cleaned up.</p>
-
+        <p>By default a Lync enabled account within a Lync/Exchange 2013 environment will be enabled for UCS (Unified Contact Store). This means that the Lync contacts get saved in the Lync user’s mailbox and not the Lync database. In order to get a list of the contacts associated with these accounts you have to export data to a zip file with some debug Lync commands and, even then, the information is buried in a hard to interpret XML file.</p>
+<p>I had a need to validate the contacts which were getting stored in UCS for Lync users and so I came up with this script to accomplish the task. It creates a temporary directory and exports all the passed Lync users’ UCS contact information in a zip file within the directory. The function then parses and returns psobjects with the contact information by reading in the xml file directly from the zip file (no extraction to disk). After returning contact information back as nicely formatted powershell objects the temporary files are all cleaned up.</p>
 <p>Here are a few small examples of what can be done:</p>
-
-<pre class="lang:powershell decode:true ">.EXAMPLE 
-$a = Get-LyncUCSContacts test* 
- 
-Description 
------------ 
-Get all ucs contact information for all lync and ucs enabled users in the environment matching the name test* 
- 
-.EXAMPLE 
-Get-CSUser -Resultsize Unlimited | Get-LyncUCSContacts | Export-CSV -NoTypeInformation UCSContacts.csv</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>You can download this script at the <a href="https://gallery.technet.microsoft.com/Lync-UCS-Contacts-834819a1">Microsoft Technet Gallery</a> or at my <a href="https://github.com/zloeber/Powershell/blob/master/Lync/Get-LyncUCSContacts.ps1">new Github repo</a>.</p>
 
     
@@ -300,15 +289,15 @@ Get-CSUser -Resultsize Unlimited | Get-LyncUCSContacts | Export-CSV -NoTypeInfor
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -337,7 +326,7 @@ Get-CSUser -Resultsize Unlimited | Get-LyncUCSContacts | Export-CSV -NoTypeInfor
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

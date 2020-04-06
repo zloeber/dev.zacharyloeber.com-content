@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010: Certificate Install Script | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010: Certificate Install Script - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010: Certificate Install Script">
@@ -140,13 +140,9 @@
 
     
         <p>Many of the cert providers require that you install both an intermediary and a root trusted cert on the servers which you are configuring your newly requested Unified Communications certificate on. If you are doing an Exchange migration including several ISA/TMG/Exchange (2003 and 2010) servers this can be a tedious process. Here is the quick way to install all three certificates once they are on the server</p>
-
 <p>Assuming you are installing from entrust you can install the intermediary (chain) and root trusted certs with certutil. You can also install your pfx certificate this way. Here is the batch file to do so:</p>
-
-<pre>certutil -addstore CA entrust_chain.cer
-certutil -addstore root entrust_root.cer
-certutil -p &lt;yourpassword&gt; -importpfx webmail.pfx</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Nothing ground-breaking but it does save a whole lot of clicks for larger environments. 🙂</p>
     
 </div>
@@ -281,15 +277,15 @@ certutil -p &lt;yourpassword&gt; -importpfx webmail.pfx</pre>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -318,7 +314,7 @@ certutil -p &lt;yourpassword&gt; -importpfx webmail.pfx</pre>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

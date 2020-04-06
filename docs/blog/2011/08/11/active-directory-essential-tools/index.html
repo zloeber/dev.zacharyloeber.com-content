@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Active Directory: Essential Tools | Zachary Loeber</title>
         <meta name="description" content="Active Directory: Essential Tools - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Active Directory: Essential Tools">
@@ -116,7 +116,7 @@
         
 
         
-            <span class="readingTime">6 min read</span>
+            <span class="readingTime">5 min read</span>
         
 
         
@@ -142,25 +142,16 @@
 
     
         <p>During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.</p>
-
+<h2 id="heading"></h2>
 <p>AD Info/AD Tidy</p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <h3 id="ad-info">AD Info</h3>
-
 <p>This is a top notch information gathering tool that provides exportable reports for all kinds of AD related information. It actually checks every domain controller in your domain to ensure accuracy as well. This tool can provide an enormous amount of information about your forest which you  might have to script out otherwise.</p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <p><a href="http://www.cjwdev.co.uk/Software/ADReportingTool/Index.html">Get AD Info here.</a></p>
-
 <h3 id="ad-tidy">AD Tidy</h3>
-
 <p>From the same author as AD Info comes AD Tidy. Rather than re-hash the capabilities of this handy tool here is a list of features directly from the author’s site.</p>
-
 <p>Features</p>
-
 <ul>
 <li>Search for user or computer accounts</li>
 <li>Search entire domain or select a specific OU</li>
@@ -174,9 +165,7 @@
 <li>Works with domains that you are not a member of (assuming you provide valid credentials)</li>
 <li>Help buttons within the application explain what each setting is for</li>
 </ul>
-
 <p>For any accounts that are found in the search, you can perform one of the following actions:</p>
-
 <ul>
 <li>Disable</li>
 <li>Enable</li>
@@ -191,145 +180,75 @@
 <li>Delete home drive</li>
 <li>Export Details To CSV</li>
 </ul>
-
 <p><a href="http://www.cjwdev.co.uk/Software/ADTidy/Info.html">Get AD Tidy here.</a></p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <p>This author has a few other handy tools you may want to check out as well (<a href="http://www.cjwdev.co.uk/Software/ADPhotoEdit/Info.html">AD Photo Edit</a>, <a href="http://www.cjwdev.co.uk/Software/GroupMan/Info.html">Group Manager</a>, <a href="http://www.cjwdev.co.uk/Software/GetGroupMembership/Info.html">Get Group Membership</a>)</p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <h2 id="ad-explorer">AD Explorer</h2>
-
 <p>Sysinternals made this little gem of a free utility. It is basically active directory users and computers on steroids. You can use AD explorer to save favorite locations, take snapshots, and dig into the innards of AD in a way that is similar to adsiedit. The snapshots can be compared and browsed offline.</p>
-
 <p><a href="http://technet.microsoft.com/en-us/sysinternals/bb963907">Get AD Explorer here.</a></p>
-
-<h2 id="oldcmp-exe">Oldcmp.exe</h2>
-
+<h2 id="oldcmpexe">Oldcmp.exe</h2>
 <p><a href="http://www.joeware.net/freetools/index.htm">Joeware</a> makes a bunch of really nice free command-line driven tools for AD but oldcmp.exe is one of my favorites. You use oldcmp.exe to generate, and optionally take actions against, old computers and users.</p>
-
 <p>Here is a good sample script you can use and modify to suit your needs. It assumes that you are generating reports in a “Reports” directory residing with the oldcmp.exe executable. Pay special attention to the fact that we are excluding cluster names from the results (-excldn cluster01;cluster02). Cluster names are virtual and don’t ever really get logged on to. You will also have to change the ldap paths to match your organizational needs.</p>
-
-<pre>REM --- This script can report and move old Servers within AD</pre>
-
-<pre>REM --- MOVE OLD Servers (Password older than 90 days) ---</pre>
-
-<pre>REM - Find computer accounts with passwords older than 90 days</pre>
-
-<pre>REM - If you just want a report of old workstations run this</pre>
-
-<pre>oldcmp -report -nohtmlheader -file ".\Reports\old_servers.html" -llts -sort lltsAge -b "ou=Servers,ou=Computers,ou=North America,dc=corp,dc=contoso,dc=local"</pre>
-
-<pre>REM – Remove REM on next line to MOVE old servers to another OU and generate a report</pre>
-
-<pre>REM oldcmp -nohtmlheader -file ".\Reports\old_servers.html" -rsort LLTS -b "ou=Servers,ou=Computers,ou=North America,dc=corp,dc=contoso,dc=local" -move -newparent "ou=Computers,ou=Inactive Accounts,ou=North America,dc=corp,dc=contoso,dc=local" -nodc -norefer –unsafe –forreal</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>If you wanted to email the reports to some versioned email enabled sharepoint document libarary you <a href="http://www.blat.net/">can use blat.exe</a> in a batch file that looks like this:</p>
-
-<pre>@echo off</pre>
-
-<pre>blat - -body " " -to "ADmaintenance@sharepoint.internal" -f "adreport@na.corp.contoso" -s "Old Servers" -serverexchangeserver.na.corp.contoso -log blat.log -timestamp -attacht .\Reports\old_servers.html</pre>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p> </p>
 <p><a href="http://www.joeware.net/freetools/tools/oldcmp/index.htm">Get oldcmp.exe here.</a></p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <h2 id="microsoft-active-directory-topology-diagrammer">Microsoft Active Directory Topology Diagrammer</h2>
-
 <p>This is a handy tool to have if you are becoming familiar with a new forest. It will connect with a global catalog server or domain controller and collect information about the forest and visually map it out in a visio diagram. The diagrams are often a total mess initially but nothing that a bit of manual tweaking cannot resolve. As an added bonus it can also do some exchange mapping if you like (not really valid in Exchange 2010 though).</p>
-
 <p><a href="http://www.microsoft.com/download/en/details.aspx?id=13380">Get ADTD here.</a></p>
-
 <h2 id="quest-ad-pki-powershell-cmdlts">Quest AD-PKI Powershell Cmdlts</h2>
-
 <p>Although the included Microsoft AD cmdlts are fairly decent they never quite got to the level of usefulness as the Quest AD powershell cmdlts. If you have ever had to do mass updates or data retrieval from AD you know that the baked in command line programs Microsoft provides are available; ldifde.exe or csvde.exe. But these require the use of ldap filters to get any filtered information. Besides the fact that ldap filters are going the path of the do-do bird (well maybe not but it sure feels that way with exchange 2010 moving to opath filters) I find them to be needlessly complex. That and I’ve become quite enamored with powershell from using it so much for Exchange 2010 related tasks.</p>
-
 <p>Here is a list of powershell (both quest and non-quest specific) and command line snippets which you might find handy to have:</p>
-
 <p><strong><em>Get a list of all users and list their permission inheritance setting</em></strong></p>
-
-<pre>Get-QADUser -SizeLimit 0 | Select-Object Name,@{n='IncludeInheritablePermissions';e={!$_.DirectoryEntry.PSBase.ObjectSecurity.AreAccessRulesProtected}}</pre>
-
+<!-- raw HTML omitted -->
 <p><strong><em>Get a list of all users and list those without permission inheritance setting set</em></strong></p>
-
-<pre>Get-QADUser -SizeLimit 0 | Select-Object Name,@{n='IncludeInheritablePermissions';e={!$_.DirectoryEntry.PSBase.ObjectSecurity.AreAccessRulesProtected}} | Where {!$_.IncludeInheritablePermissions}</pre>
-
+<!-- raw HTML omitted -->
 <p><strong><em>Set Permission Inheritence on all Users</em></strong></p>
-
-<pre>Get-QADUser -SizeLimit 0 | Set-QADObjectSecurity -LockInheritance</pre>
-
+<!-- raw HTML omitted -->
 <p><strong><em>Get Computers in OU with Descriptions (use –Service to reference specific forests)</em></strong></p>
-
-<pre>Get-QADComputer -Service corp.contoso.local -SearchRoot "Ou=SomeOtherOU,OU=SomeOU,DC=corp,DC=contoso,DC=local" -Description "*" | Select-Object Name, Description | Export-Csv -NoTypeInformation C:\Temp\emea5_systems.csv</pre>
-
+<!-- raw HTML omitted -->
 <p><strong><em>Get Computers in OU, Parse Descriptions for User Names, and Try to Enumerate Logon ids.</em></strong></p>
-
 <p><strong><em>(Note: the -Service is used to get past a limitation of the qwest AD powershell commandlets. This is also rather slow)</em></strong></p>
-
-<pre>Get-QADComputer -Service corp.contoso.local -SearchRoot "Ou=SomeOtherOU,OU=SomeOU,DC=corp,DC=contoso,DC=local"  | Where {$_.Description} | Select-Object Name,Description,@{name="SAMname";expression={(get-qaduser -Service  corp.contoso.local -Name $_.Description).SAMAccountName}},@{name="NewName";expression={(get-qaduser -Service  corp.contoso.local -Name $_.Description).PrimarySMTPAddressPrefix}} | Export-Csv "c:\Temp\computer-logons.csv" -NoTypeInformation</pre>
-
+<!-- raw HTML omitted -->
 <p><strong><em>Set 2008 R2 AD forest mode</em></strong></p>
-
-<pre>Import-Module Active Directory</pre>
-
-<pre>Set-ADForestMode domain.tld  Windows2008R2Forest</pre>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p> </p>
 <p><strong><em>Enable Recycle Bin in 2008 R2</em></strong></p>
-
-<pre>Enable-ADOptionalFeature –Identity 'CN=Recycle Bin Feature,CN=Optional Features,CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration, DC=corp,DC=contoso, DC=local' -Scope ForestOrConfigurationSet -Target 'corp.contoso.local'</pre>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p> </p>
 <p><strong><em>Restore Deleted AD Object</em></strong></p>
-
-<pre>Get-ADObject -Filter {displayName -eq "Some user"} -IncludeDeletedObjects | Restore-ADObject</pre>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<p> </p>
 <p><strong><em>Get All Group Memberships For A User</em></strong></p>
-
-<pre>$sUser= Get-QADUser -Service "corp.contoso.local" test.user; foreach ($grp in $sUser.memberof) {Get-QADGroup $grp | select GroupName,Domain,GroupScope,GroupType};</pre>
-
+<!-- raw HTML omitted -->
 <p><strong><em>Assign a CSV of User Properties to Users Skipping Empty Fields</em></strong></p>
-
-<pre>foreach ( $record in (Import-Csv c:\update.csv)) {</pre>
-
-<pre>  $command = "Set-QADUser $($record.samAccountName)"</pre>
-
-<pre>  foreach ( $attr in</pre>
-
-<pre>   (Get-Member -InputObject $record -MemberType NoteProperty) ) {</pre>
-
-<pre>     $value = $record.($attr.Name)</pre>
-
-<pre>     if ( $value -and ( $attr.Name -ne 'samAccountName' ) ) {</pre>
-
-<pre>      $command += " -$($attr.Name) $value"</pre>
-
-<pre>     }</pre>
-
-<pre>  }</pre>
-
-<pre>  Invoke-Expression $command</pre>
-
-<pre>}</pre>
-
-<p>&nbsp;</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p> </p>
 <p><a href="http://www.quest.com/powershell/activeroles-server.aspx">Get Quest AD-PKI Cmdlets here.</a></p>
-
-<p>&nbsp;</p>
-
+<p> </p>
 <h2 id="powergui">PowerGui</h2>
-
 <p>If you have already installed the Quest AD-PKI Cmdlets then you may as well install PowerGui as well as it can use them for pulling up all kinds of info in your environment and automatically generate scripts for you as well! Just make sure to select the AD powerpack option when installing PowerGUI.</p>
-
 <p><a href="http://powergui.org/index.jspa">Download PowerGUI here.</a></p>
     
 </div>
@@ -468,15 +387,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -505,7 +424,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

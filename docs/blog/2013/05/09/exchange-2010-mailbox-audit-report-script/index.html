@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Exchange 2010 Mailbox Audit Report Script | Zachary Loeber</title>
         <meta name="description" content="Exchange 2010 Mailbox Audit Report Script - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Exchange 2010 Mailbox Audit Report Script">
@@ -144,33 +144,19 @@
 
     
         <h1 id="exchange-2010-mailbox-audit-report-script">Exchange 2010 Mailbox Audit Report Script</h1>
-
 <p>Recently I’ve released a number of scripts such as the <a href="http://gallery.technet.microsoft.com/Colorize-HTML-Table-Cells-2ea63acd">HTML Table Colorizer</a>, <a href="http://gallery.technet.microsoft.com/Get-Exchange-Calendar-5bb4f527">Exchange Mailbox Calendar Permission Function</a>, and the <a href="http://gallery.technet.microsoft.com/Exchange-Mailbox-GUI-5b204590">Exchange Mailbox GUI</a>. These were all actually created specifically as support scripts for a report generation powershell tool I’ve been working on, the Exchange Mailbox Auditing Tool.</p>
-
 <h1 id="about">About</h1>
-
 <p>The idea from this script came from experience working in multiple exchange organizations which have evolved over the years with different admins, support staff, and Exchange versions. By the time an upgrade to Exchange 2010 is in order some of these email environments may be technically functional but with a ton of “cruft” on the backend which may not be readily visible.</p>
-
 <p>I like to view this kind of accumulated cruft as analogous to a file server which has just been migrated from server to server with the same built up permissions and shares that may have been in place since the NT days. Usually they get migrated like this to just keep things working. And this is not bad, but when it comes time to standardize permission groups and eliminate shares it feels like trying to weed an overgrown lawn.</p>
-
 <p>Exchange is the same way, over the years permissions get granted, rules get set on mailboxes, and in general time just happens. In the end you may have thousands of users with calendars allowing anonymous reviewer permissions (mix this with federated domains and things can get weird…). You may also have disabled accounts with mailboxes forwarding email out of the domain, or VIP users with mailboxes that have full access, send as, or send on behalf permissions given to users which shouldn’t have them. If you read this far you get the picture.</p>
-
 <p>I wanted  a few things in a tool like this, I wanted a pretty report that I could customize. It had to include an optional summary (which duals as a quick and dirty mailbox total and mailbox deleted total report with warn and alert color coded cells). I also had to be able to filter out all the known accounts. So if I wanted to cleanse a whole organization I would start with a basic report that excludes known exchange and default accounts then be able to see only the mailboxes which produce results. Then you can start working backwards adding accounts to be ignored if they are valid to have the access they are found to have.  Run the report again, rinse and repeat the process until zero results come up in a generated report.</p>
-
 <p>I really only meant this to be for full permissions to a mailbox at first. I added in more and more sub reports as I thought about it until this script was born. All sub reports are optional. This means you can create just a calendar permissions report for example. Or generate just the summary report for that matter. I’ve not tested every scenario yet but the code is fairly standardized so I’m hoping all the weird ways which this script may be used to generate reports work. Let me know if there is some really cool option I may have missed or a feature which would be beneficial.</p>
-
 <h2 id="version">Version</h2>
-
 <p>Version         :   1.0.0 May 9th 2013</p>
-
-<p>&#8211; First release</p>
-
+<p>– First release</p>
 <h1 id="features">Features</h1>
-
 <p>Some of the features of this audit script include:</p>
-
 <h2 id="multiple-reports">Multiple Reports</h2>
-
 <ul>
 <li>Mailbox full access permissions</li>
 <li>Mailbox send as permissions</li>
@@ -179,7 +165,6 @@
 <li>Mailbox forwarding rules</li>
 <li>Mailbox redirecting rules</li>
 <li>Mailbox summary reports with the following properties
-
 <ol>
 <li>Last Logon</li>
 <li>Last Logon Account</li>
@@ -193,13 +178,11 @@
 <li>Litigation Hold</li>
 <li>Retention Hold</li>
 <li>Audit Enabled</li>
-</ol></li>
+</ol>
+</li>
 </ul>
-
 <h2 id="features-1">Features</h2>
-
 <p>All reports can be color coded any number of ways to meet your mailbox auditing report generation needs. You can optionally do the following as well:</p>
-
 <ul>
 <li>Report only on non-inherited permissions</li>
 <li>Include both a mailbox summary report with links to detailed sub-reports</li>
@@ -207,9 +190,7 @@
 <li>Filter out specific users from permissions reports (Accounts such as besadmin or other legitimate access to mailboxes which may trigger false alarms.)</li>
 <li>Filter out unknown users from permissions reports</li>
 </ul>
-
 <p>This script supports the following scopes of mailboxes:</p>
-
 <ul>
 <li>The entire exchange organization</li>
 <li>A single DAG</li>
@@ -217,23 +198,17 @@
 <li>A single database</li>
 <li>An arbitrary array of exchange mailboxes names</li>
 </ul>
-
 <h2 id="notes">Notes</h2>
-
 <p>Due to the huge number of function parameters (20+) I’ve not included many examples in the function help as of yet. So here are a few general logic rules to be cognizant of:</p>
-
 <ul>
 <li>If you want to just generate a mailbox size report use the following options:</li>
 </ul>
-
-<pre style="padding-left: 30px;">-SendAsPermReport $false –FullPermReport $false –CalendarPermReport $false –ForwardingToReport $false –MailboxRuleForwardingReport $false –MailboxRuleRedirectingReport $false</pre>
-
+<!-- raw HTML omitted -->
 <ul>
 <li>The IgnoredUsersPermissions parameter is not case sensitive but it does require precise user domain/name formatting to filter properly.</li>
 <li>If you want to modify any of the report look/feel elements the $ReportStyle variable will be your first stop (I tried to use valid CSS as much as possible).</li>
 <li>There are no “required” parameters. As such, here is the order of operations for which mailboxes get processed based on parameter (You can specify them all but only the first one in the list with a value will be processed)</li>
 </ul>
-
 <blockquote>
 <ol>
 <li>Mailboxes</li>
@@ -243,16 +218,11 @@
 <li>WholeEnterprise</li>
 </ol>
 </blockquote>
-
 <p>So if you send through both the DAGName and the ServerName parameter, only mailboxes on the ServerName will be processed. If you pass all parameters listed above only the Mailboxes parameter will matter. Get the drift?</p>
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>I’ve pulled from several sources in these scripts I use. I try to leave most of the comments and other original author markings unmolested. If you are an author I’ve not given proper credit or which wants more credit for their work, just let me know and it will be done. Oh I also have a mostly completed GUI for this script in the works which should be released shortly as well…</p>
-
 <p><a href="http://gallery.technet.microsoft.com/Exchange-Mailbox-Audit-1f56c9a9" title="Mailbox Audit Report at Technet Gallery">Download the script at the Technet Gallery.</a></p>
-
-<p>&nbsp;</p>
+<p> </p>
     
 </div>
 
@@ -398,15 +368,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -435,7 +405,7 @@
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>

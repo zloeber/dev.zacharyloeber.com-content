@@ -6,7 +6,7 @@
         <meta name="author" content="Zachary Loeber">
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
-        <meta name="generator" content="Hugo 0.59.1" />
+        <meta name="generator" content="Hugo 0.68.3" />
         <title> Windows 2008 (and 2008 R2) Tips | Zachary Loeber</title>
         <meta name="description" content="Windows 2008 (and 2008 R2) Tips - Zachary Loeber&#39;s Personal Site">
         <meta itemprop="name" content="Windows 2008 (and 2008 R2) Tips">
@@ -138,141 +138,103 @@
 
     
         <p>Just a small list of 2008(R2) command line tips and tricks for the every day admin.</p>
-
-<p>**Open A Windows Explorer window from the cmd.exe prompt<br />
-** start .<br />
+<p>**Open A Windows Explorer window from the cmd.exe prompt<br>
+** start .<br>
 (note: the period is required)</p>
-
 <p><strong>Enable ping responses:</strong></p>
-
-<p>**(Use this for R2)<br />
-** netsh advfirewall firewall add rule name=&#8221;ICMPv4 Inbound&#8221; dir=in action=allow enable=yes profile=any localip=any remoteip=any protocol=icmpv4:8,any interfacetype=any edge=yes</p>
-
-<p>**(or for just 2008)<br />
+<p>**(Use this for R2)<br>
+** netsh advfirewall firewall add rule name=”ICMPv4 Inbound” dir=in action=allow enable=yes profile=any localip=any remoteip=any protocol=icmpv4:8,any interfacetype=any edge=yes</p>
+<p>**(or for just 2008)<br>
 ** netsh firewall set icmpsetting 8 ENABLE</p>
-
-<p>**Enable WinRM<br />
+<p>**Enable WinRM<br>
 ** WinRM quickconfig</p>
-
-<p><strong>Disable WinRM</strong><br />
+<p><strong>Disable WinRM</strong><br>
 winrm delete winrm/config/Listener?Address=*+Transport=HTTP</p>
-
-<p><strong>List available features via command line</strong><br />
+<p><strong>List available features via command line</strong><br>
 dism /online /get-features</p>
-
-<p><strong>Enable features via command line</strong><br />
+<p><strong>Enable features via command line</strong><br>
 dism /online /enable-feature</p>
-
-<p><strong>Enable SNMP via command line</strong><br />
-dism /online /enable-feature /featurename:SNMP<br />
-dism /online /enable-feature /featurename:WMISnmpProvider<br />
-reg add HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\ValidCommunities /v <em><strong><Read String></strong></em> /t REG_DWORD /d 4 /f<br />
-reg add HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\RFC1156Agent /v sysServices /t REG_DWORD /d 79 /f<br />
+<p><strong>Enable SNMP via command line</strong><br>
+dism /online /enable-feature /featurename:SNMP<br>
+dism /online /enable-feature /featurename:WMISnmpProvider<br>
+reg add HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\ValidCommunities /v <em><strong><!-- raw HTML omitted --></strong></em> /t REG_DWORD /d 4 /f<br>
+reg add HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\RFC1156Agent /v sysServices /t REG_DWORD /d 79 /f<br>
 reg delete HKLM\SYSTEM\CurrentControlSet\services\SNMP\Parameters\PermittedManagers /v 1 /f</p>
-
-<p><strong>Enable Backup Role via command line</strong><br />
+<p><strong>Enable Backup Role via command line</strong><br>
 servermanagercmd -install Backup-Features</p>
-
-<p><strong>Enable Failover Clustering Feature via command line</strong><br />
-dism /online /Enable-Feature /Featurename:FailoverCluster-FullServer<br />
+<p><strong>Enable Failover Clustering Feature via command line</strong><br>
+dism /online /Enable-Feature /Featurename:FailoverCluster-FullServer<br>
 dism /online /Enable-Feature /Featurename:FailoverCluster-AdminPak</p>
-
-<p><strong>Enable .NET 3.5.1 feature</strong><br />
-servermanagercmd -i NET-Framework<br />
+<p><strong>Enable .NET 3.5.1 feature</strong><br>
+servermanagercmd -i NET-Framework<br>
 servermanagercmd -i NET-Framework-Core</p>
-
-<p><strong>Enable Roles Needed for SQL Cluster Install via command line</strong><br />
- <em>(specifically for msdtc)</em><br />
+<p><strong>Enable Roles Needed for SQL Cluster Install via command line</strong><br>
+<em>(specifically for msdtc)</em><br>
 ServerManagerCmd.exe -install AS-Incoming-Trans AS-Outgoing-Trans</p>
-
-<p><strong>Add windows 2008 core to domain:</strong><br />
-netdom renamecomputer /NewName:<br />
-shutdown /r /t 0<br />
+<p><strong>Add windows 2008 core to domain:</strong><br>
+netdom renamecomputer /NewName:<br>
+shutdown /r /t 0<br>
 netdom join computername /domain: /userd:userID PasswordD:* /Reboot</p>
-
-<p><strong>Enable remote management from any MMC snap-in:</strong><br />
-netsh advfirewall firewall set rule group=”Remote Desktop” new enable=yes<br />
+<p><strong>Enable remote management from any MMC snap-in:</strong><br>
+netsh advfirewall firewall set rule group=”Remote Desktop” new enable=yes<br>
 netsh advfirewall firewall set rule group=”Remote Administration” new enable=yes</p>
-
-<p><strong>Enable Remote Management (Firewall):</strong><br />
+<p><strong>Enable Remote Management (Firewall):</strong><br>
 netsh advfirewall set currentprofile settings remotemanagement enable</p>
-
-<p><strong>Rename computername:</strong><br />
+<p><strong>Rename computername:</strong><br>
 NETDOM renamecomputer %computername% /newname:vshost</p>
-
-<p><strong>Restart the computer:</strong><br />
+<p><strong>Restart the computer:</strong><br>
 Shutdown /r /f /t 0</p>
-
-<p><strong>Logoff from the console:</strong><br />
+<p><strong>Logoff from the console:</strong><br>
 Logoff.exe</p>
-
-<p><strong>Set the date and timezone:</strong><br />
+<p><strong>Set the date and timezone:</strong><br>
 control timedate.cpl</p>
-
-<p><strong>Query all the networkadapters :</strong><br />
+<p><strong>Query all the networkadapters :</strong><br>
 netsh interface ipv4 show interfaces</p>
-
-<p><strong>Configure the networkadapter and Set a Static IP:</strong><br />
-netsh interface ipv4 set address name=”2″ source=static address=172.168.2.2 mask=255.255.255.0 gateway=172.168.2.1Set a DNS server:netsh interface ipv4 add dnsserver name=”2″ address=172.168.2.1 index=1<br />
+<p><strong>Configure the networkadapter and Set a Static IP:</strong><br>
+netsh interface ipv4 set address name=”2″ source=static address=172.168.2.2 mask=255.255.255.0 gateway=172.168.2.1Set a DNS server:netsh interface ipv4 add dnsserver name=”2″ address=172.168.2.1 index=1<br>
 netsh interface ipv4 add dnsserver name=”2″ address=172.168.2.10 index=1</p>
-
-<p><strong>Add a Windows 2008 Core Server to the domain:</strong><br />
+<p><strong>Add a Windows 2008 Core Server to the domain:</strong><br>
 netdom join W2K8DC04 /domain:domain.local /userd:DOMAIN\ACCOUNT /passwordd:YOURPASSWORD</p>
-
-<p><strong>Active Windows 2008 Core Server:</strong><br />
+<p><strong>Active Windows 2008 Core Server:</strong><br>
 C:\Windows\System32\slmgr.vbs -ato</p>
-
-<p><strong>Set password for Administrator:</strong><br />
+<p><strong>Set password for Administrator:</strong><br>
 net user administrator *</p>
-
-<p>**Use Windows Remote Shell:<br />
-** On Vista Sp1 :<br />
-start cmd (with a user who has administrator access to the remote machine)<br />
-winrs -r:SERVERNAME cmd<br />
-or start in a new window :<br />
+<p>**Use Windows Remote Shell:<br>
+** On Vista Sp1 :<br>
+start cmd (with a user who has administrator access to the remote machine)<br>
+winrs -r:SERVERNAME cmd<br>
+or start in a new window :<br>
 start winrs -r:SERVERNAME cmd</p>
-
-<p><strong>Add hardware to Core</strong><br />
+<p><strong>Add hardware to Core</strong><br>
 pnputil -i -a</p>
-
-<p><strong>Display device driver list:</strong><br />
+<p><strong>Display device driver list:</strong><br>
 sc query type= driver</p>
-
-<p><strong>Forcibly stop a service:</strong><br />
-tasklist<br />
-then<br />
+<p><strong>Forcibly stop a service:</strong><br>
+tasklist<br>
+then<br>
 taskkill /PID</p>
-
-<p><strong>Configure Paging File:</strong><br />
-wmic pagefileset where name=”<br />
-” set InitialSize=,MaximumSize=path/filename – is the path to and name of the paging file<br />
-initialsize – is the starting size of the paging file in bytes<br />
+<p><strong>Configure Paging File:</strong><br>
+wmic pagefileset where name=”<br>
+” set InitialSize=,MaximumSize=path/filename – is the path to and name of the paging file<br>
+initialsize – is the starting size of the paging file in bytes<br>
 maxsize – is the maximum size of the page file in bytes</p>
-
-<p><strong>Discover the available server roles:</strong><br />
+<p><strong>Discover the available server roles:</strong><br>
 oclist.exe</p>
-
-<p>**Configure Service :<br />
+<p>**Configure Service :<br>
 ** Example : sc config dhcpserver start=auto</p>
-
-<p><strong>Check for new Windows Updates:</strong><br />
+<p><strong>Check for new Windows Updates:</strong><br>
 wmic.exe qfe</p>
-
-<p><strong>Remove a Windows Update:</strong><br />
+<p><strong>Remove a Windows Update:</strong><br>
 wusa.exe patchname.msu</p>
-
-<p><strong>Disable teredo tunnelling (should be done for cluster server specifically)</strong><br />
+<p><strong>Disable teredo tunnelling (should be done for cluster server specifically)</strong><br>
 netsh interface teredo set state disabled</p>
-
-<p>**Setup an application for terminal services<br />
-** From a command line before installing the app<br />
-change user /install<br />
-After installation is complete<br />
+<p>**Setup an application for terminal services<br>
+** From a command line before installing the app<br>
+change user /install<br>
+After installation is complete<br>
 change user /execute</p>
-
-<p>**To disable IPV6 fully on the 2008 server:<br />
-** Launch registry, navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters. In the details pane, click New, and then click DWORD (32-bit) Value. Type &#8220;DisabledComponents&#8221; (without quotes) and then press enter. Double-click DisabledComponents and type 0xffffffff in Hexadecimal or 4294967295 in Decimal. Close the registry editor.</p>
-
+<p>**To disable IPV6 fully on the 2008 server:<br>
+** Launch registry, navigate to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters. In the details pane, click New, and then click DWORD (32-bit) Value. Type “DisabledComponents” (without quotes) and then press enter. Double-click DisabledComponents and type 0xffffffff in Hexadecimal or 4294967295 in Decimal. Close the registry editor.</p>
 <p>Now, navigate to C:\Windows\System32\Drivers\Etc and open the hosts file in notepad. Delete the IPV6 entry.</p>
     
 </div>
@@ -392,15 +354,15 @@ change user /execute</p>
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/3/23/ado_automated_variable_groups/">Azure Devops Automated Variable Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/02/managed-kubernetes-idiosyncracies/">Managed Kubernetes Idiosyncracies</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns-part-1/">Devops Patterns Part 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/01/ado-keyvault-linked-var-groups/">Ado Keyvault Linked Var Groups</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
                     </li>
                 
                 </ul>
@@ -429,7 +391,7 @@ change user /execute</p>
                     </li>
                 
                     <li>
-                        <a href="/categories/active-directory">Active directory (44)</a>
+                        <a href="/categories/exchange">Exchange (38)</a>
                     </li>
                 
             </ul>
