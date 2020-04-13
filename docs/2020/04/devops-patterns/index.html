@@ -1,0 +1,498 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.68.3" />
+        <title> Devops Patterns | Zachary Loeber</title>
+        <meta name="description" content="Devops Patterns - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Devops Patterns">
+        <meta itemprop="description" content="Devops Patterns - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Devops Patterns">
+        <meta property="og:description" content="Devops Patterns - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/blog/shady_hacker.png">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/2020/04/devops-patterns/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/2020/04/devops-patterns/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about/">About</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">
+            <img src="/images/blog/shady_hacker.png" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">Devops Patterns</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-04-05</span>
+            
+        
+
+        
+            <span class="readingTime">9 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/devops">DevOps</a>
+                
+                    <a href="/categories/kubernetes">Kubernetes</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Many standard DevOps patterns are well known at this point. Advances in technology, cloud computing, and workload orchestration in IT have heralded a new generation of DevOps engineer and tools to meet modern business challenges. In this article we are going to attempt to surface and give name to a few patterns as it relates to the emerging realm of pipelines as code, declarative deployments, multi-cloud, gitops, and more.</p>
+<h2 id="introduction">Introduction</h2>
+<p>On a daily basis DevOps practitioners are wading through vendors, terminology, platforms, cloud services, and nomenclature of an ever shifting industry. DevOps encapsulates the idea of continual improvement and constant learning so it is no surprise that patterns and practices which work well and those that do not surface pretty quickly. Some patterns that have proven to accelerate software delivery and improve product quality include;</p>
+<ul>
+<li>Build once, deploy many times</li>
+<li>Immutable infrastructure as code</li>
+<li>Eliminating outside dependencies</li>
+<li>Version control everything</li>
+<li>Well defined git branching models</li>
+</ul>
+<p>As your experience base grows in DevOps you will start to understand how things are supposed to be done versus how they are actually being done. You will come to realize that there are few environments that follow all of the DevOps best practices and that there are fuzzy lines almost everywhere. We will not rehash the fundamentals of what CI/CD are, nor will we cover the pantheon of DevOps known best practices and patterns in this article. Instead we will attempt to codify some terminology around the fuzzier areas of DevOps to help put terms to the patterns we are seeing every day.</p>
+<blockquote>
+<p>That which is old becomes new again. Or so they say. Many topics in this article are not new patterns but recycled ideas of things that have worked in this or other industries for quite a while.</p>
+</blockquote>
+<h2 id="what-is-a-devops-pattern">What is a DevOps Pattern?</h2>
+<p>For the sake of this discussion, a pattern is a solution or set of solutions working together with the goal of supporting or driving DevOps within an organization. Not all patterns are DevOps specific, and some may not even be considered DevOps best practice. Different requirements, team makeup, and organization culture usually demand different types of solution patterns.</p>
+<p>There are certain deployment pipelines which one might construct for Lambdas or Azure Functions that may not be used in a Kubernetes deployment. There are pipelines that may be constructed and used for an open source project that would never equate to an enterprise class platform as service project. Deploying a micro-monolith is not the same as deploying an actual microservice architecture. Generally, these are a matter of preference and maturity level of both the developers and the devops teams but it is good to be aware of the differences between one or more ways of accomplishing the same tasks.</p>
+<p>Before going over some patterns, lets discuss an important precursor definition.</p>
+<h2 id="pipeline-complexity">Pipeline Complexity</h2>
+<p>I have now worked with multiple development teams to help layout their DevOps strategies and formulate solutions to execute them. The common element for all of these engagements has been that the amount of time to ramp up solutions was heavily dependent upon the pipeline complexity. I&rsquo;ve put together an arbitrary complexity chart that can help visualize how the complexity can quickly ramp up based on the additive requirements for the DevOps pipelines being created. From left to right, each defined task is additive upon the prior task which increases the resulting pipeline complexity accordingly.</p>
+<figure>
+    <img src="/images/devops-pipeline-complexity-scale.png"
+         alt="Pipeline complexity scale"/> 
+</figure>
+
+<blockquote>
+<p>The listed tasks are realistically arbitrary. If your artifact is a bundled from multiple distinct repository from unique branches that need to be custom compiled and bundled with specific libraries and made to work with glue and prayers in a docker container that has to use an undocumented base image then creating the artifact may actually be the most complex part of a pipeline!</p>
+</blockquote>
+<p>As we go over patterns in this article keep the complexity chart above in mind.</p>
+<h2 id="pattern-cradle-infrastructure">Pattern: Cradle Infrastructure</h2>
+<p>This is when one deploys and configures a baseline environment using a separate process than the code being deployed into the environment. The base environment infrastructure essentially &lsquo;cradles&rsquo; the workload deployments. This division of work can be at multiple points within an infrastructure and can be nested multiple levels deep. There tends to be a natural split between the network/system operators and the developers wherein the operators will deploy and help operate any number of target environments as a platform for the developers to target with their code delivery pipelines.</p>
+<p>With the advent of the cloud and infrastructure as code it is possible to slice and dice resources up any number of ways. This is further complicated with Kubernetes hitting the scene. As kubernetes is simply a platform for workload provisioning, it may not be uncommon to see a pipeline for carving out a base environment with shared elements at one corporate infrastructure level, another pipeline for deploying kubernetes clusters at another operations level, then finally the pipelines for pushing project workloads into the clusters.</p>
+<p>This is not a new pattern but one worth putting a name to as the difference in how much effort one spends on a DevOps pipeline can vary greatly on where this split in responsibility lies. This also maybe considered an anti-pattern as it tends to lead to more complex solutions around configuration management and certainly makes for additional pipelines to manage.</p>
+<blockquote>
+<p>If the cradle infrastructure and workload delivery are not both on pipelines then there is a dichotomy between teams which make for a good opportunity to cross-train and work together to level up both teams.</p>
+</blockquote>
+<p>Here is a simplified illustration of what a cradle infrastructure might look like if your pipeline is only responsible for deploying the code base as an app into a pre-built kubernetes namespace.</p>
+<figure>
+    <img src="/images/devops-cradle-infra.png"
+         alt="Cradle infrastructure for a kubernetes deployment"/> <figcaption>
+            <p>Cradle infrastructure for a kubernetes app deployment</p>
+        </figcaption>
+</figure>
+
+<p>The pipeline in this example need only build and deliver the built artifact to a namespace within an existing kubernetes cluster. This could also have been an existing web app or service like Heroku.</p>
+<blockquote>
+<p>This should not be confused with the &lsquo;split infrastructure&rsquo; pattern.</p>
+</blockquote>
+<h2 id="pattern-split-infrastructure">Pattern: Split Infrastructure</h2>
+<p>This pattern is similar to that of the Cradle Infrastructure in that it divides the total surface area for infrastructure deployment among multiple teams. The difference is that more responsibility for the infrastructure creation falls to the devops pipelines. Essentially the baseline infrastructure is at a higher level wherein there may only be some general networks and policies configured as guidelines for further infrastructure as code to be deployed in downstream pipelines. Alongside the baseline infrastructure, privileged accounts will be delegated rights to further deploy within their cut of the organization&rsquo;s cloud or data center.</p>
+<p>Here is an illustration for how a split infrastructure may look.</p>
+<figure>
+    <img src="/images/devops-split-infra.png"
+         alt="Cradle infrastructure for a kubernetes deployment"/> <figcaption>
+            <p>Split infrastructure for a kubernetes deployment</p>
+        </figcaption>
+</figure>
+
+<p>The big difference in this case is that both the kubernetes cluster and the app delivery will now be part of the same pipeline. If you refer back to the pipeline complexity chart, it can be seen that the more responsibility falls to the pipeline for deploying its own underlying infrastructure the more complex things become. This goes all the way up to deploying entire environments which are typically done with multiple pipelines and fairly complex Infrastructure as code manifests.</p>
+<blockquote>
+<p>Careful planning and consideration on how the teams operate and how they collaborate should be done when designing a split infrastructure.</p>
+</blockquote>
+<h2 id="pattern-opsdev">Pattern: OpsDev</h2>
+<p>This is the practice of allowing developers to operate and code directly against an environment infrastructure for a project. Often this is done to &lsquo;get things working&rsquo; in a development environment first, wherein a pipeline will later be crafted for further releases into other environments. In the OpsDev pattern, it is typical to see your developers using IDEs to connect to and deploy code right from their workstations into kubernetes clusters or cloud services. A good deal of OpsDev tools are emerging to help skill up development efforts for cloud native computing against Kuberentes. This runs the gambit of feature/functionality.</p>
+<blockquote>
+<p>This is not the same as using modern programming languages to allow developers to construct their own infrastructure as part of their deployment. Using Pulumi or SaltStack, or even using straight boto3 Python modules to build out any kind of infrastructure as real code is covered in the next pattern.</p>
+</blockquote>
+<h2 id="pattern-infrastructure-as-real-code">Pattern: Infrastructure as Real Code</h2>
+<p>This is when a &lsquo;real&rsquo; programming language like TypeScript, Python, or similar is used to define and construct the target deployment infrastructure in an imperative manner instead of via declarative manifests. Pulumi is the immediate example of a tool that allows for multiple real language bindings to be used that can be used to define and create the infrastructure. SaltStack would be considered another.</p>
+<p><strong>Positives</strong></p>
+<ul>
+<li>In the right hands this can be a very powerful way to go from project ideation to reality very quickly</li>
+<li>This can, in theory, greatly simplify deployment pipelines</li>
+</ul>
+<p><strong>Negatives</strong></p>
+<ul>
+<li>A more highly specialized skill set is required to support the pipelines for such a deployment.</li>
+<li>More room for abuse in practices if not carefully monitored (hard coded secrets or other parameters for instance)</li>
+<li>Very new way of doing things, as such it is technically less battle tested</li>
+</ul>
+<h2 id="pattern-pipeline-independence">Pattern: Pipeline Independence</h2>
+<p>This is the practice of authoring pipeline as code to be run within the CI/CD platform first but in a way that it can also be run locally from a workstation. This enables additional lateral movement and options in the event that the pipeline platform is unavailable or needs to be changed out. This almost always requires additional effort to implement but doing this extra work allows for future flexibility and can force the pipeline authoring to be done in a more composable manner.</p>
+<blockquote>
+<p>I like to call this &lsquo;dual-pipelining&rsquo; as, in some cases, can be double the amount of work to maintain!</p>
+</blockquote>
+<h2 id="pattern-configops">Pattern: ConfigOps</h2>
+<p>ConfigOps, like any *Ops, starts with a git repository. In that repository is a structured set of files or directories for configuration of a project that is then delivered via pipelines to seed and maintain configuration for other pipelines in the project.</p>
+<p>If you are using Azure Devops this would be like keeping several env var files within a repo that, when updated via a PR, trigger&rsquo;s a pipeline that then updates variable groups used in other pipelines. If you are using Hashicorp&rsquo;s Consul for configuration management you might use <a href="https://github.com/miniclip/gonsul">gonsul</a> to do similar pull request approved updates of key pair values into a Consul back-end.</p>
+<blockquote>
+<p>ConfigOps can be done within the app source repository or can be done in an independent git repository. The net result is the same, an audit-able trail of changes for configuration elements used in your project pipelines.</p>
+</blockquote>
+<h1 id="conclusion">Conclusion</h1>
+<p>These are some patterns that I&rsquo;ve noticed and feel should have terms of their own. Are there any other devops or related IT patterns that deserve their own name? Please contribute <a href="https://github.com/zloeber/devops-patterns">to the repo I&rsquo;ve started to catalog such things</a>.</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/devops">devops</a>
+                
+                <a href="/tags/pipeline">pipeline</a>
+                
+                <a href="/tags/kubernetes">kubernetes</a>
+                
+                <a href="/tags/helm">helm</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/devops-patterns\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/devops-patterns\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/devops-patterns\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">Devops Patterns</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/04/02/kubernetes-app-deployments-with-terraform/">Kubernetes App Deployments with Terraform</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/exchange">Exchange (38)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>
