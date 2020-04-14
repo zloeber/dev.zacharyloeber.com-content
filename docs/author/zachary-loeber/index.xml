@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 02 Apr 2020 12:31:40 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 11:33:38 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,15 @@
       <description>I am IT enthusiast with almost decades of experience. I cut my teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
 I&amp;rsquo;m agnostic when it comes to technology but have strong interest in:
  Cloud Architecture DevOps Kubernetes Docker Go Terraform Security Networking System Administration Linux Automation  Some of my other interests include camping, self-improvement, and being a good husband and father.</description>
+    </item>
+    
+    <item>
+      <title>DevOps Patterns</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/</link>
+      <pubDate>Mon, 13 Apr 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/</guid>
+      <description>&lt;p&gt;Many standard DevOps patterns are well known at this point. Advances in technology, cloud computing, and workload orchestration in IT have heralded a new generation of DevOps engineer and tooling to meet modern business challenges. In this article we are going to attempt to surface and give name to a few patterns as it relates to the emerging realm of pipelines as code, declarative deployments, multi-cloud, and more.&lt;/p&gt;</description>
     </item>
     
     <item>

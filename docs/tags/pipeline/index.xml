@@ -5,10 +5,19 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/pipeline/</link>
     <description>Recent content in pipeline on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 02 Apr 2020 12:31:40 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2020 11:33:38 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/pipeline/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DevOps Patterns</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/</link>
+      <pubDate>Mon, 13 Apr 2020 11:33:38 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/</guid>
+      <description>&lt;p&gt;Many standard DevOps patterns are well known at this point. Advances in technology, cloud computing, and workload orchestration in IT have heralded a new generation of DevOps engineer and tooling to meet modern business challenges. In this article we are going to attempt to surface and give name to a few patterns as it relates to the emerging realm of pipelines as code, declarative deployments, multi-cloud, and more.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Kubernetes App Deployments with Terraform</title>
