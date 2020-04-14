@@ -7,12 +7,12 @@
         <meta name="description" content="Zachary Loeber&#39;s Personal Site">
         <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
         <meta name="generator" content="Hugo 0.68.3" />
-        <title> Devops Patterns | Zachary Loeber</title>
-        <meta name="description" content="Devops Patterns - Zachary Loeber&#39;s Personal Site">
-        <meta itemprop="name" content="Devops Patterns">
-        <meta itemprop="description" content="Devops Patterns - Zachary Loeber&#39;s Personal Site">
-        <meta property="og:title" content="Devops Patterns">
-        <meta property="og:description" content="Devops Patterns - Zachary Loeber&#39;s Personal Site">
+        <title> DevOps Patterns | Zachary Loeber</title>
+        <meta name="description" content="DevOps Patterns - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="DevOps Patterns">
+        <meta itemprop="description" content="DevOps Patterns - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="DevOps Patterns">
+        <meta property="og:description" content="DevOps Patterns - Zachary Loeber&#39;s Personal Site">
         <meta property="og:image" content="/images/blog/shady_hacker.png">
         <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">
         <meta property="og:site_name" content="Zachary Loeber">
@@ -113,7 +113,7 @@
 
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">Devops Patterns</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">DevOps Patterns</a></h3>
     <div class="meta">
         
             
@@ -122,7 +122,7 @@
         
 
         
-            <span class="readingTime">9 min read</span>
+            <span class="readingTime">11 min read</span>
         
 
         
@@ -141,7 +141,7 @@
     </div>
 
     
-        <p>Many standard DevOps patterns are well known at this point. Advances in technology, cloud computing, and workload orchestration in IT have heralded a new generation of DevOps engineer and tools to meet modern business challenges. In this article we are going to attempt to surface and give name to a few patterns as it relates to the emerging realm of pipelines as code, declarative deployments, multi-cloud, gitops, and more.</p>
+        <p>Many standard DevOps patterns are well known at this point. Advances in technology, cloud computing, and workload orchestration in IT have heralded a new generation of DevOps engineer and tooling to meet modern business challenges. In this article we are going to attempt to surface and give name to a few patterns as it relates to the emerging realm of pipelines as code, declarative deployments, multi-cloud, and more.</p>
 <h2 id="introduction">Introduction</h2>
 <p>On a daily basis DevOps practitioners are wading through vendors, terminology, platforms, cloud services, and nomenclature of an ever shifting industry. DevOps encapsulates the idea of continual improvement and constant learning so it is no surprise that patterns and practices which work well and those that do not surface pretty quickly. Some patterns that have proven to accelerate software delivery and improve product quality include;</p>
 <ul>
@@ -157,8 +157,8 @@
 </blockquote>
 <h2 id="what-is-a-devops-pattern">What is a DevOps Pattern?</h2>
 <p>For the sake of this discussion, a pattern is a solution or set of solutions working together with the goal of supporting or driving DevOps within an organization. Not all patterns are DevOps specific, and some may not even be considered DevOps best practice. Different requirements, team makeup, and organization culture usually demand different types of solution patterns.</p>
-<p>There are certain deployment pipelines which one might construct for Lambdas or Azure Functions that may not be used in a Kubernetes deployment. There are pipelines that may be constructed and used for an open source project that would never equate to an enterprise class platform as service project. Deploying a micro-monolith is not the same as deploying an actual microservice architecture. Generally, these are a matter of preference and maturity level of both the developers and the devops teams but it is good to be aware of the differences between one or more ways of accomplishing the same tasks.</p>
-<p>Before going over some patterns, lets discuss an important precursor definition.</p>
+<p>There are certain deployment pipelines which one might construct for Lambdas or Azure Functions that may not be used in a Kubernetes deployment. There are pipelines that may be constructed and used for an open source project that would never equate to an enterprise class platform as service project. Deploying a micro-monolith is not the same as deploying an actual microservice architecture. Generally, these are a matter of preference and maturity level of both the developers and the DevOps teams but it is good to be aware of the differences between one or more ways of accomplishing the same tasks.</p>
+<p>Before going over some patterns, we should first cover an important precursor definition.</p>
 <h2 id="pipeline-complexity">Pipeline Complexity</h2>
 <p>I have now worked with multiple development teams to help layout their DevOps strategies and formulate solutions to execute them. The common element for all of these engagements has been that the amount of time to ramp up solutions was heavily dependent upon the pipeline complexity. I&rsquo;ve put together an arbitrary complexity chart that can help visualize how the complexity can quickly ramp up based on the additive requirements for the DevOps pipelines being created. From left to right, each defined task is additive upon the prior task which increases the resulting pipeline complexity accordingly.</p>
 <figure>
@@ -167,44 +167,42 @@
 </figure>
 
 <blockquote>
-<p>The listed tasks are realistically arbitrary. If your artifact is a bundled from multiple distinct repositorie nestled in sub-folders of unique branches that need to be custom compiled and bundled with specific libraries and made to work with glue and prayers in a docker container that has to use an undocumented base image then creating the artifact may actually be the most complex part of a pipeline!</p>
+<p>The listed tasks are realistically arbitrary. If your artifact is a bundled from multiple distinct repositories nestled in sub-folders of unique branches that need to be custom compiled and bundled with specific libraries and made to work with glue and prayers in a docker container that has to use an undocumented base image then creating the artifact may actually be the most complex part of a pipeline!</p>
 </blockquote>
 <p>As we go over patterns in this article keep the complexity chart above in mind.</p>
 <h2 id="pattern-cradle-infrastructure">Pattern: Cradle Infrastructure</h2>
 <p>This is when one deploys and configures a baseline environment using a separate process than the code being deployed into the environment. The base environment infrastructure essentially &lsquo;cradles&rsquo; the workload deployments. This division of work can be at multiple points within an infrastructure and can be nested multiple levels deep. There tends to be a natural split between the network/system operators and the developers wherein the operators will deploy and help operate any number of target environments as a platform for the developers to target with their code delivery pipelines.</p>
-<p>With the advent of the cloud and infrastructure as code it is possible to slice and dice resources up any number of ways. This is further complicated with Kubernetes hitting the scene. As kubernetes is simply a platform for workload provisioning, it may not be uncommon to see a pipeline for carving out a base environment with shared elements at one corporate infrastructure level, another pipeline for deploying kubernetes clusters at another operations level, then finally the pipelines for pushing project workloads into the clusters.</p>
-<p>This is not a new pattern but one worth putting a name to as the difference in how much effort one spends on a DevOps pipeline can vary greatly on where this split in responsibility lies. This also maybe considered an anti-pattern as it tends to lead to more complex solutions around configuration management and certainly makes for additional pipelines to manage.</p>
-<blockquote>
+<p>With the advent of the cloud and infrastructure as code it is possible to slice and dice resources up any number of ways. This is further complicated with Kubernetes hitting the scene. As Kubernetes is simply a platform for workload provisioning, it may not be uncommon to see a pipeline for carving out a base environment with shared elements at one corporate infrastructure level, another pipeline for deploying Kubernetes clusters at another operations level, then finally the pipelines for pushing project workloads into the clusters.</p>
+<p>This is not a new pattern but one worth putting a name to as the difference in how much effort one spends on a DevOps pipeline can vary greatly on where this split in responsibility lies. This also maybe considered an anti-pattern as it tends to lead to more complex solutions around configuration management and typically makes for additional pipelines to manage.</p>
 <p>If the cradle infrastructure and workload delivery are not both on pipelines then there is a dichotomy between teams which make for a good opportunity to cross-train and work together to level up both teams.</p>
-</blockquote>
-<p>Here is a simplified illustration of what a cradle infrastructure might look like if your pipeline is only responsible for deploying the code base as an app into a pre-built kubernetes namespace.</p>
+<p>Here is a simplified illustration of what a cradle infrastructure might look like if a pipeline is only responsible for deploying the code base as an app into a pre-built Kubernetes namespace.</p>
 <figure>
     <img src="/images/devops-cradle-infra.png"
-         alt="Cradle infrastructure for a kubernetes deployment"/> <figcaption>
-            <p>Cradle infrastructure for a kubernetes app deployment</p>
+         alt="Cradle infrastructure for a Kubernetes deployment"/> <figcaption>
+            <p>Cradle infrastructure for a Kubernetes app deployment</p>
         </figcaption>
 </figure>
 
-<p>The pipeline in this example need only build and deliver the built artifact to a namespace within an existing kubernetes cluster. This could also have been an existing web app or service like Heroku.</p>
+<p>The pipeline in this example need only build and deliver the built artifact to a namespace within an existing Kubernetes cluster. This could also have been an existing web app or service like Heroku.</p>
 <blockquote>
 <p>This should not be confused with the &lsquo;split infrastructure&rsquo; pattern.</p>
 </blockquote>
 <h2 id="pattern-split-infrastructure">Pattern: Split Infrastructure</h2>
-<p>This pattern is similar to that of the Cradle Infrastructure in that it divides the total surface area for infrastructure deployment among multiple teams. The difference is that more responsibility for the infrastructure creation falls to the devops pipelines. Essentially the baseline infrastructure is at a higher level wherein there may only be some general networks and policies configured as guidelines for further infrastructure as code to be deployed in downstream pipelines. Alongside the baseline infrastructure, privileged accounts will be delegated rights to further deploy within their cut of the organization&rsquo;s cloud or data center.</p>
+<p>This pattern is similar to that of the Cradle Infrastructure in that it divides the total surface area for infrastructure deployment among multiple teams. The difference is that more responsibility for the infrastructure creation falls more to the DevOps pipelines. Essentially the baseline infrastructure is at a higher level wherein there may only be some general networks and policies configured as guidelines for further infrastructure as code to be deployed in downstream pipelines. Alongside the baseline infrastructure, privileged accounts will be delegated rights to further deploy within their cut of the organization&rsquo;s cloud or data center.</p>
 <p>Here is an illustration for how a split infrastructure may look.</p>
 <figure>
     <img src="/images/devops-split-infra.png"
-         alt="Cradle infrastructure for a kubernetes deployment"/> <figcaption>
-            <p>Split infrastructure for a kubernetes deployment</p>
+         alt="Cradle infrastructure for a Kubernetes deployment"/> <figcaption>
+            <p>Split infrastructure for a Kubernetes deployment</p>
         </figcaption>
 </figure>
 
-<p>The big difference in this case is that both the kubernetes cluster and the app delivery will now be part of the same pipeline. If you refer back to the pipeline complexity chart, it can be seen that the more responsibility falls to the pipeline for deploying its own underlying infrastructure the more complex things become. This goes all the way up to deploying entire environments which are typically done with multiple pipelines and fairly complex Infrastructure as code manifests.</p>
+<p>The big difference in this case is that both the Kubernetes cluster and the app delivery will now be part of the same pipeline. If you refer back to the pipeline complexity chart, it can be seen that the more responsibility falls to the pipeline for deploying its own underlying infrastructure the more complex things become. This goes all the way up to deploying entire environments which are typically done with multiple pipelines and fairly complex Infrastructure as code manifests.</p>
 <blockquote>
 <p>Careful planning and consideration on how the teams operate and how they collaborate should be done when designing a split infrastructure.</p>
 </blockquote>
 <h2 id="pattern-opsdev">Pattern: OpsDev</h2>
-<p>This is the practice of allowing developers to operate and code directly against an environment infrastructure for a project. Often this is done to &lsquo;get things working&rsquo; in a development environment first, wherein a pipeline will later be crafted for further releases into other environments. In the OpsDev pattern, it is typical to see your developers using IDEs to connect to and deploy code right from their workstations into kubernetes clusters or cloud services. A good deal of OpsDev tools are emerging to help skill up development efforts for cloud native computing against Kuberentes. This runs the gambit of feature/functionality.</p>
+<p>This is the practice of allowing developers to operate and code directly against an environment infrastructure for a project. Often this is done to &lsquo;get things working&rsquo; in a development environment first, wherein a pipeline will later be crafted for further releases into other environments. In the OpsDev pattern, it is typical to see your developers using IDEs to connect to and deploy code right from their workstations into Kubernetes clusters or cloud services. A good deal of OpsDev tools are emerging to help skill up development efforts for cloud native computing against Kuberentes. This runs the gambit of feature/functionality.</p>
 <blockquote>
 <p>This is not the same as using modern programming languages to allow developers to construct their own infrastructure as part of their deployment. Using Pulumi or SaltStack, or even using straight boto3 Python modules to build out any kind of infrastructure as real code is covered in the next pattern.</p>
 </blockquote>
@@ -226,14 +224,34 @@
 <blockquote>
 <p>I like to call this &lsquo;dual-pipelining&rsquo; as, in some cases, can be double the amount of work to maintain!</p>
 </blockquote>
+<p>An example of pipeline independence would be including a Makefile which can be used to drive all tasks that your github workflow pipelines may otherwise perform automatically. A fairly complete example of pipeline independence can be picked apart in this <a href="https://github.com/zloeber/hello-world-pipeline">Go hello-world-pipeline repo</a>.</p>
+<h2 id="pattern-declarative-infrastructure-as-code">Pattern: Declarative Infrastructure as Code</h2>
+<p>When you use a declarative language to define and build your infrastructure. The ubiquitous example of such a pattern would be Hashicorp&rsquo;s Terraform. Terraform has its own language (HCL) for defining target infrastructure deployments in a mostly human readable format. Typically, when referring to infrastructure as code (aka. IaC) this is what is meant.</p>
+<p><strong>Positives</strong></p>
+<ul>
+<li>This is a relatively common method of deploying immutable infrastructure and has been battle tested</li>
+<li>There are more rigid guidelines and rules in place around the language structure which can lead to fewer mistakes</li>
+<li>In the right hands this can also be a relatively quick way to go from project ideation to reality in a rapid manner</li>
+<li>You can maintain a consistent known state at all times by applying the declarative code base on a regular schedule</li>
+</ul>
+<p><strong>Negatives</strong></p>
+<ul>
+<li>The tightly defined rules can severely restrict or prevent keeping a DRY (Don&rsquo;t Repeat Yourself) code base</li>
+<li>You need to know all of your infrastructure elements and keep it maintained with a backend known state</li>
+<li>The declarative way of coding is often an operations team skill that require additional resources beyond the core development team to implement</li>
+<li>The code is driven by third party providers which can vary in quality</li>
+<li>The tightly defined rules can often lead to shortcuts being implemented which reduce the overall value of using declarative code to begin with</li>
+</ul>
+<p>There is also progress being made on enabling Kubernetes to build out infrastructure natively using its declarative manifests and <a href="https://www.openservicebrokerapi.org/">Open Service Broker</a> integrations.</p>
 <h2 id="pattern-configops">Pattern: ConfigOps</h2>
 <p>ConfigOps, like any *Ops, starts with a git repository. In that repository is a structured set of files or directories for configuration of a project that is then delivered via pipelines to seed and maintain configuration for other pipelines in the project.</p>
-<p>If you are using Azure Devops this would be like keeping several env var files within a repo that, when updated via a PR, trigger&rsquo;s a pipeline that then updates variable groups used in other pipelines. If you are using Hashicorp&rsquo;s Consul for configuration management you might use <a href="https://github.com/miniclip/gonsul">gonsul</a> to do similar pull request approved updates of key pair values into a Consul back-end.</p>
+<p>If you are using Azure DevOps this would be like keeping several env var files within a repo that, when updated via a PR, trigger&rsquo;s a pipeline that then updates variable groups used in other pipelines. If you are using Hashicorp&rsquo;s Consul for configuration management you might use <a href="https://github.com/miniclip/gonsul">gonsul</a> to do similar pull request approved updates of key pair values into a Consul back-end.</p>
 <blockquote>
 <p>ConfigOps can be done within the app source repository or can be done in an independent git repository. The net result is the same, an audit-able trail of changes for configuration elements used in your project pipelines.</p>
 </blockquote>
 <h1 id="conclusion">Conclusion</h1>
-<p>These are some patterns that I&rsquo;ve noticed and feel should have terms of their own. Are there any other devops or related IT patterns that deserve their own name? Please contribute <a href="https://github.com/zloeber/devops-patterns">to the repo I&rsquo;ve started to catalog such things</a>.</p>
+<p>These are some patterns that I&rsquo;ve noticed and feel should have terms of their own. Are there any other DevOps or related IT patterns that deserve their own name? Please contribute <a href="https://github.com/zloeber/devops-patterns">to the repo I&rsquo;ve started to catalog such things</a>.</p>
+<p>A big thanks goes to <a href="http://github.com/rothandrew">Andrew Roth</a> for providing valuable feedback for this article. He is a well of knowledge and an all around good guy.</p>
     
 </div>
 
@@ -246,11 +264,11 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/devops">devops</a>
+                <a href="/tags/devops">DevOps</a>
                 
                 <a href="/tags/pipeline">pipeline</a>
                 
-                <a href="/tags/kubernetes">kubernetes</a>
+                <a href="/tags/kubernetes">Kubernetes</a>
                 
                 <a href="/tags/helm">helm</a>
                 
@@ -371,7 +389,7 @@
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">Devops Patterns</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">DevOps Patterns</a>
                     </li>
                 
                     <li>
