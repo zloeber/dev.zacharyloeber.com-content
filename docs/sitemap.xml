@@ -8,58 +8,28 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/page/about/</loc>
-    <lastmod>2008-07-27T00:24:04+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zacharyloeber-dev.onrender.com/page/about-me/</loc>
     <lastmod>2007-11-01T21:18:48+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/author/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/categories/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/devops/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/categories/devops/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/posts/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/</loc>
-    <lastmod>2020-04-05T20:13:58-05:00</lastmod>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
   </url>
   
   <url>
@@ -83,7 +53,27 @@
   </url>
   
   <url>
+    <loc>https://zacharyloeber-dev.onrender.com/posts/</loc>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/</loc>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/terraform/</loc>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</loc>
+    <lastmod>2020-04-02T12:31:40-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/</loc>
     <lastmod>2020-04-02T12:31:40-05:00</lastmod>
   </url>
   
@@ -185,11 +175,6 @@
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/</loc>
     <lastmod>2019-12-22T20:59:43-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/the-raw-helm-chart/</loc>
-    <lastmod>2019-12-15T16:02:15-06:00</lastmod>
   </url>
   
   <url>

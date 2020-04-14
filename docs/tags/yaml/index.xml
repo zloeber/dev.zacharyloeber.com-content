@@ -20,16 +20,6 @@
     </item>
     
     <item>
-      <title>The Raw Helm Chart</title>
-      <link>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/the-raw-helm-chart/</link>
-      <pubDate>Sun, 15 Dec 2019 16:02:15 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/the-raw-helm-chart/</guid>
-      <description>&lt;h1 id=&#34;devops-the-raw-helm-chart&#34;&gt;DevOps: The Raw Helm Chart&lt;/h1&gt;
-&lt;p&gt;The raw helm chart is designed to glue raw kubernetes configuration elements into the application deployment stack. This can be one way to put lifecycle around your cluster configuration and its super handy to have in your toolbelt.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Hugo - A DevOps Approach</title>
       <link>https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/</link>
       <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>

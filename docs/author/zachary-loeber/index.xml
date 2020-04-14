@@ -5,19 +5,10 @@
     <link>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 05 Apr 2020 20:13:58 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2020 12:31:40 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>About</title>
-      <link>https://zacharyloeber-dev.onrender.com/page/about/</link>
-      <pubDate>Sun, 27 Jul 2008 00:24:04 +0000</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/page/about/</guid>
-      <description>This site is a collection of some of the things that I’m working on put in “How To” format to possibly assist others. In reality, most of the posted items here are an attempt to document things I’ve already done some time ago and might need to do again in the future. Most of what you find on this site will be technology related. I believe strongly that what makes a good IT person is the ability to find the right tool for a situation.</description>
-    </item>
     
     <item>
       <title>About Me</title>
@@ -28,15 +19,6 @@
       <description>I am IT enthusiast with almost decades of experience. I cut my teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
 I&amp;rsquo;m agnostic when it comes to technology but have strong interest in:
  Cloud Architecture DevOps Kubernetes Docker Go Terraform Security Networking System Administration Linux Automation  Some of my other interests include camping, self-improvement, and being a good husband and father.</description>
-    </item>
-    
-    <item>
-      <title>Kubernetes Clearing Finalizers</title>
-      <link>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/</link>
-      <pubDate>Sun, 05 Apr 2020 20:13:58 -0500</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-clearing-finalizers/</guid>
-      <description>&lt;p&gt;Some short blurb&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -91,16 +73,6 @@ I&amp;rsquo;m agnostic when it comes to technology but have strong interest in:
       
       <guid>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/</guid>
       <description>&lt;p&gt;Are you working with kubernetes regularly? There are so many tools out there it can be difficult to know which ones to use. Here are a few of them I&amp;rsquo;ve found to be useful but may have flown under your radar.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>The Raw Helm Chart</title>
-      <link>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/the-raw-helm-chart/</link>
-      <pubDate>Sun, 15 Dec 2019 16:02:15 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/blog/2019/12/15/the-raw-helm-chart/</guid>
-      <description>&lt;h1 id=&#34;devops-the-raw-helm-chart&#34;&gt;DevOps: The Raw Helm Chart&lt;/h1&gt;
-&lt;p&gt;The raw helm chart is designed to glue raw kubernetes configuration elements into the application deployment stack. This can be one way to put lifecycle around your cluster configuration and its super handy to have in your toolbelt.&lt;/p&gt;</description>
     </item>
     
     <item>
