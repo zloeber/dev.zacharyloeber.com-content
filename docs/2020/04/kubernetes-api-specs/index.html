@@ -137,12 +137,12 @@
     </div>
 
     
-        <p>Can you quickly list out all the available pod security policy attributes on Kubernetes? How about listing the autoscaling apiVersions along with thier spec attributes?</p>
+        <p>Can you quickly list out all the available pod security policy attributes on Kubernetes? How about listing the autoscaling apiVersions along with their spec attributes?</p>
 <h2 id="introduction">Introduction</h2>
 <p>If you are authoring any form of declarative manifest for configuring a Kubernetes cluster once it is running these tasks are not uncommon. But with each version of Kubernetes a new API schema is born. What may have worked only a year ago is on the road to depreciation or worse, already depreciated.</p>
 <p>I found the simple task of getting API versions for resources to be both straightforward to perform but still oddly difficult to consume. It took digging through arcane <strong><a href="https://raw.githubusercontent.com/Kubernetes/Kubernetes/master/api/openapi-spec/swagger.json">swagger specifications</a></strong> and weird tools just to find out how to get this seemingly basic information. This is a small post on some additional resources you have for getting this information.</p>
 <h2 id="the-api">The API</h2>
-<p>Before diving into this post it would be wise to first give <strong><a href="https://Kubernetes.io/docs/concepts/overview/Kubernetes-api/">this concepts guide</a></strong> on the Kubernetes API a once over. It describes how the Kubernetes API is defined.</p>
+<p>Before diving into this post it would be wise to first give <strong><a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/">this concepts guide</a></strong> on the Kubernetes API a once over. It describes how the Kubernetes API is defined.</p>
 <p>If you are already prolific at reading swagger definition files, then you can simply go to the Kubernetes version you wish to look up, and parse that (See References at the end of this article).</p>
 <p>The quick rundown of the API is that it is broken down into a handful of resource categories which contain resource objects which then provide specific API driven operations. I put them into a table for your convenience.</p>
 <table>
@@ -188,9 +188,9 @@ kubectl api-resources --namespaced<span style="color:#f92672">=</span>false
 <p><strong>NOTE:</strong> The Kubernetes API also has a notion of &lsquo;groups&rsquo; which is discussed in quite a bit more detail <a href="https://github.com/Kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md">here</a>. The categories mentioned above are not related to the above API groups.</p>
 </blockquote>
 <h2 id="finding-resources">Finding Resources</h2>
-<p>Finding available Kubernetes resources is relatively easy to do against a running cluster. But what about for an arbitrary version of Kubernetes? The swagger definition for a released version of Kuberentes is easy enough to find and even read but it also uses references which can lead you down a rabbit hole of paths even for the simplest resources. Luckily enough for us someone has already run into this particular issue and <strong><a href="https://github.com/instrumenta/Kubernetes-json-schema">put a project out there</a></strong> to make working with the Kuberentes schema easier. This is done by normalizing the swagger API definition into <strong><a href="http://json-schema.org/">JSON Schema</a></strong>.</p>
-<p>The service offers a handful of options for pulling the JSON schema for individual elements. There is a standalone version which dereferences the schema to put all resource elements in one spot. This is what I&rsquo;ve been using and it works very well.</p>
-<p>For instance, if you want to view the Service object for Kuberentes 1.18.1, in full, just go to <strong><a href="https://Kubernetesjsonschema.dev/v1.18.1-standalone/service-v1.json">https://Kubernetesjsonschema.dev/v1.18.1-standalone/service-v1.json</a></strong> in your browser. In any modern browser the JSON payload will be easy to browse without much extra effort.</p>
+<p>Finding available Kubernetes resources is relatively easy to do against a running cluster. But what about for an arbitrary version of Kubernetes? The swagger definition for a released version of Kuberentes is easy enough to find and even read but it also uses references which can lead you down a rabbit hole of paths even for the simplest resources. Luckily enough for us someone has already run into this particular issue and <strong><a href="https://github.com/instrumenta/kubernetes-json-schema">put a project out there</a></strong> to make working with the Kuberentes schema easier. This is done by normalizing the swagger API definition into <strong><a href="http://json-schema.org/">JSON Schema</a></strong>.</p>
+<p>The service offers a handful of options for pulling the JSON schema for individual elements. There is a standalone version which de-references the schema to put all resource elements in one spot. This is what I&rsquo;ve been using and it works very well.</p>
+<p>For instance, if you want to view the Service object for Kuberentes 1.18.1, in full, just go to <strong><a href="https://kubernetesjsonschema.dev/v1.18.1-standalone/service-v1.json">https://kubernetesjsonschema.dev/v1.18.1-standalone/service-v1.json</a></strong> in your browser. In any modern browser the JSON payload will be easy to browse without much extra effort.</p>
 <p><img src="/images/kubernetes-finding-api-specs-1.jpg" alt=""></p>
 <h2 id="answering-the-questions">Answering The Questions</h2>
 <p>This post asked two questions. One of them is; Can you list out all the api versions for the autoscaling resources you can use on your cluster? This one is the easiest to answer. Use <code>kubectl api-versions</code></p>
@@ -214,10 +214,10 @@ curl --retry <span style="color:#ae81ff">3</span> --retry-delay <span style="col
 </code></pre></div><h2 id="additional-resources">Additional Resources</h2>
 <p>There are a many resources available on this topic. Here are a few that I found most valuable.</p>
 <ul>
-<li><a href="https://Kubernetes.io/docs">Kubernetes Core Documentation</a></li>
-<li><a href="https://Kubernetes.io/docs/reference/generated/Kubernetes-api/v1.18/#-strong-api-overview-strong-">Kubernetes Generated API Documentation</a></li>
-<li><a href="https://raw.githubusercontent.com/Kubernetes/Kubernetes/master/api/openapi-spec/swagger.json">Kubernetes Swagger JSON (current)</a></li>
-<li><a href="https://Kubernetesjsonschema.dev">JSON Created Schema</a></li>
+<li><a href="https://kubernetes.io/docs">Kubernetes Core Documentation</a></li>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#-strong-api-overview-strong-">Kubernetes Generated API Documentation</a></li>
+<li><a href="https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json">Kubernetes Swagger JSON (current)</a></li>
+<li><a href="https://kubernetesjsonschema.dev">JSON Created Schema</a></li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>The Kuberentes API is an ever changing multi-headed hydra but since it has a well defined schema intrepid developers and hackers have come up with good helper interfaces for getting information out of it more effectively.</p>
