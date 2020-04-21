@@ -1,0 +1,483 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.68.3" />
+        <title> Kubernetes API Specs | Zachary Loeber</title>
+        <meta name="description" content="Kubernetes API Specs - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Kubernetes API Specs">
+        <meta itemprop="description" content="Kubernetes API Specs - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Kubernetes API Specs">
+        <meta property="og:description" content="Kubernetes API Specs - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/banners/banner-cloud-puzzle-750x188.jpg">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-api-specs/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/2020/04/kubernetes-api-specs/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/2020/04/kubernetes-api-specs/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-api-specs/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-api-specs/">
+            <img src="/images/banners/banner-cloud-puzzle-750x188.jpg" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-api-specs/">Kubernetes API Specs</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-04-16</span>
+            
+        
+
+        
+            <span class="readingTime">5 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/kubernetes">Kubernetes</a>
+                
+                    <a href="/categories/api">API</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Can you quickly list out all the available pod security policy attributes on Kubernetes? How about listing the autoscaling apiVersions along with thier spec attributes?</p>
+<h2 id="introduction">Introduction</h2>
+<p>If you are authoring any form of declarative manifest for configuring a Kubernetes cluster once it is running these tasks are not uncommon. But with each version of Kubernetes a new API schema is born. What may have worked only a year ago is on the road to depreciation or worse, already depreciated.</p>
+<p>I found the simple task of getting API versions for resources to be both straightforward to perform but still oddly difficult to consume. It took digging through arcane <strong><a href="https://raw.githubusercontent.com/Kubernetes/Kubernetes/master/api/openapi-spec/swagger.json">swagger specifications</a></strong> and weird tools just to find out how to get this seemingly basic information. This is a small post on some additional resources you have for getting this information.</p>
+<h2 id="the-api">The API</h2>
+<p>Before diving into this post it would be wise to first give <strong><a href="https://Kubernetes.io/docs/concepts/overview/Kubernetes-api/">this concepts guide</a></strong> on the Kubernetes API a once over. It describes how the Kubernetes API is defined.</p>
+<p>If you are already prolific at reading swagger definition files, then you can simply go to the Kubernetes version you wish to look up, and parse that (See References at the end of this article).</p>
+<p>The quick rundown of the API is that it is broken down into a handful of resource categories which contain resource objects which then provide specific API driven operations. I put them into a table for your convenience.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Scope</th>
+<th>Example Resource Objects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workloads</td>
+<td>Namespace</td>
+<td>Job, Pod, Deployment, Container, StatefulSet</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>Namespace</td>
+<td>Endpoint, Ingress, Service</td>
+</tr>
+<tr>
+<td>Config &amp; Storage</td>
+<td>Namespace &amp; Cluster</td>
+<td>ConfigMap, Secret, StorageClass, PersistentVolumeClaim</td>
+</tr>
+<tr>
+<td>Cluster</td>
+<td>Namespace &amp; Cluster</td>
+<td>ClusterRole, ClusterRoleBinding, Node, Namespace, NetworkPolicy</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>Cluster</td>
+<td>HorizontalPodAutoscaler, Event, PodTemplate, PodSecurityPolicy, MutatingWebhookConfiguration, CustomResourceDefinition</td>
+</tr>
+</tbody>
+</table>
+<p>I was tempted to remove the &ldquo;scope&rdquo; column in this table as there is not a clear cut line between these groupings and the scope of their resources. There <strong>IS</strong> a general scope of namespaced vs. non-namespaced (non-namespaced =~ cluster level) at a per-resource level though and these scope approximations. The <code>kubectl api-resources</code> command even has a flag appropriately named <code>--namespaced</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># View all available resources which are not &#39;namespaced&#39;</span>
+kubectl api-resources --namespaced<span style="color:#f92672">=</span>false
+</code></pre></div><blockquote>
+<p><strong>NOTE:</strong> The Kubernetes API also has a notion of &lsquo;groups&rsquo; which is discussed in quite a bit more detail <a href="https://github.com/Kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md">here</a>. The categories mentioned above are not related to the above API groups.</p>
+</blockquote>
+<h2 id="finding-resources">Finding Resources</h2>
+<p>Finding available Kubernetes resources is relatively easy to do against a running cluster. But what about for an arbitrary version of Kubernetes? The swagger definition for a released version of Kuberentes is easy enough to find and even read but it also uses references which can lead you down a rabbit hole of paths even for the simplest resources. Luckily enough for us someone has already run into this particular issue and <strong><a href="https://github.com/instrumenta/Kubernetes-json-schema">put a project out there</a></strong> to make working with the Kuberentes schema easier. This is done by normalizing the swagger API definition into <strong><a href="http://json-schema.org/">JSON Schema</a></strong>.</p>
+<p>The service offers a handful of options for pulling the JSON schema for individual elements. There is a standalone version which dereferences the schema to put all resource elements in one spot. This is what I&rsquo;ve been using and it works very well.</p>
+<p>For instance, if you want to view the Service object for Kuberentes 1.18.1, in full, just go to <strong><a href="https://Kubernetesjsonschema.dev/v1.18.1-standalone/service-v1.json">https://Kubernetesjsonschema.dev/v1.18.1-standalone/service-v1.json</a></strong> in your browser. In any modern browser the JSON payload will be easy to browse without much extra effort.</p>
+<p><img src="/images/kubernetes-finding-api-specs-1.jpg" alt=""></p>
+<h2 id="answering-the-questions">Answering The Questions</h2>
+<p>This post asked two questions. One of them is; Can you list out all the api versions for the autoscaling resources you can use on your cluster? This one is the easiest to answer. Use <code>kubectl api-versions</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl api-versions | grep autoscaling 
+</code></pre></div><p><img src="/images/kubernetes-finding-api-specs-2.jpg" alt=""></p>
+<p>Why is this important? Because the difference between these three resources really determine how you will be able to autoscale your resources. Also, that only shows the version available for the resource at a generic level which is only a small part of how you might author a manifest. Lets take it further.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl api-resources | grep autoscaling
+</code></pre></div><p><img src="/images/kubernetes-finding-api-specs-3.jpg" alt=""></p>
+<p>This tells us that the kind of resource we can use this against is the horizontalpodautoscaler. Let&rsquo;s use this and the prior resource to get its definition so we can try to create one of these things using the most recent version found for our cluster (v2beta2). <strong><a href="https://github.com/instrumenta/kubernetes-json-schema/blob/master/v1.18.0-standalone/horizontalpodautoscaler-autoscaling-v2beta2.json">horizontalpodautoscaler-autoscaling-v2beta2 on Kubernetes 18.0</a></strong></p>
+<blockquote>
+<p><strong>NOTE:</strong> Need to get your Kubernetes version? <code>kubectl get nodes</code> should show ya that one.</p>
+</blockquote>
+<p>We can also simply pull in the resource from their repo in raw JSON format. This generic script to download the JSON schema. Use any number of open source tools to convert to yaml or markdown if that suits your fancy.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">KUBEVER<span style="color:#f92672">=</span>1.18.0
+KIND<span style="color:#f92672">=</span>horizontalpodautoscaler
+RESOURCE<span style="color:#f92672">=</span>autoscaling
+RESOURCEVERSION<span style="color:#f92672">=</span>v2beta2
+
+tempdir<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>mktemp -d<span style="color:#e6db74">`</span>
+curl --retry <span style="color:#ae81ff">3</span> --retry-delay <span style="color:#ae81ff">5</span> --fail -sSL -o <span style="color:#e6db74">${</span>tempdir<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>KIND<span style="color:#e6db74">}</span>-<span style="color:#e6db74">${</span>RESOURCE<span style="color:#e6db74">}</span>-<span style="color:#e6db74">${</span>RESOURCEVERSION<span style="color:#e6db74">}</span>.schema.json https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v<span style="color:#e6db74">${</span>KUBEVER<span style="color:#e6db74">}</span>-standalone/<span style="color:#e6db74">${</span>KIND<span style="color:#e6db74">}</span>-<span style="color:#e6db74">${</span>RESOURCE<span style="color:#e6db74">}</span>-<span style="color:#e6db74">${</span>RESOURCEVERSION<span style="color:#e6db74">}</span>.json
+</code></pre></div><h2 id="additional-resources">Additional Resources</h2>
+<p>There are a many resources available on this topic. Here are a few that I found most valuable.</p>
+<ul>
+<li><a href="https://Kubernetes.io/docs">Kubernetes Core Documentation</a></li>
+<li><a href="https://Kubernetes.io/docs/reference/generated/Kubernetes-api/v1.18/#-strong-api-overview-strong-">Kubernetes Generated API Documentation</a></li>
+<li><a href="https://raw.githubusercontent.com/Kubernetes/Kubernetes/master/api/openapi-spec/swagger.json">Kubernetes Swagger JSON (current)</a></li>
+<li><a href="https://Kubernetesjsonschema.dev">JSON Created Schema</a></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>The Kuberentes API is an ever changing multi-headed hydra but since it has a well defined schema intrepid developers and hackers have come up with good helper interfaces for getting information out of it more effectively.</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/kubernetes">Kubernetes</a>
+                
+                <a href="/tags/api">API</a>
+                
+                <a href="/tags/devops">DevOps</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/kubernetes-api-specs\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/kubernetes-api-specs\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/kubernetes-api-specs\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/">Libvirt Terraform Kubernetes Lab</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-api-specs/">Kubernetes API Specs</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">DevOps Patterns</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/exchange">Exchange (38)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>

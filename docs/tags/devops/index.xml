@@ -5,10 +5,28 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
     <description>Recent content in DevOps on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 13 Apr 2020 11:33:38 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 10:22:48 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Libvirt Terraform Kubernetes Lab</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/</link>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/</guid>
+      <description>&lt;p&gt;I found out that it is relatively easy to setup a local Kubernetes cluster in Linux using terraform and the libvirt provider.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes API Specs</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-api-specs/</link>
+      <pubDate>Thu, 16 Apr 2020 10:47:59 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-api-specs/</guid>
+      <description>&lt;p&gt;Can you quickly list out all the available pod security policy attributes on Kubernetes? How about listing the autoscaling apiVersions along with thier spec attributes?&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>DevOps Patterns</title>

@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 13 Apr 2020 11:33:38 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 10:22:48 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +13,7 @@
     <item>
       <title>DevOps</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
-      <pubDate>Mon, 13 Apr 2020 11:33:38 -0600</pubDate>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
       <description></description>
@@ -22,9 +22,45 @@
     <item>
       <title>Kubernetes</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
-      <pubDate>Mon, 13 Apr 2020 11:33:38 -0600</pubDate>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>libvirt</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/libvirt/</link>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/libvirt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>qemu</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/qemu/</link>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/qemu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>terraform</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/terraform/</link>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>API</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/api/</link>
+      <pubDate>Thu, 16 Apr 2020 10:47:59 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/api/</guid>
       <description></description>
     </item>
     
@@ -34,15 +70,6 @@
       <pubDate>Mon, 13 Apr 2020 11:33:38 -0600</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/pipeline/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>terraform</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/terraform/</link>
-      <pubDate>Thu, 02 Apr 2020 12:31:40 -0500</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/terraform/</guid>
       <description></description>
     </item>
     

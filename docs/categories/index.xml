@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/categories/</link>
     <description>Recent content in Categories on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 13 Apr 2020 11:33:38 -0600</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 10:22:48 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +13,7 @@
     <item>
       <title>DevOps</title>
       <link>https://zacharyloeber-dev.onrender.com/categories/devops/</link>
-      <pubDate>Mon, 13 Apr 2020 11:33:38 -0600</pubDate>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/categories/devops/</guid>
       <description></description>
@@ -22,9 +22,27 @@
     <item>
       <title>Kubernetes</title>
       <link>https://zacharyloeber-dev.onrender.com/categories/kubernetes/</link>
-      <pubDate>Mon, 13 Apr 2020 11:33:38 -0600</pubDate>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>terraform</title>
+      <link>https://zacharyloeber-dev.onrender.com/categories/terraform/</link>
+      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/categories/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>API</title>
+      <link>https://zacharyloeber-dev.onrender.com/categories/api/</link>
+      <pubDate>Thu, 16 Apr 2020 10:47:59 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/categories/api/</guid>
       <description></description>
     </item>
     

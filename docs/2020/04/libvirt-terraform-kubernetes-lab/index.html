@@ -1,0 +1,523 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.68.3" />
+        <title> Libvirt Terraform Kubernetes Lab | Zachary Loeber</title>
+        <meta name="description" content="Libvirt Terraform Kubernetes Lab - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="Libvirt Terraform Kubernetes Lab">
+        <meta itemprop="description" content="Libvirt Terraform Kubernetes Lab - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="Libvirt Terraform Kubernetes Lab">
+        <meta property="og:description" content="Libvirt Terraform Kubernetes Lab - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/banners/banner-clutch-in-car-750x250.jpg">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/2020/04/libvirt-terraform-kubernetes-lab/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/2020/04/libvirt-terraform-kubernetes-lab/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/">
+            <img src="/images/banners/banner-clutch-in-car-750x250.jpg" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/">Libvirt Terraform Kubernetes Lab</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-04-20</span>
+            
+        
+
+        
+            <span class="readingTime">6 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/devops">devops</a>
+                
+                    <a href="/categories/terraform">terraform</a>
+                
+                    <a href="/categories/kubernetes">Kubernetes</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>I found out that it is relatively easy to setup a local Kubernetes cluster in Linux using terraform and the libvirt provider.</p>
+<h2 id="introduction">Introduction</h2>
+<p>I&rsquo;ve been a long time user of VirtualBox and before that, VMware Workstation. Using VirtualBox with vagrant is like the docker for VMs and provides a dead simple way to get a quick system up and running. In fact, for a long time I used vagrant to run an ubuntu instance via WSL on Windows all day long. Of course realizing how weirdly futile that effort was I finally just shifted over to using Linux as my daily driver.</p>
+<p>Over time, I&rsquo;ve come to distrust VirtualBox&rsquo;s longevity in the community and have been slowly phasing it out of my preferred local solutions. Aside from the fact that it seems that there is a bug or issue with every version I use, VirtualBox is also backed by Oracle which has not always been a great open source champion. As such, I&rsquo;ve been slowly shifting to using KVM or QEMU which are fully community owned and driven.</p>
+<p>When you start to look into the path less traveled for localized virtualization one thing that makes life easier is a common management interface. This is where libvirt comes in to save the day. Using libvirt you can manage storage pools, virtual instances, networks and more using a common interface. And now I&rsquo;ve recently discovered a very nice community terraform provider for libvirt. This has me now looking at using, of all things, QEMU to create and deploy a local Kubernetes lab. It seems crazy but the ability to use terraform to spin up a multiple VM deployment locally is pretty handy.</p>
+<h2 id="the-lab">The Lab</h2>
+<p>This lab consists of 3 virtual machines with the following names and specifications:</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>vCPUS</th>
+<th>RAM</th>
+<th>Disk</th>
+<th>IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k8s-master</td>
+<td>2</td>
+<td>4GB</td>
+<td>40GB</td>
+<td>172.16.1.11/24</td>
+</tr>
+<tr>
+<td>k8s-worker-1</td>
+<td>2</td>
+<td>2GB</td>
+<td>40GB</td>
+<td>172.16.1.21/24</td>
+</tr>
+<tr>
+<td>k8s-worker-2</td>
+<td>2</td>
+<td>2GB</td>
+<td>40GB</td>
+<td>172.16.1.22/24</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-it-works">How it Works</h2>
+<p>The terraform is pretty simple actually. But what it does is pull down a cloud provider ubuntu image, then use it to spin up 3 virtual machines. I added a few additional complexities to this for portability though. One item that is worth noting is that we specify a special storage pool that needs to be in place beforehand. This allows us to run the lab in a self-contained manner so that the large volumes are not all running from your root volume somewhere. We also create a per-deployment set of ssh keys and pull down xpanes (for multiplexing your commands to all nodes at once).</p>
+<p>These tasks are all done automatically with the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create storage, pull down all dependencies, and</span> 
+make deps
+</code></pre></div><h2 id="usage">Usage</h2>
+<p>Here are a few simple commands you can use to start using this lab environment. This brings up three nodes, 1 being a master, 2 being workers.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If all the dependencies are in place then initialize, plan, and apply the terraform manifest to bring things up.</span>
+make init plan create
+
+<span style="color:#75715e"># Destroy just as easily.</span>
+make destroy
+
+<span style="color:#75715e"># Access the master node</span>
+make ssh-master
+
+<span style="color:#75715e"># or the worker nodes</span>
+make ssh-worker1
+make ssh-worker2
+
+<span style="color:#75715e"># or all the nodes at once with synchronized input</span>
+make ssh-all
+exit
+exit
+</code></pre></div><blockquote>
+<p><strong>NOTE:</strong> This is only 3 nodes, not 6 as Kubernetes the Hard Way would have you construct. It should be a fun task for the reader to modify this Terraform to deploy 3 master nodes and 3 worker nodes (assuming you have the resources!). No better way to learn Terraform than by doing right!</p>
+</blockquote>
+<figure>
+    <img src="/images/libvirt-terraform-lab-xpanes.jpg"
+         alt="Three Ubuntu nodes ready for your wizardry"/> <figcaption>
+            <p>Three Ubuntu nodes ready for your wizardry</p>
+        </figcaption>
+</figure>
+
+<h2 id="lab-up">Lab Up!</h2>
+<p>I&rsquo;ve rejiggered my dotfile automation scripts to include a minimal deployment that will allow you to quickly grab several required tools for <strong><a href="https://github.com/kelseyhightower/Kubernetes-the-hard-way">Kelsey Hightower&rsquo;s &ldquo;Kubernetes the Hard Way&rdquo; Guide</a></strong>. The excellent console session management app, tmux, can be used to send commands to several ssh sessions simultaneously. I&rsquo;ve included the tmux xpanes wrapper to do the hard work for us on this front.</p>
+<p>You should have the lab environment up and running already. Here we will get all the most recent versions of <strong><a href="https://github.com/kelseyhightower/Kubernetes-the-hard-way/blob/master/docs/02-client-tools.md">the client tools</a></strong> to build out the PKI for your cluster.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Login to all nodes</span>
+make ssh-all
+
+<span style="color:#75715e"># Clone my dotfiles repo then deploy a minimal install (press enter when prompted)</span>
+git clone https://github.com/zloeber/dotfiles.git
+cd dotfiles
+./bootstrap-minimal.sh
+exit
+
+make ssh-all
+
+<span style="color:#75715e"># The shell should now have a &#39;githubapp&#39; command you can use to grab a ton of single binary installers and drop them right in your ~/.local/bin path. Sweet! We use this to install the base requirements for setting up the ssl certs and the kubectl required for the current CKA exam cluster version.</span>
+
+githubapp install cfssl
+githubapp install cfssljson
+githubapp install kubectl-1.17
+exit
+</code></pre></div><p>This is just an example of where you might get started. If you are doing per-node work you can also start xpanes in desync mode.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make ssh-all-desync
+</code></pre></div><p>Change to the individual nodes using <code>ctrl+a</code> then press <code>o</code>. A list of tmux bindings and tips <strong><a href="https://gist.github.com/MohamedAlaa/2961058">can be found here</a></strong></p>
+<h2 id="parrot-approved">Parrot Approved</h2>
+<p>If you followed up to this point and things are working well then good for you! Here is a parrot bobbing its head in approval on all your nodes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make ssh-all
+githubapp auto jmhobbs/terminal-parrot
+terminal-parrot
+</code></pre></div><figure>
+    <img src="/images/libvirt-terraform-lab-parrot.jpg"
+         alt="Parrot approved"/> <figcaption>
+            <p>Parrot approved</p>
+        </figcaption>
+</figure>
+
+<p>Press <code>etc</code> to exit the party.</p>
+<h2 id="nuances">Nuances</h2>
+<p>This is not the cloud we are dealing with here so we simply keep the state local. You also should really not just reboot your machine with things running, the provider gets confused as the network likes to not come back as active afterwards and a bunch of state elements get left in limbo. You can clean most of this up using the included makefile then rebuilding the VMS out again.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make libvirt/clean clean
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>This is technically just a fast spin up of 3 virtual machines to begin your studies against. But the whole thing deploys in under a few minutes, uses terraform, and can be run on your local machine if you have the specs for it. It should make for a good stand-in alternative for a physical cluster running at home on some raspberry pis.</p>
+<p>Next step, going through <strong><a href="https://github.com/kelseyhightower/Kubernetes-the-hard-way">Kubernetes the Hard Way</a>!</strong> and modifying it to your new home lab.</p>
+<p>It should be noted that this is entirely inspired by the terraform I found in <strong><a href="https://github.com/alijahnas/CKA-practice-exercises">this excellent CKA study guide</a></strong>. There are several exercises and relevant links you can find here that will help in your studies.</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/devops">devops</a>
+                
+                <a href="/tags/terraform">terraform</a>
+                
+                <a href="/tags/kubernetes">Kubernetes</a>
+                
+                <a href="/tags/libvirt">libvirt</a>
+                
+                <a href="/tags/qemu">qemu</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/libvirt-terraform-kubernetes-lab\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/libvirt-terraform-kubernetes-lab\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/04\/libvirt-terraform-kubernetes-lab\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/">Libvirt Terraform Kubernetes Lab</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-api-specs/">Kubernetes API Specs</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/devops-patterns/">DevOps Patterns</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/exchange">Exchange (38)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>
