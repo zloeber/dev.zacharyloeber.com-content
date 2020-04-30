@@ -5,10 +5,28 @@
     <link>https://zacharyloeber-dev.onrender.com/categories/devops/</link>
     <description>Recent content in DevOps on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Apr 2020 10:22:48 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 29 Apr 2020 13:55:09 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/devops/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Artifact Types</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/artifact-types/</link>
+      <pubDate>Wed, 29 Apr 2020 13:55:09 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/artifact-types/</guid>
+      <description>&lt;p&gt;A build pipeline&amp;rsquo;s job is to create immutable artifacts. The type of artifact you build is highly dependant upon what purpose it serves. This article will go over types of artifacts found in various DevOps pipelines.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Ephemeral Containers</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-ephemeral-containers/</link>
+      <pubDate>Mon, 27 Apr 2020 14:15:03 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-ephemeral-containers/</guid>
+      <description>&lt;p&gt;Some short blurb&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Libvirt Terraform Kubernetes Lab</title>

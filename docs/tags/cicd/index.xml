@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cicd on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/tags/cicd/</link>
+    <description>Recent content in cicd on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 29 Apr 2020 13:55:09 -0500</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/cicd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Artifact Types</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/04/artifact-types/</link>
+      <pubDate>Wed, 29 Apr 2020 13:55:09 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/04/artifact-types/</guid>
+      <description>&lt;p&gt;A build pipeline&amp;rsquo;s job is to create immutable artifacts. The type of artifact you build is highly dependant upon what purpose it serves. This article will go over types of artifacts found in various DevOps pipelines.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
