@@ -118,7 +118,7 @@
         
 
         
-            <span class="readingTime">8 min read</span>
+            <span class="readingTime">9 min read</span>
         
 
         
@@ -235,6 +235,7 @@ unset PROFILE KUBECONFIG
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make deps cluster/start istio/deploy helmfile/sync istio/start/dnsforward STACK<span style="color:#f92672">=</span>bookinfo PROFILE<span style="color:#f92672">=</span>istio-k3d
 </code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>That was fun right? In the next article I&rsquo;ll cover more in depth how we can turn that raw helm chart mess into a usable part of an archtype helm chart so that we can deploy and test multiple ingress controllers and expose resources using the same set of base definitions.</p>
+<p>Just as I was finishing this article I ran across <strong><a href="https://www.syncfusion.com/ebooks/confirmation/istio-succinctly">this excellent free ebook</a></strong> that dives into the various components of Istio. I highly recommend grabbing it and giving it a once over as well. Then with that knowledge and this little project, setting up additional components like citedel and galley should be trivial.</p>
     
 </div>
 
