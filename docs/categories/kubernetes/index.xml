@@ -5,10 +5,29 @@
     <link>https://zacharyloeber-dev.onrender.com/categories/kubernetes/</link>
     <description>Recent content in Kubernetes on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Apr 2020 10:22:48 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2020 09:59:02 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Istio Rabbithole</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/</link>
+      <pubDate>Wed, 06 May 2020 09:59:02 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/</guid>
+      <description>&lt;p&gt;Istio can be overwhelmingly complex but using the istio operator, helmfile, and local kubernetes in docker clusters, we can simplify the learning journey.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The Raw Helm Chart</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/</link>
+      <pubDate>Fri, 01 May 2020 16:02:15 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/</guid>
+      <description>&lt;h1 id=&#34;devops-the-raw-helm-chart&#34;&gt;DevOps: The Raw Helm Chart&lt;/h1&gt;
+&lt;p&gt;The raw helm chart is designed to glue raw kubernetes configuration elements into the application deployment stack. This can be one way to put lifecycle around your cluster configuration and its super handy to have in your toolbelt.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Libvirt Terraform Kubernetes Lab</title>

@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 29 Apr 2020 13:55:09 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2020 09:59:02 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,34 @@
       <description>I am IT enthusiast with almost decades of experience. I cut my teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
 I&amp;rsquo;m agnostic when it comes to technology but have strong interest in:
  Cloud Architecture DevOps Kubernetes Docker Go Terraform Security Networking System Administration Linux Automation  Some of my other interests include camping, self-improvement, and being a good husband and father.</description>
+    </item>
+    
+    <item>
+      <title>The Istio Rabbithole</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/</link>
+      <pubDate>Wed, 06 May 2020 09:59:02 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/</guid>
+      <description>&lt;p&gt;Istio can be overwhelmingly complex but using the istio operator, helmfile, and local kubernetes in docker clusters, we can simplify the learning journey.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Clearing Finalizers</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-clearing-finalizers/</link>
+      <pubDate>Fri, 01 May 2020 20:13:58 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-clearing-finalizers/</guid>
+      <description>&lt;p&gt;Kubernetes has special annotations called finalizers. These can be super handy or ruin your day. Lets discuss what these are and what they do.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The Raw Helm Chart</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/</link>
+      <pubDate>Fri, 01 May 2020 16:02:15 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/</guid>
+      <description>&lt;h1 id=&#34;devops-the-raw-helm-chart&#34;&gt;DevOps: The Raw Helm Chart&lt;/h1&gt;
+&lt;p&gt;The raw helm chart is designed to glue raw kubernetes configuration elements into the application deployment stack. This can be one way to put lifecycle around your cluster configuration and its super handy to have in your toolbelt.&lt;/p&gt;</description>
     </item>
     
     <item>

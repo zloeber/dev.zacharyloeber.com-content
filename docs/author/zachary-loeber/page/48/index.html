@@ -95,7 +95,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/02/21/active-directory-role-based-access-modeling/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -103,16 +103,16 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/">Outlook 2010: Photo Sizing Tool</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/21/active-directory-role-based-access-modeling/">Active Directory: Role Based Access Modeling</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2011-02-01</span>
+                <span class="date moment">2011-02-22</span>
             
         
 
         
-            <span class="readingTime">2 min read</span>
+            <span class="readingTime">10 min read</span>
         
 
         
@@ -120,11 +120,11 @@
                 
                     <a href="/categories/active-directory">Active Directory</a>
                 
-                    <a href="/categories/exchange">Exchange</a>
-                
                     <a href="/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/security">Security</a>
                 
                     <a href="/categories/system-administration">System Administration</a>
                 
@@ -137,10 +137,10 @@
     </div>
 
     
-        <p>We are about to get into full swing with our Exchange 2010 mailbox migrations and, soon afterwards, Office 2007 to 2010 upgrades as well. Unfortunately, we don’t have our Sharepoint farm upgraded to 2010 yet so there will be no automatic syncing of user photos into the GAL for those nice vanity pics which you can view in Outlook 2010. I know people like to be seen so I found a nice <!-- raw HTML omitted -->powershell based GUI <!-- raw HTML omitted -->for our (awesome) service desk team to use to upload these photos for users as requested. But you still have to get these photos thumbnailed to approximately 96×96 before uploading. Repeated manual labor is the anathema of any self respecting sysadmin who knows how to hack other people’s code to suit their needs. So I whipped up a very dirty (as in, “wow, get the bar of soap” dirty) hack which combines <!-- raw HTML omitted -->this person’s clever photo-sizing hack<!-- raw HTML omitted --> with the prior mentioned gui.</p>
+        <p>Much of my time is spend delving into the minutia of a particular technology to resolve issues or improve department processes. But sometimes understanding and implementing a technology is not the best “fix” for an issue. Sometimes it is a mindset or a model that needs to change. I came up with this security grouping model to address some of the pains of managing permissions across large groups of systems in our environment. Ok, I modified a long standing Microsoft recommendation of <a href="http://en.wikipedia.org/wiki/AGDLP">AGDLP (an abbreviation of “account, global, domain local, permission”)</a> to meet our needs. Regardless here is a quick rundown of this security group model I devised if anyone is interested.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/01/outlook-2010-photo-sizing-tool/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/21/active-directory-role-based-access-modeling/" class="more">Continue reading</a>
         
     
 </div>
@@ -156,9 +156,9 @@
                 
                 <a href="/tags/active-directory">Active Directory</a>
                 
-                <a href="/tags/exchange-2010">Exchange 2010</a>
+                <a href="/tags/microsoft">Microsoft</a>
                 
-                <a href="/tags/powershell">Powershell</a>
+                <a href="/tags/security">Security</a>
                 
                 <a href="/tags/system-administration">System Administration</a>
                 
@@ -230,21 +230,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/01\/outlook-2010-photo-sizing-tool\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/active-directory-role-based-access-modeling\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/01\/outlook-2010-photo-sizing-tool\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/active-directory-role-based-access-modeling\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/01\/outlook-2010-photo-sizing-tool\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/active-directory-role-based-access-modeling\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -259,7 +259,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/02/21/funny-microsoft-goes-chick-flick/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -267,11 +267,11 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/">ESX &#43; MSCS 2008 R2 &#43; SQL Server 2008</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/21/funny-microsoft-goes-chick-flick/">Funny: Microsoft Goes Chick-Flick</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2011-01-26</span>
+                <span class="date moment">2011-02-22</span>
             
         
 
@@ -284,13 +284,7 @@
                 
                     <a href="/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/mscs">MSCS</a>
-                
-                    <a href="/categories/system-administration">System Administration</a>
-                
-                    <a href="/categories/virtualization">Virtualization</a>
-                
-                    <a href="/categories/vmware">VMware</a>
+                    <a href="/categories/other">Other</a>
                 
             </span>
         
@@ -301,20 +295,29 @@
     </div>
 
     
-        Just a quick note on this little combo. Should you be looking to setup a windows 2008 R2 cluster in a virtual environment (details on specific vmware configuration left to the reader) here are some quick notes that I have on some caveats.
-1.) Either keep vmware tools un-uninstalled or make certain not to install the Shared Folder component of vmware tools.
-2.) Don’t clone the second node from the first using vmware.
+        My wife saw this on my laptop screen while we were on a plane trip. She pointed to it, and said “Awwwww!!” as if I were reading a book on relationships rather than a technical pdf going over general SCOM 2007 concepts.
 
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/01/25/esx-mscs-2008-r2-sql-server-2008/" class="more">Continue reading</a>
         
     
 </div>
 
     
-    <div class="footer no-tags">
-        
+<div class="footer">
+    
 
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/funny">Funny</a>
+                
+                <a href="/tags/microsoft">Microsoft</a>
+                
+                <a href="/tags/other">Other</a>
+                
+            </div>
+        </div>
         
 
         
@@ -381,21 +384,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/25\/esx-mscs-2008-r2-sql-server-2008\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/funny-microsoft-goes-chick-flick\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/25\/esx-mscs-2008-r2-sql-server-2008\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/funny-microsoft-goes-chick-flick\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/25\/esx-mscs-2008-r2-sql-server-2008\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/21\/funny-microsoft-goes-chick-flick\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -410,7 +413,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -418,30 +421,32 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/">Exchange: Remove entire OU from address book</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/">Virtual Connect: Cisco MDS 9500 Fiber Connectivity</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2011-01-22</span>
+                <span class="date moment">2011-02-04</span>
             
         
 
         
-            <span class="readingTime">1 min read</span>
+            <span class="readingTime">3 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/active-directory">Active Directory</a>
+                    <a href="/categories/cisco">Cisco</a>
                 
-                    <a href="/categories/exchange">Exchange</a>
+                    <a href="/categories/fiber">Fiber</a>
                 
-                    <a href="/categories/microsoft">Microsoft</a>
+                    <a href="/categories/networking">Networking</a>
+                
+                    <a href="/categories/storage">Storage</a>
                 
                     <a href="/categories/system-administration">System Administration</a>
                 
-                    <a href="/categories/vbscript/hta">vbscript/hta</a>
+                    <a href="/categories/virtual-connect">Virtual Connect</a>
                 
             </span>
         
@@ -452,18 +457,35 @@
     </div>
 
     
-        <p>Here is another script that I hacked together in part of an AD/Exchange cleanup task to remove disabled users from the address book. This script, more specifically, removes an entire OU of users from the address book, so make sure that all the users are disabled in the OU you will be running this against! 🙂</p>
+        <p>I’ve done quite a bit of work with HP’s Virtual Connect  and C7000 blade enclosures in a contained (almost pure HP) environment. Today I ran into an issue which flummoxed both myself and an on-site engineer while attempting to connect the VC 8gb interconnect bays to the Cisco MDS fiber module for an upcoming (and exciting!) VMAX implementation.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/01/22/exchange-remove-entire-ou-from-address-book/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/02/03/virtual-connect-cisco-mds-9500-fiber-connectivity/" class="more">Continue reading</a>
         
     
 </div>
 
     
-    <div class="footer no-tags">
-        
+<div class="footer">
+    
 
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/fiber">Fiber</a>
+                
+                <a href="/tags/networking">Networking</a>
+                
+                <a href="/tags/san">SAN</a>
+                
+                <a href="/tags/system-administration">System Administration</a>
+                
+                <a href="/tags/virtual-connect">Virtual Connect</a>
+                
+            </div>
+        </div>
         
 
         
@@ -530,21 +552,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/22\/exchange-remove-entire-ou-from-address-book\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/03\/virtual-connect-cisco-mds-9500-fiber-connectivity\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/22\/exchange-remove-entire-ou-from-address-book\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/03\/virtual-connect-cisco-mds-9500-fiber-connectivity\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/01\/22\/exchange-remove-entire-ou-from-address-book\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/02\/03\/virtual-connect-cisco-mds-9500-fiber-connectivity\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -583,15 +605,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/artifact-types/">Artifact Types</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/">The Istio Rabbithole</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/kubernetes-ephemeral-containers/">Kubernetes Ephemeral Containers</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/04/libvirt-terraform-kubernetes-lab/">Libvirt Terraform Kubernetes Lab</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/">The Raw Helm Chart</a>
                     </li>
                 
                 </ul>

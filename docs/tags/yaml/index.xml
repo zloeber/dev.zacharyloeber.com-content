@@ -5,10 +5,20 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/yaml/</link>
     <description>Recent content in yaml on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 23 Mar 2020 11:33:38 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2020 16:02:15 -0600</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/yaml/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Raw Helm Chart</title>
+      <link>https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/</link>
+      <pubDate>Fri, 01 May 2020 16:02:15 -0600</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/</guid>
+      <description>&lt;h1 id=&#34;devops-the-raw-helm-chart&#34;&gt;DevOps: The Raw Helm Chart&lt;/h1&gt;
+&lt;p&gt;The raw helm chart is designed to glue raw kubernetes configuration elements into the application deployment stack. This can be one way to put lifecycle around your cluster configuration and its super handy to have in your toolbelt.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Azure Devops Automated Variable Groups</title>

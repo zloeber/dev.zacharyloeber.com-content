@@ -1,0 +1,493 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.68.3" />
+        <title> The Istio Rabbithole | Zachary Loeber</title>
+        <meta name="description" content="The Istio Rabbithole - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="The Istio Rabbithole">
+        <meta itemprop="description" content="The Istio Rabbithole - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="The Istio Rabbithole">
+        <meta property="og:description" content="The Istio Rabbithole - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/banners/banner-virtual-wall-thing-1-720x250.jpg">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/2020/05/the-istio-rabbithole/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/2020/05/the-istio-rabbithole/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">The personal website of Zachary Loeber.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/">
+            <img src="/images/banners/banner-virtual-wall-thing-1-720x250.jpg" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/">The Istio Rabbithole</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-05-06</span>
+            
+        
+
+        
+            <span class="readingTime">8 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/devops">devops</a>
+                
+                    <a href="/categories/kubernetes">kubernetes</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>Istio can be overwhelmingly complex but using the istio operator, helmfile, and local kubernetes in docker clusters, we can simplify the learning journey.</p>
+<h2 id="introduction">Introduction</h2>
+<p>I&rsquo;ve been meaning to dive into Istio for a while now. In a way, it was a purposeful delay of gratification as I knew Istio would be a riotously good learning experience that would be worth spending some time on. Recently I found a reason to install it and was able to vet out some of what it can do. And now that I have, I&rsquo;m glad I waited for the Istio hype-dust to settle. The recent efforts in the project to simplify its complexity via an operator has definitely worked out in my favor.</p>
+<p>In this article I&rsquo;ll go over what I used to plumb the depths of Istio (ok, lets be honest, skim the surface). This article is more about the layout of tooling and framework I created to rapidly vet out new technologies on Kubernetes locally and how you can use it in your own learning journey.</p>
+<h2 id="setting-profiles">Setting Profiles</h2>
+<p>Before starting, I ran into my first real conundrum, which Kubernetes distribution should I use for local testing? As a docker runtime will be the common element across most testing environments I&rsquo;ll be using (Ubuntu, WSL, OSX) I quickly determined that Kubernetes on docker was to be used. Towards this end, I wanted to use either k3d (k3s in docker) or kind (kubernetes in docker). Both are fast, have strong communities, and quite simply rock. And because I want it all, I created a project to use either at will. I call this little scaffolding project <strong><a href="https://github.com/zloeber/CICDHelper">CICDHelper</a></strong> as it is meant to be a starting point for developing solutions locally before transposing them to a CICD pipeline.</p>
+<p>So I broke down the tasks for using k3d or kind into generic commands sourced from individual Makefiles that get loaded based on a single top level profile. The top level profile gets loaded by a single environment variable called <code>PROFILE</code>. I originally was also going to include minikube, libvirt, and vagrant, but it felt like overkill. This hacky plugin system would still allow me to do so if required though!</p>
+<p>For istio testing we may use a profile of <code>/config/istio.env</code> with contents like the following to default to a kind-based cluster.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">KUBE_PROVIDER<span style="color:#f92672">=</span>kind
+KUBE_CLUSTER<span style="color:#f92672">=</span>cicd-istio
+KUBE_VERSION<span style="color:#f92672">=</span>1.18.2
+ENVIRONMENT<span style="color:#f92672">=</span>istio
+ADDITIONAL_TASKSETS<span style="color:#f92672">=</span>istio
+</code></pre></div><p>This tells us that;</p>
+<ul>
+<li>we are using a kind-based 1.18.2 Kubernetes cluster,</li>
+<li>with a name of cicd-istio,</li>
+<li>that uses the helmfile environment of istio and an additional custom taskset for istio specific operations.</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> I purposefully used istio as an example for this article as it is one of the more involved deployments and necessitated a custom taskset. The CICDHelper project started as a simple framework for gluing together various kinds of helm charts into helmfiles and deploying them rapidly to various environments. Most basic scenarios do not require custom tasksets at all.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Set our working profile so we don&#39;t have to pass it to each make command manually</span>
+export PROFILE<span style="color:#f92672">=</span>istio
+
+<span style="color:#75715e"># Download any dependant binaries</span>
+make deps
+
+<span style="color:#75715e"># Start the cluster defined in our profile</span>
+make cluster/start
+</code></pre></div><p>To ensure that your local kubectl profile is pointing to the newly created cluster update your current session&rsquo;s <code>KUBECONFIG</code> env var. I also alias &lsquo;kube&rsquo; to the locally downloaded kubectl binary.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export KUBECONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>make kube/config/file<span style="color:#e6db74">`</span>
+alias kube<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/.local/bin/kubectl
+kube get ns
+</code></pre></div><h2 id="deploying-istio">Deploying Istio</h2>
+<p>Istio can be deployed several different ways. I&rsquo;ve opted to use istioctl to do the deployment of the operator that then consumes a declarative manifest for configuring the istio services (also known as profiles) as that seemed to be the most declarative and straightforward way to get this done. I made minor changes to the default profile to make the deployment more usable for the example bookinfo application and store it in <code>./deploy/istio/profile.yaml</code>. The only real difference in my profile versus the demo profile is that I disabled the egress controller.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install istio operator via istioctl using the ISTIO_PROFILE of demo</span>
+make istio/deploy
+</code></pre></div><h2 id="deploy-bookinfo">Deploy Bookinfo</h2>
+<p>The bookinfo application is an example microservice to deploy into Istio. If you are just learning Istio then you should probably do this part manually and walk through one of the several learning exercises that Istio documentation provides.</p>
+<p>What I&rsquo;ve done is turned the deployment into a single command that uses this framework, helmfile, and the raw helm chart. This is the meat of what I initially set this little framework up to do anyway. Each helmfile can be a combination of several charts and even other helmfiles. As such I like to refer to what gets deployed simply as a <code>STACK</code>. In this case we will deploy the bookinfo stack.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Deploy the bookinfo helmfile for the full deployment along with the gateway and virtualroutes it requires</span>
+make helmfile/sync STACK<span style="color:#f92672">=</span>bookinfo
+</code></pre></div><p>If you want to deploy certmanager, heapster, and the kubernetes dashboard as well the default stack is the cluster name itself and requires no manual definition</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make helmfile/sync
+</code></pre></div><p>You can also quickly start up any dashboard proxies istioctl can find. Kiali is the one most people like to look at and show off (use admin/admin to login):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make istio/dashboard/kiali
+</code></pre></div><h2 id="hurdle---the-loadbalancer">Hurdle - The LoadBalancer</h2>
+<p>When setting up a bare metal Kubernetes cluster there are components that are lacking entirely from your typical cloud based deployments. One in particular is sorely missed, the LoadBalancer resource. Without a loadbalancer we are left with using kubectl proxy commands to access exposed services like peasants! To work around this k3d includes its own implementation of a software loadbalancer and works out of the box. For kind we end up simply deploying MetalLB to the clusters and have it use a range of IPs that should be available and bridged in most docker deployments (172.17.0.x). I&rsquo;ve set it up so that metallb gets installed automatically when running the <code>cluster/start</code> operation when deploying a kind cluster.</p>
+<blockquote>
+<p><strong>NOTE</strong> kind will use the existing bridge docker network. k3s creates its own.</p>
+</blockquote>
+<h2 id="hurdle---dns">Hurdle - DNS</h2>
+<p>The loadbalancer allows us to access the cluster running in docker via IP address easily enough. But we also want to be able to test out real DNS queries and deployment of ingress in a manner which we can float up to a production level deployment in the future. In order to do this, we can manually modify hosts files on our workstations like button-mashers. Or, we can try to manipulate how DNS works on our workstation in craftier ways.</p>
+<p>Many moons ago I once setup <strong><a href="http://thekelleys.org.uk/dnsmasq/doc.html">dnsmasq</a></strong> to forward to specific DNS servers based on the zone being queried and simply set my workstation to use dnsmasq so that I could administer multiple disparate forests at once. I started looking to do this again via a docker image instead and found another excellent project already out there for such DNS trickery called <strong><a href="defreitas/dns-proxy-server">dns-proxy-server</a></strong>.</p>
+<p>It is deceptively simple to use dns-proxy-server as it does not require you to make any system changes manually and suddenly, your resolution for custom domains will just &lsquo;start working&rsquo;. Behind the scenes there is a simple json configuration file that we can use to modify zone and record lookups and when we run the image we are also going to volume mount our resolve.conf file for it to modify so that lookups for our system first flow through the container.</p>
+<p>Here is how you would enable this using CICDHelper.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Start another pod to do dns forwarding of the url for this and the default domain (int.micro.svc) to your cluster loadbalancer</span>
+make istio/start/dnsforward
+</code></pre></div><p>This little line actually does quite a bit. Firstly, we need to have some zone definition to forward requests to and for any future ingress definitions we wish to create. Because I&rsquo;m a fan of helmfile I put this in a helmfile environment definition file within our config path which we scrape using yq early in the script (yq is installed locally via the deps command we already ran).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ifneq <span style="color:#f92672">(</span>,<span style="color:#66d9ef">$(</span>wildcard <span style="color:#66d9ef">$(</span>yq<span style="color:#66d9ef">))</span><span style="color:#f92672">)</span>
+STACK_INGRESS_INTERNALZONE :<span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell <span style="color:#66d9ef">$(</span>yq<span style="color:#66d9ef">)</span> r <span style="color:#66d9ef">$(</span>CONFIG_PATH<span style="color:#66d9ef">)</span>/environment.<span style="color:#66d9ef">$(</span>ENVIRONMENT<span style="color:#66d9ef">)</span>.yaml stacks.ingress.zoneInternal<span style="color:#66d9ef">)</span>
+endif
+</code></pre></div><p>We then modify the default json config file for dns-proxy-server to include the zone name and the IP address that will be used for our DNS entries. I store a parameterized template in <code>deploy/dnsproxy/config.json</code> that we parse and store in a temporary directory via the excellent gomplate tool (also installed locally via the deps command we already ran). This is all done with the following code.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tmpdir<span style="color:#f92672">=</span>$$<span style="color:#f92672">(</span>mktemp -d<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">{tmpdir}&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>export STACK_INGRESS_INTERNALZONE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>STACK_INGRESS_INTERNALZONE<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>export STACK_INGRESS_INTERNALIP<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#66d9ef">$(</span>kubecmd<span style="color:#66d9ef">)</span> -n istio-system get svc istio-ingressgateway -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.status.loadBalancer.ingress[0].ip}&#39;</span><span style="color:#e6db74">`</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="color:#66d9ef">$(</span>gomplate<span style="color:#66d9ef">)</span> --file <span style="color:#66d9ef">$(</span>DEPLOY_PATH<span style="color:#66d9ef">)</span>/dnsproxy/config.json --out <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">{tmpdir}/config.json&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>docker run --rm -d <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --hostname <span style="color:#66d9ef">$(</span>STACK_INGRESS_INTERNALZONE<span style="color:#66d9ef">)</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --name dns-proxy-server <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -p 5380:5380 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -v $$<span style="color:#f92672">{</span>tmpdir<span style="color:#f92672">}</span>:/app/conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -v /var/run/docker.sock:/var/run/docker.sock <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -v /etc/resolv.conf:/etc/resolv.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  defreitas/dns-proxy-server
+@echo <span style="color:#e6db74">&#34;&#34;</span>
+@echo <span style="color:#e6db74">&#34;STACK_INGRESS_INTERNALZONE=</span><span style="color:#66d9ef">$(</span>STACK_INGRESS_INTERNALZONE<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+@echo <span style="color:#e6db74">&#34;View dnsforwarding admin page at: http://localhost:5380&#34;</span>
+</code></pre></div><p>This is done specifically in the istio taskset as it is specific to the ingress deployment Istio creates. Were we to deploy our own ingress controller or do this in production I believe it would be wise to statically set the ingress loadbalancer IP upon creation instead of dynamically sourcing it like this. I welcome correction on this point though.</p>
+<p>In any case, if you have started up the DNS proxy and now visit <a href="http://bookinfo.int.micro.svc/productpage">http://bookinfo.int.micro.svc/productpage</a> the default product page for bookinfo should pop up.</p>
+<h2 id="shutting-it-down">Shutting It Down</h2>
+<p>This is the easiest one to do.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make cluster/stop istio/stop/dnsforward
+unset PROFILE KUBECONFIG
+</code></pre></div><h2 id="starting-it-up-with-k3d">Starting it Up with k3d</h2>
+<p>With all the above setup already, using k3d instead of kind is easy. I&rsquo;ve already created the profile for it in fact.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make deps cluster/start istio/deploy helmfile/sync istio/start/dnsforward STACK<span style="color:#f92672">=</span>bookinfo PROFILE<span style="color:#f92672">=</span>istio-k3d
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>That was fun right? In the next article I&rsquo;ll cover more in depth how we can turn that raw helm chart mess into a usable part of an archtype helm chart so that we can deploy and test multiple ingress controllers and expose resources using the same set of base definitions.</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/devops">devops</a>
+                
+                <a href="/tags/k3d">k3d</a>
+                
+                <a href="/tags/kind">kind</a>
+                
+                <a href="/tags/makefile">makefile</a>
+                
+                <a href="/tags/bash">bash</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/05\/the-istio-rabbithole\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/05\/the-istio-rabbithole\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/05\/the-istio-rabbithole\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/">The Istio Rabbithole</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/">The Raw Helm Chart</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/exchange">Exchange (38)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>

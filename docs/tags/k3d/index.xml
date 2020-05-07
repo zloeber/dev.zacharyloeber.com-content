@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k3d on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/tags/k3d/</link>
+    <description>Recent content in k3d on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 06 May 2020 09:59:02 -0500</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/k3d/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Istio Rabbithole</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/</link>
+      <pubDate>Wed, 06 May 2020 09:59:02 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/</guid>
+      <description>&lt;p&gt;Istio can be overwhelmingly complex but using the istio operator, helmfile, and local kubernetes in docker clusters, we can simplify the learning journey.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
