@@ -180,11 +180,12 @@ make istio/deploy
 <p>What I&rsquo;ve done is turned the deployment into a single command that uses this framework, helmfile, and the raw helm chart. This is the meat of what I initially set this little framework up to do anyway. Each helmfile can be a combination of several charts and even other helmfiles. As such I like to refer to what gets deployed simply as a <code>STACK</code>. In this case we will deploy the bookinfo stack.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Deploy the bookinfo helmfile for the full deployment along with the gateway and virtualroutes it requires</span>
 make helmfile/sync STACK<span style="color:#f92672">=</span>bookinfo
-</code></pre></div><p>If you want to deploy certmanager, heapster, and the kubernetes dashboard as well the default stack is the cluster name itself and requires no manual definition</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make helmfile/sync
+</code></pre></div><p>If you want to deploy additional ingress for kiali:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make helmfile/sync STACK<span style="color:#f92672">=</span>istiodashboards
 </code></pre></div><p>You can also quickly start up any dashboard proxies istioctl can find. Kiali is the one most people like to look at and show off (use admin/admin to login):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make istio/dashboard/kiali
-</code></pre></div><h2 id="hurdle---the-loadbalancer">Hurdle - The LoadBalancer</h2>
+</code></pre></div><p>We will setup dns forwarding with istio ingress to simplify this and eliminate the need for a proxy connection.</p>
+<h2 id="hurdle---the-loadbalancer">Hurdle - The LoadBalancer</h2>
 <p>When setting up a bare metal Kubernetes cluster there are components that are lacking entirely from your typical cloud based deployments. One in particular is sorely missed, the LoadBalancer resource. Without a loadbalancer we are left with using kubectl proxy commands to access exposed services like peasants! To work around this k3d includes its own implementation of a software loadbalancer and works out of the box. For kind we end up simply deploying MetalLB to the clusters and have it use a range of IPs that should be available and bridged in most docker deployments (172.17.0.x). I&rsquo;ve set it up so that metallb gets installed automatically when running the <code>cluster/start</code> operation when deploying a kind cluster.</p>
 <blockquote>
 <p><strong>NOTE</strong> kind will use the existing bridge docker network. k3s creates its own.</p>
@@ -218,6 +219,13 @@ endif
 @echo <span style="color:#e6db74">&#34;View dnsforwarding admin page at: http://localhost:5380&#34;</span>
 </code></pre></div><p>This is done specifically in the istio taskset as it is specific to the ingress deployment Istio creates. Were we to deploy our own ingress controller or do this in production I believe it would be wise to statically set the ingress loadbalancer IP upon creation instead of dynamically sourcing it like this. I welcome correction on this point though.</p>
 <p>In any case, if you have started up the DNS proxy and now visit <a href="http://bookinfo.int.micro.svc/productpage">http://bookinfo.int.micro.svc/productpage</a> the default product page for bookinfo should pop up.</p>
+<figure>
+    <img src="/images/istio-bookinfo-app-graph.jpg"
+         alt="The bookinfo application in the kiali dashboard"/> <figcaption>
+            <p>The bookinfo application in the kiali dashboard</p>
+        </figcaption>
+</figure>
+
 <h2 id="shutting-it-down">Shutting It Down</h2>
 <p>This is the easiest one to do.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make cluster/stop istio/stop/dnsforward
