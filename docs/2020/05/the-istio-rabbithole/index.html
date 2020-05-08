@@ -192,7 +192,7 @@ make helmfile/sync STACK<span style="color:#f92672">=</span>bookinfo
 </blockquote>
 <h2 id="hurdle---dns">Hurdle - DNS</h2>
 <p>The loadbalancer allows us to access the cluster running in docker via IP address easily enough. But we also want to be able to test out real DNS queries and deployment of ingress in a manner which we can float up to a production level deployment in the future. In order to do this, we can manually modify hosts files on our workstations like button-mashers. Or, we can try to manipulate how DNS works on our workstation in craftier ways.</p>
-<p>Many moons ago I once setup <strong><a href="http://thekelleys.org.uk/dnsmasq/doc.html">dnsmasq</a></strong> to forward to specific DNS servers based on the zone being queried and simply set my workstation to use dnsmasq so that I could administer multiple disparate forests at once. I started looking to do this again via a docker image instead and found another excellent project already out there for such DNS trickery called <strong><a href="defreitas/dns-proxy-server">dns-proxy-server</a></strong>.</p>
+<p>Many moons ago I once setup <strong><a href="http://thekelleys.org.uk/dnsmasq/doc.html">dnsmasq</a></strong> to forward to specific DNS servers based on the zone being queried and simply set my workstation to use dnsmasq so that I could administer multiple disparate forests at once. I started looking to do this again via a docker image instead and found another excellent project already out there for such DNS trickery called <strong><a href="https://github.com/mageddo/dns-proxy-server">dns-proxy-server</a></strong>.</p>
 <p>It is deceptively simple to use dns-proxy-server as it does not require you to make any system changes manually and suddenly, your resolution for custom domains will just &lsquo;start working&rsquo;. Behind the scenes there is a simple json configuration file that we can use to modify zone and record lookups and when we run the image we are also going to volume mount our resolve.conf file for it to modify so that lookups for our system first flow through the container.</p>
 <p>Here is how you would enable this using CICDHelper.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Start another pod to do dns forwarding of the url for this and the default domain (int.micro.svc) to your cluster loadbalancer</span>
@@ -242,7 +242,25 @@ unset PROFILE KUBECONFIG
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make deps cluster/start istio/deploy helmfile/sync istio/start/dnsforward STACK<span style="color:#f92672">=</span>bookinfo PROFILE<span style="color:#f92672">=</span>istio-k3d
 </code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>That was fun right? In the next article I&rsquo;ll cover more in depth how we can turn that raw helm chart mess into a usable part of an archtype helm chart so that we can deploy and test multiple ingress controllers and expose resources using the same set of base definitions.</p>
-<p>Just as I was finishing this article I ran across <strong><a href="https://www.syncfusion.com/ebooks/confirmation/istio-succinctly">this excellent free ebook</a></strong> that dives into the various components of Istio. I highly recommend grabbing it and giving it a once over as well. Then with that knowledge and this little project, setting up additional components like citedel and galley will be a cake walk.</p>
+<p>Just as I was finishing this article I ran across <strong>&quot;<a href="https://www.syncfusion.com/ebooks/confirmation/istio-succinctly">Istio Succinctly</a>&quot;</strong> which dives into the various components of Istio. I highly recommend grabbing it and giving it a once over. Then with that knowledge and this little project, setting up additional components like citedel and galley for local testing will be a cake walk.</p>
+<p>Here are some links in no particular order:</p>
+<ul>
+<li>
+<p><strong><a href="https://github.com/zloeber/CICDHelper">CICDHelper</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.syncfusion.com/ebooks/confirmation/istio-succinctly">Istio Succinctly</a></strong> (An excellent free ebook on Istio)</p>
+</li>
+<li>
+<p><strong><a href="https://docs.gomplate.ca/">Gomplate</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://github.com/roboll/helmfile">Helmfile</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://github.com/mageddo/dns-proxy-server">dns-proxy-server</a></strong></p>
+</li>
+</ul>
     
 </div>
 
