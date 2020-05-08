@@ -182,13 +182,13 @@ make istio/deploy
 make helmfile/sync STACK<span style="color:#f92672">=</span>bookinfo
 </code></pre></div><p>If you want to deploy additional ingress for kiali:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make helmfile/sync STACK<span style="color:#f92672">=</span>istiodashboards
-</code></pre></div><p>You can also quickly start up any dashboard proxies istioctl can find. Kiali is the one most people like to look at and show off (use admin/admin to login):</p>
+</code></pre></div><p>You can also quickly start up any dashboard  istioctl can find via kubectl proxy. Kiali is the one most people like to look at and show off (use admin/admin to login):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make istio/dashboard/kiali
-</code></pre></div><p>We will setup dns forwarding with istio ingress to simplify this and eliminate the need for a proxy connection.</p>
+</code></pre></div><p>Very shortly, we will setup dns forwarding with istio ingress to remove the need for a proxy connection. But first lets address some technical difficulties around local ingress deployments.</p>
 <h2 id="hurdle---the-loadbalancer">Hurdle - The LoadBalancer</h2>
 <p>When setting up a bare metal Kubernetes cluster there are components that are lacking entirely from your typical cloud based deployments. One in particular is sorely missed, the LoadBalancer resource. Without a loadbalancer we are left with using kubectl proxy commands to access exposed services like peasants! To work around this k3d includes its own implementation of a software loadbalancer and works out of the box. For kind we end up simply deploying MetalLB to the clusters and have it use a range of IPs that should be available and bridged in most docker deployments (172.17.0.x). I&rsquo;ve set it up so that metallb gets installed automatically when running the <code>cluster/start</code> operation when deploying a kind cluster.</p>
 <blockquote>
-<p><strong>NOTE</strong> kind will use the existing bridge docker network. k3s creates its own.</p>
+<p><strong>NOTE</strong> kind will use the existing bridge docker network. k3s creates its own bridge network.</p>
 </blockquote>
 <h2 id="hurdle---dns">Hurdle - DNS</h2>
 <p>The loadbalancer allows us to access the cluster running in docker via IP address easily enough. But we also want to be able to test out real DNS queries and deployment of ingress in a manner which we can float up to a production level deployment in the future. In order to do this, we can manually modify hosts files on our workstations like button-mashers. Or, we can try to manipulate how DNS works on our workstation in craftier ways.</p>
@@ -197,45 +197,52 @@ make helmfile/sync STACK<span style="color:#f92672">=</span>bookinfo
 <p>Here is how you would enable this using CICDHelper.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Start another pod to do dns forwarding of the url for this and the default domain (int.micro.svc) to your cluster loadbalancer</span>
 make istio/start/dnsforward
-</code></pre></div><p>This little line actually does quite a bit. Firstly, we need to have some zone definition to forward requests to and for any future ingress definitions we wish to create. Because I&rsquo;m a fan of helmfile I put this in a helmfile environment definition file within our config path which we scrape using yq early in the script (yq is installed locally via the deps command we already ran).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ifneq <span style="color:#f92672">(</span>,<span style="color:#66d9ef">$(</span>wildcard <span style="color:#66d9ef">$(</span>yq<span style="color:#66d9ef">))</span><span style="color:#f92672">)</span>
-STACK_INGRESS_INTERNALZONE :<span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell <span style="color:#66d9ef">$(</span>yq<span style="color:#66d9ef">)</span> r <span style="color:#66d9ef">$(</span>CONFIG_PATH<span style="color:#66d9ef">)</span>/environment.<span style="color:#66d9ef">$(</span>ENVIRONMENT<span style="color:#66d9ef">)</span>.yaml stacks.ingress.zoneInternal<span style="color:#66d9ef">)</span>
-endif
-</code></pre></div><p>We then modify the default json config file for dns-proxy-server to include the zone name and the IP address that will be used for our DNS entries. I store a parameterized template in <code>deploy/dnsproxy/config.json</code> that we parse and store in a temporary directory via the excellent gomplate tool (also installed locally via the deps command we already ran). This is all done with the following code.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tmpdir<span style="color:#f92672">=</span>$$<span style="color:#f92672">(</span>mktemp -d<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">{tmpdir}&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>export STACK_INGRESS_INTERNALZONE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>STACK_INGRESS_INTERNALZONE<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>export STACK_INGRESS_INTERNALIP<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#66d9ef">$(</span>kubecmd<span style="color:#66d9ef">)</span> -n istio-system get svc istio-ingressgateway -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.status.loadBalancer.ingress[0].ip}&#39;</span><span style="color:#e6db74">`</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span><span style="color:#66d9ef">$(</span>gomplate<span style="color:#66d9ef">)</span> --file <span style="color:#66d9ef">$(</span>DEPLOY_PATH<span style="color:#66d9ef">)</span>/dnsproxy/config.json --out <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">{tmpdir}/config.json&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>docker run --rm -d <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --hostname <span style="color:#66d9ef">$(</span>STACK_INGRESS_INTERNALZONE<span style="color:#66d9ef">)</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --name dns-proxy-server <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -p 5380:5380 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -v $$<span style="color:#f92672">{</span>tmpdir<span style="color:#f92672">}</span>:/app/conf <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -v /var/run/docker.sock:/var/run/docker.sock <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -v /etc/resolv.conf:/etc/resolv.conf <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  defreitas/dns-proxy-server
-@echo <span style="color:#e6db74">&#34;&#34;</span>
-@echo <span style="color:#e6db74">&#34;STACK_INGRESS_INTERNALZONE=</span><span style="color:#66d9ef">$(</span>STACK_INGRESS_INTERNALZONE<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-@echo <span style="color:#e6db74">&#34;View dnsforwarding admin page at: http://localhost:5380&#34;</span>
-</code></pre></div><p>This is done specifically in the istio taskset as it is specific to the ingress deployment Istio creates. Were we to deploy our own ingress controller or do this in production I believe it would be wise to statically set the ingress loadbalancer IP upon creation instead of dynamically sourcing it like this. I welcome correction on this point though.</p>
-<p>In any case, if you have started up the DNS proxy and now visit <a href="http://bookinfo.int.micro.svc/productpage">http://bookinfo.int.micro.svc/productpage</a> the default product page for bookinfo should pop up.</p>
-<figure>
+</code></pre></div><p>This little line actually does quite a bit. Firstly, we need to have some zone definition to forward requests to and for any future ingress definitions we wish to create. Because I&rsquo;m a fan of helmfile, I put this in a helmfile environment definition yaml file. I store a parameterized template for dns-proxy-server in <code>deploy/dnsproxy/config.json</code>. This gets rendered via gomplate with the yaml environment file as a datasource and stored in a temporary directory before being volume mounted into the container.</p>
+<p>This is all done with the following code.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.PHONY: istio/start/dnsforward
+istio/start/dnsforward: istio/stop/dnsforward <span style="color:#75715e">## Forwards all dns requests to a local dns-proxy-server</span>
+	tmpdir<span style="color:#f92672">=</span>$$<span style="color:#f92672">(</span>mktemp -d<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">{tmpdir}&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	export STACK_INGRESS_INTERNALIP<span style="color:#f92672">=</span><span style="color:#e6db74">`</span><span style="color:#66d9ef">$(</span>kubecmd<span style="color:#66d9ef">)</span> -n istio-system get svc istio-ingressgateway -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.status.loadBalancer.ingress[0].ip}&#39;</span><span style="color:#e6db74">`</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">$(</span>gomplate<span style="color:#66d9ef">)</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-d config<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>CONFIG_PATH<span style="color:#66d9ef">)</span>/environment.<span style="color:#66d9ef">$(</span>ENVIRONMENT<span style="color:#66d9ef">)</span>.yaml <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		--file <span style="color:#66d9ef">$(</span>DEPLOY_PATH<span style="color:#66d9ef">)</span>/dnsproxy/config.json <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		--out <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">{tmpdir}/config.json&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	docker run --rm -d <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		--hostname <span style="color:#66d9ef">$(</span>STACK_INGRESS_INTERNALZONE<span style="color:#66d9ef">)</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		--name dns-proxy-server <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-p 5380:5380 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-v $$<span style="color:#f92672">{</span>tmpdir<span style="color:#f92672">}</span>:/app/conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-v /var/run/docker.sock:/var/run/docker.sock <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-v /etc/resolv.conf:/etc/resolv.conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		defreitas/dns-proxy-server
+	@echo <span style="color:#e6db74">&#34;&#34;</span>
+	@echo <span style="color:#e6db74">&#34;STACK_INGRESS_INTERNALZONE=</span><span style="color:#66d9ef">$(</span>STACK_INGRESS_INTERNALZONE<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+	@echo <span style="color:#e6db74">&#34;View dnsforwarding admin page at: http://localhost:5380&#34;</span>
+</code></pre></div><p>I do this specifically in the istio taskset as retreiving the ingress IP is specific to the ingress deployment Istio creates. Were we to deploy some other ingress controller or do this in production I believe it would be wise to statically set the ingress loadbalancer IP upon creation instead of dynamically sourcing it like this. There is room for improvement here I suppose.</p>
+<p>In any case, if you have started up the DNS proxy and now visit the default product page for bookinfo, <strong><a href="http://bookinfo.int.micro.svc/productpage">http://bookinfo.int.micro.svc/productpage</a></strong>, it should render for you.</p>
+<h2 id="additional-helmfiles">Additional Helmfiles</h2>
+<p>This is technically a fully working application. But if you want to see other dashboards (such as kiali) then more virtual routes need to be created to handle the requests. I&rsquo;ve gone ahead and created another helmfile called &lsquo;istiodashboards&rsquo; that publishes kiali specifically. It is nominal to setup additional virtual routes for prometheus or grafana as well, simply update the existing helmfile or create new one in the helmfile directory.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Enable the kaili dashboard</span>
+make helmfile/sync STACK<span style="color:#f92672">=</span>istiodashboards
+</code></pre></div><figure>
     <img src="/images/istio-bookinfo-app-graph.jpg"
          alt="The bookinfo application in the kiali dashboard"/> <figcaption>
             <p>The bookinfo application in the kiali dashboard</p>
         </figcaption>
 </figure>
 
-<h2 id="shutting-it-down">Shutting It Down</h2>
-<p>This is the easiest one to do.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Disable it when you are done (as an example)</span>
+make helmfile/remove STACK<span style="color:#f92672">=</span>istiodashboards
+</code></pre></div><h2 id="shutting-it-down">Shutting It Down</h2>
+<p>This is the easiest part:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make cluster/stop istio/stop/dnsforward
 unset PROFILE KUBECONFIG
 </code></pre></div><h2 id="now-use-k3d">Now Use k3d</h2>
-<p>Using k3d instead of kind for the cluster is easy. I&rsquo;ve already created the profile for it in fact (<code>./config/istio-k3d.env</code>).</p>
+<p>Prefer k3d? Ok, using k3d instead of kind for the cluster is easy. I&rsquo;ve already created the profile for it (<code>./config/istio-k3d.env</code>).</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make deps cluster/start istio/deploy helmfile/sync istio/start/dnsforward STACK<span style="color:#f92672">=</span>bookinfo PROFILE<span style="color:#f92672">=</span>istio-k3d
 </code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>That was fun right? In the next article I&rsquo;ll cover more in depth how we can turn that raw helm chart mess into a usable part of an archtype helm chart so that we can deploy and test multiple ingress controllers and expose resources using the same set of base definitions.</p>
-<p>Just as I was finishing this article I ran across <strong><a href="https://www.syncfusion.com/ebooks/confirmation/istio-succinctly">this excellent free ebook</a></strong> that dives into the various components of Istio. I highly recommend grabbing it and giving it a once over as well. Then with that knowledge and this little project, setting up additional components like citedel and galley should be trivial.</p>
+<p>Just as I was finishing this article I ran across <strong><a href="https://www.syncfusion.com/ebooks/confirmation/istio-succinctly">this excellent free ebook</a></strong> that dives into the various components of Istio. I highly recommend grabbing it and giving it a once over as well. Then with that knowledge and this little project, setting up additional components like citedel and galley will be a cake walk.</p>
     
 </div>
 
