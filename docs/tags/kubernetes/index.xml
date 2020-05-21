@@ -5,10 +5,28 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
     <description>Recent content in Kubernetes on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Apr 2020 10:22:48 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 09:22:20 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Aws Testing With Localstack on Kubernetes</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/</guid>
+      <description>&lt;p&gt;Testing out your AWS DevOps tricks in a local Kubernetes instance with localstack is pretty easy to do.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Archetype Pattern</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/</link>
+      <pubDate>Sun, 10 May 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/</guid>
+      <description>&lt;p&gt;Using an archetype pattern for Kubernetes deployments can help reduce future technical debt.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Libvirt Terraform Kubernetes Lab</title>

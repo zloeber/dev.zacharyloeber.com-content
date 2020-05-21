@@ -5,10 +5,19 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/aws/</link>
     <description>Recent content in AWS on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 25 Feb 2020 13:27:15 -0600</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 09:22:20 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Aws Testing With Localstack on Kubernetes</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/</guid>
+      <description>&lt;p&gt;Testing out your AWS DevOps tricks in a local Kubernetes instance with localstack is pretty easy to do.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Managed Kubernetes Idiosyncracies</title>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aws on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/categories/aws/</link>
+    <description>Recent content in aws on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 21 May 2020 09:22:20 -0500</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/categories/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Aws Testing With Localstack on Kubernetes</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/</guid>
+      <description>&lt;p&gt;Testing out your AWS DevOps tricks in a local Kubernetes instance with localstack is pretty easy to do.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

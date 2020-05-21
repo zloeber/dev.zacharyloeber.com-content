@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 06 May 2020 09:59:02 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 09:22:20 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,24 @@
       <description>I am IT enthusiast with almost decades of experience. I cut my teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
 I&amp;rsquo;m agnostic when it comes to technology but have strong interest in:
  Cloud Architecture DevOps Kubernetes Docker Go Terraform Security Networking System Administration Linux Automation  Some of my other interests include camping, self-improvement, and being a good husband and father.</description>
+    </item>
+    
+    <item>
+      <title>Aws Testing With Localstack on Kubernetes</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/</guid>
+      <description>&lt;p&gt;Testing out your AWS DevOps tricks in a local Kubernetes instance with localstack is pretty easy to do.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Archetype Pattern</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/</link>
+      <pubDate>Sun, 10 May 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/</guid>
+      <description>&lt;p&gt;Using an archetype pattern for Kubernetes deployments can help reduce future technical debt.&lt;/p&gt;</description>
     </item>
     
     <item>

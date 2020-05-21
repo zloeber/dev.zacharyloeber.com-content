@@ -5,10 +5,19 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/helm/</link>
     <description>Recent content in helm on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 May 2020 16:02:15 -0600</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 09:22:20 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/helm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes Archetype Pattern</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/</link>
+      <pubDate>Sun, 10 May 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/</guid>
+      <description>&lt;p&gt;Using an archetype pattern for Kubernetes deployments can help reduce future technical debt.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>The Raw Helm Chart</title>

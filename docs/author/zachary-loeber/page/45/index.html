@@ -95,6 +95,330 @@
     
         <div class="article-wrapper u-cf">
             
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/08/11/active-directory-essential-tools/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/11/active-directory-essential-tools/">Active Directory: Essential Tools</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2011-08-11</span>
+            
+        
+
+        
+            <span class="readingTime">5 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
+                
+                    <a href="/categories/powershell">Powershell</a>
+                
+                    <a href="/categories/security">Security</a>
+                
+                    <a href="/categories/system-administration">System Administration</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>During my many years of working with active directory I’ve used several tools. Here are some of the best that I’ve used which are not baked into windows. Good thing about this list is that most of these tools are fee! Another bonus is that most of the information gathering tools don’t require elevated rights as, by default, domain users have read-only access to active directory.</p>
+<h2 id="heading"></h2>
+
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/11/active-directory-essential-tools/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/2008-r2">2008 R2</a>
+                
+                <a href="/tags/active-directory">Active Directory</a>
+                
+                <a href="/tags/microsoft">Microsoft</a>
+                
+                <a href="/tags/powershell">Powershell</a>
+                
+                <a href="/tags/system-administration">System Administration</a>
+                
+                <a href="/tags/windows">Windows</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/08\/11\/active-directory-essential-tools\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/08\/11\/active-directory-essential-tools\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/08\/11\/active-directory-essential-tools\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+            
+        </div>
+    
+        <div class="article-wrapper u-cf">
+            
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/08/05/css-pretty-formatting/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/08/05/css-pretty-formatting/">CSS: Pretty Code Snippet Formatting</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2011-08-05</span>
+            
+        
+
+        
+            <span class="readingTime">1 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/other">Other</a>
+                
+                    <a href="/categories/web-publishing">Web Publishing</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        I forgot where I dredged this up from but here is how I do my code/script posts. I modified the default theme css and add the following for pre-formatted text:
+  
+
+        
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/other">Other</a>
+                
+                <a href="/tags/system-administration">System Administration</a>
+                
+                <a href="/tags/web-publishing">Web Publishing</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/08\/05\/css-pretty-formatting\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/08\/05\/css-pretty-formatting\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/08\/05\/css-pretty-formatting\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+            
+        </div>
+    
+        <div class="article-wrapper u-cf">
+            
                 <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/07/30/exchange-2010-network-communication-table/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
@@ -260,345 +584,6 @@ Exchange 2010 Network Communication Table By Role
             
         </div>
     
-        <div class="article-wrapper u-cf">
-            
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/07/29/exchange-2010-automated-firewall-rule-generation-1-4/">
-    <i class="fa fa-fw fa-pencil"></i>
-</a>
-
-<article class="default article">
-    
-
-    <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/07/29/exchange-2010-automated-firewall-rule-generation-1-4/">Exchange 2010: Automated Firewall Rule Generation 1.4</a></h3>
-    <div class="meta">
-        
-            
-                <span class="date moment">2011-07-29</span>
-            
-        
-
-        
-            <span class="readingTime">1 min read</span>
-        
-
-        
-            <span class="categories">
-                
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
-                
-                    <a href="/categories/networking">Networking</a>
-                
-                    <a href="/categories/powershell">Powershell</a>
-                
-                    <a href="/categories/security">Security</a>
-                
-                    <a href="/categories/system-administration">System Administration</a>
-                
-            </span>
-        
-
-        
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
-        
-    </div>
-
-    
-        <p>I made some updates to the automated firewall rule generation script. This includes some updates to the firewall rule spreadsheet to give information on setting setic ports and port ranges for RPC based services. This csv file may be a good general reference even without the script.</p>
-
-        
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2011/07/29/exchange-2010-automated-firewall-rule-generation-1-4/" class="more">Continue reading</a>
-        
-    
-</div>
-
-    
-<div class="footer">
-    
-
-        
-        <div class="tags">
-            <i class="fa fa-tags"></i>
-            <div class="links">
-                
-                <a href="/tags/exchange-2010">Exchange 2010</a>
-                
-                <a href="/tags/microsoft">Microsoft</a>
-                
-                <a href="/tags/networking">Networking</a>
-                
-                <a href="/tags/powershell">Powershell</a>
-                
-                <a href="/tags/system-administration">System Administration</a>
-                
-            </div>
-        </div>
-        
-
-        
-        
-
-
-<style>
-    #share-buttons {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    #share-buttons:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
-    #share-buttons>div {
-        position: relative;
-        text-align: left;
-        height: 36px;
-        width: 32px;
-        float: left;
-        text-align: center;
-    }
-
-    #share-buttons>div>svg {
-        height: 16px;
-        fill: #d5d5d5;
-        margin-top: 10px;
-    }
-
-    #share-buttons>div:hover {
-        cursor: pointer;
-    }
-
-    #share-buttons>div.facebook:hover>svg {
-        fill: #3B5998;
-    }
-
-    #share-buttons>div.twitter:hover>svg {
-        fill: #55ACEE;
-    }
-
-    #share-buttons>div.linkedin:hover>svg {
-        fill: #0077b5;
-    }
-
-    #share-buttons>div.facebook>svg {
-        height: 18px;
-        margin-top: 9px;
-    }
-
-    #share-buttons>div.twitter>svg {
-        height: 20px;
-        margin-top: 8px;
-    }
-
-    #share-buttons>div.linkedin>svg {
-        height: 19px;
-        margin-top: 7px;
-    }
-</style>
-<div id="share-buttons">
-    <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/07\/29\/exchange-2010-automated-firewall-rule-generation-1-4\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
-        </svg>
-    </div>
-    <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/07\/29\/exchange-2010-automated-firewall-rule-generation-1-4\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
-        </svg>
-    </div>
-    <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/07\/29\/exchange-2010-automated-firewall-rule-generation-1-4\/&title=&summary=&source=');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
-        </svg>
-    </div>
-</div>
-    </div>
-</article>
-
-            
-        </div>
-    
-        <div class="article-wrapper u-cf">
-            
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/">
-    <i class="fa fa-fw fa-pencil"></i>
-</a>
-
-<article class="default article">
-    
-
-    <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2011/07/20/exchange-2010-automated-firewall-rule-generation-1-2/">Exchange 2010: Automated Firewall Rule Generation 1.2</a></h3>
-    <div class="meta">
-        
-            
-                <span class="date moment">2011-07-20</span>
-            
-        
-
-        
-            <span class="readingTime">1 min read</span>
-        
-
-        
-            <span class="categories">
-                
-                    <a href="/categories/exchange">Exchange</a>
-                
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
-                
-                    <a href="/categories/microsoft">Microsoft</a>
-                
-                    <a href="/categories/networking">Networking</a>
-                
-                    <a href="/categories/powershell">Powershell</a>
-                
-                    <a href="/categories/security">Security</a>
-                
-                    <a href="/categories/system-administration">System Administration</a>
-                
-                    <a href="/categories/uncategorized">Uncategorized</a>
-                
-            </span>
-        
-
-        
-            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
-        
-    </div>
-
-    
-        I made a few changes to this script to make it more modular and to allow for more exceptions in regards to DAGs and sites. Enjoy!
-Exchange 2010 Firewall Rule Generation Script
-
-        
-    
-</div>
-
-    
-<div class="footer">
-    
-
-        
-        <div class="tags">
-            <i class="fa fa-tags"></i>
-            <div class="links">
-                
-                <a href="/tags/exchange-2010">Exchange 2010</a>
-                
-                <a href="/tags/microsoft">Microsoft</a>
-                
-                <a href="/tags/networking">Networking</a>
-                
-                <a href="/tags/powershell">Powershell</a>
-                
-                <a href="/tags/security">Security</a>
-                
-                <a href="/tags/system-administration">System Administration</a>
-                
-            </div>
-        </div>
-        
-
-        
-        
-
-
-<style>
-    #share-buttons {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    #share-buttons:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
-    #share-buttons>div {
-        position: relative;
-        text-align: left;
-        height: 36px;
-        width: 32px;
-        float: left;
-        text-align: center;
-    }
-
-    #share-buttons>div>svg {
-        height: 16px;
-        fill: #d5d5d5;
-        margin-top: 10px;
-    }
-
-    #share-buttons>div:hover {
-        cursor: pointer;
-    }
-
-    #share-buttons>div.facebook:hover>svg {
-        fill: #3B5998;
-    }
-
-    #share-buttons>div.twitter:hover>svg {
-        fill: #55ACEE;
-    }
-
-    #share-buttons>div.linkedin:hover>svg {
-        fill: #0077b5;
-    }
-
-    #share-buttons>div.facebook>svg {
-        height: 18px;
-        margin-top: 9px;
-    }
-
-    #share-buttons>div.twitter>svg {
-        height: 20px;
-        margin-top: 8px;
-    }
-
-    #share-buttons>div.linkedin>svg {
-        height: 19px;
-        margin-top: 7px;
-    }
-</style>
-<div id="share-buttons">
-    <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/07\/20\/exchange-2010-automated-firewall-rule-generation-1-2\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
-        </svg>
-    </div>
-    <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/07\/20\/exchange-2010-automated-firewall-rule-generation-1-2\/');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
-        </svg>
-    </div>
-    <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2011\/07\/20\/exchange-2010-automated-firewall-rule-generation-1-2\/&title=&summary=&source=');">
-        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
-        </svg>
-    </div>
-</div>
-    </div>
-</article>
-
-            
-        </div>
-    
 
     
     <div class="paginator">
@@ -625,15 +610,15 @@ Exchange 2010 Firewall Rule Generation Script
                 <ul>
                 
                     <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/">Aws Testing With Localstack on Kubernetes</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/">Kubernetes Archetype Pattern</a>
+                    </li>
+                
+                    <li>
                         <a href="https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/">The Istio Rabbithole</a>
-                    </li>
-                
-                    <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-clearing-finalizers/">Kubernetes Clearing Finalizers</a>
-                    </li>
-                
-                    <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/05/01/the-raw-helm-chart/">The Raw Helm Chart</a>
                     </li>
                 
                 </ul>

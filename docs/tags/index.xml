@@ -5,10 +5,82 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 06 May 2020 09:59:02 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 09:22:20 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AWS</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/aws/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DevOps</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/docker/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>helm</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/helm/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/helm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>helmfile</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/helmfile/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/helmfile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>localstack</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/localstack/</link>
+      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/localstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pattern</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/pattern/</link>
+      <pubDate>Sun, 10 May 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/pattern/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Bash</title>
@@ -16,15 +88,6 @@
       <pubDate>Wed, 06 May 2020 09:59:02 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/bash/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DevOps</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
-      <pubDate>Wed, 06 May 2020 09:59:02 -0500</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
       <description></description>
     </item>
     
@@ -56,15 +119,6 @@
     </item>
     
     <item>
-      <title>helm</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/helm/</link>
-      <pubDate>Fri, 01 May 2020 16:02:15 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/helm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>pipeline</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/pipeline/</link>
       <pubDate>Fri, 01 May 2020 16:02:15 -0600</pubDate>
@@ -88,15 +142,6 @@
       <pubDate>Wed, 29 Apr 2020 13:55:09 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/cicd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
-      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
@@ -164,15 +209,6 @@
     </item>
     
     <item>
-      <title>AWS</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/aws/</link>
-      <pubDate>Tue, 25 Feb 2020 13:27:15 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Cloud</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/cloud/</link>
       <pubDate>Tue, 25 Feb 2020 13:27:15 -0600</pubDate>
@@ -209,15 +245,6 @@
     </item>
     
     <item>
-      <title>helmfile</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/helmfile/</link>
-      <pubDate>Wed, 01 Jan 2020 16:46:26 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/helmfile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>hugo</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/hugo/</link>
       <pubDate>Sun, 08 Dec 2019 12:26:30 -0600</pubDate>
@@ -241,15 +268,6 @@
       <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/containers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/docker/</link>
-      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/docker/</guid>
       <description></description>
     </item>
     
