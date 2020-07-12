@@ -25,7 +25,7 @@
       <pubDate>Sun, 10 May 2020 10:27:05 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/</guid>
-      <description>&lt;p&gt;Using an archetype pattern for Kubernetes deployments can help reduce future technical debt.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Using monocharts in an archetype pattern can help reduce future technical debt in your Kubernetes deployments.&lt;/p&gt;</description>
     </item>
     
     <item>

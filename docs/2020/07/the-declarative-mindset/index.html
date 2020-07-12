@@ -1,0 +1,652 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Zachary Loeber">
+        <meta name="description" content="Zachary Loeber&#39;s Personal Site">
+        <meta name="keywords" content="blog,personal,devops,infrastructure,code,cloud,Azure,AWS,Kubernetes,Docker">
+        <meta name="generator" content="Hugo 0.68.3" />
+        <title> The Declarative Mindset | Zachary Loeber</title>
+        <meta name="description" content="The Declarative Mindset - Zachary Loeber&#39;s Personal Site">
+        <meta itemprop="name" content="The Declarative Mindset">
+        <meta itemprop="description" content="The Declarative Mindset - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:title" content="The Declarative Mindset">
+        <meta property="og:description" content="The Declarative Mindset - Zachary Loeber&#39;s Personal Site">
+        <meta property="og:image" content="/images/banners/banner-innovation-1-750x250.jpg">
+        <meta property="og:url" content="https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/">
+        <meta property="og:site_name" content="Zachary Loeber">
+        <meta property="og:type" content="article">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://zacharyloeber-dev.onrender.com/favicon-16x16.png" sizes="16x16">
+
+	
+	  <link href="/2020/07/the-declarative-mindset/" rel="alternate" type="application/rss+xml" title="Zachary Loeber" />
+	  <link href="/2020/07/the-declarative-mindset/" rel="feed" type="application/rss+xml" title="Zachary Loeber" />
+	
+
+        
+        
+        
+        
+        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://zacharyloeber-dev.onrender.com/css/mermaid.css">
+            
+        
+    </head>
+    <body class="bilberry-hugo-theme">
+        
+<nav class="permanentTopNav">
+
+    <div class="container">
+        <ul class="topnav">
+            
+                
+                    <li><a href="/" target="">Home</a></li>
+                
+            
+                
+                    <li><a href="https://zacharyloeber-dev.onrender.com/page/about-me/">About Me</a></li>
+                
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+        <header>
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                    <img src="https://www.gravatar.com/avatar/48fc6231ab6cad25f101a82e5932d9dd?d=mm&size=200" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a href="/">Zachary Loeber</a></h3>
+            
+                <span class="subtitle">I eat complexity and am never without a meal.</span>
+            
+        </div>
+
+    
+
+        
+        <div class="toggler permanentTopNav">
+        
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+    </div>
+</header>
+
+
+        <div class="main container">
+            
+     
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/">
+    <i class="fa fa-fw fa-pencil"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/">
+            <img src="/images/banners/banner-innovation-1-750x250.jpg" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h3><a href="https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/">The Declarative Mindset</a></h3>
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-07-11</span>
+            
+        
+
+        
+            <span class="readingTime">10 min read</span>
+        
+
+        
+            <span class="categories">
+                
+                    <a href="/categories/devops">devops</a>
+                
+            </span>
+        
+
+        
+            <span class="author"><a href="/author/zachary-loeber">Zachary Loeber</a></span>
+        
+    </div>
+
+    
+        <p>I&rsquo;m going to wax poetic on the virtues of declarative thinking within the IT industry. Along the way we will go over some definitions and introduce the pseudo-declarative manifest and how it can add value to a project.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Within the IT industry there are often dozens of avenues an IT professional can pursue to get to the same arbitrary goal. One can categorize those solutions as either imperative or declarative in their approach. Most modern projects implement both imperative and declarative solutions in their overall pipeline.</p>
+<h2 id="what-is-imperative">What is Imperative?</h2>
+<p>It is easier to start with imperative as concept as every single IT solution eventually boils down to imperative code written to accomplish a task. If you are a programmer of backend systems coding business logic you may code out the solution in java imperatively going over every bit of logic in your module. You are commanding the system to do your bidding using whatever twisted programming logic you weave into it with your wizard-like skills. If you program in Go or any other language that interprets or compiles to some executed action on a computer system then you are living in the abundant land of imperative where you are limited only by your imagination and grit.</p>
+<figure>
+    <img src="/images/blog/imperative-land.jpg"
+         alt="King of Imperative Land"/> 
+</figure>
+
+<h2 id="what-is-declarative">What is Declarative?</h2>
+<p>Declarative and imperative thinking compliment one another. In many ways, declarative is simply an abstraction of imperative commands.</p>
+<p>Following the same example, you may also deploy the versioned binary artifact (jar in this case) to an artifactory and built in a docker image which is then released to various Kubernetes environment using declarative YAML. Perhaps you even have infrastructure as code declarative manifests that are used to build out the kubernetes environments that the code gets deployed within. These are declarative as the manifests are written in a manner that defines the final state of a thing. This manifest then gets fed into an engine that makes the desired state into a reality.</p>
+<figure>
+    <img src="/images/blog/declarative-state.jpg"
+         alt="Declarative State Engine Diagram"/> 
+</figure>
+
+<h2 id="semi-declarative">Semi-Declarative?</h2>
+<p>Often, the lines between what is declarative vs. imperative is not extremely clear or is a matter of context. Taking the prior example a step further, the pipeline as code you may use to build and deliver your project workload could be written as a YAML file such as .gitlab.yml or azure-pipeline.yaml. This pipeline code is usually stitched together via bash or PowerShell scripts which is imperative by nature. A properly defined library of loosely coupled shared pipeline as code tasks can lead to a very declarative downstream pipeline as code manifest. But due to the many freedoms of pipline as code, it becomes very easy to let imperative coding bleed into what should be a declarative endeavor.</p>
+<blockquote>
+<p><strong>NOTE</strong> I also consider breaking out of the Terraform engine to run elaborate system scripts via null_resources an imperative perversion of a declarative manifest.</p>
+</blockquote>
+<h2 id="pseudo-declarative">Pseudo-Declarative</h2>
+<p>As I look for more ways to be declarative in my solutions, I&rsquo;ve been constructing something I&rsquo;ve been calling the pseudo-declarative manifest. This is just a YAML formatted manifest that could be used to apply a known or fictional state within a project if you had an engine to apply it. Basically, you create declarative manifests that don&rsquo;t have an engine.</p>
+<p>I encourage teams to create declarative manifests for their projects, even if they don&rsquo;t actually do anything. Here are a few declarative manifests which can immediately return value;</p>
+<ul>
+<li>A manifest that covers all the repos, branches, and pipelines that comprise the entirety of the project.</li>
+<li>A manifest that outlines all the inputs required for other teams or upstream processes to consume your project.</li>
+<li>In a microservice or batch deployment, A manifest declaring the dream state of deployment for a workload (this can get quite involved with say Spark Streaming jobs as I will show in example 1)</li>
+</ul>
+<p>In some cases, you may even be able to justify writing your own declarative engine for your made up manifests. When that time comes, you will have created your own structural foundation for your coding efforts. I have done this for complex data science driven or ephemeral workload pipeline as code. A pseudo-declarative manifest can be as elaborate as required but it is good to lean towards terseness and self-describing language where possible.</p>
+<h2 id="example-1---spark-streaming-workload">Example 1 - Spark Streaming Workload</h2>
+<p>Here is an example of a declarative manifest that declares how 2 spark streaming jobs will be delivered into an environment.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">---
+deployment:
+  dryrun: False
+  suppress_output: False
+  default_batch_type: k8s
+  schedule_timeout: <span style="color:#ae81ff">120</span>
+  delete_timeout_seconds: <span style="color:#ae81ff">120</span>
+  exception_email_recipients: False
+  <span style="color:#75715e"># All standard spark jobs to k8s will use this template of values</span>
+  <span style="color:#75715e">#  (unless otherwise defined individually)</span>
+  _k8s_batch:
+    default_values:
+      args: <span style="color:#f92672">[]</span>
+      description: Spark 2.4 Streaming Job
+      enabled: true
+      class: com.company.project.job
+      namespace: sparkstreamjobs
+      containerimage: projectname.azurecr.io/spark-stream
+      drivermemory: 1024m
+      numexecutors: <span style="color:#ae81ff">2</span>
+      executormemory: 512m
+      executorcores: .1
+      jarpath: local:///opt/spark/jars
+      jar: projectname-assembly-1.0.jar
+      deploy-mode: cluster
+      config:
+        - <span style="color:#e6db74">&#34;spark.kubernetes.submission.waitAppCompletion=false&#34;</span>
+        - <span style="color:#e6db74">&#34;spark.kubernetes.driver.annotation.prometheus.io/scrape=true&#34;</span>
+        - <span style="color:#e6db74">&#34;spark.kubernetes.driver.annotation.prometheus.io/port=8088&#34;</span>
+        - <span style="color:#e6db74">&#34;spark.driver.extraJavaOptions=-javaagent:/prometheus/jmx_prometheus_javaagent-0.11.0.jar=8088:/etc/metrics/conf/prometheus.yaml&#34;</span>
+        - <span style="color:#e6db74">&#34;spark.metrics.conf=/etc/metrics/conf/metrics.properties&#34;</span>
+        - <span style="color:#e6db74">&#34;spark.network.timeout=800&#34;</span>
+        - <span style="color:#e6db74">&#34;spark.sql.broadcastTimeout=1200&#34;</span>
+        - <span style="color:#e6db74">&#34;spark.sql.streaming.metricsEnabled=true&#34;</span>
+      envvars:
+        - SCALA_ENV
+        - CHECKPOINT_ACCOUNT_NAME
+        - CHECKPOINT_ACCOUNT_KEY
+        - CHECKPOINT_CONTAINER_NAME
+        - CHECKPOINT_PATH
+        - KAFKA_BOOTSTRAP_SERVERS
+        - STORAGE_ACCOUNT_NAME
+        - STORAGE_ACCOUNT_KEY
+        - STORAGE_PATH
+        - JDBC_URL
+        - JDBC_DRIVER
+        - CASSANDRA_USERNAME
+        - CASSANDRA_PASSWORD
+        - CASSANDRA_URL
+batches:
+  - class: com.company.project.job
+    jar: projectname-assembly-1.0.jar
+    args:
+      - arg1
+  - class: com.company.project.job
+    jar: projectname-assembly-1.0.jar
+    args:
+      - arg2
+</code></pre></div><p>This example is a little advanced as it contains self describing code blocks for default values of a particular job types which are also included in the manifest. In this example k8s batch types are the default and use <code>_k8s_batch.default_values</code> for default values. The <code>batches</code> section gets created in the engine as individual jobs with unique names comprising of the <code>class</code> and <code>args</code> block to construct the final spark submit command to a kubernetes cluster. If a developer wanted to add a new job that bumps up the executor cores they need only update the individual batch element with the override values.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">batches:
+  - class: com.company.project.job
+    jar: projectname-assembly-1.0.jar
+    args:
+      - arg1
+  - class: com.company.project.job
+    jar: projectname-assembly-1.0.jar
+    args:
+      - arg2
+  - class: com.company.project.job
+    jar: projectname-assembly-1.0.jar
+    namespace: specialsparkstreamjob
+    executorcores: .4
+    config:
+      - <span style="color:#e6db74">&#34;spark.kubernetes.submission.waitAppCompletion=true&#34;</span>
+      - <span style="color:#e6db74">&#34;spark.kubernetes.driver.annotation.prometheus.io/scrape=false&#34;</span>
+      - <span style="color:#e6db74">&#34;spark.metrics.conf=/etc/metrics/conf/metrics.properties&#34;</span>
+      - <span style="color:#e6db74">&#34;spark.network.timeout=800&#34;</span>
+      - <span style="color:#e6db74">&#34;spark.sql.broadcastTimeout=1200&#34;</span>
+    args:
+      - specialJob
+    
+</code></pre></div><p>I wrote a python app to consume this manifest and create the appropriate spark submit commands. This could also have been done in more modern YAML manifests with the spark-operator project.</p>
+<h2 id="example-2---something-as-a-service">Example 2 - Something As A Service</h2>
+<p>A less esoteric example would be laying out all the requirements that it would take to onboard a development team to a shared vault infrastructure for their project in an organization. It is easy to think about this in terms of a single service. But the vault service can be consumed in any number of ways. What this manifest may look like for one organization or team may be completely different than another.</p>
+<p>I find that laying out an example fictional project manifest helps quite a bit either way. Here is an example for onboarding a project that requires github integration, 3 key value mounts, 1 appRole with access to generate an AWS dynamic STS credential, JWT roles for management of the vault secrets, and JTW roles for the server portion of the project app to use that requests the approles for the agent portion of the app.</p>
+<p>This sounds pretty complex but if you think of it all declaratively, this all maps out very nicely.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Standard information</span>
+project: teamproject
+team: Team1
+owner: Project Owner
+environments:
+  poc:
+    version: <span style="color:#e6db74">&#39;0.1.0-poc&#39;</span>
+  dev:
+    version: <span style="color:#e6db74">&#39;0.1.0-dev&#39;</span>
+  int:
+    version: <span style="color:#e6db74">&#39;0.1.0-int&#39;</span>
+  prod:
+    version: <span style="color:#e6db74">&#39;0.1.0&#39;</span>
+
+<span style="color:#75715e">## All the features this project will use</span>
+features:
+  <span style="color:#75715e"># KV Stores used for this project</span>
+  kv:
+    teamproject_app_pipeline:
+      path: teamproject/app/pipeline
+    teamproject_app_config:
+      path: teamproject/app/config
+    teamproject_app_agent:
+      path: teamproject/app/agent
+  github:
+    <span style="color:#75715e"># Github integrations</span>
+    myOrg:
+      teamproject_repo:
+  sts:
+    <span style="color:#75715e"># AWS STS secret generation for a particular role.</span>
+    teamproject_agent_access:
+      aws_role_arn: myawsrole
+  approle:
+    teamproject_server:
+      policies:
+        - kv.teamproject_app_config.readonly
+        - kv.teamproject_app_agent.full
+        - sts.teamproject_agent_access
+  token:
+    <span style="color:#75715e"># Setup a default policy token for unwrapping at the agent end</span>
+    unwrap:
+      policies:
+        - default
+    <span style="color:#75715e"># Setup a token policy for generating wrapped tokens</span>
+    app_server:
+      policies:
+        - kv.teamproject_app_config.readonly
+        - kv.teamproject_app_agent.readonly
+
+<span style="color:#75715e">## And the roles required to use them</span>
+roles:
+  <span style="color:#75715e">## Pipeline access to vault components</span>
+  teamproject_app_pipeline:
+    env: <span style="color:#f92672">[</span>poc, dev, int, prod<span style="color:#f92672">]</span>
+    type: github
+    target: myOrg.teamproject_repo
+    policies:
+      - kv.teamproject_app_pipeline.readonly
+      - kv.teamproject_app_config.readonly
+      - approle.teamproject_server
+      - token.unwrap.create
+  <span style="color:#75715e">## Team owners access to manage components in nonprod</span>
+  teamproject_admins_nonprod:
+    env: <span style="color:#f92672">[</span>poc, dev, int<span style="color:#f92672">]</span>
+    type: jwt <span style="color:#75715e"># could be for Azure AD integrated authentication</span>
+    group: TeamProject_Admins_NonProd
+    policies:
+      - kv.teamproject_app_pipeline.full
+      - kv.teamproject_app_config.full
+      - kv.teamproject_app_agent.full
+      - token.unwrap.full
+      - token.app_server.full
+  teamproject_admins_prod:
+    env: <span style="color:#f92672">[</span>poc, dev, int, prod<span style="color:#f92672">]</span>
+    type: jwt
+    group: TeamProject_Admins_Prod
+    policies:
+      - kv.teamproject_app_pipeline.full
+      - kv.teamproject_app_config.full
+
+  <span style="color:#75715e">## The app service access to the vault components (in this case the app is integrated with vault)</span>
+  teamproject_server_poc:
+    env: poc
+    type: jwt
+    group: TeamProject_Server_poc
+    policies:
+      - kv.teamproject_app_config.readonly
+      - kv.teamproject_app_agent.full
+      - approle.teamproject_agent
+      - token.app_server.full
+  teamproject_server_dev:
+    env: dev
+    type: jwt
+    group: TeamProject_Server_dev
+    policies:
+      - kv.teamproject_app_config.readonly
+      - kv.teamproject_app_agent.full
+      - approle.teamproject_agent
+      - token.app_server.full
+  teamproject_server_int:
+    env: int
+    type: jwt
+    group: TeamProject_Server_int
+    policies:
+      - kv.teamproject_app_config.readonly
+      - kv.teamproject_app_agent.full
+      - approle.teamproject_agent
+      - token.app_server.full
+  teamproject_server_prod:
+    env: prod
+    type: jwt
+    group: TeamProject_Server_prod
+    policies:
+      - kv.teamproject_app_config.readonly
+      - kv.teamproject_app_agent.full
+      - approle.teamproject_agent
+      - token.app_server.full
+</code></pre></div><p>In this example we can infer that;</p>
+<ul>
+<li>We have 4 environments, each running a specific tagged version of the app</li>
+<li>We expect to have 3 key value secret mounts per environment, one for app config, one for the pipeline, and a last one for the app agent</li>
+<li>Access policies will be auto-generated as part of the kv mount allocation and later assigned to the defined roles</li>
+<li>An auth group for the team owners will be created and assigned access to most of the created resources</li>
+<li>The project app apparently consists of a server and an agent wherein the server portion manages secrets in a kv store that the agent can later access.</li>
+<li>The app server role (&lsquo;teamproject_server&rsquo;) apparently uses a service account to authenticate with and likely generates a wrapped token for the agents which has access to the kv store where the server service updates secrets.</li>
+</ul>
+<p>What is not shown here are any outside dependencies that fall outside the realm of the vault team&rsquo;s abilities to deploy. In this case there is also a backend database dependency that the server uses to pass wrapped tokens to the running agent portion of the app. This is why you would see a different role being created per environment but with different group names (AD service accounts having been generated ahead of time against the same AD forest).</p>
+<p>While these examples are not using HCL or anything beyond simple YAML you can begin to see how using a manifest like this can really help to unearth what development efforts are required to turn a project into a fully consumable &lsquo;as a service&rsquo; pipeline for other business units. It would be conceivable to use such manifests within upstream projects and include downstream Gitlab runners that apply the manifest. Or simply keeping one central vault project repo that teams PR into for centralized configuration as code of vault access.</p>
+<blockquote>
+<p><strong>NOTE</strong> This is just one example of some of vault services being consumed in a moderately complex application and pipeline. It would be conceivable to have multiple service profile examples of these kinds of manifests for various project requirements.</p>
+</blockquote>
+<h2 id="conclusion">Conclusion</h2>
+<p>If I could make everything I work on a declarative manifest I think I would. It is a valuable tool to have even if you don&rsquo;t have the engine to process the desired state. Before asking me, I&rsquo;ll say that I&rsquo;ve yet to find the perfect parsing engine for declarative manifest processing. Terraform is great when you are able to use it, Helm makes kubernetes deployments more sanely declarative as well. But neither could be used in the examples I&rsquo;ve laid out. I welcome ideas for general use tools for such things though. If you know of any please reach out to me on LinkedIn or Twitter.</p>
+    
+</div>
+
+    
+<div class="footer">
+    
+
+        
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                <a href="/tags/devops">devops</a>
+                
+                <a href="/tags/kubernetes">Kubernetes</a>
+                
+                <a href="/tags/terraform">Terraform</a>
+                
+                <a href="/tags/yaml">YAML</a>
+                
+            </div>
+        </div>
+        
+
+        
+        
+
+
+<style>
+    #share-buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #share-buttons:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #share-buttons>div {
+        position: relative;
+        text-align: left;
+        height: 36px;
+        width: 32px;
+        float: left;
+        text-align: center;
+    }
+
+    #share-buttons>div>svg {
+        height: 16px;
+        fill: #d5d5d5;
+        margin-top: 10px;
+    }
+
+    #share-buttons>div:hover {
+        cursor: pointer;
+    }
+
+    #share-buttons>div.facebook:hover>svg {
+        fill: #3B5998;
+    }
+
+    #share-buttons>div.twitter:hover>svg {
+        fill: #55ACEE;
+    }
+
+    #share-buttons>div.linkedin:hover>svg {
+        fill: #0077b5;
+    }
+
+    #share-buttons>div.facebook>svg {
+        height: 18px;
+        margin-top: 9px;
+    }
+
+    #share-buttons>div.twitter>svg {
+        height: 20px;
+        margin-top: 8px;
+    }
+
+    #share-buttons>div.linkedin>svg {
+        height: 19px;
+        margin-top: 7px;
+    }
+</style>
+<div id="share-buttons">
+    <div class="facebook" title="Share this on Facebook"
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/07\/the-declarative-mindset\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
+        </svg>
+    </div>
+    <div class="twitter" title="Share this on Twitter"
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/07\/the-declarative-mindset\/');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
+        </svg>
+    </div>
+    <div class="linkedin" title="Share this on Linkedin"
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/2020\/07\/the-declarative-mindset\/&title=&summary=&source=');">
+        <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
+        </svg>
+    </div>
+</div>
+    </div>
+</article>
+
+        
+    </div>
+
+    
+        
+    
+
+     
+
+        </div>
+
+        
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+                <ul>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/">The Declarative Mindset</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/">Aws Testing With Localstack on Kubernetes</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/">Kubernetes Archetype Pattern</a>
+                    </li>
+                
+                </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+                <ul>
+                
+                    <li>
+                        <a href="/categories/system-administration">System administration (130)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/microsoft">Microsoft (120)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/powershell">Powershell (106)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/networking">Networking (53)</a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/exchange">Exchange (38)</a>
+                    </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                
+                    <a href="https://twitter.com/zloeber" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/zloeber" target="_blank"><i class="fa fa-github"></i></a>
+                
+                
+                    <a href="https://www.linkedin.com/in/zloeber/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                
+            </div>
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/zloeber" target="_blank">
+                &copy;
+                
+                    2020
+                
+                by Zachary Loeber
+            </a>
+	    
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+        </div>
+    </div>
+</div>
+
+
+        
+
+        
+
+        
+        
+        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
+
+        
+        
+        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
+
+        <script>
+            $(".moment").each(function() {
+                $(this).text(
+                    moment( $(this).text() )
+                        .locale( "en" )
+                        .format('LL')
+                );
+            });
+
+            $(".footnote-return sup").html("");
+        </script>
+
+        
+            
+                <script src="https://zacharyloeber-dev.onrender.com/js/mermaid.js" type="application/javascript"></script>
+            
+        
+
+        
+
+
+    </body>
+</html>

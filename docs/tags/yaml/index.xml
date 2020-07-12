@@ -5,10 +5,19 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/yaml/</link>
     <description>Recent content in yaml on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 May 2020 16:02:15 -0600</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2020 11:05:58 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/yaml/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Declarative Mindset</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/</link>
+      <pubDate>Sat, 11 Jul 2020 11:05:58 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m going to wax poetic on the virtues of declarative thinking within the IT industry. Along the way we will go over some definitions and introduce the pseudo-declarative manifest and how it can add value to a project.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>The Raw Helm Chart</title>

@@ -118,7 +118,7 @@
         
 
         
-            <span class="readingTime">3 min read</span>
+            <span class="readingTime">7 min read</span>
         
 
         
@@ -137,36 +137,36 @@
     </div>
 
     
-        <p>Using an archetype pattern for Kubernetes deployments can help reduce future technical debt.</p>
+        <p>Using monocharts in an archetype pattern can help reduce future technical debt in your Kubernetes deployments.</p>
 <h2 id="first-things-first">First Things First</h2>
-<p>Helm is one of many tools for rendering and applying arbitrary deployment templates into Kubernetes. Professionals in DevOps seem to be very opinionated about using helm. While I&rsquo;ve personally been turned off by helm 2 and its persnickety tiller requirements (and security implications therein) I still used it successfully to accomplish many tasks. This is largely because;</p>
+<p>Helm is one of many tools for rendering and applying arbitrary deployment templates into Kubernetes. Professionals in DevOps seem to be very opinionated about using the tool. While I&rsquo;ve personally been turned off by helm 2 and its persnickety tiller requirements (and security implications therein) I still used it successfully to accomplish many tasks. This is largely because;</p>
 <ul>
 <li>Helm charts allow for creation versioned immutable deployment artifacts</li>
 <li>It is nominal to include simple post-deployment testing with helm</li>
 <li>One can vastly simplify their deployment code surface area of support by having most of the deployment code in a central repository</li>
-<li>Pretty much every real Kubernetes project has a helm chart that can be sourced and customized for whatever environment you may need to support</li>
 </ul>
-<p>In this article I&rsquo;m going to make the case for a pattern that I found works very well when supporting several common Kubernetes application deployments within an organization. I use helm for this pattern as it seems to have been almost built for this purpose.</p>
-<h2 id="defining-the-archetype-pattern">Defining The Archetype Pattern</h2>
-<p>The <a href="https://www.merriam-webster.com/dictionary/archetype">definition of archetype</a> from the dictionary is, &ldquo;the original pattern or model of which all things of the same type are representations or copies&rdquo;. And this is a great starting point for defining this pattern. For a more technical definition, we look to object oriented programming where one would use an <strong><a href="https://en.wikipedia.org/wiki/Archetype_pattern">archetype</a></strong> to separate logic from implementation.</p>
-<p>Our Kubernetes specific definition for this pattern will be; &ldquo;Using a single top level, mutable, set of deployment manifests for deriving all application deployments.&rdquo;</p>
-<p>This top level set of common deployment manifests will be stored in one helm chart which we will call the &lsquo;archetype chart&rsquo; or &lsquo;monochart&rsquo;.</p>
+<p>In this article I&rsquo;m going to make the case for a pattern that I found works very well when supporting several common Kubernetes application stacks within an organization. I use helm for this pattern as it seems to have been almost built for this kind of pattern.</p>
+<h2 id="the-archetype-pattern">The Archetype Pattern</h2>
+<p>The dictionary <a href="https://www.merriam-webster.com/dictionary/archetype">definition of archetype</a> is, &ldquo;the original pattern or model of which all things of the same type are representations or copies&rdquo;. And this is a great starting point for defining this pattern. For a more technical take on this word, we look to object oriented programming where one would use an <strong><a href="https://en.wikipedia.org/wiki/Archetype_pattern">archetype</a></strong> to separate logic from implementation.</p>
+<p>Having personally stitched together Kubernetes technical stacks for projects I can think of a few areas where the application deployment logic at the tail end of a CICD pipeline might benefit from being separated from the implementation within a Kubernetes cluster. For instance, if your project starts out with nginx-ingress but later on evolves to a full blown Istio service mesh deployment which uses its own ingress CRDS it would be nice to not have to convert 50 microservice deployments to start using Istio gateways with virtualrouters. Floating the ingress deployment manifest code into a top level monochart which then derives the appropriate YAML to deploy via an application subchart would be using the archetype pattern.</p>
+<p>Our Kubernetes specific definition for the archetype pattern will be; &ldquo;Using a single top level, mutable, set of deployment manifests for deriving all application deployments.&rdquo;</p>
+<p>This top level set of common deployment manifests will be stored in one helm chart which we will call the &lsquo;archetype&rsquo; or &lsquo;mono&rsquo; chart.</p>
 <blockquote>
 <p><strong>NOTE</strong> The monochart name comes from the inspiration for this blog post, CloudPosse&rsquo;s own publicly released <strong><a href="https://github.com/cloudposse/charts/tree/master/incubator/monochart">monochart</a></strong>.</p>
 </blockquote>
 <h2 id="the-use-case">The Use Case</h2>
-<p>There are several use cases for this pattern. Ingress is and ideal starting point for additional abstraction. When deploying ingress controllers it can be easy to pigeonhole yourself into a corner because each controller has their own specific nuances that you will need to adopt. With a well thought out monochart you can  later swap out ingress controllers from nginx-ingress to traefik with very little effort.</p>
+<p>There are several use cases for this pattern. As already mentioned, ingress is an ideal starting point for additional abstraction. Choosing an ingress controller may be one of the first real Kubernetes decision you will have to make on a project. When deploying ingress controllers it can be easy to pigeonhole yourself into a corner because each controller has their own specific nuances that you will need to adopt. Many include their own CRDs and don&rsquo;t even use the standard ingress resource api definitions.</p>
+<p>With a well thought out archetype pattern, one can later swap out ingress controllers from nginx-ingress to traefik or istio ingress with far less effort. I know, I&rsquo;ve personally done so for a project.</p>
 <p>Some other use case scenarios might include;</p>
 <ul>
-<li>You want to deploy specific annotations for each ingress (or any resource) that can be used by other elements in your cluster to provide additional functionality (like prometheus scraping for instance).</li>
-<li>Selecting a certificate issuer based on ingress zone or deployment environment (cert-manager self-signed, letsencrypt stage, letsencrypt prod, et cetera)</li>
+<li>Wanting to deploy specific annotations for each ingress (or any resource) that can be used by other elements in your cluster to provide additional functionality (such as prometheus scraping).</li>
+<li>Selecting a certificate issuer based on some element in the deployment.</li>
 <li>Service port deployment standardization</li>
-<li>RBAC rule creation</li>
 <li>Automatic labeling of resources that includes a team name, project, workload, et cetera&hellip;</li>
 </ul>
-<p>Also, the greatest use case scenario I can think of is an overwhelmed DevOps team can reduced their overall surface area for supporting multiple similar application workload deployments by centralizing the deployment code in one repository.</p>
-<h2 id="the-archetype-chart-contents">The Archetype Chart contents</h2>
-<p>There is no strict definition as to what an archetype should contain. A good rule of thumb would be to have one archetype chart per Kubernetes cluster profile. Here is a table of how a more fragmented organization might have multiple Kubernetes cluster &lsquo;profiles&rsquo;.</p>
+<p>Also, the greatest use case scenario I can think of is an overwhelmed DevOps team can reduced their overall surface area for supporting multiple similar application workload deployments by centralizing the deployment code into one repository.</p>
+<h2 id="the-chart">The Chart</h2>
+<p>There is no strict definition as to what an archetype should contain. A good rule of thumb would be to have one archetype chart per Kubernetes cluster profile in your organization. Here is a table of how a more fragmented organization might have multiple Kubernetes cluster &lsquo;profiles&rsquo;.</p>
 <table>
 <thead>
 <tr>
@@ -194,13 +194,75 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>NOTE</strong> Similar to virtual machine golden images or even base docker images, less is more. Having a single cluster profile with pre-determined organization supported components reduces the operational overhead, complexity, and technical debt.</p>
+<p><strong>NOTE</strong> Having a single cluster profile with pre-determined organization supported components reduces the operational overhead, complexity, and technical debt. Just sayin&rsquo;</p>
 </blockquote>
-<h2 id="resources">Resources</h2>
+<p>The chart itself should have the ability to deploy most custom workloads into any given cluster profile. Since this chart will not replace upstream deployments (like the Prometheus Operator for example) there is no reason to overdo things. If starting from scratch, perhaps start with <code>helm create</code> to baseline a deployment chart and build up from there. Update the helm chart so that you can systematically piecemeal together deployments that include everything your organization may wish to deploy. Include prometheus rules, sidecars, ingress definitions, anything that may require custom CRDs, common microservice ports, and anything else that is specific to your project and environment. I create my archtype chart in a way so that a default values.yaml chart deployment does not actually deploy anything.</p>
+<p>I highly recommend looking at CloudPosse&rsquo;s monochart for inspiration. I&rsquo;ve also created my own version of this chart that has evolved over the last year or so that I&rsquo;ve become fond of using as well. Links to both are in the resources section at the bottom of this article.</p>
+<h2 id="a-practical-example">A Practical Example</h2>
+<p>A partial example of how this might work can be found in my KubeStich project. I use my own archetype chart extensively to deploy ingress separately from any upstream chart I deploy in this project. Because I&rsquo;m religious about keeping ingress as a separate deployment, I can deploy ingress for Prometheus backed by Traefik using almost the same declarative code as when I deploy the same ingress backed by Istio.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## helmfiles/helmfile.prometheus-operator.yaml archetype chart values excerpt</span>
+  values:
+  - app: grafana
+    dnsRoot: <span style="color:#f92672">{{</span> .Values | getOrNil <span style="color:#e6db74">&#34;dnsRoot&#34;</span> | default <span style="color:#e6db74">&#34;micro.svc&#34;</span> <span style="color:#f92672">}}</span>
+    zone: <span style="color:#f92672">{{</span> .Values | getOrNil <span style="color:#e6db74">&#34;prometheusoperator.zone&#34;</span> | default <span style="color:#e6db74">&#34;internal&#34;</span> <span style="color:#f92672">}}</span>
+    ingress:
+      enabled: true
+      tlsEnabled: true
+      hosts:
+      - name: grafana
+        secretName: po-grafana-ingress
+        config:
+          http:
+            paths:
+            - path: <span style="color:#e6db74">&#34;/&#34;</span>
+              backend:
+                serviceName: po-grafana
+                servicePort: <span style="color:#ae81ff">80</span>
+</code></pre></div><p>Above you can see a single ingress being created for the po-grafana service for a prometheus operator deployment. Note that I am using some helmfile specific scaffolding in this example for the zone and dnsRoot elements, but it should be easy enough to read.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## helmfiles/helmfile.istio.yaml archetype values excerpt</span>
+- app: istio
+  dnsRoot: <span style="color:#f92672">{{</span> .Values | getOrNil <span style="color:#e6db74">&#34;dnsRoot&#34;</span> | default <span style="color:#e6db74">&#34;micro.svc&#34;</span> <span style="color:#f92672">}}</span>
+  zone: <span style="color:#f92672">{{</span> .Values | getOrNil <span style="color:#e6db74">&#34;istio.zone&#34;</span> | default <span style="color:#e6db74">&#34;internal&#34;</span> <span style="color:#f92672">}}</span>
+  istio:
+    gateway:
+      enabled: true
+  ingress:
+    enabled: true
+    type: istio
+    hosts:
+    - name: prometheus
+      paths:
+      - path: <span style="color:#e6db74">&#34;/&#34;</span>
+        backend:
+          serviceName: prometheus
+          servicePort: <span style="color:#ae81ff">9090</span>
+    - name: kiali
+      paths:
+      - path: <span style="color:#e6db74">&#34;/&#34;</span>
+        backend:
+          serviceName: kiali
+          servicePort: <span style="color:#ae81ff">20001</span>
+    - name: grafana
+      paths:
+      - path: <span style="color:#e6db74">&#34;/&#34;</span>
+        backend: 
+          serviceName: grafana
+          servicePort: <span style="color:#ae81ff">3000</span>
+</code></pre></div><p>The above istio ingress example almost mirrors that of the prometheus operator example but I also include the prometheus and kiali ingress. You will see that with istio we enable a gateway as well as the Istio virtualservices require one. Because it is enabled but not defined in further down ingress definitions, the default behavior in the archetype chart is to have each virtualservice (prometheus, grafana, kiali) use the same istio gateway.</p>
+<p>In both examples ee use the power of a standardized chart to derive the host url automatically using dnsRoot and a zone definition. The zone definition is for exposing internal, external, or staging zone based on simple top-level class definitions.</p>
+<p>This vastly simplifies all future chart deployments as we can use the same general format to expose ingress but take different actions based on <code>ingress.type</code> (which is &lsquo;standard&rsquo; by default). As long as we consistently use the archetype chart, a future migration to another ingress controller becomes a much simpler affair.</p>
+<h2 id="archetype-descendants">Archetype Descendants</h2>
+<p>Under most circumstances I would not recommend leaning on subcharts within Helm. But there is value in using them in an archetype pattern. Using the archetype chart as a dependency we can standardize particular deployment elements for a project or target cluster profile pretty easily. Let&rsquo;s use an example to show how this can be used to abstract a deployment.</p>
+<p>I&rsquo;ve created an example descendant chart that uses the archetype chart as a dependency.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+</code></pre></div><h2 id="resources">Resources</h2>
+<p><strong><a href="https://github.com/zloeber/archetype-chart">An Archetype Chart Example</a></strong> - An example archetype chart.</p>
+<p><strong><a href="https://github.com/zloeber/descendant-chart">A Descendant Chart Example</a></strong> - A descendant chart example</p>
+<p><strong><a href="https://github.com/zloeber/KubeStich">KubeStich Project</a></strong> - Can be used to deploy all examples in this article</p>
+<p><strong><a href="https://github.com/cloudposse/charts/tree/master/incubator/monochart">CloudPosse&rsquo;s Monochart</a></strong> - The original archetype chart</p>
+<p><strong><a href="https://medium.com/faun/dry-helm-charts-for-micro-services-db3a1d6ecb80">DRY Helm Charts for Micro-Services</a></strong></p>
 <p><strong><a href="https://helm.sh">Helm</a></strong></p>
 <p><strong><a href="https://github.com/roboll/helmfile">Helmfile</a></strong></p>
-<p><strong><a href="">My Example Archetype Chart</a></strong></p>
-<p><strong><a href="https://medium.com/faun/dry-helm-charts-for-micro-services-db3a1d6ecb80">DRY Helm Charts for Micro-Services</a></strong></p>
     
 </div>
 
@@ -220,6 +282,8 @@
                 <a href="/tags/helm">helm</a>
                 
                 <a href="/tags/pattern">pattern</a>
+                
+                <a href="/tags/ingress">ingress</a>
                 
             </div>
         </div>
@@ -334,15 +398,15 @@
                 <ul>
                 
                     <li>
+                        <a href="https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/">The Declarative Mindset</a>
+                    </li>
+                
+                    <li>
                         <a href="https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/">Aws Testing With Localstack on Kubernetes</a>
                     </li>
                 
                     <li>
                         <a href="https://zacharyloeber-dev.onrender.com/2020/05/kubernetes-archetype-pattern/">Kubernetes Archetype Pattern</a>
-                    </li>
-                
-                    <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/the-istio-rabbithole/">The Istio Rabbithole</a>
                     </li>
                 
                 </ul>

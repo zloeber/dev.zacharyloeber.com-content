@@ -5,10 +5,46 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 21 May 2020 09:22:20 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2020 11:05:58 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DevOps</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
+      <pubDate>Sat, 11 Jul 2020 11:05:58 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
+      <pubDate>Sat, 11 Jul 2020 11:05:58 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>terraform</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/terraform/</link>
+      <pubDate>Sat, 11 Jul 2020 11:05:58 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yaml</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/yaml/</link>
+      <pubDate>Sat, 11 Jul 2020 11:05:58 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/yaml/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>AWS</title>
@@ -16,15 +52,6 @@
       <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DevOps</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
-      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
       <description></description>
     </item>
     
@@ -56,20 +83,20 @@
     </item>
     
     <item>
-      <title>Kubernetes</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
-      <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>localstack</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/localstack/</link>
       <pubDate>Thu, 21 May 2020 09:22:20 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/localstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ingress</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/ingress/</link>
+      <pubDate>Sun, 10 May 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/ingress/</guid>
       <description></description>
     </item>
     
@@ -128,15 +155,6 @@
     </item>
     
     <item>
-      <title>yaml</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/yaml/</link>
-      <pubDate>Fri, 01 May 2020 16:02:15 -0600</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/yaml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>cicd</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/cicd/</link>
       <pubDate>Wed, 29 Apr 2020 13:55:09 -0500</pubDate>
@@ -160,15 +178,6 @@
       <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/qemu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>terraform</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/terraform/</link>
-      <pubDate>Mon, 20 Apr 2020 10:22:48 -0500</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/terraform/</guid>
       <description></description>
     </item>
     
