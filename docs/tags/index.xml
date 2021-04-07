@@ -5,33 +5,78 @@
     <link>https://zacharyloeber-dev.onrender.com/tags/</link>
     <description>Recent content in Tags on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 11 Jul 2020 11:05:58 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 15 Dec 2020 10:27:05 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>automation</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/automation/</link>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Containers</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/containers/</link>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/containers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>declarative configuration</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/declarative-configuration/</link>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/declarative-configuration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>DevOps</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/devops/</link>
-      <pubDate>Sat, 11 Jul 2020 11:05:58 -0500</pubDate>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>everything as code</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/everything-as-code/</link>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/everything-as-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Kubernetes</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</link>
-      <pubDate>Sat, 11 Jul 2020 11:05:58 -0500</pubDate>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>prediction</title>
+      <link>https://zacharyloeber-dev.onrender.com/tags/prediction/</link>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/tags/prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>terraform</title>
       <link>https://zacharyloeber-dev.onrender.com/tags/terraform/</link>
-      <pubDate>Sat, 11 Jul 2020 11:05:58 -0500</pubDate>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/terraform/</guid>
       <description></description>
@@ -268,15 +313,6 @@
       <pubDate>Mon, 10 Dec 2018 22:51:46 +0000</pubDate>
       
       <guid>https://zacharyloeber-dev.onrender.com/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Containers</title>
-      <link>https://zacharyloeber-dev.onrender.com/tags/containers/</link>
-      <pubDate>Fri, 28 Sep 2018 16:49:46 +0000</pubDate>
-      
-      <guid>https://zacharyloeber-dev.onrender.com/tags/containers/</guid>
       <description></description>
     </item>
     

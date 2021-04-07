@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>declarative configuration on Zachary Loeber</title>
+    <link>https://zacharyloeber-dev.onrender.com/tags/declarative-configuration/</link>
+    <description>Recent content in declarative configuration on Zachary Loeber</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 15 Dec 2020 10:27:05 -0500</lastBuildDate>
+    
+	<atom:link href="https://zacharyloeber-dev.onrender.com/tags/declarative-configuration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2021 - IT Industry Predictions</title>
+      <link>https://zacharyloeber-dev.onrender.com/2020/12/2021-it-industry-predictions/</link>
+      <pubDate>Tue, 15 Dec 2020 10:27:05 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2020/12/2021-it-industry-predictions/</guid>
+      <description>&lt;p&gt;Wild speculations on hot trends to follow in information technology for 2021 and beyond.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
