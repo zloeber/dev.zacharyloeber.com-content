@@ -95,34 +95,38 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
 <article class="default article">
     
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/">
+            <img src="/images/blog/backlit_keyboard.jpg" alt="">
+        </a>
+    </div>
+
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2018/12/10/devops-tool-of-the-day-syncthing/">Devops: Tool of the day – Syncthing</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/">Helm 3 Namespace Creation</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2018-12-10</span>
+                <span class="date moment">2020-01-01</span>
             
         
 
         
-            <span class="readingTime">1 min read</span>
+            <span class="readingTime">5 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/devops">DevOps</a>
+                    <a href="/categories/devops">devops</a>
                 
-                    <a href="/categories/linux">Linux</a>
-                
-                    <a href="/categories/system-administration">System Administration</a>
+                    <a href="/categories/kubernetes">kubernetes</a>
                 
             </span>
         
@@ -133,8 +137,10 @@
     </div>
 
     
-        Check out my new article on using syncthing as a devops productivity tool. Cheers!
+        <p>Helm 3 was released and works great except that it no longer creates namespaces for your deployments. Here is one solution along with alternatives worth looking into.</p>
 
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2020/1/1/helm3_namespace_creation/" class="more">Continue reading</a>
         
     
 </div>
@@ -148,9 +154,13 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/devops">DevOps</a>
+                <a href="/tags/devops">devops</a>
                 
-                <a href="/tags/linux">Linux</a>
+                <a href="/tags/kubernetes">kubernetes</a>
+                
+                <a href="/tags/helm">helm</a>
+                
+                <a href="/tags/helmfile">helmfile</a>
                 
             </div>
         </div>
@@ -220,21 +230,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/12\/10\/devops-tool-of-the-day-syncthing\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/1\/1\/Helm3_namespace_creation\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/12\/10\/devops-tool-of-the-day-syncthing\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/1\/1\/Helm3_namespace_creation\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/12\/10\/devops-tool-of-the-day-syncthing\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2020\/1\/1\/Helm3_namespace_creation\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -249,41 +259,39 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
 <article class="default article">
     
+    <div class="featured-image">
+        <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/">
+            <img src="/images/blog/backlit_keyboard.jpg" alt="">
+        </a>
+    </div>
+
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2018/09/28/devops-automating-kubernetes-deployments/">DevOps – Automating Kubernetes Deployments</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/">Some Cool Kubernetes Tools</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2018-09-28</span>
+                <span class="date moment">2019-12-22</span>
             
         
 
         
-            <span class="readingTime">1 min read</span>
+            <span class="readingTime">5 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/cicd">CICD</a>
-                
                     <a href="/categories/devops">DevOps</a>
-                
-                    <a href="/categories/docker">Docker</a>
                 
                     <a href="/categories/kubernetes">Kubernetes</a>
                 
-                    <a href="/categories/microservices">Microservices</a>
-                
-                    <a href="/categories/system-administration">System Administration</a>
-                
             </span>
         
 
@@ -293,11 +301,10 @@
     </div>
 
     
-        If you are deploying your own Kubernetes clusters you already know that:
-But there is hope!
-There are a few great projects to keep an eye on in this space. I’ve covered some of them in an article you can read on the Lumen.
-Cheers!
+        <p>Are you working with kubernetes regularly? There are so many tools out there it can be difficult to know which ones to use. Here are a few of them I&rsquo;ve found to be useful but may have flown under your radar.</p>
 
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/15/some_cool_kubernetes_tools/" class="more">Continue reading</a>
         
     
 </div>
@@ -311,27 +318,13 @@ Cheers!
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/aws">AWS</a>
+                <a href="/tags/devops">devops</a>
                 
-                <a href="/tags/azure">Azure</a>
+                <a href="/tags/pipeline">pipeline</a>
                 
-                <a href="/tags/containers">Containers</a>
+                <a href="/tags/kubernetes">kubernetes</a>
                 
-                <a href="/tags/devops">DevOps</a>
-                
-                <a href="/tags/docker">Docker</a>
-                
-                <a href="/tags/kubernetes">Kubernetes</a>
-                
-                <a href="/tags/microservices">Microservices</a>
-                
-                <a href="/tags/scripting">Scripting</a>
-                
-                <a href="/tags/security">Security</a>
-                
-                <a href="/tags/sysadmin">Sysadmin</a>
-                
-                <a href="/tags/system-administration">System Administration</a>
+                <a href="/tags/helm">helm</a>
                 
             </div>
         </div>
@@ -401,21 +394,21 @@ Cheers!
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/09\/28\/devops-automating-kubernetes-deployments\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2019\/12\/15\/some_cool_kubernetes_tools\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/09\/28\/devops-automating-kubernetes-deployments\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2019\/12\/15\/some_cool_kubernetes_tools\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/09\/28\/devops-automating-kubernetes-deployments\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2019\/12\/15\/some_cool_kubernetes_tools\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -430,7 +423,7 @@ Cheers!
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -438,24 +431,28 @@ Cheers!
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2018/05/02/powershell-to-python-notes-from-the-field/">Powershell To Python Notes From The Field</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/">Hugo - A DevOps Approach</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2018-05-03</span>
+                <span class="date moment">2019-12-08</span>
             
         
 
         
-            <span class="readingTime">1 min read</span>
+            <span class="readingTime">10 min read</span>
         
 
         
             <span class="categories">
                 
-                    <a href="/categories/powershell">Powershell</a>
+                    <a href="/categories/azure">Azure</a>
                 
-                    <a href="/categories/python">Python</a>
+                    <a href="/categories/devops">DevOps</a>
+                
+                    <a href="/categories/pipeline">Pipeline</a>
+                
+                    <a href="/categories/hugo">Hugo</a>
                 
             </span>
         
@@ -466,8 +463,10 @@ Cheers!
     </div>
 
     
-        Have a PowerShell background and want to learn Python? Here is a good kickstart article to point you in the right direction.
+        <p>I&rsquo;ve updated my site to use hugo some time ago. Recently I&rsquo;ve found some time to add a deployment pipeline for this site as well. This short article will cover how the pipeline code works and dive into multi-stage pipelines.</p>
 
+        
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2019/12/8/hugo-a-devops-approach/" class="more">Continue reading</a>
         
     
 </div>
@@ -481,9 +480,17 @@ Cheers!
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/powershell">Powershell</a>
+                <a href="/tags/blog">blog</a>
                 
-                <a href="/tags/python">Python</a>
+                <a href="/tags/azure">azure</a>
+                
+                <a href="/tags/devops">devops</a>
+                
+                <a href="/tags/pipeline">pipeline</a>
+                
+                <a href="/tags/hugo">hugo</a>
+                
+                <a href="/tags/yaml">yaml</a>
                 
             </div>
         </div>
@@ -553,21 +560,21 @@ Cheers!
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/05\/02\/powershell-to-python-notes-from-the-field\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2019\/12\/8\/hugo-a-devops-approach\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/05\/02\/powershell-to-python-notes-from-the-field\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2019\/12\/8\/hugo-a-devops-approach\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2018\/05\/02\/powershell-to-python-notes-from-the-field\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2019\/12\/8\/hugo-a-devops-approach\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -606,15 +613,15 @@ Cheers!
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/12/2021-it-industry-predictions/">2021 - IT Industry Predictions</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-as-a-shared-platform/">Provisioning Hashicorp Vault as a Shared Platform</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/">The Declarative Mindset</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-1/">Provisioning Hashicorp Vault 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/">Aws Testing With Localstack on Kubernetes</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2021/05/centralized-gitops-secrets-management-with-hashicorp-vault/">Centralized Gitops Secrets Management with Hashicorp Vault</a>
                     </li>
                 
                 </ul>
@@ -687,7 +694,7 @@ Cheers!
             <a href="https://github.com/zloeber" target="_blank">
                 &copy;
                 
-                    2021
+                    2022
                 
                 by Zachary Loeber
             </a>

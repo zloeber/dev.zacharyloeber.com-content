@@ -95,7 +95,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2013/04/17/powershell-colorize-table-function/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -103,11 +103,11 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/">Exchange: Co-existence Client Access Preparation Report</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2013/04/17/powershell-colorize-table-function/">Powershell: Colorize-Table Function</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2013-01-16</span>
+                <span class="date moment">2013-04-18</span>
             
         
 
@@ -118,13 +118,9 @@
         
             <span class="categories">
                 
-                    <a href="/categories/exchange">Exchange</a>
-                
-                    <a href="/categories/exchange-2010">Exchange 2010</a>
-                
                     <a href="/categories/microsoft">Microsoft</a>
                 
-                    <a href="/categories/networking">Networking</a>
+                    <a href="/categories/powershell">Powershell</a>
                 
                     <a href="/categories/system-administration">System Administration</a>
                 
@@ -137,10 +133,10 @@
     </div>
 
     
-        <p>If you upgrade Exchange in a co-existence scenario (you want to keep the same client access namespace) there is one crucial moment of truth which must be overcome. This is the phase of the migration I’ve come to call the “dns flip-over” or the “client access part”. Without preparation this part of the migration can be a real headache as issues are directly experienced by your end users.  This is a simple report card you can use to prepare you for this moment.</p>
+        <p>Here is a function I modified for quickly modifying the attributes of a table’s rows or individual cells. It uses Linq and is blistering fast. The results are pretty as well so that doesn’t hurt either.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2013/01/15/exchange-co-existence-client-access-preparation-report/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2013/04/17/powershell-colorize-table-function/" class="more">Continue reading</a>
         
     
 </div>
@@ -154,15 +150,13 @@
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                <a href="/tags/exchange-2010">Exchange 2010</a>
-                
-                <a href="/tags/microsoft">Microsoft</a>
-                
                 <a href="/tags/network-administration">network administration</a>
                 
-                <a href="/tags/networking">Networking</a>
+                <a href="/tags/powershell">Powershell</a>
                 
-                <a href="/tags/sysadmin">Sysadmin</a>
+                <a href="/tags/reporting">Reporting</a>
+                
+                <a href="/tags/scripting">Scripting</a>
                 
                 <a href="/tags/system-administration">System Administration</a>
                 
@@ -234,21 +228,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/01\/15\/exchange-co-existence-client-access-preparation-report\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/04\/17\/powershell-colorize-table-function\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/01\/15\/exchange-co-existence-client-access-preparation-report\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/04\/17\/powershell-colorize-table-function\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/01\/15\/exchange-co-existence-client-access-preparation-report\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/04\/17\/powershell-colorize-table-function\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -263,7 +257,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2013/04/07/exchange-mailbox-gui/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -271,11 +265,11 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/">VMware: Migrating a vCenter virtual appliance to a vCenter Windows server</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2013/04/07/exchange-mailbox-gui/">Exchange: Mailbox GUI</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2012-12-17</span>
+                <span class="date moment">2013-04-08</span>
             
         
 
@@ -286,17 +280,21 @@
         
             <span class="categories">
                 
-                    <a href="/categories/networking">Networking</a>
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/active-directory">Active Directory</a>
+                
+                    <a href="/categories/exchange">Exchange</a>
+                
+                    <a href="/categories/exchange-2010">Exchange 2010</a>
+                
+                    <a href="/categories/microsoft">Microsoft</a>
                 
                     <a href="/categories/powershell">Powershell</a>
                 
-                    <a href="/categories/storage">Storage</a>
+                    <a href="/categories/security">Security</a>
                 
                     <a href="/categories/system-administration">System Administration</a>
-                
-                    <a href="/categories/virtualization">Virtualization</a>
-                
-                    <a href="/categories/vmware">VMware</a>
                 
             </span>
         
@@ -307,10 +305,11 @@
     </div>
 
     
-        <p>I finally bit the bullet and migrated my lab from a vCenter virtual appliance to a vCenter Windows server. This is what I did to maintain all my settings and not disrupt any currently running VMs.</p>
+        <h1 id="exchange-2010-mailbox-gui">Exchange 2010 Mailbox GUI</h1>
+<p>A powershell GUI for selecting and performing actions against multiple Exchange mailboxes.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/12/16/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2013/04/07/exchange-mailbox-gui/" class="more">Continue reading</a>
         
     
 </div>
@@ -385,21 +384,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/12\/16\/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/04\/07\/exchange-mailbox-gui\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/12\/16\/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/04\/07\/exchange-mailbox-gui\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/12\/16\/vmware-migrating-a-vcenter-virtual-appliance-to-a-vcenter-windows-server\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/04\/07\/exchange-mailbox-gui\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -414,7 +413,7 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2012/12/11/defining-best-of-breed-in-it/">
+                <a class="bubble" href="https://zacharyloeber-dev.onrender.com/blog/2013/02/17/vmware-vmware-report-generation-gui/">
     <i class="fa fa-fw fa-pencil"></i>
 </a>
 
@@ -422,16 +421,16 @@
     
 
     <div class="content">
-    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2012/12/11/defining-best-of-breed-in-it/">Defining Best of Breed in IT</a></h3>
+    <h3><a href="https://zacharyloeber-dev.onrender.com/blog/2013/02/17/vmware-vmware-report-generation-gui/">VMware: VMware Report Generation GUI</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2012-12-11</span>
+                <span class="date moment">2013-02-17</span>
             
         
 
         
-            <span class="readingTime">8 min read</span>
+            <span class="readingTime">2 min read</span>
         
 
         
@@ -439,9 +438,13 @@
                 
                     <a href="/categories/networking">Networking</a>
                 
-                    <a href="/categories/other">Other</a>
+                    <a href="/categories/powershell">Powershell</a>
                 
                     <a href="/categories/system-administration">System Administration</a>
+                
+                    <a href="/categories/virtualization">Virtualization</a>
+                
+                    <a href="/categories/vmware">VMware</a>
                 
             </span>
         
@@ -452,11 +455,10 @@
     </div>
 
     
-        <h1 id="introduction">Introduction</h1>
-<p>Soon I’ll be starting a new position with a company which produces some of the highest quality products in their industry. The company’s products are of such high quality that they typically set the bar in their industry. This made me think of what a truly comprises an excellent solution within the Information Technology.  This article is a non-technical personal view of what defines the “Best of breed” technical solutions.</p>
+        <p>Its been a while since I posted something new. This GUI is meant to configure regular vmware report generation. You are able to select reporting scoped to the whole farm down to individual hosts. Reports can be emailed or saved and be generated based on custom thresholds.</p>
 
         
-            <a href="https://zacharyloeber-dev.onrender.com/blog/2012/12/11/defining-best-of-breed-in-it/" class="more">Continue reading</a>
+            <a href="https://zacharyloeber-dev.onrender.com/blog/2013/02/17/vmware-vmware-report-generation-gui/" class="more">Continue reading</a>
         
     
 </div>
@@ -472,9 +474,15 @@
                 
                 <a href="/tags/network-administration">network administration</a>
                 
-                <a href="/tags/other">Other</a>
+                <a href="/tags/powershell">Powershell</a>
+                
+                <a href="/tags/scripting">Scripting</a>
                 
                 <a href="/tags/system-administration">System Administration</a>
+                
+                <a href="/tags/virtualization">virtualization</a>
+                
+                <a href="/tags/vmware">vmware</a>
                 
             </div>
         </div>
@@ -544,21 +552,21 @@
 </style>
 <div id="share-buttons">
     <div class="facebook" title="Share this on Facebook"
-        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/12\/11\/defining-best-of-breed-in-it\/');">
+        onclick="window.open('https://www.facebook.com/share.php?u=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/02\/17\/vmware-vmware-report-generation-gui\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z" />
         </svg>
     </div>
     <div class="twitter" title="Share this on Twitter"
-        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/12\/11\/defining-best-of-breed-in-it\/');">
+        onclick="window.open('https://twitter.com/intent/tweet?text=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/02\/17\/vmware-vmware-report-generation-gui\/');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z" />
         </svg>
     </div>
     <div class="linkedin" title="Share this on Linkedin"
-        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2012\/12\/11\/defining-best-of-breed-in-it\/&title=&summary=&source=');">
+        onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/zacharyloeber-dev.onrender.com\/\/blog\/2013\/02\/17\/vmware-vmware-report-generation-gui\/&title=&summary=&source=');">
         <svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z" />
@@ -597,15 +605,15 @@
                 <ul>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/12/2021-it-industry-predictions/">2021 - IT Industry Predictions</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-as-a-shared-platform/">Provisioning Hashicorp Vault as a Shared Platform</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/07/the-declarative-mindset/">The Declarative Mindset</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-1/">Provisioning Hashicorp Vault 1</a>
                     </li>
                 
                     <li>
-                        <a href="https://zacharyloeber-dev.onrender.com/2020/05/aws-testing-with-localstack-on-kubernetes/">Aws Testing With Localstack on Kubernetes</a>
+                        <a href="https://zacharyloeber-dev.onrender.com/2021/05/centralized-gitops-secrets-management-with-hashicorp-vault/">Centralized Gitops Secrets Management with Hashicorp Vault</a>
                     </li>
                 
                 </ul>
@@ -678,7 +686,7 @@
             <a href="https://github.com/zloeber" target="_blank">
                 &copy;
                 
-                    2021
+                    2022
                 
                 by Zachary Loeber
             </a>

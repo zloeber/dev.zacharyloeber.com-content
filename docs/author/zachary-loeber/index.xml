@@ -5,7 +5,7 @@
     <link>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</link>
     <description>Recent content on Zachary Loeber</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 15 Dec 2020 10:27:05 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 20 Aug 2021 09:07:56 -0500</lastBuildDate>
     
 	<atom:link href="https://zacharyloeber-dev.onrender.com/author/zachary-loeber/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,33 @@
       <description>I am IT enthusiast with almost decades of experience. I cut my teeth on a Tandy 2000 and BBS’s of the late 80′s and has been programming, building, and networking computers ever since.
 I&amp;rsquo;m agnostic when it comes to technology but have strong interest in:
  Cloud Architecture DevOps Kubernetes Docker Go Terraform Security Networking System Administration Linux Automation  Some of my other interests include camping, self-improvement, and being a good husband and father.</description>
+    </item>
+    
+    <item>
+      <title>Provisioning Hashicorp Vault as a Shared Platform</title>
+      <link>https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-as-a-shared-platform/</link>
+      <pubDate>Fri, 20 Aug 2021 09:07:56 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-as-a-shared-platform/</guid>
+      <description>&lt;p&gt;Hashicorp Vault is an industry standard tool used for secrets management. In this article I will go over some of the nuances to consider while bending this highly adaptable API driven secrets and authentication workhorse to your will.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Provisioning Hashicorp Vault 1</title>
+      <link>https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-1/</link>
+      <pubDate>Mon, 16 Aug 2021 09:07:21 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-1/</guid>
+      <description>&lt;p&gt;Some short blurb&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Centralized Gitops Secrets Management with Hashicorp Vault</title>
+      <link>https://zacharyloeber-dev.onrender.com/2021/05/centralized-gitops-secrets-management-with-hashicorp-vault/</link>
+      <pubDate>Wed, 05 May 2021 14:05:47 -0500</pubDate>
+      
+      <guid>https://zacharyloeber-dev.onrender.com/2021/05/centralized-gitops-secrets-management-with-hashicorp-vault/</guid>
+      <description>&lt;p&gt;Secrets are hard, centralizing them can feel like a herculean effort. Here are some tips to assist you.&lt;/p&gt;</description>
     </item>
     
     <item>

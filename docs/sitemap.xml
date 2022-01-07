@@ -13,22 +13,67 @@
   </url>
   
   <url>
+    <loc>https://zacharyloeber-dev.onrender.com/author/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/devops/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/categories/devops/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/posts/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-as-a-shared-platform/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/tags/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/</loc>
+    <lastmod>2021-08-20T09:07:56-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/2021/08/provisioning-hashicorp-vault-1/</loc>
+    <lastmod>2021-08-16T09:07:21-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zacharyloeber-dev.onrender.com/2021/05/centralized-gitops-secrets-management-with-hashicorp-vault/</loc>
+    <lastmod>2021-05-05T14:05:47-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zacharyloeber-dev.onrender.com/2020/12/2021-it-industry-predictions/</loc>
     <lastmod>2020-12-15T10:27:05-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/author/</loc>
-    <lastmod>2020-12-15T10:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/automation/</loc>
-    <lastmod>2020-12-15T10:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/</loc>
     <lastmod>2020-12-15T10:27:05-05:00</lastmod>
   </url>
   
@@ -39,16 +84,6 @@
   
   <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/declarative-configuration/</loc>
-    <lastmod>2020-12-15T10:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/devops/</loc>
-    <lastmod>2020-12-15T10:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/categories/devops/</loc>
     <lastmod>2020-12-15T10:27:05-05:00</lastmod>
   </url>
   
@@ -68,32 +103,12 @@
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/posts/</loc>
-    <lastmod>2020-12-15T10:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/prediction/</loc>
     <lastmod>2020-12-15T10:27:05-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zacharyloeber-dev.onrender.com/tags/</loc>
-    <lastmod>2020-12-15T10:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zacharyloeber-dev.onrender.com/tags/terraform/</loc>
-    <lastmod>2020-12-15T10:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/author/zachary-loeber/</loc>
-    <lastmod>2020-12-15T10:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zacharyloeber-dev.onrender.com/</loc>
     <lastmod>2020-12-15T10:27:05-05:00</lastmod>
   </url>
   
